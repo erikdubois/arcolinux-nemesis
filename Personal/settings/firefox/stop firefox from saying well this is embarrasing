@@ -1,0 +1,6 @@
+#stop firefox from saying well this is embarrasing -- stop restore of websites
+
+about:config
+
+browser.sessionstore.resume_from_crash  from true to false
+browser.sessionstore.max_resumed_crashes from 0 to 1

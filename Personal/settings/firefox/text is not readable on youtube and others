@@ -1,0 +1,36 @@
+This is not a Mint error!
+Open your Home directory.
+Show hidden files.
+Look for .mozilla, open it.
+Open firefox folder.
+Open folder that ends with .default.
+In that folder create folder with the name 'chrome' (no capital letters).
+In that folder create new blank document and name it 'userContent.css' with the capital 'C'!
+Open that document and enter the following (copy & paste).
+source : https://plus.google.com/+JDRichards/posts/4S46rRRCStx
+
+
+input:not(.urlbar-input):not(.textbox-input):not(.form-control):not([type='checkbox']) {
+-moz-appearance: none !important;
+background-color: white;
+color: black;
+}
+
+#downloads-indicator-counter {
+color: white;
+}
+
+textarea {
+-moz-appearance: none !important;
+background-color: white;
+color: black;
+}
+
+select {
+-moz-appearance: none !important;
+background-color: white;
+color: black;
+}
+
+
+
