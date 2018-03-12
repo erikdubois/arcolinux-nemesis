@@ -36,7 +36,9 @@ sh AUR/install-virtualbox-for-linux-kernel-v*.sh
 #sh AUR/install-virtualbox-for-linux-lts-kernel-v*.sh
 
 # these come last always
-
+echo "Checking if icons from applications have a hardcoded path"
+echo "and fixing them"
+echo "Wait for it ..."
 sudo hardcode-fixer
 #sh AUR/install-zsh-v*.sh
 
