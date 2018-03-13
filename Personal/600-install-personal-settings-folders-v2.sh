@@ -1,42 +1,30 @@
 #!/bin/bash
 set -e
 ##################################################################################################################
-# Written to be used on 64 bits computers
 # Author 	: 	Erik Dubois
-# Website 	: 	http://www.erikdubois.be
-##################################################################################################################
+# Website : https://www.erikdubois.be
+# Website	:	https://www.arcolinux.info
+# Website	:	https://www.arcolinux.com
+# Website	:	https://www.arcolinuxd.com
+# Website	:	https://www.arcolinuxforum.com
 ##################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################
 
-echo "################################################################"
-echo "#########        Creating folders               ################"
-echo "################################################################"
-
-
+echo "Creating private folders we use later"
 
 [ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
 [ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
-
 [ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
 
-[ -d $HOME"/.gimp-2.8" ] || mkdir -p $HOME"/.gimp-2.8"
-[ -d $HOME"/.gimp-2.8/scripts" ] || mkdir -p $HOME"/.gimp-2.8/scripts"
-[ -d $HOME"/.gimp-2.8/themes" ] || mkdir -p $HOME"/.gimp-2.8/themes"
+echo "Creating personal folders"
 
-[ -d $HOME"/Desktop" ] || mkdir -p $HOME"/Desktop"
-[ -d $HOME"/Documents" ] || mkdir -p $HOME"/Documents"
-[ -d $HOME"/Downloads" ] || mkdir -p $HOME"/Downloads"
-[ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/ARCOLINUX" ] || mkdir -p $HOME"/ARCOLINUX"
-#[ -d $HOME"/Dropbox" ] || mkdir -p $HOME"/Dropbox" will be created by dropbox
+[ -d $HOME"/ARCOLINUXD" ] || mkdir -p $HOME"/ARCOLINUXD"
+[ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
-[ -d $HOME"/Music" ] || mkdir -p $HOME"/Music"
-[ -d $HOME"/Pictures" ] || mkdir -p $HOME"/Pictures"
-[ -d $HOME"/Videos" ] || mkdir -p $HOME"/Videos"
-
 
 echo "################################################################"
 echo "#########            folders created            ################"

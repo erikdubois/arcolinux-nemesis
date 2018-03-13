@@ -1,25 +1,32 @@
 #!/bin/bash
 #set -e
 ##################################################################################################################
-# Written to be used on 64 bits computers
 # Author 	: 	Erik Dubois
-# Website 	: 	http://www.erikdubois.be
-##################################################################################################################
+# Website : https://www.erikdubois.be
+# Website	:	https://www.arcolinux.info
+# Website	:	https://www.arcolinux.com
+# Website	:	https://www.arcolinuxd.com
+# Website	:	https://www.arcolinuxforum.com
 ##################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################
 
-#software from 'normal' repositories
 
-sudo pacman -S --noconfirm --needed dconf-editor
-sudo pacman -S --noconfirm --needed gnome-screenshot
-sudo pacman -S --noconfirm --needed screenfetch 
+[ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
 
-###############################################################################################
+
+echo "Copy fonts to .fonts"
+
+cp Personal/settings/fonts/* ~/.fonts/
+
+echo "Building new fonts into the cache files";
+echo "Depending on the number of fonts, this may take a while..."
+fc-cache -fv ~/.fonts
+
+
 
 echo "################################################################"
-echo "###################    core software installed  ################"
+echo "#########   Fonts have been copied and loaded   ################"
 echo "################################################################"
-
