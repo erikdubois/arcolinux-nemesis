@@ -17,7 +17,7 @@ file:///home/erik/.icons .icons
 file:///usr/share/icons icons
 file:///home/erik/.themes .themes
 file:///usr/share/themes themes
-file:///usr/share/applications /usr/share/applications
+file:///usr/share/applications applications
 file:///home/erik/.local .local
 file:///opt /opt
 file:///etc/skel /etc/skel
