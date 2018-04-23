@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 ##################################################################################################################
-# Author 	: 	Erik Dubois
-# Website 	: 	https://www.erikdubois.be
-# Website	:	https://www.arcolinux.info
-# Website	:	https://www.arcolinux.com
+# Author 	: Erik Dubois
+# Website : https://www.erikdubois.be
+# Website	: https://www.arcolinux.info
+# Website	:	./https://www.arcolinux.com
 # Website	:	https://www.arcolinuxd.com
 # Website	:	https://www.arcolinuxforum.com
 ##################################################################################################################
@@ -15,7 +15,6 @@ set -e
 
 #software from Arch Linux repositories
 
-sudo pacman -S --noconfirm --needed dconf-editor
 sudo pacman -S --noconfirm --needed gnome-screenshot
 
 ###############################################################################################
