@@ -11,7 +11,7 @@
 #
 ##################################################################################################################
 
-sudo pacman -R --noconfirm linux-lts linux-lts-headers
+sudo pacman -R linux-lts linux-lts-headers
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "################################################################"
