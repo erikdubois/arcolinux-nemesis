@@ -15,7 +15,7 @@ set -e
 
 #software from Arch Linux repositories
 
-sudo pacman -S --noconfirm --needed gnome-screenshot
+sudo pacman -S --noconfirm --needed screenfetch
 
 ###############################################################################################
 
