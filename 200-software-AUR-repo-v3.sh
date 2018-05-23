@@ -16,6 +16,7 @@ set -e
 # software from AUR (Arch User Repositories)
 # https://aur.archlinux.org/packages/
 
+sh AUR/install-discord-v*.sh
 sh AUR/install-dropbox-v*.sh
 sh AUR/install-hardcode-fixer-git-v*.sh
 sh AUR/install-insync-v*.sh
