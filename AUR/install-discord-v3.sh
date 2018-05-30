@@ -13,7 +13,29 @@ set -e
 #
 ##################################################################################################################
 
-yaourt -S libc++ --m-arg --nocheck --noconfirm --m-arg --skipinteg
+package="libc++"
+
+#----------------------------------------------------------------------------------
+
+#checking if application is already installed or else install with aur helpers
+if pacman -Qi $package &> /dev/null; then
+
+	echo "################################################################"
+	echo "################## "$package" is already installed"
+	echo "################################################################"
+
+else
+
+	#checking which helper is installed
+	if pacman -Qi yaourt &> /dev/null; then
+
+		echo "Installing with yaourt"
+		yaourt -S libc++ --m-arg --nocheck --noconfirm --m-arg --skipinteg
+
+	fi
+fi	
+
+
 
 package="discord"
 
