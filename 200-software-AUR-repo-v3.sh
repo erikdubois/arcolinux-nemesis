@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 ##################################################################################################################
 # Author 	: Erik Dubois
 # Website : https://www.erikdubois.be
@@ -18,7 +18,6 @@ set -e
 
 sh AUR/install-discord-v*.sh
 sh AUR/install-dropbox-v*.sh
-sh AUR/install-hardcode-fixer-git-v*.sh
 sh AUR/install-insync-v*.sh
 sh AUR/install-mpd-ncmpcpp-v*.sh
 sh AUR/install-radiotray-v*.sh
