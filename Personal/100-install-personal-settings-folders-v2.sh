@@ -15,6 +15,7 @@ set -e
 
 echo "Creating private folders we use later"
 
+[ -d $HOME"/.bin" ] || mkdir -p $HOME"/.bin"
 [ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
 [ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
 [ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
