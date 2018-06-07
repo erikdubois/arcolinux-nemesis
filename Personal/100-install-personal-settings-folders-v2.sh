@@ -24,6 +24,7 @@ echo "Creating personal folders"
 
 [ -d $HOME"/ARCOLINUX" ] || mkdir -p $HOME"/ARCOLINUX"
 [ -d $HOME"/ARCOLINUXD" ] || mkdir -p $HOME"/ARCOLINUXD"
+[ -d $HOME"/ARCOLINUXB" ] || mkdir -p $HOME"/ARCOLINUXB"
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
 

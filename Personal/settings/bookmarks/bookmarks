@@ -4,9 +4,9 @@ file:///home/erik/Music Music
 file:///home/erik/Pictures Pictures
 file:///home/erik/Videos Videos
 file:///home/erik/Insync Insync
-file:///home/erik/Dropbox
 file:///home/erik/ARCOLINUX ARCOLINUX
 file:///home/erik/ARCOLINUXD ARCOLINUXD
+file:///home/erik/ARCOLINUXB
 file:///home/erik/DATA DATA
 file:///home/erik/.config .config
 file:///home/erik/.config/conky conky
@@ -19,6 +19,6 @@ file:///home/erik/.themes .themes
 file:///usr/share/themes themes
 file:///usr/share/applications applications
 file:///home/erik/.local .local
-file:///opt /opt
 file:///etc/skel /etc/skel
+file:///opt /opt
 file:///tmp /tmp
