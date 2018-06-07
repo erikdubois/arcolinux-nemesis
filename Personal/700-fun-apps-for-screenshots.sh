@@ -16,6 +16,7 @@ set -e
 # remember : toilet -f mono12 -F metal ArcoLinux
 
 sudo pacman -S asciiquarium --noconfirm --needed
+sudo pacman -S cool-retro-term --noconfirm --needed
 sudo pacman -S cowfortune --noconfirm --needed
 sudo pacman -S ranger --noconfirm --needed
 sudo pacman -S sl --noconfirm --needed
