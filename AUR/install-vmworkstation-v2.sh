@@ -82,10 +82,10 @@ else
 		echo "Installing with yaourt"
 		yaourt -S --noconfirm $package
 
-	elif pacman -Qi pacaur &> /dev/null; then
+	elif pacman -Qi trizen &> /dev/null; then
 
 		echo "Installing with pacaur"
-		pacaur -S --noconfirm --noedit  $package
+		trizen -S --noconfirm --skipinteg  $package
 
 	elif pacman -Qi packer &> /dev/null; then
 
