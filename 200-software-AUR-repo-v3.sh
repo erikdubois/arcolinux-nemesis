@@ -16,7 +16,7 @@
 # software from AUR (Arch User Repositories)
 # https://aur.archlinux.org/packages/
 
-sh AUR/install-aurman-v*.sh
+#sh AUR/install-aurman-v*.sh
 sh AUR/install-discord-v*.sh
 sh AUR/install-dropbox-v*.sh
 sh AUR/install-insync-v*.sh
