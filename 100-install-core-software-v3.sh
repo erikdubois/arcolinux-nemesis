@@ -16,6 +16,7 @@ set -e
 #software from Arch Linux repositories
 
 sudo pacman -S --noconfirm --needed screenfetch
+sudo pacman -S --noconfirm --needed discord
 
 ###############################################################################################
 
