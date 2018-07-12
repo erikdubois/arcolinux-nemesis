@@ -26,62 +26,8 @@ sudo pacman -S ranger --noconfirm --needed
 sudo pacman -S sl --noconfirm --needed
 
 
-
-
-
-
-echo "Installing tty-clock"
-echo "Start with pipes"
-
-package="tty-clock"
-
-#----------------------------------------------------------------------------------
-
-#checking if application is already installed or else install with aur helpers
-if pacman -Qi $package &> /dev/null; then
-
-	echo "################################################################"
-	echo "################## "$package" is already installed"
-	echo "################################################################"
-
-else
-
-	#checking which helper is installed
-	if pacman -Qi yaourt &> /dev/null; then
-
-		echo "Installing with yaourt"
-		yaourt -S --noconfirm $package
-
-	elif pacman -Qi pacaur &> /dev/null; then
-
-		echo "Installing with pacaur"
-		pacaur -S --noconfirm --noedit  $package
-
-	elif pacman -Qi packer &> /dev/null; then
-
-		echo "Installing with packer"
-		packer -S --noconfirm --noedit  $package
-
-	fi
-
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
-
-	echo "################################################################"
-	echo "#########  "$package" has been installed"
-	echo "################################################################"
-
-	else
-
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	echo "!!!!!!!!!  "$package" has NOT been installed"
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-
-	fi
-
-fi
-
-
+################################################################################
+################################################################################
 
 echo "Installing bash-pipes"
 echo "Start with pipes"
@@ -134,6 +80,9 @@ else
 
 fi
 
+
+################################################################################
+################################################################################
 
 
 echo "Installing cava"
@@ -188,6 +137,113 @@ else
 fi
 
 
+################################################################################
+################################################################################
+
+
+package="cpufetch-git"
+
+#----------------------------------------------------------------------------------
+
+#checking if application is already installed or else install with aur helpers
+if pacman -Qi $package &> /dev/null; then
+
+	echo "################################################################"
+	echo "################## "$package" is already installed"
+	echo "################################################################"
+
+else
+
+	#checking which helper is installed
+	if pacman -Qi yaourt &> /dev/null; then
+
+		echo "Installing with yaourt"
+		yaourt -S --noconfirm $package
+
+	elif pacman -Qi pacaur &> /dev/null; then
+
+		echo "Installing with pacaur"
+		pacaur -S --noconfirm --noedit  $package
+
+	elif pacman -Qi packer &> /dev/null; then
+
+		echo "Installing with packer"
+		packer -S --noconfirm --noedit  $package
+
+	fi
+
+	# Just checking if installation was successful
+	if pacman -Qi $package &> /dev/null; then
+
+	echo "################################################################"
+	echo "#########  "$package" has been installed"
+	echo "################################################################"
+
+	else
+
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
+	fi
+
+fi
+
+
+################################################################################
+################################################################################
+
+
+package="curseradio-git"
+
+#----------------------------------------------------------------------------------
+
+#checking if application is already installed or else install with aur helpers
+if pacman -Qi $package &> /dev/null; then
+
+	echo "################################################################"
+	echo "################## "$package" is already installed"
+	echo "################################################################"
+
+else
+
+	#checking which helper is installed
+	if pacman -Qi yaourt &> /dev/null; then
+
+		echo "Installing with yaourt"
+		yaourt -S --noconfirm $package
+
+	elif pacman -Qi pacaur &> /dev/null; then
+
+		echo "Installing with pacaur"
+		pacaur -S --noconfirm --noedit  $package
+
+	elif pacman -Qi packer &> /dev/null; then
+
+		echo "Installing with packer"
+		packer -S --noconfirm --noedit  $package
+
+	fi
+
+	# Just checking if installation was successful
+	if pacman -Qi $package &> /dev/null; then
+
+	echo "################################################################"
+	echo "#########  "$package" has been installed"
+	echo "################################################################"
+
+	else
+
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
+	fi
+
+fi
+
+################################################################################
+################################################################################
 
 
 echo "Installing pywal"
@@ -241,6 +297,11 @@ else
 
 fi
 
+
+################################################################################
+################################################################################
+
+
 echo "Installing toilet"
 echo "toilet -f mono12 -F metal ArcoLinux"
 
@@ -293,54 +354,9 @@ else
 fi
 
 
+################################################################################
+################################################################################
 
-package="curseradio-git"
-
-#----------------------------------------------------------------------------------
-
-#checking if application is already installed or else install with aur helpers
-if pacman -Qi $package &> /dev/null; then
-
-	echo "################################################################"
-	echo "################## "$package" is already installed"
-	echo "################################################################"
-
-else
-
-	#checking which helper is installed
-	if pacman -Qi yaourt &> /dev/null; then
-
-		echo "Installing with yaourt"
-		yaourt -S --noconfirm $package
-
-	elif pacman -Qi pacaur &> /dev/null; then
-
-		echo "Installing with pacaur"
-		pacaur -S --noconfirm --noedit  $package
-
-	elif pacman -Qi packer &> /dev/null; then
-
-		echo "Installing with packer"
-		packer -S --noconfirm --noedit  $package
-
-	fi
-
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
-
-	echo "################################################################"
-	echo "#########  "$package" has been installed"
-	echo "################################################################"
-
-	else
-
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	echo "!!!!!!!!!  "$package" has NOT been installed"
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-
-	fi
-
-fi
 
 
 package="slurm"
@@ -392,6 +408,65 @@ else
 fi
 
 
+################################################################################
+################################################################################
+
+
+echo "Installing tty-clock"
+
+package="tty-clock"
+
+#----------------------------------------------------------------------------------
+
+#checking if application is already installed or else install with aur helpers
+if pacman -Qi $package &> /dev/null; then
+
+	echo "################################################################"
+	echo "################## "$package" is already installed"
+	echo "################################################################"
+
+else
+
+	#checking which helper is installed
+	if pacman -Qi yaourt &> /dev/null; then
+
+		echo "Installing with yaourt"
+		yaourt -S --noconfirm $package
+
+	elif pacman -Qi pacaur &> /dev/null; then
+
+		echo "Installing with pacaur"
+		pacaur -S --noconfirm --noedit  $package
+
+	elif pacman -Qi packer &> /dev/null; then
+
+		echo "Installing with packer"
+		packer -S --noconfirm --noedit  $package
+
+	fi
+
+	# Just checking if installation was successful
+	if pacman -Qi $package &> /dev/null; then
+
+	echo "################################################################"
+	echo "#########  "$package" has been installed"
+	echo "################################################################"
+
+	else
+
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
+	fi
+
+fi
+
+
+################################################################################
+################################################################################
+
+
 package="ufetch-git"
 
 #----------------------------------------------------------------------------------
@@ -441,54 +516,9 @@ else
 fi
 
 
-package="cpufetch-git"
 
-#----------------------------------------------------------------------------------
-
-#checking if application is already installed or else install with aur helpers
-if pacman -Qi $package &> /dev/null; then
-
-	echo "################################################################"
-	echo "################## "$package" is already installed"
-	echo "################################################################"
-
-else
-
-	#checking which helper is installed
-	if pacman -Qi yaourt &> /dev/null; then
-
-		echo "Installing with yaourt"
-		yaourt -S --noconfirm $package
-
-	elif pacman -Qi pacaur &> /dev/null; then
-
-		echo "Installing with pacaur"
-		pacaur -S --noconfirm --noedit  $package
-
-	elif pacman -Qi packer &> /dev/null; then
-
-		echo "Installing with packer"
-		packer -S --noconfirm --noedit  $package
-
-	fi
-
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
-
-	echo "################################################################"
-	echo "#########  "$package" has been installed"
-	echo "################################################################"
-
-	else
-
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	echo "!!!!!!!!!  "$package" has NOT been installed"
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-
-	fi
-
-fi
-
+################################################################################
+################################################################################
 
 
 echo "################################################################"
