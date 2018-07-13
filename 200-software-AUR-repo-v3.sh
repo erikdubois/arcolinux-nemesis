@@ -28,6 +28,7 @@ sh AUR/install-sardi-extra-icons-v*.sh
 sh AUR/install-spotify-v*.sh
 sh AUR/install-virtualbox-for-linux-v*.sh
 #sh AUR/install-vivaldi-snapshot-v*.sh
+sh AUR/install-whatsapp-web-desktop-v*.sh
 
 # these come last always
 echo "Checking if icons from applications have a hardcoded path"
