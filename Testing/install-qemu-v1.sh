@@ -19,4 +19,9 @@ sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
 
 
-echo “options kvm-intel nested=1″ > sudo tee /etc/modprobe.d/kvm-intel.conf
+echo -e “options kvm-intel nested=1″ | sudo tee -a /etc/modprobe.d/kvm-intel.conf
+
+
+echo "############################################################################################################"
+echo "#####################      File kvm-intel.conf has been created                        #####################"
+echo "############################################################################################################"
