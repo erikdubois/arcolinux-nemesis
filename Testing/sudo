@@ -1,1 +1,0 @@
-“options kvm-intel nested=1″ tee /etc/modprobe.d/kvm-intel.conf
