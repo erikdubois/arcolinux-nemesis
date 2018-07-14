@@ -19,4 +19,4 @@ sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
 
 
-echo “options kvm-intel nested=1″ | sudo tee /etc/modprobe.d/kvm-intel.conf
+echo “options kvm-intel nested=1″ > sudo tee /etc/modprobe.d/kvm-intel.conf
