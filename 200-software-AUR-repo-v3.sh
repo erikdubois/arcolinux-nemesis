@@ -18,17 +18,17 @@
 
 #sh AUR/install-aurman-v*.sh
 #sh AUR/install-discord-v*.sh
-sh AUR/install-dropbox-v*.sh
-sh AUR/install-insync-v*.sh
+#sh AUR/install-dropbox-v*.sh
+#sh AUR/install-insync-v*.sh
 sh AUR/install-mpd-ncmpcpp-v*.sh
 sh AUR/install-numix-folders-git-v*.sh
 sh AUR/install-oxy-neon-v*.sh
 sh AUR/install-radiotray-v*.sh
 sh AUR/install-sardi-extra-icons-v*.sh
-sh AUR/install-spotify-v*.sh
+#sh AUR/install-spotify-v*.sh
 sh AUR/install-virtualbox-for-linux-v*.sh
 #sh AUR/install-vivaldi-snapshot-v*.sh
-sh AUR/install-whatsapp-web-desktop-v*.sh
+#sh AUR/install-whatsapp-web-desktop-v*.sh
 
 # these come last always
 echo "Checking if icons from applications have a hardcoded path"
