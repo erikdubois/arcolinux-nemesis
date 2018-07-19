@@ -15,7 +15,7 @@ set -e
 
 echo "Installing extra icons, themes, applications not on dvd"
 
-sh ../AUR/install-numix-kde-theme-git-v*.sh
+#none anymore
 
 echo "################################################################"
 echo "####                 EXTRA SOFTWARE INSTALLED             ######"
