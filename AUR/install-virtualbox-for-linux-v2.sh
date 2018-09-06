@@ -13,7 +13,11 @@ set -e
 #
 ##################################################################################################################
 
-sudo pacman -S --needed virtualbox-host-modules-arch
+echo "################################################################"
+echo "##  This script assumes you have the linux kernel running     ##"
+echo "################################################################"
+
+sudo pacman -S --needed --noconfirm virtualbox-host-modules-arch
 sudo pacman -S --noconfirm --needed virtualbox
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 

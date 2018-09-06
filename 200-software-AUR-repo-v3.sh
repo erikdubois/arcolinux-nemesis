@@ -18,7 +18,6 @@
 
 sh AUR/install-mpd-ncmpcpp-v*.sh
 sh AUR/install-numix-folders-git-v*.sh
-sh AUR/install-oxy-neon-v*.sh
 sh AUR/install-radiotray-v*.sh
 sh AUR/install-sardi-extra-icons-v*.sh
 sh AUR/install-virtualbox-for-linux-v*.sh
