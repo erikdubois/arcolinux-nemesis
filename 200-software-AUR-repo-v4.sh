@@ -16,6 +16,7 @@
 # software from AUR (Arch User Repositories)
 # https://aur.archlinux.org/packages/
 
+sh AUR/install-insync-v*.sh
 sh AUR/install-mpd-ncmpcpp-v*.sh
 sh AUR/install-numix-folders-git-v*.sh
 sh AUR/install-radiotray-v*.sh
