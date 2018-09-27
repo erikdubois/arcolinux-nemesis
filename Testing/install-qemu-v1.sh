@@ -12,6 +12,7 @@ set -e
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################
+#tutorial https://www.youtube.com/watch?v=JxSGT_3UU8w
 
 sudo pacman -S --noconfirm --needed qemu bridge-utils virt-manager virt-viewer
 
