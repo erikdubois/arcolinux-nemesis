@@ -20,6 +20,7 @@ sh AUR/install-insync-v*.sh
 sh AUR/install-mpd-ncmpcpp-v*.sh
 sh AUR/install-numix-folders-git-v*.sh
 sh AUR/install-radiotray-v*.sh
+sh AUR/install-the-platinum-searcher-v*.sh
 sh AUR/install-sardi-extra-icons-v*.sh
 sh AUR/install-virtualbox-for-linux-v*.sh
 #sh AUR/install-vivaldi-snapshot-v*.sh
