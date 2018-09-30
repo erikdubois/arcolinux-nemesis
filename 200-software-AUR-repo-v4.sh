@@ -23,6 +23,7 @@ sh AUR/install-radiotray-v*.sh
 sh AUR/install-the-platinum-searcher-bin-v*.sh
 sh AUR/install-sardi-extra-icons-v*.sh
 sh AUR/install-virtualbox-for-linux-v*.sh
+sh AUR/install-vivaldi-widevine-v*.sh
 #sh AUR/install-vivaldi-snapshot-v*.sh
 #sh AUR/install-whatsapp-web-desktop-v*.sh
 
