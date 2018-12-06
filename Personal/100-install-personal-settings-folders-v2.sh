@@ -30,6 +30,10 @@ echo "Creating personal folders"
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
 
+echo "Installing .bashrc-personal"
+
+cp settings/bashrc-personal/.bashrc-personal ~
+
 echo "################################################################"
 echo "#########            folders created            ################"
 echo "################################################################"
