@@ -6,3 +6,5 @@ alias udpate="update"
 
 #personal
 
+#all in one
+alias aio="update && skel && cb && pksyua"
