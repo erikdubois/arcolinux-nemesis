@@ -24,6 +24,7 @@ sudo pacman -S lolcat --noconfirm --needed
 sudo pacman -S mc --noconfirm --needed
 sudo pacman -S ranger --noconfirm --needed
 sudo pacman -S sl --noconfirm --needed
+sudo pacman -S ufetch-arco-git --noconfirm --needed
 
 
 ################################################################################
