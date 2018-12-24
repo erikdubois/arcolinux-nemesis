@@ -18,9 +18,23 @@ echo "################################################################"
 echo "#########          Copying 20-intel.conf         ################"
 echo "################################################################"
 
+echo "Select the correct desktop"
+echo "1. Cinnnamon"
+echo "0. Rest"
+echo "Type the number..."
+read CHOICE
 
-sudo cp settings/intel/20-intel.conf /etc/X11/xorg.conf.d/
-
+case $CHOICE in
+    1 )
+        sudo cp settings/intel-cinnamon/20-intel.conf /etc/X11/xorg.conf.d/ 
+        ;;
+    0 )
+        sudo cp settings/intel/20-intel.conf /etc/X11/xorg.conf.d/
+        ;;
+    * )
+		echo "Nothing changed..."
+		;;
+esac
 
 echo "################################################################"
 echo "#########                    done               ################"
