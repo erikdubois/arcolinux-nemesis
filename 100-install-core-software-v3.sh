@@ -20,7 +20,6 @@ sudo pacman -S --noconfirm --needed discord
 sudo pacman -S --noconfirm --needed dropbox
 sudo pacman -S --noconfirm --needed screenfetch
 sudo pacman -S --noconfirm --needed spotify
-sudo pacman -S --noconfirm --needed telegram-desktop
 
 ###############################################################################################
 
