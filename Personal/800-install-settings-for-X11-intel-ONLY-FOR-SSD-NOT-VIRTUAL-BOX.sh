@@ -19,26 +19,33 @@ echo "#########          Copying 20-intel.conf         ################"
 echo "################################################################"
 
 echo "Select the correct desktop"
-echo "2. Xmonad"
-echo "1. Cinnnamon"
-echo "0. Rest"
+echo "3. Xmonad"
+echo "2. Cinnamon"
+echo "1. ArcoLinux (xfce,openbox,i3)"
+echo "0. Do nothing"
 echo "Type the number..."
 read CHOICE
 
 case $CHOICE in
+    3 )
+      sudo cp settings/intel-uxa/20-intel.conf /etc/X11/xorg.conf.d/
+      ;;
     2 )
       sudo cp settings/intel-uxa/20-intel.conf /etc/X11/xorg.conf.d/
       ;;
-
     1 )
-      sudo cp settings/intel-uxa/20-intel.conf /etc/X11/xorg.conf.d/
-      ;;
-    0 )
       sudo cp settings/intel/20-intel.conf /etc/X11/xorg.conf.d/
       ;;
+    0 )
+        echo "########################################"
+        echo "We did nothing as per your request"
+        echo "########################################"
+        ;;
 
     * )
-		echo "Nothing changed..."
+    echo "#################################"
+		echo "Choose the correct number"
+    echo "#################################"
 		;;
 esac
 
