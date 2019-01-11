@@ -15,7 +15,8 @@ set -e
 
 echo "Installing extra icons, themes, applications not on dvd"
 
-#none anymore
+#bookmarks
+cp settings/plasma/bookmarks/user-places.xbel ~/.local/share/user-places.xbel
 
 echo "################################################################"
 echo "####                 EXTRA SOFTWARE INSTALLED             ######"

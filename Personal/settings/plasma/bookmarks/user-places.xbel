@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xbel>
+<xbel xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info">
+ <bookmark href="file:///">
+  <title>Root</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-root"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/4</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik">
+  <title>Home</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="user-home"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/0</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/Desktop">
+  <title>Desktop</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="user-desktop"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/1</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/Downloads">
+  <title>Downloads</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-downloads"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/2</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/Documents">
+  <title>Documents</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-documents"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232265/8</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/Music">
+  <title>Music</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-music"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232271/9</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/Videos">
+  <title>Videos</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-videos"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232276/10</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="remote:/">
+  <title>Network</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-network"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/3</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="trash:/">
+  <title>Trash</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="user-trash"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/5</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/Dropbox">
+  <title>Dropbox</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232192/7</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/Insync">
+  <title>Insync</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232190/6</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/ARCOLINUX">
+  <title>ARCOLINUX</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232306/11</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/ARCOLINUXB">
+  <title>ARCOLINUXB</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232180/3</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/ARCOLINUXD">
+  <title>ARCOLINUXD</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232182/4</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/DATA">
+  <title>DATA</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232186/5</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/.config">
+  <title>.config</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547231823/0</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/.config/conky">
+  <title>conky</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232325/12</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/.config/variety">
+  <title>variety</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547231831/1</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/.icons">
+  <title>.icons</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232356/13</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///usr/share/icons">
+  <title>icons</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232366/14</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/.themes">
+  <title>.themes</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232390/16</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///usr/share/themes">
+  <title>themes</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232372/15</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///usr/share/applications">
+  <title>applications</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232414/17</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/erik/.local">
+  <title>.local</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232139/2</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///etc/skel">
+  <title>skel</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232428/18</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///opt">
+  <title>opt</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232438/19</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///tmp">
+  <title>tmp</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-temp"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1547232442/20</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <info>
+  <metadata owner="http://www.kde.org">
+   <GroupState-Places-IsHidden>false</GroupState-Places-IsHidden>
+   <GroupState-Remote-IsHidden>false</GroupState-Remote-IsHidden>
+   <GroupState-Devices-IsHidden>false</GroupState-Devices-IsHidden>
+   <GroupState-RemovableDevices-IsHidden>false</GroupState-RemovableDevices-IsHidden>
+   <withBaloo>true</withBaloo>
+   <GroupState-SearchFor-IsHidden>false</GroupState-SearchFor-IsHidden>
+   <GroupState-RecentlySaved-IsHidden>false</GroupState-RecentlySaved-IsHidden>
+  </metadata>
+ </info>
+ <bookmark href="timeline:/today">
+  <title>Today</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="go-jump-today"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/6</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="timeline:/yesterday">
+  <title>Yesterday</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="view-calendar-day"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/7</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="search:/documents">
+  <title>Documents</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-text"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/8</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="search:/images">
+  <title>Images</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-images"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/9</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="search:/audio">
+  <title>Audio Files</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-sound"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/10</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="search:/videos">
+  <title>Videos</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-videos"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1546853498/11</ID>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <separator href="file:///">
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/freedesktop/UDisks2/block_devices/sda2</UDI>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
+   </metadata>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="drive-harddisk-root"/>
+   </metadata>
+  </info>
+  <title>221.1 GiB Hard Drive</title>
+ </separator>
+</xbel>
