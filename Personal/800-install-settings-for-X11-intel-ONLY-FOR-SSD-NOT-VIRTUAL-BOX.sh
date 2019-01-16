@@ -31,6 +31,7 @@ case $CHOICE in
     4 )
       cp ~/.config/kwinrc ~/.config/kwinrc-backup
       cp settings/kwinrc/kwinrc ~/.config/kwinrc
+      ;;
     3 )
       sudo cp settings/intel-uxa/20-intel.conf /etc/X11/xorg.conf.d/
       ;;
