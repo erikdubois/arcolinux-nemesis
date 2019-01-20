@@ -225,3 +225,5 @@ fi
 echo "Starting your network vmware service to have network connection"
 sudo systemctl enable vmware-networks.service
 sudo systemctl start vmware-networks.service
+
+echo "REBOOT NOW"
