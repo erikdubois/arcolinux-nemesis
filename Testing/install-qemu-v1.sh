@@ -34,6 +34,9 @@ nvram = [
     "/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd"
 ]' | sudo tee --append /etc/libvirt/qemu.conf
 
+echo "Run this code in the terminal to get your network up and running after reboot"
+echo "sudo virsh net-start default"
+
 echo "############################################################################################################"
-echo "#####################                               done                               #####################"
+echo "#####################                        FIRST REBOOT                              #####################"
 echo "############################################################################################################"
