@@ -3,6 +3,7 @@
 #typo's
 alias upate="update"
 alias udpate="update"
+alias ssn="sudo shutdown now"
 
 #personal
 
