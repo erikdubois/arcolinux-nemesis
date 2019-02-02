@@ -19,6 +19,7 @@ echo "#########          Copying 20-intel.conf         ################"
 echo "################################################################"
 
 echo "Select the correct desktop"
+echo "6. Awesome"
 echo "5. Deepin"
 echo "4. Plasma"
 echo "3. Xmonad"
@@ -29,7 +30,10 @@ echo "Type the number..."
 read CHOICE
 
 case $CHOICE in
-	5 )
+		6 )
+			sudo cp settings/intel-uxa-tear-free/20-intel.conf /etc/X11/xorg.conf.d/
+			;;
+		5 )
       sudo cp settings/intel-uxa/20-intel.conf /etc/X11/xorg.conf.d/
       ;;
     4 )
