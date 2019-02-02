@@ -34,6 +34,10 @@ echo "Installing .bashrc-personal"
 
 cp settings/bashrc-personal/.bashrc-personal ~
 
+echo "Installing personal settings of variety"
+
+cp settings/variety/variety.conf ~/.config/variety/
+
 echo "################################################################"
 echo "#########            folders created            ################"
 echo "################################################################"
