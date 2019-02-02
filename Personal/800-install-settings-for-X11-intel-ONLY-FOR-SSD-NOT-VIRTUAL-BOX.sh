@@ -19,6 +19,7 @@ echo "#########          Copying 20-intel.conf         ################"
 echo "################################################################"
 
 echo "Select the correct desktop"
+echo "5. Deepin"
 echo "4. Plasma"
 echo "3. Xmonad"
 echo "2. Cinnamon"
@@ -28,6 +29,9 @@ echo "Type the number..."
 read CHOICE
 
 case $CHOICE in
+	5 )
+      sudo cp settings/intel-uxa/20-intel.conf /etc/X11/xorg.conf.d/
+      ;;
     4 )
       cp ~/.config/kwinrc ~/.config/kwinrc-backup
       cp settings/kwinrc/kwinrc ~/.config/kwinrc
