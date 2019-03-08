@@ -5,7 +5,6 @@ Type=Application
 Name=discord
 Comment=
 Exec=discord
-OnlyShowIn=XFCE;
 StartupNotify=false
 Terminal=false
 Hidden=false

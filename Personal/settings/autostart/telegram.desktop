@@ -5,7 +5,6 @@ Type=Application
 Name=telegram
 Comment=
 Exec=telegram-desktop
-OnlyShowIn=XFCE;
 StartupNotify=false
 Terminal=false
 Hidden=false
