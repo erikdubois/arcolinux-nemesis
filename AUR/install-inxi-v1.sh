@@ -43,27 +43,6 @@ else
 		echo "################################################################"
 		trizen -S --noconfirm --needed --noedit $package
 
-	elif pacman -Qi yaourt &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with yaourt"
-		echo "################################################################"
-		yaourt -S --noconfirm $package
-
-	elif pacman -Qi pacaur &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with pacaur"
-		echo "################################################################"
-		pacaur -S --noconfirm --noedit  $package
-
-	elif pacman -Qi packer &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with packer"
-		echo "################################################################"
-		packer -S --noconfirm --noedit  $package
-
 	fi
 
 	# Just checking if installation was successful
