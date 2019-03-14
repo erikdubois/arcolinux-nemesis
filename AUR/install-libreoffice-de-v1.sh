@@ -311,7 +311,7 @@ else
 
 fi
 
-#hyphen German
+#hyphen
 
 package="libmythes"
 
