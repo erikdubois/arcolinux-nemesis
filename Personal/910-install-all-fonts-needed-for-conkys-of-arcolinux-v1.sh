@@ -19,7 +19,7 @@
 
 echo "Copy fonts to .fonts"
 
-cp Personal/settings/fonts/* ~/.fonts/
+cp settings/fonts/* ~/.fonts/
 
 echo "Building new fonts into the cache files";
 echo "Depending on the number of fonts, this may take a while..."
