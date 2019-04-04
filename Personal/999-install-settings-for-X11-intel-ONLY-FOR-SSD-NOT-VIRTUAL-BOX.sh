@@ -15,10 +15,11 @@ set -e
 
 
 echo "################################################################"
-echo "#########          Copying 20-intel.conf         ################"
+echo "#####  Fixing glitches in simplescreenrecorder on INTEL   ######"
 echo "################################################################"
 
 echo "Select the correct desktop"
+echo "7. Qtile"
 echo "6. Awesome"
 echo "5. Deepin"
 echo "4. Plasma"
@@ -30,6 +31,9 @@ echo "Type the number..."
 read CHOICE
 
 case $CHOICE in
+		7 )
+		sudo cp settings/intel-uxa-tear-free/20-intel.conf /etc/X11/xorg.conf.d/
+			;;
 		6 )
 			sudo cp settings/intel-uxa-tear-free/20-intel.conf /etc/X11/xorg.conf.d/
 			;;
