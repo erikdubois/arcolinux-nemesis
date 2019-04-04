@@ -13,59 +13,97 @@ set -e
 #
 ##################################################################################################################
 
-
+echo
 echo "################################################################"
 echo "#####  Fixing glitches in simplescreenrecorder on INTEL   ######"
 echo "################################################################"
-
+echo
 echo "Select the correct desktop"
-echo "7. Qtile"
-echo "6. Awesome"
-echo "5. Deepin"
-echo "4. Plasma"
-echo "3. Xmonad"
-echo "2. Cinnamon"
-echo "1. ArcoLinux (xfce,openbox,i3)"
-echo "0. Do nothing"
+echo
+echo "0.  Do nothing"
+echo "1.  ArcoLinux (xfce,openbox,i3)"
+echo "2.  Awesome"
+echo "3.  Bspwm"
+echo "4.  Budgie"
+echo "5.  Cinnamon"
+echo "6.  Deepin"
+echo "7.  Gnome"
+echo "8.  i3"
+echo "9.  Mate"
+echo "10. Openbox"
+echo "11. Plasma"
+echo "12. Qtile"
+echo "13. Xfce"
+echo "14. Xmonad"
 echo "Type the number..."
+
 read CHOICE
 
+WDP="/home/erik/DATA/arcolinux-nemesis/Personal"
+
+SETTING0="settings/intel/20-intel.conf"
+SETTING1="settings/intel-uxa-tear-free/20-intel.conf"
+SETTING2="settings/intel-uxa/20-intel.conf"
+DESTINATION1="/etc/X11/xorg.conf.d/"
+
 case $CHOICE in
-		7 )
-		sudo cp settings/intel-uxa-tear-free/20-intel.conf /etc/X11/xorg.conf.d/
-			;;
-		6 )
-			sudo cp settings/intel-uxa-tear-free/20-intel.conf /etc/X11/xorg.conf.d/
-			;;
-		5 )
-      sudo cp settings/intel-uxa/20-intel.conf /etc/X11/xorg.conf.d/
+
+    0 )
+      echo
+      echo "########################################"
+      echo "We did nothing as per your request"
+      echo "########################################"
+      echo
       ;;
-    4 )
-      cp ~/.config/kwinrc ~/.config/kwinrc-backup
-      cp settings/kwinrc/kwinrc ~/.config/kwinrc
-      ;;
-    3 )
-      sudo cp settings/intel-uxa/20-intel.conf /etc/X11/xorg.conf.d/
+
+    1 )
+      sudo cp $WDP/$SETTING0 $DESTINATION1
       ;;
     2 )
-      sudo cp settings/intel-uxa/20-intel.conf /etc/X11/xorg.conf.d/
+      sudo cp $WDP/$SETTING1 $DESTINATION1
+      ;;      
+    3 )
+      sudo cp $WDP/$SETTING1 $DESTINATION1
       ;;
-    1 )
-      sudo cp settings/intel/20-intel.conf /etc/X11/xorg.conf.d/
+    4 )
+      sudo cp $WDP/$SETTING0 $DESTINATION1
       ;;
-    0 )
-        echo "########################################"
-        echo "We did nothing as per your request"
-        echo "########################################"
-        ;;
-
+    5 )
+      sudo cp $WDP/$SETTING2 $DESTINATION1
+      ;;
+    6 )
+      sudo cp $WDP/$SETTING2 $DESTINATION1
+      ;;
+    7 )
+      sudo cp $WDP/$SETTING0 $DESTINATION1
+      ;;
+    8 )
+      sudo cp $WDP/$SETTING0 $DESTINATION1
+      ;;
+    9 )
+      sudo cp $WDP/$SETTING0 $DESTINATION1
+      ;;
+    10 )
+      sudo cp $WDP/$SETTING0 $DESTINATION1
+      ;;
+    11 )
+      if [ -f "~/.config/kwinrc" ] ;
+      then cp ~/.config/kwinrc ~/.config/kwinrc-backup
+      fi
+      cp $WDP/settings/kwinrc/kwinrc ~/.config/kwinrc
+      ;;
+    12 )
+      sudo cp $WDP/$SETTING1 $DESTINATION1
+      ;;
+    13 )
+      sudo cp $WDP/$SETTING0 $DESTINATION1
+      ;;
+    14 )
+      sudo cp $WDP/$SETTING2 $DESTINATION1
+      ;;
     * )
-    echo "#################################"
-		echo "Choose the correct number"
-    echo "#################################"
-		;;
+      echo "#################################"
+      echo "Choose the correct number"
+      echo "#################################"
+      ;;
 esac
-
-echo "################################################################"
-echo "#########                    done               ################"
-echo "################################################################"
