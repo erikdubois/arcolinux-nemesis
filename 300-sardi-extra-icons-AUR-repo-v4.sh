@@ -16,7 +16,9 @@
 # software from AUR (Arch User Repositories)
 # https://aur.archlinux.org/packages/
 
-sh AUR/install-sardi-extra-icons-v*.sh
+installed_dir="/home/erik/DATA/arcolinux-nemesis"
+
+sh $installed_dir/AUR/install-sardi-extra-icons-v*.sh
 
 echo "################################################################"
 echo "####        Software from AUR Repository installed        ######"

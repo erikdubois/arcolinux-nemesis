@@ -2,7 +2,7 @@
 set -e
 ##################################################################################################################
 # Author 	: 	Erik Dubois
-# Website : https://www.erikdubois.be
+# Website   :   https://www.erikdubois.be
 # Website	:	https://www.arcolinux.info
 # Website	:	https://www.arcolinux.com
 # Website	:	https://www.arcolinuxd.com
@@ -13,16 +13,13 @@ set -e
 #
 ##################################################################################################################
 
-echo "################################################################"
-echo "#########       Screenshot settings             ################"
-echo "################################################################"
+echo "Installing extra icons, themes, applications not on dvd"
 
-#echo "Making sure gnome-screenshot saves in jpg - smaller in kb"
+#bookmarks
 
-cd settings/gnome-screenshot
-sh set-gnome-screenshot-to-save-as-jpg.sh
-
+installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+cp $installed_dir/settings/plasma/bookmarks/user-places.xbel ~/.local/share/user-places.xbel
 
 echo "################################################################"
-echo "#########    screenshot settings  installed     ################"
+echo "####                 EXTRA SOFTWARE INSTALLED             ######"
 echo "################################################################"

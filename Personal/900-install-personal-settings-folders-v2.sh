@@ -32,11 +32,13 @@ echo "Creating personal folders"
 
 echo "Installing .bashrc-personal"
 
-cp settings/bashrc-personal/.bashrc-personal ~
+installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+
+cp $installed_dir/settings/bashrc-personal/.bashrc-personal ~
 
 echo "Installing personal settings of variety"
 
-cp settings/variety/variety.conf ~/.config/variety/
+cp $installed_dir/settings/variety/variety.conf ~/.config/variety/
 
 echo "################################################################"
 echo "#########            folders created            ################"

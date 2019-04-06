@@ -75,5 +75,6 @@ sudo mv /usr/share/icons/hicolor/scalable/apps/simplescreenrecorder-paused.svg /
 sudo mv /usr/share/icons/hicolor/scalable/apps/simplescreenrecorder-recording.svg /usr/share/icons/hicolor/scalable/apps/simplescreenrecorder-recording-backup.svg
 
 
-#sudo cp settings/simplescreenrecorder/png/* /usr/share/icons/hicolor/22x22/apps/
-sudo cp settings/simplescreenrecorder/png/* /usr/share/icons/hicolor/24x24/apps/
+installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+
+sudo $installed_dir/cp settings/simplescreenrecorder/png/* /usr/share/icons/hicolor/24x24/apps/

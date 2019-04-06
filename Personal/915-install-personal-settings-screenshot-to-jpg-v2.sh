@@ -1,8 +1,8 @@
 #!/bin/bash
-#set -e
+set -e
 ##################################################################################################################
 # Author 	: 	Erik Dubois
-# Website	: 	https://www.erikdubois.be
+# Website : https://www.erikdubois.be
 # Website	:	https://www.arcolinux.info
 # Website	:	https://www.arcolinux.com
 # Website	:	https://www.arcolinuxd.com
@@ -13,25 +13,18 @@
 #
 ##################################################################################################################
 
-# software from AUR (Arch User Repositories)
-# https://aur.archlinux.org/packages/
+echo "################################################################"
+echo "#########       Screenshot settings             ################"
+echo "################################################################"
 
-installed_dir="/home/erik/DATA/arcolinux-nemesis"
+#echo "Making sure gnome-screenshot saves in jpg - smaller in kb"
 
-sh $installed_dir/AUR/install-insync-v*.sh
-sh $installed_dir/AUR/install-mpd-ncmpcpp-v*.sh
-sh $installed_dir/AUR/install-radiotray-v*.sh
-sh $installed_dir/AUR/install-the-platinum-searcher-bin-v*.sh
-sh $installed_dir/AUR/install-whatsie-v*.sh
-sh $installed_dir/AUR/install-virtualbox-for-linux-v*.sh
-sh $installed_dir/AUR/install-vivaldi-widevine-v*.sh
+installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
 
-# these come last always
-echo "Checking if icons from applications have a hardcoded path"
-echo "and fixing them"
-echo "Wait for it ..."
-sudo hardcode-fixer
+cd $installed_dir/settings/gnome-screenshot
+sh set-gnome-screenshot-to-save-as-jpg.sh
+
 
 echo "################################################################"
-echo "####        Software from AUR Repository installed        ######"
+echo "#########    screenshot settings  installed     ################"
 echo "################################################################"

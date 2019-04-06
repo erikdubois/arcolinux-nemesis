@@ -2,7 +2,7 @@
 set -e
 ##################################################################################################################
 # Author 	: 	Erik Dubois
-# Website   :   https://www.erikdubois.be
+# Website 	: 	https://www.erikdubois.be
 # Website	:	https://www.arcolinux.info
 # Website	:	https://www.arcolinux.com
 # Website	:	https://www.arcolinuxd.com
@@ -13,11 +13,13 @@ set -e
 #
 ##################################################################################################################
 
-echo "Installing extra icons, themes, applications not on dvd"
+# you can use lscpu in the terminal to know if you have an intel or amd
 
-#bookmarks
-cp settings/plasma/bookmarks/user-places.xbel ~/.local/share/user-places.xbel
+echo "Run this if you see an error in your bootup screen or dmesg about microcode"
+
+sudo pacman -S intel-ucode --noconfirm
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "################################################################"
-echo "####                 EXTRA SOFTWARE INSTALLED             ######"
+echo "####                             Fix done                 ######"
 echo "################################################################"

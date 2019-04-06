@@ -1,11 +1,13 @@
 #!/bin/bash
-#set -e
+set -e
 ##################################################################################################################
-# Author 	: 	Erik Dubois
-# Website : https://www.erikdubois.be
+# Author	:	Erik Dubois
+# Website	:	https://www.erikdubois.be
 # Website	:	https://www.arcolinux.info
 # Website	:	https://www.arcolinux.com
 # Website	:	https://www.arcolinuxd.com
+# Website	:	https://www.arcolinuxb.com
+# Website	:	https://www.arcolinuxiso.com
 # Website	:	https://www.arcolinuxforum.com
 ##################################################################################################################
 #
@@ -13,20 +15,15 @@
 #
 ##################################################################################################################
 
+[ -d $HOME"/.local/share/TelegramDesktop/tdata/ticons" ] || mkdir -p $HOME"/.local/share/TelegramDesktop/tdata/ticons"
 
-[ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
+rm -rf $HOME/.local/share/TelegramDesktop/tdata/ticons/*
+sleep 1
 
+installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
 
-echo "Copy fonts to .fonts"
-
-cp settings/fonts/* ~/.fonts/
-
-echo "Building new fonts into the cache files";
-echo "Depending on the number of fonts, this may take a while..."
-fc-cache -fv ~/.fonts
-
-
+cp -f $installed_dir/settings/telegram-icons/ticons/* $HOME/.local/share/TelegramDesktop/tdata/ticons/
 
 echo "################################################################"
-echo "#########   Fonts have been copied and loaded   ################"
+echo "####                      telegram fixed                  ######"
 echo "################################################################"

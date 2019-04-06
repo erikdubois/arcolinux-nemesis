@@ -18,7 +18,11 @@ set -e
 [ -d $HOME"/.config/autostart" ] || mkdir -p $HOME"/.config/autostart"
 
 sleep 1
-cp -f settings/autostart/* $HOME"/.config/autostart"
+
+installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+
+
+cp -f $installed_dir/settings/autostart/* $HOME"/.config/autostart"
 
 echo "################################################################"
 echo "####                      autostart added                 ######"

@@ -1,8 +1,8 @@
 #!/bin/bash
-#set -e
+set -e
 ##################################################################################################################
-# Author 	: 	Erik Dubois
-# Website	: 	https://www.erikdubois.be
+# Author	:	Erik Dubois
+# Website	:	https://www.erikdubois.be
 # Website	:	https://www.arcolinux.info
 # Website	:	https://www.arcolinux.com
 # Website	:	https://www.arcolinuxd.com
@@ -13,11 +13,22 @@
 #
 ##################################################################################################################
 
-# software from AUR (Arch User Repositories)
-# https://aur.archlinux.org/packages/
 
-sh AUR/install-surfn-mint-y-icons-git-v*.sh
+
+#echo "Making sure firefox looks great in dark themes like Arc-Dark"
+#echo "Firefox must have started once. The directory will not exist otherwise."
+
+sh firefox &
+sleep 1
+killall firefox
+
+installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+
+cp -r $installed_dir/settings/firefox/chrome/ ~/.mozilla/firefox/*.default
+
+#echo "Restart firefox to see the effect"
+
 
 echo "################################################################"
-echo "####        Software from AUR Repository installed        ######"
+echo "#########       firefox  settings installed     ################"
 echo "################################################################"

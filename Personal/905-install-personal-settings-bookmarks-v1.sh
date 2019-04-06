@@ -1,8 +1,8 @@
 #!/bin/bash
-#set -e
+set -e
 ##################################################################################################################
 # Author 	: 	Erik Dubois
-# Website	: 	https://www.erikdubois.be
+# Website : https://www.erikdubois.be
 # Website	:	https://www.arcolinux.info
 # Website	:	https://www.arcolinux.com
 # Website	:	https://www.arcolinuxd.com
@@ -13,11 +13,16 @@
 #
 ##################################################################################################################
 
-# software from AUR (Arch User Repositories)
-# https://aur.archlinux.org/packages/
-
-sh AUR/install-sardi-mint-y-icons-v*.sh
 
 echo "################################################################"
-echo "####        Software from AUR Repository installed        ######"
+echo "#########          Installing bookmarks         ################"
+echo "################################################################"
+
+installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+
+cp $installed_dir/settings/bookmarks/bookmarks ~/.config/gtk-3.0/
+
+
+echo "################################################################"
+echo "#########       personal settings installed     ################"
 echo "################################################################"
