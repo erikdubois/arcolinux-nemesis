@@ -61,7 +61,7 @@ case $CHOICE in
       ;;
     2 )
       sudo cp $WDP/$SETTING1 $DESTINATION1
-      ;;      
+      ;;
     3 )
       sudo cp $WDP/$SETTING1 $DESTINATION1
       ;;
@@ -107,3 +107,7 @@ case $CHOICE in
       echo "#################################"
       ;;
 esac
+
+echo "#################################"
+echo "Time to reboot"
+echo "#################################"

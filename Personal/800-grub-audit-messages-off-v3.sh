@@ -15,14 +15,14 @@ set -e
 #
 ##################################################################################################################
 
-echo "This script will silence the audit log messages in dmesg "
-echo "The intention is here to have a readable dmesg again"
-echo "You can use journalctl as well"
+#echo "This script will silence the audit log messages in dmesg "
+#echo "The intention is here to have a readable dmesg again"
+#echo "You can use journalctl as well"
 
 sudo sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="audit=0"/g' /etc/default/grub
 
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "################################################################"
-echo "####        reboot and check again with dmesg             ######"
+echo "####        grub audit messages done                      ######"
 echo "################################################################"

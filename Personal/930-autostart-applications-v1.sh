@@ -21,5 +21,5 @@ sleep 1
 cp -f settings/autostart/* $HOME"/.config/autostart"
 
 echo "################################################################"
-echo "####                      installed                       ######"
+echo "####                      autostart added                 ######"
 echo "################################################################"

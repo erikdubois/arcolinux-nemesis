@@ -24,5 +24,5 @@ sudo systemctl stop lvm2-lvmetad.socket lvm2-lvmetad.service
 sudo systemctl disable lvm2-lvmetad.socket lvm2-lvmetad.service
 
 echo "################################################################"
-echo "####                      done                            ######"
+echo "####                      reboot to 0 seconds             ######"
 echo "################################################################"

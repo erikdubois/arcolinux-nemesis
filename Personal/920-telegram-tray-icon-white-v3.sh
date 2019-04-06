@@ -22,5 +22,5 @@ sleep 1
 cp -f settings/telegram-icons/ticons/* $HOME/.local/share/TelegramDesktop/tdata/ticons/
 
 echo "################################################################"
-echo "####                      installed                       ######"
+echo "####                      telegram fixed                  ######"
 echo "################################################################"
