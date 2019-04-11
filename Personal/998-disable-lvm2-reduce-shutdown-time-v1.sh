@@ -31,11 +31,14 @@ echo "#############"
 echo "Option 3"
 echo "#############"
 sudo systemctl mask lvm2-monitor
+sudo systemctl mask lvm2-lvmpolld.socket
+sudo systemctl mask lvm2-lvmetad.socket
+sudo systemctl mask lvm2-lvmetad.socket
 echo "#############"
 echo "Option 4"
 echo "#############"
 FIND="#DefaultTimeoutStopSec=90s"
-REPLACE="DefaultTimeoutStopSec=30s"
+REPLACE="DefaultTimeoutStopSec=20s"
 find /etc/systemd/system.conf -type f -exec sudo sed -i "s/$FIND/$REPLACE/g" {} \;
 echo "################################################################"
 echo "####                      reboot to 0 seconds             ######"
