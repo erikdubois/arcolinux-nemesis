@@ -21,7 +21,6 @@ installed_dir="/home/erik/DATA/arcolinux-nemesis"
 sh $installed_dir/AUR/install-insync-v*.sh
 sh $installed_dir/AUR/install-mpd-ncmpcpp-v*.sh
 sh $installed_dir/AUR/install-radiotray-v*.sh
-sh $installed_dir/AUR/install-the-platinum-searcher-bin-v*.sh
 sh $installed_dir/AUR/install-whatsie-v*.sh
 sh $installed_dir/AUR/install-virtualbox-for-linux-v*.sh
 sh $installed_dir/AUR/install-vivaldi-widevine-v*.sh
