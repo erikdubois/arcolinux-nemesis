@@ -27,7 +27,7 @@ set -e
 # https://github.com/Genymobile/scrcpy
 
 sudo pacman -S android-tools --noconfirm --needed
-#next ones does not seem necessary
+#next one does not seem necessary
 #sudo pacman -S android-udev --noconfirm --needed
 
 
