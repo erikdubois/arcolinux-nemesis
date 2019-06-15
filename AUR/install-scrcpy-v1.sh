@@ -16,11 +16,20 @@ set -e
 ##################################################################################################################
 
 # plugin your device with a usb cable
-# Find your ID reference via lsusb
+# keep it awake at all times so you see the message you need to noconfirm
+# on your android device make sure you find the settings
+# enable usb debugging on your android
+# https://www.howtogeek.com/129728/how-to-access-the-developer-options-menu-and-enable-usb-debugging-on-android-4.2/
+# then start scrcpy in a terminal and confirm any messages on your android device
 
+
+# https://wiki.archlinux.org/index.php/Android_Debug_Bridge
+#
 
 sudo pacman -S android-tools --noconfirm --needed
-sudo pacman -S android-udev --noconfirm --needed
+#next ones does not seem necessary
+#sudo pacman -S android-udev --noconfirm --needed
+
 
 package="scrcpy"
 
