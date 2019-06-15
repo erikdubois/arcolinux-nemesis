@@ -15,6 +15,13 @@ set -e
 #
 ##################################################################################################################
 
+# plugin your device with a usb cable
+# Find your ID reference via lsusb
+
+
+sudo pacman -S android-tools --noconfirm --needed
+sudo pacman -S android-udev --noconfirm --needed
+
 package="scrcpy"
 
 #----------------------------------------------------------------------------------
