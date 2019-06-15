@@ -20,11 +20,11 @@ set -e
 # on your android device make sure you find the settings
 # enable usb debugging on your android
 # https://www.howtogeek.com/129728/how-to-access-the-developer-options-menu-and-enable-usb-debugging-on-android-4.2/
-# then start scrcpy in a terminal and confirm any messages on your android device
+# then start scrcpy in a terminal and confirm any and all messages on your android device
 
 
 # https://wiki.archlinux.org/index.php/Android_Debug_Bridge
-#
+# https://github.com/Genymobile/scrcpy
 
 sudo pacman -S android-tools --noconfirm --needed
 #next ones does not seem necessary
