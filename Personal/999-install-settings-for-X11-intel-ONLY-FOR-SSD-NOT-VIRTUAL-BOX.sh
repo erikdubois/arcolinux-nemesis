@@ -60,7 +60,7 @@ case $CHOICE in
       sudo cp $WDP/$SETTING0 $DESTINATION1
       ;;
     2 )
-      sudo cp $WDP/$SETTING2 $DESTINATION1
+      #sudo cp $WDP/$SETTING2 $DESTINATION1
       ;;
     3 )
       sudo cp $WDP/$SETTING1 $DESTINATION1
