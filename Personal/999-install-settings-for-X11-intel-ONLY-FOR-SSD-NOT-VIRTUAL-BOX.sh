@@ -29,12 +29,13 @@ echo "5.  Cinnamon"
 echo "6.  Deepin"
 echo "7.  Gnome"
 echo "8.  i3"
-echo "9.  Mate"
-echo "10. Openbox"
-echo "11. Plasma"
-echo "12. Qtile"
-echo "13. Xfce"
-echo "14. Xmonad"
+echo "9.  LXQt"
+echo "10. Mate"
+echo "11. Openbox"
+echo "12. Plasma"
+echo "13. Qtile"
+echo "14. Xfce"
+echo "15. Xmonad"
 echo "Type the number..."
 
 read CHOICE
@@ -81,24 +82,27 @@ case $CHOICE in
       sudo cp $WDP/$SETTING0 $DESTINATION1
       ;;
     9 )
-      sudo cp $WDP/$SETTING0 $DESTINATION1
+      #sudo cp $WDP/$SETTING0 $DESTINATION1
       ;;
     10 )
       sudo cp $WDP/$SETTING0 $DESTINATION1
       ;;
     11 )
+      sudo cp $WDP/$SETTING0 $DESTINATION1
+      ;;
+    12 )
       if [ -f "~/.config/kwinrc" ] ;
       then cp ~/.config/kwinrc ~/.config/kwinrc-backup
       fi
       cp $WDP/settings/kwinrc/kwinrc ~/.config/kwinrc
       ;;
-    12 )
+    13 )
       sudo cp $WDP/$SETTING1 $DESTINATION1
       ;;
-    13 )
+    14 )
       sudo cp $WDP/$SETTING0 $DESTINATION1
       ;;
-    14 )
+    15 )
       sudo cp $WDP/$SETTING2 $DESTINATION1
       ;;
     * )
