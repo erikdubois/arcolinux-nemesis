@@ -9,5 +9,5 @@ alias ssn="sudo shutdown now"
 alias cbf="bash /home/erik/Insync/Get-Started/clean-build-folders-v*.sh"
 alias cof="bash /home/erik/Insync/Get-Started/clean-out-folders-v*.sh"
 
-#all in one
-alias aio="update && skel && cb && pksyua"
+#lightdm
+alias nlightdm="sudo nano /etc/lightdm/lightdm.conf"
