@@ -11,4 +11,4 @@ alias cof="bash /home/erik/Insync/Get-Started/clean-out-folders-v*.sh"
 
 #lightdm
 alias nlightdm="sudo nano /etc/lightdm/lightdm.conf"
-alias npacman="sudo nano /etc/pacman/pacman.conf"
+alias npacman="sudo nano /etc/pacman.conf"
