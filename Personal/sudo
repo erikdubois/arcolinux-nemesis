@@ -1,3 +1,0 @@
-options ath9k btcoex_enable = 1 tee /etc/modprobe/bluetooth-clear.conf
-options ath9k btcoex_enable = 1 tee /etc/modprobe.d/bluetooth-clear.conf
-options ath9k btcoex_enable = 1 tee /etc/modprobe.d/bluetooth-clear.conf
