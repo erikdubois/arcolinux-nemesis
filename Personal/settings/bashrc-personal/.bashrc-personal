@@ -19,3 +19,6 @@ alias npacman="sudo nano /etc/pacman.conf"
 alias ngrub="sudo nano /etc/default/grub"
 alias nmkinitcpio="sudo nano/etc/mkinitcpio.conf"
 alias nslim="sudo /etc/slim.conf"
+
+#more sensitive data
+[[ -f ~/.bashrc-private ]] && . ~/.bashrc-private
