@@ -9,6 +9,12 @@ alias ssn="sudo shutdown now"
 alias cbf="bash /home/erik/Insync/Get-Started/clean-build-folders-v*.sh"
 alias cof="bash /home/erik/Insync/Get-Started/clean-out-folders-v*.sh"
 
-#lightdm
+#update
+alias upall="pksyua"
+
+#nano
 alias nlightdm="sudo nano /etc/lightdm/lightdm.conf"
 alias npacman="sudo nano /etc/pacman.conf"
+alias ngrub="sudo nano /etc/default/grub"
+alias nmkinitcpio="sudo nano/etc/mkinitcpio.conf"
+alias nslim="sudo /etc/slim.conf"
