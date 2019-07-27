@@ -1,10 +1,10 @@
 #!/bin/bash
-set -e
+#set -e
 ##################################################################################################################
-# Author 	: Erik Dubois
+# Author 	: 	Erik Dubois
 # Website : https://www.erikdubois.be
-# Website	: https://www.arcolinux.info
-# Website	:	./https://www.arcolinux.com
+# Website	:	https://www.arcolinux.info
+# Website	:	https://www.arcolinux.com
 # Website	:	https://www.arcolinuxd.com
 # Website	:	https://www.arcolinuxforum.com
 ##################################################################################################################
@@ -13,17 +13,13 @@ set -e
 #
 ##################################################################################################################
 
-#software from Arch Linux repositories
 
-sudo pacman -S --noconfirm --needed autorandr
-sudo pacman -S --noconfirm --needed flameshot
-sudo pacman -S --noconfirm --needed discord
-sudo pacman -S --noconfirm --needed dropbox
-sudo pacman -S --noconfirm --needed spotify
-sudo pacman -S --noconfirm --needed telegram-desktop
+echo "Copy ckb-nxt "
 
-###############################################################################################
+installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+#copy over folder with contents
+cp -r $installed_dir/settings/ckb-next/ ~/.config/
 
 echo "################################################################"
-echo "################### core software installed"
+echo "#########   ckb-next config has been copied     ################"
 echo "################################################################"
