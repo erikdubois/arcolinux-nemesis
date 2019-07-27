@@ -13,12 +13,20 @@
 #
 ##################################################################################################################
 
+read -p "Do you wish to install ckb-next-git? y/n  :" answer
 
-echo "Copy ckb-nxt "
+    case $answer in
+        [Yy] )
+        installed_dir="/home/erik/DATA/arcolinux-nemesis/"
+        #software
+        sh $installed_dir/AUR/install-ckb-next-git-v*
+        #copy over folder with config
+        cp -r $installed_dir/Personal/settings/ckb-next/ ~/.config/
+        ;;
 
-installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
-#copy over folder with contents
-cp -r $installed_dir/settings/ckb-next/ ~/.config/
+        [Nn] ) echo "Nothing installed";;
+    esac
+
 
 echo "################################################################"
 echo "#########   ckb-next config has been copied     ################"
