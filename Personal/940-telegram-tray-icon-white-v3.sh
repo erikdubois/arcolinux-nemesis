@@ -20,9 +20,8 @@ set -e
 rm -rf $HOME/.local/share/TelegramDesktop/tdata/ticons/*
 sleep 1
 
-installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
-
-cp -f $installed_dir/settings/telegram-icons/ticons/* $HOME/.local/share/TelegramDesktop/tdata/ticons/
+installed_dir=$(dirname `pwd`)
+cp -f $installed_dir/Personal/settings/telegram-icons/ticons/* $HOME/.local/share/TelegramDesktop/tdata/ticons/
 
 echo "################################################################"
 echo "####                      telegram fixed                  ######"
