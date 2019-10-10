@@ -16,7 +16,7 @@
 # software from AUR (Arch User Repositories)
 # https://aur.archlinux.org/packages/
 
-installed_dir="/home/erik/DATA/arcolinux-nemesis"
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 sh $installed_dir/AUR/install-sardi-extra-icons-v*.sh
 

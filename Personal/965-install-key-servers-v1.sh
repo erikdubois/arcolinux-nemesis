@@ -13,10 +13,9 @@
 #
 ##################################################################################################################
 
-
-cd keyservers
-sh 10-add-keyservers-for-key-importing-v*
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+sh $installed_dir/keyservers/10-add-keyservers-for-key-importing-v*
 
 echo "################################################################"
-echo "#########             keyservers added          ################"
+echo "#########                   done                ################"
 echo "################################################################"

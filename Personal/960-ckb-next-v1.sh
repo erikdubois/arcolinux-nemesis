@@ -17,7 +17,7 @@
 
   ##  case $answer in
     ##    [Yy] )
-        installed_dir="/home/erik/DATA/arcolinux-nemesis/"
+        installed_dir=$(dirname `pwd`)
         #software
         sh $installed_dir/AUR/install-ckb-next-git-v*
         #copy over folder with config

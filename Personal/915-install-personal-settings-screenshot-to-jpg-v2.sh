@@ -19,7 +19,7 @@ echo "################################################################"
 
 #echo "Making sure gnome-screenshot saves in jpg - smaller in kb"
 
-installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 cd $installed_dir/settings/gnome-screenshot
 sh set-gnome-screenshot-to-save-as-jpg.sh

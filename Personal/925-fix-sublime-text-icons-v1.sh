@@ -31,7 +31,7 @@ sudo mv /usr/share/icons/hicolor/128x128/apps/sublime-text.png /usr/share/icons/
 
 sudo mv /usr/share/icons/hicolor/256x256/apps/sublime-text.png /usr/share/icons/hicolor/256x256/apps/sublime-text.backup.png
 
-installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 sudo cp $installed_dir/settings/sublimetext/png/16x16/* /usr/share/icons/hicolor/16x16/apps/
 sudo cp $installed_dir/settings/sublimetext/png/32x32/* /usr/share/icons/hicolor/32x32/apps/

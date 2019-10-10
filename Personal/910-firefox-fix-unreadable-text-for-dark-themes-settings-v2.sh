@@ -22,7 +22,7 @@ sh firefox &
 sleep 1
 killall firefox
 
-installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 cp -r $installed_dir/settings/firefox/chrome/ ~/.mozilla/firefox/*.default
 

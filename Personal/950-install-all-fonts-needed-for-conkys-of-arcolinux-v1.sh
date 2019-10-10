@@ -19,7 +19,7 @@
 
 echo "Copy fonts to .fonts"
 
-installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 cp $installed_dir/settings/fonts/* ~/.fonts/
 
 echo "Building new fonts into the cache files";

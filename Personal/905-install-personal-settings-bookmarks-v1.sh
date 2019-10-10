@@ -18,7 +18,7 @@ echo "################################################################"
 echo "#########          Installing bookmarks         ################"
 echo "################################################################"
 
-installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 cp $installed_dir/settings/bookmarks/bookmarks ~/.config/gtk-3.0/
 

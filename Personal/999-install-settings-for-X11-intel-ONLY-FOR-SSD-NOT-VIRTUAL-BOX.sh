@@ -41,7 +41,8 @@ echo "Type the number..."
 
 read CHOICE
 
-WDP="/home/erik/DATA/arcolinux-nemesis/Personal"
+WDP=$(dirname $(readlink -f $(basename `pwd`)))
+echo $WDP
 
 SETTING0="settings/intel/20-intel.conf"
 SETTING1="settings/intel-uxa-tear-free/20-intel.conf"

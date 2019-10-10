@@ -32,7 +32,7 @@ echo "Creating personal folders"
 
 echo "Installing .bashrc-personal"
 
-installed_dir="/home/erik/DATA/arcolinux-nemesis/Personal"
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 cp $installed_dir/settings/bashrc-personal/.bashrc-personal ~
 
