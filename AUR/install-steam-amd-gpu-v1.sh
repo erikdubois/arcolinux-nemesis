@@ -15,8 +15,28 @@ set -e
 #
 ##################################################################################################################
 
-sudo pacman -S  lib32-libvdpau lib32-libva lib32-nvidia-utils lib32-libxtst lib32-libxrandr lib32-libpulse lib32-gdk-pixbuf2 lib32-gtk2 lib32-openal
-
+sudo pacman -S  \
+lib32-libvdpau \
+lib32-libva \
+lib32-nvidia-utils \
+lib32-libxtst \
+lib32-libxrandr \
+lib32-libpulse \
+lib32-gdk-pixbuf2 \
+lib32-gtk2 \
+lib32-openal \
+lib32-mesa \
+lib32-gcc-libs \
+lib32-libx11 \
+lib32-libxss \
+lib32-alsa-plugins \
+lsof \
+lib32-libgpg-error \
+lib32-libindicator-gtk2 \
+lib32-libdbusmenu-glib \
+lib32-libdbusmenu-gtk2 \
+lib32-nss \
+--noconfirm --needed
 
 package="steam"
 
@@ -183,7 +203,7 @@ fi
 
 
 
-package="games-devices-udev"
+package="game-devices-udev"
 
 #----------------------------------------------------------------------------------
 

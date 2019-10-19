@@ -35,7 +35,8 @@ lib32-libgpg-error \
 lib32-libindicator-gtk2 \
 lib32-libdbusmenu-glib \
 lib32-libdbusmenu-gtk2 \
-lib32-nss
+lib32-nss \
+--noconfirm --needed
 
 package="steam"
 
@@ -202,7 +203,7 @@ fi
 
 
 
-package="games-devices-udev"
+package="game-devices-udev"
 
 #----------------------------------------------------------------------------------
 
