@@ -20,8 +20,8 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 sh $installed_dir/AUR/install-insync-v*.sh
 sh $installed_dir/AUR/install-openbox-themes-pambudi-git-v*.sh
-sh $installed_dir/AUR/install-mpd-ncmpcpp-v*.sh
-sh $installed_dir/AUR/install-radiotray-v*.sh
+#sh $installed_dir/AUR/install-mpd-ncmpcpp-v*.sh
+#sh $installed_dir/AUR/install-radiotray-v*.sh
 sh $installed_dir/AUR/install-virtualbox-for-linux-v*.sh
 sh $installed_dir/AUR/install-vivaldi-widevine-v*.sh
 
