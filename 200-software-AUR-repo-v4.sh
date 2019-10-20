@@ -18,6 +18,7 @@
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
+sh $installed_dir/AUR/install-gitfiend-v*.sh
 sh $installed_dir/AUR/install-insync-v*.sh
 sh $installed_dir/AUR/install-openbox-themes-pambudi-git-v*.sh
 #sh $installed_dir/AUR/install-mpd-ncmpcpp-v*.sh
