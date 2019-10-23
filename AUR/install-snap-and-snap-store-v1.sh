@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 ##################################################################################################################
 # Author	:	Erik Dubois
 # Website	:	https://www.erikdubois.be
@@ -83,8 +83,13 @@ else
 
 fi
 
-sudo systemctl enable snapd.socket --noconfirm
+sudo systemctl enable snapd.socket
 sudo ln -s /var/lib/snapd/snap /snap
+
+echo "################################################################"
+echo "#########  FIRST REBOOT AND RERUN THE SCRIPT AGAIN"
+echo "################################################################"
+
 sudo snap install snap-store
 
 #fix for icons not showing
