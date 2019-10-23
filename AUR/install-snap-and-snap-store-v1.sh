@@ -90,7 +90,7 @@ echo "################################################################"
 echo "#########  INSTALLED FOR THE FIRST TIME THEN REBOOT AND RUN SCRIPT AGAIN"
 echo "################################################################"
 tput sgr0
-
+sleep 5
 sudo snap install snap-store
 
 #fix for icons not showing
