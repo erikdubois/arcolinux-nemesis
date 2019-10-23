@@ -83,6 +83,9 @@ else
 
 fi
 
+#what services are really needed here to avoid error after second run
+sudo systemctl enable snapd.service
+sudo systemctl enable snapd.seeded.service
 sudo systemctl enable snapd.socket
 sudo ln -s /var/lib/snapd/snap /snap
 tput setaf 1
@@ -103,3 +106,10 @@ echo "################################################################"
 echo "################################################################"
 echo "#########  Reboot now"
 echo "################################################################"
+
+tput setaf 1
+echo "################################################################"
+echo "After first reboot you may need to run the script twice"
+echo "known issue with too early ... message"
+echo "################################################################"
+tput sgr0
