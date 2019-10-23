@@ -84,7 +84,7 @@ else
 fi
 
 #what services are really needed here to avoid error after second run
-sudo systemctl enable snapd.service
+#sudo systemctl enable snapd.service
 sudo systemctl enable snapd.seeded.service
 sudo systemctl enable snapd.socket
 sudo ln -s /var/lib/snapd/snap /snap
