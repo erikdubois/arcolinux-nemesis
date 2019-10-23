@@ -85,10 +85,11 @@ fi
 
 sudo systemctl enable snapd.socket
 sudo ln -s /var/lib/snapd/snap /snap
-
+tput setaf 1
 echo "################################################################"
-echo "#########  FIRST REBOOT AND RERUN THE SCRIPT AGAIN"
+echo "#########  INSTALLED FOR THE FIRST TIME THEN REBOOT AND RUN SCRIPT AGAIN"
 echo "################################################################"
+tput sgr0
 
 sudo snap install snap-store
 
