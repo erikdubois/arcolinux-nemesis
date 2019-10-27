@@ -40,6 +40,10 @@ echo "Installing personal settings of variety"
 
 cp $installed_dir/settings/variety/variety.conf ~/.config/variety/
 
+echo "Installing screenkey for teaching"
+
+cp $installed_dir/settings/screenkey/screenkey.json ~/.config/
+
 echo "################################################################"
 echo "#########            folders created            ################"
 echo "################################################################"
