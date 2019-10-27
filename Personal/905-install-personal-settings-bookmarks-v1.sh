@@ -20,7 +20,7 @@ echo "################################################################"
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-cp $installed_dir/settings/bookmarks/bookmarks ~/.config/gtk-3.0/
+cp $installed_dir/settings/bookmarks/bookmarks* ~/.config/gtk-3.0/
 
 
 echo "################################################################"
