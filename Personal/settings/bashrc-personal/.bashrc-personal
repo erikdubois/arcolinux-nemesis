@@ -7,3 +7,6 @@ alias cof="bash /home/erik/Insync/Get-Started/clean-out-folders-v*.sh"
 
 #more sensitive data
 [[ -f ~/.bashrc-private ]] && . ~/.bashrc-private
+
+
+alias set-fastest-mirror="echo 'Server = https://ftp.halifax.rwth-aachen.de/archlinux/$repo/os/$arch' | sudo tee -a /etc/pacman.d/mirrorlist"
