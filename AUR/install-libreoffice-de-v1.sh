@@ -22,45 +22,59 @@ package="libreoffice-fresh"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
 
 	fi
 
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
+fi
 
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
 
-	else
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
 
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
 
-	fi
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
 
 fi
+
+#----------------------------------------------------------------------------------
 
 
 #spelling German
@@ -72,45 +86,59 @@ package="libreoffice-fresh-de"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
 
 	fi
 
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
+fi
 
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
 
-	else
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
 
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
 
-	fi
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
 
 fi
+
+#----------------------------------------------------------------------------------
 
 
 #spelling
@@ -122,45 +150,60 @@ package="hunspell"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
 
 	fi
 
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
+fi
 
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
 
-	else
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
 
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
 
-	fi
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
 
 fi
+
+#----------------------------------------------------------------------------------
+
 
 
 #spelling German
@@ -222,45 +265,60 @@ package="hyphen"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
 
 	fi
 
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
+fi
 
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
 
-	else
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
 
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
 
-	fi
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
 
 fi
+
+#----------------------------------------------------------------------------------
+
 
 #hyphen German
 
@@ -271,45 +329,59 @@ package="hyphen-de"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
 
 	fi
 
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
+fi
 
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
 
-	else
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
 
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
 
-	fi
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
 
 fi
+
+#----------------------------------------------------------------------------------
 
 #hyphen
 
@@ -320,45 +392,60 @@ package="libmythes"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
 
 	fi
 
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
+fi
 
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
 
-	else
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
 
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
 
-	fi
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
 
 fi
+
+#----------------------------------------------------------------------------------
+
 
 
 #hyphen German
@@ -370,45 +457,60 @@ package="mythes-de"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
 
 	fi
 
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
+fi
 
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
 
-	else
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
 
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
 
-	fi
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
 
 fi
+
+#----------------------------------------------------------------------------------
+
 
 #grammar check many languages
 
@@ -419,45 +521,59 @@ package="libreoffice-extension-languagetool"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
 
 	fi
 
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
+fi
 
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
 
-	else
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
 
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
 
-	fi
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
 
 fi
+
+#----------------------------------------------------------------------------------
 
 
 #papirus theme
@@ -469,42 +585,57 @@ package="papirus-libreoffice-theme"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
 
 	fi
 
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
+fi
 
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
 
-	else
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
 
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
 
-	fi
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
 
 fi
+
+#----------------------------------------------------------------------------------
+

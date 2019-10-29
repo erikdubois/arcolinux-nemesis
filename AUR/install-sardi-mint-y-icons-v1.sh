@@ -21,67 +21,59 @@ package="sardi-mint-y-icons-git"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
-
-	elif pacman -Qi yaourt &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with yaourt"
-		echo "################################################################"
-		yaourt -S --noconfirm $package
-
-	elif pacman -Qi pacaur &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with pacaur"
-		echo "################################################################"
-		pacaur -S --noconfirm --noedit  $package
-
-	elif pacman -Qi packer &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with packer"
-		echo "################################################################"
-		packer -S --noconfirm --noedit  $package
-
-	fi
-
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
-
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
-
-	else
-
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 	fi
 
 fi
 
+
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
+
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
+
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
+
+fi
+
+#----------------------------------------------------------------------------------
 
 package="sardi-ghost-flexible-mint-y-icons-git"
 
@@ -90,68 +82,59 @@ package="sardi-ghost-flexible-mint-y-icons-git"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
-
-	elif pacman -Qi yaourt &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with yaourt"
-		echo "################################################################"
-		yaourt -S --noconfirm $package
-
-	elif pacman -Qi pacaur &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with pacaur"
-		echo "################################################################"
-		pacaur -S --noconfirm --noedit  $package
-
-	elif pacman -Qi packer &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with packer"
-		echo "################################################################"
-		packer -S --noconfirm --noedit  $package
-
-	fi
-
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
-
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
-
-	else
-
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 	fi
 
 fi
 
 
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
+
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
+
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
+
+fi
+
+#----------------------------------------------------------------------------------
 
 package="sardi-flexible-mint-y-icons-git"
 
@@ -160,68 +143,59 @@ package="sardi-flexible-mint-y-icons-git"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
-
-	elif pacman -Qi yaourt &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with yaourt"
-		echo "################################################################"
-		yaourt -S --noconfirm $package
-
-	elif pacman -Qi pacaur &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with pacaur"
-		echo "################################################################"
-		pacaur -S --noconfirm --noedit  $package
-
-	elif pacman -Qi packer &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with packer"
-		echo "################################################################"
-		packer -S --noconfirm --noedit  $package
-
-	fi
-
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
-
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
-
-	else
-
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 	fi
 
 fi
 
 
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
+
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
+
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
+
+fi
+
+#----------------------------------------------------------------------------------
 
 package="sardi-orb-colora-mint-y-icons-git"
 
@@ -230,68 +204,59 @@ package="sardi-orb-colora-mint-y-icons-git"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
-
-	elif pacman -Qi yaourt &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with yaourt"
-		echo "################################################################"
-		yaourt -S --noconfirm $package
-
-	elif pacman -Qi pacaur &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with pacaur"
-		echo "################################################################"
-		pacaur -S --noconfirm --noedit  $package
-
-	elif pacman -Qi packer &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with packer"
-		echo "################################################################"
-		packer -S --noconfirm --noedit  $package
-
-	fi
-
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
-
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
-
-	else
-
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 	fi
 
 fi
 
 
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
+
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
+
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
+
+fi
+
+#----------------------------------------------------------------------------------
 
 package="sardi-flat-mint-y-icons-git"
 
@@ -300,68 +265,59 @@ package="sardi-flat-mint-y-icons-git"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
-
-	elif pacman -Qi yaourt &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with yaourt"
-		echo "################################################################"
-		yaourt -S --noconfirm $package
-
-	elif pacman -Qi pacaur &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with pacaur"
-		echo "################################################################"
-		pacaur -S --noconfirm --noedit  $package
-
-	elif pacman -Qi packer &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with packer"
-		echo "################################################################"
-		packer -S --noconfirm --noedit  $package
-
-	fi
-
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
-
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
-
-	else
-
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 	fi
 
 fi
 
 
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
+
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
+
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
+
+fi
+
+#----------------------------------------------------------------------------------
 
 package="sardi-mono-mint-y-icons-git"
 
@@ -370,63 +326,56 @@ package="sardi-mono-mint-y-icons-git"
 #checking if application is already installed or else install with aur helpers
 if pacman -Qi $package &> /dev/null; then
 
+		tput setaf 2
 		echo "################################################################"
 		echo "################## "$package" is already installed"
 		echo "################################################################"
+		tput sgr0
 
 else
 
 	#checking which helper is installed
 	if pacman -Qi yay &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with yay"
 		echo "################################################################"
+		tput sgr0
+
 		yay -S --noconfirm $package
 
 	elif pacman -Qi trizen &> /dev/null; then
 
+		tput setaf 3
 		echo "################################################################"
 		echo "######### Installing with trizen"
 		echo "################################################################"
+		tput sgr0
 		trizen -S --noconfirm --needed --noedit $package
-
-	elif pacman -Qi yaourt &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with yaourt"
-		echo "################################################################"
-		yaourt -S --noconfirm $package
-
-	elif pacman -Qi pacaur &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with pacaur"
-		echo "################################################################"
-		pacaur -S --noconfirm --noedit  $package
-
-	elif pacman -Qi packer &> /dev/null; then
-
-		echo "################################################################"
-		echo "######### Installing with packer"
-		echo "################################################################"
-		packer -S --noconfirm --noedit  $package
-
-	fi
-
-	# Just checking if installation was successful
-	if pacman -Qi $package &> /dev/null; then
-
-		echo "################################################################"
-		echo "#########  "$package" has been installed"
-		echo "################################################################"
-
-	else
-
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		echo "!!!!!!!!!  "$package" has NOT been installed"
-		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 	fi
 
 fi
+
+
+# Just checking if installation was successful
+if pacman -Qi $package &> /dev/null; then
+
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Checking ..."$package" has been installed"
+	echo "################################################################"
+	tput sgr0
+
+else
+
+	tput setaf 1
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!!!!!!!!!  "$package" has NOT been installed"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	tput sgr0
+
+fi
+
+#----------------------------------------------------------------------------------
