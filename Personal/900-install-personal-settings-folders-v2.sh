@@ -44,6 +44,16 @@ echo "Installing screenkey for teaching"
 
 cp $installed_dir/settings/screenkey/screenkey.json ~/.config/
 
+echo "copy/paste wallpapers to variety"
+
+DIR=$HOME"/.config/variety/Favorites/"
+echo $DIR
+if [ -d "$DIR" ]; then
+  # Take action if $DIR exists. #
+  echo "Copying files to ${DIR}..."
+  cp ~/Dropbox/Apps/Desktoppr/* ~/.config/variety/Favorites/
+fi
+
 echo "################################################################"
 echo "#########            folders created            ################"
 echo "################################################################"
