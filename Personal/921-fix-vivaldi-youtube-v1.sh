@@ -17,3 +17,7 @@ echo "fixing vivaldi not playing youtube video's"
 echo "following packages are installed vivaldi-widevine and vivaldi-codecs-ffmpeg-extra-bin"
 
 sudo /opt/vivaldi/update-ffmpeg
+sudo /opt/vivaldi/update-widevine
+
+sudo /opt/vivaldi/update-ffmpeg
+sudo /opt/vivaldi/update-widevine
