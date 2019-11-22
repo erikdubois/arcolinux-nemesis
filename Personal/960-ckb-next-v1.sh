@@ -27,6 +27,8 @@
       ##  [Nn] ) echo "Nothing installed";;
   ##  esac
 
+sudo systemctl enable ckb-next-daemon
+sudo systemctl start ckb-next-daemon
 
 echo "################################################################"
 echo "#########   ckb-next config has been copied     ################"
