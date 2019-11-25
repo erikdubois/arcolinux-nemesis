@@ -25,6 +25,11 @@ sudo pacman -S --noconfirm --needed telegram-desktop
 sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
 sudo pacman -S --noconfirm --needed vivaldi-widevine
 
+sudo pacman -S --noconfirm --needed wps-office
+sudo pacman -S --noconfirm --needed ttf-wps-office
+sudo pacman -S --noconfirm --needed wps-office-mime
+
+
 ###############################################################################################
 
 echo "################################################################"
