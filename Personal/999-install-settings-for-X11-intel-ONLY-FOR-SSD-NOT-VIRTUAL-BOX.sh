@@ -16,7 +16,14 @@ set -e
 echo
 echo "################################################################"
 echo "#####  Fixing glitches in simplescreenrecorder on INTEL   ######"
+echo "#####         FOR THE COMPUTER OF ERIK DUBOIS             ######"
 echo "################################################################"
+echo
+tput setaf 1
+echo "################################################################"
+echo "#####  DO NOT JUST RUN THIS - THIS MIGHT BRICK YOUR SYSTEM  ####"
+echo "################################################################"
+tput sgr0
 echo
 echo "Select the correct desktop"
 echo
