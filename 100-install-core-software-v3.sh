@@ -29,8 +29,6 @@ sudo pacman -S --noconfirm --needed wps-office
 sudo pacman -S --noconfirm --needed ttf-wps-office
 sudo pacman -S --noconfirm --needed wps-office-mime
 
-sudo pacman -S --noconfirm --needed pcloud-drive
-
 
 ###############################################################################################
 
