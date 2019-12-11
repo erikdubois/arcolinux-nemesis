@@ -1,21 +1,17 @@
-file:///etc/skel /etc/skel
-file:///home/erik/.config .config
 file:///home/erik/Downloads Downloads
-file:///home/erik/Documents Documents
-file:///home/erik/Music Music
 file:///home/erik/Pictures Pictures
 file:///home/erik/Videos Videos
+file:///etc/skel /etc/skel
+file:///home/erik/.config .config
+file:///home/erik/.local
 file:///home/erik/DATA DATA
 file:///home/erik/Insync Insync
-file:///home/erik/Insync/erik.dubois@gmail.com/SHARED/ArcoLinux-A-Team
 file:///home/erik/Dropbox Dropbox
-file:///home/erik/ARCOLINUX/arcolinux-pkgbuild
-file:///home/erik/ARCOLINUX/arcolinux-pkgbuild-3party
 file:///home/erik/ARCOLINUX ARCOLINUX
+file:///home/erik/ARCOLINUXD ARCOLINUXD
 file:///home/erik/ARCOLINUXB
 file:///home/erik/ARCOLINUX-CAL
 file:///home/erik/ARCOLINUX-CONFIG
-file:///home/erik/ARCOLINUXD ARCOLINUXD
 file:///home/erik/ARCOLINUX-DCONF
 file:///home/erik/ARCOLINUX-DESKTOP
 file:///home/erik/ARCOLINUX-ISO
