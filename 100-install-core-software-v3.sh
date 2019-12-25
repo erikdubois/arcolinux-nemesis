@@ -22,7 +22,10 @@ sudo pacman -S --noconfirm --needed dropbox
 sudo pacman -S --noconfirm --needed spotify
 sudo pacman -S --noconfirm --needed telegram-desktop
 
-sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
+#just of these two for youtube
+#sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
+sudo pacman -S --noconfirm --neededvivaldi-codecs-ffmpeg-extra-bin
+#for netflix
 sudo pacman -S --noconfirm --needed vivaldi-widevine
 
 sudo pacman -S --noconfirm --needed wps-office
