@@ -16,6 +16,10 @@ Tutorials about ArcoLinux iso (Xfce, Openbox and i3) : https://arcolinux.com
 
 Tutorials about ArcoLinuxD iso (any desktop) : https://arcolinuxd.com
 
+Tutorials about ArcoLinuxB iso (any desktop) : https://arcolinuxb.com
+
+Tutorials about Carli project (any desktop) : https://arcolinuxiso.com
+
 Forum : https://arcolinuxforum.com
 
 
@@ -24,10 +28,6 @@ Forum : https://arcolinuxforum.com
 Facebook : https://www.facebook.com/arcolinuxd/
 
 Facebook : https://www.facebook.com/groups/arcolinux/
-
-Google + : https://plus.google.com/u/0/communities/104398992023863502986
-
-Flickr   : https://www.flickr.com/photos/arcolinux/
 
 Twitter  : https://twitter.com/arcolinux
 
