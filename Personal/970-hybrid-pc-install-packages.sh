@@ -66,6 +66,9 @@ case $CHOICE in
       sudo pacman -S --noconfirm --needed lib32-mesa
       sudo pacman -S --noconfirm --needed bbswitch
 
+      sudo pacman -S --noconfirm --needed qt5-x11extras
+      sudo pacman -S --noconfirm --needed qt5-svg
+      sudo pacman -S --noconfirm --needed qt5-tools
       yay -S --noconfirm optimus-manager
       yay -S --noconfirm optimus-manager-qt
       ;;
