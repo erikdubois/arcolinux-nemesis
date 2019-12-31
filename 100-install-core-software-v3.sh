@@ -24,7 +24,7 @@ sudo pacman -S --noconfirm --needed telegram-desktop
 
 #just of these two for youtube
 #sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
-sudo pacman -S --noconfirm --neededvivaldi-codecs-ffmpeg-extra-bin
+sudo pacman -S --noconfirm --needed vivaldi-codecs-ffmpeg-extra-bin
 #for netflix
 sudo pacman -S --noconfirm --needed vivaldi-widevine
 
