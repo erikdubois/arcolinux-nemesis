@@ -41,6 +41,7 @@ case $CHOICE in
       ;;
 
     1 )
+      sudo pacman -S --noconfirm --needed linux
       sudo pacman -S --noconfirm --needed nvidia
       sudo pacman -S --noconfirm --needed nvidia-settings
       sudo pacman -S --noconfirm --needed lib32-nvidia-utils
@@ -56,6 +57,7 @@ case $CHOICE in
       ;;
 
     2 )
+      sudo pacman -S --noconfirm --needed linux-lts
       sudo pacman -S --noconfirm --needed nvidia-lts
       sudo pacman -S --noconfirm --needed nvidia-lts-settings
       sudo pacman -S --noconfirm --needed lib32-nvidia-lts-utils
