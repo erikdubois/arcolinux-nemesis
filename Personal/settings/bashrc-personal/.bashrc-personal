@@ -8,11 +8,14 @@ alias cof="bash /home/erik/Insync/Get-Started/clean-out-folders-v*.sh"
 #more sensitive data
 [[ -f ~/.bashrc-private ]] && . ~/.bashrc-private
 
+alias gc="git clone"
+
 alias run-all-scripts-here="for script in ./*.sh ; do bash $script ; done"
 
-#need to fix this
-#another good one is
-#Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch
-alias set-fastest-mirror="echo 'Server = https://ftp.halifax.rwth-aachen.de/archlinux/$repo/os/$arch' | sudo tee -a /etc/pacman.d/mirrorlist"
-
 alias mirrore="sudo reflector --verbose -c BE -c FR -c DE -c LU -c NL -c GB --protocol https --age 8 --sort rate --number 10 --save /etc/pacman.d/mirrorlist"
+
+alias mirrorx="sudo reflector --threads 50 -l 101 -f 101 -n 21 --sort rate --save /etc/pacman.d/mirrorlist"
+
+alias big="expac -H M '%m\t%n' | sort -h"
+
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
