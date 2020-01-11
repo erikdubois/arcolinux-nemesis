@@ -218,3 +218,9 @@ echo '
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 neofetch
 ' >>  ~/.zshrc
+
+
+echo "Now change to zsh and log off"
+echo "Type in the terminal"
+echo
+echo " sudo chsh yourloginname -s /bin/zsh"
