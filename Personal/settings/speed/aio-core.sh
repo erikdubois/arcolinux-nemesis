@@ -173,6 +173,8 @@ sudo pacman -S --noconfirm --needed mintlocale
 sudo pacman -S --noconfirm --needed iso-flag-png
 sudo pacman -S --noconfirm --needed gnome-terminal
 sudo pacman -S --noconfirm --needed gnome-system-monitor
+sudo pacman -Rdd --noconfirm clutter
+sudo pacman -R --noconfirm cogl
 sudo pacman -S --noconfirm --needed deepin
 sudo pacman -S --noconfirm --needed deepin-extra
 sudo pacman -S --noconfirm --needed dtkwidget
