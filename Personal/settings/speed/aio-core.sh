@@ -8,6 +8,8 @@ Include = /etc/pacman.d/arcolinux-mirrorlist' | sudo tee --append /etc/pacman.co
 
 sudo pacman -Syy
 
+sudo pacman -R xcursor-breeze --noconfirm
+
 
 ############################################################################
 #                               GAMES
@@ -207,3 +209,5 @@ sudo pacman -S --noconfirm --needed systemd-kcm
 sudo pacman -S --noconfirm --needed kde-applications-meta
 sudo pacman -S --noconfirm --needed yakuake
 sudo pacman -S --noconfirm --needed archiso
+
+cp -rf /etc/skel/* ~
