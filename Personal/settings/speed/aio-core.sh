@@ -1,5 +1,11 @@
 #!/bin/bash
-
+echo "THIS IS A QUICK AND DIRTY WAY TO INSTALL ALL DESKTOPS"
+echo "NOT FOR PRODUCTION"
+echo "NOT FOR PRODUCTION"
+echo "NOT FOR PRODUCTION"
+echo "NOT FOR PRODUCTION"
+echo "THIS IS A QUICK AND DIRTY WAY TO INSTALL ALL DESKTOPS"
+echo
 echo '
 [arcolinux_repo_iso]
 SigLevel = Required DatabaseOptional
