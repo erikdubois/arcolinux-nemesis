@@ -1,4 +1,14 @@
 #!/bin/bash
+
+echo '
+
+[arcolinux_repo_iso]
+SigLevel = Required DatabaseOptional
+Include = /etc/pacman.d/arcolinux-mirrorlist' | sudo tee --append /etc/pacman.conf
+
+sudo pacman -Syy
+
+
 ############################################################################
 #                               GAMES
 ###########################################################################
@@ -145,7 +155,6 @@ sudo pacman -S --noconfirm --needed xmonad-utils
 sudo pacman -S --noconfirm --needed haskell-dbus
 sudo pacman -S --noconfirm --needed xmonad-log
 sudo pacman -S --noconfirm --needed polybar
-sudo pacman -S --noconfirm --needed #discord support
 sudo pacman -S --noconfirm --needed qt5-webchannel
 sudo pacman -S --noconfirm --needed budgie-desktop
 sudo pacman -S --noconfirm --needed budgie-extras
@@ -157,7 +166,6 @@ sudo pacman -S --noconfirm --needed gnome-multi-writer
 sudo pacman -S --noconfirm --needed gnome-pie
 sudo pacman -S --noconfirm --needed gnome-screensaver
 sudo pacman -S --noconfirm --needed guake
-sudo pacman -S --noconfirm --needed #Desktop specific
 sudo pacman -S --noconfirm --needed cinnamon
 sudo pacman -S --noconfirm --needed nemo-fileroller
 sudo pacman -S --noconfirm --needed cinnamon-translations
@@ -187,7 +195,7 @@ sudo pacman -S --noconfirm --needed ksuperkey
 sudo pacman -S --noconfirm --needed mate
 sudo pacman -S --noconfirm --needed mate-extra
 sudo pacman -S --noconfirm --needed mate-tweak
-sudo pacman -S --noconfirm --needed #mate-menu
+sudo pacman -S --noconfirm --needed mate-menu
 sudo pacman -S --noconfirm --needed pasystray
 sudo pacman -S --noconfirm --needed paprefs
 sudo pacman -S --noconfirm --needed plasma-meta
