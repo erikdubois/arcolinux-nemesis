@@ -208,4 +208,4 @@ sudo pacman -S --noconfirm --needed kde-applications-meta
 sudo pacman -S --noconfirm --needed yakuake
 sudo pacman -S --noconfirm --needed archiso
 
-cp -rf /etc/skel/* ~
+echo "now a skel and log out"
