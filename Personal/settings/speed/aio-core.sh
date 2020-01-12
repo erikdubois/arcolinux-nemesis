@@ -207,5 +207,42 @@ sudo pacman -S --noconfirm --needed systemd-kcm
 sudo pacman -S --noconfirm --needed kde-applications-meta
 sudo pacman -S --noconfirm --needed yakuake
 sudo pacman -S --noconfirm --needed archiso
+sudo pacman -S --noconfirm --needed vivaldi
+sudo pacman -S --noconfirm --needed oxy-neon
+sudo pacman -S --noconfirm --needed ttf-font-awesome
+sudo pacman -S --noconfirm --needed ttf-ms-fonts
+sudo pacman -S --noconfirm --needed numix-circle-arc-icons-git
+sudo pacman -S --noconfirm --needed numix-icon-theme-git
+sudo pacman -S --noconfirm --needed numix-circle-icon-theme-git
+sudo pacman -S --noconfirm --needed sardi-icons
+sudo pacman -S --noconfirm --needed surfn-icons-git
+sudo pacman -S --noconfirm --needed aurvote-git
+sudo pacman -S --noconfirm --needed conky-lua-archers
+sudo pacman -S --noconfirm --needed downgrade
+sudo pacman -S --noconfirm --needed font-manager-git
+sudo pacman -S --noconfirm --needed glxinfo
+sudo pacman -S --noconfirm --needed grub-customizer
+sudo pacman -S --noconfirm --needed hardcode-fixer-git
+sudo pacman -S --noconfirm --needed inxi
+sudo pacman -S --noconfirm --needed menulibre
+sudo pacman -S --noconfirm --needed mintstick-git
+sudo pacman -S --noconfirm --needed mugshot
+sudo pacman -S --noconfirm --needed neofetch
+sudo pacman -S --noconfirm --needed numix-gtk-theme-git
+sudo pacman -S --noconfirm --needed pamac-aur
+sudo pacman -S --noconfirm --needed peek
+sudo pacman -S --noconfirm --needed python-pyparted
+sudo pacman -S --noconfirm --needed python-pywal
+sudo pacman -S --noconfirm --needed screenkey-git
+sudo pacman -S --noconfirm --needed sublime-text-dev
+sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
+sudo pacman -S --noconfirm --needed tmux
+sudo pacman -S --noconfirm --needed trizen
+sudo pacman -S --noconfirm --needed urxvt-perls
+sudo pacman -S --noconfirm --needed urxvt-resize-font-git
+sudo pacman -S --noconfirm --needed wttr
+sudo pacman -S --noconfirm --needed yad
+sudo pacman -S --noconfirm --needed yay-bin
+
 
 echo "now a skel and log out"
