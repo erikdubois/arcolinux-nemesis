@@ -8,7 +8,6 @@ Include = /etc/pacman.d/arcolinux-mirrorlist' | sudo tee --append /etc/pacman.co
 sudo pacman -Syy
 
 sudo pacman -R xcursor-breeze --noconfirm
-sudo pacman -R clutter --noconfirm
 
 ############################################################################
 #                               GAMES
