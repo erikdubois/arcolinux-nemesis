@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo '
-
 [arcolinux_repo_iso]
 SigLevel = Required DatabaseOptional
 Include = /etc/pacman.d/arcolinux-mirrorlist' | sudo tee --append /etc/pacman.conf
