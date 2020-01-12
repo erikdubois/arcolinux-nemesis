@@ -196,7 +196,6 @@ sudo pacman -S --noconfirm --needed ksuperkey
 sudo pacman -S --noconfirm --needed mate
 sudo pacman -S --noconfirm --needed mate-extra
 sudo pacman -S --noconfirm --needed mate-tweak
-sudo pacman -S --noconfirm --needed mate-menu
 sudo pacman -S --noconfirm --needed pasystray
 sudo pacman -S --noconfirm --needed paprefs
 sudo pacman -S --noconfirm --needed plasma-meta
