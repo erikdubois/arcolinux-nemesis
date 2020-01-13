@@ -1,14 +1,7 @@
 #my personal aliases
 
-
-#personal
-alias cbf="bash /home/erik/Insync/Get-Started/clean-build-folders-v*.sh"
-alias cof="bash /home/erik/Insync/Get-Started/clean-out-folders-v*.sh"
-
 #more sensitive data
 [[ -f ~/.bashrc-private ]] && . ~/.bashrc-private
-
-alias gc="git clone"
 
 alias run-all-scripts-here="for script in ./*.sh ; do bash $script ; done"
 
@@ -18,4 +11,4 @@ alias mirrorx="sudo reflector --threads 50 -l 101 -f 101 -n 21 --sort rate --sav
 
 alias big="expac -H M '%m\t%n' | sort -h"
 
-alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+alias var="cp ~/DATA/arcolinux-nemesis/Personal/settings/variety/variety.conf ~/.config/variety/variety.conf"
