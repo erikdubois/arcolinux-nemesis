@@ -23,7 +23,8 @@ sh $installed_dir/AUR/install-insync-v*.sh
 #sh $installed_dir/AUR/install-openbox-themes-pambudi-git-v*.sh
 #sh $installed_dir/AUR/install-mpd-ncmpcpp-v*.sh
 #sh $installed_dir/AUR/install-radiotray-v*.sh
-sh $installed_dir/AUR/install-virtualbox-for-linux-v*.sh
+#sh $installed_dir/AUR/install-virtualbox-for-linux-v*.sh
+sh $installed_dir/AUR/install-virtualbox-for-linux-dkms*
 
 # these come last always
 echo "Checking if icons from applications have a hardcoded path"
