@@ -13,11 +13,20 @@
 #
 ##################################################################################################################
 
-#bookmarks
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
-cp $installed_dir/settings/plasma/bookmarks/user-places.xbel ~/.local/share/user-places.xbel
-
+#
+sudo pacman -R arcolinux-plasma-git --noconfirm
+sudo pacman -S arcolinux-plasma-nemesis-git --noconfirm --needed
+#
+sudo pacman -R arcolinux-config-git --noconfirm
+sudo pacman -R arcolinux-config-plasma-git --noconfirm
+sudo pacman -S arcolinux-config-plasma-nemesis-git --noconfirm --needed
+#
+#
+sudo pacman -R arcolinux-qt5-git --noconfirm
+sudo pacman -S arcolinux-qt5-plasma-git --noconfirm --needed
+#
+cp -rT /etc/skel ~
 
 echo "################################################################"
 echo "####                 PLASMA  INSTALLED                    ######"
