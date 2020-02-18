@@ -29,6 +29,8 @@ sudo pacman -S --noconfirm --needed vivaldi-codecs-ffmpeg-extra-bin
 #for netflix
 sudo pacman -S --noconfirm --needed vivaldi-widevine
 sudo pacman -S --noconfirm --needed vivaldi
+sudo pacman -S --noconfirm --needed chromium
+sudo pacman -S --noconfirm --needed brave
 
 sudo pacman -S --noconfirm --needed wps-office
 sudo pacman -S --noconfirm --needed ttf-wps-fonts
