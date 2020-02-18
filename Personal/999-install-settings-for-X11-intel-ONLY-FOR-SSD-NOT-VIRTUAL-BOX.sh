@@ -102,10 +102,10 @@ case $CHOICE in
       sudo cp $WDP/$SETTING0 $DESTINATION1
       ;;
     13 )
-      if [ -f "~/.config/kwinrc" ] ;
-      then cp ~/.config/kwinrc ~/.config/kwinrc-backup
-      fi
-      cp $WDP/settings/kwinrc/kwinrc ~/.config/kwinrc
+      #if [ -f "~/.config/kwinrc" ] ;
+      #then cp ~/.config/kwinrc ~/.config/kwinrc-backup
+      #fi
+      #cp $WDP/settings/kwinrc/kwinrc ~/.config/kwinrc
       ;;
     14 )
       sudo cp $WDP/$SETTING1 $DESTINATION1
