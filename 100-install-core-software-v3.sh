@@ -18,6 +18,7 @@ set -e
 #sudo pacman -S --noconfirm --needed autorandr
 sudo pacman -S --noconfirm --needed flameshot
 sudo pacman -S --noconfirm --needed discord
+sudo pacman -S --noconfirm --needed gitfiend
 #sudo pacman -S --noconfirm --needed dropbox
 sudo pacman -S --noconfirm --needed spotify
 sudo pacman -S --noconfirm --needed telegram-desktop
@@ -27,6 +28,7 @@ sudo pacman -S --noconfirm --needed telegram-desktop
 sudo pacman -S --noconfirm --needed vivaldi-codecs-ffmpeg-extra-bin
 #for netflix
 sudo pacman -S --noconfirm --needed vivaldi-widevine
+sudo pacman -S --noconfirm --needed vivaldi
 
 sudo pacman -S --noconfirm --needed wps-office
 sudo pacman -S --noconfirm --needed ttf-wps-fonts
