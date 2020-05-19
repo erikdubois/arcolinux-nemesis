@@ -40,7 +40,6 @@ sudo pacman -S --noconfirm --needed wps-office-mime
 sudo pacman -S --noconfirm --needed arcolinux-meta-fun
 
 sudo pacman -S --noconfirm --needed simplescreenrecorder
-sudo pacman -S --noconfirm --needed brave
 
 ###############################################################################################
 
