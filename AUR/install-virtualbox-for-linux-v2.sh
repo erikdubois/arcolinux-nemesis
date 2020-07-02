@@ -20,7 +20,7 @@ echo "################################################################"
 
 sudo pacman -S --needed --noconfirm virtualbox-host-modules-arch
 sudo pacman -S --noconfirm --needed virtualbox
-#sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo pacman -S --noconfirm --needed xf86-video-vmware
 
 echo "################################################################"
 echo "##      Removing all the messages virtualbox produces         ##"
