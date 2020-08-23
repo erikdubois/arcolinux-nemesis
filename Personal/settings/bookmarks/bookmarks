@@ -1,12 +1,18 @@
+file:///home/erik/ArcoLinux-Out
+file:///home/erik/ArcoLinuxD-Out
+file:///home/erik/ArcoLinuxB-Out
+file:///home/erik/Documents
 file:///home/erik/Downloads Downloads
 file:///home/erik/Pictures Pictures
 file:///home/erik/Videos Videos
 file:///etc/skel /etc/skel
 file:///home/erik/.config .config
 file:///home/erik/.local
-file:///home/erik/DATA DATA
 file:///home/erik/Insync Insync
 file:///home/erik/Dropbox Dropbox
+file:///home/erik/Insync/SHARED-CORETEAM
+file:///home/erik/ARCOLINUX-PKGBUILD/arcolinux-pkgbuild
+file:///home/erik/ARCOLINUX-PKGBUILD/arcolinux-pkgbuild-3party
 file:///home/erik/ARCOLINUX ARCOLINUX
 file:///home/erik/ARCOLINUXD ARCOLINUXD
 file:///home/erik/ARCOLINUXB
@@ -17,6 +23,7 @@ file:///home/erik/ARCOLINUX-DESKTOP
 file:///home/erik/ARCOLINUX-ISO
 file:///home/erik/ARCOLINUX-REPO
 file:///home/erik/CARLI
+file:///home/erik/DATA DATA
 file:///usr/share/applications applications
 file:///home/erik/.icons .icons
 file:///usr/share/icons icons
