@@ -24,6 +24,8 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 cp -f $installed_dir/settings/autostart/* $HOME"/.config/autostart"
 
+gsettings set org.blueberry use-symbolic-icons false
+
 echo "################################################################"
 echo "####                      autostart added                 ######"
 echo "################################################################"
