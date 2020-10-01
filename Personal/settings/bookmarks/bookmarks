@@ -5,6 +5,8 @@ file:///home/erik/Videos Videos
 file:///etc/skel /etc/skel
 file:///home/erik/.config .config
 file:///home/erik/.local
+file:///home/erik/ArcoLinux-Out
+file:///home/erik/ArcoLinuxD-Out
 file:///home/erik/Dropbox Dropbox
 file:///home/erik/Insync Insync
 file:///home/erik/Insync/JUST-CORETEAM
@@ -18,6 +20,7 @@ file:///home/erik/ARCO/ARCOLINUX-DCONF
 file:///home/erik/ARCO/ARCOLINUX-DESKTOP
 file:///home/erik/ARCO/ARCOLINUX-ISO
 file:///home/erik/ARCO/ARCOLINUX-REPO
+file:///home/erik/ARCO/ARCOLINUX-ARCHIVE
 file:///home/erik/ARCO/ARCOLINUX-PKGBUILD/arcolinux-pkgbuild
 file:///home/erik/ARCO/ARCOLINUX-PKGBUILD/arcolinux-pkgbuild-3party
 file:///home/erik/ARCO/ARCOLINUX-PKGBUILD/arcolinux-pkgbuild-calamares
