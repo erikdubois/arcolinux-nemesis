@@ -11,6 +11,14 @@ alias mirrorx="sudo reflector --threads 50 -l 101 -f 101 -n 21 --sort rate --sav
 
 alias big="expac -H M '%m\t%n' | sort -h | nl"
 
-alias var='cp ~/DATA/arcolinux-nemesis/Personal/settings/variety/variety.conf ~/.config/variety/variety.conf'
+alias var="cp ~/DATA/arcolinux-nemesis/Personal/settings/variety/variety.conf ~/.config/variety/variety.conf"
 
-alias sctlstatuspdate="systemctl status update-mirrors.service"
+alias sctlstatuspdate="systemctl status update-mirror.service"
+
+alias probe="sudo -E hw-probe -all -upload"
+
+alias updte='sudo pacman -Syyu'
+
+alias slu='slurm -i enp0s31f6'
+
+alias downgrada="downgrade --ala-url 'https://bike.seedhost.eu/arcolinux/'"
