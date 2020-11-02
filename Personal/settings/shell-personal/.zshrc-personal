@@ -12,6 +12,4 @@ alias mirrore="sudo reflector --verbose -c BE -c FR -c DE -c LU -c NL -c GB --pr
 
 alias mirrorx="sudo reflector --threads 50 -l 101 -f 101 -n 21 --sort rate --save /etc/pacman.d/mirrorlist"
 
-alias big="expac -H M '%m\t%n' | sort -h | nl"
-
 alias var="cp ~/DATA/arcolinux-nemesis/Personal/settings/variety/variety.conf ~/.config/variety/variety.conf"
