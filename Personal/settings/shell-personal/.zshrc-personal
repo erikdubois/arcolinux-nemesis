@@ -13,3 +13,9 @@ alias mirrore="sudo reflector --verbose -c BE -c FR -c DE -c LU -c NL -c GB --pr
 alias mirrorx="sudo reflector --threads 50 -l 101 -f 101 -n 21 --sort rate --save /etc/pacman.d/mirrorlist"
 
 alias var="cp ~/DATA/arcolinux-nemesis/Personal/settings/variety/variety.conf ~/.config/variety/variety.conf"
+
+alias sctlstatuspdate="systemctl status update-mirror.service"
+
+alias slu='slurm -i enp0s31f6'
+
+alias key-fix="cp /etc/pacman.d/gnupg/gpg.conf ~/.gnupg/"
