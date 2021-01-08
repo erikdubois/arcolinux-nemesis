@@ -20,7 +20,9 @@ echo "  THIS MAY BRICK YOUR SYSTEM"
 echo "  REUSE THE SCRIPT TO MAKE YOUR OWN SCRIPT"
 tput sgr0
 
-sudo yay -S nvidia-340xx-dkms
+sudo pacman -S --noconfirm --needed linux-lts
+sudo pacman -S --noconfirm --needed linux-lts-headers
+sudo yay -S nvidia-340xx-lts-dkms
 sudo yay -S nvidia-340xx-settings
 sudo yay -S nvidia-340xx-utils
 
