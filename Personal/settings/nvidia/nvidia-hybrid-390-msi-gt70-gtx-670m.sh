@@ -27,5 +27,5 @@ yay -S nvidia-390xx-dkms
 yay -S nvidia-390xx-settings
 yay -S nvidia-390xx-utils
 echo "################################################################"
-echo "####                      packages uninstalled            ######"
+echo "####                      packages installed              ######"
 echo "################################################################"
