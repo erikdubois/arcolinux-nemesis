@@ -22,9 +22,9 @@ tput sgr0
 
 sudo pacman -S --noconfirm --needed linux-lts
 sudo pacman -S --noconfirm --needed linux-lts-headers
-sudo yay -S nvidia-340xx-lts-dkms
-sudo yay -S nvidia-340xx-settings
-sudo yay -S nvidia-340xx-utils
+yay -S nvidia-340xx-lts-dkms
+yay -S nvidia-340xx-settings
+yay -S nvidia-340xx-utils
 
 echo "################################################################"
 echo "####                      packages installed              ######"

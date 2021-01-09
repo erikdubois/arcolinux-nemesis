@@ -20,9 +20,9 @@ echo "  THIS MAY BRICK YOUR SYSTEM"
 echo "  REUSE THE SCRIPT TO MAKE YOUR OWN SCRIPT"
 tput sgr0
 
-sudo yay -S nvidia-340xx-dkms
-sudo yay -S nvidia-340xx-settings
-sudo yay -S nvidia-340xx-utils
+yay -S nvidia-340xx-dkms
+yay -S nvidia-340xx-settings
+yay -S nvidia-340xx-utils
 
 echo "################################################################"
 echo "####                      packages installed              ######"
