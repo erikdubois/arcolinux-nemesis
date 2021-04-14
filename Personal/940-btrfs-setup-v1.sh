@@ -22,6 +22,9 @@ if 	lsblk -f | grep btrfs > /dev/null 2>&1 ; then
 
 	#sudo sed -i "s/PathModified=\/.snaphots/PathModified=\/run\/timeshift\/backup\/timeshift-btrfs\/snapshots/g" /etc/systemd/system/grub-btrfs.path
 	sudo sed -i "s/PathModified=\/.snapshots/PathModified=\/run\/timeshift\/backup\/timeshift-btrfs\/snapshots/g" /usr/lib/systemd/system/grub-btrfs.path
+	sudo sed -i "s/WantedBy=[\]x2esnapshots.mount/WantedBy=run-timeshift-backup.mount/g" /usr/lib/systemd/system/grub-btrfs.path
+	
+
 
 else
 	echo "Your harddisk/ssd/nvme is not formatted as BTRFS."
