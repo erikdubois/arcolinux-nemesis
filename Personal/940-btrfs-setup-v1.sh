@@ -19,6 +19,9 @@ if 	lsblk -f | grep btrfs > /dev/null 2>&1 ; then
 	sudo pacman -S --needed --noconfirm grub-btrfs
 	sudo pacman -S --needed --noconfirm timeshift-autosnap
 	sudo systemctl enable grub-btrfs.path
+
+	sudo sed -i "s/PathModified=\/.snaphots/PathModified=\/run\/timeshift\/backup\/timeshift-btrfs\/snapshots/g" /etc/systemd/system/grub-btrfs.path
+
 else
 	echo "Your harddisk/ssd/nvme is not formatted as BTRFS."
 	echo "Packages will not be installed"
