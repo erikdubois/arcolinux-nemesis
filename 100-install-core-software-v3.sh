@@ -18,6 +18,7 @@ set -e
 #sudo pacman -S --noconfirm --needed autorandr
 sudo pacman -S --noconfirm --needed flameshot
 sudo pacman -S --noconfirm --needed discord
+sudo pacman -S --noconfirm --needed nomacs
 #sudo pacman -S --noconfirm --needed gitfiend
 #sudo pacman -S --noconfirm --needed dropbox
 sudo pacman -S --noconfirm --needed spotify
