@@ -18,6 +18,8 @@
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
+sh AUR/install-virtualbox-for-linux-v2.sh
+
 # these come last always
 echo "Checking if icons from applications have a hardcoded path"
 echo "and fixing them"

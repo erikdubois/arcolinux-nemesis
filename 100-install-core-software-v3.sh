@@ -34,6 +34,14 @@ sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed brave
 sudo pacman -S --noconfirm --needed vlc
 
+sudo pacman -S --noconfirm --needed sublime-text-dev
+
+sudo pacman -S --noconfirm --needed meld
+
+sudo pacman -S --noconfirm --needed gitahead-bin
+
+sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
+
 sudo pacman -S --noconfirm --needed wps-office
 sudo pacman -S --noconfirm --needed ttf-wps-fonts
 sudo pacman -S --noconfirm --needed wps-office-mime
