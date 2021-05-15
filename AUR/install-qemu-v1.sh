@@ -16,7 +16,9 @@ set -e
 ##################################################################################################################
 #tutorial https://www.youtube.com/watch?v=JxSGT_3UU8w
 
-sudo pacman -S --noconfirm --needed qemu bridge-utils virt-manager virt-viewer  libvirt ebtables dnsmasq dmidecode ovmf
+sudo pacman -Rdd iptables --noconfirm
+
+sudo pacman -S --noconfirm --needed qemu bridge-utils virt-manager virt-viewer vde2 libvirt ebtables iptables dnsmasq dmidecode ovmf
 
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
