@@ -16,7 +16,7 @@ set -e
 ##################################################################################################################
 #tutorial https://www.youtube.com/watch?v=JxSGT_3UU8w
 
-#sudo pacman -Rdd iptables --noconfirm
+sudo pacman -Rdd iptables --noconfirm
 
 sudo pacman -S --noconfirm --needed qemu iptables-nft libvirt  bridge-utils virt-viewer spice-vdagent virt-manager xf86-video-qxl vde2 dnsmasq dmidecode
 
