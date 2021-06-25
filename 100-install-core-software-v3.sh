@@ -16,7 +16,7 @@ set -e
 #software from Arch Linux repositories
 
 #sudo pacman -S --noconfirm --needed autorandr
-sudo pacman -S --noconfirm --needed flameshot
+sudo pacman -S --noconfirm --needed flameshot-git
 sudo pacman -S --noconfirm --needed discord
 sudo pacman -S --noconfirm --needed nomacs
 #sudo pacman -S --noconfirm --needed gitfiend
