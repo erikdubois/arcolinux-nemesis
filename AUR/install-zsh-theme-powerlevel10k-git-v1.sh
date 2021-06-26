@@ -150,7 +150,8 @@ fi
 #----------------------------------------------------------------------------------
 
 zshPath="/home/"$USER"/.zshrc"
-
+alacrittyPath="/home/"$USER"/.config/alacritty/alacritty.yml"
+xresourcesPath="/home/"$USER"/.Xresources"
 
 tput setaf 1
 echo "######################################################################################"
@@ -188,6 +189,31 @@ echo '
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet' | sudo tee --append $zshPath
 echo
 
+tput setaf 1
+echo "######################################################################################"
+echo "Beware that we change the font in  ~/.config/alacritty/alacritty.yml"
+echo "######################################################################################"
+tput sgr0
+
+FIND='family: hack'
+
+REPLACE='family: MesloLGS NF'
+
+sed -i "s/$FIND/$REPLACE/g" $alacrittyPath
+
+
+tput setaf 1
+echo "######################################################################################"
+echo "Beware that we change the font in  ~/.Xresources for urxvt"
+echo "######################################################################################"
+tput sgr0
+
+FIND='xft:Monospace:regular:size=11'
+
+REPLACE='xft:MesloLGS NF:size=11'
+
+sed -i "s/$FIND/$REPLACE/g" $xresourcesPath
+
 tput setaf 3
 echo "######################################################################################"
 echo "This package has been created for ZSH"
@@ -200,3 +226,7 @@ echo "##########################################################################
 echo "The package has been installed"
 echo "######################################################################################"
 tput sgr0
+
+
+
+
