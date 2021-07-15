@@ -8,10 +8,16 @@
 
 alias run-all-scripts-here="for script in ./*.sh ; do bash $script ; done"
 
+alias mirrore="sudo reflector --verbose -c BE -c FR -c DE -c LU -c NL -c GB --protocol https --age 8 --sort rate --number 10 --save /etc/pacman.d/mirrorlist"
+
 alias var="cp ~/DATA/arcolinux-nemesis/Personal/settings/variety/variety.conf ~/.config/variety/variety.conf"
 
-alias sctlstatuspdate="systemctl status update-mirror.service"
 
 alias slu='slurm -i enp0s31f6'
 
 alias key-fix="cp /etc/pacman.d/gnupg/gpg.conf ~/.gnupg/"
+
+alias sysfailed="systemctl list-units --failed"
+
+alias listdir="ls -d */ > list"
+
