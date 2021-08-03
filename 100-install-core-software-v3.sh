@@ -16,7 +16,6 @@
 #software from Arch Linux repositories
 
 #sudo pacman -S --noconfirm --needed autorandr
-sudo pacman -R --noconfirm flameshot
 sudo pacman -S --noconfirm --needed flameshot-git
 sudo pacman -S --noconfirm --needed discord
 sudo pacman -S --noconfirm --needed nomacs
@@ -35,7 +34,6 @@ sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed brave
 sudo pacman -S --noconfirm --needed vlc
 
-sudo pacman -R --noconfirm sublime-text-dev
 sudo pacman -S --noconfirm --needed sublime-text-4
 
 sudo pacman -S --noconfirm --needed meld
