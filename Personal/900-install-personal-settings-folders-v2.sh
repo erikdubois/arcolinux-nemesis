@@ -52,6 +52,9 @@ cp $installed_dir/settings/screenkey/screenkey.json ~/.config/
 #   cp ~/Dropbox/Apps/Desktoppr/* ~/.config/variety/Favorites/
 # fi
 
+echo "Adding personal looks to /personal"
+sudo cp -rf ../Personal-Settings/personal-iso/* /personal
+
 echo "################################################################"
 echo "#########            folders created            ################"
 echo "################################################################"
