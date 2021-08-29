@@ -2,11 +2,13 @@
 #set -e
 ##################################################################################################################
 # Author 	: Erik Dubois
-# Website : https://www.erikdubois.be
+# Website   : https://www.erikdubois.be
 # Website	: https://www.arcolinux.info
-# Website	:	./https://www.arcolinux.com
-# Website	:	https://www.arcolinuxd.com
-# Website	:	https://www.arcolinuxforum.com
+# Website	: https://www.arcolinux.com
+# Website	: https://www.arcolinuxd.com
+# Website	: https://www.arcolinuxb.com
+# Website	: https://www.arcolinuxiso.com
+# Website	: https://www.arcolinuxforum.com
 ##################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -55,6 +57,11 @@ sudo pacman -S --noconfirm --needed ayu-theme
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 
 ###############################################################################################
+
+# Here we remove applications we do not want
+
+sudo systemctl disable tlp.service
+sudo pacman -Rs tlp --noconfirm
 
 echo "################################################################"
 echo "################### core software installed"
