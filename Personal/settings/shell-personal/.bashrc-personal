@@ -7,10 +7,7 @@ alias run-all-scripts-here="for script in ./*.sh ; do bash $script ; done"
 
 alias var="cp ~/DATA/arcolinux-nemesis/Personal/settings/variety/variety.conf ~/.config/variety/variety.conf"
 
-
 alias slu='slurm -i enp0s31f6'
-
-alias key-fix="cp /etc/pacman.d/gnupg/gpg.conf ~/.gnupg/"
 
 alias sysfailed="systemctl list-units --failed"
 
