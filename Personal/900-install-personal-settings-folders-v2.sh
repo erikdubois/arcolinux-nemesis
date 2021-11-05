@@ -56,7 +56,7 @@ cp $installed_dir/settings/screenkey/screenkey.json ~/.config/
 # fi
 
 echo "Adding personal looks to /personal"
-sudo cp -rf ../Personal-Settings/personal-iso/* /personal
+sudo cp -rf ../Personal-iso/personal-iso/* /personal
 
 echo "################################################################"
 echo "#########            folders created            ################"
