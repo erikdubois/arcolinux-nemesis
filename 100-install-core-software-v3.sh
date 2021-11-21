@@ -69,7 +69,7 @@ sudo pacman -S --noconfirm --needed pv
 sudo systemctl disable tlp.service
 sudo pacman -Rs tlp --noconfirm
 
-sudo pacman -Rs broadcom-wl-dkms
+sudo pacman -Rs broadcom-wl-dkms --noconfirm
 
 echo "################################################################"
 echo "################### core software installed"
