@@ -56,12 +56,20 @@ sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-git
 sudo pacman -S --noconfirm --needed ayu-theme
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 
+sudo pacman -S --noconfirm --needed wd719x-firmware
+sudo pacman -S --noconfirm --needed aic94xx-firmware
+sudo pacman -S --noconfirm --needed upd72020x-fw
+
+sudo pacman -S --noconfirm --needed pv
+
 ###############################################################################################
 
 # Here we remove applications we do not want
 
 sudo systemctl disable tlp.service
 sudo pacman -Rs tlp --noconfirm
+
+Sudo pacman -Rs broadcom-wl-dkms
 
 echo "################################################################"
 echo "################### core software installed"
