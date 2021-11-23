@@ -58,6 +58,9 @@ cp $installed_dir/settings/screenkey/screenkey.json ~/.config/
 echo "Adding personal looks to /personal"
 sudo cp -rf ../Personal-iso/personal-iso/* /personal
 
+echo "Adding personal thunar to .config/thunar"
+cp  settings/thunar/uca.xml $HOME/.config/Thunar
+
 echo "################################################################"
 echo "#########            folders created            ################"
 echo "################################################################"
