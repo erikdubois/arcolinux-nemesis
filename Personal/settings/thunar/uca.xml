@@ -58,7 +58,7 @@
 	<directories/>
 </action>
 <action>
-	<icon>final-term</icon>
+	<icon>archive-extract</icon>
 	<name>Extract here</name>
 	<unique-id>1489091300385082-4</unique-id>
 	<command>tar xjf %n</command>
@@ -134,7 +134,7 @@
 	<video-files/>
 </action>
 <action>
-	<icon>aplication-x-executable</icon>
+	<icon>application-x-executable</icon>
 	<name>Make executable</name>
 	<unique-id>1526670239648084-2</unique-id>
 	<command>chmod +x %f</command>
