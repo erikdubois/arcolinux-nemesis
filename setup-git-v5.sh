@@ -1,4 +1,4 @@
-#!/bin/bash  
+#!/bin/bash
 #
 ##################################################################################################################
 # Written to be used on 64 bits computers
@@ -36,7 +36,7 @@ sudo git config --system core.editor nano
 #git config --global credential.helper 'cache --timeout=32000'
 git config --global push.default simple
 
-git remote set-url origin git@github.com:erikdubois/$project
+git remote set-url origin git@github.com-edu:erikdubois/$project
 
 echo "Everything set"
 
