@@ -33,7 +33,7 @@ sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
 sudo pacman -S --noconfirm --needed vivaldi-widevine
 sudo pacman -S --noconfirm --needed vivaldi
 sudo pacman -S --noconfirm --needed chromium
-sudo pacman -S --noconfirm --needed brave
+sudo pacman -S --noconfirm --needed brave-bin
 sudo pacman -S --noconfirm --needed vlc
 
 sudo pacman -S --noconfirm --needed sublime-text-4
@@ -64,12 +64,6 @@ sudo pacman -S --noconfirm --needed pv
 
 ###############################################################################################
 
-# Here we remove applications we do not want
-
-sudo systemctl disable tlp.service
-sudo pacman -Rs tlp --noconfirm
-
-sudo pacman -Rs broadcom-wl-dkms --noconfirm
 
 echo "################################################################"
 echo "################### core software installed"
