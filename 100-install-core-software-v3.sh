@@ -64,7 +64,11 @@ sudo pacman -S --noconfirm --needed pv
 
 ###############################################################################################
 
-
+package=plasma-desktop
+if pacman -Qq $package > /dev/null ; then
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
+fi
 echo "################################################################"
 echo "################### core software installed"
 echo "################################################################"
