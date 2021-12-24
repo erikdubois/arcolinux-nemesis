@@ -167,6 +167,15 @@
 	<directories/>
 </action>
 <action>
+	<icon>gitfiend</icon>
+	<name>Open with gitfiend</name>
+	<unique-id>1587287435012027-1</unique-id>
+	<command>gitfiend %F</command>
+	<description>Open with gitfiend</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
 	<icon>com.deepin.ScreenShot</icon>
 	<name>Set as wallpaper DS</name>
 	<unique-id>1637670737487118-1</unique-id>
