@@ -15,7 +15,7 @@ set -e
 #
 ##################################################################################################################
 echo "################################################################"
-echo "##  This script assumes you have the linux kernel running     ##"
+echo "##  This script assumes you have the linux hardened kernel running     ##"
 echo "################################################################"
 
 sudo pacman -S --noconfirm --needed virtualbox
