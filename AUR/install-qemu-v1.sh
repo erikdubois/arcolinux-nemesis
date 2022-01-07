@@ -16,12 +16,27 @@
 ##################################################################################################################
 #tutorial https://www.youtube.com/watch?v=JxSGT_3UU8w
 
-sudo pacman -Rdd iptables --noconfirm
+#sudo pacman -Rdd iptables --noconfirm
 
-sudo pacman -S --noconfirm --needed qemu iptables-nft libvirt  bridge-utils virt-viewer spice-vdagent virt-manager xf86-video-qxl vde2 dnsmasq dmidecode
+#https://computingforgeeks.com/install-kvm-qemu-virt-manager-arch-manjar/
 
+sudo pacman -S --noconfirm --needed qemu
+sudo pacman -S --noconfirm --needed virt-manager
+sudo pacman -S --noconfirm --needed virt-viewer
+sudo pacman -S --noconfirm --needed dnsmasq
+sudo pacman -S --noconfirm --needed vde2
+sudo pacman -S --noconfirm --needed bridge-utils
+sudo pacman -S --noconfirm --needed openbsd-netcat
+sudo pacman -S --noconfirm --needed iptables
+#sudo pacman -S --noconfirm --needed iptables-nft
 sudo pacman -S --noconfirm --needed  ebtables 
-#ovmf
+#sudo pacman -S --noconfirm --needed libvirt
+#sudo pacman -S --noconfirm --needed spice-vdagent 
+#sudo pacman -S --noconfirm --needed xf86-video-qxl
+
+sudo pacman -S --noconfirm --needed dmidecode
+
+#starting service
 
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
@@ -29,11 +44,9 @@ sudo systemctl start libvirtd.service
 
 echo -e "options kvm-intel nested=1" | sudo tee -a /etc/modprobe.d/kvm-intel.conf
 
-##Change your username here
-read -p "What is your login?
-It will be used to add this user to the 2 different groups : " choice
-sudo gpasswd -a $choice libvirt
-sudo gpasswd -a $choice kvm
+user=$(whoami)
+sudo gpasswd -a $user libvirt
+sudo gpasswd -a $user kvm
 
 
 echo '
@@ -44,6 +57,8 @@ nvram = [
 sudo virsh net-define /etc/libvirt/qemu/networks/default.xml
 
 sudo virsh net-autostart default
+
+sudo systemctl restart libvirtd.service
 
 echo "############################################################################################################"
 echo "#####################                        FIRST REBOOT                              #####################"
