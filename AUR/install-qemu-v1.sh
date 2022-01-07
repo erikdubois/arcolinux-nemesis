@@ -22,16 +22,15 @@ sudo pacman -Rdd iptables --noconfirm
 sudo pacman -S --noconfirm --needed iptables-nft
 sudo pacman -S --noconfirm --needed ebtables 
 
-
 sudo pacman -S --noconfirm --needed qemu
 sudo pacman -S --noconfirm --needed virt-manager
 sudo pacman -S --noconfirm --needed virt-viewer
 sudo pacman -S --noconfirm --needed dnsmasq
 sudo pacman -S --noconfirm --needed vde2
 sudo pacman -S --noconfirm --needed bridge-utils
-#sudo pacman -S --noconfirm --needed openbsd-netcat
+#ovmf
+sudo pacman -S --noconfirm --needed edk2-ovmf
 
-sudo pacman -S --noconfirm --needed libvirt
 #sudo pacman -S --noconfirm --needed spice-vdagent 
 #sudo pacman -S --noconfirm --needed xf86-video-qxl
 
