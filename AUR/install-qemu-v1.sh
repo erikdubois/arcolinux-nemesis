@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -e
+set -e
 ##################################################################################################################
 # Author	:	Erik Dubois
 # Website	:	https://www.erikdubois.be
@@ -16,7 +16,7 @@
 ##################################################################################################################
 #tutorial https://www.youtube.com/watch?v=JxSGT_3UU8w
 
-#sudo pacman -Rdd iptables --noconfirm
+sudo pacman -Rdd iptables --noconfirm
 
 #https://computingforgeeks.com/install-kvm-qemu-virt-manager-arch-manjar/
 
@@ -26,10 +26,10 @@ sudo pacman -S --noconfirm --needed virt-viewer
 sudo pacman -S --noconfirm --needed dnsmasq
 sudo pacman -S --noconfirm --needed vde2
 sudo pacman -S --noconfirm --needed bridge-utils
-sudo pacman -S --noconfirm --needed openbsd-netcat
+#sudo pacman -S --noconfirm --needed openbsd-netcat
 sudo pacman -S --noconfirm --needed iptables
 #sudo pacman -S --noconfirm --needed iptables-nft
-sudo pacman -S --noconfirm --needed  ebtables 
+sudo pacman -S --noconfirm --needed ebtables 
 #sudo pacman -S --noconfirm --needed libvirt
 #sudo pacman -S --noconfirm --needed spice-vdagent 
 #sudo pacman -S --noconfirm --needed xf86-video-qxl
