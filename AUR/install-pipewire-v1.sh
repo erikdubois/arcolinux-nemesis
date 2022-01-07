@@ -33,5 +33,7 @@ sudo pacman -R --noconfirm pulseaudio
 
 sudo pacman -S --noconfirm --needed pipewire-pulse
 sudo pacman -S --noconfirm --needed blueberry
+sudo pacman -S --noconfirm --needed pavucontrol
+sudo systemctl enable bluetooth.service
 
 echo "Reboot now"
