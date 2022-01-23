@@ -33,7 +33,7 @@ sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
 sudo pacman -S --noconfirm --needed vivaldi-widevine
 sudo pacman -S --noconfirm --needed vivaldi
 sudo pacman -S --noconfirm --needed chromium
-sudo pacman -S --noconfirm --needed brave-bin
+#sudo pacman -S --noconfirm --needed brave-bin
 sudo pacman -S --noconfirm --needed vlc
 
 sudo pacman -S --noconfirm --needed sublime-text-4
