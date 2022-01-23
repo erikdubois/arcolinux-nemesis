@@ -19,7 +19,7 @@ echo "##      This script assumes you have the linux kernel running        ##"
 echo "###########################################################################"
 
 sudo pacman -S --noconfirm --needed virtualbox
-sudo pacman -S --needed --noconfirm virtualbox-host-modules-arch
+sudo pacman -S --needed --noconfirm virtualbox-host-dkms
 
 echo "###########################################################################"
 echo "##      Removing all the messages virtualbox produces         ##"
