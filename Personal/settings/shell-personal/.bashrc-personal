@@ -23,3 +23,5 @@ alias personal6='cp -Rf /personal/6/* ~'
 alias personal7='cp -Rf /personal/7/* ~'
 alias personal8='cp -Rf /personal/8/* ~'
 alias personal9='cp -Rf /personal/9/* ~'
+
+alias clean="clear; seq 1 $(tput cols) | sort -R | sparklines | lolcat"
