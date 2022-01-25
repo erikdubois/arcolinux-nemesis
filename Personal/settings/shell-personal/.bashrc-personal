@@ -25,3 +25,6 @@ alias personal8='cp -Rf /personal/8/* ~'
 alias personal9='cp -Rf /personal/9/* ~'
 
 alias clean="clear; seq 1 $(tput cols) | sort -R | sparklines | lolcat"
+
+alias xls="exa -a --icons --color=always --group-directories-first"
+alias xll="exa -lag --icons --color=always --group-directories-first --octal-permissions"
