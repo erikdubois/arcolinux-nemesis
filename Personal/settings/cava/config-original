@@ -63,10 +63,10 @@
 ; method = alsa
 ; source = hw:Loopback,1
 
-method = fifo
-source = /tmp/mpd.fifo
-sample_rate = 44100
-sample_bits = 16
+; method = fifo
+; source = /tmp/mpd.fifo
+; sample_rate = 44100
+; sample_bits = 16
 
 ; method = shmem
 ; source = /squeezelite-AA:BB:CC:DD:EE:FF
@@ -92,7 +92,7 @@ sample_bits = 16
 # 'stereo' mirrors both channels with low frequencies in center.
 # 'mono' outputs left to right lowest to highest frequencies.
 # 'mono_option' set mono to either take input from 'left', 'right' or 'average'.
-channels = stereo
+; channels = stereo
 ; mono_option = average
 
 # Raw output target. A fifo will be created if target does not exist.
@@ -125,8 +125,8 @@ channels = stereo
 # ncurses output method and a terminal that can change color definitions such as Gnome-terminal or rxvt.
 # if supported, ncurses mode will be forced on if user defined colors are used.
 # default is to keep current terminal color
-background = default
-foreground = blue
+; background = default
+; foreground = default
 
 # SDL only support hex code colors, these are the default:
 ; background = '#111111'
@@ -136,16 +136,16 @@ foreground = blue
 # Gradient mode, only hex defined colors (and thereby ncurses mode) are supported,
 # background must also be defined in hex  or remain commented out. 1 = on, 0 = off.
 # You can define as many as 8 different colors. They range from bottom to top of screen
-gradient = 1
-gradient_count = 4  
-gradient_color_1 = '#88afff'
-gradient_color_2 = '#c3a4f8'
-gradient_color_3 = '#f7768e'
-gradient_color_4 = '#ffa86f'
-gradient_color_5 = '#9ece6a'
-gradient_color_6 = '#c0caf5'
-gradient_color_7 = '#09c1dc'
-gradient_color_8 = '#24283b'
+; gradient = 0
+; gradient_count = 8
+; gradient_color_1 = '#59cc33'
+; gradient_color_2 = '#80cc33'
+; gradient_color_3 = '#a6cc33'
+; gradient_color_4 = '#cccc33'
+; gradient_color_5 = '#cca633'
+; gradient_color_6 = '#cc8033'
+; gradient_color_7 = '#cc5933'
+; gradient_color_8 = '#cc3333'
 
 
 
@@ -153,15 +153,15 @@ gradient_color_8 = '#24283b'
 
 # Percentage value for integral smoothing. Takes values from 0 - 100.
 # Higher values means smoother, but less precise. 0 to disable.
-integral = 60
+; integral = 77
 
 # Disables or enables the so-called "Monstercat smoothing" with or without "waves". Set to 0 to disable.
-monstercat = 0
-waves = 0
+; monstercat = 0
+; waves = 0
 
 # Set gravity percentage for "drop off". Higher values means bars will drop faster.
 # Accepts only non-negative values. 50 means half gravity, 200 means double. Set to 0 to disable "drop off".
-gravity = 100
+; gravity = 100
 
 
 # In bar height, bars that would have been lower that this will not be drawn.
