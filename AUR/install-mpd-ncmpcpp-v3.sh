@@ -15,11 +15,6 @@
 #
 ##################################################################################################################
 
-package=ncmpcpp
-
-#----------------------------------------------------------------------------------
-
-
 
     #mpd is the music player daemon
     #it will scan for music and server music to its clients
@@ -90,9 +85,9 @@ package=ncmpcpp
 
     sed -i 's/#follow_inside_symlinks/follow_inside_symlinks/g' ~/.config/mpd/mpd.conf
 
-
-
-    #sed -i 's/~\/.mpd\/socket/~\/.config\/mpd\/socket/g' ~/.config/mpd/mpd.conf
+    # socket
+    
+    sed -i 's/~\/.mpd\/socket/~\/.config\/mpd\/socket/g' ~/.config/mpd/mpd.conf
 
     #filesystem_charset   "UTF-8"
 
