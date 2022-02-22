@@ -63,7 +63,6 @@ oranchelo-icon-theme-git
 paper-icon-theme
 papirus-icon-theme
 qogir-icon-theme
-surfn-mint-y-icons-git
 tela-circle-icon-theme-git
 vimix-icon-theme-git
 we10x-icon-theme-git
