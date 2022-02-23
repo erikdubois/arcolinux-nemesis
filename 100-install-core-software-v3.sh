@@ -69,6 +69,30 @@ if pacman -Qq $package > /dev/null ; then
   sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
   sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
 fi
+
+###############################################################################################
+
+#nemesis-repo added to /etc/pacman.conf
+
+echo '
+
+[nemesis_repo]
+SigLevel = Optional TrustedOnly
+Server = https://erikdubois.github.io/$repo/$arch' | sudo tee -a /etc/pacman.conf
+
+sudo pacman -Sy
+
+sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-arc-git
+sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-arc-mint-grey-git
+sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-arc-mint-red-git
+sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-tela-git
+
+echo "################################################################"
+echo "################### core software installed"
+echo "################################################################"
+
+
+
 echo "################################################################"
 echo "################### core software installed"
 echo "################################################################"
