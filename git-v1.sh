@@ -35,8 +35,15 @@ git commit -m "$input"
 
 # Push the local files to github
 
-git push -u origin master
+if grep -q main .git/config; then
+	echo "Using main"
+		git push -u origin main
+fi
 
+if grep -q master .git/config; then
+	echo "Using master"
+		git push -u origin master
+fi
 
 echo "################################################################"
 echo "###################    Git Push Done      ######################"
