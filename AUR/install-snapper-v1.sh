@@ -28,3 +28,6 @@ sudo snapper -c root create-config /
 echo "first manual snapshot"
 
 snapper -c root create --description "initial snapshot"
+
+chmod a+rx /.snapshots
+chown :users /.snapshots
