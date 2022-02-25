@@ -84,12 +84,6 @@ SigLevel = Optional TrustedOnly
 Server = https://erikdubois.github.io/$repo/$arch' | sudo tee -a /etc/pacman.conf
 fi
 
-echo '
-
-[nemesis_repo]
-SigLevel = Optional TrustedOnly
-Server = https://erikdubois.github.io/$repo/$arch' | sudo tee -a /etc/pacman.conf
-
 sudo pacman -Sy
 
 sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-arc-git
