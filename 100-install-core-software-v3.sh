@@ -74,6 +74,16 @@ fi
 
 #nemesis-repo added to /etc/pacman.conf
 
+if grep -q nemesis_repo /etc/pacman.conf; then
+  echo "nemesis_repo is already in /etc/pacman.conf"
+else
+echo '
+
+[nemesis_repo]
+SigLevel = Optional TrustedOnly
+Server = https://erikdubois.github.io/$repo/$arch' | sudo tee -a /etc/pacman.conf
+fi
+
 echo '
 
 [nemesis_repo]
