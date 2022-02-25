@@ -64,14 +64,6 @@ sudo pacman -S --noconfirm --needed pv
 
 ###############################################################################################
 
-package=plasma-desktop
-if pacman -Qq $package > /dev/null ; then
-  sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
-  sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
-fi
-
-###############################################################################################
-
 #nemesis-repo added to /etc/pacman.conf
 
 if grep -q nemesis_repo /etc/pacman.conf; then
@@ -96,8 +88,25 @@ echo "################################################################"
 echo "################### core software installed"
 echo "################################################################"
 
-# if on Leftwm get all themes
+###############################################################################################
+
+# when on Leftwm
+
 if [ -f /usr/share/xsessions/leftwm.desktop ]; then
   sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
   sh ~/.config/leftwm/scripts/install-all-arcolinux-themes-peter.sh
 fi
+
+###############################################################################################
+
+# when on Plasma
+
+if [ -f /usr/bin/startplasma-x11 ]; then
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
+fi
+
+
+echo "################################################################"
+echo "################### end"
+echo "################################################################"
