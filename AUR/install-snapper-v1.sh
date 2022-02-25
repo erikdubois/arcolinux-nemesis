@@ -29,5 +29,5 @@ echo "first manual snapshot"
 
 snapper -c root create --description "initial snapshot"
 
-chmod a+rx /.snapshots
-chown :users /.snapshots
+sudo chmod a+rx /.snapshots
+sudo chown :users /.snapshots
