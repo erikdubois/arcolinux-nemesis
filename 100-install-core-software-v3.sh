@@ -102,8 +102,8 @@ echo "################################################################"
 echo "################### core software installed"
 echo "################################################################"
 
-
-
-echo "################################################################"
-echo "################### core software installed"
-echo "################################################################"
+# if on Leftwm get all themes
+if [ -f /usr/share/xsessions/leftwm.desktop ]; then
+  sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
+  sh ~/.config/leftwm/scripts/install-all-arcolinux-themes-peter.sh
+fi
