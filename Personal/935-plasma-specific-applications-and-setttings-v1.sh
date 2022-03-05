@@ -17,9 +17,10 @@
 
 #bookmarks
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
-cp $installed_dir/settings/plasma/bookmarks/user-places.xbel ~/.local/share/user-places.xbel
-
+if [ -f /usr/bin/startplasma-x11 ]; then
+	installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+	cp $installed_dir/settings/plasma/bookmarks/user-places.xbel ~/.local/share/user-places.xbel
+fi
 
 echo "################################################################"
 echo "####                 PLASMA  INSTALLED                    ######"
