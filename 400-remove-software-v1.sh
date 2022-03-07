@@ -36,7 +36,3 @@ sudo pacman -Rs xf86-video-vesa --noconfirm
 echo "################################################################"
 echo "################### software removed"
 echo "################################################################"
-
-sudo mkinitcpio -P
-
-sudo grub-mkconfig -o /boot/grub/grub.cfg
