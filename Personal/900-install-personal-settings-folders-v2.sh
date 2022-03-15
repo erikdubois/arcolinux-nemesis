@@ -24,6 +24,8 @@ echo "Creating private folders we use later"
 [ -d $HOME"/.local/share/icons" ] || mkdir -p $HOME"/.local/share/icons"
 [ -d $HOME"/.local/share/themes" ] || mkdir -p $HOME"/.local/share/themes"
 [ -d "/personal" ] || mkdir -p "/personal"
+[ -d $HOME"/.config" ] || mkdir -p $HOME"/.config"
+[ -d $HOME"/.config/fish" ] || mkdir -p $HOME"/.config/fish"
 
 echo "Creating personal folders"
 
