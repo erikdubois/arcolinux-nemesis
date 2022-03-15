@@ -18,6 +18,7 @@
 #software from Arch Linux repositories
 
 #sudo pacman -S --noconfirm --needed autorandr
+sudo pacman -S --noconfirm --needed arcolinux-fish-git
 sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed flameshot-git
 sudo pacman -S --noconfirm --needed discord
