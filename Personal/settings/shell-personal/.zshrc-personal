@@ -35,3 +35,5 @@ alias xls="exa -a --icons --color=always --group-directories-first"
 alias xll="exa -lag --icons --color=always --group-directories-first --octal-permissions"
 
 alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
+
+alias cpu="cpuid -i | grep uarch | head -n 1"

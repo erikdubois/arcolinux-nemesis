@@ -37,6 +37,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 cp $installed_dir/settings/shell-personal/.bashrc-personal ~
 cp $installed_dir/settings/shell-personal/.zshrc ~
 cp $installed_dir/settings/shell-personal/.zshrc-personal ~
+cp $installed_dir/settings/fish/alias.fish ~/.config/fish/alias.fish
 
 echo "Installing personal settings of variety"
 
