@@ -29,6 +29,14 @@
 # software from AUR (Arch User Repositories)
 # https://aur.archlinux.org/packages/
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### AUR Software to install"
+echo "################################################################"
+tput sgr0
+echo
+
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 sh AUR/install-virtualbox-for-linux-v2.sh
@@ -39,6 +47,10 @@ echo "and fixing them"
 echo "Wait for it ..."
 sudo hardcode-fixer
 
+echo
+tput setaf 2
 echo "################################################################"
-echo "####        Software from AUR Repository installed        ######"
+echo "################### AUR Software installed"
 echo "################################################################"
+tput sgr0
+echo

@@ -29,10 +29,22 @@
 # software from AUR (Arch User Repositories)
 # https://aur.archlinux.org/packages/
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Sardi extra icons MINT to be installed"
+echo "################################################################"
+tput sgr0
+echo
+
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 sh $installed_dir/AUR/install-sardi-mint-y-icons-v*.sh
 
+echo
+tput setaf 2
 echo "################################################################"
-echo "####        Software from AUR Repository installed        ######"
+echo "################### Sardi extra icons MINT installed"
 echo "################################################################"
+tput sgr0
+echo

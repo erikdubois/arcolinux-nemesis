@@ -26,6 +26,14 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+echo
+tput setaf 3
+echo "################################################################"
+echo "################### Start current choices"
+echo "################################################################"
+tput sgr0
+echo
+
 sh 400-remove-software*
 
 sh 100-install-core-software*
@@ -51,8 +59,8 @@ sh 935-plasma-specific-applications-and-setttings*
 #sh 965-install-key-servers*
 #sh 997-makepkg*
 
-tput setaf 2
+tput setaf 3
 echo "################################################################"
-echo "DONE"
+echo "End current choices"
 echo "################################################################"
 tput sgr0
