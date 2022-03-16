@@ -27,6 +27,12 @@
 ##################################################################################################################
 
 # Here we remove applications we do not want
+tput setaf 2
+echo "################################################################"
+echo "################### Software to remove"
+echo "################################################################"
+tput sgr0
+echo
 
 sudo systemctl disable tlp.service
 
@@ -44,6 +50,10 @@ sudo pacman -Rs xf86-video-ati --noconfirm
 sudo pacman -Rs xf86-video-nouveau --noconfirm
 sudo pacman -Rs xf86-video-vesa --noconfirm
 
+echo
+tput setaf 2
 echo "################################################################"
-echo "################### software removed"
+echo "################### Software removed"
 echo "################################################################"
+tput sgr0
+echo
