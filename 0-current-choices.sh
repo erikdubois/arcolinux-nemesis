@@ -35,6 +35,7 @@ tput sgr0
 echo
 
 sh 400-remove-software*
+sh 668-uninstall-all-xf86-video-drivers.sh
 
 sh 100-install-core-software*
 sh 200-software-AUR-repo*

@@ -15,6 +15,14 @@
 #
 ##################################################################################################################
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Remove drivers I do not need for real metal"
+echo "################################################################"
+tput sgr0
+echo
+
 tput setaf 3;echo "  DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK."
 echo "  THIS MAY BRICK YOUR SYSTEM";tput sgr0
 
@@ -27,6 +35,10 @@ sudo pacman -R --noconfirm xf86-video-openchrome
 sudo pacman -R --noconfirm xf86-video-vesa
 sudo pacman -R --noconfirm xf86-video-vmware
 
+echo
+tput setaf 2
 echo "################################################################"
-echo "####                      packages uninstalled            ######"
+echo "################### Drivers removed"
 echo "################################################################"
+tput sgr0
+echo
