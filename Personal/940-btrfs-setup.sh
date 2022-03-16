@@ -25,6 +25,7 @@ if 	lsblk -f | grep btrfs > /dev/null 2>&1 ; then
 	tput sgr0
 	echo	
 	echo "You are using BTRFS. Installing the software ..."
+	echo
 	sudo pacman -S --needed --noconfirm snapper
 	sudo pacman -S --needed --noconfirm grub-btrfs
 	sudo pacman -S --needed --noconfirm btrfs-assistant
