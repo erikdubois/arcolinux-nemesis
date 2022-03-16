@@ -51,11 +51,7 @@ sh 935-plasma-specific-applications-and-setttings*
 #sh 965-install-key-servers*
 #sh 997-makepkg*
 
-cd ~/VirtualBox\ VMs/
-tar -xzf template.tar.gz
-rm template.tar.gz
-
-tput setaf 1
+tput setaf 2
 echo "################################################################"
 echo "DONE"
 echo "################################################################"
