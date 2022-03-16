@@ -15,15 +15,25 @@
 #
 ##################################################################################################################
 
-#https://wiki.archlinux.org/title/Modprobed-db
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### modprobed-db to install"
+echo "################################################################"
+tput sgr0
+echo
 
+#https://wiki.archlinux.org/title/Modprobed-db
 
 sudo pacman -S modprobed-db --noconfirm --needed
 modprobed-db
 modprobed-db store
 systemctl --user enable --now modprobed-db.service
 
-
+echo
+tput setaf 2
 echo "################################################################"
-echo "####                      INSTALLED                       ######"
+echo "################### modprobed-db installed"
 echo "################################################################"
+tput sgr0
+echo

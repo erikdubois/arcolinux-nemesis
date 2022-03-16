@@ -15,6 +15,14 @@
 #
 ##################################################################################################################
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Start"
+echo "################################################################"
+tput sgr0
+echo
+
 #https://wiki.archlinux.org/title/Modprobed-db
 
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/linux-xanmod.tar.gz
@@ -51,6 +59,10 @@ cd linux-xanmod
 
 makepkg -s --skippgpcheck
 
+echo
+tput setaf 2
 echo "################################################################"
-echo "####                      INSTALLED                       ######"
+echo "################### Stop"
 echo "################################################################"
+tput sgr0
+echo
