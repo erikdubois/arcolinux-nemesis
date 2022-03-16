@@ -15,8 +15,15 @@
 #
 ##################################################################################################################
 
-echo "Creating private folders we use later"
-
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Personal settings to install"
+echo "################################################################"
+tput sgr0
+echo
+echo "Creating folders we use later"
+echo
 [ -d $HOME"/.bin" ] || mkdir -p $HOME"/.bin"
 [ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
 [ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
@@ -26,51 +33,43 @@ echo "Creating private folders we use later"
 [ -d "/personal" ] || mkdir -p "/personal"
 [ -d $HOME"/.config" ] || mkdir -p $HOME"/.config"
 [ -d $HOME"/.config/fish" ] || mkdir -p $HOME"/.config/fish"
-
-echo "Creating personal folders"
-
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
-
-echo "Installing .bashrc-personal"
-
+echo
+echo "Installing all shell files"
+echo
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
-
 cp $installed_dir/settings/shell-personal/.bashrc-personal ~
 cp $installed_dir/settings/shell-personal/.zshrc ~
 cp $installed_dir/settings/shell-personal/.zshrc-personal ~
 cp $installed_dir/settings/fish/alias.fish ~/.config/fish/alias.fish
-
+echo
 echo "Installing personal settings of variety"
-
+echo
 cp $installed_dir/settings/variety/variety.conf ~/.config/variety/
-
+echo
 echo "Installing screenkey for teaching"
-
+echo
 cp $installed_dir/settings/screenkey/screenkey.json ~/.config/
-
-#echo "copy/paste wallpapers to variety"
-# DIR=$HOME"/.config/variety/Favorites/"
-# echo $DIR
-# if [ -d "$DIR" ]; then
-#   # Take action if $DIR exists. #
-#   echo "Copying files to ${DIR}..."
-#   cp ~/Dropbox/Apps/Desktoppr/* ~/.config/variety/Favorites/
-# fi
-
+echo
 echo "Adding personal looks to /personal"
 sudo cp -rf ../Personal-iso/personal-iso/* /personal
-
+echo
 echo "Adding personal thunar to .config/thunar"
 cp  settings/thunar/uca.xml $HOME/.config/Thunar
-
+echo
 echo "Copy paste virtual box template"
+echo
 [ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
 sudo cp -rf settings/virtualbox-template/* ~/VirtualBox\ VMs/
 cd ~/VirtualBox\ VMs/
 tar -xzf template.tar.gz
 rm -f template.tar.gz
 
+echo
+tput setaf 2
 echo "################################################################"
-echo "#########            folders created            ################"
+echo "################### Personal settings installed"
 echo "################################################################"
+tput sgr0
+echo
