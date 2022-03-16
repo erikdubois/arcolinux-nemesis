@@ -3,6 +3,7 @@
 ##################################################################################################################
 # Author 	: Erik Dubois
 # Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
 # Website	: https://www.arcolinux.info
 # Website	: https://www.arcolinux.com
 # Website	: https://www.arcolinuxd.com
@@ -14,19 +15,23 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################
+#tput setaf 0 = black 
+#tput setaf 1 = red 
+#tput setaf 2 = green
+#tput setaf 3 = yellow 
+#tput setaf 4 = dark blue 
+#tput setaf 5 = purple
+#tput setaf 6 = cyan 
+#tput setaf 7 = gray 
+#tput setaf 8 = light blue
+##################################################################################################################
 
 # software from AUR (Arch User Repositories)
 # https://aur.archlinux.org/packages/
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-sh AUR/install-virtualbox-for-linux-v2.sh
-
-# these come last always
-echo "Checking if icons from applications have a hardcoded path"
-echo "and fixing them"
-echo "Wait for it ..."
-sudo hardcode-fixer
+sh $installed_dir/AUR/install-surfn-mint-y-icons-git-v*.sh
 
 echo "################################################################"
 echo "####        Software from AUR Repository installed        ######"
