@@ -65,11 +65,11 @@ echo "Adding personal thunar to .config/thunar"
 cp  settings/thunar/uca.xml $HOME/.config/Thunar
 
 echo "Copy paste virtual box template"
-[ -d $HOME"/VirtualBox\ VMs" ] || mkdir -p $HOME"/VirtualBox\ VMs"
+[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
 sudo cp -rf settings/virtualbox-template/* ~/VirtualBox\ VMs/
 cd ~/VirtualBox\ VMs/
 tar -xzf template.tar.gz
-rm template.tar.gz
+rm -f template.tar.gz
 
 echo "################################################################"
 echo "#########            folders created            ################"
