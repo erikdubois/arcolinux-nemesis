@@ -45,10 +45,10 @@ echo
 # load-module module-switch-on-connect' | sudo tee --append /etc/pulse/default.pa
 # fi
 
-echo "#################"
-echo "Fix 3"
-echo "#################"
-[ -f /etc/modprobe.d/bluetooth-clear.conf ] && echo "Bluetooth-clear already created" || echo 'options ath9k btcoex_enable = 1' | sudo tee /etc/modprobe.d/bluetooth-clear.conf
+# echo "#################"
+# echo "Fix 3"
+# echo "#################"
+# [ -f /etc/modprobe.d/bluetooth-clear.conf ] && echo "Bluetooth-clear already created" || echo 'options ath9k btcoex_enable = 1' | sudo tee /etc/modprobe.d/bluetooth-clear.conf
 
 # not necessary any more on 26/06/2021
 # echo "#################"
