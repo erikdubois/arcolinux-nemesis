@@ -15,6 +15,14 @@
 #
 ##################################################################################################################
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Bluetooth settings to be installed"
+echo "################################################################"
+tput sgr0
+echo
+
 #settings for a bluetooth headset
 #after reboot switch off and on your device to get connected automatically and to the right channel
 
@@ -53,6 +61,10 @@ echo "#################"
 # Disable=Socket' | sudo tee --append /etc/bluetooth/main.conf
 # fi
 
+echo
+tput setaf 2
 echo "################################################################"
-echo "#########   reboot to let the settings kick in  ################"
+echo "################### Bluetooth settings installed"
 echo "################################################################"
+tput sgr0
+echo

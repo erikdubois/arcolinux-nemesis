@@ -15,6 +15,13 @@
 #
 ##################################################################################################################
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Plasma nemesis to be installed"
+echo "################################################################"
+tput sgr0
+echo
 
 #
 sudo pacman -R arcolinux-plasma-git --noconfirm
@@ -30,6 +37,10 @@ sudo pacman -S arcolinux-qt5-plasma-git --noconfirm --needed
 #
 cp -rT /etc/skel ~
 
+echo
+tput setaf 2
 echo "################################################################"
-echo "####                 PLASMA  INSTALLED                    ######"
+echo "################### Plasma nemesis installed"
 echo "################################################################"
+tput sgr0
+echo

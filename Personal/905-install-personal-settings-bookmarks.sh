@@ -15,16 +15,21 @@
 #
 ##################################################################################################################
 
-
+echo
+tput setaf 2
 echo "################################################################"
-echo "#########          Installing bookmarks         ################"
+echo "################### Bookmarks to install"
 echo "################################################################"
-
+tput sgr0
+echo
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 cp $installed_dir/settings/bookmarks/bookmarks* ~/.config/gtk-3.0/
 
-
+echo
+tput setaf 2
 echo "################################################################"
-echo "#########       personal settings installed     ################"
+echo "################### Bookmarks installed"
 echo "################################################################"
+tput sgr0
+echo

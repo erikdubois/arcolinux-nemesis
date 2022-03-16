@@ -16,7 +16,13 @@
 ##################################################################################################################
 
 
-echo "copy/pasting better toolbar icons over the original ones"
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Sublime text icons to be installed"
+echo "################################################################"
+tput sgr0
+echo
 
 
 # these are for the icon in the taskbar
@@ -66,4 +72,10 @@ sudo cp $installed_dir/settings/sublimetext/png/256x256/* /opt/sublime_text_3/Ic
 
 
 
-echo "All images have been backupped and copy/pasted."
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Sublime icons installed"
+echo "################################################################"
+tput sgr0
+echo

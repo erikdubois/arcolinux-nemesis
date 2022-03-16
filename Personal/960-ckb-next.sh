@@ -15,23 +15,24 @@
 #
 ##################################################################################################################
 
-##read -p "Do you wish to install ckb-next-git? y/n  :" answer
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Corsair keyboard to be installed"
+echo "################################################################"
+tput sgr0
+echo
 
-  ##  case $answer in
-    ##    [Yy] )
-        installed_dir=$(dirname `pwd`)
-        #software
-        sh $installed_dir/AUR/install-ckb-next-git-v*
-        #copy over folder with config
-        cp -r $installed_dir/Personal/settings/ckb-next/ ~/.config/
-      ##  ;;
-
-      ##  [Nn] ) echo "Nothing installed";;
-  ##  esac
-
+installed_dir=$(dirname `pwd`)
+sh $installed_dir/AUR/install-ckb-next-git-v*
+cp -r $installed_dir/Personal/settings/ckb-next/ ~/.config/
 sudo systemctl enable ckb-next-daemon
 sudo systemctl start ckb-next-daemon
 
+echo
+tput setaf 2
 echo "################################################################"
-echo "#########   ckb-next config has been copied     ################"
+echo "################### Corsair keyboard installed"
 echo "################################################################"
+tput sgr0
+echo

@@ -56,8 +56,6 @@ sh 935-plasma-specific-applications-and-setttings*
 #sh 950-install-all-fonts-needed-for-conkys-of-arcolinux*
 #sh 955-install-settings-autoconnect-to-bluetooth-headset*
 #sh 960-ckb-next*
-#sh 965-install-key-servers*
-#sh 997-makepkg*
 
 tput setaf 3
 echo "################################################################"
