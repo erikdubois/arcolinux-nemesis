@@ -52,7 +52,7 @@ sh 905-install-personal-settings-bookmarks*
 #sh 925-fix-sublime-text-icons*
 sh 930-autostart-applications*
 sh 935-plasma-specific-applications-and-setttings*
-#sh 940-btrfs-setup*
+sh 940-btrfs-setup*
 #sh 950-install-all-fonts-needed-for-conkys-of-arcolinux*
 #sh 955-install-settings-autoconnect-to-bluetooth-headset*
 sh 960-ckb-next*
