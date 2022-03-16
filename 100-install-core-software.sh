@@ -35,6 +35,7 @@ tput sgr0
 echo
 
 sudo pacman -S --noconfirm --needed arcolinux-fish-git
+sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
 sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed flameshot-git
 sudo pacman -S --noconfirm --needed discord
