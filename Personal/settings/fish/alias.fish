@@ -1,12 +1,24 @@
 alias cpu="cpuid -i | grep uarch | head -n 1"
 
 #moving your personal files and folders from /personal to ~
-alias personal1='cp -Rf /personal/1/* ~'
-alias personal2='cp -Rf /personal/2/* ~'
-alias personal3='cp -Rf /personal/3/* ~'
-alias personal4='cp -Rf /personal/4/* ~'
-alias personal5='cp -Rf /personal/5/* ~'
-alias personal6='cp -Rf /personal/6/* ~'
-alias personal7='cp -Rf /personal/7/* ~'
-alias personal8='cp -Rf /personal/8/* ~'
-alias personal9='cp -Rf /personal/9/* ~'
+
+function personal1
+   	cp -rf /personal/1/ ~
+    cp -rf /personal/1/.* ~
+end
+
+function personal2
+   	cp -rf /personal/2/ ~
+    cp -rf /personal/2/.* ~
+end
+
+function personal3
+   	cp -rf /personal/3/ ~
+    cp -rf /personal/3/.* ~
+end
+
+
+function personal4
+   	cp -rf /personal/4/ ~
+    cp -rf /personal/4/.* ~
+end
