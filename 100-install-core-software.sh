@@ -132,6 +132,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed bat
   sudo pacman -S --noconfirm --needed duf-bin
   sudo pacman -S --noconfirm --needed expac
+  sudo pacman -S --noconfirm --needed hardcode-fixer-git
   sudo pacman -S --noconfirm --needed hw-probe
   sudo pacman -S --noconfirm --needed meld
   sudo pacman -S --noconfirm --needed neofetch
