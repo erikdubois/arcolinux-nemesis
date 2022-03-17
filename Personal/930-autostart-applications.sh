@@ -29,7 +29,6 @@ sleep 1
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-
 cp -f $installed_dir/settings/autostart/* $HOME"/.config/autostart"
 
 #uncommenting here to know if the ArcoLinuxBs are completely done
