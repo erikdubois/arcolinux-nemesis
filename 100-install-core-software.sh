@@ -35,6 +35,7 @@ tput sgr0
 echo
 
 sudo pacman -S --noconfirm --needed aic94xx-firmware
+sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
 sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-git
@@ -122,6 +123,8 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed arcolinux-root-git
   sudo pacman -S --noconfirm --needed arcolinux-zsh-git
   sudo pacman -S --noconfirm --needed bat
+  sudo pacman -S --noconfirm --needed duf-bin
+  sudo pacman -S --noconfirm --needed expac
   sudo pacman -S --noconfirm --needed neofetch
   sudo pacman -S --noconfirm --needed oh-my-zsh-git
   sudo pacman -S --noconfirm --needed paru-bin
@@ -130,6 +133,19 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed zsh
   sudo pacman -S --noconfirm --needed zsh-completions
   sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
+
+  sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
+  sudo pacman -S --noconfirm --needed awesome-terminal-fonts
+  sudo pacman -S --noconfirm --needed noto-fonts
+  sudo pacman -S --noconfirm --needed ttf-bitstream-vera
+  sudo pacman -S --noconfirm --needed ttf-dejavu
+  sudo pacman -S --noconfirm --needed ttf-droid
+  sudo pacman -S --noconfirm --needed ttf-hack
+  sudo pacman -S --noconfirm --needed ttf-inconsolata
+  sudo pacman -S --noconfirm --needed ttf-liberation
+  sudo pacman -S --noconfirm --needed ttf-roboto
+  sudo pacman -S --noconfirm --needed ttf-roboto-mono
+  sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
 
 fi
 
