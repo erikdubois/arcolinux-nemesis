@@ -120,7 +120,25 @@ if grep -q "Arch Linux" /etc/os-release; then
   echo
   sudo pacman -S --noconfirm --needed neofetch
   sudo pacman -S --noconfirm --needed bat
+  sudo pacman -S --noconfirm --needed arcolinux-root-git
+  sudo pacman -S --noconfirm --needed arcolinux-zsh-git
+  sudo pacman -S --noconfirm --needed oh-my-zsh-git
+  sudo pacman -S --noconfirm --needed zsh
+  sudo pacman -S --noconfirm --needed zsh-completions
+  sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
+
 fi
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### SKEL !!!"
+echo "################################################################"
+tput sgr0
+echo
+
+cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
+cp -arf /etc/skel/. ~
 
 echo
 tput setaf 2
