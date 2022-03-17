@@ -136,6 +136,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed oh-my-zsh-git
   sudo pacman -S --noconfirm --needed paru-bin
   sudo pacman -S --noconfirm --needed rate-mirrors-bin
+  sudo pacman -S --noconfirm --needed ripgrep
   sudo pacman -S --noconfirm --needed variety
   sudo pacman -S --noconfirm --needed yay-bin
   sudo pacman -S --noconfirm --needed zsh
