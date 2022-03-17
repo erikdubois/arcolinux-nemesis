@@ -160,6 +160,12 @@ if grep -q "Arch Linux" /etc/os-release; then
     sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
   fi
 
+  # when on Xfce4
+
+  if [ -f /usr/share/xsessions/xfce.desktop ]; then
+    sudo pacman -S --noconfirm --needed arcolinux-xfce-git
+  fi
+
 fi
 
 echo
