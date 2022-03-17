@@ -43,6 +43,7 @@ sudo pacman -S --noconfirm --needed ayu-theme
 sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed discord
+sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed flameshot-git
 sudo pacman -S --noconfirm --needed gitahead-bin
 sudo pacman -S --noconfirm --needed insync
@@ -118,11 +119,14 @@ if grep -q "Arch Linux" /etc/os-release; then
   echo "################################################################"
   tput sgr0
   echo
-  sudo pacman -S --noconfirm --needed neofetch
-  sudo pacman -S --noconfirm --needed bat
   sudo pacman -S --noconfirm --needed arcolinux-root-git
   sudo pacman -S --noconfirm --needed arcolinux-zsh-git
+  sudo pacman -S --noconfirm --needed bat
+  sudo pacman -S --noconfirm --needed neofetch
   sudo pacman -S --noconfirm --needed oh-my-zsh-git
+  sudo pacman -S --noconfirm --needed paru-bin
+  sudo pacman -S --noconfirm --needed rate-mirrors-bin
+  sudo pacman -S --noconfirm --needed yay-bin
   sudo pacman -S --noconfirm --needed zsh
   sudo pacman -S --noconfirm --needed zsh-completions
   sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
