@@ -48,8 +48,10 @@ sh 900-install-personal-settings-folders*
 sh 905-install-personal-settings-bookmarks*
 #sh 910-firefox-fix-unreadable-text-for-dark-themes-settings*
 #sh 915-install-personal-settings-screenshot-to-jpg*
-#sh 920-fix-icons*
-#sh 925-fix-sublime-text-icons*
+#sh 920-fix-simplescreenrecorder*
+sh 921-fix-dropbox*
+#sh 922-fix-sublime-text-icons*
+sh 923-fix-telegram*
 sh 930-autostart-applications*
 sh 935-plasma-specific-applications-and-setttings*
 sh 940-btrfs-setup*

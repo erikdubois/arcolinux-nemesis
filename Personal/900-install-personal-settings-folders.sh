@@ -54,7 +54,7 @@ cp $installed_dir/settings/screenkey/screenkey.json ~/.config/
 echo
 echo "Adding personal looks to /personal"
 echo
-sudo cp -rf ../Personal-iso/personal-iso/* /personal
+sudo cp -arf ../Personal-iso/personal-iso/* /personal
 echo
 echo "Adding personal thunar to .config/thunar"
 echo
