@@ -46,6 +46,7 @@ cp $installed_dir/settings/fish/alias.fish ~/.config/fish/alias.fish
 echo
 echo "Installing personal settings of variety"
 echo
+[ -d $HOME"/.config/variety" ] || mkdir -p $HOME"/.config/variety"
 cp $installed_dir/settings/variety/variety.conf ~/.config/variety/
 echo
 echo "Installing screenkey for teaching"
@@ -54,10 +55,12 @@ cp $installed_dir/settings/screenkey/screenkey.json ~/.config/
 echo
 echo "Adding personal looks to /personal"
 echo
+[ -d /personal" ] || mkdir -p /personal"
 sudo cp -arf ../Personal-iso/personal-iso/* /personal
 echo
 echo "Adding personal thunar to .config/thunar"
 echo
+[ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
 cp  settings/thunar/uca.xml $HOME/.config/Thunar
 echo
 echo "Copy paste virtual box template"

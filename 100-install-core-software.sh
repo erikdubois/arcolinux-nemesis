@@ -121,6 +121,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   tput sgr0
   echo
   sudo pacman -S --noconfirm --needed arcolinux-root-git
+  sudo pacman -S --noconfirm --needed arcolinux-variety-git
   sudo pacman -S --noconfirm --needed arcolinux-zsh-git
   sudo pacman -S --noconfirm --needed bat
   sudo pacman -S --noconfirm --needed duf-bin
@@ -129,6 +130,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed oh-my-zsh-git
   sudo pacman -S --noconfirm --needed paru-bin
   sudo pacman -S --noconfirm --needed rate-mirrors-bin
+  sudo pacman -S --noconfirm --needed variety
   sudo pacman -S --noconfirm --needed yay-bin
   sudo pacman -S --noconfirm --needed zsh
   sudo pacman -S --noconfirm --needed zsh-completions
@@ -146,6 +148,13 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed ttf-roboto
   sudo pacman -S --noconfirm --needed ttf-roboto-mono
   sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
+
+  # when on Plasma
+
+  if [ -f /usr/bin/startplasma-x11 ]; then
+    sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
+    sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
+  fi
 
 fi
 

@@ -24,6 +24,7 @@ tput sgr0
 echo
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
+[ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
 cp $installed_dir/settings/bookmarks/bookmarks* ~/.config/gtk-3.0/
 
 echo
