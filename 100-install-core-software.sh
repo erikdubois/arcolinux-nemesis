@@ -40,7 +40,6 @@ sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
 sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-git
 sudo pacman -S --noconfirm --needed arcolinux-fish-git
 sudo pacman -S --noconfirm --needed ayu-theme
-sudo pacman -S --noconfirm --needed bat
 sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed discord
@@ -48,7 +47,6 @@ sudo pacman -S --noconfirm --needed flameshot-git
 sudo pacman -S --noconfirm --needed gitahead-bin
 sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed meld
-sudo pacman -S --noconfirm --needed neofetch
 sudo pacman -S --noconfirm --needed nomacs
 sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed simplescreenrecorder
@@ -106,6 +104,22 @@ fi
 if [ -f /usr/bin/startplasma-x11 ]; then
   sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
   sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
+fi
+
+###############################################################################################
+
+# when on Arch Linux
+
+if grep -q "Arch Linux" /etc/os-release; then
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Installing software for Arch Linux"
+  echo "################################################################"
+  tput sgr0
+  echo
+  sudo pacman -S --noconfirm --needed neofetch
+  sudo pacman -S --noconfirm --needed bat
 fi
 
 echo
