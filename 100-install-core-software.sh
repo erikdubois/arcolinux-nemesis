@@ -34,35 +34,36 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo pacman -S --noconfirm --needed arcolinux-fish-git
+sudo pacman -S --noconfirm --needed aic94xx-firmware
+sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
+sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-git
+sudo pacman -S --noconfirm --needed arcolinux-fish-git
+sudo pacman -S --noconfirm --needed ayu-theme
+sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed cpuid
-sudo pacman -S --noconfirm --needed flameshot-git
 sudo pacman -S --noconfirm --needed discord
-sudo pacman -S --noconfirm --needed nomacs
-sudo pacman -S --noconfirm --needed spotify
-sudo pacman -S --noconfirm --needed telegram-desktop
+sudo pacman -S --noconfirm --needed flameshot-git
+sudo pacman -S --noconfirm --needed gitahead-bin
 sudo pacman -S --noconfirm --needed insync
+sudo pacman -S --noconfirm --needed meld
+sudo pacman -S --noconfirm --needed neofetch
+sudo pacman -S --noconfirm --needed nomacs
+sudo pacman -S --noconfirm --needed pv
+sudo pacman -S --noconfirm --needed simplescreenrecorder
+sudo pacman -S --noconfirm --needed spotify
+sudo pacman -S --noconfirm --needed sublime-text-4
+sudo pacman -S --noconfirm --needed telegram-desktop
+sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
+sudo pacman -S --noconfirm --needed ttf-wps-fonts
+sudo pacman -S --noconfirm --needed upd72020x-fw
+sudo pacman -S --noconfirm --needed vivaldi
 sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
 sudo pacman -S --noconfirm --needed vivaldi-widevine
-sudo pacman -S --noconfirm --needed vivaldi
-sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed vlc
-sudo pacman -S --noconfirm --needed sublime-text-4
-sudo pacman -S --noconfirm --needed meld
-sudo pacman -S --noconfirm --needed gitahead-bin
-sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
-sudo pacman -S --noconfirm --needed wps-office
-sudo pacman -S --noconfirm --needed ttf-wps-fonts
-sudo pacman -S --noconfirm --needed wps-office-mime
-sudo pacman -S --noconfirm --needed simplescreenrecorder
-sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-git
-sudo pacman -S --noconfirm --needed ayu-theme
-sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed wd719x-firmware
-sudo pacman -S --noconfirm --needed aic94xx-firmware
-sudo pacman -S --noconfirm --needed upd72020x-fw
-sudo pacman -S --noconfirm --needed pv
+sudo pacman -S --noconfirm --needed wps-office
+sudo pacman -S --noconfirm --needed wps-office-mime
 
 ###############################################################################################
 
