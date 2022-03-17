@@ -120,6 +120,8 @@ if grep -q "Arch Linux" /etc/os-release; then
   echo "################################################################"
   tput sgr0
   echo
+  sudo pacman -S --noconfirm --needed alacritty
+  sudo pacman -S --noconfirm --needed arcolinux-alacritty-git
   sudo pacman -S --noconfirm --needed arcolinux-root-git
   sudo pacman -S --noconfirm --needed arcolinux-variety-git
   sudo pacman -S --noconfirm --needed arcolinux-zsh-git
