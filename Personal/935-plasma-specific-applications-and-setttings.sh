@@ -43,10 +43,5 @@ if [ -f /usr/bin/startplasma-x11 ]; then
 	echo "################### Bookmarks plasma installed"
 	echo "################################################################"
 	tput sgr0
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Plasma settings installed"
-echo "################################################################"
-tput sgr0
-echo
+	
+fi
