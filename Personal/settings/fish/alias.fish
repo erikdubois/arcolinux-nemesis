@@ -22,3 +22,5 @@ function personal4
    	cp -rf /personal/4/ ~
     cp -rf /personal/4/.* ~
 end
+
+alias var="cp ~/DATA/arcolinux-nemesis/Personal/settings/variety/variety.conf ~/.config/variety/variety.conf"

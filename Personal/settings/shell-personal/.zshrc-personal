@@ -29,11 +29,10 @@ alias personal7='cp -Rf /personal/7/* ~'
 alias personal8='cp -Rf /personal/8/* ~'
 alias personal9='cp -Rf /personal/9/* ~'
 
-alias clean="clear; seq 1 $(tput cols) | sort -R | sparklines | lolcat"
-
 alias xls="exa -a --icons --color=always --group-directories-first"
 alias xll="exa -lag --icons --color=always --group-directories-first --octal-permissions"
 
-alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
+alias var="cp ~/DATA/arcolinux-nemesis/Personal/settings/variety/variety.conf ~/.config/variety/variety.conf"
 
 alias cpu="cpuid -i | grep uarch | head -n 1"
+
