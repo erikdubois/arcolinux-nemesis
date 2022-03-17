@@ -15,33 +15,28 @@
 #
 ##################################################################################################################
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### dropbox desktop icon to be installed"
-echo "################################################################"
-tput sgr0
-echo
+if [ -f /usr/share/pixmaps/dropbox.svg ]; then
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "################### Dropbox desktop icon to be installed"
+	echo "################################################################"
+	tput sgr0
+	echo
 
-sudo cp $installed_dir/settings/dropbox/dropbox.svg /usr/share/pixmaps/dropbox.svg
-sudo cp $installed_dir/settings/dropbox/dropbox.png /opt/dropbox/images/hicolor/16x16/status/dropboxstatus-idle.png
-sudo cp $installed_dir/settings/dropbox/dropbox.png /opt/dropbox/images/hicolor/16x16/status/dropboxstatus-logo.png
+	installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-exit 1
+	sudo cp $installed_dir/settings/dropbox/dropbox.svg /usr/share/pixmaps/dropbox.svg
+	sudo cp $installed_dir/settings/dropbox/dropbox.png /opt/dropbox/images/hicolor/16x16/status/dropboxstatus-idle.png
+	sudo cp $installed_dir/settings/dropbox/dropbox.png /opt/dropbox/images/hicolor/16x16/status/dropboxstatus-logo.png
 
-sudo cp $installed_dir/settings/dropbox/dropbox.png /usr/share/icons/hicolor/16x16/apps/dropbox.png
-sudo cp $installed_dir/settings/dropbox/dropbox.png /usr/share/icons/hicolor/256x256/apps/dropbox.png
-sudo cp $installed_dir/settings/dropbox/dropbox.png /usr/share/icons/hicolor/32x32/apps/dropbox.png
-sudo cp $installed_dir/settings/dropbox/dropbox.png /usr/share/icons/hicolor/48x48/apps/dropbox.png
-sudo cp $installed_dir/settings/dropbox/dropbox.png /usr/share/icons/hicolor/512x512/apps/dropbox.png
-sudo cp $installed_dir/settings/dropbox/dropbox.png /usr/share/icons/hicolor/64x64/apps/dropbox.png
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "################### Dropbox desktop icon installed"
+	echo "################################################################"
+	tput sgr0
+	echo
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### dropbox desktop icon installed"
-echo "################################################################"
-tput sgr0
-echo
+fi
