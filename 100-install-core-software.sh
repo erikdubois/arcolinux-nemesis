@@ -37,6 +37,7 @@ echo
 if grep -q "Arch Linux" /etc/os-release; then
   #get the keys and mirrors for ArcoLinux
   sh arch/get-the-keys-and-repos.sh
+  sudo pacman -Sy
   #first remove blocking apps if present on Arch Linux
   if [ -f /usr/share/xsessions/i3.desktop ]; then
     sudo pacman -R --noconfirm i3lock   
