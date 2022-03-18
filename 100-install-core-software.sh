@@ -120,6 +120,16 @@ sudo pacman -S --noconfirm --needed edu-vimix-dark-tela-git
 # when on Leftwm
 
 if [ -f /usr/share/xsessions/leftwm.desktop ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Leftwm related applications"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+
   sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
   sh ~/.config/leftwm/scripts/install-all-arcolinux-themes-peter.sh
 fi
@@ -129,22 +139,17 @@ fi
 # when on Plasma
 
 if [ -f /usr/bin/startplasma-x11 ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Plasma related applications"
+  echo "################################################################"
+  tput sgr0
+  echo
+
   sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
   sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
-fi
-
-###############################################################################################
-
-# when on Cinnamon
-
-if [ -f /usr/bin/cinnamon ]; then
-  sudo pacman -S --noconfirm --needed cinnamon-translations
-  sudo pacman -S --noconfirm --needed gnome-terminal
-  sudo pacman -S --noconfirm --needed gnome-system-monitor
-  sudo pacman -S --noconfirm --needed gnome-screenshot
-  sudo pacman -S --noconfirm --needed iso-flag-png
-  sudo pacman -S --noconfirm --needed mintlocale
-  sudo pacman -S --noconfirm --needed nemo-fileroller
 fi
 
 ###############################################################################################
@@ -155,7 +160,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   echo
   tput setaf 2
   echo "################################################################"
-  echo "################### Installing software for Arch Linux"
+  echo "############### Installing software for Arch Linux - Any desktop"
   echo "################################################################"
   tput sgr0
   echo
@@ -202,15 +207,33 @@ if grep -q "Arch Linux" /etc/os-release; then
   # when on Plasma
 
   if [ -f /usr/bin/startplasma-x11 ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Installing software for Arch Linux - Plasma"
+    echo "################################################################"
+    tput sgr0
+    echo    
     sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
     sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
     sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
-    sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git  
+    sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
+
   fi
 
   # when on Xfce4
 
   if [ -f /usr/share/xsessions/xfce.desktop ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Installing software for Arch Linux - Xfce4"
+    echo "################################################################"
+    tput sgr0
+    echo
+
     sudo pacman -S --noconfirm --needed arcolinux-local-xfce4-git
     sudo pacman -S --noconfirm --needed sardi-icons
     sudo pacman -S --noconfirm --needed arcolinux-xfce-git
@@ -219,6 +242,15 @@ if grep -q "Arch Linux" /etc/os-release; then
   # when on i3
 
   if [ -f /usr/share/xsessions/i3.desktop ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Installing software for Arch Linux - i3wm"
+    echo "################################################################"
+    tput sgr0
+    echo
+
     sudo pacman -S --noconfirm --needed arcolinux-i3wm-git
     sudo pacman -S --noconfirm --needed arcolinux-local-xfce4-git
     sudo pacman -S --noconfirm --needed autotiling
@@ -229,6 +261,29 @@ if grep -q "Arch Linux" /etc/os-release; then
     sudo pacman -S --noconfirm --needed thunar
     sudo pacman -S --noconfirm --needed thunar-archive-plugin
     sudo pacman -S --noconfirm --needed thunar-volman
+
+  fi
+
+  # when on Cinnamon
+
+  if [ -f /usr/bin/cinnamon ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Cinnamon related applications"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    sudo pacman -S --noconfirm --needed cinnamon-translations
+    sudo pacman -S --noconfirm --needed gnome-terminal
+    sudo pacman -S --noconfirm --needed gnome-system-monitor
+    sudo pacman -S --noconfirm --needed gnome-screenshot
+    sudo pacman -S --noconfirm --needed iso-flag-png
+    sudo pacman -S --noconfirm --needed mintlocale
+    sudo pacman -S --noconfirm --needed nemo-fileroller
+
   fi
 
 fi
