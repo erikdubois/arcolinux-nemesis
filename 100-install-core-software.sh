@@ -180,6 +180,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   # when on i3
 
   if [ -f /usr/share/xsessions/i3.desktop ]; then
+    sudo pacman -R --noconfirm i3lock
     sudo pacman -S --noconfirm --needed arcolinux-i3wm-git
     sudo pacman -S --noconfirm --needed lxappearance
     sudo pacman -S --noconfirm --needed nitrogen
