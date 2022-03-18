@@ -30,7 +30,7 @@ echo
 [ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
 [ -d $HOME"/.local/share/icons" ] || mkdir -p $HOME"/.local/share/icons"
 [ -d $HOME"/.local/share/themes" ] || mkdir -p $HOME"/.local/share/themes"
-[ -d "/personal" ] || mkdir -p "/personal"
+[ -d "/personal" ] || sudo mkdir -p "/personal"
 [ -d $HOME"/.config" ] || mkdir -p $HOME"/.config"
 [ -d $HOME"/.config/fish" ] || mkdir -p $HOME"/.config/fish"
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
@@ -55,7 +55,6 @@ cp $installed_dir/settings/screenkey/screenkey.json ~/.config/
 echo
 echo "Adding personal looks to /personal"
 echo
-[ -d /personal ] || sudo mkdir -p /personal
 sudo cp -arf ../Personal-iso/personal-iso/* /personal
 echo
 echo "Adding personal thunar to .config/thunar"
