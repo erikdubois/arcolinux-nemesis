@@ -172,8 +172,6 @@ if grep -q "Arch Linux" /etc/os-release; then
   if [ -f /usr/share/xsessions/xfce.desktop ]; then
     sudo pacman -S --noconfirm --needed arcolinux-local-xfce4-git
     sudo pacman -S --noconfirm --needed sardi-icons
-    sudo pacman -S --noconfirm --needed thunar
-    sudo pacman -S --noconfirm --needed thunar-archive-plugin
     sudo pacman -S --noconfirm --needed arcolinux-xfce-git
   fi
 
