@@ -165,6 +165,8 @@ if grep -q "Arch Linux" /etc/os-release; then
   if [ -f /usr/bin/startplasma-x11 ]; then
     sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
     sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
+    sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
+    sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git  
   fi
 
   # when on Xfce4
@@ -181,6 +183,7 @@ if grep -q "Arch Linux" /etc/os-release; then
     sudo pacman -S --noconfirm --needed arcolinux-i3wm-git
     sudo pacman -S --noconfirm --needed lxappearance
     sudo pacman -S --noconfirm --needed nitrogen
+    sudo pacman -S --noconfirm --needed sardi-icons
     sudo pacman -S --noconfirm --needed thunar
     sudo pacman -S --noconfirm --needed thunar-archive-plugin    
   fi
