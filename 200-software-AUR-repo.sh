@@ -32,14 +32,29 @@
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### AUR Software to install"
+echo "################### AUR Folder - Software to install"
 echo "################################################################"
 tput sgr0
 echo
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+result=$(systemd-detect-virt)
 
-sh AUR/install-virtualbox-for-linux-v2.sh
+if [ $result = "oracle" ];then
+	
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "####### You are on VirtualBox - skipping VirtualBox installation"
+	echo "################################################################"
+	tput sgr0
+	echo
+	
+else
+
+	installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+	sh AUR/install-virtualbox-for-linux-v2.sh
+
+fi
 
 # these come last always
 echo "Checking if icons from applications have a hardcoded path"

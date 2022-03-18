@@ -132,6 +132,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed bat
   sudo pacman -S --noconfirm --needed duf-bin
   sudo pacman -S --noconfirm --needed expac
+  sudo pacman -S --noconfirm --needed feh
   sudo pacman -S --noconfirm --needed hardcode-fixer-git
   sudo pacman -S --noconfirm --needed hw-probe
   sudo pacman -S --noconfirm --needed meld
@@ -172,6 +173,12 @@ if grep -q "Arch Linux" /etc/os-release; then
     sudo pacman -S --noconfirm --needed arcolinux-local-xfce4-git
     sudo pacman -S --noconfirm --needed sardi-icons
     sudo pacman -S --noconfirm --needed arcolinux-xfce-git
+  fi
+
+  # when on i3
+
+  if [ -f /usr/share/xsessions/i3.desktop ]; then
+    sudo pacman -S --noconfirm --needed lxappearance
   fi
 
 fi
