@@ -286,6 +286,32 @@ if grep -q "Arch Linux" /etc/os-release; then
 
   fi
 
+  # when on Leftwm
+
+  if [ -f /usr/bin/leftwm ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Cinnamon related applications"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    sudo pacman -S --noconfirm --needed arcolinux-leftwm-git
+    sudo pacman -S --noconfirm --needed polybar
+    sudo pacman -S --noconfirm --needed thunar
+    sudo pacman -S --noconfirm --needed thunar-archive-plugin
+    sudo pacman -S --noconfirm --needed thunar-volman
+
+    cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
+    cp -arf /etc/skel/. ~
+
+    sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
+    sh ~/.config/leftwm/scripts/install-all-arcolinux-themes-peter.sh
+
+  fi
+
 fi
 
 echo
