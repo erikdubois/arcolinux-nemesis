@@ -36,9 +36,23 @@ echo
 
 if grep -q "Arch Linux" /etc/os-release; then
   if grep -q arcolinux_repo /etc/pacman.conf; then
-    echo "ArcoLinux repos are already in /etc/pacman.conf"
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################ ArcoLinux repos are already in /etc/pacman.conf"
+    echo "################################################################"
+    tput sgr0
+    echo
     else
     #get the keys and mirrors for ArcoLinux
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Getting the keys and mirrors for ArcoLinux"
+    echo "################################################################"
+    tput sgr0
+    echo
     sh arch/get-the-keys-and-repos.sh
     sudo pacman -Sy
   fi
@@ -117,6 +131,14 @@ fi
 if [ -f /usr/bin/startplasma-x11 ]; then
   sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
   sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
+fi
+
+###############################################################################################
+
+# when on Cinnamon
+
+if [ -f /usr/bin/cinnamon ]; then
+  sudo pacman -S --noconfirm --needed arcolinux-cinnamon-git
 fi
 
 ###############################################################################################
