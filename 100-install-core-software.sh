@@ -57,6 +57,7 @@ sudo pacman -S --noconfirm --needed gitahead-bin
 sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed nomacs
+sudo pacman -S --noconfirm --needed polkit-gnome
 sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed simplescreenrecorder
 sudo pacman -S --noconfirm --needed spotify
