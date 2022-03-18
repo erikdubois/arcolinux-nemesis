@@ -293,7 +293,7 @@ if grep -q "Arch Linux" /etc/os-release; then
     echo
     tput setaf 2
     echo "################################################################"
-    echo "################### Cinnamon related applications"
+    echo "################### Leftwm related applications"
     echo "################################################################"
     tput sgr0
     echo
