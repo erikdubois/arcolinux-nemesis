@@ -138,7 +138,13 @@ fi
 # when on Cinnamon
 
 if [ -f /usr/bin/cinnamon ]; then
-  sudo pacman -S --noconfirm --needed arcolinux-cinnamon-git
+  sudo pacman -S --noconfirm --needed cinnamon-translations
+  sudo pacman -S --noconfirm --needed gnome-terminal
+  sudo pacman -S --noconfirm --needed gnome-system-monitor
+  sudo pacman -S --noconfirm --needed gnome-screenshot
+  sudo pacman -S --noconfirm --needed iso-flag-png
+  sudo pacman -S --noconfirm --needed mintlocale
+  sudo pacman -S --noconfirm --needed nemo-fileroller
 fi
 
 ###############################################################################################
