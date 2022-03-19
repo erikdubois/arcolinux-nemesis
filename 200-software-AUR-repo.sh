@@ -56,6 +56,40 @@ else
 
 fi
 
+if [ $result = "kvm" ];then
+	
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "####### You are on Qemu - skipping VirtualBox installation"
+	echo "################################################################"
+	tput sgr0
+	echo
+	
+else
+
+	installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+	sh AUR/install-virtualbox-for-linux-v2.sh
+
+fi
+
+if [ $result = "vmare" ];then
+	
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "####### You are on Vmware - skipping VirtualBox installation"
+	echo "################################################################"
+	tput sgr0
+	echo
+	
+else
+
+	installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+	sh AUR/install-virtualbox-for-linux-v2.sh
+
+fi
+
 # these come last always
 echo "Checking if icons from applications have a hardcoded path"
 echo "and fixing them"
