@@ -26,6 +26,9 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+# reset - commit your changes or stash them before you merge
+# git reset --hard
+
 # checking if I have the latest files from github
 echo "Checking for newer files online first"
 git pull
