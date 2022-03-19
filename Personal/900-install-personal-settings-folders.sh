@@ -79,10 +79,10 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 	sudo cp settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
 
 	FIND="#background="
-	REPLACE="background=/etc/lightdm/lightdm.jpg"
+	REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
 
-  fi
+fi
 
 echo
 tput setaf 2
