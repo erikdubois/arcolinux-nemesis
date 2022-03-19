@@ -39,54 +39,29 @@ echo
 
 result=$(systemd-detect-virt)
 
-if [ $result = "oracle" ];then
-	
+if [ $result = "none" ];then
+
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "####### You are on VirtualBox - skipping VirtualBox installation"
+	echo "####### Installing VirtualBox"
 	echo "################################################################"
 	tput sgr0
-	echo
-	
-else
+	echo	
 
 	installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
-	sh AUR/install-virtualbox-for-linux-v2.sh
+	sh AUR/install-virtualbox-for-linux-v2.sh	
 
-fi
+else
 
-if [ $result = "kvm" ];then
-	
+
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "####### You are on Qemu - skipping VirtualBox installation"
+	echo "####### You are on a virtual machine - skipping VirtualBox installation"
 	echo "################################################################"
 	tput sgr0
 	echo
-	
-else
-
-	installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
-	sh AUR/install-virtualbox-for-linux-v2.sh
-
-fi
-
-if [ $result = "vmare" ];then
-	
-	echo
-	tput setaf 2
-	echo "################################################################"
-	echo "####### You are on Vmware - skipping VirtualBox installation"
-	echo "################################################################"
-	tput sgr0
-	echo
-	
-else
-
-	installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
-	sh AUR/install-virtualbox-for-linux-v2.sh
 
 fi
 
