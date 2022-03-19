@@ -79,6 +79,7 @@ sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed simplescreenrecorder
 sudo pacman -S --noconfirm --needed spotify
 sudo pacman -S --noconfirm --needed sublime-text-4
+sudo pacman -S --noconfirm --needed surfn-icons-git
 sudo pacman -S --noconfirm --needed telegram-desktop
 sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
 sudo pacman -S --noconfirm --needed ttf-wps-fonts
