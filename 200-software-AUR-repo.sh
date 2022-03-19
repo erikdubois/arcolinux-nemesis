@@ -58,7 +58,7 @@ else
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "####### You are on a virtual machine - skipping VirtualBox installation"
+	echo "### You are on a virtual machine - skipping VirtualBox"
 	echo "################################################################"
 	tput sgr0
 	echo
