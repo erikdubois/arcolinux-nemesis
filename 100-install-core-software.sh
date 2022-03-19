@@ -179,7 +179,6 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
   sudo pacman -S --noconfirm --needed arcolinux-zsh-git
   sudo pacman -S --noconfirm --needed bat
-  sudo pacman -S --noconfirm --needed duf-bin
   sudo pacman -S --noconfirm --needed expac
   sudo pacman -S --noconfirm --needed feh
   sudo pacman -S --noconfirm --needed hardcode-fixer-git
