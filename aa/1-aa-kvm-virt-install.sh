@@ -46,7 +46,7 @@ OUT_DIRECTORY="$HOME/AA-Out"
 [ -d /opt/aa/qemu ] || sudo mkdir -p /opt/aa/qemu
 [ -d /opt/aa/iso ] || sudo mkdir -p /opt/aa/iso
 
-sudo chown -R erik:erik /opt/aa
+sudo chown -R $USER:$USER /opt/aa
 
 ISO_LABEL='archlinux-'$(date +%Y.%m.%d)'-x86_64.iso'
 sudo cp $OUT_DIRECTORY/$ISO_LABEL $ISO_DIRECTORY
