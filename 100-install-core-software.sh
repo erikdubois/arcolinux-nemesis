@@ -64,22 +64,16 @@ sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
 sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-git
 sudo pacman -S --noconfirm --needed arcolinux-fish-git
-sudo pacman -S --noconfirm --needed arcolinux-system-config-git
 sudo pacman -S --noconfirm --needed ayu-theme
-sudo pacman -S --noconfirm --needed avahi
-sudo systemctl enable avahi-daemon.service
 sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed discord
-sudo pacman -S --noconfirm --needed dmenu
 sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed flameshot-git
 sudo pacman -S --noconfirm --needed gitahead-bin
-sudo pacman -S --noconfirm --needed gvfs-smb
 sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed nomacs
-sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed polkit-gnome
 sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed simplescreenrecorder
@@ -175,17 +169,23 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed arcolinux-logout-git
   sudo pacman -S --noconfirm --needed arcolinux-paru-git
   sudo pacman -S --noconfirm --needed arcolinux-root-git
+  sudo pacman -S --noconfirm --needed arcolinux-system-config-git
   sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
   sudo pacman -S --noconfirm --needed arcolinux-variety-git
   sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
   sudo pacman -S --noconfirm --needed arcolinux-zsh-git
+  sudo pacman -S --noconfirm --needed avahi
+  sudo systemctl enable avahi-daemon.service
   sudo pacman -S --noconfirm --needed bat
+  sudo pacman -S --noconfirm --needed dmenu
   sudo pacman -S --noconfirm --needed expac
   sudo pacman -S --noconfirm --needed feh
+  sudo pacman -S --noconfirm --needed gvfs-smb
   sudo pacman -S --noconfirm --needed hardcode-fixer-git
   sudo pacman -S --noconfirm --needed hw-probe
   sudo pacman -S --noconfirm --needed meld
   sudo pacman -S --noconfirm --needed neofetch
+  sudo pacman -S --noconfirm --needed nss-mdns
   sudo pacman -S --noconfirm --needed oh-my-zsh-git
   sudo pacman -S --noconfirm --needed paru-bin
   sudo pacman -S --noconfirm --needed rate-mirrors-bin
@@ -208,6 +208,14 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed ttf-roboto
   sudo pacman -S --noconfirm --needed ttf-roboto-mono
   sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
+
+  echo
+  echo "################################################################"
+  echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
+  echo "################################################################"
+  echo
+  sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
+  sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
 
   # when on Plasma
 
