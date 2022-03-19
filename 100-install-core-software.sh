@@ -78,6 +78,7 @@ sudo pacman -S --noconfirm --needed gvfs-smb
 sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed nomacs
+sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed polkit-gnome
 sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed simplescreenrecorder
