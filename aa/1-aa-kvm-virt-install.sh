@@ -26,6 +26,9 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+# build your own personal AA iso
+# https://www.arcolinuxiso.com/aa/
+# create your own arcolinux-nemesis scripts
 # install qemu with arcolinux-nemesis script
 
 echo
