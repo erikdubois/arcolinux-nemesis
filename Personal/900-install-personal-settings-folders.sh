@@ -76,7 +76,7 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 	REPLACE="theme-name=Arc-Dark"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
 
-	sudo cp settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
+	sudo cp $installed_dir/settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
 
 	FIND="#background="
 	REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
