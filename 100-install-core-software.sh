@@ -67,6 +67,7 @@ sudo pacman -S --noconfirm --needed arcolinux-fish-git
 sudo pacman -S --noconfirm --needed arcolinux-system-config-git
 sudo pacman -S --noconfirm --needed ayu-theme
 sudo pacman -S --noconfirm --needed avahi
+sudo systemctl enable avahi-daemon.service
 sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed discord
