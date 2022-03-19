@@ -70,6 +70,20 @@ cd ~/VirtualBox\ VMs/
 tar -xzf template.tar.gz
 rm -f template.tar.gz
 
+if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
+
+	FIND="#theme-name="
+	REPLACE="theme-name=Arc-Dark"
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
+
+	sudo cp settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
+
+	FIND="#background="
+	REPLACE="background=/etc/lightdm/lightdm.jpg"
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
+
+  fi
+
 echo
 tput setaf 2
 echo "################################################################"
