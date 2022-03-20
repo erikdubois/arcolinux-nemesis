@@ -95,7 +95,7 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo		
 		cp $installed_dir/settings/archlinux/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 	fi
-	
+
 	if grep -q "carli" /etc/os-release; then
 		echo
 		echo "Changing the whiskermenu"
@@ -103,6 +103,13 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		cp $installed_dir/settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 	fi
 
+fi
+
+if grep -q "carli" /etc/os-release; then
+	echo
+	echo "Changing sddm menu"
+	echo
+	sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
 fi
 
 echo
