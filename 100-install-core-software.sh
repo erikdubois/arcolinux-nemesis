@@ -161,7 +161,7 @@ fi
 if grep -q "carli" /etc/os-release; then
   sudo pacman -R --noconfirm carli-xfce-config
   sudo pacman -R --noconfirm grml-zsh-config
-  rm /etc/pacman.d/hooks/lsb-release.hook
+  sudo rm -f /etc/pacman.d/hooks/lsb-release.hook
   sudo pacman -R --noconfirm lsb-release
 fi
 
