@@ -156,6 +156,15 @@ fi
 
 ###############################################################################################
 
+# when on Carli - remove conflicting files 
+
+if grep -q "carli" /etc/os-release; then
+  sudo pacman -R --noconfirm carli-xfce-config
+  sudo pacman -R --noconfirm grml-zsh-config
+  rm /etc/pacman.d/hooks/lsb-release.hook
+fi
+
+
 # when on Arch Linux
 
 if grep -q "Arch Linux" /etc/os-release; then
