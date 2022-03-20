@@ -84,6 +84,10 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 
 fi
 
+if grep -q "carli" /etc/os-release; then
+	cp settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+fi
+
 echo
 tput setaf 2
 echo "################################################################"
