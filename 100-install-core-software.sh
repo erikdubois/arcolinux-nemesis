@@ -65,6 +65,7 @@ sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
 sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-git
 sudo pacman -S --noconfirm --needed arcolinux-fish-git
 sudo pacman -S --noconfirm --needed ayu-theme
+sudo pacman -S --noconfirm --needed bibata-cursor-theme-bin
 sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed discord
