@@ -168,6 +168,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   echo
   sudo pacman -S --noconfirm --needed alacritty
   sudo pacman -S --noconfirm --needed arcolinux-alacritty-git
+  sudo pacman -S --noconfirm --needed arcolinux-hblock-git
   sudo pacman -S --noconfirm --needed arcolinux-logout-git
   sudo pacman -S --noconfirm --needed arcolinux-paru-git
   sudo pacman -S --noconfirm --needed arcolinux-root-git
