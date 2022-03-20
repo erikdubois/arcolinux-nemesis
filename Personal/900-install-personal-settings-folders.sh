@@ -85,7 +85,7 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 fi
 
 if grep -q "carli" /etc/os-release; then
-	cp settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+	cp $installed_dir/settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 fi
 
 echo
