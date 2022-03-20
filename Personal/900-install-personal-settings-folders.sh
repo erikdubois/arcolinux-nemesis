@@ -84,8 +84,14 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 
 fi
 
-if grep -q "carli" /etc/os-release; then
-	cp $installed_dir/settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+if [ -f /usr/share/xsessions/xfce.desktop ]; then
+	if grep -q "carli" /etc/os-release; then
+		cp $installed_dir/settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+	fi
+
+	if grep -q "Arch Linux" /etc/os-release; then
+		cp $installed_dir/settings/archlinux/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+	fi
 fi
 
 echo
