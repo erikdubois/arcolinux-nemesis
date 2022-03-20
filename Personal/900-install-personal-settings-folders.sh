@@ -72,6 +72,10 @@ rm -f template.tar.gz
 
 if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 
+	echo
+	echo "Changing the look of lightdm gtk greeter"
+	echo
+
 	FIND="#theme-name="
 	REPLACE="theme-name=Arc-Dark"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
@@ -86,10 +90,16 @@ fi
 
 if [ -f /usr/share/xsessions/xfce.desktop ]; then
 	if grep -q "carli" /etc/os-release; then
+		echo
+		echo "Changing the whiskermenu"
+		echo
 		cp $installed_dir/settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 	fi
 
 	if grep -q "Arch Linux" /etc/os-release; then
+		echo
+		echo "Changing the whiskermenu"
+		echo		
 		cp $installed_dir/settings/archlinux/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 	fi
 fi
