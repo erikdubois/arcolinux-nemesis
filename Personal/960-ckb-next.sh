@@ -36,7 +36,7 @@ if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 	sudo systemctl enable ckb-next-daemon
 	sudo systemctl start ckb-next-daemon
 
-	cp -f $installed_dir/settings/ckb-next/ckb-next.desktop $HOME"/.config/autostart/ckb-next.desktop"
+	cp -f $installed_dir/Personal/settings/ckb-next/ckb-next.desktop $HOME"/.config/autostart/ckb-next.desktop"
 
 	echo
 	tput setaf 2
