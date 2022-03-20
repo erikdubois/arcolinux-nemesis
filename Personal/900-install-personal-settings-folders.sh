@@ -103,6 +103,13 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		cp $installed_dir/settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 	fi
 
+	if grep -q "AA" /etc/dev-rel; then
+	echo
+	echo "Changing the whiskermenu"
+	echo
+	cp $installed_dir/settings/aa/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+	fi
+
 fi
 
 if grep -q "carli" /etc/os-release; then
