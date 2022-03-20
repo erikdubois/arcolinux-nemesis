@@ -110,6 +110,9 @@ if grep -q "carli" /etc/os-release; then
 	echo "Changing sddm menu"
 	echo
 	sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
+	FIND="Current=breeze"
+	REPLACE="Current=arcolinux-simplicity"
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 fi
 
 echo
