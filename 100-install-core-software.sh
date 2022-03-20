@@ -185,6 +185,8 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed gvfs-smb
   sudo pacman -S --noconfirm --needed hardcode-fixer-git
   sudo pacman -S --noconfirm --needed hw-probe
+  sudo pacman -S --noconfirm --needed man-db
+  sudo pacman -S --noconfirm --needed man-pages  
   sudo pacman -S --noconfirm --needed meld
   sudo pacman -S --noconfirm --needed neofetch
   sudo pacman -S --noconfirm --needed nss-mdns
