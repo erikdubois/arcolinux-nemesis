@@ -58,6 +58,16 @@ if grep -q "Arch Linux" /etc/os-release; then
   fi
 fi
 
+# when on Carli - remove conflicting files 
+
+if grep -q "carli" /etc/os-release; then
+  sudo pacman -R --noconfirm carli-xfce-config
+  sudo pacman -R --noconfirm grml-zsh-config
+  sudo pacman -R --noconfirm carli-neofetch
+  sudo rm -f /etc/pacman.d/hooks/lsb-release.hook
+  sudo pacman -R --noconfirm lsb-release
+fi
+
 sudo pacman -S --noconfirm --needed aic94xx-firmware
 sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
@@ -155,16 +165,6 @@ if [ -f /usr/bin/startplasma-x11 ]; then
 fi
 
 ###############################################################################################
-
-# when on Carli - remove conflicting files 
-
-if grep -q "carli" /etc/os-release; then
-  sudo pacman -R --noconfirm carli-xfce-config
-  sudo pacman -R --noconfirm grml-zsh-config
-  sudo pacman -R --noconfirm carli-neofetch
-  sudo rm -f /etc/pacman.d/hooks/lsb-release.hook
-  sudo pacman -R --noconfirm lsb-release
-fi
 
 
 # when on Arch Linux
