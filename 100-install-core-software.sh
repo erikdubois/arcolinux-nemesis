@@ -61,6 +61,14 @@ fi
 # when on Carli - remove conflicting files 
 
 if grep -q "carli" /etc/os-release; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Removing software from Carli"
+  echo "################################################################"
+  tput sgr0
+  echo
   sudo pacman -R --noconfirm carli-xfce-config
   sudo pacman -R --noconfirm grml-zsh-config
   sudo pacman -R --noconfirm carli-neofetch
@@ -69,6 +77,14 @@ if grep -q "carli" /etc/os-release; then
 fi
 
 # here we assume we are on anything Arch Linux based - ArcoLinux as a rule
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Installing software for anything Arch based"
+echo "################################################################"
+tput sgr0
+echo
 
 sudo pacman -S --noconfirm --needed aic94xx-firmware
 sudo pacman -S --noconfirm --needed arc-gtk-theme
@@ -110,8 +126,17 @@ sudo pacman -S --noconfirm --needed wps-office-mime
 #nemesis-repo added to /etc/pacman.conf
 
 if grep -q nemesis_repo /etc/pacman.conf; then
-  echo "nemesis_repo is already in /etc/pacman.conf"
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### nemesis_repo is already in /etc/pacman.conf"
+  echo "################################################################"
+  tput sgr0
+  echo  
+
 else
+
 echo '
 
 [nemesis_repo]
@@ -120,6 +145,14 @@ Server = https://erikdubois.github.io/$repo/$arch' | sudo tee -a /etc/pacman.con
 fi
 
 sudo pacman -Sy
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Installing software from nemesis_repo"
+echo "################################################################"
+tput sgr0
+echo  
 
 sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-git
 sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-grey-git
