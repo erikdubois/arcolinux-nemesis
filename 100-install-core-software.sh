@@ -68,6 +68,8 @@ if grep -q "carli" /etc/os-release; then
   sudo pacman -R --noconfirm lsb-release
 fi
 
+# here we assume we are on anything Arch Linux based - ArcoLinux as a rule
+
 sudo pacman -S --noconfirm --needed aic94xx-firmware
 sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
