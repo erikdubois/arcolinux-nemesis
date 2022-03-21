@@ -42,6 +42,14 @@ sh 200-software-AUR-repo*
 #sh 310-sardi-mint-y-icons-AUR-repo*
 #sh 320-surfn-mint-y-icons-git-AUR-repo*
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Going to the Personal folder"
+echo "################################################################"
+tput sgr0
+echo 
+
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 cd $installed_dir/Personal
 
