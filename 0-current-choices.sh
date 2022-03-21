@@ -42,7 +42,8 @@ sh 200-software-AUR-repo*
 #sh 310-sardi-mint-y-icons-AUR-repo*
 #sh 320-surfn-mint-y-icons-git-AUR-repo*
 
-cd ~/DATA/arcolinux-nemesis/Personal
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+cd $installed_dir/Personal
 
 sh 900-install-personal-settings-folders*
 sh 905-install-personal-settings-bookmarks*
