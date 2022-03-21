@@ -178,7 +178,7 @@ if [ -f /usr/share/xsessions/leftwm.desktop ]; then
 
 
   sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
-  sh ~/.config/leftwm/scripts/install-all-arcolinux-themes-peter.sh
+  sh ~/.config/leftwm/scripts/install-all-arcolinux-community-themes.sh
 fi
 
 ###############################################################################################
@@ -356,7 +356,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   if [ -f /usr/bin/leftwm ]; then
 
     sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
-    sh ~/.config/leftwm/scripts/install-all-arcolinux-themes-peter.sh
+    sh ~/.config/leftwm/scripts/install-all-arcolinux-community-themes.sh
 
   fi
 
