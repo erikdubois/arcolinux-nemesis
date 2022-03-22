@@ -33,8 +33,8 @@ if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 	installed_dir=$(dirname `pwd`)
 	[ -d $HOME"/.config/ckb-next" ] || mkdir -p $HOME"/.config/ckb-next"
 
-	cp -r $installed_dir/settings/ckb-next/ckb-next.conf ~/.config/ckb-next.conf
-	cp -f $installed_dir/settings/ckb-next/ckb-next.autostart.desktop ~/.config/autostart/ckb-next.autostart.desktop
+	cp -r $installed_dir/settings/Personal/ckb-next/ckb-next.conf ~/.config/ckb-next.conf
+	cp -f $installed_dir/settings/Personal/ckb-next/ckb-next.autostart.desktop ~/.config/autostart/ckb-next.autostart.desktop
 	
 	sudo systemctl enable ckb-next-daemon
 	sudo systemctl start ckb-next-daemon
