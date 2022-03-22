@@ -32,11 +32,12 @@ if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 	sudo pacman -S --noconfirm --needed ckb-next-git
 	installed_dir=$(dirname `pwd`)
 	[ -d $HOME"/.config/ckb-next" ] || mkdir -p $HOME"/.config/ckb-next"
-	cp -r $installed_dir/Personal/settings/ckb-next/ckb-next.conf ~/.config/ckb-next.conf
+
+	cp -r $installed_dir/settings/ckb-next/ckb-next.conf ~/.config/ckb-next.conf
+	cp -f $installed_dir/settings/ckb-next.autostart.desktop $HOME"/.config/autostart/ckb-next.autostart.desktop"
+	
 	sudo systemctl enable ckb-next-daemon
 	sudo systemctl start ckb-next-daemon
-
-	cp -f $installed_dir/Personal/settings/ckb-next.autostart.desktop $HOME"/.config/autostart/ckb-next.autostart.desktop"
 
 	echo
 	tput setaf 2
