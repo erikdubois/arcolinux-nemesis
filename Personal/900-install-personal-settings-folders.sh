@@ -110,6 +110,14 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
 	cp $installed_dir/settings/aa/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 	fi
 
+	FIND="Arc-Dark"
+	REPLACE="Arc-Dawn-Dark"
+	sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
+
+	FIND="Sardi-Arc"
+	REPLACE="Edu-Papirus-Dark-Tela"
+	sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
+
 fi
 
 if grep -q "carli" /etc/os-release; then
