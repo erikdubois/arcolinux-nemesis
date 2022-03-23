@@ -130,18 +130,6 @@ if grep -q "carli" /etc/os-release; then
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 fi
 
-if [ -f /usr/share/xsessions/cinnamon.desktop ]; then
-	if [ -f /usr/bin/sddm ]; then
-		echo
-		echo "Changing sddm theme"
-		echo
-		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-		FIND="Current=breeze"
-		REPLACE="Current=arcolinux-simplicity"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
-	fi
-fi
-
 echo
 tput setaf 2
 echo "################################################################"
