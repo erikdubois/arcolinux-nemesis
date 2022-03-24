@@ -55,13 +55,6 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 		REPLACE="Current=arcolinux-simplicity"
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 
-		echo
-		echo "Changing neofetch logo to Arch"
-		echo
-		sudo cp $installed_dir/settings/os-release/os-release /usr/lib/os-release
-		sudo cp $installed_dir/settings/os-release/os-release /usr/lib/os-release-arcolinux
-		sudo cp $installed_dir/settings/lsb-release/lsb-release /etc/lsb-release
-
 	fi
 
 fi

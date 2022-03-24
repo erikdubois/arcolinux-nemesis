@@ -73,34 +73,4 @@ if [ -f /usr/local/bin/get-nemesis-on-aa ]; then
 
 	fi
 
-	if [ -f /usr/share/xsessions/plasma.desktop ]; then
-		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on Plasma"
-		echo "################################################################"
-		tput sgr0
-		echo
-	fi
-
-	if [ -f /usr/share/xsessions/mate.desktop ]; then
-		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on Mate"
-		echo "################################################################"
-		tput sgr0
-		echo
-	fi
-
-	if [ -f /usr/share/xsessions/cinnamon.desktop ]; then
-		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on Cinnamon"
-		echo "################################################################"
-		tput sgr0
-		echo
-	fi	
-
 fi
