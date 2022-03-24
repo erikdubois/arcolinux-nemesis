@@ -110,15 +110,15 @@ sudo pacman -S --noconfirm --needed sublime-text-4
 sudo pacman -S --noconfirm --needed surfn-icons-git
 sudo pacman -S --noconfirm --needed telegram-desktop
 sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
-sudo pacman -S --noconfirm --needed ttf-wps-fonts
+#sudo pacman -S --noconfirm --needed ttf-wps-fonts
 sudo pacman -S --noconfirm --needed upd72020x-fw
 sudo pacman -S --noconfirm --needed vivaldi
 sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
 sudo pacman -S --noconfirm --needed vivaldi-widevine
 sudo pacman -S --noconfirm --needed vlc
 sudo pacman -S --noconfirm --needed wd719x-firmware
-sudo pacman -S --noconfirm --needed wps-office
-sudo pacman -S --noconfirm --needed wps-office-mime
+#sudo pacman -S --noconfirm --needed wps-office
+#sudo pacman -S --noconfirm --needed wps-office-mime
 
 ###############################################################################################
 
