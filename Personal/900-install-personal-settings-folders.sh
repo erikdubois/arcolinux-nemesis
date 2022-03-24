@@ -74,13 +74,36 @@ echo
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
 cp  settings/thunar/uca.xml $HOME/.config/Thunar
 echo
-echo "Copy paste virtual box template"
-echo
-[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
-sudo cp -rf settings/virtualbox-template/* ~/VirtualBox\ VMs/
-cd ~/VirtualBox\ VMs/
-tar -xzf template.tar.gz
-rm -f template.tar.gz
+
+result=$(systemd-detect-virt)
+
+if [ $result = "none" ];then
+
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "####### Copy paste virtual box template"
+	echo "################################################################"
+	tput sgr0
+	echo	
+
+	[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
+	sudo cp -rf settings/virtualbox-template/* ~/VirtualBox\ VMs/
+	cd ~/VirtualBox\ VMs/
+	tar -xzf template.tar.gz
+	rm -f template.tar.gz	
+
+else
+
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "### You are on a virtual machine - skipping VirtualBox"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+fi
 
 echo
 tput setaf 2
