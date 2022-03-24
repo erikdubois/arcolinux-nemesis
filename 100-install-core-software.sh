@@ -26,6 +26,9 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+sudo pacman -S --noconfirm --needed wget
+sudo pacman -S --noconfirm --needed git
+
 echo
 tput setaf 2
 echo "################################################################"
