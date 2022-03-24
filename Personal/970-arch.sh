@@ -15,7 +15,7 @@
 #
 ##################################################################################################################
 
-if grep -q "Arch Linux" /etc/os-release; then
+if /usr/local/bin/get-nemesis-on-arch; then
 
 	echo
 	tput setaf 2

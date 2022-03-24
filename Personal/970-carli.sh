@@ -15,7 +15,7 @@
 #
 ##################################################################################################################
 
-if grep -q "carli" /etc/os-release; then
+if /usr/local/bin/get-nemesis-on-carli; then
 
 	echo
 	tput setaf 2
