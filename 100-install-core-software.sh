@@ -75,6 +75,20 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
   sudo pacman -R --noconfirm grml-zsh-config
 fi
 
+# when on AA - remove conflicting files 
+
+if [ -f /usr/local/bin/get-nemesis-on-aa ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Removing conflicting file from AA"
+  echo "################################################################"
+  tput sgr0
+  echo
+  sudo rm /etc/skel/.Xresources
+fi
+
 # here we assume we are on anything Arch Linux based - ArcoLinux as a rule
 
 echo
