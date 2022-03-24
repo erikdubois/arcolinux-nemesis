@@ -58,7 +58,7 @@ fi
 
 # when on Carli - remove conflicting files 
 
-if grep -q "carli" /etc/os-release; then
+if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 
   echo
   tput setaf 2
