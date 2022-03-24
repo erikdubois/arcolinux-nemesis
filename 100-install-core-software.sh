@@ -370,14 +370,6 @@ if grep -q "Arch Linux" /etc/os-release; then
 
   fi
 
-  # when on Leftwm
-
-  if [ -f /usr/bin/leftwm ]; then
-
-    sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
-    sh ~/.config/leftwm/scripts/install-all-arcolinux-community-themes.sh
-  fi
-
 fi
 
 echo
