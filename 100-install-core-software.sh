@@ -34,28 +34,26 @@ echo "################################################################"
 tput sgr0
 echo
 
-if grep -q "Arch Linux" /etc/os-release; then
-  if grep -q arcolinux_repo /etc/pacman.conf; then
+if grep -q arcolinux_repo /etc/pacman.conf; then
 
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################ ArcoLinux repos are already in /etc/pacman.conf"
-    echo "################################################################"
-    tput sgr0
-    echo
-    else
-    #get the keys and mirrors for ArcoLinux
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### Getting the keys and mirrors for ArcoLinux"
-    echo "################################################################"
-    tput sgr0
-    echo
-    sh arch/get-the-keys-and-repos.sh
-    sudo pacman -Sy
-  fi
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################ ArcoLinux repos are already in /etc/pacman.conf"
+  echo "################################################################"
+  tput sgr0
+  echo
+  else
+  #get the keys and mirrors for ArcoLinux
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Getting the keys and mirrors for ArcoLinux"
+  echo "################################################################"
+  tput sgr0
+  echo
+  sh arch/get-the-keys-and-repos.sh
+  sudo pacman -Sy
 fi
 
 # when on Carli - remove conflicting files 
