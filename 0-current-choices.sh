@@ -67,6 +67,7 @@ sh 940-btrfs-setup*
 #sh 950-install-all-fonts-needed-for-conkys-of-arcolinux*
 #sh 955-install-settings-autoconnect-to-bluetooth-headset*
 sh 960-ckb-next*
+sh 970-alci*
 
 tput setaf 3
 echo "################################################################"
