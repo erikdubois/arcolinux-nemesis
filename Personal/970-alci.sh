@@ -46,4 +46,19 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml			
 	fi
 
+	if [ -f /usr/share/xsessions/cinnamon.desktop ]; then
+		echo
+		tput setaf 2
+		echo "################################################################"
+		echo "################### We are on Cinnamon"
+		echo "################################################################"
+		tput sgr0
+		echo
+
+		echo "Changing the icons and theme"
+		echo
+		cp $installed_dir/settings/cinnamon/user ~/.config/dconf/user
+		
+	fi
+
 fi
