@@ -82,11 +82,12 @@ if [ -f /usr/local/bin/get-nemesis-on-aa ]; then
   echo
   tput setaf 2
   echo "################################################################"
-  echo "################### Removing conflicting file from AA"
+  echo "################### Removing software from AA"
   echo "################################################################"
   tput sgr0
   echo
   sudo rm /etc/skel/.Xresources
+  sudo pacman -R --noconfirm grml-zsh-config
 fi
 
 # here we assume we are on anything Arch Linux based - ArcoLinux as a rule
