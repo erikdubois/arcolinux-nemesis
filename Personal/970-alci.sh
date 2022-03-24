@@ -18,39 +18,6 @@
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
-  if grep -q arcolinux_repo /etc/pacman.conf; then
-
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################ ArcoLinux repos are already in /etc/pacman.conf"
-    echo "################################################################"
-    tput sgr0
-    echo
-    else
-    #get the keys and mirrors for ArcoLinux
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### Getting the keys and mirrors for ArcoLinux"
-    echo "################################################################"
-    tput sgr0
-    echo
-    sh arch/get-the-keys-and-repos.sh
-    sudo pacman -Sy
-  fi
-fi
-
-
-if grep -q "alci" /usr/local/bin/get-nemesis; then
-
-	echo
-	tput setaf 2
-	echo "################################################################"
-	echo "################### We are on an ALCI iso"
-	echo "################################################################"
-	tput sgr0
-	echo
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
@@ -60,36 +27,19 @@ if grep -q "alci" /usr/local/bin/get-nemesis; then
 		echo "################################################################"
 		tput sgr0
 		echo
-	fi
 
-	if [ -f /usr/share/xsessions/plasma.desktop ]; then
-		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on Plasma"
-		echo "################################################################"
-		tput sgr0
-		echo
-	fi
 
-	if [ -f /usr/share/xsessions/mate.desktop ]; then
+		echo "Changing the whiskermenu"
 		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on Mate"
-		echo "################################################################"
-		tput sgr0
-		echo
-	fi
+		cp $installed_dir/settings/alci/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 
-	if [ -f /usr/share/xsessions/cinnamon.desktop ]; then
-		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on Cinnamon"
-		echo "################################################################"
-		tput sgr0
-		echo
-	fi	
+		FIND="Arc-Dark"
+		REPLACE="Arc-Dawn-Dark"
+		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
+
+		FIND="Sardi-Arc"
+		REPLACE="Edu-Papirus-Dark-Tela"
+		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml			
+	fi
 
 fi
