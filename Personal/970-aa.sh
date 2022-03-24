@@ -15,12 +15,12 @@
 #
 ##################################################################################################################
 
-if grep -q "carli" /etc/os-release; then
+if grep -q "AA" /etc/dev-rel; then
 
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "################### We are on a CARLI iso"
+	echo "################### We are on a AA iso"
 	echo "################################################################"
 	tput sgr0
 	echo
@@ -33,9 +33,11 @@ if grep -q "carli" /etc/os-release; then
 		echo "################################################################"
 		tput sgr0
 		echo
+
+		echo
 		echo "Changing the whiskermenu"
 		echo
-		cp $installed_dir/settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+		cp $installed_dir/settings/aa/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 
 		FIND="Arc-Dark"
 		REPLACE="Arc-Dawn-Dark"
@@ -44,14 +46,6 @@ if grep -q "carli" /etc/os-release; then
 		FIND="Sardi-Arc"
 		REPLACE="Edu-Papirus-Dark-Tela"
 		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
-
-		echo
-		echo "Changing sddm theme"
-		echo
-		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-		FIND="Current=breeze"
-		REPLACE="Current=arcolinux-simplicity"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 
 	fi
 
@@ -86,4 +80,3 @@ if grep -q "carli" /etc/os-release; then
 	fi	
 
 fi
-
