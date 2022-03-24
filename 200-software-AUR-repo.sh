@@ -69,6 +69,8 @@ fi
 echo "Checking if icons from applications have a hardcoded path"
 echo "and fixing them"
 echo "Wait for it ..."
+
+sudo pacman -S --noconfirm --needed xdg-user-dir
 sudo hardcode-fixer
 
 echo
