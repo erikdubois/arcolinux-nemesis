@@ -27,6 +27,7 @@
 ##################################################################################################################
 
 sudo pacman -S --noconfirm --needed wget
+sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed git
 
 echo
