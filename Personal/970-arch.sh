@@ -15,7 +15,7 @@
 #
 ##################################################################################################################
 
-if /usr/local/bin/get-nemesis-on-arch; then
+if [ -f /usr/local/bin/get-nemesis-on-arch ]; then
 
 	echo
 	tput setaf 2

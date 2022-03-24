@@ -15,7 +15,7 @@
 #
 ##################################################################################################################
 
-if /usr/local/bin/get-nemesis-on-carli; then
+if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 
 	echo
 	tput setaf 2
