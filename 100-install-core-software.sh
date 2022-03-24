@@ -77,7 +77,7 @@ fi
 
 # when on AA - remove conflicting files 
 
-if [ -f /usr/local/bin/get-nemesis-on-aa ]; then
+if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 
   echo
   tput setaf 2
