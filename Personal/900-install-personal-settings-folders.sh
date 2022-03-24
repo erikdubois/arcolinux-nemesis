@@ -70,51 +70,6 @@ cd ~/VirtualBox\ VMs/
 tar -xzf template.tar.gz
 rm -f template.tar.gz
 
-if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
-
-	echo
-	echo "Changing the look of lightdm gtk greeter"
-	echo
-
-	FIND="#theme-name="
-	REPLACE="theme-name=Arc-Dark"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
-
-	sudo cp $installed_dir/settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
-
-	FIND="#background="
-	REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
-
-fi
-
-if [ -f /usr/share/xsessions/xfce.desktop ]; then
-	if grep -q "Arch Linux" /etc/os-release; then
-		echo
-		echo "Changing the whiskermenu"
-		echo		
-		cp $installed_dir/settings/archlinux/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
-	fi
-
-	if grep -q "carli" /etc/os-release; then
-		echo
-		echo "Changing the whiskermenu"
-		echo
-		cp $installed_dir/settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
-	fi
-
-fi
-
-if grep -q "carli" /etc/os-release; then
-	echo
-	echo "Changing sddm theme"
-	echo
-	sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-	FIND="Current=breeze"
-	REPLACE="Current=arcolinux-simplicity"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
-fi
-
 echo
 tput setaf 2
 echo "################################################################"

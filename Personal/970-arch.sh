@@ -15,12 +15,12 @@
 #
 ##################################################################################################################
 
-if grep -q "AA" /etc/dev-rel; then
+if grep -q "Arch Linux" /etc/os-release; then
 
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "################### We are on a AA iso"
+	echo "################### We are on an ARCH LINUX BASED iso"
 	echo "################################################################"
 	tput sgr0
 	echo
@@ -33,11 +33,9 @@ if grep -q "AA" /etc/dev-rel; then
 		echo "################################################################"
 		tput sgr0
 		echo
-
-		echo
 		echo "Changing the whiskermenu"
 		echo
-		cp $installed_dir/settings/aa/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+		cp $installed_dir/settings/archlinux/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 
 		FIND="Arc-Dark"
 		REPLACE="Arc-Dawn-Dark"
@@ -47,23 +45,13 @@ if grep -q "AA" /etc/dev-rel; then
 		REPLACE="Edu-Papirus-Dark-Tela"
 		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
 
-		if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
-
-			echo
-			echo "Changing the look of lightdm gtk greeter"
-			echo
-
-			FIND="#theme-name="
-			REPLACE="theme-name=Arc-Dark"
-			sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
-
-			sudo cp $installed_dir/settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
-
-			FIND="#background="
-			REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
-			sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
-
-		fi
+		echo
+		echo "Changing sddm theme"
+		echo
+		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
+		FIND="Current=breeze"
+		REPLACE="Current=arcolinux-simplicity"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 
 	fi
 
@@ -98,3 +86,4 @@ if grep -q "AA" /etc/dev-rel; then
 	fi	
 
 fi
+

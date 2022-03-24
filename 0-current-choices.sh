@@ -69,6 +69,7 @@ sh 940-btrfs-setup*
 sh 960-ckb-next*
 sh 970-alci*
 sh 970-aa*
+sh 970-arch*
 sh 970-carli*
 
 tput setaf 3
