@@ -15,37 +15,12 @@
 #
 ##################################################################################################################
 
-if grep -q "Arch Linux" /etc/os-release; then
-  if grep -q arcolinux_repo /etc/pacman.conf; then
-
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################ ArcoLinux repos are already in /etc/pacman.conf"
-    echo "################################################################"
-    tput sgr0
-    echo
-    else
-    #get the keys and mirrors for ArcoLinux
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### Getting the keys and mirrors for ArcoLinux"
-    echo "################################################################"
-    tput sgr0
-    echo
-    sh arch/get-the-keys-and-repos.sh
-    sudo pacman -Sy
-  fi
-fi
-
-
-if grep -q "alci" /usr/local/bin/get-nemesis; then
+if grep -q "carli" /etc/os-release; then
 
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "################### We are on an ALCI iso"
+	echo "################### We are on a CARLI iso"
 	echo "################################################################"
 	tput sgr0
 	echo
@@ -58,6 +33,26 @@ if grep -q "alci" /usr/local/bin/get-nemesis; then
 		echo "################################################################"
 		tput sgr0
 		echo
+		echo "Changing the whiskermenu"
+		echo
+		cp $installed_dir/settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+
+		FIND="Arc-Dark"
+		REPLACE="Arc-Dawn-Dark"
+		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
+
+		FIND="Sardi-Arc"
+		REPLACE="Edu-Papirus-Dark-Tela"
+		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
+
+		echo
+		echo "Changing sddm theme"
+		echo
+		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
+		FIND="Current=breeze"
+		REPLACE="Current=arcolinux-simplicity"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
+
 	fi
 
 	if [ -f /usr/share/xsessions/plasma.desktop ]; then
@@ -93,47 +88,6 @@ if grep -q "alci" /usr/local/bin/get-nemesis; then
 fi
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	if grep -q "AA" /etc/dev-rel; then
-	echo
-	echo "Changing the whiskermenu"
-	echo
-	cp $installed_dir/settings/aa/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
-	fi
-
-	FIND="Arc-Dark"
-	REPLACE="Arc-Dawn-Dark"
-	sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
-
-	FIND="Sardi-Arc"
-	REPLACE="Edu-Papirus-Dark-Tela"
-	sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
-
-fi
-
-if grep -q "carli" /etc/os-release; then
-	echo
-	echo "Changing sddm theme"
-	echo
-	sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-	FIND="Current=breeze"
-	REPLACE="Current=arcolinux-simplicity"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
-fi
 
 
 
