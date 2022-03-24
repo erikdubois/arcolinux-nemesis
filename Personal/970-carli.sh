@@ -58,9 +58,8 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 		echo
 		echo "Changing neofetch logo to Arch"
 		echo
-		sudo rm /usr/lib/os-release-arcolinux
-		sudo pacman -S filesystem --noconfirm
-		sudo cp /usr/lib/os-release /usr/lib/os-release-arcolinux
+		cp $installed_dir/settings/os-release/os-release /usr/lib/os-release
+		cp $installed_dir/settings/os-release/os-release /usr/lib/os-release-arcolinux
 
 	fi
 
