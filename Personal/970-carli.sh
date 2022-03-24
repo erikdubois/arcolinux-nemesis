@@ -55,37 +55,13 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 		REPLACE="Current=arcolinux-simplicity"
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 
-	fi
+		echo
+		echo "Changing neofetch logo to Arch"
+		echo
+		sudo rm /usr/lib/os-release-arcolinux
+		sudo pacman -S filesystem --noconfirm
+		sudo cp /usr/lib/os-release /usr/lib/os-release-arcolinux
 
-	if [ -f /usr/share/xsessions/plasma.desktop ]; then
-		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on Plasma"
-		echo "################################################################"
-		tput sgr0
-		echo
 	fi
-
-	if [ -f /usr/share/xsessions/mate.desktop ]; then
-		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on Mate"
-		echo "################################################################"
-		tput sgr0
-		echo
-	fi
-
-	if [ -f /usr/share/xsessions/cinnamon.desktop ]; then
-		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on Cinnamon"
-		echo "################################################################"
-		tput sgr0
-		echo
-	fi	
 
 fi
-
