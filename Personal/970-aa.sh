@@ -15,7 +15,7 @@
 #
 ##################################################################################################################
 
-if grep -q "AA" /etc/dev-rel; then
+if -f /usr/local/bin/get-nemesis-on-aa; then
 
 	echo
 	tput setaf 2
