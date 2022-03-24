@@ -29,6 +29,8 @@
 # software from AUR (Arch User Repositories)
 # https://aur.archlinux.org/packages/
 
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+
 echo
 tput setaf 2
 echo "################################################################"
@@ -49,7 +51,6 @@ if [ $result = "none" ];then
 	tput sgr0
 	echo	
 
-	installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 	sh AUR/install-virtualbox-for-linux-v2.sh	
 
 else
@@ -70,7 +71,7 @@ echo "Checking if icons from applications have a hardcoded path"
 echo "and fixing them"
 echo "Wait for it ..."
 
-sudo pacman -S --noconfirm --needed xdg-user-dir
+sudo pacman -S --noconfirm --needed xdg-user-dirs
 sudo hardcode-fixer
 
 echo
