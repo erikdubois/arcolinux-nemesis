@@ -33,6 +33,10 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		echo
 		cp $installed_dir/settings/alci/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 
+		echo
+		echo "Changing the icons and theme"
+		echo
+
 		FIND="Arc-Dark"
 		REPLACE="Arc-Dawn-Dark"
 		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
