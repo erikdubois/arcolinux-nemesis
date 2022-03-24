@@ -15,6 +15,8 @@
 #
 ##################################################################################################################
 
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+
 echo
 tput setaf 2
 echo "################################################################"
@@ -38,7 +40,6 @@ echo
 echo
 echo "Installing all shell files"
 echo
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 cp $installed_dir/settings/shell-personal/.bashrc-personal ~
 cp $installed_dir/settings/shell-personal/.zshrc ~
 cp $installed_dir/settings/shell-personal/.zshrc-personal ~
