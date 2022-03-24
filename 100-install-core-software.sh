@@ -73,9 +73,6 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
   echo
   sudo pacman -R --noconfirm carli-xfce-config
   sudo pacman -R --noconfirm grml-zsh-config
-  sudo pacman -R --noconfirm carli-neofetch
-  sudo rm -f /etc/pacman.d/hooks/lsb-release.hook
-  sudo pacman -R --noconfirm lsb-release
 fi
 
 # here we assume we are on anything Arch Linux based - ArcoLinux as a rule
