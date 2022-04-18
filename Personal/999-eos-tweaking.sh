@@ -28,7 +28,7 @@
 
 # when on EOS
 
-if grep -q "EndeavourOS" /etc/os-release; then
+#if grep -q "EndeavourOS" /etc/os-release; then
     echo
     tput setaf 2
     echo "################################################################"
@@ -38,7 +38,7 @@ if grep -q "EndeavourOS" /etc/os-release; then
     sudo pacman -R --noconfirm arc-gtk-theme-eos
     sudo pacman -R --noconfirm endeavouros-skel-default endeavouros-skel-xfce4
     sudo pacman -R --noconfirm firewalld
-    
+
     sudo pacman -S --noconfirm --needed arc-gtk-theme
     sudo pacman -S --noconfirm --needed arcolinux-root-git
 
@@ -69,8 +69,6 @@ if grep -q "EndeavourOS" /etc/os-release; then
     sudo pacman -S --noconfirm --needed neofetch
     sudo pacman -S --noconfirm --needed nss-mdns
     sudo pacman -S --noconfirm --needed oh-my-zsh-git
-    sudo pacman -S --noconfirm --needed paru-bin
-    sudo pacman -S --noconfirm --needed rate-mirrors-bin
     sudo pacman -S --noconfirm --needed ripgrep
     sudo pacman -S --noconfirm --needed variety
     sudo pacman -S --noconfirm --needed zsh
@@ -201,4 +199,4 @@ if grep -q "EndeavourOS" /etc/os-release; then
     tput sgr0
     echo
 
-fi
+#fi
