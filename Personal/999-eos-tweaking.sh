@@ -2,8 +2,8 @@
 #set -e
 ##################################################################################################################
 # Author 	: Erik Dubois
-# Website : https://www.erikdubois.be
-# Website : https://www.alci.online
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
 # Website	: https://www.arcolinux.info
 # Website	: https://www.arcolinux.com
 # Website	: https://www.arcolinuxd.com
@@ -29,78 +29,176 @@
 # when on EOS
 
 if grep -q "EndeavourOS" /etc/os-release; then
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "############### Installing/removing software for EOS"
+    echo "################################################################"
+    tput sgr0
+    sudo pacman -R --noconfirm arc-gtk-theme-eos
+    sudo pacman -R --noconfirm endeavouros-skel-default endeavouros-skel-xfce4
+    sudo pacman -S --noconfirm --needed arc-gtk-theme
+    sudo pacman -S --noconfirm --needed arcolinux-root-git
+    sudo pacman -S --noconfirm --needed arcolinux-xfce-git
+    sudo pacman -S --noconfirm --needed ripgrep
+
+
+    sudo pacman -S --noconfirm --needed alacritty
+    sudo pacman -S --noconfirm --needed arcolinux-alacritty-git
+    sudo pacman -S --noconfirm --needed arcolinux-hblock-git
+    sudo pacman -S --noconfirm --needed arcolinux-logout-git
+    sudo pacman -S --noconfirm --needed arcolinux-paru-git
+    sudo pacman -S --noconfirm --needed arcolinux-root-git
+    sudo pacman -S --noconfirm --needed arcolinux-system-config-dev-git  
+    sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
+    sudo pacman -S --noconfirm --needed arcolinux-variety-git
+    sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
+    sudo pacman -S --noconfirm --needed arcolinux-zsh-git
+    sudo pacman -S --noconfirm --needed avahi
+    sudo systemctl enable avahi-daemon.service
+    sudo pacman -S --noconfirm --needed bat
+    sudo pacman -S --noconfirm --needed dmenu
+    sudo pacman -S --noconfirm --needed expac
+    sudo pacman -S --noconfirm --needed feh
+    sudo pacman -S --noconfirm --needed gvfs-smb
+    sudo pacman -S --noconfirm --needed hardcode-fixer-git
+    sudo pacman -S --noconfirm --needed hw-probe
+    sudo pacman -S --noconfirm --needed man-db
+    sudo pacman -S --noconfirm --needed man-pages  
+    sudo pacman -S --noconfirm --needed meld
+    sudo pacman -S --noconfirm --needed neofetch
+    sudo pacman -S --noconfirm --needed nss-mdns
+    sudo pacman -S --noconfirm --needed oh-my-zsh-git
+    sudo pacman -S --noconfirm --needed paru-bin
+    sudo pacman -S --noconfirm --needed rate-mirrors-bin
+    sudo pacman -S --noconfirm --needed ripgrep
+    sudo pacman -S --noconfirm --needed variety
+    sudo pacman -S --noconfirm --needed zsh
+    sudo pacman -S --noconfirm --needed zsh-completions
+    sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
+
+    sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
+    sudo pacman -S --noconfirm --needed awesome-terminal-fonts
+    sudo pacman -S --noconfirm --needed noto-fonts
+    sudo pacman -S --noconfirm --needed ttf-bitstream-vera
+    sudo pacman -S --noconfirm --needed ttf-dejavu
+    sudo pacman -S --noconfirm --needed ttf-droid
+    sudo pacman -S --noconfirm --needed ttf-hack
+    sudo pacman -S --noconfirm --needed ttf-inconsolata
+    sudo pacman -S --noconfirm --needed ttf-liberation
+    sudo pacman -S --noconfirm --needed ttf-roboto
+    sudo pacman -S --noconfirm --needed ttf-roboto-mono
+    sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
+
   echo
-  tput setaf 2
   echo "################################################################"
-  echo "############### Installing/removing software for EOS"
+  echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
   echo "################################################################"
-  tput sgr0
   echo
-  sudo pacman -S --noconfirm --needed alacritty
-  sudo pacman -S --noconfirm --needed arcolinux-alacritty-git
-  sudo pacman -S --noconfirm --needed arcolinux-hblock-git
-  sudo pacman -S --noconfirm --needed arcolinux-logout-git
-  sudo pacman -S --noconfirm --needed arcolinux-paru-git
-  sudo pacman -S --noconfirm --needed arcolinux-root-git
-  #sudo pacman -S --noconfirm --needed arcolinux-system-config-git
-  sudo pacman -S --noconfirm --needed arcolinux-system-config-dev-git  
-  #sudo pacman -S --noconfirm --needed lsb-release
-  sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
-  sudo pacman -S --noconfirm --needed arcolinux-variety-git
-  sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
-  sudo pacman -S --noconfirm --needed arcolinux-zsh-git
-  sudo pacman -S --noconfirm --needed avahi
-  sudo systemctl enable avahi-daemon.service
-  sudo pacman -S --noconfirm --needed bat
-  sudo pacman -S --noconfirm --needed dmenu
-  sudo pacman -S --noconfirm --needed expac
-  sudo pacman -S --noconfirm --needed feh
-  sudo pacman -S --noconfirm --needed gvfs-smb
-  sudo pacman -S --noconfirm --needed hardcode-fixer-git
-  sudo pacman -S --noconfirm --needed hw-probe
-  sudo pacman -S --noconfirm --needed man-db
-  sudo pacman -S --noconfirm --needed man-pages  
-  sudo pacman -S --noconfirm --needed meld
-  sudo pacman -S --noconfirm --needed neofetch
-  sudo pacman -S --noconfirm --needed nss-mdns
-  sudo pacman -S --noconfirm --needed oh-my-zsh-git
-  sudo pacman -S --noconfirm --needed paru-bin
-  sudo pacman -S --noconfirm --needed rate-mirrors-bin
-  sudo pacman -S --noconfirm --needed ripgrep
-  sudo pacman -S --noconfirm --needed variety
-  sudo pacman -S --noconfirm --needed yay-bin
-  sudo pacman -S --noconfirm --needed zsh
-  sudo pacman -S --noconfirm --needed zsh-completions
-  sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
+  sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
+  sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
 
-  sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
-  sudo pacman -S --noconfirm --needed awesome-terminal-fonts
-  sudo pacman -S --noconfirm --needed noto-fonts
-  sudo pacman -S --noconfirm --needed ttf-bitstream-vera
-  sudo pacman -S --noconfirm --needed ttf-dejavu
-  sudo pacman -S --noconfirm --needed ttf-droid
-  sudo pacman -S --noconfirm --needed ttf-hack
-  sudo pacman -S --noconfirm --needed ttf-inconsolata
-  sudo pacman -S --noconfirm --needed ttf-liberation
-  sudo pacman -S --noconfirm --needed ttf-roboto
-  sudo pacman -S --noconfirm --needed ttf-roboto-mono
-  sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
+  # when on Plasma
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### SKEL !!!"
-echo "################################################################"
-tput sgr0
-echo
+  if [ -f /usr/bin/startplasma-x11 ]; then
 
-cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
-cp -arf /etc/skel/. ~
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Installing software for Arch Linux - Plasma"
+    echo "################################################################"
+    tput sgr0
+    echo    
+    sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
+    sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
+    sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
+    sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Software installed"
-echo "################################################################"
-tput sgr0
-echo
+  fi
+
+  # when on Xfce4
+
+  if [ -f /usr/share/xsessions/xfce.desktop ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Installing software for Arch Linux - Xfce4"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    sudo pacman -S --noconfirm --needed arcolinux-local-xfce4-git
+    sudo pacman -S --noconfirm --needed sardi-icons
+    sudo pacman -S --noconfirm --needed arcolinux-xfce-git
+  fi
+
+  # when on i3
+
+  if [ -f /usr/share/xsessions/i3.desktop ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Installing software for Arch Linux - i3wm"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    sudo pacman -S --noconfirm --needed arcolinux-i3wm-git
+    sudo pacman -S --noconfirm --needed arcolinux-local-xfce4-git
+    sudo pacman -S --noconfirm --needed autotiling
+    sudo pacman -S --noconfirm --needed lxappearance
+    sudo pacman -S --noconfirm --needed nitrogen
+    sudo pacman -S --noconfirm --needed picom
+    sudo pacman -S --noconfirm --needed sardi-icons
+    sudo pacman -S --noconfirm --needed thunar
+    sudo pacman -S --noconfirm --needed thunar-archive-plugin
+    sudo pacman -S --noconfirm --needed thunar-volman
+
+  fi
+
+  # when on Cinnamon
+
+  if [ -f /usr/bin/cinnamon ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Cinnamon related applications"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    sudo pacman -S --noconfirm --needed cinnamon-translations
+    sudo pacman -S --noconfirm --needed gnome-terminal
+    sudo pacman -S --noconfirm --needed gnome-system-monitor
+    sudo pacman -S --noconfirm --needed gnome-screenshot
+    sudo pacman -S --noconfirm --needed iso-flag-png
+    sudo pacman -S --noconfirm --needed mintlocale
+    sudo pacman -S --noconfirm --needed nemo-fileroller
+
+  fi
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### SKEL !!!"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
+    cp -arf /etc/skel/. ~
+
+    source ~/.bashrc
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Software installed"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+fi
