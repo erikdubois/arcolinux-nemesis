@@ -37,10 +37,10 @@ if grep -q "EndeavourOS" /etc/os-release; then
     tput sgr0
     sudo pacman -R --noconfirm arc-gtk-theme-eos
     sudo pacman -R --noconfirm endeavouros-skel-default endeavouros-skel-xfce4
+    sudo pacman -R --noconfirm firewalld
+    
     sudo pacman -S --noconfirm --needed arc-gtk-theme
     sudo pacman -S --noconfirm --needed arcolinux-root-git
-    sudo pacman -S --noconfirm --needed arcolinux-xfce-git
-    sudo pacman -S --noconfirm --needed ripgrep
 
 
     sudo pacman -S --noconfirm --needed alacritty
@@ -49,7 +49,7 @@ if grep -q "EndeavourOS" /etc/os-release; then
     sudo pacman -S --noconfirm --needed arcolinux-logout-git
     sudo pacman -S --noconfirm --needed arcolinux-paru-git
     sudo pacman -S --noconfirm --needed arcolinux-root-git
-    sudo pacman -S --noconfirm --needed arcolinux-system-config-dev-git  
+    #sudo pacman -S --noconfirm --needed arcolinux-system-config-dev-git  
     sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
     sudo pacman -S --noconfirm --needed arcolinux-variety-git
     sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
