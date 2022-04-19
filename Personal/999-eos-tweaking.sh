@@ -34,6 +34,7 @@
 #
 ###############################################################################
 
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 func_install() {
     if pacman -Qi $1 &> /dev/null; then
@@ -275,6 +276,9 @@ tput sgr0
 echo
 
 sudo pacman -S --noconfirm --needed arcolinux-pamac-all
+
+sudo cp $installed_dir/settings/pacman-hook/archlinux-appstream-data-fix /usr/local/bin/archlinux-appstream-data-fix
+sudo cp $installed_dir/settings/pacman-hook/archlinux-appstream-data.hook /etc/pacman.d/archlinux-appstream-data.hook
 
 ###############################################################################
 

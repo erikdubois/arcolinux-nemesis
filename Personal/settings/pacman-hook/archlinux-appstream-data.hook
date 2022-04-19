@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = archlinux-appstream-data
+
+[Action]
+Description = ArcoLinux fixing icons
+When = PostTransaction
+Exec = /usr/local/bin/archlinux-appstream-data-fix
