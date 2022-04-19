@@ -243,7 +243,6 @@ leftwm-theme-git
 arcolinux-leftwm-git
 arcolinux-volumeicon-git
 polybar
-arcolinux-logout-git
 lxappearance
 nerd-fonts-source-code-pro
 volumeicon
