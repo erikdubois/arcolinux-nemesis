@@ -5,6 +5,6 @@ Type = Package
 Target = archlinux-appstream-data
 
 [Action]
-Description = ArcoLinux fixing icons
+Description = Fixing Arch Linux stream
 When = PostTransaction
 Exec = /usr/local/bin/archlinux-appstream-data-fix
