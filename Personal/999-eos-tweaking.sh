@@ -277,6 +277,8 @@ echo
 
 [ -d /etc/pacman.d/hooks ] || sudo mkdir -p /etc/pacman.d/hooks
 
+sudo pacman -S --noconfirm --needed appstream
+
 sudo cp $installed_dir/settings/pacman-hook/archlinux-appstream-data-fix /usr/local/bin/archlinux-appstream-data-fix
 sudo cp $installed_dir/settings/pacman-hook/archlinux-appstream-data.hook /etc/pacman.d/hooks/archlinux-appstream-data.hook
 
