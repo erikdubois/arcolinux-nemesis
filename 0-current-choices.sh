@@ -68,7 +68,7 @@ sh 940-btrfs-setup*
 #sh 955-install-settings-autoconnect-to-bluetooth-headset*
 sh 960-ckb-next*
 sh 970-alci*
-sh 970-aa*
+sh 970-ariser*
 sh 970-arch*
 sh 970-carli*
 sh 970-arco*

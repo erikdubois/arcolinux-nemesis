@@ -17,7 +17,7 @@
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-if [ -f /usr/local/bin/get-nemesis-on-aa ]; then
+if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 
 	echo
 	tput setaf 2
@@ -39,7 +39,7 @@ if [ -f /usr/local/bin/get-nemesis-on-aa ]; then
 		echo
 		echo "Changing the whiskermenu"
 		echo
-		cp $installed_dir/settings/aa/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+		cp $installed_dir/settings/ariser/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 
 		echo
 		echo "Changing the icons and theme"
