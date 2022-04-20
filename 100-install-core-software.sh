@@ -238,7 +238,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed arcolinux-paru-git
   sudo pacman -S --noconfirm --needed arcolinux-root-git
   #sudo pacman -S --noconfirm --needed arcolinux-system-config-git
-  sudo pacman -S --noconfirm --needed arcolinux-system-config-dev-git  
+  #sudo pacman -S --noconfirm --needed arcolinux-system-config-dev-git  
   #sudo pacman -S --noconfirm --needed lsb-release
   sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
   sudo pacman -S --noconfirm --needed arcolinux-variety-git
