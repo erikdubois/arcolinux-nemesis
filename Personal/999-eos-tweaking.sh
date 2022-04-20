@@ -97,6 +97,7 @@ func_install() {
     sudo pacman -S --noconfirm --needed neofetch
     sudo pacman -S --noconfirm --needed nss-mdns
     sudo pacman -S --noconfirm --needed oh-my-zsh-git
+    sudo pacman -S --noconfirm --needed paru    
     sudo pacman -S --noconfirm --needed ripgrep
     sudo pacman -S --noconfirm --needed variety
     sudo pacman -S --noconfirm --needed zsh
