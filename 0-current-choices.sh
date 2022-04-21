@@ -37,9 +37,8 @@ echo
 
 sh 400-remove-software*
 
-sh 100-action-per-destination*
-sh 110-install-nemesis-software*
-sh 120-install-arcolinux-software*
+sh 100-install-nemesis-software*
+sh 110-install-arcolinux-software*
 sh 130-install-core-software*
 sh 140-install-leftwm*
 

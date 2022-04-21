@@ -27,7 +27,57 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-# Here we remove applications we do not want
+# when on CARLI - remove conflicting files 
+
+if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Removing software from Carli"
+  echo "################################################################"
+  tput sgr0
+  echo
+  sudo pacman -R --noconfirm carli-xfce-config
+  sudo pacman -R --noconfirm grml-zsh-config
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Done"
+  echo "################################################################"
+  tput sgr0
+  echo  
+
+fi
+
+# when on ARISER - remove conflicting files 
+
+if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Removing software from ARISER"
+  echo "################################################################"
+  tput sgr0
+  echo
+  if [ -f /etc/skel/.bashrc ]; then
+    sudo rm /etc/skel/.bashrc
+  fi
+  #sudo rm /etc/skel/.Xresources
+  #sudo pacman -R --noconfirm grml-zsh-config
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Done"
+  echo "################################################################"
+  tput sgr0
+  echo  
+fi
+
+# when on ARCOLINUX - remove conflicting files
 
 if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
   echo
@@ -51,6 +101,8 @@ if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
   sudo pacman -Rs xf86-video-vesa --noconfirm
 
 fi
+
+# when on EOS - remove conflicting files
 
 if grep -q "EndeavourOS" /etc/os-release; then
 
