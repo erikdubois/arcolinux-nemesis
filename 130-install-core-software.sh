@@ -66,6 +66,7 @@ sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hw-probe
 sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed kvantum
+sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed man-db
 sudo pacman -S --noconfirm --needed man-pages  
 sudo pacman -S --noconfirm --needed meld
