@@ -46,15 +46,6 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	tput sgr0
 	echo
 
-  echo
-  echo "################################################################"
-  echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
-  echo "################################################################"
-  echo
-  sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
-  sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
-
-
 	# list=(
 	# )
 

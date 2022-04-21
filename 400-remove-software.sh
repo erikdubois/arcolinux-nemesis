@@ -28,29 +28,44 @@
 ##################################################################################################################
 
 # Here we remove applications we do not want
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Software to remove"
-echo "################################################################"
-tput sgr0
-echo
 
-sudo systemctl disable tlp.service
+if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "#######Software to remove from an ArcoLinux installation"
+  echo "################################################################"
+  tput sgr0
+  echo
 
-sudo pacman -Rs tlp --noconfirm
+  sudo systemctl disable tlp.service
+  sudo pacman -Rs tlp --noconfirm
+  sudo pacman -Rs broadcom-wl-dkms --noconfirm
+  sudo pacman -Rs r8168-dkms --noconfirm
+  sudo pacman -Rs xf86-video-amdgpu --noconfirm
+  sudo pacman -Rs xf86-video-fbdev --noconfirm
+  sudo pacman -Rs xf86-video-openchrome --noconfirm
+  sudo pacman -Rs xf86-video-vmware --noconfirm
+  sudo pacman -Rs xf86-video-ati --noconfirm
+  sudo pacman -Rs xf86-video-nouveau --noconfirm
+  sudo pacman -Rs xf86-video-vesa --noconfirm
 
-sudo pacman -Rs broadcom-wl-dkms --noconfirm
+fi
 
-sudo pacman -Rs r8168-dkms --noconfirm
+if grep -q "EndeavourOS" /etc/os-release; then
+  
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "############### Removing software for EOS"
+  echo "################################################################"
+  tput sgr0
 
-sudo pacman -Rs xf86-video-amdgpu --noconfirm
-sudo pacman -Rs xf86-video-fbdev --noconfirm
-sudo pacman -Rs xf86-video-openchrome --noconfirm
-sudo pacman -Rs xf86-video-vmware --noconfirm
-sudo pacman -Rs xf86-video-ati --noconfirm
-sudo pacman -Rs xf86-video-nouveau --noconfirm
-sudo pacman -Rs xf86-video-vesa --noconfirm
+  sudo pacman -R --noconfirm arc-gtk-theme-eos
+  sudo pacman -R --noconfirm endeavouros-skel-default endeavouros-skel-xfce4
+  sudo pacman -R --noconfirm firewalld
+
+fi
 
 echo
 tput setaf 2

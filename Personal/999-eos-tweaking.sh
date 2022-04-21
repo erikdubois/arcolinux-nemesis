@@ -55,30 +55,6 @@ func_install() {
     fi
 }
 
-#if grep -q "EndeavourOS" /etc/os-release; then
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "############### Installing/removing software for EOS"
-  echo "################################################################"
-  tput sgr0
-
-  sudo pacman -R --noconfirm arc-gtk-theme-eos
-  sudo pacman -R --noconfirm endeavouros-skel-default endeavouros-skel-xfce4
-  sudo pacman -R --noconfirm firewalld
-
-  #sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
-
-  echo
-  echo "################################################################"
-  echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
-  echo "################################################################"
-  echo
-  sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
-  sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
-
-#fi
-
 ###############################################################################
 
 # echo
