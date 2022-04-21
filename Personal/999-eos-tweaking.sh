@@ -91,7 +91,7 @@ func_install() {
   sudo pacman -S --noconfirm --needed noto-fonts
   sudo pacman -S --noconfirm --needed nss-mdns
   sudo pacman -S --noconfirm --needed oh-my-zsh-git
-  sudo pacman -S --noconfirm --needed paru    
+  sudo pacman -S --noconfirm --needed paru-bin  
   sudo pacman -S --noconfirm --needed ripgrep
   sudo pacman -S --noconfirm --needed ttf-bitstream-vera
   sudo pacman -S --noconfirm --needed ttf-dejavu
