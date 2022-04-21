@@ -28,6 +28,8 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		tput sgr0
 		echo
 
+		cp -arf /etc/skel/. ~
+
 		echo
 	  echo "################################################################"
 	  echo "Getting latest /etc/nsswitch.conf from ArcoLinux"

@@ -67,6 +67,8 @@ if grep -q "EndeavourOS" /etc/os-release; then
   echo
   tput sgr0
 
+  #cp -arf /etc/skel/. ~
+
   tput setaf 2
   echo "################################################################"
   echo "Done"

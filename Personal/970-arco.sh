@@ -36,6 +36,8 @@ if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
 		tput sgr0
 		echo
 
+		cp -arf /etc/skel/. ~
+
 		echo
 		echo "Changing the icons and theme"
 		echo

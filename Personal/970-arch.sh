@@ -35,6 +35,9 @@ if [ -f /usr/local/bin/get-nemesis-on-arch ]; then
 		echo "################################################################"
 		tput sgr0
 		echo
+
+		cp -arf /etc/skel/. ~
+
 		echo "Changing the whiskermenu"
 		echo
 		cp $installed_dir/settings/archlinux/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc

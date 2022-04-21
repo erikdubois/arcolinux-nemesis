@@ -34,6 +34,9 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 		echo "################### We are on Xfce4"
 		echo "################################################################"
 		tput sgr0
+
+		cp -arf /etc/skel/. ~
+
 		echo
 		echo "Changing the whiskermenu"
 		echo

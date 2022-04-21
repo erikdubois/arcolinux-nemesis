@@ -66,6 +66,8 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		tput sgr0
 		echo
 
+    cp -arf /etc/skel/. ~
+    
 		echo
 		echo "Changing the whiskermenu"
 		echo
