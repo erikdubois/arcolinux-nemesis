@@ -230,42 +230,6 @@ func_install() {
 
 #fi
 
-
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Install leftwm"
-echo "################################################################"
-tput sgr0
-echo
-
-
-list=(
-sxhkd
-leftwm-dev-git
-leftwm-theme-git
-arcolinux-leftwm-git
-arcolinux-volumeicon-git
-polybar
-lxappearance
-nerd-fonts-source-code-pro
-volumeicon
-picom
-ttf-fantasque-sans-mono
-ttf-iosevka-nerd
-ttf-material-design-iconic-font
-ttf-meslo-nerd-font-powerlevel10k
-rofi-theme-fonts
-)
-
-count=0
-
-for name in "${list[@]}" ; do
-    count=$[count+1]
-    tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-    func_install $name
-done
-
 ###############################################################################
 
 echo

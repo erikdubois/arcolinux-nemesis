@@ -26,42 +26,45 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-#nemesis-repo added to /etc/pacman.conf
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Software to install"
+echo "################################################################"
+tput sgr0
+echo
 
-if grep -q nemesis_repo /etc/pacman.conf; then
+if grep -q arcolinux_repo /etc/pacman.conf; then
 
   echo
   tput setaf 2
   echo "################################################################"
-  echo "################### nemesis_repo is already in /etc/pacman.conf"
+  echo "################ ArcoLinux repos are already in /etc/pacman.conf"
   echo "################################################################"
   tput sgr0
-  echo  
-
-else
-
-echo '
-
-[nemesis_repo]
-SigLevel = Optional TrustedOnly
-Server = https://erikdubois.github.io/$repo/$arch' | sudo tee -a /etc/pacman.conf
+  echo
+  else
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Getting the keys and mirrors for ArcoLinux"
+  echo "################################################################"
+  tput sgr0
+  echo
+  sh arch/get-the-keys-and-repos.sh
+  sudo pacman -Sy
 fi
 
-sudo pacman -Sy
+
+# here we assume we are on anything Arch Linux based - ArcoLinux as a rule
 
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Installing software from nemesis_repo"
+echo "################### Installing software for anything Arch based"
 echo "################################################################"
 tput sgr0
-echo  
+echo
 
-sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-git
-sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-grey-git
-sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-red-git
-sudo pacman -S --noconfirm --needed edu-candy-beauty-tela-git
-sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-git
-sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-grey-git
-sudo pacman -S --noconfirm --needed edu-skel-git
-#sudo pacman -S --noconfirm --needed edu-vimix-dark-tela-git
+#sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
+

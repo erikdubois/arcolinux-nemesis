@@ -26,94 +26,30 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-sudo pacman -S --noconfirm --needed wget
-sudo pacman -S --noconfirm --needed curl
-sudo pacman -S --noconfirm --needed git
-
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Software to install"
+echo "################### Software to install for ALL"
 echo "################################################################"
 tput sgr0
 echo
 
-if grep -q arcolinux_repo /etc/pacman.conf; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################ ArcoLinux repos are already in /etc/pacman.conf"
-  echo "################################################################"
-  tput sgr0
-  echo
-  else
-  #get the keys and mirrors for ArcoLinux
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Getting the keys and mirrors for ArcoLinux"
-  echo "################################################################"
-  tput sgr0
-  echo
-  sh arch/get-the-keys-and-repos.sh
-  sudo pacman -Sy
-fi
-
-# when on Carli - remove conflicting files 
-
-if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Removing software from Carli"
-  echo "################################################################"
-  tput sgr0
-  echo
-  sudo pacman -R --noconfirm carli-xfce-config
-  sudo pacman -R --noconfirm grml-zsh-config
-fi
-
-# when on AA - remove conflicting files 
-
-if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Removing software from AA"
-  echo "################################################################"
-  tput sgr0
-  echo
-  sudo rm /etc/skel/.Xresources
-  sudo pacman -R --noconfirm grml-zsh-config
-fi
-
-# here we assume we are on anything Arch Linux based - ArcoLinux as a rule
-
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Installing software for anything Arch based"
-echo "################################################################"
-tput sgr0
-echo
-
+#sudo pacman -S --noconfirm --needed ttf-wps-fonts
+#sudo pacman -S --noconfirm --needed wps-office
+#sudo pacman -S --noconfirm --needed wps-office-mime
 sudo pacman -S --noconfirm --needed aic94xx-firmware
-sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
-sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
-sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-git
-sudo pacman -S --noconfirm --needed arcolinux-fish-git
+sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed ayu-theme
 sudo pacman -S --noconfirm --needed bibata-cursor-theme-bin
 sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed cpuid
+sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed discord
 sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
 sudo pacman -S --noconfirm --needed flameshot-git
+sudo pacman -S --noconfirm --needed git
 sudo pacman -S --noconfirm --needed gitahead-bin
 sudo pacman -S --noconfirm --needed gitfiend
 sudo pacman -S --noconfirm --needed insync
@@ -127,78 +63,14 @@ sudo pacman -S --noconfirm --needed sublime-text-4
 sudo pacman -S --noconfirm --needed surfn-icons-git
 sudo pacman -S --noconfirm --needed telegram-desktop
 sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
-#sudo pacman -S --noconfirm --needed ttf-wps-fonts
 sudo pacman -S --noconfirm --needed upd72020x-fw
 sudo pacman -S --noconfirm --needed vivaldi
 sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
 sudo pacman -S --noconfirm --needed vivaldi-widevine
 sudo pacman -S --noconfirm --needed vlc
 sudo pacman -S --noconfirm --needed wd719x-firmware
-#sudo pacman -S --noconfirm --needed wps-office
-#sudo pacman -S --noconfirm --needed wps-office-mime
+sudo pacman -S --noconfirm --needed wget
 
-###############################################################################################
-
-#nemesis-repo added to /etc/pacman.conf
-
-if grep -q nemesis_repo /etc/pacman.conf; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### nemesis_repo is already in /etc/pacman.conf"
-  echo "################################################################"
-  tput sgr0
-  echo  
-
-else
-
-echo '
-
-[nemesis_repo]
-SigLevel = Optional TrustedOnly
-Server = https://erikdubois.github.io/$repo/$arch' | sudo tee -a /etc/pacman.conf
-fi
-
-sudo pacman -Sy
-
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Installing software from nemesis_repo"
-echo "################################################################"
-tput sgr0
-echo  
-
-sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-git
-sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-grey-git
-sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-red-git
-sudo pacman -S --noconfirm --needed edu-candy-beauty-tela-git
-sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-git
-sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-grey-git
-sudo pacman -S --noconfirm --needed edu-vimix-dark-tela-git
-
-###############################################################################################
-
-# when on Leftwm
-
-if [ -f /usr/share/xsessions/leftwm.desktop ]; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Leftwm related applications"
-  echo "################################################################"
-  tput sgr0
-  echo
-
-
-  sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
-  sh ~/.config/leftwm/scripts/install-all-arcolinux-community-themes.sh
-  
-  leftwm-theme update
-  leftwm-theme apply db-nemesis
-fi
 
 ###############################################################################################
 
@@ -231,21 +103,14 @@ if grep -q "Arch Linux" /etc/os-release; then
   echo "################################################################"
   tput sgr0
   echo
+  sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
   sudo pacman -S --noconfirm --needed alacritty
-  sudo pacman -S --noconfirm --needed arcolinux-alacritty-git
   sudo pacman -S --noconfirm --needed arcolinux-hblock-git
   sudo pacman -S --noconfirm --needed arcolinux-logout-git
-  sudo pacman -S --noconfirm --needed arcolinux-paru-git
-  sudo pacman -S --noconfirm --needed arcolinux-root-git
-  #sudo pacman -S --noconfirm --needed arcolinux-system-config-git
-  #sudo pacman -S --noconfirm --needed arcolinux-system-config-dev-git  
-  #sudo pacman -S --noconfirm --needed lsb-release
   sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
-  sudo pacman -S --noconfirm --needed arcolinux-variety-git
   sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
-  sudo pacman -S --noconfirm --needed arcolinux-zsh-git
   sudo pacman -S --noconfirm --needed avahi
-  sudo systemctl enable avahi-daemon.service
+  sudo pacman -S --noconfirm --needed awesome-terminal-fonts
   sudo pacman -S --noconfirm --needed bat
   sudo pacman -S --noconfirm --needed dmenu
   sudo pacman -S --noconfirm --needed expac
@@ -257,20 +122,12 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed man-pages  
   sudo pacman -S --noconfirm --needed meld
   sudo pacman -S --noconfirm --needed neofetch
+  sudo pacman -S --noconfirm --needed noto-fonts
   sudo pacman -S --noconfirm --needed nss-mdns
   sudo pacman -S --noconfirm --needed oh-my-zsh-git
   sudo pacman -S --noconfirm --needed paru-bin
   sudo pacman -S --noconfirm --needed rate-mirrors-bin
   sudo pacman -S --noconfirm --needed ripgrep
-  sudo pacman -S --noconfirm --needed variety
-  sudo pacman -S --noconfirm --needed yay-bin
-  sudo pacman -S --noconfirm --needed zsh
-  sudo pacman -S --noconfirm --needed zsh-completions
-  sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
-
-  sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
-  sudo pacman -S --noconfirm --needed awesome-terminal-fonts
-  sudo pacman -S --noconfirm --needed noto-fonts
   sudo pacman -S --noconfirm --needed ttf-bitstream-vera
   sudo pacman -S --noconfirm --needed ttf-dejavu
   sudo pacman -S --noconfirm --needed ttf-droid
@@ -280,6 +137,12 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo pacman -S --noconfirm --needed ttf-roboto
   sudo pacman -S --noconfirm --needed ttf-roboto-mono
   sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
+  sudo pacman -S --noconfirm --needed variety
+  sudo pacman -S --noconfirm --needed yay-bin
+  sudo pacman -S --noconfirm --needed zsh
+  sudo pacman -S --noconfirm --needed zsh-completions
+  sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
+  sudo systemctl enable avahi-daemon.service
 
   echo
   echo "################################################################"
@@ -318,10 +181,7 @@ if grep -q "Arch Linux" /etc/os-release; then
     echo "################################################################"
     tput sgr0
     echo
-
-    sudo pacman -S --noconfirm --needed arcolinux-local-xfce4-git
     sudo pacman -S --noconfirm --needed sardi-icons
-    sudo pacman -S --noconfirm --needed arcolinux-xfce-git
   fi
 
   # when on i3
@@ -337,7 +197,6 @@ if grep -q "Arch Linux" /etc/os-release; then
     echo
 
     sudo pacman -S --noconfirm --needed arcolinux-i3wm-git
-    sudo pacman -S --noconfirm --needed arcolinux-local-xfce4-git
     sudo pacman -S --noconfirm --needed autotiling
     sudo pacman -S --noconfirm --needed lxappearance
     sudo pacman -S --noconfirm --needed nitrogen

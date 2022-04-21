@@ -26,42 +26,40 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-#nemesis-repo added to /etc/pacman.conf
+# when on CARLI - remove conflicting files 
 
-if grep -q nemesis_repo /etc/pacman.conf; then
+if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 
   echo
   tput setaf 2
   echo "################################################################"
-  echo "################### nemesis_repo is already in /etc/pacman.conf"
+  echo "################### Removing software from Carli"
   echo "################################################################"
   tput sgr0
-  echo  
-
-else
-
-echo '
-
-[nemesis_repo]
-SigLevel = Optional TrustedOnly
-Server = https://erikdubois.github.io/$repo/$arch' | sudo tee -a /etc/pacman.conf
+  echo
+  sudo pacman -R --noconfirm carli-xfce-config
+  sudo pacman -R --noconfirm grml-zsh-config
 fi
 
-sudo pacman -Sy
+# when on ARISER - remove conflicting files 
+
+if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Removing software from ARISER"
+  echo "################################################################"
+  tput sgr0
+  echo
+  sudo rm /etc/skel/.Xresources
+  sudo pacman -R --noconfirm grml-zsh-config
+fi
 
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Installing software from nemesis_repo"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
-echo  
-
-sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-git
-sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-grey-git
-sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-red-git
-sudo pacman -S --noconfirm --needed edu-candy-beauty-tela-git
-sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-git
-sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-grey-git
-sudo pacman -S --noconfirm --needed edu-skel-git
-#sudo pacman -S --noconfirm --needed edu-vimix-dark-tela-git
+echo
