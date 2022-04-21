@@ -39,6 +39,15 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
   echo
   sudo pacman -R --noconfirm carli-xfce-config
   sudo pacman -R --noconfirm grml-zsh-config
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Done"
+  echo "################################################################"
+  tput sgr0
+  echo  
+
 fi
 
 # when on ARISER - remove conflicting files 
@@ -54,12 +63,14 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
   echo
   sudo rm /etc/skel/.Xresources
   sudo pacman -R --noconfirm grml-zsh-config
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Done"
+  echo "################################################################"
+  tput sgr0
+  echo  
 fi
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Done"
-echo "################################################################"
-tput sgr0
-echo
+
