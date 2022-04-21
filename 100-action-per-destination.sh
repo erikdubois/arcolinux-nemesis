@@ -62,7 +62,9 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
   echo "################################################################"
   tput sgr0
   echo
-  sudo rm /etc/skel/.bashrc
+  if [ -f /etc/skel/.bashrc ]; then
+    sudo rm /etc/skel/.bashrc
+  fi
   #sudo rm /etc/skel/.Xresources
   #sudo pacman -R --noconfirm grml-zsh-config
 
