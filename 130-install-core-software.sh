@@ -150,7 +150,6 @@ if grep -q "Arch Linux" /etc/os-release; then
     sudo pacman -S --noconfirm --needed lxappearance
     sudo pacman -S --noconfirm --needed nitrogen
     sudo pacman -S --noconfirm --needed picom
-    sudo pacman -S --noconfirm --needed sardi-icons
     sudo pacman -S --noconfirm --needed thunar
     sudo pacman -S --noconfirm --needed thunar-archive-plugin
     sudo pacman -S --noconfirm --needed thunar-volman

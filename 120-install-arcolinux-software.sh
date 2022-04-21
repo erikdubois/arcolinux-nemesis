@@ -62,6 +62,26 @@ sudo pacman -S --noconfirm --needed arcolinux-logout-git
 sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
+###############################################################################
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Correct pamac"
+echo "################################################################"
+tput sgr0
+echo
+
+[ -d /etc/pacman.d/hooks ] || sudo mkdir -p /etc/pacman.d/hooks
+
+sudo pacman -S --noconfirm --needed appstream
+
+sudo cp $installed_dir/settings/pacman-hook/archlinux-appstream-data-fix /usr/local/bin/archlinux-appstream-data-fix
+sudo cp $installed_dir/settings/pacman-hook/archlinux-appstream-data.hook /etc/pacman.d/hooks/archlinux-appstream-data.hook
+
+sudo pacman -S --noconfirm --needed arcolinux-pamac-all
+
+
 # when on Plasma
 
 if [ -f /usr/bin/startplasma-x11 ]; then
