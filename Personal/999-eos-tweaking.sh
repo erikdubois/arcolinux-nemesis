@@ -86,7 +86,7 @@ func_install() {
   sudo pacman -S --noconfirm --needed man-db
   sudo pacman -S --noconfirm --needed man-pages  
   sudo pacman -S --noconfirm --needed meld
-  sudo pacman -S --noconfirm --needed mkinitcpio-firmware
+  #sudo pacman -S --noconfirm --needed mkinitcpio-firmware
   sudo pacman -S --noconfirm --needed neofetch
   sudo pacman -S --noconfirm --needed noto-fonts
   sudo pacman -S --noconfirm --needed nss-mdns
