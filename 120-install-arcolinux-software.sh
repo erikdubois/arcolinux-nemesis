@@ -99,7 +99,7 @@ fi
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Installing software for anything Arch based"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo
