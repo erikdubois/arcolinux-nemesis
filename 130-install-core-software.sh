@@ -68,11 +68,13 @@ sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed kvantum
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed man-db
-sudo pacman -S --noconfirm --needed man-pages  
+sudo pacman -S --noconfirm --needed man-pages
 sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed neofetch
+sudo pacman -S --noconfirm --needed network-manager-applet
 sudo pacman -S --noconfirm --needed nomacs
 sudo pacman -S --noconfirm --needed noto-fonts
+sudo pacman -S --noconfirm --needed ntp
 sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed oh-my-zsh-git
 sudo pacman -S --noconfirm --needed paru-bin
@@ -110,6 +112,7 @@ sudo pacman -S --noconfirm --needed zsh
 sudo pacman -S --noconfirm --needed zsh-completions
 sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
 sudo systemctl enable avahi-daemon.service
+sudo systemctl enable ntpd.service
 
 ###############################################################################################
 
