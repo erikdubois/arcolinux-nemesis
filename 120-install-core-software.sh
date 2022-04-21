@@ -70,6 +70,7 @@ sudo pacman -S --noconfirm --needed gparted
 sudo pacman -S --noconfirm --needed grub-customizer
 sudo pacman -S --noconfirm --needed gvfs-smb
 sudo pacman -S --noconfirm --needed hardcode-fixer-git
+sudo pacman -S --noconfirm --needed hardinfo-gtk3
 sudo pacman -S --noconfirm --needed hw-probe
 sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed kvantum
