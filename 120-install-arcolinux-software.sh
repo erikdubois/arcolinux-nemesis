@@ -82,7 +82,7 @@ sudo cp $installed_dir/Personal/settings/pacman-hook/archlinux-appstream-data-fi
 sudo cp $installed_dir/Personal/settings/pacman-hook/archlinux-appstream-data.hook /etc/pacman.d/hooks/archlinux-appstream-data.hook
 
 sudo pacman -S --noconfirm --needed arcolinux-pamac-all
-sudo pacman -S --noconfirm --needed archlinux-appstream-data
+sudo pacman -S --noconfirm archlinux-appstream-data
 
 
 # when on Plasma
