@@ -75,6 +75,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		echo "Changing the whiskermenu"
 		echo
 		cp $installed_dir/settings/ariser/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+		sudo cp $installed_dir/settings/ariser/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
 
 		echo
 		echo "Changing the icons and theme"
@@ -82,11 +83,20 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 
 		FIND="Arc-Dark"
 		REPLACE="Arc-Dawn-Dark"
-		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
+		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+
+
+		FIND="Arc-Dark"
+		REPLACE="Arc-Dawn-Dark"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
 		REPLACE="Edu-Papirus-Dark-Tela"
 		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
+
+		FIND="Sardi-Arc"
+		REPLACE="Edu-Papirus-Dark-Tela"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
 
 		if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 
