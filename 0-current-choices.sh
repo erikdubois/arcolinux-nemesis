@@ -37,6 +37,7 @@ echo
 sh 400-remove-software*
 
 sh 100-install-core-software*
+sh 110-install-nemesis-software*
 sh 200-software-AUR-repo*
 #sh 300-sardi-extra-icons-AUR-repo*
 #sh 310-sardi-mint-y-icons-AUR-repo*
