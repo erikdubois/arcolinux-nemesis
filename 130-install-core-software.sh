@@ -72,6 +72,7 @@ sudo pacman -S --noconfirm --needed man-pages
 sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed neofetch
 sudo pacman -S --noconfirm --needed network-manager-applet
+sudo pacman -S --noconfirm --needed networkmanager-openvpn
 sudo pacman -S --noconfirm --needed nomacs
 sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed ntp
