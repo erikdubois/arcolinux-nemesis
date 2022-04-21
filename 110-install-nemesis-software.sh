@@ -37,9 +37,15 @@ if grep -q nemesis_repo /etc/pacman.conf; then
   echo "################### nemesis_repo is already in /etc/pacman.conf"
   echo "################################################################"
   tput sgr0
-  echo  
+  echo
 
 else
+
+  tput setaf 2
+  echo "################################################################"
+  echo "################### nemesis_repo added to /etc/pacman.conf"
+  echo "################################################################"
+  tput sgr0
 
 echo '
 
@@ -56,7 +62,7 @@ echo "################################################################"
 echo "################### Installing software from nemesis_repo"
 echo "################################################################"
 tput sgr0
-echo  
+echo
 
 sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-git
 sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-grey-git

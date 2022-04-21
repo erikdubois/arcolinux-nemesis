@@ -53,7 +53,7 @@ if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
 fi
 
 if grep -q "EndeavourOS" /etc/os-release; then
-  
+
   echo
   tput setaf 2
   echo "################################################################"
@@ -61,6 +61,10 @@ if grep -q "EndeavourOS" /etc/os-release; then
   echo "################################################################"
   tput sgr0
 
+  if [ -f /etc/skel/.bashrc ]; then
+    sudo rm /etc/skel/.bashrc
+  fi
+  
   sudo pacman -R --noconfirm arc-gtk-theme-eos
   sudo pacman -R --noconfirm endeavouros-skel-default endeavouros-skel-xfce4
   sudo pacman -R --noconfirm firewalld
