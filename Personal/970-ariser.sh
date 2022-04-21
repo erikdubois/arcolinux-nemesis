@@ -46,16 +46,16 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	tput sgr0
 	echo
 
-	list=(
-	)
+	# list=(
+	# )
 
-	count=0
+	# count=0
 
-	for name in "${list[@]}" ; do
-	    count=$[count+1]
-	    tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-	    func_install $name
-	done
+	# for name in "${list[@]}" ; do
+	#     count=$[count+1]
+	#     tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+	#     func_install $name
+	# done
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo

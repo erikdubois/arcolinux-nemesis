@@ -29,7 +29,7 @@
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Software to install"
+echo "################### ArcoLinux Software to install"
 echo "################################################################"
 tput sgr0
 echo
@@ -55,11 +55,11 @@ if grep -q arcolinux_repo /etc/pacman.conf; then
   sudo pacman -Sy
 fi
 
-  sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
-  sudo pacman -S --noconfirm --needed arcolinux-hblock-git
-  sudo pacman -S --noconfirm --needed arcolinux-logout-git
-  sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
-  sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
+sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
+sudo pacman -S --noconfirm --needed arcolinux-hblock-git
+sudo pacman -S --noconfirm --needed arcolinux-logout-git
+sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
+sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
 # when on Plasma
 

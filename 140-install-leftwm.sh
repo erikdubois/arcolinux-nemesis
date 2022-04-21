@@ -55,20 +55,20 @@ echo
 
 
 list=(
-sxhkd
+arcolinux-leftwm-git
 leftwm-dev-git
 leftwm-theme-git
-arcolinux-leftwm-git
-polybar
 lxappearance
 nerd-fonts-source-code-pro
-volumeicon
 picom
+polybar
+rofi-theme-fonts
+sxhkd
 ttf-fantasque-sans-mono
 ttf-iosevka-nerd
 ttf-material-design-iconic-font
 ttf-meslo-nerd-font-powerlevel10k
-rofi-theme-fonts
+volumeicon
 )
 
 count=0
@@ -105,16 +105,17 @@ if [ -f /usr/share/xsessions/leftwm.desktop ]; then
 
 
   sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
-  sh ~/.config/leftwm/scripts/install-all-arcolinux-community-themes.sh
+  #sh ~/.config/leftwm/scripts/install-all-arcolinux-community-themes.sh
   
   leftwm-theme update
   leftwm-theme apply db-nemesis
+
 fi
 
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Software installed"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo
