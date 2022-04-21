@@ -57,8 +57,20 @@ func_install() {
 
 ###############################################################################
 
+if grep -q "EndeavourOS" /etc/os-release; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "############### We are on an EOS iso"
+  echo "################################################################"
+  tput sgr0
+
+fi
+
 tput setaf 6
 echo "################################################################"
+echo "FINAL SKEL"
 echo "Copying all files and folders from /etc/skel to ~"
 echo "################################################################"
 echo;tput sgr0
