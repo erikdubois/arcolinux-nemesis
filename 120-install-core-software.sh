@@ -78,6 +78,7 @@ sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed man-db
 sudo pacman -S --noconfirm --needed man-pages
 sudo pacman -S --noconfirm --needed meld
+sudo pacman -S --noconfirm --needed mintstick-git
 sudo pacman -S --noconfirm --needed neofetch
 sudo pacman -S --noconfirm --needed network-manager-applet
 sudo pacman -S --noconfirm --needed networkmanager-openvpn
