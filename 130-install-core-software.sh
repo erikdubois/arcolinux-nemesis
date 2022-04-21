@@ -80,6 +80,7 @@ sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed qt5ct
 sudo pacman -S --noconfirm --needed rate-mirrors-bin
 sudo pacman -S --noconfirm --needed ripgrep
+sudo pacman -S --noconfirm --needed rxvt-unicode
 sudo pacman -S --noconfirm --needed simplescreenrecorder
 sudo pacman -S --noconfirm --needed spotify
 sudo pacman -S --noconfirm --needed sublime-text-4
