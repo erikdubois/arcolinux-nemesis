@@ -70,5 +70,9 @@ sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-red-git
 sudo pacman -S --noconfirm --needed edu-candy-beauty-tela-git
 sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-git
 sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-grey-git
-sudo pacman -S --noconfirm --needed edu-skel-git
+
 #sudo pacman -S --noconfirm --needed edu-vimix-dark-tela-git
+
+if [ ! -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
+  sudo pacman -S --noconfirm --needed edu-skel-git
+fi
