@@ -67,7 +67,6 @@ sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed man-db
 sudo pacman -S --noconfirm --needed man-pages  
 sudo pacman -S --noconfirm --needed meld
-sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed neofetch
 sudo pacman -S --noconfirm --needed nomacs
 sudo pacman -S --noconfirm --needed noto-fonts
@@ -192,7 +191,7 @@ cp -arf /etc/skel/. ~
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Software installed"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo
