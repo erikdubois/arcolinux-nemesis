@@ -78,7 +78,8 @@ sh 970-ariser*
 sh 970-arch*
 sh 970-carli*
 sh 970-arco*
-sh 999-eos*
+sh 980-eos*
+sh 999-skel*
 
 tput setaf 3
 echo "################################################################"
