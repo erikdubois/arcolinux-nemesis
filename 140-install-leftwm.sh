@@ -79,6 +79,17 @@ for name in "${list[@]}" ; do
     func_install $name
 done
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### SKEL !!!"
+echo "################################################################"
+tput sgr0
+echo
+
+cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
+cp -arf /etc/skel/. ~
+
 
 # when on Leftwm
 
@@ -99,17 +110,6 @@ if [ -f /usr/share/xsessions/leftwm.desktop ]; then
   leftwm-theme update
   leftwm-theme apply db-nemesis
 fi
-
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### SKEL !!!"
-echo "################################################################"
-tput sgr0
-echo
-
-cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
-cp -arf /etc/skel/. ~
 
 echo
 tput setaf 2
