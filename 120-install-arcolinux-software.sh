@@ -55,8 +55,46 @@ if grep -q arcolinux_repo /etc/pacman.conf; then
   sudo pacman -Sy
 fi
 
+  sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
+  sudo pacman -S --noconfirm --needed arcolinux-hblock-git
+  sudo pacman -S --noconfirm --needed arcolinux-logout-git
+  sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
+  sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
-# here we assume we are on anything Arch Linux based - ArcoLinux as a rule
+# when on Plasma
+
+if [ -f /usr/bin/startplasma-x11 ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Plasma related applications"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
+  sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
+  sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
+fi
+
+
+# when on xfce
+
+if [ -f /usr/share/xsessions/xfce.desktop ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Installing software for Arch Linux - xfce4"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+  sudo pacman -S --noconfirm --needed sardi-icons
+
+fi
 
 echo
 tput setaf 2
@@ -66,5 +104,5 @@ echo "################################################################"
 tput sgr0
 echo
 
-#sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
+
 

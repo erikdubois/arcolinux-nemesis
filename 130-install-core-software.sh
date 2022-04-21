@@ -37,58 +37,75 @@ echo
 #sudo pacman -S --noconfirm --needed ttf-wps-fonts
 #sudo pacman -S --noconfirm --needed wps-office
 #sudo pacman -S --noconfirm --needed wps-office-mime
+sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
 sudo pacman -S --noconfirm --needed aic94xx-firmware
+sudo pacman -S --noconfirm --needed alacritty
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
+sudo pacman -S --noconfirm --needed avahi
+sudo pacman -S --noconfirm --needed awesome-terminal-fonts
 sudo pacman -S --noconfirm --needed ayu-theme
+sudo pacman -S --noconfirm --needed bat
 sudo pacman -S --noconfirm --needed bibata-cursor-theme-bin
 sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed discord
+sudo pacman -S --noconfirm --needed dmenu
+sudo pacman -S --noconfirm --needed expac
+sudo pacman -S --noconfirm --needed feh
 sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
 sudo pacman -S --noconfirm --needed flameshot-git
 sudo pacman -S --noconfirm --needed git
 sudo pacman -S --noconfirm --needed gitahead-bin
 sudo pacman -S --noconfirm --needed gitfiend
+sudo pacman -S --noconfirm --needed gvfs-smb
+sudo pacman -S --noconfirm --needed hardcode-fixer-git
+sudo pacman -S --noconfirm --needed hw-probe
 sudo pacman -S --noconfirm --needed insync
+sudo pacman -S --noconfirm --needed man-db
+sudo pacman -S --noconfirm --needed man-pages  
 sudo pacman -S --noconfirm --needed meld
+sudo pacman -S --noconfirm --needed meld
+sudo pacman -S --noconfirm --needed neofetch
 sudo pacman -S --noconfirm --needed nomacs
+sudo pacman -S --noconfirm --needed noto-fonts
+sudo pacman -S --noconfirm --needed nss-mdns
+sudo pacman -S --noconfirm --needed oh-my-zsh-git
+sudo pacman -S --noconfirm --needed paru-bin
 sudo pacman -S --noconfirm --needed polkit-gnome
 sudo pacman -S --noconfirm --needed pv
+sudo pacman -S --noconfirm --needed rate-mirrors-bin
+sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed simplescreenrecorder
 sudo pacman -S --noconfirm --needed spotify
 sudo pacman -S --noconfirm --needed sublime-text-4
 sudo pacman -S --noconfirm --needed surfn-icons-git
 sudo pacman -S --noconfirm --needed telegram-desktop
 sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
+sudo pacman -S --noconfirm --needed ttf-bitstream-vera
+sudo pacman -S --noconfirm --needed ttf-dejavu
+sudo pacman -S --noconfirm --needed ttf-droid
+sudo pacman -S --noconfirm --needed ttf-hack
+sudo pacman -S --noconfirm --needed ttf-inconsolata
+sudo pacman -S --noconfirm --needed ttf-liberation
+sudo pacman -S --noconfirm --needed ttf-roboto
+sudo pacman -S --noconfirm --needed ttf-roboto-mono
+sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
 sudo pacman -S --noconfirm --needed upd72020x-fw
+sudo pacman -S --noconfirm --needed variety
 sudo pacman -S --noconfirm --needed vivaldi
 sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
 sudo pacman -S --noconfirm --needed vivaldi-widevine
 sudo pacman -S --noconfirm --needed vlc
 sudo pacman -S --noconfirm --needed wd719x-firmware
 sudo pacman -S --noconfirm --needed wget
-
-
-###############################################################################################
-
-# when on Plasma
-
-if [ -f /usr/bin/startplasma-x11 ]; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Plasma related applications"
-  echo "################################################################"
-  tput sgr0
-  echo
-
-  sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
-  sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
-fi
+sudo pacman -S --noconfirm --needed yay-bin
+sudo pacman -S --noconfirm --needed zsh
+sudo pacman -S --noconfirm --needed zsh-completions
+sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
+sudo systemctl enable avahi-daemon.service
 
 ###############################################################################################
 
@@ -103,46 +120,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   echo "################################################################"
   tput sgr0
   echo
-  sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
-  sudo pacman -S --noconfirm --needed alacritty
-  sudo pacman -S --noconfirm --needed arcolinux-hblock-git
-  sudo pacman -S --noconfirm --needed arcolinux-logout-git
-  sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
-  sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
-  sudo pacman -S --noconfirm --needed avahi
-  sudo pacman -S --noconfirm --needed awesome-terminal-fonts
-  sudo pacman -S --noconfirm --needed bat
-  sudo pacman -S --noconfirm --needed dmenu
-  sudo pacman -S --noconfirm --needed expac
-  sudo pacman -S --noconfirm --needed feh
-  sudo pacman -S --noconfirm --needed gvfs-smb
-  sudo pacman -S --noconfirm --needed hardcode-fixer-git
-  sudo pacman -S --noconfirm --needed hw-probe
-  sudo pacman -S --noconfirm --needed man-db
-  sudo pacman -S --noconfirm --needed man-pages  
-  sudo pacman -S --noconfirm --needed meld
-  sudo pacman -S --noconfirm --needed neofetch
-  sudo pacman -S --noconfirm --needed noto-fonts
-  sudo pacman -S --noconfirm --needed nss-mdns
-  sudo pacman -S --noconfirm --needed oh-my-zsh-git
-  sudo pacman -S --noconfirm --needed paru-bin
-  sudo pacman -S --noconfirm --needed rate-mirrors-bin
-  sudo pacman -S --noconfirm --needed ripgrep
-  sudo pacman -S --noconfirm --needed ttf-bitstream-vera
-  sudo pacman -S --noconfirm --needed ttf-dejavu
-  sudo pacman -S --noconfirm --needed ttf-droid
-  sudo pacman -S --noconfirm --needed ttf-hack
-  sudo pacman -S --noconfirm --needed ttf-inconsolata
-  sudo pacman -S --noconfirm --needed ttf-liberation
-  sudo pacman -S --noconfirm --needed ttf-roboto
-  sudo pacman -S --noconfirm --needed ttf-roboto-mono
-  sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
-  sudo pacman -S --noconfirm --needed variety
-  sudo pacman -S --noconfirm --needed yay-bin
-  sudo pacman -S --noconfirm --needed zsh
-  sudo pacman -S --noconfirm --needed zsh-completions
-  sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
-  sudo systemctl enable avahi-daemon.service
+
 
   echo
   echo "################################################################"
@@ -151,38 +129,6 @@ if grep -q "Arch Linux" /etc/os-release; then
   echo
   sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
   sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
-
-  # when on Plasma
-
-  if [ -f /usr/bin/startplasma-x11 ]; then
-
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### Installing software for Arch Linux - Plasma"
-    echo "################################################################"
-    tput sgr0
-    echo    
-    sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
-    sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
-    sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
-    sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
-
-  fi
-
-  # when on Xfce4
-
-  if [ -f /usr/share/xsessions/xfce.desktop ]; then
-
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### Installing software for Arch Linux - Xfce4"
-    echo "################################################################"
-    tput sgr0
-    echo
-    sudo pacman -S --noconfirm --needed sardi-icons
-  fi
 
   # when on i3
 
