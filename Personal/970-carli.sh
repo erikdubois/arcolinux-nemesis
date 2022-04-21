@@ -27,6 +27,14 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 	tput sgr0
 	echo
 
+	echo
+	echo "################################################################"
+	echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
+	echo "################################################################"
+	echo
+	sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
+	sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
+
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
@@ -38,14 +46,17 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 		echo "Changing the whiskermenu"
 		echo
 		cp $installed_dir/settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+		sudo cp $installed_dir/settings/carli/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
 
 		FIND="Arc-Dark"
 		REPLACE="Arc-Dawn-Dark"
-		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
+		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
 		REPLACE="Edu-Papirus-Dark-Tela"
-		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
+		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		echo
 		echo "Changing sddm theme"

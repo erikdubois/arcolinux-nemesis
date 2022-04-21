@@ -46,6 +46,15 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	tput sgr0
 	echo
 
+  echo
+  echo "################################################################"
+  echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
+  echo "################################################################"
+  echo
+  sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
+  sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
+
+
 	# list=(
 	# )
 
@@ -78,20 +87,13 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 
 		FIND="Arc-Dark"
 		REPLACE="Arc-Dawn-Dark"
-		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-
-		FIND="Arc-Dark"
-		REPLACE="Arc-Dawn-Dark"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+    sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
 		REPLACE="Edu-Papirus-Dark-Tela"
-		sudo sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
-
-		FIND="Sardi-Arc"
-		REPLACE="Edu-Papirus-Dark-Tela"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
+		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+    sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 
