@@ -66,6 +66,7 @@ sudo pacman -S --noconfirm --needed git
 sudo pacman -S --noconfirm --needed gitahead-bin
 sudo pacman -S --noconfirm --needed gitfiend
 sudo pacman -S --noconfirm --needed gnome-disks
+sudo pacman -S --noconfirm --needed gparted
 sudo pacman -S --noconfirm --needed gvfs-smb
 sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hw-probe
