@@ -67,13 +67,61 @@ if grep -q "EndeavourOS" /etc/os-release; then
   echo
   tput sgr0
 
-  #cp -arf /etc/skel/. ~
+  if [ -f /usr/share/xsessions/xfce.desktop ]; then
+		echo
+		tput setaf 2
+		echo "################################################################"
+		echo "################### We are on Xfce4"
+		echo "################################################################"
+		tput sgr0
+		echo
 
-  tput setaf 2
-  echo "################################################################"
-  echo "Done"
-  echo "################################################################"
-  echo
-  tput sgr0
+    cp -arf /etc/skel/. ~
 
+		echo
+		echo "Changing the whiskermenu"
+		echo
+		cp $installed_dir/settings/eos/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+		sudo cp $installed_dir/settings/eos/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
+
+		echo
+		echo "Changing the icons and theme"
+		echo
+
+		FIND="Arc-Dark"
+		REPLACE="Arc-Dawn-Dark"
+		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+    sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+
+		FIND="Sardi-Arc"
+		REPLACE="Edu-Papirus-Dark-Tela"
+		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+    sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+
+		if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
+
+			echo
+			echo "Changing the look of lightdm gtk greeter"
+			echo
+
+			FIND="#theme-name="
+			REPLACE="theme-name=Arc-Dark"
+			sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
+
+			sudo cp $installed_dir/settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
+
+			FIND="#background="
+			REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
+			sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
+
+    fi
+
+    tput setaf 2
+    echo "################################################################"
+    echo "Done"
+    echo "################################################################"
+    echo
+    tput sgr0
+
+  fi
 fi
