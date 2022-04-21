@@ -64,4 +64,4 @@ sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-red-git
 sudo pacman -S --noconfirm --needed edu-candy-beauty-tela-git
 sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-git
 sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-grey-git
-sudo pacman -S --noconfirm --needed edu-vimix-dark-tela-git
+#sudo pacman -S --noconfirm --needed edu-vimix-dark-tela-git
