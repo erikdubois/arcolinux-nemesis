@@ -47,11 +47,6 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	echo
 
 	list=(
-	arcolinux-gtk3-arcolinux-candy-beauty-git
-	arcolinux-kvantum-git
-	arcolinux-qt5-git
-	kvantum
-	qt5ct
 	)
 
 	count=0
