@@ -83,7 +83,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 
 	fi
 
-	if [ grep -q "alci-iso" /usr/local/bin/get-nemesis-on-alci ]; then
+	if grep -q alci-iso /usr/local/bin/get-nemesis-on-alci ; then
 		sudo pacman -S --noconfirm --needed xfce4 xfce4-goodies
 	fi
 
