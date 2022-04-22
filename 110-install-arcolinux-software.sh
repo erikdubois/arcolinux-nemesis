@@ -66,24 +66,27 @@ sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
 ###############################################################################
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Correct pamac"
-echo "################################################################"
-tput sgr0
-echo
+if [ ! -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
 
-[ -d /etc/pacman.d/hooks ] || sudo mkdir -p /etc/pacman.d/hooks
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Correct pamac"
+  echo "################################################################"
+  tput sgr0
+  echo
 
-sudo pacman -S --noconfirm --needed appstream
+  [ -d /etc/pacman.d/hooks ] || sudo mkdir -p /etc/pacman.d/hooks
 
-sudo cp $installed_dir/Personal/settings/pacman-hook/archlinux-appstream-data-fix /usr/local/bin/archlinux-appstream-data-fix
-sudo cp $installed_dir/Personal/settings/pacman-hook/archlinux-appstream-data.hook /etc/pacman.d/hooks/archlinux-appstream-data.hook
+  sudo pacman -S --noconfirm --needed appstream
 
-sudo pacman -S --noconfirm --needed arcolinux-pamac-all
-sudo pacman -S --noconfirm archlinux-appstream-data
+  sudo cp $installed_dir/Personal/settings/pacman-hook/archlinux-appstream-data-fix /usr/local/bin/archlinux-appstream-data-fix
+  sudo cp $installed_dir/Personal/settings/pacman-hook/archlinux-appstream-data.hook /etc/pacman.d/hooks/archlinux-appstream-data.hook
 
+  sudo pacman -S --noconfirm --needed arcolinux-pamac-all
+  sudo pacman -S --noconfirm archlinux-appstream-data
+
+fi
 
 # when on Plasma
 
