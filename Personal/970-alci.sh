@@ -77,7 +77,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		echo "Changing sddm theme"
 		echo
 		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-		FIND="Current=breeze"
+		FIND="Current="
 		REPLACE="Current=arcolinux-simplicity"
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 
