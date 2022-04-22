@@ -37,7 +37,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		echo
 
 		if [ -f /usr/lib/sddm/sddm.conf.d/default.conf ]; then
-			cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
+			sudo cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
 		fi
 
 		if [ -f /etc/nanorc ]; then
