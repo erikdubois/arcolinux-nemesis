@@ -19,13 +19,26 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 
-		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on ALCI"
-		echo "################################################################"
-		tput sgr0
-		echo
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "################### We are on ALCI"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+	if [ -f /etc/environment ]; then
+		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee -a /etc/environment
+		echo "EDITOR=nano" | sudo tee -a /etc/environment
+	fi
+
+	if [ -f /usr/lib/sddm/sddm.conf.d/default.conf ]; then
+		sudo cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
+	fi
+
+	if [ -f /etc/nanorc ]; then
+    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+	fi
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
@@ -35,14 +48,6 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		echo "################################################################"
 		tput sgr0
 		echo
-
-		if [ -f /usr/lib/sddm/sddm.conf.d/default.conf ]; then
-			sudo cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
-		fi
-
-		if [ -f /etc/nanorc ]; then
-	    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-  		fi
 
 		cp -arf /etc/skel/. ~
 
