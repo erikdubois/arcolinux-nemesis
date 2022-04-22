@@ -53,9 +53,13 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	fi
 
 	if grep -q alci-iso-lts /usr/local/bin/get-nemesis-on-alci ; then
-		sudo pacman -S --noconfirm --needed xdg-user-dirs
+		sudo pacman -S --noconfirm --needed xdg-user-dirs-gtk
+	fi
+
+	if grep -q alci-iso-zen /usr/local/bin/get-nemesis-on-alci ; then
 		sudo pacman -S --noconfirm --needed xdg-user-dirs-gtk
 	fi	
+
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
