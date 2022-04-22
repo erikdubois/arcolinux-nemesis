@@ -40,6 +40,22 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
     	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
 	fi
 
+	if [ -f /usr/share/xsessions/plasma.desktop ]; then
+
+		echo
+		echo "Changing sddm theme"
+		echo
+		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
+		FIND="Current="
+		REPLACE="Current=arcolinux-simplicity"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
+
+	fi
+
+	if grep -q alci-iso /usr/local/bin/get-nemesis-on-alci ; then
+		sudo pacman -S --noconfirm --needed xfce4 xfce4-goodies
+	fi
+
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
@@ -69,22 +85,6 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		REPLACE="Edu-Papirus-Dark-Tela"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-	fi
-
-	if [ -f /usr/share/xsessions/plasma.desktop ]; then
-
-		echo
-		echo "Changing sddm theme"
-		echo
-		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-		FIND="Current="
-		REPLACE="Current=arcolinux-simplicity"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
-
-	fi
-
-	if grep -q alci-iso /usr/local/bin/get-nemesis-on-alci ; then
-		sudo pacman -S --noconfirm --needed xfce4 xfce4-goodies
 	fi
 
 fi
