@@ -119,6 +119,7 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
   tput sgr0
   echo
 
+  sudo pacman -S --noconfirm --needed arcolinux-kvantum-theme-arc-git
   sudo pacman -S --noconfirm --needed sardi-icons
 
 fi
