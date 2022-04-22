@@ -59,7 +59,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm.conf
 
 		FIND="#autologin-session="
-		REPLACE="autlogin-session=$USER"
+		REPLACE="autlogin-session=xfce"
     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm.conf
 
 	fi
