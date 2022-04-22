@@ -35,6 +35,8 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo pacman -Sy
+
 sh 400-remove-software*
 
 sh 100-install-nemesis-software*
