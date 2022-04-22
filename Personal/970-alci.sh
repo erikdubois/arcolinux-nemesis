@@ -36,6 +36,10 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		tput sgr0
 		echo
 
+		if [ -f /usr/lib/sddm/sddm.conf.d/default.conf ]; then
+			cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
+		fi
+
 		if [ -f /etc/nanorc ]; then
 	    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
   		fi
