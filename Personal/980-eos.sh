@@ -59,15 +59,19 @@ func_install() {
 
 if grep -q "EndeavourOS" /etc/os-release; then
 
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "############### We are on an EOS iso"
-  echo "################################################################"
-  echo
-  tput sgr0
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "############### We are on an EOS iso"
+	echo "################################################################"
+	echo
+	tput sgr0
 
-  if [ -f /usr/share/xsessions/xfce.desktop ]; then
+	if [ -f /etc/nanorc ]; then
+	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+	fi
+
+  	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
 		echo "################################################################"
@@ -76,7 +80,7 @@ if grep -q "EndeavourOS" /etc/os-release; then
 		tput sgr0
 		echo
 
-    cp -arf /etc/skel/. ~
+    	cp -arf /etc/skel/. ~
 
 		echo
 		echo "Changing the whiskermenu"
@@ -91,12 +95,12 @@ if grep -q "EndeavourOS" /etc/os-release; then
 		FIND="Arc-Dark"
 		REPLACE="Arc-Dawn-Dark"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-    sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
 		REPLACE="Edu-Papirus-Dark-Tela"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-    sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 

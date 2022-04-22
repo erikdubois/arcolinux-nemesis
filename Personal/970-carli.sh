@@ -35,6 +35,10 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 		echo "################################################################"
 		tput sgr0
 
+		if [ -f /etc/nanorc ]; then
+	    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+  		fi
+
 		cp -arf /etc/skel/. ~
 
 		echo

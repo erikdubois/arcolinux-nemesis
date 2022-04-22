@@ -70,9 +70,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		echo
 
 		if [ -f /etc/nanorc ]; then
-	    	FIND='# include "/usr/share/nano/*.nanorc"'
-			REPLACE='include "/usr/share/nano/*.nanorc"'
-	    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+	    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
   		fi 
 
     	cp -arf /etc/skel/. ~

@@ -36,6 +36,10 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		tput sgr0
 		echo
 
+		if [ -f /etc/nanorc ]; then
+	    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+  		fi
+
 		cp -arf /etc/skel/. ~
 
 		echo "Changing the whiskermenu"
