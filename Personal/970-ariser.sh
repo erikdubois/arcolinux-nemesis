@@ -46,6 +46,13 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	tput sgr0
 	echo
 
+	if [ -f /etc/environment ]; then
+
+		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee -a /etc/environment
+		echo "EDITOR=nano" | sudo tee -a /etc/environment
+
+	fi
+
 	sudo groupadd autologin
 	sudo usermod -a -G autologin $USER
 
