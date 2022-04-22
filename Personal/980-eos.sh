@@ -68,8 +68,10 @@ if grep -q "EndeavourOS" /etc/os-release; then
 	tput sgr0
 
 	if [ -f /etc/environment ]; then
-		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee -a /etc/environment
+		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
+		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
 		echo "EDITOR=nano" | sudo tee -a /etc/environment
+		echo "BROWSER=firefox" | sudo tee -a /etc/environment
 	fi
 
 	echo
