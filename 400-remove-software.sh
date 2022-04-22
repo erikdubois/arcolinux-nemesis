@@ -38,6 +38,9 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
   echo "################################################################"
   tput sgr0
   echo
+  if [ -f /etc/skel/.bashrc ]; then
+    sudo rm /etc/skel/.bashrc
+  fi  
   sudo pacman -R --noconfirm carli-xfce-config
   sudo pacman -R --noconfirm grml-zsh-config
 
