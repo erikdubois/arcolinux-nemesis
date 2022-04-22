@@ -93,7 +93,6 @@ sudo pacman -S --noconfirm --needed paru-bin
 sudo pacman -S --noconfirm --needed polkit-gnome
 sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed qbittorrent
-sudo pacman -S --noconfirm --needed qt5ct
 sudo pacman -S --noconfirm --needed rate-mirrors-bin
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed rxvt-unicode
@@ -129,6 +128,10 @@ sudo pacman -S --noconfirm --needed zsh-completions
 sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable ntpd.service
+
+if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
+  sudo pacman -S --noconfirm --needed qt5ct
+fi
 
 ###############################################################################################
 
