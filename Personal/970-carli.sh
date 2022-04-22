@@ -27,6 +27,18 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 	tput sgr0
 	echo
 
+	echo
+	echo "Changing sddm theme"
+	echo
+	sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
+	FIND="Current=breeze"
+	REPLACE="Current=arcolinux-simplicity"
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
+
+	if [ -f /etc/nanorc ]; then
+    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+	fi
+
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
@@ -34,10 +46,6 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 		echo "################### We are on Xfce4"
 		echo "################################################################"
 		tput sgr0
-
-		if [ -f /etc/nanorc ]; then
-	    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-  		fi
 
 		cp -arf /etc/skel/. ~
 
@@ -56,14 +64,6 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 		REPLACE="Edu-Papirus-Dark-Tela"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-		echo
-		echo "Changing sddm theme"
-		echo
-		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-		FIND="Current=breeze"
-		REPLACE="Current=arcolinux-simplicity"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 
 	fi
 

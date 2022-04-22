@@ -71,4 +71,16 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 	fi
 
+	if [ -f /usr/share/xsessions/plasma.desktop ]; then
+
+		echo
+		echo "Changing sddm theme"
+		echo
+		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
+		FIND="Current=breeze"
+		REPLACE="Current=arcolinux-simplicity"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
+
+	fi
+
 fi
