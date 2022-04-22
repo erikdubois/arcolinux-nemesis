@@ -92,6 +92,7 @@ sudo pacman -S --noconfirm --needed openresolv
 sudo pacman -S --noconfirm --needed paru-bin
 sudo pacman -S --noconfirm --needed polkit-gnome
 sudo pacman -S --noconfirm --needed pv
+sudo pacman -S --noconfirm --needed qbittorrent
 sudo pacman -S --noconfirm --needed qt5ct
 sudo pacman -S --noconfirm --needed rate-mirrors-bin
 sudo pacman -S --noconfirm --needed ripgrep
