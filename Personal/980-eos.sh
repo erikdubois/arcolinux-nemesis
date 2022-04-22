@@ -67,6 +67,11 @@ if grep -q "EndeavourOS" /etc/os-release; then
 	echo
 	tput sgr0
 
+	if [ -f /etc/environment ]; then
+		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee -a /etc/environment
+		echo "EDITOR=nano" | sudo tee -a /etc/environment
+	fi
+
 	echo
 	echo "################################################################"
 	echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
