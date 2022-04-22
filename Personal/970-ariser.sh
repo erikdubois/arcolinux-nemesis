@@ -46,6 +46,9 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	tput sgr0
 	echo
 
+	sudo groupadd autologin
+	sudo usermod -a -G autologin $USER
+
 	# list=(
 	# )
 
