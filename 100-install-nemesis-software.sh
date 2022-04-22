@@ -75,4 +75,5 @@ sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-grey-git
 
 if [ ! -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
   sudo pacman -S --noconfirm --needed edu-skel-git
+  sudo pacman -S --noconfirm --needed edu-system-git
 fi
