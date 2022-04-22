@@ -69,7 +69,13 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		tput sgr0
 		echo
 
-    cp -arf /etc/skel/. ~
+		if [ -f /etc/nanorc ]; then
+	    	FIND='# include "/usr/share/nano/*.nanorc"'
+			REPLACE='include "/usr/share/nano/*.nanorc"'
+	    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+  		fi 
+
+    	cp -arf /etc/skel/. ~
     
 		echo
 		echo "Changing the whiskermenu"
