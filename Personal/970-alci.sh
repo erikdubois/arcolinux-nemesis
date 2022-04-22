@@ -48,9 +48,9 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	REPLACE="Current=arcolinux-simplicity"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 
-	if grep -q alci-iso /usr/local/bin/get-nemesis-on-alci ; then
-		sudo pacman -S --noconfirm --needed xfce4 xfce4-goodies
-	fi
+	#if grep -q alci-iso /usr/local/bin/get-nemesis-on-alci ; then
+	#	sudo pacman -S --noconfirm --needed xfce4 xfce4-goodies
+	#fi
 
 	if grep -q alci-iso-lts /usr/local/bin/get-nemesis-on-alci ; then
 		sudo pacman -S --noconfirm --needed xdg-user-dirs-gtk
