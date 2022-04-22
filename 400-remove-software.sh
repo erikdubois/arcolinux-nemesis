@@ -43,6 +43,7 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
   fi  
   sudo pacman -R --noconfirm carli-xfce-config
   sudo pacman -R --noconfirm grml-zsh-config
+  sudo pacman -R --noconfirm systemd-resolvconf
 
   echo
   tput setaf 2
