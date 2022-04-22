@@ -67,6 +67,14 @@ if grep -q "EndeavourOS" /etc/os-release; then
 	echo
 	tput sgr0
 
+	echo
+	echo "################################################################"
+	echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
+	echo "################################################################"
+	echo
+	sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
+	sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
+
 	if [ -f /etc/nanorc ]; then
 	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
 	fi
