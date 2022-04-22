@@ -49,6 +49,21 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	sudo groupadd autologin
 	sudo usermod -a -G autologin $USER
 
+	if [ -f /etc/lightdm/lightdm.conf ]; then
+
+		echo
+		echo "Autologin to lightdm"
+		echo
+		FIND="#autologin-user="
+		REPLACE="autologin-user=$USER"
+    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm.conf
+
+		FIND="#autologin-session="
+		REPLACE="autlogin-session=$USER"
+    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm.conf
+
+	fi
+
 	# list=(
 	# )
 
