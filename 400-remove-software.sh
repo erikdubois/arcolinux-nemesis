@@ -48,10 +48,10 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
   echo
   tput setaf 2
   echo "################################################################"
-  echo "################### Done"
+  echo "################### Software removed"
   echo "################################################################"
   tput sgr0
-  echo  
+  echo
 
 fi
 
@@ -75,10 +75,10 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
   echo
   tput setaf 2
   echo "################################################################"
-  echo "################### Done"
+  echo "################### Software removed"
   echo "################################################################"
   tput sgr0
-  echo  
+  echo 
 fi
 
 # when on ARCOLINUX - remove conflicting files
@@ -104,6 +104,14 @@ if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
   sudo pacman -Rs xf86-video-nouveau --noconfirm
   sudo pacman -Rs xf86-video-vesa --noconfirm
 
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Software removed"
+  echo "################################################################"
+  tput sgr0
+  echo
+
 fi
 
 # when on EOS - remove conflicting files
@@ -126,12 +134,40 @@ if grep -q "EndeavourOS" /etc/os-release; then
   sudo pacman -R --noconfirm firewalld
   sudo pacman -R --noconfirm yay
 
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Software removed"
+  echo "################################################################"
+  tput sgr0
+  echo
+
 fi
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Software removed"
-echo "################################################################"
-tput sgr0
-echo
+# when on ALCI - remove conflicting files
+
+if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "############### Removing software for ALCI"
+  echo "################################################################"
+  tput sgr0
+
+  if [ -f /etc/skel/.bashrc ]; then
+    sudo rm /etc/skel/.bashrc
+  fi
+  sudo rm /etc/skel/.Xresources
+  sudo pacman -R --noconfirm grml-zsh-config
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Software removed"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+fi
+

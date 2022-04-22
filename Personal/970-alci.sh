@@ -19,6 +19,14 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 
+		echo
+		tput setaf 2
+		echo "################################################################"
+		echo "################### We are on ALCI"
+		echo "################################################################"
+		tput sgr0
+		echo
+
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
@@ -29,14 +37,6 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		echo
 
 		cp -arf /etc/skel/. ~
-
-		echo
-	  echo "################################################################"
-	  echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
-	  echo "################################################################"
-	  echo
-	  sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
-	  sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
 
 		echo "Changing the whiskermenu"
 		echo
