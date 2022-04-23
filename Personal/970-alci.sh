@@ -27,6 +27,12 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	tput sgr0
 	echo
 
+	sudo pacman -S --noconfirm --needed arcolinux-grub-theme-vimix-git
+
+	if [ -f /etc/default/grub ]; then
+		sudo cp $installed_dir/settings/grub /etc/default/grub
+	fi
+
 	if [ -f /etc/environment ]; then
 		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
 		echo "EDITOR=nano" | sudo tee -a /etc/environment
