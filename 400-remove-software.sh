@@ -160,23 +160,26 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
   fi
   sudo rm /etc/skel/.Xresources
   sudo pacman -R --noconfirm amd-ucode
-  sudo pacman -R --noconfirm bf3-fwcutter
+  sudo pacman -R --noconfirm b43-fwcutter
   sudo pacman -R --noconfirm broadcom-wl
   sudo pacman -R --noconfirm broadcom-wl-dkms  
-  sudo pacman -R --noconfirm cloudinit
+  sudo pacman -Rs --noconfirm cloud-init
   sudo pacman -R --noconfirm darkhttpd
   sudo pacman -R --noconfirm dhcpcd
+  sudo pacman -R --noconfirm ell  
   sudo pacman -R --noconfirm grml-zsh-config
   sudo pacman -R --noconfirm iwd
-  sudo pacman -R --noconfirm kittty-terminfo
+  sudo pacman -R --noconfirm kitty-terminfo
   sudo pacman -R --noconfirm lftp
   sudo pacman -R --noconfirm livecd-sounds
+  sudo pacman -R --noconfirm lua53
+  sudo pacman -R --noconfirm luit
   sudo pacman -R --noconfirm lynx
   sudo pacman -R --noconfirm mousepad
   sudo pacman -R --noconfirm nmap
   sudo pacman -R --noconfirm parole
   sudo pacman -R --noconfirm systemd-resolvconf
-  sudo pacman -R --noconfirm virtualbox-guest-utils-nox
+  sudo pacman -R --noconfirm xbitmaps
   sudo pacman -R --noconfirm xfburn
   sudo pacman -R --noconfirm xfce4-artwork
   sudo pacman -R --noconfirm xterm
