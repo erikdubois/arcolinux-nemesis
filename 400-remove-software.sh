@@ -159,8 +159,30 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
     sudo rm /etc/skel/.bashrc
   fi
   sudo rm /etc/skel/.Xresources
+  sudo pacman -R --noconfirm amd-ucode
+  sudo pacman -R --noconfirm bf3-fwcutter
+  sudo pacman -R --noconfirm broadcom-wl
+  sudo pacman -R --noconfirm broadcom-wl-dkms  
+  sudo pacman -R --noconfirm cloudinit
+  sudo pacman -R --noconfirm darkhttpd
+  sudo pacman -R --noconfirm dhcpcd
   sudo pacman -R --noconfirm grml-zsh-config
+  sudo pacman -R --noconfirm iwd
+  sudo pacman -R --noconfirm kittty-terminfo
+  sudo pacman -R --noconfirm lftp
+  sudo pacman -R --noconfirm livecd-sounds
+  sudo pacman -R --noconfirm lynx
+  sudo pacman -R --noconfirm mousepad
+  sudo pacman -R --noconfirm nmap
+  sudo pacman -R --noconfirm parole
   sudo pacman -R --noconfirm systemd-resolvconf
+  sudo pacman -R --noconfirm virtualbox-guest-utils-nox
+  sudo pacman -R --noconfirm xfburn
+  sudo pacman -R --noconfirm xfce4-artwork
+  sudo pacman -R --noconfirm xterm
+  sudo pacman -Rs --noconfirm brltty
+  sudo pacman -Rs --noconfirm espeak-ng
+  sudo pacman -Rs --noconfirm espeakup
 
   echo
   tput setaf 2
