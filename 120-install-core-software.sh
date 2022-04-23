@@ -44,6 +44,7 @@ sudo pacman -S --noconfirm --needed alacritty
 sudo pacman -S --noconfirm --needed alacritty-themes
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
+sudo pacman -S --noconfirm --needed archiso
 sudo pacman -S --noconfirm --needed avahi
 sudo pacman -S --noconfirm --needed awesome-terminal-fonts
 sudo pacman -S --noconfirm --needed ayu-theme
@@ -101,6 +102,7 @@ sudo pacman -S --noconfirm --needed simplescreenrecorder
 sudo pacman -S --noconfirm --needed sparklines-git
 sudo pacman -S --noconfirm --needed speedtest-cli-git
 sudo pacman -S --noconfirm --needed spotify
+sudo pacman -S --noconfirm --needed squashfs-tools
 sudo pacman -S --noconfirm --needed sublime-text-4
 sudo pacman -S --noconfirm --needed surfn-icons-git
 sudo pacman -S --noconfirm --needed system-config-printer
