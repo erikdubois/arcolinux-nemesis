@@ -29,10 +29,10 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 
 	sudo pacman -S --noconfirm --needed arcolinux-grub-theme-vimix-git
 
-	sudo cp /boot/grub/themes/Vimix/arcolinux01.jpg /boot/grub/themes/Vimix/background.png
-
 	if [ -f /etc/default/grub ]; then
 		sudo cp $installed_dir/settings/alci/grub /etc/default/grub
+		sudo cp $installed_dir/settings/alci/theme.txt /boot/grub/themes/Vimix/theme.txt
+
 		sudo grub-mkconfig -o /boot/grub/grub.cfg
 	fi
 
