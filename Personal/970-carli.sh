@@ -28,11 +28,6 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 	echo
 
 	echo
-	echo "Changing the bookmarks"
-	echo
-	cp $installed_dir/settings/carli/bookmarks ~/.config/gtk-3.0/bookmarks
-
-	echo
 	echo "Changing sddm theme"
 	echo
 	sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
