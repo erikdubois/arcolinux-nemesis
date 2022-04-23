@@ -55,7 +55,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
     	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
 	fi
 
-	sudo groupadd autologin
+	#sudo groupadd autologin
 	sudo usermod -a -G autologin $USER
 
 	if [ -f /etc/lightdm/lightdm.conf ]; then
