@@ -122,6 +122,7 @@ sudo pacman -S --noconfirm --needed vivaldi-widevine
 sudo pacman -S --noconfirm --needed vlc
 sudo pacman -S --noconfirm --needed wd719x-firmware
 sudo pacman -S --noconfirm --needed wget
+sudo pacman -S --noconfirm --needed xorg-xkill
 sudo pacman -S --noconfirm --needed yay-bin
 sudo pacman -S --noconfirm --needed zsh
 sudo pacman -S --noconfirm --needed zsh-completions
