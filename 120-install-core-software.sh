@@ -47,7 +47,6 @@ sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed archiso
 sudo pacman -S --noconfirm --needed asciinema
-sudo pacman -S --noconfirm --needed atom
 sudo pacman -S --noconfirm --needed avahi
 sudo pacman -S --noconfirm --needed awesome-terminal-fonts
 sudo pacman -S --noconfirm --needed ayu-theme
