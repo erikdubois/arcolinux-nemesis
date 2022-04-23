@@ -121,7 +121,9 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
 
   sudo pacman -S --noconfirm --needed arcolinux-kvantum-theme-arc-git
   sudo pacman -S --noconfirm --needed sardi-icons
-
+  sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
+  sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
+  
 fi
 
 echo
