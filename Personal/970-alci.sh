@@ -30,7 +30,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	sudo pacman -S --noconfirm --needed arcolinux-grub-theme-vimix-git
 
 	if [ -f /etc/default/grub ]; then
-		sudo cp $installed_dir/settings/grub /etc/default/grub
+		sudo cp $installed_dir/settings/alci/grub /etc/default/grub
 	fi
 
 	if [ -f /etc/environment ]; then
