@@ -31,7 +31,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "#####  Choose wisely - one time setup after clean install   ####"
+echo "#####                      Choose wisely                    ####"
 echo "################################################################"
 tput sgr0
 echo
