@@ -120,12 +120,13 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
   echo
 
   sudo pacman -S --noconfirm --needed arcolinux-kvantum-theme-arc-git
-  sudo pacman -S --noconfirm --needed sardi-icons
-  sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
-  sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
-  sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
   sudo pacman -S --noconfirm --needed menulibre
-  
+  sudo pacman -S --noconfirm --needed mugshot
+  sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
+  sudo pacman -S --noconfirm --needed sardi-icons
+  sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
+  sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
+
 fi
 
 echo
