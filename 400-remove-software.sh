@@ -214,6 +214,7 @@ if grep -q "Garuda" /etc/os-release; then
   fi
 
   sudo pacman -R --noconfirm garuda-xfce-settings
+  sudo pacman -R --noconfirm garuda-common-settings
 
   echo
   tput setaf 2
