@@ -126,5 +126,4 @@ if grep -q "Garuda" /etc/os-release; then
     echo
     tput sgr0
 
-  fi
 fi
