@@ -197,3 +197,30 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 
 fi
 
+
+# when on Garuda - remove conflicting files
+
+if grep -q "Garuda" /etc/os-release; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "############### Removing software for EOS"
+  echo "################################################################"
+  tput sgr0
+
+  if [ -f /etc/skel/.bashrc ]; then
+    sudo rm /etc/skel/.bashrc
+  fi
+
+  sudo pacman -R --noconfirm garuda-xfce-settings
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Software removed"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+fi
