@@ -159,11 +159,6 @@ sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable ntpd.service
 
-if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
-  sudo pacman -S --noconfirm --needed qt5ct
-fi
-
-
 sudo pacman -S --noconfirm --needed pulseaudio-bluetooth
 sudo pacman -S --noconfirm --needed bluez
 sudo pacman -S --noconfirm --needed bluez-libs
@@ -192,6 +187,10 @@ sudo pacman -S --noconfirm --needed unace
 sudo pacman -S --noconfirm --needed unrar
 sudo pacman -S --noconfirm --needed unzip
 
+if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
+  sudo pacman -S --noconfirm --needed qt5ct
+fi
+
 ###############################################################################################
 
 
@@ -206,7 +205,6 @@ if grep -q "Arch Linux" /etc/os-release; then
   tput sgr0
   echo
 
-
   echo
   echo "################################################################"
   echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
@@ -215,50 +213,27 @@ if grep -q "Arch Linux" /etc/os-release; then
   sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
   sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
 
-  # when on i3
+fi
 
-  if [ -f /usr/share/xsessions/i3.desktop ]; then
+# when on xfce
 
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### Installing software for Arch Linux - i3wm"
-    echo "################################################################"
-    tput sgr0
-    echo
+if [ -f /usr/share/xsessions/xfce.desktop ]; then
 
-    sudo pacman -S --noconfirm --needed arcolinux-i3wm-git
-    sudo pacman -S --noconfirm --needed autotiling
-    sudo pacman -S --noconfirm --needed lxappearance
-    sudo pacman -S --noconfirm --needed nitrogen
-    sudo pacman -S --noconfirm --needed picom
-    sudo pacman -S --noconfirm --needed thunar
-    sudo pacman -S --noconfirm --needed thunar-archive-plugin
-    sudo pacman -S --noconfirm --needed thunar-volman
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Installing software for Xfce"
+  echo "################################################################"
+  tput sgr0
+  echo
 
-  fi
-
-  # when on Cinnamon
-
-  if [ -f /usr/bin/cinnamon ]; then
-
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### Cinnamon related applications"
-    echo "################################################################"
-    tput sgr0
-    echo
-
-    sudo pacman -S --noconfirm --needed cinnamon-translations
-    sudo pacman -S --noconfirm --needed gnome-terminal
-    sudo pacman -S --noconfirm --needed gnome-system-monitor
-    sudo pacman -S --noconfirm --needed gnome-screenshot
-    sudo pacman -S --noconfirm --needed iso-flag-png
-    sudo pacman -S --noconfirm --needed mintlocale
-    sudo pacman -S --noconfirm --needed nemo-fileroller
-
-  fi
+  sudo pacman -S --noconfirm --needed arcolinux-kvantum-theme-arc-git
+  sudo pacman -S --noconfirm --needed menulibre
+  sudo pacman -S --noconfirm --needed mugshot
+  sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
+  sudo pacman -S --noconfirm --needed sardi-icons
+  sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
+  sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
 
 fi
 
