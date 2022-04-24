@@ -62,7 +62,7 @@ if grep -q "Garuda" /etc/os-release; then
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "############### We are on an EOS iso"
+	echo "############### We are on an GARUDA iso"
 	echo "################################################################"
 	echo
 	tput sgr0
@@ -116,22 +116,6 @@ if grep -q "Garuda" /etc/os-release; then
 		REPLACE="Edu-Papirus-Dark-Tela"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-		if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
-
-			echo
-			echo "Changing the look of lightdm gtk greeter"
-			echo
-
-			FIND="#theme-name="
-			REPLACE="theme-name=Arc-Dark"
-			sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
-
-			sudo cp $installed_dir/settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
-
-			FIND="#background="
-			REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
-			sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
 
     fi
 
