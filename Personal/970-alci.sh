@@ -17,6 +17,7 @@
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
+
 if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 
 	echo
@@ -27,9 +28,9 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	tput sgr0
 	echo
 
-	sudo pacman -S --noconfirm --needed arcolinux-grub-theme-vimix-git
-
 	if [ -f /etc/default/grub ]; then
+
+		sudo pacman -S --noconfirm --needed arcolinux-grub-theme-vimix-git
 		sudo cp $installed_dir/settings/alci/grub /etc/default/grub
 		sudo cp $installed_dir/settings/alci/theme.txt /boot/grub/themes/Vimix/theme.txt
 
@@ -57,9 +58,6 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	REPLACE="Current=arcolinux-simplicity"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 
-	#if grep -q alci-iso /usr/local/bin/get-nemesis-on-alci ; then
-	#	sudo pacman -S --noconfirm --needed xfce4 xfce4-goodies
-	#fi
 
 	if grep -q alci-iso-lts /usr/local/bin/get-nemesis-on-alci ; then
 		sudo pacman -S --noconfirm --needed xdg-user-dirs-gtk
