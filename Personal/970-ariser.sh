@@ -46,6 +46,13 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	tput sgr0
 	echo
 
+	if [ -f /etc/default/grub ]; then
+		sudo cp $installed_dir/settings/ariser/grub /etc/default/grub
+		sudo cp $installed_dir/settings/ariser/theme.txt /boot/grub/themes/Vimix/theme.txt
+
+		sudo grub-mkconfig -o /boot/grub/grub.cfg
+	fi
+
 	if [ -f /etc/environment ]; then
 		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
 		echo "EDITOR=nano" | sudo tee -a /etc/environment
