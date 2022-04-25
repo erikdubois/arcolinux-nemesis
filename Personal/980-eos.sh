@@ -70,6 +70,9 @@ if grep -q "EndeavourOS" /etc/os-release; then
 	sudo pacman -S --noconfirm --needed edu-skel-git
   	sudo pacman -S --noconfirm --needed edu-system-git
 
+	sudo groupadd autologin
+	sudo usermod -a -G autologin $USER
+
 	if [ -f /etc/environment ]; then
 		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
 		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
