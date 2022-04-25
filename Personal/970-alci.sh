@@ -17,7 +17,6 @@
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-
 if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 
 	echo
@@ -29,7 +28,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	echo
 
 	sudo pacman -S --noconfirm --needed edu-skel-git
-  	sudo pacman -S --noconfirm --needed edu-system-git	
+  	sudo pacman -S --noconfirm --needed edu-system-git
 
 	if [ -f /etc/default/grub ]; then
 
@@ -47,29 +46,18 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 
 	if [ -f /usr/lib/sddm/sddm.conf.d/default.conf ]; then
 		sudo cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
+		echo
+		echo "Changing sddm theme"
+		echo
+		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
+		FIND="Current="
+		REPLACE="Current=arcolinux-simplicity"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 	fi
 
 	if [ -f /etc/nanorc ]; then
     	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
 	fi
-
-	echo
-	echo "Changing sddm theme"
-	echo
-	sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-	FIND="Current="
-	REPLACE="Current=arcolinux-simplicity"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
-
-
-	if grep -q alci-iso-lts /usr/local/bin/get-nemesis-on-alci ; then
-		sudo pacman -S --noconfirm --needed xdg-user-dirs-gtk
-	fi
-
-	if grep -q alci-iso-zen /usr/local/bin/get-nemesis-on-alci ; then
-		sudo pacman -S --noconfirm --needed xdg-user-dirs-gtk
-	fi	
-
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
@@ -100,6 +88,15 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		REPLACE="Edu-Papirus-Dark-Tela"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+
 	fi
+
+	if grep -q alci-iso-lts /usr/local/bin/get-nemesis-on-alci ; then
+		sudo pacman -S --noconfirm --needed xdg-user-dirs-gtk
+	fi
+
+	if grep -q alci-iso-zen /usr/local/bin/get-nemesis-on-alci ; then
+		sudo pacman -S --noconfirm --needed xdg-user-dirs-gtk
+	fi	
 
 fi

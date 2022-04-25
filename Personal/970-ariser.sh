@@ -44,12 +44,6 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		echo "EDITOR=nano" | sudo tee -a /etc/environment
 	fi
 
-	if [ -f /etc/nanorc ]; then
-    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-	fi
-
-	sudo usermod -a -G autologin $USER
-
 	if [ -f /etc/lightdm/lightdm.conf ]; then
 
 		echo
@@ -63,6 +57,30 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		REPLACE="autlogin-session=xfce"
     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm.conf
 
+		sudo usermod -a -G autologin $USER
+
+	fi
+
+	if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
+
+		echo
+		echo "Changing the look of lightdm gtk greeter"
+		echo
+
+		FIND="#theme-name="
+		REPLACE="theme-name=Arc-Dark"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
+
+		sudo cp $installed_dir/settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
+
+		FIND="#background="
+		REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
+
+	fi
+
+	if [ -f /etc/nanorc ]; then
+    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
 	fi
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
@@ -88,30 +106,12 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		FIND="Arc-Dark"
 		REPLACE="Arc-Dawn-Dark"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
 		REPLACE="arcolinux-candy-beauty"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-		if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
-
-			echo
-			echo "Changing the look of lightdm gtk greeter"
-			echo
-
-			FIND="#theme-name="
-			REPLACE="theme-name=Arc-Dark"
-			sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
-
-			sudo cp $installed_dir/settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
-
-			FIND="#background="
-			REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
-			sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
-
-		fi
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 	fi
 
