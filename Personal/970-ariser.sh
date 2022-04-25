@@ -17,8 +17,6 @@
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-
-
 if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 
 	echo
@@ -28,6 +26,9 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	echo "################################################################"
 	tput sgr0
 	echo
+
+	sudo pacman -S --noconfirm --needed edu-skel-git
+  	sudo pacman -S --noconfirm --needed edu-system-git
 
 	if [ -f /etc/default/grub ]; then
 
@@ -63,8 +64,6 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm.conf
 
 	fi
-
-
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo

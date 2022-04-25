@@ -28,6 +28,9 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	tput sgr0
 	echo
 
+	sudo pacman -S --noconfirm --needed edu-skel-git
+  	sudo pacman -S --noconfirm --needed edu-system-git	
+
 	if [ -f /etc/default/grub ]; then
 
 		sudo pacman -S --noconfirm --needed arcolinux-grub-theme-vimix-git
