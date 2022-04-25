@@ -66,28 +66,6 @@ sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
 ###############################################################################
 
-if [ ! -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Correct pamac"
-  echo "################################################################"
-  tput sgr0
-  echo
-
-  [ -d /etc/pacman.d/hooks ] || sudo mkdir -p /etc/pacman.d/hooks
-
-  sudo pacman -S --noconfirm --needed appstream
-
-  sudo cp $installed_dir/Personal/settings/pacman-hook/archlinux-appstream-data-fix /usr/local/bin/archlinux-appstream-data-fix
-  sudo cp $installed_dir/Personal/settings/pacman-hook/archlinux-appstream-data.hook /etc/pacman.d/hooks/archlinux-appstream-data.hook
-
-  sudo pacman -S --noconfirm --needed arcolinux-pamac-all
-  sudo pacman -S --noconfirm archlinux-appstream-data
-
-fi
-
 # when on Plasma
 
 if [ -f /usr/bin/startplasma-x11 ]; then
