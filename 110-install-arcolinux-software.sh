@@ -61,6 +61,7 @@ fi
 sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
 sudo pacman -S --noconfirm --needed arcolinux-logout-git
+sudo pacman -S --noconfirm --needed arcolinux-pamac-all
 sudo pacman -S --noconfirm --needed arcolinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
