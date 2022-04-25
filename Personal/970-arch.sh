@@ -27,6 +27,9 @@ if [ -f /usr/local/bin/get-nemesis-on-arch ]; then
 	tput sgr0
 	echo
 
+	sudo pacman -S --noconfirm --needed edu-skel-git
+  	sudo pacman -S --noconfirm --needed edu-system-git
+
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2

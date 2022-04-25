@@ -2,7 +2,7 @@
 #set -e
 ##################################################################################################################
 # Author 	: Erik Dubois
-# Website : https://www.erikdubois.be
+# Website   : https://www.erikdubois.be
 # Website	: https://www.arcolinux.info
 # Website	: https://www.arcolinux.com
 # Website	: https://www.arcolinuxd.com
@@ -26,6 +26,9 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 	echo "################################################################"
 	tput sgr0
 	echo
+
+	sudo pacman -S --noconfirm --needed edu-skel-git
+  	sudo pacman -S --noconfirm --needed edu-system-git
 
 	echo
 	echo "Changing sddm theme"
