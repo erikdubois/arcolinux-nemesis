@@ -213,6 +213,7 @@ if grep -q "Garuda" /etc/os-release; then
     sudo rm /etc/skel/.bashrc
   fi
 
+  sudo pacman -R --noconfirm blueman
   sudo pacman -R --noconfirm garuda-xfce-settings
   sudo pacman -R --noconfirm garuda-common-settings
   sudo pacman -R --noconfirm garuda-bash-config
