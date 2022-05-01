@@ -129,9 +129,12 @@ if grep -q "EndeavourOS" /etc/os-release; then
     sudo rm /etc/skel/.bashrc
   fi
 
+  sudo systemctl disable firewalld
+  sudo pacman -R --noconfirm firewalld
+
+
   sudo pacman -R --noconfirm arc-gtk-theme-eos
   sudo pacman -R --noconfirm endeavouros-skel-default endeavouros-skel-xfce4
-  sudo pacman -R --noconfirm firewalld
   sudo pacman -R --noconfirm modemmanager
   sudo pacman -R --noconfirm yay
 
