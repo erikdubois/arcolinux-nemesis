@@ -66,6 +66,8 @@ sudo pacman -S --noconfirm --needed arcolinux-pamac-all
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
+sudo pacman -S --noconfirm --needed visual-studio-code-bin
+
 ###############################################################################
 
 # when on Plasma
