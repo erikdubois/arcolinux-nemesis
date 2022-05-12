@@ -95,7 +95,6 @@ if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
   sudo systemctl disable tlp.service
   sudo pacman -Rs tlp --noconfirm
   sudo pacman -Rs broadcom-wl-dkms --noconfirm
-  sudo pacman -Rs r8168-dkms --noconfirm
   sudo pacman -Rs xf86-video-amdgpu --noconfirm
   sudo pacman -Rs xf86-video-fbdev --noconfirm
   sudo pacman -Rs xf86-video-openchrome --noconfirm
