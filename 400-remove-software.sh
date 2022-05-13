@@ -98,7 +98,9 @@ if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
   sudo pacman -Rs xf86-video-amdgpu --noconfirm
   sudo pacman -Rs xf86-video-fbdev --noconfirm
   sudo pacman -Rs xf86-video-openchrome --noconfirm
-  sudo pacman -Rs xf86-video-vmware --noconfirm
+  if pacman -Qi xf86-video-vmware &> /dev/null; then
+    sudo pacman -Rs xf86-video-vmware --noconfirm
+  fi
   sudo pacman -Rs xf86-video-ati --noconfirm
   sudo pacman -Rs xf86-video-nouveau --noconfirm
   sudo pacman -Rs xf86-video-vesa --noconfirm
