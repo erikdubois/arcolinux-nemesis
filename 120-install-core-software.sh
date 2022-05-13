@@ -62,7 +62,9 @@ sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed discord
 sudo pacman -S --noconfirm --needed dmenu
 sudo pacman -S --noconfirm --needed downgrade
-sudo pacman -S --noconfirm --needed duf
+if [ ! -f /usr/bin/duf ]; then
+  sudo pacman -S --noconfirm --needed duf
+fi
 sudo pacman -S --noconfirm --needed evince
 sudo pacman -S --noconfirm --needed expac
 sudo pacman -S --noconfirm --needed feh
