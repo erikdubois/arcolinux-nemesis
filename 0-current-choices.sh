@@ -39,8 +39,8 @@ sudo pacman -Sy
 
 sh 400-remove-software*
 
-sh 100-install-nemesis-software*
 sh 110-install-arcolinux-software*
+sh 100-install-nemesis-software*
 sh 120-install-core-software*
 #sh 130-install-leftwm*
 
