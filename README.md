@@ -38,7 +38,7 @@ Linked in: https://www.linkedin.com/in/arcolinux
 Youtube  : https://www.youtube.com/erikdubois
 
 
-# Arcolinux keys for anything Arch Linux based (except Manjaro)
+# Arcolinux keys for anything Arch Linux based
 
 
 Get keys and mirrors from ArcoLinux 
@@ -51,3 +51,18 @@ Get keys and mirrors from ArcoLinux and install archlinux-tweak-tool-git
 
 
 `wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys  && sudo ./get-arcolinux-keys && sudo pacman -Syu archlinux-tweak-tool-git`
+
+ArchLinux Tweak Tool will work on these distro's
+
+- ArcoLinux     - https://arcolinux.info")
+- Arch Linux    - https://archlinux.org")
+- Alci          - https://alci.online")
+- Carli         - https://arcolinuxiso.com/")
+- Ariser        - https://ariser.eu/")
+- EndeavourOS   - https://endeavouros.com/")
+- Garuda        - https://garudalinux.org/")
+
+
+ArchLinux Tweak Tool will NOT work on these distro's
+
+- Manjaro
