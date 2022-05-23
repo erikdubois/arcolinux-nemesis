@@ -37,3 +37,7 @@ Linked in: https://www.linkedin.com/in/arcolinux
 
 Youtube  : https://www.youtube.com/erikdubois
 
+
+# Arcolinux keys for anything Arch Linux based (except Manjaro)
+
+`wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys && sudo pacman -Syu archlinux-tweak-tool-git`
