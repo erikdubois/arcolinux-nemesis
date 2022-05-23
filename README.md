@@ -40,4 +40,14 @@ Youtube  : https://www.youtube.com/erikdubois
 
 # Arcolinux keys for anything Arch Linux based (except Manjaro)
 
+
+Get keys and mirrors from ArcoLinux 
+
+
+`wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys`
+
+
+Get keys and mirrors from ArcoLinux and install archlinux-tweak-tool-git
+
+
 `wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys && sudo pacman -Syu archlinux-tweak-tool-git`
