@@ -48,6 +48,7 @@ Get keys and mirrors from ArcoLinux
 
 
 Get keys and mirrors from ArcoLinux and install <b>archlinux-tweak-tool-git</b>
+You /etc/pacman.conf is filled automatically
 
 
 `wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys  && sudo ./get-arcolinux-keys && sudo pacman -Syu archlinux-tweak-tool-git`
