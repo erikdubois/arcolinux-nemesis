@@ -54,13 +54,13 @@ Get keys and mirrors from ArcoLinux and install archlinux-tweak-tool-git
 
 ArchLinux Tweak Tool will work on these distro's
 
-- ArcoLinux     - https://arcolinux.info")
-- Arch Linux    - https://archlinux.org")
-- Alci          - https://alci.online")
-- Carli         - https://arcolinuxiso.com/")
-- Ariser        - https://ariser.eu/")
-- EndeavourOS   - https://endeavouros.com/")
-- Garuda        - https://garudalinux.org/")
+- ArcoLinux     - https://arcolinux.info
+- Arch Linux    - https://archlinux.org
+- Alci          - https://alci.online
+- Carli         - https://arcolinuxiso.com/
+- Ariser        - https://ariser.eu/
+- EndeavourOS   - https://endeavouros.com/
+- Garuda        - https://garudalinux.org/
 
 
 ArchLinux Tweak Tool will NOT work on these distro's
