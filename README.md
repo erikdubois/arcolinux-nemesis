@@ -52,6 +52,9 @@ Get keys and mirrors from ArcoLinux and install archlinux-tweak-tool-git
 
 `wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys  && sudo ./get-arcolinux-keys && sudo pacman -Syu archlinux-tweak-tool-git`
 
+
+# ArchLinux Tweak Tool info
+
 ArchLinux Tweak Tool will work on these distro's
 
 - ArcoLinux     - https://arcolinux.info
