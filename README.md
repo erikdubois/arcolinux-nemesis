@@ -41,14 +41,17 @@ Youtube  : https://www.youtube.com/erikdubois
 # Arcolinux keys for anything Arch Linux based
 
 
-Get keys and mirrors from ArcoLinux 
+Get keys and mirrors from ArcoLinux
+
+Your /etc/pacman.conf is filled automatically 
 
 
 `wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys && sudo ./get-arcolinux-keys`
 
 
 Get keys and mirrors from ArcoLinux and install <b>archlinux-tweak-tool-git</b>
-You /etc/pacman.conf is filled automatically
+
+Your /etc/pacman.conf is filled automatically
 
 
 `wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys  && sudo ./get-arcolinux-keys && sudo pacman -Syu archlinux-tweak-tool-git`
