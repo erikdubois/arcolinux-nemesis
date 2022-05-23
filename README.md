@@ -47,7 +47,7 @@ Get keys and mirrors from ArcoLinux
 `wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys && sudo ./get-arcolinux-keys`
 
 
-Get keys and mirrors from ArcoLinux and install archlinux-tweak-tool-git
+Get keys and mirrors from ArcoLinux and install <b>archlinux-tweak-tool-git</b>
 
 
 `wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys  && sudo ./get-arcolinux-keys && sudo pacman -Syu archlinux-tweak-tool-git`
