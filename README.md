@@ -44,10 +44,10 @@ Youtube  : https://www.youtube.com/erikdubois
 Get keys and mirrors from ArcoLinux 
 
 
-`wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys`
+`wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys && sudo ./get-arcolinux-keys`
 
 
 Get keys and mirrors from ArcoLinux and install archlinux-tweak-tool-git
 
 
-`wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys && sudo pacman -Syu archlinux-tweak-tool-git`
+`wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys  && sudo ./get-arcolinux-keys && sudo pacman -Syu archlinux-tweak-tool-git`
