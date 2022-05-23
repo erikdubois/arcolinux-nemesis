@@ -13,7 +13,8 @@ sudo pacman -U --noconfirm --needed /tmp/arcolinux-keyring-20230919-6-any.pkg.ta
 
 echo "Getting the latest arcolinux mirrors file"
 
-sudo wget https://raw.githubusercontent.com/arcolinux/arcolinux-mirrorlist/master/etc/pacman.d/arcolinux-mirrorlist -O /etc/pacman.d/arcolinux-mirrorlist
+sudo wget https://github.com/arcolinux/arcolinux_repo/raw/main/x86_64/arcolinux-mirrorlist-git-22.04-01-any.pkg.tar.zst -O /tmp/arcolinux-mirrorlist-git-22.04-01-any.pkg.tar.zst
+sudo pacman -U --noconfirm --needed /tmp/arcolinux-mirrorlist-git-22.04-01-any.pkg.tar.zst
 echo '
 
 #[arcolinux_repo_testing]
