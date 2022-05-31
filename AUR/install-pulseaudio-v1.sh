@@ -22,9 +22,12 @@
 sudo pacman -R --noconfirm gnome-bluetooth blueberry
 sudo pacman -R --noconfirm pipewire-pulse
 sudo pacman -R --noconfirm pipewire-alsa
-sudo pacman -R --noconfirm pipewire-jack
+sudo pacman -Rdd --noconfirm pipewire-jack
 sudo pacman -R --noconfirm pipewire-media-session
 sudo pacman -R --noconfirm pipewire-zeroconf
+
+
+
 sudo pacman -Rdd --noconfirm pipewire
 
 
