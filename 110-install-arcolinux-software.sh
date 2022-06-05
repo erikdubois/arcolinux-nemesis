@@ -61,12 +61,16 @@ fi
 sudo pacman -S --noconfirm --needed appstream
 sudo pacman -S --noconfirm --needed arcolinux-arc-themes-2021-sky-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
-sudo pacman -S --noconfirm --needed archlinux-logout-git
+
 sudo pacman -S --noconfirm --needed arcolinux-pamac-all
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
 sudo pacman -S --noconfirm --needed visual-studio-code-bin
+
+if [ ! -f /usr/bin/startplasma-x11 ]; then
+  sudo pacman -S --noconfirm --needed archlinux-logout-git
+fi
 
 ###############################################################################
 
