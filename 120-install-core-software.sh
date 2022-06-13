@@ -231,7 +231,7 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
   tput sgr0
   echo
 
-  sudo pacman -S --noconfirm --needed arcolinux-kvantum-theme-arc-git
+  sudo pacman -S --noconfirm --needed arcolinux-arc-kde
   sudo pacman -S --noconfirm --needed menulibre
   sudo pacman -S --noconfirm --needed mugshot
   sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
