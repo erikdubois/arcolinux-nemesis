@@ -57,9 +57,9 @@ echo
 
 list=(
 adapta-gtk-theme
-arcolinux-arc-kde
-arcolinux-arc-themes-git
-arcolinux-sweet-mars-git
+arcolinux-arc-themes-2021-git
+arcolinux-arc-themes-2021-sky-git
+arcolinux-arc-themes-2021-creative-git
 ayu-theme
 breeze
 dracula-gtk-theme
@@ -179,7 +179,9 @@ echo
 #   packages:
 #     - adapta-gtk-theme
 #     - arcolinux-arc-kde
-#     - arcolinux-arc-themes-git
+#    - arcolinux-arc-themes-2021-git
+#    - arcolinux-arc-themes-2021-sky-git
+#    - arcolinux-arc-themes-2021-creative-git
 #     - arcolinux-sweet-mars-git
 #     - ayu-theme
 #     - breeze
