@@ -30,6 +30,12 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 	sudo pacman -S --noconfirm --needed edu-skel-git
   	sudo pacman -S --noconfirm --needed edu-system-git
 
+	result=$(systemd-detect-virt)
+  	test=$(systemctl is-enabled qemu-guest-agent.service)
+  	if [ $test == "enabled" ] &  [ $result == "none" ]; then
+  		sudo systemctl disable qemu-guest-agent.service
+	fi
+
 	echo
 	echo "Changing sddm theme"
 	echo
