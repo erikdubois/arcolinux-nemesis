@@ -30,6 +30,11 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	sudo pacman -S --noconfirm --needed edu-skel-git
   	sudo pacman -S --noconfirm --needed edu-system-git
 
+  	test=$(systemctl is-enabled qemu-guest-agent.service)
+  	if $test == "enabled"
+  		sudo systemctl disable qemu-guest-agent.service
+	fi
+
 	if [ -f /etc/default/grub ]; then
 
 		sudo pacman -S --noconfirm --needed arcolinux-grub-theme-vimix-git
