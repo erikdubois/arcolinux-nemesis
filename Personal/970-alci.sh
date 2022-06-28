@@ -31,7 +31,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
   	sudo pacman -S --noconfirm --needed edu-system-git
 	result=$(systemd-detect-virt)
   	test=$(systemctl is-enabled qemu-guest-agent.service)
-  	if [ $test == "enabled" and $result == "none" ]; then
+  	if [ $test == "enabled" ] &  [ $result == "none" ]; then
   		sudo systemctl disable qemu-guest-agent.service
 	fi
 
