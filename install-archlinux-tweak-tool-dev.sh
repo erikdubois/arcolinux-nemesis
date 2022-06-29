@@ -59,6 +59,9 @@ if grep -q arcolinux_repo /etc/pacman.conf; then
 fi
 
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-dev-git
+sudo pacman -S --noconfirm --needed meld
+sudo pacman -S --noconfirm --needed sublime-text-4
+
 
 echo
 tput setaf 2
