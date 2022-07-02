@@ -74,6 +74,11 @@ echo
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
 cp  settings/thunar/uca.xml $HOME/.config/Thunar
 echo
+echo "Adding personal neofetch"
+echo
+[ -d $HOME"/.config/neofetch" ] || mkdir -p $HOME"/.config/neofetch"
+cp  settings/neofetch/config.conf $HOME/.config/neofetch
+echo
 
 result=$(systemd-detect-virt)
 
