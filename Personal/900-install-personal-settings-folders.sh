@@ -79,6 +79,10 @@ echo
 [ -d $HOME"/.config/neofetch" ] || mkdir -p $HOME"/.config/neofetch"
 cp  settings/neofetch/config.conf $HOME/.config/neofetch
 echo
+echo "Adding xorg xkill"
+echo
+[ -d /etc/X11/xorg.conf.d/ ] || mkdir -p /etc/X11/xorg.conf.d/
+cp  settings/xorg/* /etc/X11/xorg.conf.d/
 
 result=$(systemd-detect-virt)
 
