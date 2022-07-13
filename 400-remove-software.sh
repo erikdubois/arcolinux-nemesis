@@ -223,6 +223,7 @@ if grep -q "Garuda" /etc/os-release; then
   sudo pacman -R --noconfirm garuda-common-settings
   sudo pacman -R --noconfirm garuda-bash-config
   sudo pacman -R --noconfirm redshift
+  sudo pacman -R --noconfirm hblock
 
   echo
   tput setaf 2
