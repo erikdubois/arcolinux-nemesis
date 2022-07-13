@@ -82,7 +82,7 @@ echo
 echo "Adding xorg xkill"
 echo
 [ -d /etc/X11/xorg.conf.d/ ] || mkdir -p /etc/X11/xorg.conf.d/
-cp  settings/xorg/* /etc/X11/xorg.conf.d/
+sudo cp  settings/xorg/* /etc/X11/xorg.conf.d/
 
 result=$(systemd-detect-virt)
 
