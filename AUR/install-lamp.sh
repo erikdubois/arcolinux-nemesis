@@ -96,25 +96,25 @@ echo 'Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
     Require all granted
 </Directory>' | sudo tee /etc/httpd/conf/extra/phpmyadmin.conf
 
-if grep -q "Include conf/extra/httpd-wordpress.conf" /etc/httpd/conf/httpd.conf ; then
+if grep -q "Include conf/extra/phpmyadmin.conf" /etc/httpd/conf/httpd.conf ; then
   echo "nothing to do"
 else
-  echo "Include conf/extra/httpd-wordpress.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
+echo "Include conf/extra/phpmyadmin.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
 fi
 
-sudo touch sudo nano /etc/httpd/conf/extra/httpd_wordpress.conf
+sudo touch sudo nano /etc/httpd/conf/extra/httpd-wordpress.conf
 
 echo 'Alias /wordpress "/usr/share/webapps/wordpress"
 <Directory "/usr/share/webapps/wordpress">
   AllowOverride All
   Options FollowSymlinks
   Require all granted
-</Directory>' | sudo tee /etc/httpd/conf/extra/httpd_wordpress.conf
+</Directory>' | sudo tee /etc/httpd/conf/extra/httpd-wordpress.conf
 
-if grep -q "Include conf/extra/phpmyadmin.conf" /etc/httpd/conf/httpd.conf ; then
+if grep -q "Include conf/extra/httpd-wordpress.conf" /etc/httpd/conf/httpd.conf ; then
   echo "nothing to do"
 else
-echo "Include conf/extra/phpmyadmin.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
+  echo "Include conf/extra/httpd-wordpress.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
 fi
 
 sudo touch /srv/http/index.php
@@ -138,5 +138,5 @@ phpinfo()
 
 sudo systemctl restart httpd
 
-firefox http://localhost &
+firefox http://localhost/wordpress &
 firefox --new-tab http://localhost/phpMyAdmin &
