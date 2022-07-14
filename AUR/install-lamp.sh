@@ -24,6 +24,14 @@ if [ -f /srv/http/$website/wp-config-sample.php ];then
   sudo rm -r /srv/http/$website/*
 fi
 
+if [ -f /srv/http/index.html ];then
+  sudo rm -r /srv/http/index.html
+fi
+
+if [ -f /srv/http/wordpress/index.php ];then
+  sudo rm -r /srv/http/wordpress/index.php
+fi
+
 #sudo pacman -S x --noconfirm --needed 
 
 sudo pacman -S apache --noconfirm --needed
@@ -131,7 +139,23 @@ if [ -d /srv/http/wordpress ]; then
 else
   sudo mkdir /srv/http/wordpress   
 fi
-  
+ 
+sudo touch /srv/http/index.html
+
+echo "<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Welcome</title>
+</head>
+
+<body>
+
+  <h1>Welcome to ArcoLinux</h1>
+
+</body>
+</html>" | sudo tee /srv/http//index.html
+
 sudo touch /srv/http/wordpress/index.php
 
 echo "<!DOCTYPE html>
@@ -143,8 +167,7 @@ echo "<!DOCTYPE html>
 
 <body>
 
-  <h1>Welcome to LinuxShellTips</h1>
-   <p>Linux Command Line Tips, Tricks, Hacks, Tutorials, and Ideas in Blog</p>
+  <h1>Welcome to ArcoLinux</h1>
 <?php
 phpinfo()
 ?>
