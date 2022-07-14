@@ -20,6 +20,16 @@ set -e
 
 website="wordpress"
 
+# CLEANUP - RESTART
+
+sudo pacman -Rs apache --noconfirm 
+sudo pacman -Rs php --noconfirm
+sudo pacman -Rs php-apache --noconfirm
+sudo pacman -Rs mariadb --noconfirm
+sudo pacman -Rs phpmyadmin --noconfirm
+sudo systemctl disable httpd
+sudo systemctl disable mariadb
+
 if [ -f /srv/http/$website/wp-config-sample.php ];then
   sudo rm -r /srv/http/$website/*
 fi
@@ -36,6 +46,30 @@ if [ -d /srv/http/wordpress ];then
   sudo rm -r /srv/http/wordpress
 fi
 
+if [ -f /etc/httpd/conf/httpd.conf ];then
+  sudo rm /etc/httpd/conf/httpd.conf
+fi
+
+if [ -f /etc/php/php.ini ];then
+  sudo rm /etc/php/php.ini
+fi
+
+if [ -d /var/lib/mysql ]; then 
+  sudo rm -rf /var/lib/mysql/
+fi
+
+if [ -f /etc/httpd/conf/extra/phpmyadmin.conf ];then
+  sudo rm /etc/httpd/conf/extra/phpmyadmin.conf
+fi
+
+if [ -f /etc/httpd/conf/extra/httpd-wordpress.conf ];then
+  sudo rm /etc/httpd/conf/extra/httpd-wordpress.conf
+fi
+
+
+
+########################################################
+
 #sudo pacman -S x --noconfirm --needed 
 
 sudo pacman -S apache --noconfirm --needed
@@ -46,10 +80,6 @@ sudo pacman -S phpmyadmin --noconfirm --needed
 
 sudo systemctl enable --now httpd
 sudo systemctl enable --now mariadb
-
-if [ -d /var/lib/mysql ]; then 
-  sudo rm -rf /var/lib/mysql/
-fi
 
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
@@ -85,7 +115,7 @@ sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
 
 echo "mod index php etc ..."
 FIND="DirectoryIndex index.html"
-REPLACE="DirectoryIndex index.html index.php"
+REPLACE="DirectoryIndex index.php index.html"
 sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
 
 # breaks access
@@ -143,7 +173,9 @@ if [ -d /srv/http/wordpress ]; then
 else
   sudo mkdir /srv/http/wordpress   
 fi
- 
+
+# HTML TEST
+
 sudo touch /srv/http/index.html
 
 echo "<!DOCTYPE html>
@@ -159,6 +191,9 @@ echo "<!DOCTYPE html>
 
 </body>
 </html>" | sudo tee /srv/http//index.html
+
+
+#PHP TEST
 
 sudo touch /srv/http/wordpress/index.php
 
