@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 ##################################################################################################################
 # Author	:	Erik Dubois
 # Website	:	https://www.erikdubois.be
@@ -20,11 +20,7 @@ set -e
 
 website="wordpress"
 
-# CLEANUP - RESTART
-
-sudo pacman -Rs apache --noconfirm 
-sudo pacman -Rs php php-apache phpmyadmin --noconfirm
-sudo pacman -Rs mariadb --noconfirm
+sudo pacman -Rs php apache php-apache phpmyadmin mariadb --noconfirm
 
 sudo systemctl disable httpd
 sudo systemctl disable mariadb
