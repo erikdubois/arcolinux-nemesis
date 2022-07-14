@@ -38,20 +38,30 @@ sudo mv /tmp/wordpress/* /srv/http/
 
 sudo cp /srv/http/wp-config-sample.php /srv/http/wp-config.php
 
-echo "change the user password and the database"
+echo "Now create a database - type these commands"
+echo "mysql -u root -p"
+echo
+echo "create database wordpress;"
+echo "grant all on wordpress.* to wordpress@localhost identified by 'wordpress';"
+echo "flush privileges;"
+echo "Now quite the shell"
 
-exit 1
+echo "change the user password and the database in /srv/http/wp-config.php"
+
+echo "click if you are finished"
+
+read
 
 #sudo touch /srv/http/.htaccess
 
-sudo chown -v http:http /srv/http/.htaccess
+#sudo chown -v http:http /srv/http/.htaccess
 
 
-sudo chown -Rv http:http /srv/http/
+#sudo chown -Rv http:http /srv/http/
 
-sudo find /srv/http/ -type d -exec chmod -v 775 {} \;
+#sudo find /srv/http/ -type d -exec chmod -v 775 {} \;
 
-sudo find /srv/http/ -type f -exec chmod -v 644 {} \;
+#sudo find /srv/http/ -type f -exec chmod -v 644 {} \;
 
 
 sudo systemctl restart httpd
