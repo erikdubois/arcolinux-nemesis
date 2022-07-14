@@ -20,6 +20,10 @@ set -e
 
 website="wordpress"
 
+if [ -f /srv/http/$website/wp-config-sample.php ];then
+  sudo rm -r /srv/http/$website/*
+fi
+
 #sudo pacman -S x --noconfirm --needed 
 
 sudo pacman -S apache --noconfirm --needed
