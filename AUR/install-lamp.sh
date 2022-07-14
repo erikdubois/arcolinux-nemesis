@@ -25,8 +25,8 @@ sudo pacman -Rs php apache php-apache phpmyadmin mariadb --noconfirm
 sudo systemctl disable httpd
 sudo systemctl disable mariadb
 
-if [ -f /srv/http/$website/wp-config-sample.php ];then
-  sudo rm -r /srv/http/$website/*
+if [ -f /srv/http/wordpress/wp-config-sample.php ];then
+  sudo rm -r /srv/http/wordpress/*
 fi
 
 if [ -f /srv/http/index.html ];then
@@ -74,6 +74,7 @@ sudo pacman -S phpmyadmin --noconfirm --needed
 sudo systemctl enable --now httpd
 sudo systemctl enable --now mariadb
 
+echo "removing /var/lib/mysql"
 if [ -d /var/lib/mysql ]; then 
   sudo rm -rf /var/lib/mysql
   sudo mkdir /var/lib/mysql
@@ -186,7 +187,9 @@ echo "<!DOCTYPE html>
 <body>
 
   <h1>Welcome to ArcoLinux</h1>
-
+<?php
+phpinfo()
+?>
 </body>
 </html>" | sudo tee /srv/http//index.html
 
