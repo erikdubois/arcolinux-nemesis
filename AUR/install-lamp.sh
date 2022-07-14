@@ -29,7 +29,7 @@ sudo systemctl enable --now httpd
 sudo systemctl enable --now mariadb
 
 if [ -d /var/lib/mysql ]; then 
-  sudo rm -r /var/lib/mysql/
+  sudo rm -rf /var/lib/mysql/
 fi
 
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
