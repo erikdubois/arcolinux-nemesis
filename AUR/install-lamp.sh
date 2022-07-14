@@ -85,6 +85,8 @@ sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 # you need to run this as su
 echo "enter, n, y, password, password, y, y, y, y"
 
+sudo systemctl restart mariadb
+
 sudo mariadb-secure-installation
 
 echo "mpm event out"
@@ -101,8 +103,7 @@ echo "support php"
 if grep -q "Include conf/extra/php_module.conf" /etc/httpd/conf/httpd.conf ; then
 	echo "nothing to do"
 else
-	echo "
-LoadModule php_module modules/libphp.so
+	echo "LoadModule php_module modules/libphp.so
 AddHandler php-script php
 Include conf/extra/php_module.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
 fi
@@ -123,15 +124,17 @@ sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
 # REPLACE="Include conf/extra/httpd-vhosts.conf"
 # sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
 
-echo "phpmyadmin"
+echo "phpmyadmin - php.ini - line 927"
 FIND=";extension=mysqli"
 REPLACE="extension=mysqli"
 sudo sed -i "s|$FIND|$REPLACE|g" /etc/php/php.ini
 
+echo "phpmyadmin - php.ini - line 931"
 FIND=";extension=pdo_mysql"
 REPLACE="extension=pdo_mysql"
 sudo sed -i "s|$FIND|$REPLACE|g" /etc/php/php.ini
 
+echo "phpmyadmin - php.ini - line 923"
 FIND=";extension=iconv"
 REPLACE="extension=iconv"
 sudo sed -i "s|$FIND|$REPLACE|g" /etc/php/php.ini
@@ -154,6 +157,7 @@ fi
 
 sudo touch sudo nano /etc/httpd/conf/extra/httpd-wordpress.conf
 
+echo "add httpd-wordpress.conf"
 echo 'Alias /wordpress "/usr/share/webapps/wordpress"
 <Directory "/usr/share/webapps/wordpress">
   AllowOverride All
@@ -161,6 +165,7 @@ echo 'Alias /wordpress "/usr/share/webapps/wordpress"
   Require all granted
 </Directory>' | sudo tee /etc/httpd/conf/extra/httpd-wordpress.conf
 
+echo "Include httpd-wordpress in httpd.conf"
 if grep -q "Include conf/extra/httpd-wordpress.conf" /etc/httpd/conf/httpd.conf ; then
   echo "nothing to do"
 else
@@ -215,6 +220,7 @@ phpinfo()
 </html>" | sudo tee /srv/http/wordpress/index.php
 
 sudo systemctl restart httpd
+sudo systemctl restart mariadb
 
 firefox http://localhost/
 firefox http://localhost/wordpress &
