@@ -61,8 +61,6 @@ if [ -f /etc/httpd/conf/extra/httpd-wordpress.conf ];then
   sudo rm /etc/httpd/conf/extra/httpd-wordpress.conf
 fi
 
-
-
 ########################################################
 
 #sudo pacman -S x --noconfirm --needed 
@@ -75,6 +73,11 @@ sudo pacman -S phpmyadmin --noconfirm --needed
 
 sudo systemctl enable --now httpd
 sudo systemctl enable --now mariadb
+
+if [ -d /var/lib/mysql ]; then 
+  sudo rm -rf /var/lib/mysql
+  sudo mkdir /var/lib/mysql
+fi
 
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
