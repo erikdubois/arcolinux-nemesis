@@ -121,6 +121,7 @@ else
   echo "Include conf/extra/httpd-wordpress.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
 fi
 
+sudo mkdir /srv/http/wordpress
 sudo touch /srv/http/wordpress/index.php
 
 echo "<!DOCTYPE html>
