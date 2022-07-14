@@ -121,7 +121,7 @@ else
   echo "Include conf/extra/httpd-wordpress.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
 fi
 
-sudo touch /srv/http/index.php
+sudo touch /srv/http/wordpress/index.php
 
 echo "<!DOCTYPE html>
 <html>
@@ -138,7 +138,7 @@ echo "<!DOCTYPE html>
 phpinfo()
 ?>
 </body>
-</html>" | sudo tee /srv/http/index.php
+</html>" | sudo tee /srv/http/wordpress/index.php
 
 sudo systemctl restart httpd
 
