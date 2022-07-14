@@ -18,6 +18,7 @@ set -e
 # https://www.tecmint.com/install-wordpress-in-ubuntu-lamp-stack/
 # https://www.howtoforge.com/tutorial/arch-linux-wordpress-install/
 # https://computingforgeeks.com/how-setup-wordpress-on-arch-linux/
+# https://wiki.archlinux.org/title/Wordpress
 
 sudo pacman -S wget --noconfirm --needed
 
@@ -40,17 +41,17 @@ sudo cp /srv/http/wp-config-sample.php /srv/http/wp-config.php
 
 echo "Now create a database - type these commands"
 echo "Start the shell with this command"
-echo "mysql -u root -p"
+echo "mariadb -u root -p"
 echo
 echo "create database wordpress;"
 echo "grant all on wordpress.* to wordpress@localhost identified by 'wordpress';"
 echo "flush privileges;"
 echo
-echo "Now quite the shell"
+echo "Now quit the shell"
 
 echo "change the user password and the database in /srv/http/wp-config.php"
 
-echo "Type a letter if you are finished"
+echo "Press ENTER if you are finished"
 
 read
 

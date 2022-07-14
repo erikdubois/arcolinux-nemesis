@@ -16,6 +16,7 @@ set -e
 ##################################################################################################################
 
 # url : https://www.linuxshelltips.com/install-lamp-archlinux/
+#https://wiki.archlinux.org/title/Wordpress
 
 #sudo pacman -S x --noconfirm --needed 
 
@@ -121,8 +122,6 @@ phpinfo()
 </html>" | sudo tee /srv/http/index.php
 
 sudo systemctl restart httpd
-
-sleep 5
 
 firefox http://localhost &
 firefox --new-tab http://localhost/phpMyAdmin &
