@@ -64,10 +64,11 @@ FIND="#LoadModule rewrite_module modules/mod_rewrite.so"
 REPLACE="LoadModule rewrite_module modules/mod_rewrite.so"
 sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
 
-echo "vhosts"
-FIND="#Include conf/extra/httpd-vhosts.conf"
-REPLACE="Include conf/extra/httpd-vhosts.conf"
-sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
+# breaks access
+# echo "vhosts"
+# FIND="#Include conf/extra/httpd-vhosts.conf"
+# REPLACE="Include conf/extra/httpd-vhosts.conf"
+# sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
 
 echo "phpmyadmin"
 FIND=";extension=mysqli"
