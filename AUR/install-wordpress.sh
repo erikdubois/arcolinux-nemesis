@@ -19,6 +19,8 @@ set -e
 # https://www.howtoforge.com/tutorial/arch-linux-wordpress-install/
 # https://computingforgeeks.com/how-setup-wordpress-on-arch-linux/
 
+sudo pacman -S wget --noconfirm --needed
+
 if [ -f /tmp/latest.tar.gz ];then
   rm /tmp/latest.tar.gz
 fi
