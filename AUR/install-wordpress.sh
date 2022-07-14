@@ -32,7 +32,7 @@ fi
 sudo wget http://wordpress.org/latest.tar.gz -O /srv/http/latest.tar.gz
 
 cd /srv/http/
-sudo tar -xzvf /srv/http/latest.tar.gz
+sudo tar -xzvf /srv/http/latest.tar.gz --strip-components 1
 
 sudo rm /srv/http/latest.tar.gz
 
