@@ -28,22 +28,28 @@ sudo pacman -S phpmyadmin --noconfirm --needed
 sudo systemctl enable --now httpd
 sudo systemctl enable --now mariadb
 
-sudo rm -r /var/lib/mysql/*
+if [ -d /var/lib/mysql ]; then 
+  sudo rm -r /var/lib/mysql/*
+fi
 
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 # you need to run this as su
 echo "enter, n, y, y, y, n, y"
-sudo mariadb_secure_installation
 
+sudo mariadb-secure-installation
+
+echo "mpm event out"
 FIND="LoadModule mpm_event_module modules/mod_mpm_event.so"
 REPLACE="#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so"
 sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
 
+echo "mpm prefork in"
 FIND="#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so"
 REPLACE="LoadModule mpm_prefork_module modules/mod_mpm_prefork.so"
 sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
 
+echo "support php"
 if grep -q "Include conf/extra/php_module.conf" /etc/httpd/conf/httpd.conf ; then
 	echo "nothing to do"
 else
@@ -53,7 +59,46 @@ AddHandler php-script php
 Include conf/extra/php_module.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
 fi
 
-sudo systemctl restart httpd
+echo "mod rewrite"
+FIND="#LoadModule rewrite_module modules/mod_rewrite.so"
+REPLACE="LoadModule rewrite_module modules/mod_rewrite.so"
+sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
+
+echo "vhosts"
+FIND="#Include conf/extra/httpd-vhosts.conf"
+REPLACE="Include conf/extra/httpd-vhosts.conf"
+sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
+
+echo "phpmyadmin"
+FIND=";extension=mysqli"
+REPLACE="extension=mysqli"
+sudo sed -i "s|$FIND|$REPLACE|g" /etc/php/php.ini
+
+FIND=";extension=pdo_mysql"
+REPLACE="extension=pdo_mysql"
+sudo sed -i "s|$FIND|$REPLACE|g" /etc/php/php.ini
+
+FIND=";extension=iconv"
+REPLACE="extension=iconv"
+sudo sed -i "s|$FIND|$REPLACE|g" /etc/php/php.ini
+
+sudo touch sudo nano /etc/httpd/conf/extra/phpmyadmin.conf
+
+echo 'Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
+<Directory "/usr/share/webapps/phpMyAdmin">
+	DirectoryIndex  index.php
+    AllowOverride All
+    Options FollowSymlinks
+    Require all granted
+</Directory>' | sudo tee /etc/httpd/conf/extra/phpmyadmin.conf
+
+if grep -q "Include conf/extra/phpmyadmin.conf" /etc/httpd/conf/httpd.conf ; then
+	echo "nothing to do"
+else
+echo "Include conf/extra/phpmyadmin.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
+fi
+
+
 
 sudo touch /srv/http/index.php
 
@@ -73,37 +118,6 @@ phpinfo()
 ?>
 </body>
 </html>" | sudo tee /srv/http/index.php
-
-
-#phpadmin
-
-FIND=";extension=mysqli"
-REPLACE="extension=mysqli"
-sudo sed -i "s|$FIND|$REPLACE|g" /etc/php/php.ini
-
-FIND=";extension=pdo_mysql"
-REPLACE="extension=pdo_mysql"
-sudo sed -i "s|$FIND|$REPLACE|g" /etc/php/php.ini
-
-FIND=";extension=iconv"
-REPLACE="extension=iconv"
-sudo sed -i "s|$FIND|$REPLACE|g" /etc/php/php.ini
-
-sudo touch sudo nano /etc/httpd/conf/extra/phpmyadmin.conf
-
-echo "Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
-<Directory "/usr/share/webapps/phpMyAdmin">
-	DirectoryIndex  index.php
-    AllowOverride All
-    Options FollowSymlinks
-    Require all granted
-</Directory>" | sudo tee /etc/httpd/conf/extra/phpmyadmin.conf
-
-if grep -q "Include conf/extra/phpmyadmin.conf" /etc/httpd/conf/httpd.conf ; then
-	echo "nothing to do"
-else
-echo "Include conf/extra/phpmyadmin.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
-fi
 
 sudo systemctl restart httpd
 
