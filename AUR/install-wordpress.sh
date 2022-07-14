@@ -26,7 +26,7 @@ sudo pacman -S wget --noconfirm --needed
 # fi
 
 if [ -d /srv/http/ ];then
-  rm -r /srv/http/*
+  sudo rm -r /srv/http/*
 fi
 
 wget http://wordpress.org/latest.tar.gz -O /srv/http/latest.tar.gz
