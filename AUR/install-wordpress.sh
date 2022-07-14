@@ -29,12 +29,12 @@ if [ -d /tmp/wordpress ];then
   rm -r /tmp/wordpress
 fi
 
-wget http://wordpress.org/latest.tar.gz -O /tmp/latest.tar.gz
+wget http://wordpress.org/latest.tar.gz -O /srv/http/latest.tar.gz
 
-cd /tmp
-tar -xzvf /tmp/latest.tar.gz
+cd /srv/http/
+tar -xzvf /srv/http/latest.tar.gz
 
-sudo mv /tmp/wordpress/* /srv/http/
+sudo rm /srv/http/latest.tar.gz
 
 sudo cp /srv/http/wp-config-sample.php /srv/http/wp-config.php
 

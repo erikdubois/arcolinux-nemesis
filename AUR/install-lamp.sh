@@ -35,7 +35,7 @@ fi
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 # you need to run this as su
-echo "enter, y, password, password, y, y, y, y, y"
+echo "enter, y, y, password, password, y, y, y, y, y"
 
 sudo mariadb-secure-installation
 
