@@ -28,15 +28,13 @@ sudo pacman -S phpmyadmin --noconfirm --needed
 sudo systemctl enable --now httpd
 sudo systemctl enable --now mysqld
 
-#sudo rm -r /var/lib/mysql
+sudo rm -r /var/lib/mysql/*
 
-#mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-#mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 # you need to run this as su
-#sudo mysql_secure_installation
-
-#mysql -u root -p
+echo "enter, n, y, y, y, n, y"
+sudo mariadb_secure_installation
 
 FIND="#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so"
 REPLACE="LoadModule mpm_prefork_module modules/mod_mpm_prefork.so"
