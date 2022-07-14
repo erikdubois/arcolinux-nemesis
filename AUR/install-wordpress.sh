@@ -25,7 +25,7 @@ sudo pacman -S wget --noconfirm --needed
 #   rm /tmp/latest.tar.gz
 # fi
 
-if [ -d /srv/http/ ];then
+if [ -f /srv/http/wp-config-sample.php ];then
   sudo rm -r /srv/http/*
 fi
 
