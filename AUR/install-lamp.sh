@@ -23,9 +23,9 @@ website="wordpress"
 # CLEANUP - RESTART
 
 sudo pacman -Rs apache --noconfirm 
-sudo pacman -Rs php php-apache --noconfirm
+sudo pacman -Rs php php-apache phpmyadmin --noconfirm
 sudo pacman -Rs mariadb --noconfirm
-sudo pacman -Rs phpmyadmin --noconfirm
+
 sudo systemctl disable httpd
 sudo systemctl disable mariadb
 
