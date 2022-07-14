@@ -21,12 +21,12 @@ set -e
 
 sudo pacman -S wget --noconfirm --needed
 
-if [ -f /tmp/latest.tar.gz ];then
-  rm /tmp/latest.tar.gz
-fi
+# if [ -f /tmp/latest.tar.gz ];then
+#   rm /tmp/latest.tar.gz
+# fi
 
-if [ -d /tmp/wordpress ];then
-  rm -r /tmp/wordpress
+if [ -d /srv/http/ ];then
+  rm -r /srv/http/*
 fi
 
 wget http://wordpress.org/latest.tar.gz -O /srv/http/latest.tar.gz
