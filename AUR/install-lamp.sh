@@ -32,6 +32,10 @@ if [ -f /srv/http/wordpress/index.php ];then
   sudo rm -r /srv/http/wordpress/index.php
 fi
 
+if [ -d /srv/http/wordpress ];then
+  sudo rm -r /srv/http/wordpress
+fi
+
 #sudo pacman -S x --noconfirm --needed 
 
 sudo pacman -S apache --noconfirm --needed
