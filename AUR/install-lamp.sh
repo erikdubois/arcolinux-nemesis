@@ -238,6 +238,6 @@ phpinfo()
 sudo systemctl restart httpd
 sudo systemctl restart mariadb
 
-firefox http://localhost/
-firefox http://localhost/wordpress &
-firefox --new-tab http://localhost/phpMyAdmin &
+# firefox http://localhost/
+# firefox http://localhost/wordpress &
+# firefox --new-tab http://localhost/phpMyAdmin &

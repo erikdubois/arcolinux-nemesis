@@ -88,6 +88,7 @@ read
 
 
 sudo systemctl restart httpd
+sudo systemctl restart mariadb
 
-firefox http://localhost &
-firefox --new-tab http://localhost/phpMyAdmin &
+#firefox http://localhost &
+#firefox --new-tab http://localhost/phpMyAdmin &
