@@ -71,6 +71,11 @@ FIND="#LoadModule rewrite_module modules/mod_rewrite.so"
 REPLACE="LoadModule rewrite_module modules/mod_rewrite.so"
 sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
 
+echo "mod index php etc ..."
+FIND="DirectoryIndex index.html"
+REPLACE="DirectoryIndex index.html index.php"
+sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
+
 # breaks access
 # echo "vhosts"
 # FIND="#Include conf/extra/httpd-vhosts.conf"
