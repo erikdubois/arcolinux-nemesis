@@ -29,7 +29,7 @@ if [ -f /srv/http/wp-config-sample.php ];then
   sudo rm -r /srv/http/*
 fi
 
-wget http://wordpress.org/latest.tar.gz -O /srv/http/latest.tar.gz
+sudo wget http://wordpress.org/latest.tar.gz -O /srv/http/latest.tar.gz
 
 cd /srv/http/
 sudo tar -xzvf /srv/http/latest.tar.gz
