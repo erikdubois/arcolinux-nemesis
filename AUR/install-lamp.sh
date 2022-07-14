@@ -18,6 +18,8 @@ set -e
 # url : https://www.linuxshelltips.com/install-lamp-archlinux/
 #https://wiki.archlinux.org/title/Wordpress
 
+website="wordpress"
+
 #sudo pacman -S x --noconfirm --needed 
 
 sudo pacman -S apache --noconfirm --needed
@@ -36,7 +38,7 @@ fi
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 # you need to run this as su
-echo "enter, y, y, password, password, y, y, y, y, y"
+echo "enter, n, y, password, password, y, y, y, y"
 
 sudo mariadb-secure-installation
 
@@ -94,13 +96,26 @@ echo 'Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
     Require all granted
 </Directory>' | sudo tee /etc/httpd/conf/extra/phpmyadmin.conf
 
+if grep -q "Include conf/extra/httpd-wordpress.conf" /etc/httpd/conf/httpd.conf ; then
+  echo "nothing to do"
+else
+  echo "Include conf/extra/httpd-wordpress.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
+fi
+
+sudo touch sudo nano /etc/httpd/conf/extra/httpd_wordpress.conf
+
+echo 'Alias /wordpress "/usr/share/webapps/wordpress"
+<Directory "/usr/share/webapps/wordpress">
+  AllowOverride All
+  Options FollowSymlinks
+  Require all granted
+</Directory>' | sudo tee /etc/httpd/conf/extra/httpd_wordpress.conf
+
 if grep -q "Include conf/extra/phpmyadmin.conf" /etc/httpd/conf/httpd.conf ; then
-	echo "nothing to do"
+  echo "nothing to do"
 else
 echo "Include conf/extra/phpmyadmin.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
 fi
-
-
 
 sudo touch /srv/http/index.php
 
