@@ -29,13 +29,13 @@ sudo systemctl enable --now httpd
 sudo systemctl enable --now mariadb
 
 if [ -d /var/lib/mysql ]; then 
-  sudo rm -r /var/lib/mysql/*
+  sudo rm -r /var/lib/mysql/
 fi
 
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 # you need to run this as su
-echo "enter, n, y, y, y, n, y"
+echo "enter, y, password, password, y, y, y, y, y"
 
 sudo mariadb-secure-installation
 
@@ -121,6 +121,8 @@ phpinfo()
 </html>" | sudo tee /srv/http/index.php
 
 sudo systemctl restart httpd
+
+sleep 5
 
 firefox http://localhost &
 firefox --new-tab http://localhost/phpMyAdmin &

@@ -39,16 +39,18 @@ sudo mv /tmp/wordpress/* /srv/http/
 sudo cp /srv/http/wp-config-sample.php /srv/http/wp-config.php
 
 echo "Now create a database - type these commands"
+echo "Start the shell with this command"
 echo "mysql -u root -p"
 echo
 echo "create database wordpress;"
 echo "grant all on wordpress.* to wordpress@localhost identified by 'wordpress';"
 echo "flush privileges;"
+echo
 echo "Now quite the shell"
 
 echo "change the user password and the database in /srv/http/wp-config.php"
 
-echo "click if you are finished"
+echo "Type a letter if you are finished"
 
 read
 
