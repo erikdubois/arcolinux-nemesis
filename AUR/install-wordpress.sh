@@ -40,24 +40,24 @@ tput sgr0
 
 sudo pacman -S wget --noconfirm --needed
 
-website="wordpress"
-
-# if [ -f /tmp/latest.tar.gz ];then
-#   rm /tmp/latest.tar.gz
+# if [ -f /srv/http/wordpress/wp-config-sample.php ];then
+#   sudo rm -r /srv/http/wordpress/*
 # fi
 
-if [ -f /srv/http/$website/wp-config-sample.php ];then
-  sudo rm -r /srv/http/$website/*
+if [ -f /srv/http/wp-config-sample.php ];then
+  sudo rm -r /srv/http/*
 fi
 
-sudo wget http://wordpress.org/latest.tar.gz -O /srv/http/$website/latest.tar.gz
+sudo wget http://wordpress.org/latest.tar.gz -O /srv/http/latest.tar.gz
+#sudo wget http://wordpress.org/latest.tar.gz -O /srv/http/wordpress/latest.tar.gz
 
-cd /srv/http/$website/
-sudo tar -xzvf /srv/http/$website/latest.tar.gz --strip-components 1
+cd /srv/http/
+sudo tar -xzvf /srv/http/latest.tar.gz --strip-components 1
 
-sudo rm /srv/http/$website/latest.tar.gz
+sudo rm /srv/http/latest.tar.gz
 
-sudo cp /srv/http/$website/wp-config-sample.php /srv/http/wp-config.php
+sudo cp /srv/http/wp-config-sample.php /srv/http/wp-config.php
+#sudo cp /srv/http/wordpress/wp-config-sample.php /srv/http/wp-config.php
 
 echo "Now create a database - type these commands"
 echo "Start the shell with this command"
