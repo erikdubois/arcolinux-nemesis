@@ -126,7 +126,12 @@ else
   echo "Include conf/extra/httpd-wordpress.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
 fi
 
-sudo mkdir /srv/http/wordpress
+if [ -d /srv/http/wordpress ]; then
+  echo "nothing to do"
+else
+  sudo mkdir /srv/http/wordpress   
+fi
+  
 sudo touch /srv/http/wordpress/index.php
 
 echo "<!DOCTYPE html>
@@ -148,5 +153,6 @@ phpinfo()
 
 sudo systemctl restart httpd
 
+firefox http://localhost/
 firefox http://localhost/wordpress &
 firefox --new-tab http://localhost/phpMyAdmin &
