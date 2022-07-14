@@ -85,7 +85,7 @@ sudo mariadb-secure-installation
 
 echo "mpm event out"
 FIND="LoadModule mpm_event_module modules/mod_mpm_event.so"
-REPLACE="#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so"
+REPLACE="#LoadModule mpm_event_module modules/mod_mpm_event.so"
 sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
 
 echo "mpm prefork in"
