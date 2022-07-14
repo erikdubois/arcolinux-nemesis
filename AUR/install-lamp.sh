@@ -26,7 +26,7 @@ sudo pacman -S mariadb --noconfirm --needed
 sudo pacman -S phpmyadmin --noconfirm --needed
 
 sudo systemctl enable --now httpd
-sudo systemctl enable --now mysqld
+sudo systemctl enable --now mariadb
 
 sudo rm -r /var/lib/mysql/*
 
@@ -35,6 +35,10 @@ sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 # you need to run this as su
 echo "enter, n, y, y, y, n, y"
 sudo mariadb_secure_installation
+
+FIND="LoadModule mpm_event_module modules/mod_mpm_event.so"
+REPLACE="#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so"
+sudo sed -i "s|$FIND|$REPLACE|g" /etc/httpd/conf/httpd.conf
 
 FIND="#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so"
 REPLACE="LoadModule mpm_prefork_module modules/mod_mpm_prefork.so"
@@ -102,3 +106,6 @@ echo "Include conf/extra/phpmyadmin.conf" | sudo tee -a /etc/httpd/conf/httpd.co
 fi
 
 sudo systemctl restart httpd
+
+firefox http://localhost &
+firefox --new-tab http://localhost/phpMyAdmin &
