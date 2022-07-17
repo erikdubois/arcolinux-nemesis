@@ -59,15 +59,17 @@ The ArcoLinux repos are added to your /etc/pacman.conf
 
 # ArchLinux Tweak Tool info
 
-You can find all information about the ATT here
+Install the ATT from the AUR
 
 yay archlinux tweak
 
 paru archlinux tweak
 
-select it and install it
+select the correct number and install it
 
-you can get the keys and mirrors in like that too
+You can get the keys and mirrors in via the ATT
+
+You can find all information about the ATT here
 
 https://github.com/arcolinux/archlinux-tweak-tool
 
