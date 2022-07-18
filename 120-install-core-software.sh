@@ -72,7 +72,7 @@ sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
 sudo pacman -S --noconfirm --needed fish
 sudo pacman -S --noconfirm --needed flameshot-git
-sudo pacman -S --noconfirm --needed fluent-icon-theme-git
+#sudo pacman -S --noconfirm --needed fluent-icon-theme-git
 sudo pacman -S --noconfirm --needed font-manager
 sudo pacman -S --noconfirm --needed galculator
 sudo pacman -S --noconfirm --needed gimp
