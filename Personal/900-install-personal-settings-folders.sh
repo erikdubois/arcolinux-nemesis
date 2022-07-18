@@ -38,6 +38,7 @@ echo
 echo "Creating folders we use later"
 echo
 [ -d $HOME"/.bin" ] || mkdir -p $HOME"/.bin"
+[ -d $HOME"/Projects" ] || mkdir -p $HOME"/Projects"
 [ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
 [ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
 [ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
