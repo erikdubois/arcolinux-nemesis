@@ -116,6 +116,7 @@ sudo pacman -S --noconfirm --needed paru-bin
 sudo pacman -S --noconfirm --needed pavucontrol
 sudo pacman -S --noconfirm --needed playerctl
 sudo pacman -S --noconfirm --needed polkit-gnome
+sudo pacman -S --noconfirm --needed python-pylint
 sudo pacman -S --noconfirm --needed python-pywal
 sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed qbittorrent
