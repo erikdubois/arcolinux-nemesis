@@ -169,8 +169,9 @@ sudo pacman -S --noconfirm --needed pulseaudio-bluetooth
 sudo pacman -S --noconfirm --needed bluez
 sudo pacman -S --noconfirm --needed bluez-libs
 sudo pacman -S --noconfirm --needed bluez-utils
-sudo pacman -S --noconfirm --needed blueberry
-
+if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
+  sudo pacman -S --noconfirm --needed blueberry
+fi
 sudo pacman -S --noconfirm --needed cups
 sudo pacman -S --noconfirm --needed cups-pdf
 sudo pacman -S --noconfirm --needed ghostscript
