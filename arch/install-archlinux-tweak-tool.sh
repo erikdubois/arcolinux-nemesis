@@ -29,7 +29,7 @@
 git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
 cd /tmp/yay-bin
 makepkg
-sudo pacman -U yay-bin*.zst
+sudo pacman -U yay-bin*.zst --noconfirm
 yay -S archlinux-tweak-tool-git --noconfirm
 
 tput setaf 2
