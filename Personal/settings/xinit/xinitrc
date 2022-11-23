@@ -1,0 +1,115 @@
+#!/bin/sh
+#
+# ~/.xinitrc for CHADWM
+#
+# Executed by startx (run your window manager from here)
+
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+setxkbmap be
+
+nm-applet &
+pamac-tray &
+variety &
+xfce4-power-manager &
+blueberry-tray &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+picom -b  --config ~/.config/arco-chadwm/picom/picom.conf &
+numlockx on
+volumeicon &
+#insync start &
+#spotify &
+#ckb-next -b &
+#discord &
+#telegram-desktop &
+
+sxhkd -c ~/.config/arco-chadwm/sxhkd/sxhkdrc &
+
+feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
+#feh --randomize --bg-fill /home/erik/Insync/Apps/Wallhaven/*
+#feh --bg-fill ~/.config/arco-chadwm/wallpaper/chadwm.jpg &
+#feh --bg-fill /usr/share/archlinux-tweak-tool/data/wallpaper/wallpaper.png &
+
+sh /home/erik/.config/arco-chadwm/scripts/bar.sh &
+
+exec chadwm  > ~/.xsession-errors 2>&1
+
+# copy/paste from the internet as reference for future installation 
+# did not try out
+
+
+# Here Xfce is kept as default
+# session=${1:-chadwm}
+
+# case $session in
+#     chadwm            ) exec /home/erik/config/arco-chadwm/scripts/run.sh;;
+#     i3|i3wm           ) exec i3;;
+#     kde               ) exec startplasma-x11;;
+#     xfce|xfce4        ) exec startxfce4;;
+#     bsp|bspwm         ) exec bspwm ;;
+#     awesome           ) exec awesome ;;
+#     # No known session, try to run it as command
+#     *                 ) exec $1;;
+# esac
+
+# exec enlightenment_start
+# exec mate-session
+# exec xmonad
+# exec startlxqt
+# exec startlxde
+# exec awesome
+# exec bspwm
+# exec gnome-session
+# exec gnome-session --session=gnome-classic
+# exec startkde
+# exec startxfce4
+# exec startfluxbox
+# exec openbox-session
+# exec cinnamon-session
+# exec pekwm
+# exec catwm
+# exec dwm
+# exec startede
+# exec icewm-session
+# exec jwm
+# exec monsterwm
+# exec notion
+# exec startdde
+# deepin-session
+
+
+# # Here bspwm is kept as default
+# session=${1:-bspwm}
+
+# case $session in
+#   awesome           ) exec awesome;;
+#   bspwm             ) exec bspwm;;
+#   catwm             ) exec catwm;;
+#   cinnamon          ) exec cinnamon-session;;
+#   dwm               ) exec dwm;;
+#   enlightenment     ) exec enlightenment_start;;
+#   ede               ) exec startede;;
+#   fluxbox           ) exec startfluxbox;;
+#   gnome             ) exec gnome-session;;
+#   gnome-classic     ) exec gnome-session --session=gnome-classic;;
+#   i3|i3wm           ) exec i3;;
+#   icewm             ) exec icewm-session;;
+#   jwm               ) exec jwm;;
+#   kde               ) exec startkde;;
+#   mate              ) exec mate-session;;
+#   monster|monsterwm ) exec monsterwm;;
+#   notion            ) exec notion;;
+#   openbox           ) exec openbox-session;;
+#   unity             ) exec unity;;
+#   xfce|xfce4        ) exec startxfce4;;
+#   xmonad            ) exec xmonad;;
+#   wmutil            ) exec /home/delusional/wmutil-session;;
+#   # No known session, try to run it as command
+#   *) exec $1;;
+# esac
