@@ -49,7 +49,6 @@ echo "Installation of the core software"
 list=(
 snapd
 nvidia-dkms
-lib32-nvidia-utils
 )
 
 count=0
