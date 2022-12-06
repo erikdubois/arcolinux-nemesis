@@ -48,7 +48,6 @@ echo "Installation of the core software"
 
 list=(
 snapd
-nvidia-dkms
 )
 
 count=0
