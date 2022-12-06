@@ -62,5 +62,9 @@ done
 
 sudo systemctl enable --now apparmor.service
 sudo systemctl enable --now snapd.apparmor.service
+sudo systemctl enable --now snapd.service
 
 sudo snap install tmunitedforever
+
+echo "reboot and start with"
+echo "snap run tmunitedforever"
