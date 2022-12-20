@@ -22,7 +22,7 @@ sudo pacman -Rdd iptables --noconfirm
 sudo pacman -S --noconfirm --needed iptables-nft
 sudo pacman -S --noconfirm --needed ebtables 
 
-sudo pacman -S --noconfirm --needed qemu-desktop
+sudo pacman -S --noconfirm --needed qemu-full
 sudo pacman -S --noconfirm --needed virt-manager
 sudo pacman -S --noconfirm --needed virt-viewer
 sudo pacman -S --noconfirm --needed dnsmasq
