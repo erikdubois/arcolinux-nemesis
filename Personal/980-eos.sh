@@ -107,6 +107,8 @@ if grep -q "EndeavourOS" /etc/os-release; then
 		tput sgr0
 		echo
 
+		sudo pacman -S --noconfirm --needed edu-xfce-git
+
     	cp -arf /etc/skel/. ~
 
 		echo
