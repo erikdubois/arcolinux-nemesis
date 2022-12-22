@@ -79,6 +79,7 @@ sh 970-alci*
 sh 970-ariser*
 sh 970-arch*
 sh 970-carli*
+sh 970-sierra*
 sh 970-arco*
 sh 980-eos*
 sh 980-garuda*
