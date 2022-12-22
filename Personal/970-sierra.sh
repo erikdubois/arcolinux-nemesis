@@ -33,6 +33,13 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 		sudo rm /usr/share/icons/default/cursors
 	fi
 
+	if [ -f /boot/loader/loader.conf ]; then
+		FIND="timeout 5"
+		REPLACE="timeout 1"
+		sudo sed -i "s/$FIND/$REPLACE/g" /boot/loader/loader.conf
+
+	fi
+
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
