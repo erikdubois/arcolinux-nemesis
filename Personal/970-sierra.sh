@@ -33,8 +33,10 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	fi
 	sudo cp -f $installed_dir/settings/cursor/* /usr/share/icons/default
 
+
 	echo
 	echo "Copying sddm files"
+	sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
 	sudo cp -f /usr/share/archlinux-tweak-tool/data/arco/sddm/sddm.conf /etc/sddm.conf
 
 	sudo mkdir /etc/sddm.conf.d
