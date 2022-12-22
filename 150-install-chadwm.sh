@@ -72,13 +72,14 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
     alacritty
     archlinux-logout-git
     edu-chadwm-git
-    arcolinux-local-xfce4-git
+    edu-skel-git
+    edu-system-git
+    edu-xfce-git
     arcolinux-paleofetch-git
     arcolinux-rofi-git
     arcolinux-rofi-themes-git
     arcolinux-wallpapers-candy-git
     arcolinux-wallpapers-git
-    arcolinux-xfce-git
     autorandr
     dash
     dmenu

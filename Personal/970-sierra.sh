@@ -22,7 +22,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "################### We are on an ArcoLinux iso"
+	echo "################### We are on Sierra"
 	echo "################################################################"
 	tput sgr0
 	echo
