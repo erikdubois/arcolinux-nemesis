@@ -250,7 +250,6 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
   if [ -f /etc/skel/.bashrc ]; then
     sudo rm /etc/skel/.bashrc
   fi
-  sudo rm /etc/skel/.Xresources
   sudo pacman -R --noconfirm amd-ucode
   sudo pacman -R --noconfirm b43-fwcutter
   sudo pacman -R --noconfirm broadcom-wl
