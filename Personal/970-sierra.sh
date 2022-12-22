@@ -27,12 +27,20 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	tput sgr0
 	echo
 
-	sudo cp -f $installed_dir/settings/cursor/* /usr/share/icons/default
-
+	echo "copying cursor file"
 	if [ -d /usr/share/icons/default/cursors ]; then
 		sudo rm /usr/share/icons/default/cursors
 	fi
+	sudo cp -f $installed_dir/settings/cursor/* /usr/share/icons/default
 
+	echo
+	echo "Copying sddm files"
+	sudo cp -f /usr/share/archlinux-tweak-tool/data/arco/sddm/sddm.conf /etc/sddm.conf
+
+	sudo mkdir /etc/sddm.conf.d
+	sudo cp -f /usr/share/archlinux-tweak-tool/data/arco/sddm.conf.d/kde_settings.conf /etc/sddm.conf.d/kde_settings.conf
+
+	echo "Bootloader time to 1 second"
 	if [ -f /boot/loader/loader.conf ]; then
 		FIND="timeout 5"
 		REPLACE="timeout 1"
