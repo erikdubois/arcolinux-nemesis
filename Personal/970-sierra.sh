@@ -29,7 +29,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 
 	sudo cp -f $installed_dir/settings/cursor/* /usr/share/icons/default
 
-	if [ -f /usr/share/icons/default/cursors ]; then
+	if [ -d /usr/share/icons/default/cursors ]; then
 		sudo rm /usr/share/icons/default/cursors
 	fi
 
