@@ -46,12 +46,12 @@ sudo pacman -S --noconfirm --needed arandr
 #sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed archiso
-sudo pacman -S --noconfirm --needed asciinema
+#sudo pacman -S --noconfirm --needed asciinema
 sudo pacman -S --noconfirm --needed avahi
 sudo pacman -S --noconfirm --needed awesome-terminal-fonts
-sudo pacman -S --noconfirm --needed ayu-theme
+#sudo pacman -S --noconfirm --needed ayu-theme
 sudo pacman -S --noconfirm --needed baobab
-sudo pacman -S --noconfirm --needed base16-alacritty-git
+#sudo pacman -S --noconfirm --needed base16-alacritty-git
 sudo pacman -S --noconfirm --needed bash-completion
 sudo pacman -S --noconfirm --needed bat
 sudo pacman -S --noconfirm --needed bibata-cursor-theme-bin
@@ -70,7 +70,7 @@ sudo pacman -S --noconfirm --needed expac
 sudo pacman -S --noconfirm --needed feh
 sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
-sudo pacman -S --noconfirm --needed fish
+#sudo pacman -S --noconfirm --needed fish
 sudo pacman -S --noconfirm --needed flameshot-git
 #sudo pacman -S --noconfirm --needed fluent-icon-theme-git
 sudo pacman -S --noconfirm --needed font-manager
@@ -241,6 +241,7 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
   sudo pacman -S --noconfirm --needed sardi-icons
   sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
   sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
+  sudo pacman -S --noconfirm --needed lastpass
 
 fi
 
