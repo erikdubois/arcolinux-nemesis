@@ -71,7 +71,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
     list=(
     alacritty
     archlinux-logout-git
-    arcolinux-chadwm-git
+    edu-chadwm-git
     arcolinux-local-xfce4-git
     arcolinux-paleofetch-git
     arcolinux-rofi-git
