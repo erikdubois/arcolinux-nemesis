@@ -27,6 +27,8 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	tput sgr0
 	echo
 
+	sudo cp -f $installed_dir/settings/cursor/* /usr/share/icons/default
+
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
