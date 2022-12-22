@@ -43,6 +43,7 @@ sh 110-install-arcolinux-software*
 sh 100-install-nemesis-software*
 sh 120-install-core-software*
 #sh 130-install-leftwm*
+sh 150-install-chadwm*
 
 sh 200-software-AUR-repo*
 #sh 300-sardi-extra-icons-AUR-repo*

@@ -46,85 +46,80 @@ func_install() {
     fi
 }
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Install chadwm"
-echo "################################################################"
-tput sgr0
-echo
+
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+
+if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### We are on SIERRA"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Install chadwm"
+    echo "################################################################"
+    tput sgr0
+    echo
 
 
-list=(
-alacritty
-archlinux-logout-git
-arcolinux-chadwm-git
-arcolinux-local-xfce4-git
-arcolinux-paleofetch-git
-arcolinux-rofi-git
-arcolinux-rofi-themes-git
-arcolinux-wallpapers-candy-git
-arcolinux-wallpapers-git
-arcolinux-xfce-git
-autorandr
-dash
-dmenu
-eww
-feh
-gvfs
-lolcat
-lxappearance
-picom
-polkit-gnome
-rofi
-rxvt-unicode
-sxhkd
-thunar
-thunar-archive-plugin
-thunar-volman
-ttf-hack
-volumeicon
-xfce4-notifyd
-xfce4-power-manager
-xfce4-screenshooter
-xfce4-settings
-xfce4-taskmanager
-xfce4-terminal
-)
+    list=(
+    alacritty
+    archlinux-logout-git
+    arcolinux-chadwm-git
+    arcolinux-local-xfce4-git
+    arcolinux-paleofetch-git
+    arcolinux-rofi-git
+    arcolinux-rofi-themes-git
+    arcolinux-wallpapers-candy-git
+    arcolinux-wallpapers-git
+    arcolinux-xfce-git
+    autorandr
+    dash
+    dmenu
+    eww
+    feh
+    gvfs
+    lolcat
+    lxappearance
+    picom
+    polkit-gnome
+    rofi
+    rxvt-unicode
+    sxhkd
+    thunar
+    thunar-archive-plugin
+    thunar-volman
+    ttf-hack
+    volumeicon
+    xfce4-notifyd
+    xfce4-power-manager
+    xfce4-screenshooter
+    xfce4-settings
+    xfce4-taskmanager
+    xfce4-terminal
+    )
 
-count=0
+    count=0
 
-for name in "${list[@]}" ; do
-    count=$[count+1]
-    tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-    func_install $name
-done
-
-# when on Leftwm
-
-if [ -f /usr/share/xsessions/leftwm.desktop ]; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Leftwm related applications"
-  echo "################################################################"
-  tput sgr0
-  echo
+    for name in "${list[@]}" ; do
+        count=$[count+1]
+        tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+        func_install $name
+    done
 
 
-  #sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
-  #sh ~/.config/leftwm/scripts/install-all-arcolinux-community-themes.sh
-
-  #leftwm-theme update
-  #leftwm-theme apply db-nemesis
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Done"
+    echo "################################################################"
+    tput sgr0
+    echo
 
 fi
-
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Done"
-echo "################################################################"
-tput sgr0
-echo
