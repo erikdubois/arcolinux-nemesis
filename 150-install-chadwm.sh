@@ -63,8 +63,6 @@ arcolinux-local-xfce4-git
 arcolinux-paleofetch-git
 arcolinux-rofi-git
 arcolinux-rofi-themes-git
-arcolinux-root-git
-arcolinux-volumeicon-git
 arcolinux-wallpapers-candy-git
 arcolinux-wallpapers-git
 arcolinux-xfce-git
