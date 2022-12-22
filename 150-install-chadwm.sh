@@ -80,7 +80,6 @@ picom
 polkit-gnome
 rofi
 rxvt-unicode
-sddm
 sxhkd
 thunar
 thunar-archive-plugin
