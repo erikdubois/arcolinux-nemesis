@@ -73,12 +73,6 @@ if grep -q "Garuda" /etc/os-release; then
 	sudo pacman -S --noconfirm --needed edu-skel-git
   	sudo pacman -S --noconfirm --needed edu-system-git
 
-	result=$(systemd-detect-virt)
-  	test=$(systemctl is-enabled qemu-guest-agent.service)
-  	if [ $test == "enabled" ] &  [ $result == "none" ]; then
-  		sudo systemctl disable qemu-guest-agent.service
-	fi
-
 	if [ -f /etc/environment ]; then
 		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
 		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
