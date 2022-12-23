@@ -63,3 +63,8 @@ fi
 if [ -f /etc/nanorc ]; then
 	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
 fi
+
+echo
+echo "Adding ubuntu keyserver"
+echo '
+keyserver hkp://keyserver.ubuntu.com:80' | sudo tee --append /etc/pacman.d/gnupg/gpg.conf
