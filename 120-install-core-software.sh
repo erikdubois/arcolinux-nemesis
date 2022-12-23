@@ -93,6 +93,7 @@ sudo pacman -S --noconfirm --needed inkscape
 sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed kvantum
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
+sudo pacman -S --noconfirm --needed lastpass
 sudo pacman -S --noconfirm --needed logrotate
 sudo pacman -S --noconfirm --needed lolcat
 sudo pacman -S --noconfirm --needed lshw
@@ -165,19 +166,6 @@ sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable ntpd.service
 
-sudo pacman -S --noconfirm --needed cups
-sudo pacman -S --noconfirm --needed cups-pdf
-sudo pacman -S --noconfirm --needed ghostscript
-sudo pacman -S --noconfirm --needed gsfonts
-sudo pacman -S --noconfirm --needed gutenprint
-sudo pacman -S --noconfirm --needed gtk3-print-backends
-sudo pacman -S --noconfirm --needed libcups
-sudo pacman -S --noconfirm --needed system-config-printer
-sudo pacman -S --noconfirm --needed sane
-sudo pacman -S --noconfirm --needed simple-scan
-
-sudo systemctl enable --now cups.service
-
 sudo pacman -S --noconfirm --needed rxvt-unicode
 sudo pacman -S --noconfirm --needed urxvt-fullscreen
 sudo pacman -S --noconfirm --needed urxvt-perls
@@ -192,20 +180,6 @@ sudo pacman -S --noconfirm --needed unzip
 if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed qt5ct
 fi
-
-if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
-  sudo pacman -S --noconfirm --needed blueberry
-fi
-
-sudo pacman -S --noconfirm --needed pulseaudio-bluetooth
-sudo pacman -S --noconfirm --needed bluez
-sudo pacman -S --noconfirm --needed bluez-libs
-sudo pacman -S --noconfirm --needed bluez-utils
-
-sudo systemctl enable bluetooth.service
-sudo systemctl start bluetooth.service
-sudo sed -i 's/'#AutoEnable=false'/'AutoEnable=true'/g' /etc/bluetooth/main.conf
-echo 'load-module module-switch-on-connect' | sudo tee --append /etc/pulse/default.pa
 
 ###############################################################################################
 
@@ -243,14 +217,12 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
   tput sgr0
   echo
 
-  sudo pacman -S --noconfirm --needed arcolinux-arc-kde
   sudo pacman -S --noconfirm --needed menulibre
   sudo pacman -S --noconfirm --needed mugshot
   sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
   sudo pacman -S --noconfirm --needed sardi-icons
   sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
   sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
-  sudo pacman -S --noconfirm --needed lastpass
 
 fi
 

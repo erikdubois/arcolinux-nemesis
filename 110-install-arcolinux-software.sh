@@ -60,7 +60,6 @@ fi
 
 sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-dev-git
 
-sudo pacman -S --noconfirm --needed appstream
 sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
 sudo pacman -S --noconfirm --needed arcolinux-pamac-all
@@ -91,6 +90,21 @@ if [ -f /usr/bin/startplasma-x11 ]; then
   sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
   sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
   sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
+fi
+
+
+if [ -f /usr/share/xsessions/xfce.desktop ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Installing software for Xfce"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+  sudo pacman -S --noconfirm --needed arcolinux-arc-kde
+
 fi
 
 echo
