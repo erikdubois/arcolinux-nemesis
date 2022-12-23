@@ -56,9 +56,11 @@ echo
 echo "Testing if qemu agent is still active"
 result=$(systemd-detect-virt)
 test=$(systemctl is-enabled qemu-guest-agent.service)
-if [ $test == "enabled" ] &  [ $result == "none" ]; then
-	echo "Disabled qemu agent service"
+if [ $test == "enabled" ] &&  [ $result == "none" ] || [ $result == "oracle" ]; then
+	echo
+	echo "Disable qemu agent service"
 	sudo systemctl disable qemu-guest-agent.service
+	echo
 fi
 
 if [ -f /etc/nanorc ]; then
