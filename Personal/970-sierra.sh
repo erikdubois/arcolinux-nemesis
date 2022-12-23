@@ -20,6 +20,19 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 
 	echo
+	echo "Azerty config"
+	cp -v $HOME/.config/arco-chadwm/chadwm/config.def-azerty.h $HOME/.config/arco-chadwm/chadwm/config.def.h
+	echo
+
+	if [ -f $HOME/.config/arco-chadwm/chadwm/config.h ]; then
+		rm $HOME/.config/arco-chadwm/chadwm/config.h
+	fi
+
+	cd $HOME/.config/arco-chadwm/chadwm/
+	make
+	sudo make install
+
+	echo
 	tput setaf 2
 	echo "################################################################"
 	echo "################### We are on Sierra"
@@ -63,19 +76,6 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	REPLACE="User=erik"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf.d/kde_settings.conf
 	echo
-
-	echo
-	echo "Azerty config"
-	cp -f ~/.config/arco-chadwm/chadwm/config.def-azerty.h ~/.config/arco-chadwm/chadwm/config.def.h
-	echo
-
-	if [ -f ~/.config/arco-chadwm/chadwm/config.h ]; then
-		rm ~/.config/arco-chadwm/chadwm/config.h
-	fi
-
-	cd ~/.config/arco-chadwm/chadwm/
-	make
-	sudo make install
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
