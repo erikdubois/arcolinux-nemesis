@@ -38,12 +38,13 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "################### We are on a CARLI iso"
+	echo "################### We are on CARLI"
 	echo "################################################################"
 	tput sgr0
 	echo
 
 	sudo pacman -S --noconfirm --needed edu-skel-git
+	sudo pacman -S --noconfirm --needed edu-xfce-git
   	sudo pacman -S --noconfirm --needed edu-system-git
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
