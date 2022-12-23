@@ -165,13 +165,6 @@ sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable ntpd.service
 
-sudo pacman -S --noconfirm --needed pulseaudio-bluetooth
-sudo pacman -S --noconfirm --needed bluez
-sudo pacman -S --noconfirm --needed bluez-libs
-sudo pacman -S --noconfirm --needed bluez-utils
-if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
-  sudo pacman -S --noconfirm --needed blueberry
-fi
 sudo pacman -S --noconfirm --needed cups
 sudo pacman -S --noconfirm --needed cups-pdf
 sudo pacman -S --noconfirm --needed ghostscript
@@ -197,6 +190,19 @@ sudo pacman -S --noconfirm --needed unzip
 if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed qt5ct
 fi
+
+if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
+  sudo pacman -S --noconfirm --needed blueberry
+fi
+
+sudo pacman -S --noconfirm --needed pulseaudio-bluetooth
+sudo pacman -S --noconfirm --needed bluez
+sudo pacman -S --noconfirm --needed bluez-libs
+sudo pacman -S --noconfirm --needed bluez-utils
+
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
+sudo sed -i 's/'#AutoEnable=false'/'AutoEnable=true'/g' /etc/bluetooth/main.conf
 
 ###############################################################################################
 
