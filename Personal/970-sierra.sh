@@ -66,7 +66,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 
 	echo
 	echo "Azerty config"
-	cp -f ~/.config/arco-chadwm/chadwm/config-def-azerty.h ~/.config/arco-chadwm/chadwm/config-def.h
+	cp -f ~/.config/arco-chadwm/chadwm/config.def-azerty.h ~/.config/arco-chadwm/chadwm/config.def.h
 	echo
 
 	if [ -f ~/.config/arco-chadwm/chadwm/config.h ]; then
