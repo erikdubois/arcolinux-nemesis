@@ -56,7 +56,7 @@ echo
 echo "Testing if qemu agent is still active"
 result=$(systemd-detect-virt)
 test=$(systemctl is-enabled qemu-guest-agent.service)
-if [ $test == "enabled" ] &&  [ $result == "none" ] || [ $result == "oracle" ]; then
+if [ $test == "enabled" ] && [ $result == "none" ] || [ $result == "oracle" ]; then
 	echo
 	echo "Disable qemu agent service"
 	sudo systemctl disable qemu-guest-agent.service
