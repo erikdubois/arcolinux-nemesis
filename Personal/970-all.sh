@@ -1,6 +1,6 @@
 #!/bin/bash
 #keep it set like this
-set -e
+#set -e
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -66,5 +66,6 @@ fi
 
 echo
 echo "Adding ubuntu keyserver"
+
 echo '
 keyserver hkp://keyserver.ubuntu.com:80' | sudo tee --append /etc/pacman.d/gnupg/gpg.conf
