@@ -62,7 +62,7 @@ if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
-		REPLACE="Edu-Papirus-Dark-Tela"
+		REPLACE="arcolinux-candy-beauty"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
