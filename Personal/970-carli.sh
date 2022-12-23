@@ -56,9 +56,6 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 	REPLACE="Current=arcolinux-simplicity"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 
-	if [ -f /etc/nanorc ]; then
-    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-	fi
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo

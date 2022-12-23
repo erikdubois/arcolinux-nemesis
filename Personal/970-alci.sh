@@ -39,14 +39,13 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	tput sgr0
 	echo
 
+	echo
+	echo "Installing Edu packages"
 	sudo pacman -S --noconfirm --needed edu-skel-git
   	sudo pacman -S --noconfirm --needed edu-system-git
-	result=$(systemd-detect-virt)
-  	test=$(systemctl is-enabled qemu-guest-agent.service)
-  	if [ $test == "enabled" ] &  [ $result == "none" ]; then
-  		sudo systemctl disable qemu-guest-agent.service
-	fi
 
+  	echo
+  	echo "Installing grub theme"
 	if [ -f /etc/default/grub ]; then
 
 		sudo pacman -S --noconfirm --needed arcolinux-grub-theme-vimix-git
@@ -56,11 +55,15 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		sudo grub-mkconfig -o /boot/grub/grub.cfg
 	fi
 
+	echo
+	echo "Adding environment variables"
 	if [ -f /etc/environment ]; then
 		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
 		echo "EDITOR=nano" | sudo tee -a /etc/environment
 	fi
 
+	echo
+	echo "Changing sddm theme"
 	if [ -f /usr/lib/sddm/sddm.conf.d/default.conf ]; then
 		sudo cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
 		echo
@@ -72,10 +75,14 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 	fi
 
+	echo
+	echo "Adding nanorc"
 	if [ -f /etc/nanorc ]; then
     	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
 	fi
 
+	echo	
+	echo "When on Xfce4"
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
@@ -87,6 +94,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 
 		cp -arf /etc/skel/. ~
 
+		echo
 		echo "Changing the whiskermenu"
 		echo
 		cp $installed_dir/settings/alci/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc

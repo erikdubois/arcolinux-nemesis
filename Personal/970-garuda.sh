@@ -94,9 +94,6 @@ if grep -q "Garuda" /etc/os-release; then
 	sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
 	sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
 
-	if [ -f /etc/nanorc ]; then
-	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-	fi
 
   	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo

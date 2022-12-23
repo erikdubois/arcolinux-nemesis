@@ -39,14 +39,10 @@ if [ -f /usr/local/bin/get-nemesis-on-arch ]; then
 	tput sgr0
 	echo
 
+	echo
+	echo "Installing edu packages"
 	sudo pacman -S --noconfirm --needed edu-skel-git
   	sudo pacman -S --noconfirm --needed edu-system-git
-
-	result=$(systemd-detect-virt)
-  	test=$(systemctl is-enabled qemu-guest-agent.service)
-  	if [ $test == "enabled" ] &  [ $result == "none" ]; then
-  		sudo systemctl disable qemu-guest-agent.service
-	fi
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
@@ -56,10 +52,6 @@ if [ -f /usr/local/bin/get-nemesis-on-arch ]; then
 		echo "################################################################"
 		tput sgr0
 		echo
-
-		if [ -f /etc/nanorc ]; then
-	    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-  		fi
 
 		cp -arf /etc/skel/. ~
 

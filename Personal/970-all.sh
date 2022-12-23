@@ -52,3 +52,14 @@ echo "Enable fstrim timer"
 sudo systemctl enable fstrim.timer
 echo
 
+echo
+echo "Testing if qemu agent is still active"
+result=$(systemd-detect-virt)
+test=$(systemctl is-enabled qemu-guest-agent.service)
+if [ $test == "enabled" ] &  [ $result == "none" ]; then
+	sudo systemctl disable qemu-guest-agent.service
+fi
+
+if [ -f /etc/nanorc ]; then
+	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+fi

@@ -97,10 +97,6 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 
 	fi
 
-	if [ -f /etc/nanorc ]; then
-    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-	fi
-
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
