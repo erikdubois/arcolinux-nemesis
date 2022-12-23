@@ -69,6 +69,9 @@ sh 920-*
 sh 930-*
 sh 940-*
 sh 950-*
+
+sh 970-all*
+
 sh 970-alci*
 sh 970-arch*
 sh 970-arco*
@@ -78,7 +81,6 @@ sh 970-eos*
 sh 970-garuda*
 sh 970-sierra*
 
-sh 970-all*
 sh 999-skel*
 
 tput setaf 3
