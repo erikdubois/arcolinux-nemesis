@@ -176,6 +176,8 @@ sudo pacman -S --noconfirm --needed system-config-printer
 sudo pacman -S --noconfirm --needed sane
 sudo pacman -S --noconfirm --needed simple-scan
 
+sudo systemctl enable org.cups.cupsd.service
+
 sudo pacman -S --noconfirm --needed rxvt-unicode
 sudo pacman -S --noconfirm --needed urxvt-fullscreen
 sudo pacman -S --noconfirm --needed urxvt-perls
