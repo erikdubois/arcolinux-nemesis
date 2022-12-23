@@ -106,7 +106,7 @@ fi
 
 # we are on ArcoLinux
 
-if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
+if grep -q "ArcoLinux" /etc/os-release; then
 
 	echo
 	tput setaf 2
