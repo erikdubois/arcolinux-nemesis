@@ -64,6 +64,18 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf.d/kde_settings.conf
 	echo
 
+	echo
+	echo "Azerty config"
+	cp -f ~/.config/arco-chadwm/chadwm/config-def-azerty.h ~/.config/arco-chadwm/chadwm/config-def.h
+	echo
+
+	if [ -f ~/.config/arco-chadwm/chadwm/config.h ]; then
+		rm ~/.config/arco-chadwm/chadwm/config.h
+	fi
+
+	cd ~/.config/arco-chadwm/chadwm/
+	make
+	sudo make install
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
