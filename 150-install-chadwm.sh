@@ -75,6 +75,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
     edu-skel-git
     edu-system-git
     edu-xfce-git
+    arcolinux-chadwm-pacman-hook-git
     arcolinux-paleofetch-git
     arcolinux-rofi-git
     arcolinux-rofi-themes-git
