@@ -260,8 +260,6 @@ echo "################################################################"
 tput sgr0
 echo
 
-fi
-
 # when on Garuda
 
 if grep -q "Garuda" /etc/os-release; then
