@@ -73,15 +73,6 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	echo
 
 	echo
-	echo "Copying sddm files"
-	sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-	sudo cp -f /usr/share/archlinux-tweak-tool/data/arco/sddm/sddm.conf /etc/sddm.conf
-
-	[ -d /etc/sddm.conf.d ] || sudo mkdir /etc/sddm.conf.d
-	sudo cp -f /usr/share/archlinux-tweak-tool/data/arco/sddm.conf.d/kde_settings.conf /etc/sddm.conf.d/kde_settings.conf
-	echo
-
-	echo
 	echo "Bootloader time to 1 second"
 	if [ -f /boot/loader/loader.conf ]; then
 		FIND="timeout 5"
@@ -89,21 +80,6 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /boot/loader/loader.conf
 
 	fi
-	echo
-
-	echo
-	echo "sddm autologin"
-	FIND="#Session="
-	REPLACE="Session=chadwm"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf.d/kde_settings.conf
-	FIND="#User="
-	REPLACE="User=erik"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf.d/kde_settings.conf
-	echo
-	
-	echo
-	echo "Enable fstrim timer"
-	sudo systemctl enable fstrim.timer
 	echo
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
@@ -127,7 +103,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
-		REPLACE="Edu-Papirus-Dark-Tela"
+		REPLACE="arcolinux-candy-beauty"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 

@@ -65,19 +65,6 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	fi
 
 	echo
-	echo "Changing sddm theme"
-	if [ -f /usr/lib/sddm/sddm.conf.d/default.conf ]; then
-		sudo cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
-		echo
-		echo "Changing sddm theme"
-		echo
-		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-		FIND="Current="
-		REPLACE="Current=arcolinux-simplicity"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
-	fi
-
-	echo
 	echo "Adding nanorc"
 	if [ -f /etc/nanorc ]; then
     	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
@@ -112,7 +99,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
-		REPLACE="Edu-Papirus-Dark-Tela"
+		REPLACE="arcolinux-candy-beauty"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 

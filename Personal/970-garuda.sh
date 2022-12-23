@@ -33,27 +33,6 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 # when on Garuda
 
-func_install() {
-    if pacman -Qi $1 &> /dev/null; then
-        tput setaf 2
-        echo "###############################################################################"
-        echo "################## The package "$1" is already installed"
-        echo "###############################################################################"
-        echo
-        tput sgr0
-    else
-        tput setaf 3
-        echo "###############################################################################"
-        echo "##################  Installing package "  $1
-        echo "###############################################################################"
-        echo
-        tput sgr0
-        sudo pacman -S --noconfirm --needed $1
-    fi
-}
-
-###############################################################################
-
 if grep -q "Garuda" /etc/os-release; then
 
 	echo
@@ -110,25 +89,18 @@ if grep -q "Garuda" /etc/os-release; then
     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
-		REPLACE="Edu-Papirus-Dark-Tela"
+		REPLACE="arcolinux-candy-beauty"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
     fi
 
-    tput setaf 2
-    echo "################################################################"
-    echo "Done"
-    echo "################################################################"
-    echo
-    tput sgr0
-
-echo
-tput setaf 6
-echo "################################################################"
-echo "################### Done"
-echo "################################################################"
-tput sgr0
-echo
+	echo
+	tput setaf 6
+	echo "################################################################"
+	echo "################### Done"
+	echo "################################################################"
+	tput sgr0
+	echo
 
 fi

@@ -41,26 +41,9 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-func_install() {
-    if pacman -Qi $1 &> /dev/null; then
-        tput setaf 2
-        echo "###############################################################################"
-        echo "################## The package "$1" is already installed"
-        echo "###############################################################################"
-        echo
-        tput sgr0
-    else
-        tput setaf 3
-        echo "###############################################################################"
-        echo "##################  Installing package "  $1
-        echo "###############################################################################"
-        echo
-        tput sgr0
-        sudo pacman -S --noconfirm --needed $1
-    fi
-}
-
 ###############################################################################
+
+# when on Eos
 
 if grep -q "EndeavourOS" /etc/os-release; then
 
@@ -74,9 +57,6 @@ if grep -q "EndeavourOS" /etc/os-release; then
 
 	sudo pacman -S --noconfirm --needed edu-skel-git
   	sudo pacman -S --noconfirm --needed edu-system-git
-
-	sudo groupadd autologin
-	sudo usermod -a -G autologin $USER
 
 	if [ -f /etc/environment ]; then
 		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
@@ -122,36 +102,13 @@ if grep -q "EndeavourOS" /etc/os-release; then
     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
-		REPLACE="Edu-Papirus-Dark-Tela"
+		REPLACE="arcolinux-candy-beauty"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
-		if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
-
-			echo
-			echo "Changing the look of lightdm gtk greeter"
-			echo
-
-			FIND="#theme-name="
-			REPLACE="theme-name=Arc-Dark"
-			sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
-
-			sudo cp $installed_dir/settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
-
-			FIND="#background="
-			REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
-			sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
-
     fi
 
-    tput setaf 2
-    echo "################################################################"
-    echo "Done"
-    echo "################################################################"
-    echo
-    tput sgr0
-
-  fi
+fi
 
 echo
 tput setaf 6
@@ -160,6 +117,4 @@ echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo
-
-fi
 

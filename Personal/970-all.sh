@@ -48,15 +48,6 @@ sudo cp -f $installed_dir/settings/cursor/* /usr/share/icons/default
 echo
 
 echo
-echo "Copying sddm files"
-sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-sudo cp -f /usr/share/archlinux-tweak-tool/data/arco/sddm/sddm.conf /etc/sddm.conf
-
-[ -d /etc/sddm.conf.d ] || sudo mkdir /etc/sddm.conf.d
-sudo cp -f /usr/share/archlinux-tweak-tool/data/arco/sddm.conf.d/kde_settings.conf /etc/sddm.conf.d/kde_settings.conf
-echo
-
-echo
 echo "Enable fstrim timer"
 sudo systemctl enable fstrim.timer
 echo

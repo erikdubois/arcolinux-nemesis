@@ -31,6 +31,8 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+# when on Carli
+
 if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 
 	echo
@@ -43,15 +45,6 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 
 	sudo pacman -S --noconfirm --needed edu-skel-git
   	sudo pacman -S --noconfirm --needed edu-system-git
-
-	echo
-	echo "Changing sddm theme"
-	echo
-	sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-	FIND="Current=breeze"
-	REPLACE="Current=arcolinux-simplicity"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
-
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
@@ -75,7 +68,7 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
-		REPLACE="Edu-Papirus-Dark-Tela"
+		REPLACE="arcolinux-candy-beauty"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 

@@ -31,6 +31,8 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+# we are on Ariser
+
 if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 
 	echo
@@ -56,41 +58,6 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	if [ -f /etc/environment ]; then
 		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
 		echo "EDITOR=nano" | sudo tee -a /etc/environment
-	fi
-
-	if [ -f /etc/lightdm/lightdm.conf ]; then
-
-		echo
-		echo "Autologin to lightdm"
-		echo
-		FIND="#autologin-user="
-		REPLACE="autologin-user=$USER"
-    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm.conf
-
-		FIND="#autologin-session="
-		REPLACE="autlogin-session=xfce"
-    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm.conf
-
-		sudo usermod -a -G autologin $USER
-
-	fi
-
-	if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
-
-		echo
-		echo "Changing the look of lightdm gtk greeter"
-		echo
-
-		FIND="#theme-name="
-		REPLACE="theme-name=Arc-Dark"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
-
-		sudo cp $installed_dir/settings/wallpaper/lightdm.jpg /etc/lightdm/lightdm.jpg
-
-		FIND="#background="
-		REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
-
 	fi
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then

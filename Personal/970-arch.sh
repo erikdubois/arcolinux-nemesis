@@ -68,27 +68,19 @@ if [ -f /usr/local/bin/get-nemesis-on-arch ]; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
-		REPLACE="Edu-Papirus-Dark-Tela"
+		REPLACE="arcolinux-candy-beauty"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
-		echo
-		echo "Changing sddm theme"
-		echo
-		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-		FIND="Current=breeze"
-		REPLACE="Current=arcolinux-simplicity"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
-
 	fi
 
-echo
-tput setaf 6
-echo "################################################################"
-echo "################### Done"
-echo "################################################################"
-tput sgr0
-echo
+	echo
+	tput setaf 6
+	echo "################################################################"
+	echo "################### Done"
+	echo "################################################################"
+	tput sgr0
+	echo
 
 fi
 
