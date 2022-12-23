@@ -40,7 +40,7 @@ echo
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-sh $installed_dir/AUR/install-sardi-mint-y-icons-v*.sh
+sh $installed_dir/AUR/install-sardi-mint-y-icons.sh
 
 echo
 tput setaf 2

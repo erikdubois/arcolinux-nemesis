@@ -52,7 +52,7 @@ if [ $result = "none" ];then
 	tput sgr0
 	echo	
 
-	sh AUR/install-virtualbox-for-linux-v2.sh	
+	sh AUR/install-virtualbox-for-linux.sh	
 
 else
 

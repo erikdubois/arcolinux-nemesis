@@ -40,7 +40,7 @@ echo
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-sh $installed_dir/AUR/install-surfn-mint-y-icons-git-v*.sh
+sh $installed_dir/AUR/install-surfn-mint-y-icons-git.sh
 
 echo
 tput setaf 2
