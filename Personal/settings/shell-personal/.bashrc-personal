@@ -34,3 +34,10 @@ alias xll="exa -lag --icons --color=always --group-directories-first --octal-per
 alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
 
 alias cpu="cpuid -i | grep uarch | head -n 1"
+alias cpuu="gcc -c -Q -march=native --help=target | grep march | awk '{print $2}' | head -1"
+
+alias audio="pactl info | grep 'Server Name'"
+
+alias random="nitrogen --random /home/erik/Insync/Apps/Wallhaven --set-zoom-fill"
+
+alias pamac-unlock="sudo rm /var/tmp/pamac/dbs/db.lock"
