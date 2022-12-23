@@ -76,6 +76,11 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	REPLACE="User=erik"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf.d/kde_settings.conf
 	echo
+	
+	echo
+	echo "Enable fstrim timer"
+	sudo systemctl enable fstrim.timer
+	echo
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
