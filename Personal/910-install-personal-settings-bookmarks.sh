@@ -43,7 +43,7 @@ echo
 cp $installed_dir/settings/bookmarks/bookmarks* ~/.config/gtk-3.0/
 
 echo
-tput setaf 2
+tput setaf 6
 echo "################################################################"
 echo "################### Done"
 echo "################################################################"

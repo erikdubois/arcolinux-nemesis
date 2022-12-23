@@ -57,7 +57,7 @@ sh 200-software-AUR-repo*
 #sh 320-surfn-mint-y-icons-git-AUR-repo*
 
 echo
-tput setaf 2
+tput setaf 3
 echo "################################################################"
 echo "################### Going to the Personal folder"
 echo "################################################################"

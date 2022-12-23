@@ -45,7 +45,7 @@ echo
 sh $installed_dir/AUR/install-sardi-mint-y-icons.sh
 
 echo
-tput setaf 2
+tput setaf 6
 echo "################################################################"
 echo "################### Done"
 echo "################################################################"

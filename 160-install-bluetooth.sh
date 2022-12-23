@@ -80,7 +80,7 @@ if ! grep -q "load-module module-switch-on-connect" /etc/pulse/default.pa; then
 fi
 
 echo
-tput setaf 2
+tput setaf 6
 echo "################################################################"
 echo "################### Done"
 echo "################################################################"

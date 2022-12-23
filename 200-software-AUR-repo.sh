@@ -60,7 +60,7 @@ else
 
 
 	echo
-	tput setaf 2
+	tput setaf 3
 	echo "################################################################"
 	echo "### You are on a virtual machine - skipping VirtualBox"
 	echo "################################################################"
@@ -77,7 +77,7 @@ echo "Wait for it ..."
 sudo hardcode-fixer
 
 echo
-tput setaf 2
+tput setaf 6
 echo "################################################################"
 echo "################### Done"
 echo "################################################################"

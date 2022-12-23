@@ -66,7 +66,7 @@ sudo pacman -S arcolinux-qt5-plasma-git --noconfirm --needed
 cp -rT /etc/skel ~
 
 echo
-tput setaf 2
+tput setaf 6
 echo "################################################################"
 echo "################### Done"
 echo "################################################################"

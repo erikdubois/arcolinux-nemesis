@@ -49,7 +49,7 @@ cp -f $installed_dir/settings/autostart/* $HOME"/.config/autostart"
 #gsettings set org.blueberry use-symbolic-icons false
 
 echo
-tput setaf 2
+tput setaf 6
 echo "################################################################"
 echo "################### Done"
 echo "################################################################"

@@ -75,7 +75,7 @@ sudo pacman -S --noconfirm --needed simple-scan
 sudo systemctl enable --now cups.service
 
 echo
-tput setaf 2
+tput setaf 6
 echo "################################################################"
 echo "################### Done"
 echo "################################################################"

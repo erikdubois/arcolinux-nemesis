@@ -69,7 +69,7 @@ if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
 	fi
 
 echo
-tput setaf 2
+tput setaf 6
 echo "################################################################"
 echo "################### Done"
 echo "################################################################"

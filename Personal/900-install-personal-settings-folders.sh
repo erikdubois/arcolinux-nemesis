@@ -109,9 +109,10 @@ if [ $result = "none" ];then
 else
 
 	echo
-	tput setaf 2
+	tput setaf 3
 	echo "################################################################"
 	echo "### You are on a virtual machine - skipping VirtualBox"
+	echo "### Template not copied over"
 	echo "################################################################"
 	tput sgr0
 	echo
@@ -119,7 +120,7 @@ else
 fi
 
 echo
-tput setaf 2
+tput setaf 6
 echo "################################################################"
 echo "################### Done"
 echo "################################################################"

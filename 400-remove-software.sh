@@ -35,9 +35,22 @@ echo "################################################################"
 tput sgr0
 echo
 
-# when on CARLI - remove conflicting files
+# remove where ever we are
 
 sudo pacman -R --noconfirm xfce4-artwork
+
+sudo pacman -Rs broadcom-wl-dkms --noconfirm
+sudo pacman -Rs xf86-video-amdgpu --noconfirm
+sudo pacman -Rs xf86-video-fbdev --noconfirm
+sudo pacman -Rs xf86-video-openchrome --noconfirm
+if pacman -Qi xf86-video-vmware &> /dev/null; then
+  sudo pacman -Rs xf86-video-vmware --noconfirm
+fi
+sudo pacman -Rs xf86-video-ati --noconfirm
+sudo pacman -Rs xf86-video-nouveau --noconfirm
+sudo pacman -Rs xf86-video-vesa --noconfirm
+
+# when on CARLI - remove conflicting files
 
 if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 
@@ -76,11 +89,10 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
   echo "################################################################"
   tput sgr0
   echo
+
   if [ -f /etc/skel/.bashrc ]; then
     sudo rm /etc/skel/.bashrc
   fi
-  #sudo rm /etc/skel/.Xresources
-  #sudo pacman -R --noconfirm grml-zsh-config
 
   echo
   tput setaf 2
@@ -102,18 +114,8 @@ if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
   tput sgr0
   echo
 
-  sudo systemctl disable tlp.service
-  sudo pacman -Rs tlp --noconfirm
-  sudo pacman -Rs broadcom-wl-dkms --noconfirm
-  sudo pacman -Rs xf86-video-amdgpu --noconfirm
-  sudo pacman -Rs xf86-video-fbdev --noconfirm
-  sudo pacman -Rs xf86-video-openchrome --noconfirm
-  if pacman -Qi xf86-video-vmware &> /dev/null; then
-    sudo pacman -Rs xf86-video-vmware --noconfirm
-  fi
-  sudo pacman -Rs xf86-video-ati --noconfirm
-  sudo pacman -Rs xf86-video-nouveau --noconfirm
-  sudo pacman -Rs xf86-video-vesa --noconfirm
+  #sudo systemctl disable tlp.service
+  #sudo pacman -Rs tlp --noconfirm
 
   echo
   tput setaf 2
@@ -142,7 +144,6 @@ if grep -q "EndeavourOS" /etc/os-release; then
 
   sudo systemctl disable firewalld
   sudo pacman -R --noconfirm firewalld
-
 
   sudo pacman -R --noconfirm arc-gtk-theme-eos
   sudo pacman -Rdd --noconfirm endeavouros-skel-default endeavouros-skel-xfce4
@@ -297,7 +298,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 fi
 
 echo
-tput setaf 2
+tput setaf 6
 echo "################################################################"
 echo "################### Done"
 echo "################################################################"

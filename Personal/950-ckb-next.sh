@@ -64,7 +64,7 @@ if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 	sudo systemctl start ckb-next-daemon
 
 	echo
-	tput setaf 2
+	tput setaf 6
 	echo "################################################################"
 	echo "################### Corsair keyboard installed"
 	echo "################################################################"
@@ -74,7 +74,7 @@ if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 fi
 
 echo
-tput setaf 2
+tput setaf 6
 echo "################################################################"
 echo "################### Done"
 echo "################################################################"
