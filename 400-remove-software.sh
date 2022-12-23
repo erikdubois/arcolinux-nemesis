@@ -27,7 +27,9 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-# when on CARLI - remove conflicting files 
+# when on CARLI - remove conflicting files
+
+sudo pacman -R --noconfirm xfce4-artwork
 
 if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 
@@ -186,7 +188,6 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
   sudo pacman -R --noconfirm systemd-resolvconf
   sudo pacman -R --noconfirm xbitmaps
   sudo pacman -R --noconfirm xfburn
-  sudo pacman -R --noconfirm xfce4-artwork
   sudo pacman -R --noconfirm xterm
   sudo pacman -Rs --noconfirm brltty
   sudo pacman -Rs --noconfirm espeak-ng
@@ -272,7 +273,6 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
   sudo pacman -R --noconfirm systemd-resolvconf
   sudo pacman -R --noconfirm xbitmaps
   sudo pacman -R --noconfirm xfburn
-  sudo pacman -R --noconfirm xfce4-artwork
   sudo pacman -R --noconfirm xterm
   sudo pacman -Rs --noconfirm brltty
   sudo pacman -Rs --noconfirm espeak-ng
