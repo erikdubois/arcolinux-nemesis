@@ -105,7 +105,7 @@ fi
 
 # when on ARCOLINUX - remove conflicting files
 
-if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
+if grep -q "ArcoLinux" /etc/os-release; then
   echo
   tput setaf 2
   echo "################################################################"
