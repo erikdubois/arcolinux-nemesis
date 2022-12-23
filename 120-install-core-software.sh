@@ -205,6 +205,7 @@ sudo pacman -S --noconfirm --needed bluez-utils
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 sudo sed -i 's/'#AutoEnable=false'/'AutoEnable=true'/g' /etc/bluetooth/main.conf
+echo 'load-module module-switch-on-connect' | sudo tee --append /etc/pulse/default.pa
 
 ###############################################################################################
 
