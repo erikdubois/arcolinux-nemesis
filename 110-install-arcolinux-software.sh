@@ -58,7 +58,7 @@ if grep -q arcolinux_repo /etc/pacman.conf; then
   sudo pacman -Sy
 fi
 
-sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-dev-git
+sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-git
 
 sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
