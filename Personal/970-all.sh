@@ -67,5 +67,8 @@ fi
 echo
 echo "Adding ubuntu keyserver"
 
+if ! grep -q "keyserver hkp://keyserver.ubuntu.com:80" /etc/pacman.d/gnupg/gpg.conf; then
 echo '
 keyserver hkp://keyserver.ubuntu.com:80' | sudo tee --append /etc/pacman.d/gnupg/gpg.conf
+fi
+echo
