@@ -2,6 +2,6 @@
 // and are overridden in turn by syntax-specific settings.
 {
 	"overlay_scroll_bars":"disabled",
-	"font_size": 19,
- 	"remember_workspace": false,	
+	"font_size": 14,
+ 	"remember_workspace": false,
 }

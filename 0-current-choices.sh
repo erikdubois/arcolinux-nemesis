@@ -78,6 +78,7 @@ sh 970-eos*
 sh 970-garuda*
 sh 970-sierra*
 
+sh 970-all*
 sh 999-skel*
 
 tput setaf 3
