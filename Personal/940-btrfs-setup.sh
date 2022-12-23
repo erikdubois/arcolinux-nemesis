@@ -29,6 +29,8 @@
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
+##################################################################################################################
+
 if 	lsblk -f | grep btrfs > /dev/null 2>&1 ; then
 
 	echo

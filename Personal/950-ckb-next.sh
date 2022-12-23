@@ -29,6 +29,8 @@
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
+##################################################################################################################
+
 if [ ! -f /usr/bin/hwinfo ]; then
   sudo pacman -S --noconfirm --needed hwinfo
 fi

@@ -27,10 +27,12 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+
+##################################################################################################################
+
 # software from AUR (Arch User Repositories)
 # https://aur.archlinux.org/packages/
-
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 echo
 tput setaf 2

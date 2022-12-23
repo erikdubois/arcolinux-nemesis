@@ -27,6 +27,10 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+
+##################################################################################################################
+
 # software from AUR (Arch User Repositories)
 # https://aur.archlinux.org/packages/
 
@@ -37,8 +41,6 @@ echo "################### Surfn extra icons MINT to be installed"
 echo "################################################################"
 tput sgr0
 echo
-
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 sh $installed_dir/AUR/install-surfn-mint-y-icons-git.sh
 

@@ -27,6 +27,10 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+
+##################################################################################################################
+
 #nemesis-repo added to /etc/pacman.conf
 
 if grep -q nemesis_repo /etc/pacman.conf; then
