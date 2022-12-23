@@ -27,6 +27,14 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+echo
+tput setaf 3
+echo "################################################################"
+echo "################### Remove software"
+echo "################################################################"
+tput sgr0
+echo
+
 # when on CARLI - remove conflicting files
 
 sudo pacman -R --noconfirm xfce4-artwork
@@ -287,3 +295,11 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
   echo
 
 fi
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Done"
+echo "################################################################"
+tput sgr0
+echo

@@ -54,7 +54,7 @@ sudo pacman -R --noconfirm xf86-video-vmware
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Drivers removed"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo

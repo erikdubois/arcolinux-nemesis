@@ -45,8 +45,10 @@ echo;tput sgr0
 cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
 cp -arf /etc/skel/. ~
 
+echo
 tput setaf 2
 echo "################################################################"
-echo "ALL DONE!!!!!!!!!!!!!!!"
+echo "################### Done"
 echo "################################################################"
-echo;tput sgr0
+tput sgr0
+echo

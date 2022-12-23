@@ -47,7 +47,7 @@ sh $installed_dir/AUR/install-surfn-mint-y-icons-git.sh
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Surf extra icons MINT installed"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo

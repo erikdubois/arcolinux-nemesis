@@ -46,7 +46,7 @@ sh $installed_dir/AUR/install-sardi-extra-icons.sh
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Sardi extra icons installed"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo

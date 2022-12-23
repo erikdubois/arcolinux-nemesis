@@ -32,6 +32,14 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 ##################################################################################################################
 
 echo
+tput setaf 3
+echo "################################################################"
+echo "################### FOR ALL"
+echo "################################################################"
+tput sgr0
+echo
+
+echo
 echo "copying cursor file"
 if [ -d /usr/share/icons/default/cursors ]; then
 	sudo rm /usr/share/icons/default/cursors
@@ -72,4 +80,12 @@ if ! grep -q "hkp://keyserver.ubuntu.com:80" /etc/pacman.d/gnupg/gpg.conf; then
 echo '
 keyserver hkp://keyserver.ubuntu.com:80' | sudo tee --append /etc/pacman.d/gnupg/gpg.conf
 fi
+echo
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Done"
+echo "################################################################"
+tput sgr0
 echo

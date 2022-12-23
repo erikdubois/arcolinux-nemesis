@@ -51,7 +51,7 @@ cp -f $installed_dir/settings/autostart/* $HOME"/.config/autostart"
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Autostart done"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo

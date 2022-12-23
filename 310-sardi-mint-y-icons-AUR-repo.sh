@@ -47,7 +47,7 @@ sh $installed_dir/AUR/install-sardi-mint-y-icons.sh
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Sardi extra icons MINT installed"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo

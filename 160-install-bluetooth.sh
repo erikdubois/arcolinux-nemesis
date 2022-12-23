@@ -31,6 +31,14 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+echo
+tput setaf 3
+echo "################################################################"
+echo "################### Bluetooth"
+echo "################################################################"
+tput sgr0
+echo
+
 func_install() {
     if pacman -Qi $1 &> /dev/null; then
         tput setaf 2
@@ -71,6 +79,10 @@ if ! grep -q "load-module module-switch-on-connect" /etc/pulse/default.pa; then
     echo 'load-module module-switch-on-connect' | sudo tee --append /etc/pulse/default.pa
 fi
 
-echo "###############################################################################"
-echo "##################  Bluetooth installed "
-echo "###############################################################################"
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Done"
+echo "################################################################"
+tput sgr0
+echo

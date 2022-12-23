@@ -50,7 +50,7 @@ sudo pacman -Rs arcolinux-meta-steam-nvidia steam
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Steam uninstalled"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo

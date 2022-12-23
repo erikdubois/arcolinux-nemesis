@@ -37,7 +37,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### AUR Folder - Software to install"
+echo "################### AUR from folder - Software to install"
 echo "################################################################"
 tput sgr0
 echo
@@ -79,7 +79,7 @@ sudo hardcode-fixer
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### AUR Software installed"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo

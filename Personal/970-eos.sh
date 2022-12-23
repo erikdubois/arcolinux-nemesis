@@ -152,4 +152,14 @@ if grep -q "EndeavourOS" /etc/os-release; then
     tput sgr0
 
   fi
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Done"
+echo "################################################################"
+tput sgr0
+echo
+
 fi
+

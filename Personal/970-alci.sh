@@ -126,4 +126,12 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		sudo pacman -S --noconfirm --needed xdg-user-dirs-gtk
 	fi	
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Done"
+echo "################################################################"
+tput sgr0
+echo
+
 fi

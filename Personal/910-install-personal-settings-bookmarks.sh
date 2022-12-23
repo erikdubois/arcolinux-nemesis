@@ -45,7 +45,7 @@ cp $installed_dir/settings/bookmarks/bookmarks* ~/.config/gtk-3.0/
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Bookmarks installed"
+echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo

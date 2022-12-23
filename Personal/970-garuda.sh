@@ -123,4 +123,12 @@ if grep -q "Garuda" /etc/os-release; then
     echo
     tput sgr0
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Done"
+echo "################################################################"
+tput sgr0
+echo
+
 fi

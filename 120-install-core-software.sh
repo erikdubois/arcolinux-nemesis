@@ -34,7 +34,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Software to install for ALL"
+echo "################### Core software"
 echo "################################################################"
 tput sgr0
 echo

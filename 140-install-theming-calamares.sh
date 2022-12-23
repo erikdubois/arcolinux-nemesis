@@ -31,6 +31,14 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+echo
+tput setaf 3
+echo "################################################################"
+echo "################### All themes from Calamares"
+echo "################################################################"
+tput sgr0
+echo
+
 func_install() {
     if pacman -Qi $1 &> /dev/null; then
         tput setaf 2
@@ -297,3 +305,11 @@ echo
 #     - sardi-orb-colora-mint-y-icons-git
 #     - sardi-orb-colora-mixing-icons-git
 #     - sardi-orb-colora-variations-icons-git
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Done"
+echo "################################################################"
+tput sgr0
+echo
