@@ -68,7 +68,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
 	sudo cp -f /usr/share/archlinux-tweak-tool/data/arco/sddm/sddm.conf /etc/sddm.conf
 
-	sudo mkdir /etc/sddm.conf.d
+	[ -d /etc/sddm.conf.d ] || sudo mkdir /etc/sddm.conf.d
 	sudo cp -f /usr/share/archlinux-tweak-tool/data/arco/sddm.conf.d/kde_settings.conf /etc/sddm.conf.d/kde_settings.conf
 	echo
 
