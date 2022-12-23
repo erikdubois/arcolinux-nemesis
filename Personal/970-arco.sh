@@ -49,7 +49,9 @@ if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
 		echo "################################################################"
 		tput sgr0
 		echo
-
+		
+		echo
+		echo "Skel"
 		cp -arf /etc/skel/. ~
 
 		echo
@@ -68,13 +70,13 @@ if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
 
 	fi
 
-echo
-tput setaf 6
-echo "################################################################"
-echo "################### Done"
-echo "################################################################"
-tput sgr0
-echo
+	echo
+	tput setaf 6
+	echo "################################################################"
+	echo "################### Done"
+	echo "################################################################"
+	tput sgr0
+	echo
 
 fi
 
