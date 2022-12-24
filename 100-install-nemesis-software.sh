@@ -87,6 +87,8 @@ echo
 
 # edu-skel-git and edu-system-git are defined in the personal files
 
+echo "Nothing to do "
+
 echo
 tput setaf 6
 echo "################################################################"
