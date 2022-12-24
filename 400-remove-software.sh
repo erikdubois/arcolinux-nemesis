@@ -50,6 +50,31 @@ sudo pacman -Rs xf86-video-ati --noconfirm
 sudo pacman -Rs xf86-video-nouveau --noconfirm
 sudo pacman -Rs xf86-video-vesa --noconfirm
 
+# when on Arch Linux - remove conflicting files
+
+if grep -q "archlinux" /etc/os-release; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "############### Removing software for Arch"
+  echo "################################################################"
+  tput sgr0
+
+  if [ -f /etc/skel/.bashrc ]; then
+    sudo rm /etc/skel/.bashrc
+  fi
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Software removed"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+fi
+
 # when on CARLI - remove conflicting files
 
 if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
