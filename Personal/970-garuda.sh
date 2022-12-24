@@ -44,6 +44,7 @@ if grep -q "Garuda" /etc/os-release; then
 	tput sgr0
 
 	sudo pacman -S --noconfirm --needed edu-skel-git
+  	sudo pacman -S --noconfirm --needed edu-xfce-git
   	sudo pacman -S --noconfirm --needed edu-system-git
 
 	if [ -f /etc/environment ]; then

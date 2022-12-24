@@ -44,6 +44,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	echo
 
 	sudo pacman -S --noconfirm --needed edu-skel-git
+  	sudo pacman -S --noconfirm --needed edu-xfce-git
   	sudo pacman -S --noconfirm --needed edu-system-git
 
 	if [ -f /etc/default/grub ]; then

@@ -44,6 +44,7 @@ if [ -f /usr/local/bin/get-nemesis-on-arch ]; then
 	echo
 	echo "Installing edu packages"
 	sudo pacman -S --noconfirm --needed edu-skel-git
+  	sudo pacman -S --noconfirm --needed edu-xfce-git
   	sudo pacman -S --noconfirm --needed edu-system-git
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
