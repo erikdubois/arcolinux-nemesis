@@ -55,7 +55,11 @@ echo
 echo
 echo "Testing if qemu agent is still active"
 result=$(systemd-detect-virt)
+echo "Systemd-detect-virt = "
 test=$(systemctl is-enabled qemu-guest-agent.service)
+echo "Is qemu guest agent active = "
+echo "If one of the parameters is empty you get unary parameter"
+echo "Nothing wrong however"
 if [ $test == "enabled" ] && [ $result == "none" ] || [ $result == "oracle" ]; then
 	echo
 	echo "Disable qemu agent service"
