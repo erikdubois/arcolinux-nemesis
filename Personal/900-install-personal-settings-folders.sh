@@ -64,6 +64,7 @@ echo "Installing personal settings of variety"
 echo
 [ -d $HOME"/.config/variety" ] || mkdir -p $HOME"/.config/variety"
 cp $installed_dir/settings/variety/variety.conf ~/.config/variety/
+sudo cp $installed_dir/settings/variety/variety.conf /etc/skel/.config/variety/
 echo
 echo "Installing screenkey for teaching"
 echo
