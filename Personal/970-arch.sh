@@ -47,6 +47,12 @@ if [ -f /usr/local/bin/get-nemesis-on-arch ]; then
   	sudo pacman -S --noconfirm --needed edu-xfce-git
   	sudo pacman -S --noconfirm --needed edu-system-git
 
+	echo
+	echo "Pacman parallel downloads	"
+	FIND="#ParallelDownloads = 5"
+	REPLACE="ParallelDownloads = 5"
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
+
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
