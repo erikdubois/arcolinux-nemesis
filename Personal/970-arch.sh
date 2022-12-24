@@ -31,7 +31,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-if [ -f /usr/local/bin/get-nemesis-on-arch ]; then
+if grep -q "archlinux" /etc/os-release;; then
 
 	echo
 	tput setaf 2
