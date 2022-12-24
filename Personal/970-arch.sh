@@ -31,7 +31,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-if grep -q "archlinux" /etc/os-release;; then
+if grep -q "archlinux" /etc/os-release; then
 
 	echo
 	tput setaf 2
