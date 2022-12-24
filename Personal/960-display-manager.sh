@@ -114,6 +114,7 @@ if grep -q "archlinux" /etc/os-release; then
 		REPLACE="autlogin-session=xfce"
     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm.conf
 
+    	sudo groupadd autologin
 		sudo usermod -a -G autologin $USER
 
 	fi
