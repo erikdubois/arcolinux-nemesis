@@ -122,6 +122,11 @@ echo
 cp  $installed_dir/settings/neofetch/config.conf $HOME/.config/neofetch/
 sudo cp  $installed_dir/settings/neofetch/config.conf /etc/skel/.config/neofetch/
 echo
+
+#uncommenting so that we see the bluetooth icon in our toolbars
+gsettings set org.blueberry use-symbolic-icons false
+
+echo
 echo "VirtualBox check - copy/paste template or not"
 
 result=$(systemd-detect-virt)

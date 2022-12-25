@@ -45,9 +45,6 @@ sleep 1
 
 cp -f $installed_dir/settings/autostart/* $HOME"/.config/autostart"
 
-#uncommenting so that we see the bluetooth icon in our toolbars
-gsettings set org.blueberry use-symbolic-icons false
-
 echo
 tput setaf 6
 echo "################################################################"
