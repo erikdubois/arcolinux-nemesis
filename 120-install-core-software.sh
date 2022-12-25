@@ -39,7 +39,6 @@ Server = http://mirror.osbeck.com/archlinux/\$repo/os/\$arch
 Server = http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 Server = https://geo.mirror.pkgbuild.com/\$repo/os/\$arch" | sudo tee /etc/pacman.d/mirrorlist
-
 echo
 tput setaf 2
 echo "########################################################################"
@@ -48,9 +47,8 @@ echo "Use nmirrorlist to inspect"
 echo "########################################################################"
 tput sgr0
 echo
-echo "###############################################################################"
-echo "###                DONE - YOU CAN CLOSE THIS WINDOW                        ####"
-echo "###############################################################################"
+
+sudo pacman -Sy
 
 echo
 tput setaf 2
