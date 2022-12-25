@@ -34,4 +34,4 @@ alias random="nitrogen --random /home/erik/Insync/Apps/Wallhaven --set-zoom-fill
 
 alias pamac-unlock="sudo rm /var/tmp/pamac/dbs/db.lock"
 
-alias grh= "git reset --hard"
+alias grh="git reset --hard"
