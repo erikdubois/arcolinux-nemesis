@@ -81,6 +81,10 @@ echo
 cp  $installed_dir/settings/thunar/uca.xml $HOME/.config/Thunar
 sudo cp  $installed_dir/settings/thunar/uca.xml /etc/skel/.config/Thunar
 echo
+[ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
+cp  $installed_dir/settings/gtk3/settings.ini $HOME/.config/gtk-3.0
+sudo cp  $installed_dir/settings/gtk3/settings.ini /etc/skel/.config/gtk-3.0
+echo
 echo "Adding personal neofetch"
 echo
 [ -d $HOME"/.config/neofetch" ] || mkdir -p $HOME"/.config/neofetch"
