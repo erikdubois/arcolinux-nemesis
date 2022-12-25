@@ -72,7 +72,6 @@ edu-leftwm-git
 leftwm-dev-git
 leftwm-theme-git
 lxappearance
-nerd-fonts-source-code-pro
 picom
 polybar
 rofi-theme-fonts
