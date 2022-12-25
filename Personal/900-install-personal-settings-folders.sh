@@ -81,6 +81,15 @@ echo
 cp  $installed_dir/settings/thunar/uca.xml $HOME/.config/Thunar
 sudo cp  $installed_dir/settings/thunar/uca.xml /etc/skel/.config/Thunar
 echo
+echo "Adding xfce settings"
+/home/erik/ARCO/ARCOLINUX-DESKTOP/arcolinux-xfce/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+echo
+[ -d $HOME"/.config/xfce4/xfconf/xfce-perchannel-xml/" ] || mkdir -p $HOME"/.config/xfce4/xfconf/xfce-perchannel-xml/"
+cp  $installed_dir/settings/xfce/xsettings.xml $HOME/.config/xfce4/xfconf/xfce-perchannel-xml
+sudo cp  $installed_dir/settings/xfce/xsettings.xml $HOME/.config/xfce4/xfconf/xfce-perchannel-xml
+echo
+echo "Adding gtk-3.0 config"
+echo
 [ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
 cp  $installed_dir/settings/gtk3/settings.ini $HOME/.config/gtk-3.0
 sudo cp  $installed_dir/settings/gtk3/settings.ini /etc/skel/.config/gtk-3.0
