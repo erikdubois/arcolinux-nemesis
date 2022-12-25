@@ -57,7 +57,7 @@ echo "Installing all shell files"
 echo
 cp $installed_dir/settings/shell-personal/.bashrc-personal ~
 cp $installed_dir/settings/shell-personal/.zshrc ~
-cp $installed_dir/settings/shell-personal/.zshrc /etc/skel/~
+sudo cp $installed_dir/settings/shell-personal/.zshrc /etc/skel/~
 cp $installed_dir/settings/shell-personal/.zshrc-personal ~
 cp $installed_dir/settings/fish/alias.fish ~/.config/fish/alias.fish
 echo
