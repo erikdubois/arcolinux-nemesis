@@ -68,7 +68,7 @@ echo
 
 
 list=(
-arcolinux-leftwm-git
+edu-leftwm-git
 leftwm-dev-git
 leftwm-theme-git
 lxappearance
