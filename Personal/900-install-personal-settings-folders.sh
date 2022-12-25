@@ -34,7 +34,37 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Personal settings to install"
+echo "################### Personal settings for any system"
+echo "################################################################"
+tput sgr0
+echo
+echo "Adding xorg xkill"
+echo
+[ -d /etc/X11/xorg.conf.d/ ] || mkdir -p /etc/X11/xorg.conf.d/
+sudo cp  settings/xorg/* /etc/X11/xorg.conf.d/
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Personal settings to reset to default"
+echo "################################################################"
+tput sgr0
+echo
+echo "To default xfce settings"
+echo
+[ -d $HOME"/.config/xfce4/xfconf/xfce-perchannel-xml/" ] || mkdir -p $HOME"/.config/xfce4/xfconf/xfce-perchannel-xml/"
+cp  $installed_dir/settings/xfce/xsettings.xml $HOME/.config/xfce4/xfconf/xfce-perchannel-xml
+sudo cp  $installed_dir/settings/xfce/xsettings.xml $HOME/.config/xfce4/xfconf/xfce-perchannel-xml
+echo
+echo "To default gtk-3.0 config"
+echo
+[ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
+cp  $installed_dir/settings/gtk3/settings.ini $HOME/.config/gtk-3.0
+sudo cp  $installed_dir/settings/gtk3/settings.ini /etc/skel/.config/gtk-3.0
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Personal directories to create"
 echo "################################################################"
 tput sgr0
 echo
@@ -52,6 +82,12 @@ echo
 [ -d $HOME"/.config/fish" ] || mkdir -p $HOME"/.config/fish"
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Personal settings to install"
+echo "################################################################"
+tput sgr0
 echo
 echo "Installing all shell files"
 echo
@@ -81,32 +117,16 @@ echo
 cp  $installed_dir/settings/thunar/uca.xml $HOME/.config/Thunar
 sudo cp  $installed_dir/settings/thunar/uca.xml /etc/skel/.config/Thunar
 echo
-echo "Adding xfce settings"
-echo
-[ -d $HOME"/.config/xfce4/xfconf/xfce-perchannel-xml/" ] || mkdir -p $HOME"/.config/xfce4/xfconf/xfce-perchannel-xml/"
-cp  $installed_dir/settings/xfce/xsettings.xml $HOME/.config/xfce4/xfconf/xfce-perchannel-xml
-sudo cp  $installed_dir/settings/xfce/xsettings.xml $HOME/.config/xfce4/xfconf/xfce-perchannel-xml
-echo
-echo "Adding gtk-3.0 config"
-echo
-[ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
-cp  $installed_dir/settings/gtk3/settings.ini $HOME/.config/gtk-3.0
-sudo cp  $installed_dir/settings/gtk3/settings.ini /etc/skel/.config/gtk-3.0
-echo
 echo "Adding personal neofetch"
 echo
 [ -d $HOME"/.config/neofetch" ] || mkdir -p $HOME"/.config/neofetch"
 cp  $installed_dir/settings/neofetch/config.conf $HOME/.config/neofetch/
 sudo cp  $installed_dir/settings/neofetch/config.conf /etc/skel/.config/neofetch/
-
 echo
-echo "Adding xorg xkill"
-echo
-[ -d /etc/X11/xorg.conf.d/ ] || mkdir -p /etc/X11/xorg.conf.d/
-sudo cp  settings/xorg/* /etc/X11/xorg.conf.d/
 
+
+echo "VirtualBox check - copy/paste template or not"
 result=$(systemd-detect-virt)
-
 if [ $result = "none" ];then
 
 	echo
