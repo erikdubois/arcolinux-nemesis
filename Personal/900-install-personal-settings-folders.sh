@@ -123,9 +123,8 @@ echo
 cp  $installed_dir/settings/neofetch/config.conf $HOME/.config/neofetch/
 sudo cp  $installed_dir/settings/neofetch/config.conf /etc/skel/.config/neofetch/
 echo
-
-
 echo "VirtualBox check - copy/paste template or not"
+
 result=$(systemd-detect-virt)
 if [ $result = "none" ];then
 
