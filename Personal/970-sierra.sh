@@ -36,6 +36,14 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 
 	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "################### We are on Sierra"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+	echo
 	echo "Azerty config"
 	cp -v $HOME/.config/arco-chadwm/chadwm/config.def-azerty.h $HOME/.config/arco-chadwm/chadwm/config.def.h
 	echo
@@ -49,12 +57,12 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	sudo make install
 
 	echo
-	tput setaf 2
-	echo "################################################################"
-	echo "################### We are on Sierra"
-	echo "################################################################"
-	tput sgr0
+	echo "Change gtk-3.0 config"
 	echo
+	FIND="Sardi-Arc"
+	REPLACE="arcolinux-candy-beauty"
+	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
 
 	if [ -f /etc/environment ]; then
 		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
