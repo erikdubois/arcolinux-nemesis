@@ -50,9 +50,9 @@ if grep -q "ArcoLinux" /etc/os-release; then
 		tput sgr0
 		echo
 		
-		echo
-		echo "Skel"
-		cp -arf /etc/skel/. ~
+		#echo
+		#echo "Skel"
+		#cp -arf /etc/skel/. ~
 
 		echo
 		echo "Changing the icons and theme"
@@ -64,7 +64,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
-		REPLACE="arcolinux-candy-beauty"
+		REPLACE="Surfn-Arc"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 

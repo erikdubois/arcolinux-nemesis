@@ -129,6 +129,7 @@ sudo pacman -S --noconfirm --needed rate-mirrors-bin
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
+sudo pacman -S --noconfirm --needed sardi-icons
 sudo pacman -S --noconfirm --needed simplescreenrecorder
 sudo pacman -S --noconfirm --needed sparklines-git
 sudo pacman -S --noconfirm --needed speedtest-cli-git
@@ -224,7 +225,6 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
   sudo pacman -S --noconfirm --needed menulibre
   sudo pacman -S --noconfirm --needed mugshot
   sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
-  sudo pacman -S --noconfirm --needed sardi-icons
   sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
   sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
 
