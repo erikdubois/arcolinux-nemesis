@@ -89,6 +89,14 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	fi
 	echo
 
+	echo
+	echo "lolcat added"
+	if ! grep "screenfetch | lolcat"; then
+		sed -i '360,400 s/neofetch/neofetch | lolcat' $HOME/.bashrc
+		sudo sed -i '360,400 s/neofetch/neofetch | lolcat' /etc/skel/.bashrc
+		echo
+	fi
+
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
