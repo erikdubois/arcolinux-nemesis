@@ -84,8 +84,8 @@ echo
 echo "Adding personal neofetch"
 echo
 [ -d $HOME"/.config/neofetch" ] || mkdir -p $HOME"/.config/neofetch"
-cp  $installed_dir/settings/neofetch/neofetch.conf $HOME/.config/neofetch/
-sudo cp  $installed_dir/settings/neofetch/neofetch.conf /etc/skel/.config/neofetch/config.conf
+cp  $installed_dir/settings/neofetch/config.conf $HOME/.config/neofetch/
+sudo cp  $installed_dir/settings/neofetch/config.conf /etc/skel/.config/neofetch/
 
 echo
 echo "Adding xorg xkill"
