@@ -127,11 +127,6 @@ echo
 gsettings set org.blueberry use-symbolic-icons false
 
 echo
-echo "Change Arch Linux Servers"
-/usr/local/bin/arcolinux-osbeck-as-mirror
-echo
-
-echo
 echo "VirtualBox check - copy/paste template or not"
 echo
 
