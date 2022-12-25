@@ -83,7 +83,7 @@ if ! grep -q "load-module module-bluetooth-policy" /etc/pulse/system.pa; then
     echo 'load-module module-bluetooth-policy' | sudo tee --append /etc/pulse/system.pa
 fi
 
-if ! grep -q "load-module module-bluetooth-discover" /etc/pulse/default.pa; then
+if ! grep -q "load-module module-bluetooth-discover" /etc/pulse/system.pa; then
     echo 'load-module module-bluetooth-discover' | sudo tee --append /etc/pulse/system.pa
 fi
 
