@@ -89,11 +89,13 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	fi
 	echo
 
-	echo
-	echo "lolcat added"
+	echo "Check if neofetch lolcat is in there"
+	echo "Line may change in the future"
+	
 	if ! grep -q "neofetch | lolcat" $HOME/.bashrc; then
-		sed -i '360,400 s/neofetch/neofetch | lolcat/g' $HOME/.bashrc
-		sudo sed -i '360,400 s/neofetch/neofetch | lolcat/g' /etc/skel/.bashrc
+		echo "lolcat added"
+		sed -i '362s/neofetch/neofetch | lolcat/g' $HOME/.bashrc
+		sudo sed -i '362s/neofetch/neofetch | lolcat/g' /etc/skel/.bashrc
 		echo
 	fi
 
