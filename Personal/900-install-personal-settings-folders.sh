@@ -57,6 +57,7 @@ echo "Installing all shell files"
 echo
 cp $installed_dir/settings/shell-personal/.bashrc-personal ~
 cp $installed_dir/settings/shell-personal/.zshrc ~
+cp $installed_dir/settings/shell-personal/.zshrc /etc/skel/~
 cp $installed_dir/settings/shell-personal/.zshrc-personal ~
 cp $installed_dir/settings/fish/alias.fish ~/.config/fish/alias.fish
 echo
@@ -77,12 +78,15 @@ echo
 echo "Adding personal thunar to .config/thunar"
 echo
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
-cp  settings/thunar/uca.xml $HOME/.config/Thunar
+cp  $installed_dir/settings/thunar/uca.xml $HOME/.config/Thunar
+sudo cp  $installed_dir/settings/thunar/uca.xml /etc/skel/.config/Thunar
 echo
 echo "Adding personal neofetch"
 echo
 [ -d $HOME"/.config/neofetch" ] || mkdir -p $HOME"/.config/neofetch"
-cp  settings/neofetch/config.conf $HOME/.config/neofetch
+cp  $installed_dir/settings/neofetch/neofetch.conf $HOME/.config/neofetch/
+sudo cp  $installed_dir/settings/neofetch/neofetch.conf /etc/skel/.config/neofetch/config.conf
+
 echo
 echo "Adding xorg xkill"
 echo
