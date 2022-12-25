@@ -91,7 +91,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 
 	echo
 	echo "lolcat added"
-	if ! grep "screenfetch | lolcat" $HOME/.bashrc; then
+	if ! grep -q "screenfetch | lolcat" $HOME/.bashrc; then
 		sed -i '360,400 s/neofetch/neofetch | lolcat' $HOME/.bashrc
 		sudo sed -i '360,400 s/neofetch/neofetch | lolcat' /etc/skel/.bashrc
 		echo
