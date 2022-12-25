@@ -38,10 +38,6 @@ echo "Copying all files and folders from /etc/skel to ~"
 echo "################################################################"
 echo;tput sgr0
 
-#arcolinux-pamac-all packages
-#sudo pacman -S --noconfirm --needed appstream
-#sudo pacman -S archlinux-appstream-data --noconfirm
-
 cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
 cp -arf /etc/skel/. ~
 

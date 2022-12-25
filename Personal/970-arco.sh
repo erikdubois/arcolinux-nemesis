@@ -50,10 +50,6 @@ if grep -q "ArcoLinux" /etc/os-release; then
 		tput sgr0
 		echo
 		
-		#echo
-		#echo "Skel"
-		#cp -arf /etc/skel/. ~
-
 		echo
 		echo "Changing the icons and theme"
 		echo
