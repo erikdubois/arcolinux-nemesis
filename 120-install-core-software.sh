@@ -63,6 +63,7 @@ sudo pacman -S --noconfirm --needed catfish
 sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed curl
+sudo pacman -S --noconfirm --needed dconf-editor
 sudo pacman -S --noconfirm --needed discord
 sudo pacman -S --noconfirm --needed dmenu
 sudo pacman -S --noconfirm --needed downgrade
