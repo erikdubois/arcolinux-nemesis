@@ -126,6 +126,15 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 
 	fi
 
+	# systemd
+
+	echo "Journald.conf - volatile"
+
+	FIND="#Storage=auto"
+	REPLACE="Storage=auto"
+	#REPLACE="Storage=volatile"
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/systemd/journald.conf
+
 	echo
 	tput setaf 6
 	echo "################################################################"
