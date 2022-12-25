@@ -96,20 +96,22 @@ done
 
 if [ -f /usr/share/xsessions/leftwm.desktop ]; then
 
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Leftwm related applications"
-  echo "################################################################"
-  tput sgr0
-  echo
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Leftwm related applications"
+    echo "################################################################"
+    tput sgr0
+    echo
 
+    cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
+    cp -arf /etc/skel/.config/leftwm $HOME/.config
 
-  #sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
-  #sh ~/.config/leftwm/scripts/install-all-arcolinux-community-themes.sh
+    #sh ~/.config/leftwm/scripts/install-all-arcolinux-themes.sh
+    #sh ~/.config/leftwm/scripts/install-all-arcolinux-community-themes.sh
 
-  #leftwm-theme update
-  #leftwm-theme apply db-nemesis
+    #leftwm-theme update
+    #leftwm-theme apply db-nemesis
 
 fi
 
