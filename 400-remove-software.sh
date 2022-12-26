@@ -273,7 +273,7 @@ fi
 
 # when on SIERRA - remove conflicting files
 
-if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
+if [ -f /usr/bin/get-nemesis-on-sierra ]; then
 
   echo
   tput setaf 2
