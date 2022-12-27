@@ -50,18 +50,7 @@ func_install() {
     fi
 }
 
-
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
-
-if [ -f /usr/bin/get-nemesis-on-sierra ]; then
-
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### We are on SIERRA"
-    echo "################################################################"
-    tput sgr0
-    echo
+func_install_chadwm() {
 
     echo
     tput setaf 2
@@ -70,7 +59,6 @@ if [ -f /usr/bin/get-nemesis-on-sierra ]; then
     echo "################################################################"
     tput sgr0
     echo
-
 
     list=(
     alacritty
@@ -118,7 +106,19 @@ if [ -f /usr/bin/get-nemesis-on-sierra ]; then
         tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
         func_install $name
     done
+}
 
+if [ -f /usr/bin/get-nemesis-on-sierra ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### We are on SIERRA"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    func_install_chadwm
 
     echo
     tput setaf 6
@@ -132,7 +132,7 @@ fi
 
 # if chadwm is installed update it
 
-if [ -f /usr/share/xessions/chadwm.desktop ]; then
+if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 
     echo
     tput setaf 2
@@ -142,54 +142,7 @@ if [ -f /usr/share/xessions/chadwm.desktop ]; then
     tput sgr0
     echo
 
-
-    list=(
-    alacritty
-    archlinux-logout-git
-    edu-chadwm-git
-    edu-skel-git
-    edu-system-git
-    edu-xfce-git
-    arcolinux-chadwm-pacman-hook-git
-    arcolinux-paleofetch-git
-    arcolinux-rofi-git
-    arcolinux-rofi-themes-git
-    arcolinux-wallpapers-candy-git
-    arcolinux-wallpapers-git
-    autorandr
-    dash
-    dmenu
-    eww
-    feh
-    gvfs
-    lolcat
-    lxappearance
-    picom
-    polkit-gnome
-    rofi
-    rxvt-unicode
-    sxhkd
-    thunar
-    thunar-archive-plugin
-    thunar-volman
-    ttf-hack
-    volumeicon
-    xfce4-notifyd
-    xfce4-power-manager
-    xfce4-screenshooter
-    xfce4-settings
-    xfce4-taskmanager
-    xfce4-terminal
-    )
-
-    count=0
-
-    for name in "${list[@]}" ; do
-        count=$[count+1]
-        tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-        func_install $name
-    done
-
+    func_install_chadwm
 
     echo
     tput setaf 6
