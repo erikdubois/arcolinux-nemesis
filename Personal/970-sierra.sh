@@ -144,7 +144,7 @@ if [ -f /usr/bin/get-nemesis-on-sierra ]; then
 	echo "ArchLinux Logout - beauty icons"
 	echo
 	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
-	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-candy.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
+	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
 	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf /etc/archlinux-logout.conf
 	
 	echo
