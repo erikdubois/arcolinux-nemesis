@@ -129,3 +129,74 @@ if [ -f /usr/bin/get-nemesis-on-sierra ]; then
     echo
 
 fi
+
+# if chadwm is installed update it
+
+if [ -f /usr/share/xessions/chadwm.desktop ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Updating chadwm if needed"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+
+    list=(
+    alacritty
+    archlinux-logout-git
+    edu-chadwm-git
+    edu-skel-git
+    edu-system-git
+    edu-xfce-git
+    arcolinux-chadwm-pacman-hook-git
+    arcolinux-paleofetch-git
+    arcolinux-rofi-git
+    arcolinux-rofi-themes-git
+    arcolinux-wallpapers-candy-git
+    arcolinux-wallpapers-git
+    autorandr
+    dash
+    dmenu
+    eww
+    feh
+    gvfs
+    lolcat
+    lxappearance
+    picom
+    polkit-gnome
+    rofi
+    rxvt-unicode
+    sxhkd
+    thunar
+    thunar-archive-plugin
+    thunar-volman
+    ttf-hack
+    volumeicon
+    xfce4-notifyd
+    xfce4-power-manager
+    xfce4-screenshooter
+    xfce4-settings
+    xfce4-taskmanager
+    xfce4-terminal
+    )
+
+    count=0
+
+    for name in "${list[@]}" ; do
+        count=$[count+1]
+        tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+        func_install $name
+    done
+
+
+    echo
+    tput setaf 6
+    echo "################################################################"
+    echo "################### Done"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+fi
