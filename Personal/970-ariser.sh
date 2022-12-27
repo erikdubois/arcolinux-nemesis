@@ -38,23 +38,23 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "################### We are on ARISER"
+	echo "################### We are on Arisers"
 	echo "################################################################"
 	tput sgr0
 	echo
 
-	sudo pacman -S --noconfirm --needed edu-skel-git
-  	sudo pacman -S --noconfirm --needed edu-xfce-git
-  	sudo pacman -S --noconfirm --needed edu-system-git
+	echo
+	echo "Azerty config"
+	cp -v $HOME/.config/arco-chadwm/chadwm/config.def-azerty.h $HOME/.config/arco-chadwm/chadwm/config.def.h
+	echo
 
-	if [ -f /etc/default/grub ]; then
-
-		sudo pacman -S --noconfirm --needed arcolinux-grub-theme-vimix-git
-		sudo cp $installed_dir/settings/ariser/grub /etc/default/grub
-		sudo cp $installed_dir/settings/ariser/theme.txt /boot/grub/themes/Vimix/theme.txt
-
-		sudo grub-mkconfig -o /boot/grub/grub.cfg
+	if [ -f $HOME/.config/arco-chadwm/chadwm/config.h ]; then
+		rm $HOME/.config/arco-chadwm/chadwm/config.h
 	fi
+
+	cd $HOME/.config/arco-chadwm/chadwm/
+	make
+	sudo make install
 
 	echo
 	echo "Change gtk-3.0 config"

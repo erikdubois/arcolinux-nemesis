@@ -31,7 +31,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-# when on sierra
+# when on Sierra
 
 if [ -f /usr/bin/get-nemesis-on-sierra ]; then
 
