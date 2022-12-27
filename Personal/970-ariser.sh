@@ -140,6 +140,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	#REPLACE="Storage=volatile"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/systemd/journald.conf
 
+	echo
 	echo "ArchLinux Logout - candy icons"
 	echo
 	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
