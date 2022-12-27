@@ -38,7 +38,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "################### We are on Arisers"
+	echo "################### We are on Ariser"
 	echo "################################################################"
 	tput sgr0
 	echo

@@ -39,6 +39,8 @@ echo
 
 sudo pacman -R --noconfirm xfce4-artwork
 
+sudo rm /usr/share/backgrounds/xfce/*
+
 sudo pacman -Rs broadcom-wl-dkms --noconfirm
 sudo pacman -Rs xf86-video-amdgpu --noconfirm
 sudo pacman -Rs xf86-video-fbdev --noconfirm
