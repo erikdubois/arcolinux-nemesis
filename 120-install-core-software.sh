@@ -32,12 +32,12 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 ##################################################################################################################
 
 echo "Deleting current /etc/pacman.d/mirrorlist and replacing with"
-echo "the best servers for me personally (Belgium) for the core packages"
 echo
-echo "Server = https://mirror.osbeck.com/archlinux/\$repo/os/\$arch
-Server = http://mirror.osbeck.com/archlinux/\$repo/os/\$arch
-Server = http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
+echo "Server = http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
+Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch
+Server = https://mirror.osbeck.com/archlinux/\$repo/os/\$arch
+Server = http://mirror.osbeck.com/archlinux/\$repo/os/\$arch
 Server = https://geo.mirror.pkgbuild.com/\$repo/os/\$arch" | sudo tee /etc/pacman.d/mirrorlist
 echo
 tput setaf 2
@@ -48,7 +48,7 @@ echo "########################################################################"
 tput sgr0
 echo
 
-sudo pacman -Sy
+sudo pacman -Syy
 
 echo
 tput setaf 2
