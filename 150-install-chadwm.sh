@@ -108,6 +108,8 @@ func_install_chadwm() {
     done
 }
 
+# install chadwm on Sierra
+
 if [ -f /usr/bin/get-nemesis-on-sierra ]; then
 
     echo
@@ -130,7 +132,7 @@ if [ -f /usr/bin/get-nemesis-on-sierra ]; then
 
 fi
 
-# if chadwm is installed update it
+# install Chadwm on Ariser
 
 if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 

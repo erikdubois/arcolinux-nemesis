@@ -110,6 +110,11 @@ if [ -f /usr/bin/get-nemesis-on-sierra ]; then
 
 		cp -arf /etc/skel/. ~
 
+		echo "Changing the whiskermenu"
+		echo
+		cp $installed_dir/settings/ariser/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+		sudo cp $installed_dir/settings/ariser/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
+
 		echo
 		echo "Changing the icons and theme"
 		echo
