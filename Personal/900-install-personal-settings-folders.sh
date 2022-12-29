@@ -128,7 +128,6 @@ echo "Sublime text settings"
 echo
 [ -d $HOME"/.config/sublime-text/Packages/User" ] || mkdir -p $HOME"/.config/sublime-text/Packages/User"
 cp  $installed_dir/settings/sublimetext/Preferences.sublime-settings $HOME/.config/sublime-text/Packages/User/Preferences.sublime-settings
-sudo cp  $installed_dir/settings/sublimetext/Preferences.sublime-settings /etc/skel/.config/sublime-text/Packages/User/Preferences.sublime-settings
 echo
 
 #uncommenting so that we see the bluetooth icon in our toolbars
