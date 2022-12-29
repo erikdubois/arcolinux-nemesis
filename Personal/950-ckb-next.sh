@@ -31,19 +31,19 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Corsair keyboard"
-echo "################################################################"
-tput sgr0
-echo
-
 if [ ! -f /usr/bin/hwinfo ]; then
   sudo pacman -S --noconfirm --needed hwinfo
 fi
 
 if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
+
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "################### Corsair keyboard"
+	echo "################################################################"
+	tput sgr0
+	echo
 
 	echo
 	tput setaf 2
@@ -72,11 +72,3 @@ if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 	echo
 
 fi
-
-echo
-tput setaf 6
-echo "################################################################"
-echo "################### Done"
-echo "################################################################"
-tput sgr0
-echo

@@ -69,8 +69,6 @@ sudo pacman -S --noconfirm --needed arcolinux-pamac-all
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
-sudo pacman -S --noconfirm --needed visual-studio-code-bin
-
 if [ ! -f /usr/bin/startplasma-x11 ]; then
   sudo pacman -S --noconfirm --needed archlinux-logout-git
 fi

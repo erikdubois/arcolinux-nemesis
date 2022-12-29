@@ -291,17 +291,18 @@ if grep -q "EndeavourOS" /etc/os-release; then
 		REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
 
-  fi
+  	fi
 
+	echo
+	tput setaf 6
+	echo "################################################################"
+	echo "################### Done"
+	echo "################################################################"
+	tput sgr0
+	echo
 fi
 
-echo
-tput setaf 6
-echo "################################################################"
-echo "################### Done"
-echo "################################################################"
-tput sgr0
-echo
+
 
 # when on Garuda
 
