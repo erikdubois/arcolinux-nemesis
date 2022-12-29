@@ -36,10 +36,18 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "################### We are on an ArcoLinux iso"
+	echo "################### We are on ArcoLinux"
 	echo "################################################################"
 	tput sgr0
 	echo
+
+	echo
+	echo "Change gtk-3.0 config"
+	echo
+	FIND="Sardi-Arc"
+	REPLACE="Surfn-Arc"
+	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
@@ -65,6 +73,14 @@ if grep -q "ArcoLinux" /etc/os-release; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 	fi
+
+
+	echo
+	echo "ArchLinux Logout - handy icons"
+	echo
+	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
+	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
+	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf /etc/archlinux-logout.conf
 
 	echo
 	tput setaf 6

@@ -63,6 +63,14 @@ if grep -q "archlinux" /etc/os-release; then
 	fi
 	echo
 
+	echo
+	echo "Adding nanorc"
+	if [ -f /etc/nanorc ]; then
+    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+	fi
+
+	echo	
+	echo "When on Xfce4"
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
@@ -74,6 +82,7 @@ if grep -q "archlinux" /etc/os-release; then
 
 		cp -arf /etc/skel/. ~
 
+		echo
 		echo "Changing the whiskermenu"
 		echo
 		cp $installed_dir/settings/archlinux/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc

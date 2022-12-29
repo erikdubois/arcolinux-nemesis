@@ -54,6 +54,7 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 		echo "################### We are on Xfce4"
 		echo "################################################################"
 		tput sgr0
+		echo
 
 		cp -arf /etc/skel/. ~
 
@@ -74,6 +75,12 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 	fi
+	echo
+	echo "ArchLinux Logout - breeze-blur icons"
+	echo
+	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
+	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-breeze-blur.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
+	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-breeze-blur.conf /etc/archlinux-logout.conf
 
 	echo
 	tput setaf 6

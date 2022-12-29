@@ -146,8 +146,6 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
 	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
 	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf /etc/archlinux-logout.conf
-	
-	echo
 
 	echo
 	tput setaf 6
