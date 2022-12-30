@@ -31,7 +31,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-tput setaf 8
+tput setaf 3
 echo "################################################################"
 echo "FINAL SKEL"
 echo "Copying all files and folders from /etc/skel to ~"
