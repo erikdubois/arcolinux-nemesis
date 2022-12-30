@@ -35,10 +35,10 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo pacman -R --confirm adobe-source-han-sans-cn-fonts
-sudo pacman -R --confirm adobe-source-han-sans-jp-fonts
-sudo pacman -R --confirm adobe-source-han-sans-kr-fonts
-sudo pacman -R --confirm archinstall
+sudo pacman -R --noconfirm adobe-source-han-sans-cn-fonts
+sudo pacman -R --noconfirm adobe-source-han-sans-jp-fonts
+sudo pacman -R --noconfirm adobe-source-han-sans-kr-fonts
+sudo pacman -R --noconfirm archinstall
 
 # remove where ever we are
 
