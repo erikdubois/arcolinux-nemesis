@@ -35,6 +35,11 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo pacman -R --confirm adobe-source-han-sans-cn-fonts
+sudo pacman -R --confirm adobe-source-han-sans-jp-fonts
+sudo pacman -R --confirm adobe-source-han-sans-kr-fonts
+sudo pacman -R --confirm archinstall
+
 # remove where ever we are
 
 sudo pacman -R --noconfirm xfce4-artwork
