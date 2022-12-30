@@ -44,7 +44,7 @@ if grep -q arcolinux_repo /etc/pacman.conf; then
   echo
   tput setaf 2
   echo "################################################################"
-  echo "################ ArcoLinux repos are already in /etc/pacman.conf"
+  echo "################ ArcoLinux repos are already in /etc/pacman.conf "
   echo "################################################################"
   tput sgr0
   echo
