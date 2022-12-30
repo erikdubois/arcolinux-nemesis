@@ -35,6 +35,7 @@ tput setaf 3
 echo "################################################################"
 echo "FINAL SKEL"
 echo "Copying all files and folders from /etc/skel to ~"
+echo "Wait for it ...."
 echo "################################################################"
 echo;tput sgr0
 
