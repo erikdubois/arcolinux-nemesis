@@ -110,7 +110,7 @@ func_install_chadwm() {
 
 # install chadwm on Sierra
 
-if [ -f /usr/bin/get-nemesis-on-sierra ]; then
+if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 
     echo
     tput setaf 2

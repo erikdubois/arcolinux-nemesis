@@ -33,7 +33,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 # when on Sierra
 
-if [ -f /usr/bin/get-nemesis-on-sierra ]; then
+if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 
 	echo
 	tput setaf 2
