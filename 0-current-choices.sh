@@ -32,7 +32,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 ##################################################################################################################
 
 echo
-echo "Pacman parallel downloads if needed - for Arch Linux "
+echo "Pacman parallel downloads if needed"
 FIND="#ParallelDownloads = 5"
 REPLACE="ParallelDownloads = 5"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
