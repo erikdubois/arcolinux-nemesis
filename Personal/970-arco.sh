@@ -74,6 +74,39 @@ if grep -q "ArcoLinux" /etc/os-release; then
 
 	fi
 
+	if [ -f /usr/share/wayland-sessions/sway.desktop ]; then
+		echo
+		tput setaf 2
+		echo "################################################################"
+		echo "################### We are on Sway"
+		echo "################################################################"
+		tput sgr0
+		echo
+		
+		echo
+		echo "Installing extra packages"
+		echo
+
+		sudo pacman -S --noconfirm --needed wf-recorder
+
+	fi
+
+	if [ -f /usr/share/wayland-sessions/hyprland.desktop ]; then
+		echo
+		tput setaf 2
+		echo "################################################################"
+		echo "################### We are on Hyprland"
+		echo "################################################################"
+		tput sgr0
+		echo
+		
+		echo
+		echo "Installing extra packages"
+		echo
+
+		sudo pacman -S --noconfirm --needed wf-recorder
+
+	fi
 
 	echo
 	echo "ArchLinux Logout - handy icons"
