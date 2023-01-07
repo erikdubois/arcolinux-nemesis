@@ -30,3 +30,14 @@ alias cpuu="gcc -c -Q -march=native --help=target | grep march | awk '{print $2}
 alias random="nitrogen --random /home/erik/Insync/Apps/Wallhaven --set-zoom-fill"
 
 alias ans="cd $HOME/DATA/arcolinux-nemesis && git pull && bash ./0-current*"
+
+alias spqo='sudo pacman -Qo'
+alias spsii='sudo pacman -Sii'
+
+# show the list of packages that need this package
+function_depends()	{
+	search=$(echo "$1")
+	sudo pacman -Sii $search | grep "Required" | sed -e "s/Required By     : //g" | sed -e "s/  /\n/g"
+	}
+
+alias depends='function_depends'
