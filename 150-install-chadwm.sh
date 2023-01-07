@@ -129,27 +129,3 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
     echo
 
 fi
-
-# install Chadwm on Ariser
-
-if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
-
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### Updating chadwm if needed"
-    echo "################################################################"
-    tput sgr0
-    echo
-
-    func_install_chadwm
-
-    echo
-    tput setaf 6
-    echo "################################################################"
-    echo "################### Done"
-    echo "################################################################"
-    tput sgr0
-    echo
-
-fi

@@ -44,19 +44,6 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	echo
 
 	echo
-	echo "Azerty config"
-	cp -v $HOME/.config/arco-chadwm/chadwm/config.def-azerty.h $HOME/.config/arco-chadwm/chadwm/config.def.h
-	echo
-
-	if [ -f $HOME/.config/arco-chadwm/chadwm/config.h ]; then
-		rm $HOME/.config/arco-chadwm/chadwm/config.h
-	fi
-
-	cd $HOME/.config/arco-chadwm/chadwm/
-	make
-	sudo make install
-
-	echo
 	echo "Change gtk-3.0 config"
 	echo
 	FIND="Sardi-Arc"
