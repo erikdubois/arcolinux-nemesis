@@ -1,5 +1,5 @@
 [General]
-theme=KvGnomeDark#
+theme=ArcDark#
 
 [Applications]
 KvGnomeDark%23=virtualbox, virtualboxvm
