@@ -38,6 +38,12 @@ echo "################### Personal settings to reset to default"
 echo "################################################################"
 tput sgr0
 echo
+echo "To personal Kvantum setup"
+echo
+[ -d $HOME"/.config/Kvantum" ] || mkdir -p $HOME"/.config/Kvantum"
+cp -r $installed_dir/settings/Kvantum/* $HOME/.config/Kvantum
+sudo cp -r $installed_dir/settings/Kvantum/* /etc/skel/.config/Kvantum
+echo
 echo "To default xfce settings"
 echo
 [ -d $HOME"/.config/xfce4/xfconf/xfce-perchannel-xml/" ] || mkdir -p $HOME"/.config/xfce4/xfconf/xfce-perchannel-xml/"
