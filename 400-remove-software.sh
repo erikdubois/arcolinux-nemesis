@@ -336,3 +336,29 @@ echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo
+
+# when on Archman - remove conflicting files
+
+if grep -q "Archman" /etc/os-release; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "############### Removing software for Archman"
+  echo "################################################################"
+  tput sgr0
+
+  sudo systemctl disable firewalld
+  sudo pacman -R --noconfirm firewalld
+  sudo pacman -R --noconfirm imagewriter
+
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Software removed"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+fi
