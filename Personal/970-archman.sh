@@ -41,8 +41,10 @@ if grep -q "Archman" /etc/os-release; then
 	tput sgr0
 	echo
 
-	sudo rm -r /etc/skel/.config/gtk-3.0
-
+	echo "Removing conflicting folders"
+	sudo rm /etc/skel/.zshrc
+	sudo rm -r /etc/skel/.config/Thunar
+	
 	echo
 	echo "Installing edu packages"
 	sudo pacman -S --noconfirm --needed edu-skel-git
