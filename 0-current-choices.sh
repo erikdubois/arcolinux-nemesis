@@ -86,6 +86,7 @@ sh 970-all*
 
 sh 970-alci*
 sh 970-arch*
+sh 970-archman*
 sh 970-arco*
 sh 970-ariser*
 sh 970-carli*
