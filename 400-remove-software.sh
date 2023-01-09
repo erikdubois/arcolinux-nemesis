@@ -352,6 +352,7 @@ if grep -q "Archman" /etc/os-release; then
   sudo pacman -R --noconfirm firewalld
   sudo pacman -R --noconfirm imagewriter
 
+  sudo rm -r /etc/skel/.config/xfce4/xfconf
 
   echo
   tput setaf 2
