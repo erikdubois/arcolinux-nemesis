@@ -358,9 +358,13 @@ if grep -q "Archman" /etc/os-release; then
 
   sudo rm /etc/skel/.config/gtk-3.0
   sudo rm /etc/skel/.config/mimeapps.list
-  sudo rm -r /etc/skel/.face
-  sudo rm -r /etc/skel/.xinitrc
-  sudo rm -r /etc/skel/.zshrc
+  sudo rm /etc/skel/.face
+  sudo rm /etc/skel/.xinitrc
+  sudo rm /etc/skel/.zshrc
+
+  sudo rm /etc/X11/xorg.conf.d/99-killX.conf
+  sudo rm /etc/modprobe.d/disable-evbug.conf
+  sudo rm /etc/modprobe.d/nobeep.conf
 
   echo
   tput setaf 2
