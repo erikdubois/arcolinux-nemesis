@@ -353,7 +353,14 @@ if grep -q "Archman" /etc/os-release; then
   sudo pacman -R --noconfirm imagewriter
   sudo pacman -R --noconfirm surfn-icons
 
-  sudo rm -r /etc/skel/.config/xfce4/xfconf
+  sudo rm -r /etc/skel/.config/Thunar
+  sudo rm -r /etc/skel/.config/xfce4
+
+  sudo rm /etc/skel/.config/gtk-3.0
+  sudo rm /etc/skel/.config/mimeapps.list
+  sudo rm -r /etc/skel/.face
+  sudo rm -r /etc/skel/.xinitrc
+  sudo rm -r /etc/skel/.zshrc
 
   echo
   tput setaf 2
