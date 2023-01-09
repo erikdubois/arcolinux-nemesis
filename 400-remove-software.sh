@@ -351,6 +351,7 @@ if grep -q "Archman" /etc/os-release; then
   sudo systemctl disable firewalld
   sudo pacman -R --noconfirm firewalld
   sudo pacman -R --noconfirm imagewriter
+  sudo pacman -R --noconfirm surfn-icons
 
   sudo rm -r /etc/skel/.config/xfce4/xfconf
 
