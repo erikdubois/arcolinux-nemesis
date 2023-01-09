@@ -96,10 +96,10 @@ tput sgr0
 echo
 echo "Installing all shell files"
 echo
-cp $installed_dir/settings/shell-personal/.bashrc-personal ~
-cp $installed_dir/settings/shell-personal/.zshrc ~
-sudo cp $installed_dir/settings/shell-personal/.zshrc /etc/skel/~
-cp $installed_dir/settings/shell-personal/.zshrc-personal ~
+cp $installed_dir/settings/shell-personal/.bashrc-personal ~/.bashrc-personal
+cp $installed_dir/settings/shell-personal/.zshrc ~/.zshrc
+sudo cp $installed_dir/settings/shell-personal/.zshrc /etc/skel/.zshrc
+cp $installed_dir/settings/shell-personal/.zshrc-personal ~/.zshrc-personal
 cp $installed_dir/settings/fish/alias.fish ~/.config/fish/alias.fish
 echo
 echo "Installing personal settings of variety"
