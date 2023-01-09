@@ -41,6 +41,8 @@ if grep -q "Archman" /etc/os-release; then
 	tput sgr0
 	echo
 
+	sudo rm -r /etc/skel/.config/gtk-3.0
+
 	echo
 	echo "Installing edu packages"
 	sudo pacman -S --noconfirm --needed edu-skel-git
@@ -81,6 +83,7 @@ if grep -q "Archman" /etc/os-release; then
 		echo
 
 		cp -arf /etc/skel/. ~
+		cp -arf /etc/skel/.config ~
 
 		echo
 		echo "Changing the whiskermenu"

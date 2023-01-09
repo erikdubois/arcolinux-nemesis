@@ -352,6 +352,7 @@ if grep -q "Archman" /etc/os-release; then
   sudo pacman -R --noconfirm firewalld
   sudo pacman -R --noconfirm imagewriter
   sudo pacman -R --noconfirm surfn-icons
+  sudo pacman -R --noconfirm grml-zsh-config
 
   sudo rm -r /etc/skel/.config/Thunar
   sudo rm -r /etc/skel/.config/xfce4
