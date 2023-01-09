@@ -355,7 +355,6 @@ if grep -q "Archman" /etc/os-release; then
 
   sudo rm -r /etc/skel/.config/Thunar
   sudo rm -r /etc/skel/.config/xfce4
-  sudo rm -r /etc/skel/.config/gtk-3.0
 
   sudo rm /etc/skel/.config/mimeapps.list
   sudo rm /etc/skel/.face
