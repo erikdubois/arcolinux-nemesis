@@ -88,6 +88,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 		echo
 
 		sudo pacman -S --noconfirm --needed wf-recorder
+		sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
 
 	fi
 
@@ -105,6 +106,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 		echo
 
 		sudo pacman -S --noconfirm --needed wf-recorder
+		sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
 
 	fi
 
