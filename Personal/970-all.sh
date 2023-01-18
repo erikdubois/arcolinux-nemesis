@@ -67,6 +67,9 @@ if [ $test == "enabled" ] && [ $result == "none" ] || [ $result == "oracle" ]; t
 	echo
 fi
 
+echo
+echo "Adding nanorc settings"
+
 if [ -f /etc/nanorc ]; then
 	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
 fi
