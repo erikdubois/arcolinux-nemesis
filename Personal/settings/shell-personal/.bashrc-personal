@@ -30,3 +30,6 @@ alias cpuu="gcc -c -Q -march=native --help=target | grep march | awk '{print $2}
 alias random="nitrogen --random /home/erik/Insync/Apps/Wallhaven --set-zoom-fill"
 
 alias ans="cd $HOME/DATA/arcolinux-nemesis && git pull && bash ./0-current*"
+
+alias rnd="nitrogen --set-zoom-fill --random /home/erik/Insync/Apps/Desktoppr/ --head=0 &&
+nitrogen --set-zoom-fill --random /home/erik/Insync/Apps/Desktoppr/ --head=1"
