@@ -68,9 +68,13 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		echo
 		if [ -f /etc/pacman.d/hooks/grub-install.hook ]; then
 			sudo rm /etc/pacman.d/hooks/grub-install.hook
+		else
+			echo "Already removed /etc/pacman.d/hooks/grub-install.hook"
 		fi
 		if [ -f /etc/pacman.d/hooks/grub-mkconfig.hook ]; then
 			sudo rm /etc/pacman.d/hooks/grub-mkconfig.hook
+		else
+			echo "Already removed /etc/pacman.d/hooks/grub-mkconfig.hook"
 		fi
 	fi
 
