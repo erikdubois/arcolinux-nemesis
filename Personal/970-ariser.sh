@@ -51,11 +51,23 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
 
+	echo
+	echo "Setting environment variables"
+	echo
 	if [ -f /etc/environment ]; then
 		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
 		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
 		echo "EDITOR=nano" | sudo tee -a /etc/environment
 		echo "BROWSER=firefox" | sudo tee -a /etc/environment
+	fi
+
+	echo
+	echo "Removing pacman hook for grub"
+	echo "By default Ariser is systemd-boot"
+	echo
+	if [ -f /boot/loader/loader.conf ]; then
+		sudo rm /etc/pacman.d/hooks/grub-install.hook
+		sudo rm /etc/pacman.d/hooks/grub-mkconfig.hook
 	fi
 
 	echo
@@ -133,6 +145,8 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
 	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
 	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf /etc/archlinux-logout.conf
+
+	echo
 
 	echo
 	tput setaf 6
