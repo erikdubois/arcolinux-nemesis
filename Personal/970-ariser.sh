@@ -61,11 +61,11 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		echo "BROWSER=firefox" | sudo tee -a /etc/environment
 	fi
 
-	echo
-	echo "Removing pacman hook for grub"
-	echo "By default Ariser is systemd-boot"
-	echo
 	if [ -f /boot/loader/loader.conf ]; then
+		echo
+		echo "Removing pacman hook for grub"
+		echo "By default Ariser is systemd-boot"
+		echo
 		sudo rm /etc/pacman.d/hooks/grub-install.hook
 		sudo rm /etc/pacman.d/hooks/grub-mkconfig.hook
 	fi
