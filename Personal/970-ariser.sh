@@ -66,8 +66,12 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		echo "Removing pacman hook for grub"
 		echo "By default Ariser is systemd-boot"
 		echo
-		sudo rm /etc/pacman.d/hooks/grub-install.hook
-		sudo rm /etc/pacman.d/hooks/grub-mkconfig.hook
+		if [ -f /etc/pacman.d/hooks/grub-install.hook ]; then
+			sudo rm /etc/pacman.d/hooks/grub-install.hook
+		fi
+		if [ -f /etc/pacman.d/hooks/grub-mkconfig.hook ]; then
+			sudo rm /etc/pacman.d/hooks/grub-mkconfig.hook
+		fi
 	fi
 
 	echo
