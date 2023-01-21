@@ -106,7 +106,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 		echo
 	fi
 
-	if ! grep -q 'ascii_distro="arcolinux_small"' $HOME/.config/neofetch/config.conf; then
+	if grep -q 'ascii_distro="arcolinux_small"' $HOME/.config/neofetch/config.conf; then
 		echo "Change from Arco logo to Arch logo"
 		FIND='ascii_distro="arcolinux_small"'
 		REPLACE='ascii_distro="archlinux"'
