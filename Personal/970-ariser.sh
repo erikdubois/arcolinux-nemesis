@@ -101,9 +101,16 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	
 	if ! grep -q "neofetch | lolcat" $HOME/.bashrc; then
 		echo "lolcat added"
-		sed -i '362s/neofetch/neofetch | lolcat/g' $HOME/.bashrc
-		sudo sed -i '362s/neofetch/neofetch | lolcat/g' /etc/skel/.bashrc
+		sed -i '391s/neofetch/neofetch | lolcat/g' $HOME/.bashrc
+		sudo sed -i '391s/neofetch/neofetch | lolcat/g' /etc/skel/.bashrc
 		echo
+	fi
+
+	if grep -q "arcolinux-chadwm-git" /etc/pacman.d/hooks/arcolinux-chadwm.hook ; then
+		echo "Change from arcolinux-chadwm-git to edu-chadwm-git - pacman hook"
+		FIND="arcolinux-chadwm-git"
+		REPLACE="edu-chadwm-git"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.d/hooks/arcolinux-chadwm.hook
 	fi
 
 	if grep -q 'ascii_distro="arcolinux_small"' $HOME/.config/neofetch/config.conf; then
