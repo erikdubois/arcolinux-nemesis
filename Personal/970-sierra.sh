@@ -66,8 +66,16 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 		echo "Removing pacman hook for grub"
 		echo "By default Ariser is systemd-boot"
 		echo
-		sudo rm /etc/pacman.d/hooks/grub-install.hook
-		sudo rm /etc/pacman.d/hooks/grub-mkconfig.hook
+		if [ -f /etc/pacman.d/hooks/grub-install.hook ]; then
+			sudo rm /etc/pacman.d/hooks/grub-install.hook
+		else
+			echo "Already removed /etc/pacman.d/hooks/grub-install.hook"
+		fi
+		if [ -f /etc/pacman.d/hooks/grub-mkconfig.hook ]; then
+			sudo rm /etc/pacman.d/hooks/grub-mkconfig.hook
+		else
+			echo "Already removed /etc/pacman.d/hooks/grub-mkconfig.hook"
+		fi
 	fi
 
 	echo
@@ -96,6 +104,14 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 		sed -i '362s/neofetch/neofetch | lolcat/g' $HOME/.bashrc
 		sudo sed -i '362s/neofetch/neofetch | lolcat/g' /etc/skel/.bashrc
 		echo
+	fi
+
+	if ! grep -q 'ascii_distro="arcolinux_small"' $HOME/.config/neofetch/config.conf; then
+		echo "Change from Arco logo to Arch logo"
+		FIND='ascii_distro="arcolinux_small"'
+		REPLACE='ascii_distro="archlinux"'
+		sed -i "s/$FIND/$REPLACE/g" ~/.config/neofetch/config.conf
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/neofetch/config.conf
 	fi
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
