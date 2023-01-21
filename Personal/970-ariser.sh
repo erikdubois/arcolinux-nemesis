@@ -106,6 +106,14 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		echo
 	fi
 
+	if ! grep -q 'ascii_distro="arcolinux_small"' $HOME/.config/neofetch/config.conf; then
+		echo "Change from Arco logo to Arch logo"
+		FIND='ascii_distro="arcolinux_small"'
+		REPLACE='ascii_distro="archlinux"'
+		sed -i "s/$FIND/$REPLACE/g" ~/.config/neofetch/config.conf
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/neofetch/config.conf
+	fi
+
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
