@@ -67,7 +67,6 @@ func_install_chadwm() {
     edu-skel-git
     edu-system-git
     edu-xfce-git
-    arcolinux-chadwm-pacman-hook-git
     arcolinux-paleofetch-git
     arcolinux-wallpapers-candy-git
     arcolinux-wallpapers-git
