@@ -44,6 +44,12 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	echo
 
 	echo
+	echo "Installing edu packages"
+	sudo pacman -S --noconfirm --needed edu-skel-git
+  	sudo pacman -S --noconfirm --needed edu-xfce-git
+  	sudo pacman -S --noconfirm --needed edu-system-git
+	echo
+
 	echo "Change gtk-3.0 config"
 	echo
 	FIND="Sardi-Arc"
