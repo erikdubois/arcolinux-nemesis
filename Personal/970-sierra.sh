@@ -110,8 +110,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 		echo "Change from arcolinux-chadwm-git to edu-chadwm-git - pacman hook"
 		FIND="arcolinux-chadwm-git"
 		REPLACE="edu-chadwm-git"
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/neofetch/config.conf
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/neofetch/config.conf
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.d/hooks/arcolinux-chadwm.hook
 	fi
 
 	if grep -q 'ascii_distro="arcolinux_small"' $HOME/.config/neofetch/config.conf; then
