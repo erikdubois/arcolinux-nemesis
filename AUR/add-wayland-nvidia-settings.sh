@@ -89,8 +89,11 @@ echo "################################################################"
 tput sgr0
 echo
 
-echo 'option nvidia-drm.modeset=1' | sudo tee /etc/modprobe.d/arco-wayland-nvidia.conf
+FIND='GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 audit=0 nvme_load=yes"'
+REPLACE='GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 audit=0 nvme_load=yes nvidia-drm.modeset=1"'
+sudo sed -i "s/$FIND/$REPLACE/g" /etc/default/grub
 
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo
 tput setaf 2
