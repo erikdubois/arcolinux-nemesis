@@ -69,6 +69,7 @@ echo "################################################################"
 echo "################### Adding nvidia modules for Wayland and Nvidia"
 echo "################### MODULES= nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 echo "################### in /etc/mkinitcpio.conf"
+echo "################### and rebuilding /boot files"
 echo "################################################################"
 tput sgr0
 echo
@@ -88,7 +89,7 @@ echo "################################################################"
 tput sgr0
 echo
 
-echo 'option nvidia-drm.modeset=1' >> /etc/modprobe.d/arco-wayland-nvidia.conf
+echo 'option nvidia-drm.modeset=1' | sudo tee /etc/modprobe.d/arco-wayland-nvidia.conf
 
 
 echo
