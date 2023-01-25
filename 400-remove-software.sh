@@ -394,7 +394,7 @@ if grep -q "archcraft" /etc/os-release; then
   tput sgr0
   echo
 
-  sudo rm -r /etc/skel/.config
+  sudo rm -r /etc/skel/.config/*
   sudo rm /etc/skel/.dmrc
   sudo rm /etc/skel/.face
   sudo rm /etc/skel/.gtkrc-2.0
