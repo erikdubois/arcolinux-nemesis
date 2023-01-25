@@ -67,6 +67,7 @@ if grep -q "archlinux" /etc/os-release; then
   echo "############### Removing software for Arch"
   echo "################################################################"
   tput sgr0
+  echo
 
   if [ -f /etc/skel/.bashrc ]; then
     sudo rm /etc/skel/.bashrc
@@ -93,6 +94,7 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
   echo "################################################################"
   tput sgr0
   echo
+
   if [ -f /etc/skel/.bashrc ]; then
     sudo rm /etc/skel/.bashrc
   fi  
@@ -169,6 +171,7 @@ if grep -q "EndeavourOS" /etc/os-release; then
   echo "############### Removing software for EOS"
   echo "################################################################"
   tput sgr0
+  echo
 
   if [ -f /etc/skel/.bashrc ]; then
     sudo rm /etc/skel/.bashrc
@@ -202,6 +205,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
   echo "############### Removing software for ALCI"
   echo "################################################################"
   tput sgr0
+  echo
 
   if [ -f /etc/skel/.bashrc ]; then
     sudo rm /etc/skel/.bashrc
@@ -255,6 +259,7 @@ if grep -q "Garuda" /etc/os-release; then
   echo "############### Removing software for EOS"
   echo "################################################################"
   tput sgr0
+  echo
 
   if [ -f /etc/skel/.bashrc ]; then
     sudo rm /etc/skel/.bashrc
@@ -288,6 +293,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
   echo "############### Removing software for Sierra"
   echo "################################################################"
   tput sgr0
+  echo
 
   if [ -f /etc/skel/.bashrc ]; then
     sudo rm /etc/skel/.bashrc
@@ -386,6 +392,7 @@ if grep -q "archcraft" /etc/os-release; then
   echo "############### Removing software for Archcraft"
   echo "################################################################"
   tput sgr0
+  echo
 
   sudo pacman -R --noconfirm archcraft-skeleton
   sudo pacman -R --noconfirm archcraft-omz
