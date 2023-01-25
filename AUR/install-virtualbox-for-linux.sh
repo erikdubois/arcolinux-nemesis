@@ -31,6 +31,18 @@ echo "##########################################################################
 echo "##      This script assumes you have the linux kernel running        ##"
 echo "###########################################################################"
 
+
+if pacman -Qi linux &> /dev/null; then
+
+	tput setaf 2
+	echo "################################################################"
+	echo "#########  Installing linux-headers"
+	echo "################################################################"
+	tput sgr0
+
+	sudo pacman -S --noconfirm --needed linux-headers
+fi
+
 sudo pacman -S --noconfirm --needed virtualbox
 sudo pacman -S --needed --noconfirm virtualbox-host-dkms
 
