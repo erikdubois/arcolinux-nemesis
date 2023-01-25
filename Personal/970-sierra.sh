@@ -89,6 +89,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	if [ -d /usr/share/icons/default/cursors ]; then
 		sudo rm /usr/share/icons/default/cursors
 	fi
+	[ -d /usr/share/icons/default ] || sudo mkdir -p /usr/share/icons/default
 	sudo cp -f $installed_dir/settings/cursor/* /usr/share/icons/default
 	echo
 
