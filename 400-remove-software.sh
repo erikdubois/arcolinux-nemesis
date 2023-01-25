@@ -380,6 +380,13 @@ fi
 # when on Archcraft - remove conflicting files
 if grep -q "archcraft" /etc/os-release; then
 
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "############### Removing software for Archcraft"
+  echo "################################################################"
+  tput sgr0
+
   sudo pacman -R --noconfirm archcraft-skeleton
   sudo pacman -R --noconfirm archcraft-omz
   sudo pacman -R --noconfirm archcraft-skeleton
