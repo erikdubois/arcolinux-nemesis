@@ -37,6 +37,34 @@ echo "################################################################"
 echo "################### Personal settings to reset to default"
 echo "################################################################"
 tput sgr0
+
+echo "################################################################"
+echo "################### Personal directories to create"
+echo "################################################################"
+tput sgr0
+echo
+echo "Creating folders we use later"
+echo
+[ -d $HOME"/.bin" ] || mkdir -p $HOME"/.bin"
+[ -d $HOME"/Projects" ] || mkdir -p $HOME"/Projects"
+[ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
+[ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
+[ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
+[ -d $HOME"/.local/share/icons" ] || mkdir -p $HOME"/.local/share/icons"
+[ -d $HOME"/.local/share/themes" ] || mkdir -p $HOME"/.local/share/themes"
+[ -d "/personal" ] || sudo mkdir -p "/personal"
+[ -d $HOME"/.config" ] || mkdir -p $HOME"/.config"
+[ -d $HOME"/.config/xfce4" ] || mkdir -p $HOME"/.config/xfce4"
+[ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
+[ -d $HOME"/.config/gtk-4.0" ] || mkdir -p $HOME"/.config/gtk-4.0"
+[ -d $HOME"/.config/xfce4/xfconf" ] || mkdir -p $HOME"/.config/xfce4/xfconf"
+[ -d $HOME"/.config/Kvantum" ] || mkdir -p $HOME"/.config/Kvantum"
+[ -d $HOME"/.config/variety" ] || mkdir -p $HOME"/.config/variety"
+[ -d $HOME"/.config/fish" ] || mkdir -p $HOME"/.config/fish"
+[ -d $HOME"/.config/neofetch" ] || mkdir -p $HOME"/.config/neofetch"
+[ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
+[ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
+
 echo
 echo "To personal Kvantum setup"
 echo
