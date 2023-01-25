@@ -55,6 +55,14 @@ if grep -q "archcraft" /etc/os-release; then
   	sudo pacman -S --noconfirm --needed edu-system-git
 
 	echo
+	echo "################################################################"
+	echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
+	echo "################################################################"
+	echo
+	sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
+	sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
+
+	echo
 	tput setaf 6
 	echo "################################################################"
 	echo "################### Done"
