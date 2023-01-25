@@ -87,7 +87,7 @@ echo "To default gtk-3.0 config"
 echo
 [ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
 cp  $installed_dir/settings/gtk3/settings.ini $HOME/.config/gtk-3.0
-[ -d /etc/skel/.config/gtk-3.0 ] || sudo mkdir -p /etc/skel/.config/.config/gtk-3.0
+[ -d "/etc/skel/.config/gtk-3.0" ] || sudo mkdir -p "/etc/skel/.config/gtk-3.0"
 sudo cp  $installed_dir/settings/gtk3/settings.ini /etc/skel/.config/gtk-3.0
 echo
 tput setaf 2
@@ -122,7 +122,7 @@ echo "Installing personal settings of variety"
 echo
 [ -d $HOME"/.config/variety" ] || mkdir -p $HOME"/.config/variety"
 cp $installed_dir/settings/variety/variety.conf ~/.config/variety/
-[ -d /etc/skel/.config/variety ] || sudo mkdir -p /etc/skel/.config/.config/variety
+[ -d /etc/skel/.config/variety ] || sudo mkdir -p /etc/skel/.config/variety
 sudo cp $installed_dir/settings/variety/variety.conf /etc/skel/.config/variety/
 echo
 echo "Installing screenkey for teaching"
