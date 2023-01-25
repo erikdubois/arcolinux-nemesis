@@ -44,15 +44,13 @@ if grep -q "archcraft" /etc/os-release; then
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "################### Removing packages"
+	echo "################### Removing conflicting files"
 	echo "################################################################"
 	tput sgr0
 	echo
 
 	echo
-	echo "Removing edu packages"
-	#sudo pacman -Rdd --noconfirm arcolinux-variety-git
-	#sudo pacman -Rdd --noconfirm arcolinux-rofi-themes-git
+  	sudo rm /etc/skel/.zshrc
 	echo
 
 	echo
