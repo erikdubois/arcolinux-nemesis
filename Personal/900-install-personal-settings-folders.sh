@@ -141,13 +141,14 @@ cp  $installed_dir/settings/thunar/uca.xml $HOME/.config/Thunar
 [ -d /etc/skel/.config/Thunar ] || sudo mkdir -p /etc/skel/.config/Thunar
 sudo cp  $installed_dir/settings/thunar/uca.xml /etc/skel/.config/Thunar
 echo
-echo "Adding personal neofetch"
-echo
-[ -d $HOME"/.config/neofetch" ] || mkdir -p $HOME"/.config/neofetch"
-cp  $installed_dir/settings/neofetch/config.conf $HOME/.config/neofetch/
-[ -d /etc/skel/.config/neofetch ] || sudo mkdir -p /etc/skel/.config/neofetch
-sudo cp  $installed_dir/settings/neofetch/config.conf /etc/skel/.config/neofetch/
-echo
+
+#echo "Adding personal neofetch"
+#echo
+#[ -d $HOME"/.config/neofetch" ] || mkdir -p $HOME"/.config/neofetch"
+#cp  $installed_dir/settings/neofetch/config.conf $HOME/.config/neofetch/
+#[ -d /etc/skel/.config/neofetch ] || sudo mkdir -p /etc/skel/.config/neofetch
+#sudo cp  $installed_dir/settings/neofetch/config.conf /etc/skel/.config/neofetch/
+#echo
 
 echo
 echo "Sublime text settings"
