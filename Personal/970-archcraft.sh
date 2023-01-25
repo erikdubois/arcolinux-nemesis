@@ -44,33 +44,12 @@ if grep -q "archcraft" /etc/os-release; then
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "################### Removing conflicting files"
-	echo "################################################################"
-	tput sgr0
-	echo
-
-	echo
-  	sudo rm /etc/skel/.zshrc
-	echo
-
-	echo
-	tput setaf 6
-	echo "################################################################"
-	echo "################### Done"
-	echo "################################################################"
-	tput sgr0
-	echo
-
-	echo
-	tput setaf 2
-	echo "################################################################"
 	echo "################### Installing packages"
 	echo "################################################################"
 	tput sgr0
 	echo
 
 	echo
-	echo "Installing edu packages"
 	sudo pacman -S --noconfirm --needed edu-skel-git
   	sudo pacman -S --noconfirm --needed edu-xfce-git
   	sudo pacman -S --noconfirm --needed edu-system-git
