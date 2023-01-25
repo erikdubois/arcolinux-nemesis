@@ -392,4 +392,12 @@ if grep -q "archcraft" /etc/os-release; then
   sudo pacman -R --noconfirm archcraft-skeleton
   sudo pacman -R --noconfirm archcraft-openbox
 
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Software removed"
+  echo "################################################################"
+  tput sgr0
+  echo
+
 fi
