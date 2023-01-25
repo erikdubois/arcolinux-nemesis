@@ -81,6 +81,7 @@ echo
 cp  $installed_dir/settings/xfce/xsettings.xml $HOME/.config/xfce4/xfconf/xfce-perchannel-xml
 [ -d /etc/skel/.config/xfce4 ] || sudo mkdir -p /etc/skel/.config/xfce4
 [ -d /etc/skel/.config/xfce4/xfconf ] || sudo mkdir -p /etc/skel/.config/xfce4/xfconf
+[ -d /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml ] || sudo mkdir -p /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml
 sudo cp  $installed_dir/settings/xfce/xsettings.xml /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml
 echo
 echo "To default gtk-3.0 config"
