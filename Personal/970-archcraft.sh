@@ -46,7 +46,6 @@ if grep -q "archcraft" /etc/os-release; then
 	sudo pacman -S --noconfirm --needed edu-skel-git
   	sudo pacman -S --noconfirm --needed edu-xfce-git
   	sudo pacman -S --noconfirm --needed edu-system-git
-  	sudo pacman -S --noconfirm --needed arcolinux-arc-kde
 
 	echo
 	tput setaf 6
