@@ -51,8 +51,8 @@ if grep -q "archcraft" /etc/os-release; then
 
 	echo
 	echo "Removing edu packages"
-	sudo pacman -Rdd --noconfirm arcolinux-variety-git
-	sudo pacman -Rdd --noconfirm arcolinux-rofi-themes-git
+	#sudo pacman -Rdd --noconfirm arcolinux-variety-git
+	#sudo pacman -Rdd --noconfirm arcolinux-rofi-themes-git
 	echo
 
 	echo

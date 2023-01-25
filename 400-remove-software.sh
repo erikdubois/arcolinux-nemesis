@@ -399,6 +399,8 @@ if grep -q "archcraft" /etc/os-release; then
   sudo pacman -R --noconfirm archcraft-skeleton
   sudo pacman -R --noconfirm archcraft-openbox
   sudo pacman -R --noconfirm archcraft-gtk-theme-arc
+  sudo pacman -R --noconfirm archcraft-config-qt
+  sudo pacman -R --noconfirm archcraft-neofetch
 
   echo
   tput setaf 2
