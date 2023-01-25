@@ -394,6 +394,13 @@ if grep -q "archcraft" /etc/os-release; then
   tput sgr0
   echo
 
+  sudo rm -r /etc/skel/.config
+  sudo rm /etc/skel/.drmrc
+  sudo rm /etc/skel/.face
+  sudo rm /etc/skel/.gtkrc-2.0
+  sudo rm /etc/skel/.zshrc
+
+
   sudo pacman -R --noconfirm archcraft-skeleton
   sudo pacman -R --noconfirm archcraft-omz
   sudo pacman -R --noconfirm archcraft-skeleton
