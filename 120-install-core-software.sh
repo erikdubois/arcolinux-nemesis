@@ -210,28 +210,6 @@ fi
 
 ###############################################################################################
 
-
-# when on Arch Linux
-
-if grep -q "Arch Linux" /etc/os-release; then
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "############### Installing software for Arch Linux - Any desktop"
-  echo "################################################################"
-  tput sgr0
-  echo
-
-  echo
-  echo "################################################################"
-  echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
-  echo "################################################################"
-  echo
-  sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
-  sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
-
-fi
-
 # when on xfce
 
 if [ -f /usr/share/xsessions/xfce.desktop ]; then

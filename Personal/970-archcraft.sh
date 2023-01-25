@@ -62,6 +62,7 @@ if grep -q "archcraft" /etc/os-release; then
 	sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
 	sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
 
+
 	echo
 	tput setaf 6
 	echo "################################################################"
