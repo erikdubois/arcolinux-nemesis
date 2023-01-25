@@ -128,3 +128,25 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
     echo
 
 fi
+
+if grep -q "archcraft" /etc/os-release; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### We are on Archcraft"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    func_install_chadwm
+
+    echo
+    tput setaf 6
+    echo "################################################################"
+    echo "################### Done"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+fi
