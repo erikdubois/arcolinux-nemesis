@@ -70,7 +70,7 @@ if grep -q "archlinux" /etc/os-release; then
   echo
 
   if [ -f /etc/skel/.bashrc ]; then
-    sudo rm /etc/skel/.bashrc
+    sudo mv /etc/skel/.bashrc /etc/skel/.bashrc-arch
   fi
 
   echo
