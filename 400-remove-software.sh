@@ -30,7 +30,7 @@
 echo
 tput setaf 3
 echo "################################################################"
-echo "################### Remove software"
+echo "################### Remove software for all"
 echo "################################################################"
 tput sgr0
 echo
@@ -90,7 +90,7 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
   echo
   tput setaf 2
   echo "################################################################"
-  echo "################### Removing software from Carli"
+  echo "################### Removing software for Carli"
   echo "################################################################"
   tput sgr0
   echo
@@ -119,7 +119,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
   echo
   tput setaf 2
   echo "################################################################"
-  echo "################### Removing software from ARISER"
+  echo "################### Removing software for ARISER"
   echo "################################################################"
   tput sgr0
   echo
@@ -143,7 +143,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
   echo
   tput setaf 2
   echo "################################################################"
-  echo "#######Software to remove from an ArcoLinux installation"
+  echo "####### Removing software for ArcoLinux"
   echo "################################################################"
   tput sgr0
   echo
@@ -256,7 +256,7 @@ if grep -q "Garuda" /etc/os-release; then
   echo
   tput setaf 2
   echo "################################################################"
-  echo "############### Removing software for EOS"
+  echo "############### Removing software for Garuda"
   echo "################################################################"
   tput sgr0
   echo
