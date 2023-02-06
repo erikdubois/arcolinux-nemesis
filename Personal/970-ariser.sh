@@ -44,6 +44,13 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	echo
 
 	echo
+	echo "Installing edu packages"
+	sudo pacman -S --noconfirm  edu-skel-git
+  	sudo pacman -S --noconfirm  edu-xfce-git
+  	sudo pacman -S --noconfirm  edu-system-git
+	echo
+
+	echo
 	echo "Change gtk-3.0 config"
 	echo
 	FIND="Sardi-Arc"
