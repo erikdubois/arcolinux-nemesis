@@ -295,9 +295,9 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
   tput sgr0
   echo
 
-  if [ -f /etc/skel/.bashrc ]; then
-    sudo rm /etc/skel/.bashrc
-  fi
+  #if [ -f /etc/skel/.bashrc ]; then
+  #  sudo rm /etc/skel/.bashrc
+  #fi
   sudo pacman -R --noconfirm amd-ucode
   sudo pacman -R --noconfirm b43-fwcutter
   sudo pacman -R --noconfirm broadcom-wl
