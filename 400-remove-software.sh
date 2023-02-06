@@ -124,9 +124,9 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
   tput sgr0
   echo
 
-  if [ -f /etc/skel/.bashrc ]; then
-    sudo rm /etc/skel/.bashrc
-  fi
+  #if [ -f /etc/skel/.bashrc ]; then
+  #  sudo rm /etc/skel/.bashrc
+  #fi
 
   echo
   tput setaf 2
