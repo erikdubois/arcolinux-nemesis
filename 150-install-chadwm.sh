@@ -150,3 +150,27 @@ if grep -q "archcraft" /etc/os-release; then
     echo
 
 fi
+
+# install chadwm on Area
+
+if [ -f /usr/local/bin/get-nemesis-on-area ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### We are on Area"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    func_install_chadwm
+
+    echo
+    tput setaf 6
+    echo "################################################################"
+    echo "################### Done"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+fi
