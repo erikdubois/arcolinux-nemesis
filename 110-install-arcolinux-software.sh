@@ -115,3 +115,25 @@ echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo
+
+
+if [ -f /usr/share/xsessions/cinnamon.desktop ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Installing software for Cinnamon"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+  sudo pacman -S --noconfirm --needed nemo-fileroller
+  sudo pacman -S --noconfirm --needed cinnamon-translations
+  sudo pacman -S --noconfirm --needed mintlocale
+  sudo pacman -S --noconfirm --needed iso-flag-png
+  sudo pacman -S --noconfirm --needed gnome-terminal
+  sudo pacman -S --noconfirm --needed gnome-system-monitor
+  sudo pacman -S --noconfirm --needed gnome-screenshot
+  sudo pacman -S --noconfirm --needed xed
+
+fi
