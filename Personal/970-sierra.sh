@@ -168,12 +168,12 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/systemd/journald.conf
 
 	echo
-	echo "ArchLinux Logout - beauty icons"
+	echo "ArchLinux Logout - handy icons"
 	echo
 
 	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
-	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
-	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf /etc/archlinux-logout.conf
+	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
+	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-hand.conf /etc/archlinux-logout.conf
 
 	echo
 	echo "Azerty config"
