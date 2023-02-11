@@ -31,7 +31,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-if ! -f /etc/dev-rel ; then 
+if [ ! -f /etc/dev-rel ] ; then 
 
 	if grep -q "archlinux" /etc/os-release; then
 
