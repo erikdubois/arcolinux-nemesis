@@ -60,9 +60,11 @@ sudo pacman -Rs xf86-video-vesa --noconfirm
 # always put the current .bashrc .zshrc away
 if [ -f /etc/skel/.bashrc ]; then
   sudo mv /etc/skel/.bashrc /etc/skel/.bashrc-old
-  sudo mv /etc/skel/.zshrc /etc/skel/.zshrc-old
 fi
 
+if [ -f /etc/skel/.zshrc ]; then
+  sudo mv /etc/skel/.zshrc /etc/skel/.zshrc-old
+fi
 
 # when on Arch Linux - remove conflicting files
 if grep -q "archlinux" /etc/os-release; then
