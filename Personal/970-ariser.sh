@@ -54,8 +54,9 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	sudo rm -f /etc/skel/.config/Kvantum/kvantum.kvconfig
 	sudo rm -f /etc/skel/.config/gtk-3.0/settings.ini
 	sudo rm -f /etc/skel/.config/variety/variety.conf
-	sudo rm -f /etc/skel/.zshrc
+	sudo rm -f /etc/skel/.config/Thunar/uca.xml
 	sudo rm -r /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+	sudo rm -f /etc/skel/.zshrc
 
 	echo
 	echo "Installing edu packages"
