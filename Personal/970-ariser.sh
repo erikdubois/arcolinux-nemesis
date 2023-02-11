@@ -55,7 +55,9 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	sudo rm -f /etc/skel/.config/gtk-3.0/settings.ini
 	sudo rm -f /etc/skel/.config/variety/variety.conf
 	sudo rm -f /etc/skel/.zshrc
-	sudo rm -r /etc/skel/.config/xfce4/xconf/xfce-perchannel-xml/xsettings.xml
+	if [ -f /etc/skel/.config/xfce4/xconf/xfce-perchannel-xml/xsettings.xml ]; then
+		sudo rm -r /etc/skel/.config/xfce4/xconf/xfce-perchannel-xml/xsettings.xml
+	fi
 
 	echo
 	echo "Installing edu packages"
