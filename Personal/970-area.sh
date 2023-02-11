@@ -31,7 +31,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-# when on Area
+# we are on Area
 
 if [ -f /usr/local/bin/get-nemesis-on-area ]; then
 
@@ -50,6 +50,7 @@ if [ -f /usr/local/bin/get-nemesis-on-area ]; then
   	sudo pacman -S --noconfirm  edu-system-git
 	echo
 
+	echo
 	echo "Change gtk-3.0 config"
 	echo
 	FIND="Sardi-Arc"
@@ -117,8 +118,9 @@ if [ -f /usr/local/bin/get-nemesis-on-area ]; then
 		echo "Change from Arco logo to Arch logo"
 		FIND='ascii_distro="arcolinux_small"'
 		REPLACE='ascii_distro="archlinux"'
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/neofetch/config.conf
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/neofetch/config.conf
+		[ -d ~/.config/neofetch ] || mkdir -p ~/.config/neofetch
+		cp /etc/skel/.config/neofetch/config.conf ~/.config/neofetch/config.conf
 	fi
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
@@ -132,9 +134,12 @@ if [ -f /usr/local/bin/get-nemesis-on-area ]; then
 
 		cp -arf /etc/skel/. ~
 
+		echo
 		echo "Changing the whiskermenu"
 		echo
+		[ -d ~/.config/xfce4/panel ] || mkdir -p ~/.config/xfce4/panel
 		cp $installed_dir/settings/ariser/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+		[ -d /etc/skel/.config/xfce4/panel ] || sudo mkdir -p /etc/skel/.config/xfce4/panel
 		sudo cp $installed_dir/settings/ariser/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
 
 		echo
@@ -163,27 +168,14 @@ if [ -f /usr/local/bin/get-nemesis-on-area ]; then
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/systemd/journald.conf
 
 	echo
-	echo "ArchLinux Logout - candy icons"
+	echo "ArchLinux Logout - beauty icons"
 	echo
+
 	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
-	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-candy.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
-	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-candy.conf /etc/archlinux-logout.conf
-
-	echo
-	echo "Azerty config"
-	cp -v $HOME/.config/arco-chadwm/chadwm/config.def-azerty.h $HOME/.config/arco-chadwm/chadwm/config.def.h
+	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
+	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf /etc/archlinux-logout.conf
 	echo
 
-	if [ -f $HOME/.config/arco-chadwm/chadwm/config.h ]; then
-		rm $HOME/.config/arco-chadwm/chadwm/config.h
-	fi
-
-	cd $HOME/.config/arco-chadwm/chadwm/
-	make
-	sudo make install
-
-	echo
-	echo
 	tput setaf 6
 	echo "################################################################"
 	echo "################### Done"
