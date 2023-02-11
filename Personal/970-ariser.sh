@@ -134,6 +134,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		FIND='ascii_distro="arcolinux_small"'
 		REPLACE='ascii_distro="archlinux"'
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/neofetch/config.conf
+		[ -d ~/.config/neofetch ] || mkdir -p ~/.config/neofetch
 		cp /etc/skel/.config/neofetch/config.conf ~/.config/neofetch/config.conf
 	fi
 
