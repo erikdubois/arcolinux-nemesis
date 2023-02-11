@@ -155,9 +155,10 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 
 		cp -arf /etc/skel/. ~
 
+		echo
 		echo "Changing the whiskermenu"
 		echo
-		[ -d ~/.config/xfce4/panel ] || sudo mkdir -p ~/.config/xfce4/panel
+		[ -d ~/.config/xfce4/panel ] || mkdir -p ~/.config/xfce4/panel
 		cp $installed_dir/settings/ariser/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
 		[ -d /etc/skel/.config/xfce4/panel ] || sudo mkdir -p /etc/skel/.config/xfce4/panel
 		sudo cp $installed_dir/settings/ariser/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
@@ -190,10 +191,10 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	echo
 	echo "ArchLinux Logout - beauty icons"
 	echo
+
 	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
 	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
 	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf /etc/archlinux-logout.conf
-
 	echo
 
 	echo
