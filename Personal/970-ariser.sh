@@ -44,6 +44,20 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	echo
 
 	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "################### Removing conflicting files"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+	sudo rm -f /etc/skel/.config/Kvantum/kvantum.kvconfig
+	sudo rm -f /etc/skel/.config/gtk-3.0/settings.ini
+	sudo rm -f /etc/skel/.config/variety/variety.conf
+	sudo rm -f /etc/skel/.zshrc
+	sudo rm -r /etc/skel/.config/xfce4/xconf/xfce-perchannel-xml/xsettings.xml
+
+	echo
 	echo "Installing edu packages"
 	sudo pacman -S --noconfirm  edu-skel-git
   	sudo pacman -S --noconfirm  edu-xfce-git
