@@ -31,6 +31,18 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+echo
+tput setaf 3
+echo "Installing personal settings of variety - second time"
+echo
+[ -d $HOME"/.config/variety" ] || mkdir -p $HOME"/.config/variety"
+cp $installed_dir/settings/variety/variety.conf ~/.config/variety/
+[ -d /etc/skel/.config/variety ] || sudo mkdir -p /etc/skel/.config/variety
+sudo cp $installed_dir/settings/variety/variety.conf /etc/skel/.config/variety/
+tput sgr0
+echo
+
+echo
 tput setaf 3
 echo "################################################################"
 echo "FINAL SKEL"
@@ -38,7 +50,8 @@ echo "Copying all files and folders from /etc/skel to ~"
 echo "First we make a backup of .config"
 echo "Wait for it ...."
 echo "################################################################"
-echo;tput sgr0
+tput sgr0
+echo
 
 cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
 cp -arf /etc/skel/. ~
