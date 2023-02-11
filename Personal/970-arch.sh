@@ -31,90 +31,93 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-if grep -q "archlinux" /etc/os-release; then
+if ! -f /etc/dev-rel ; then 
 
-	echo
-	tput setaf 2
-	echo "################################################################"
-	echo "################### We are on ARCH LINUX"
-	echo "################################################################"
-	tput sgr0
-	echo
+	if grep -q "archlinux" /etc/os-release; then
 
-	echo
-	echo "Installing edu packages"
-	sudo pacman -S --noconfirm --needed edu-skel-git
-  	sudo pacman -S --noconfirm --needed edu-xfce-git
-  	sudo pacman -S --noconfirm --needed edu-system-git
-
-	echo
-	echo "Pacman parallel downloads	"
-	FIND="#ParallelDownloads = 5"
-	REPLACE="ParallelDownloads = 5"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
-
-	echo
-	echo "Bootloader time to 1 second"
-	if [ -f /boot/loader/loader.conf ]; then
-		FIND="timeout 5"
-		REPLACE="timeout 1"
-		sudo sed -i "s/$FIND/$REPLACE/g" /boot/loader/loader.conf
-
-	fi
-	echo
-
-	echo
-	echo "Adding nanorc"
-	if [ -f /etc/nanorc ]; then
-    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-	fi
-
-	echo
-	echo "################################################################"
-	echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
-	echo "################################################################"
-	echo
-	sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
-	sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
-
-	echo	
-	echo "When on Xfce4"
-	if [ -f /usr/share/xsessions/xfce.desktop ]; then
 		echo
 		tput setaf 2
 		echo "################################################################"
-		echo "################### We are on Xfce4"
+		echo "################### We are on ARCH LINUX"
 		echo "################################################################"
 		tput sgr0
 		echo
 
-		cp -arf /etc/skel/. ~
+		echo
+		echo "Installing edu packages"
+		sudo pacman -S --noconfirm --needed edu-skel-git
+	  	sudo pacman -S --noconfirm --needed edu-xfce-git
+	  	sudo pacman -S --noconfirm --needed edu-system-git
 
 		echo
-		echo "Changing the whiskermenu"
+		echo "Pacman parallel downloads	"
+		FIND="#ParallelDownloads = 5"
+		REPLACE="ParallelDownloads = 5"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
+
 		echo
-		cp $installed_dir/settings/archlinux/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
-		sudo cp $installed_dir/settings/archlinux/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
+		echo "Bootloader time to 1 second"
+		if [ -f /boot/loader/loader.conf ]; then
+			FIND="timeout 5"
+			REPLACE="timeout 1"
+			sudo sed -i "s/$FIND/$REPLACE/g" /boot/loader/loader.conf
 
-		FIND="Arc-Dark"
-		REPLACE="Arc-Dawn-Dark"
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+		fi
+		echo
 
-		FIND="Sardi-Arc"
-		REPLACE="arcolinux-candy-beauty"
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+		echo
+		echo "Adding nanorc"
+		if [ -f /etc/nanorc ]; then
+	    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+		fi
+
+		echo
+		echo "################################################################"
+		echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
+		echo "################################################################"
+		echo
+		sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
+		sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
+
+		echo	
+		echo "When on Xfce4"
+		if [ -f /usr/share/xsessions/xfce.desktop ]; then
+			echo
+			tput setaf 2
+			echo "################################################################"
+			echo "################### We are on Xfce4"
+			echo "################################################################"
+			tput sgr0
+			echo
+
+			cp -arf /etc/skel/. ~
+
+			echo
+			echo "Changing the whiskermenu"
+			echo
+			cp $installed_dir/settings/archlinux/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+			sudo cp $installed_dir/settings/archlinux/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
+
+			FIND="Arc-Dark"
+			REPLACE="Arc-Dawn-Dark"
+			sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+			sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+
+			FIND="Sardi-Arc"
+			REPLACE="arcolinux-candy-beauty"
+			sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+			sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+
+		fi
+
+		echo
+		tput setaf 6
+		echo "################################################################"
+		echo "################### Done"
+		echo "################################################################"
+		tput sgr0
+		echo
 
 	fi
 
-	echo
-	tput setaf 6
-	echo "################################################################"
-	echo "################### Done"
-	echo "################################################################"
-	tput sgr0
-	echo
-
 fi
-
