@@ -85,7 +85,6 @@ sh 960-*
 sh 970-all*
 
 sh 970-alci*
-sh 970-arch.sh
 sh 970-archman*
 sh 970-archcraft*
 sh 970-arco*
@@ -94,6 +93,10 @@ sh 970-carli*
 sh 970-eos*
 sh 970-garuda*
 sh 970-sierra*
+
+#has to be last - they are all Arch
+sh 970-arch.sh
+
 
 sh 999-skel*
 
