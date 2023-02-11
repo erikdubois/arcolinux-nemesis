@@ -158,6 +158,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		echo "Changing the whiskermenu"
 		echo
 		cp $installed_dir/settings/ariser/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
+		sudo mkdir /etc/skel/.config/xfce4/panel/
 		sudo cp $installed_dir/settings/ariser/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
 
 		echo
