@@ -129,13 +129,6 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		echo
 	fi
 
-	if grep -q "arcolinux-chadwm-git" /etc/pacman.d/hooks/arcolinux-chadwm.hook ; then
-		echo "Change from arcolinux-chadwm-git to edu-chadwm-git - pacman hook"
-		FIND="arcolinux-chadwm-git"
-		REPLACE="edu-chadwm-git"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.d/hooks/arcolinux-chadwm.hook
-	fi
-
 	if grep -q 'ascii_distro="arcolinux_small"' $HOME/.config/neofetch/config.conf; then
 		echo "Change from Arco logo to Arch logo"
 		FIND='ascii_distro="arcolinux_small"'
@@ -197,7 +190,6 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf /etc/archlinux-logout.conf
 	echo
 
-	echo
 	tput setaf 6
 	echo "################################################################"
 	echo "################### Done"

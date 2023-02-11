@@ -113,13 +113,6 @@ if [ -f /usr/local/bin/get-nemesis-on-area ]; then
 		echo
 	fi
 
-	if grep -q "arcolinux-chadwm-git" /etc/pacman.d/hooks/arcolinux-chadwm.hook ; then
-		echo "Change from arcolinux-chadwm-git to edu-chadwm-git - pacman hook"
-		FIND="arcolinux-chadwm-git"
-		REPLACE="edu-chadwm-git"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.d/hooks/arcolinux-chadwm.hook
-	fi
-
 	if grep -q 'ascii_distro="arcolinux_small"' $HOME/.config/neofetch/config.conf; then
 		echo "Change from Arco logo to Arch logo"
 		FIND='ascii_distro="arcolinux_small"'
