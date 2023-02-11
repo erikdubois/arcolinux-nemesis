@@ -133,8 +133,8 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		echo "Change from Arco logo to Arch logo"
 		FIND='ascii_distro="arcolinux_small"'
 		REPLACE='ascii_distro="archlinux"'
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/neofetch/config.conf
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/neofetch/config.conf
+		cp /etc/skel/.config/neofetch/config.conf ~/.config/neofetch/config.conf
 	fi
 
 	if [ -f /usr/share/xsessions/xfce.desktop ]; then
