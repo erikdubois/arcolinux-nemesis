@@ -57,8 +57,14 @@ sudo pacman -Rs xf86-video-ati --noconfirm
 sudo pacman -Rs xf86-video-nouveau --noconfirm
 sudo pacman -Rs xf86-video-vesa --noconfirm
 
-# when on Arch Linux - remove conflicting files
+# always put the current .bashrc .zshrc away
+if [ -f /etc/skel/.bashrc ]; then
+  sudo mv /etc/skel/.bashrc /etc/skel/.bashrc-old
+  sudo mv /etc/skel/.zshrc /etc/skel/.zshrc-old
+fi
 
+
+# when on Arch Linux - remove conflicting files
 if grep -q "archlinux" /etc/os-release; then
 
   echo
@@ -69,9 +75,7 @@ if grep -q "archlinux" /etc/os-release; then
   tput sgr0
   echo
 
-  if [ -f /etc/skel/.bashrc ]; then
-    sudo mv /etc/skel/.bashrc /etc/skel/.bashrc-arch
-  fi
+  echo "Nothing to remove"
 
   echo
   tput setaf 2
@@ -95,9 +99,6 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
   tput sgr0
   echo
 
-  if [ -f /etc/skel/.bashrc ]; then
-    sudo rm /etc/skel/.bashrc
-  fi  
   sudo pacman -R --noconfirm carli-xfce-config
   sudo pacman -R --noconfirm grml-zsh-config
   sudo pacman -R --noconfirm systemd-resolvconf
@@ -124,9 +125,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
   tput sgr0
   echo
 
-  #if [ -f /etc/skel/.bashrc ]; then
-  #  sudo rm /etc/skel/.bashrc
-  #fi
+  echo "Nothing to do"
 
   echo
   tput setaf 2
@@ -148,8 +147,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
   tput sgr0
   echo
 
-  #sudo systemctl disable tlp.service
-  #sudo pacman -Rs tlp --noconfirm
+  echo "Nothing to do"
 
   echo
   tput setaf 2
@@ -172,10 +170,6 @@ if grep -q "EndeavourOS" /etc/os-release; then
   echo "################################################################"
   tput sgr0
   echo
-
-  if [ -f /etc/skel/.bashrc ]; then
-    sudo rm /etc/skel/.bashrc
-  fi
 
   sudo systemctl disable firewalld
   sudo pacman -R --noconfirm firewalld
@@ -207,9 +201,6 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
   tput sgr0
   echo
 
-  if [ -f /etc/skel/.bashrc ]; then
-    sudo rm /etc/skel/.bashrc
-  fi
   sudo rm /etc/skel/.Xresources
   sudo pacman -R --noconfirm amd-ucode
   sudo pacman -R --noconfirm b43-fwcutter
@@ -261,10 +252,6 @@ if grep -q "Garuda" /etc/os-release; then
   tput sgr0
   echo
 
-  if [ -f /etc/skel/.bashrc ]; then
-    sudo rm /etc/skel/.bashrc
-  fi
-
   sudo pacman -R --noconfirm blueman
   sudo pacman -R --noconfirm garuda-xfce-settings
   sudo pacman -R --noconfirm garuda-common-settings
@@ -295,9 +282,6 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
   tput sgr0
   echo
 
-  #if [ -f /etc/skel/.bashrc ]; then
-  #  sudo rm /etc/skel/.bashrc
-  #fi
   sudo pacman -R --noconfirm amd-ucode
   sudo pacman -R --noconfirm b43-fwcutter
   sudo pacman -R --noconfirm broadcom-wl
@@ -366,7 +350,6 @@ if grep -q "Archman" /etc/os-release; then
   sudo rm /etc/skel/.config/mimeapps.list
   sudo rm /etc/skel/.face
   sudo rm /etc/skel/.xinitrc
-  sudo rm /etc/skel/.zshrc
 
   sudo rm /etc/X11/xorg.conf.d/99-killX.conf
   sudo rm /etc/modprobe.d/disable-evbug.conf
@@ -398,7 +381,6 @@ if grep -q "archcraft" /etc/os-release; then
   sudo rm /etc/skel/.dmrc
   sudo rm /etc/skel/.face
   sudo rm /etc/skel/.gtkrc-2.0
-  sudo rm /etc/skel/.zshrc
 
   sudo pacman -R --noconfirm archcraft-skeleton
   sudo pacman -R --noconfirm archcraft-omz
