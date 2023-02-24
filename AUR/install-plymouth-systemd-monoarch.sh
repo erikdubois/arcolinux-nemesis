@@ -29,8 +29,13 @@
 
 # https://wiki.archlinux.org/title/Plymouth
 
+if [ ! -d /boot/loader/entries ] ; then 
+	echo "You do not seem to be on a systemd-boot enabled system"
+	exit 1
+fi
+
 echo "###########################################################################"
-echo "##      This script will install plymouth and themes                     ##"
+echo "## This script will install plymouth and themes on a systemd-boot system ##"
 echo "###########################################################################"
 
 sudo pacman -S --noconfirm --needed plymouth
