@@ -31,7 +31,7 @@
 
 if [ ! -d /boot/loader/entries ] ; then 
 	echo "You do not seem to be on a systemd-boot enabled system"
-	echo "Run the script for grub
+	echo "Run the script for grub"
 	exit 1
 fi
 
