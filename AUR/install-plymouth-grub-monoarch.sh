@@ -50,8 +50,8 @@ FIND="base udev autodetect"
 REPLACE="base udev plymouth autodetect"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
-FIND="GRUB_CMDLINE_LINUX_DEFAULT='quiet loglevel=3 audit=0 nvme_load=yes'"
-REPLACE="GRUB_CMDLINE_LINUX_DEFAULT='quiet loglevel=3 audit=0 nvme_load=yes splash vt.global_cursor_default=0'"
+FIND="GRUB_CMDLINE_LINUX_DEFAULT='quiet"
+REPLACE="GRUB_CMDLINE_LINUX_DEFAULT='quiet splash vt.global_cursor_default=0"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/default/grub
 
 sudo plymouth-set-default-theme -R monoarch
