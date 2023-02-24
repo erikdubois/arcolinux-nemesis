@@ -29,9 +29,9 @@
 
 # https://wiki.archlinux.org/title/Plymouth
 
-if [ ! -d /boot/loader/entries ] ; then 
-	echo "You do not seem to be on a systemd-boot enabled system"
-	echo "Run the script for grub
+if [ -d /boot/loader/entries ] ; then 
+	echo "You seem to be on a systemd-boot enabled system"
+	echo "Run the script for systemd-boot"
 	exit 1
 fi
 
@@ -46,15 +46,17 @@ echo "##########################################################################
 echo "##                       Changing the needed files                       ##"
 echo "###########################################################################"
 
-FIND="HOOKS=(base systemd autodetect keyboard sd-vconsole modconf block fsck filesystems)"
-REPLACE="HOOKS=(base systemd sd-plymouth autodetect keyboard sd-vconsole modconf block fsck filesystems)"
+FIND="base udev autodetect"
+REPLACE="base udev plymouth autodetect"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
-FIND="options initrd=initramfs-linux.img"
-REPLACE="options initrd=initramfs-linux.img quiet splash vt.global_cursor_default=0"
-sudo sed -i "s/$FIND/$REPLACE/g" /boot/loader/entries/arch-linux.conf
+FIND="GRUB_CMDLINE_LINUX_DEFAULT='quiet loglevel=3 audit=0 nvme_load=yes'"
+REPLACE="GRUB_CMDLINE_LINUX_DEFAULT='quiet loglevel=3 audit=0 nvme_load=yes splash vt.global_cursor_default=0'"
+sudo sed -i "s/$FIND/$REPLACE/g" /etc/default/grub
 
 sudo plymouth-set-default-theme -R monoarch
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "###########################################################################"
 echo "#########               You have to reboot.                       #########"
