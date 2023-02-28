@@ -47,6 +47,7 @@ sudo pacman -R --noconfirm xfce4-artwork
 sudo rm -rf /usr/share/backgrounds/xfce
 
 sudo pacman -Rs broadcom-wl-dkms --noconfirm
+sudo pacman -Rs rtl8821cu-morrownr-dkms-git --noconfirm
 sudo pacman -Rs xf86-video-amdgpu --noconfirm
 sudo pacman -Rs xf86-video-fbdev --noconfirm
 sudo pacman -Rs xf86-video-openchrome --noconfirm
