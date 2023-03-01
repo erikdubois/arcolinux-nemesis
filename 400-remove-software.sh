@@ -179,7 +179,7 @@ if grep -q "EndeavourOS" /etc/os-release; then
 
   sudo pacman -R --noconfirm arc-gtk-theme-eos
   sudo pacman -Rdd --noconfirm endeavouros-skel-default endeavouros-skel-xfce4
-  sudo pacman -R --noconfirm modemmanager
+  sudo pacman -R --noconfirm modemmanager modemmanager-qt
   sudo pacman -R --noconfirm yay
 
   echo
