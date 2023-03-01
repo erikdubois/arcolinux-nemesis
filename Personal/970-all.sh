@@ -40,6 +40,13 @@ tput sgr0
 echo
 
 echo
+echo "Adding xorg xkill"
+echo
+[ -d /etc/X11/xorg.conf.d/ ] || mkdir -p /etc/X11/xorg.conf.d/
+sudo cp  settings/xorg/* /etc/X11/xorg.conf.d/
+echo
+
+echo
 echo "copying cursor file"
 if [ -d /usr/share/icons/default/cursors ]; then
 	sudo rm /usr/share/icons/default/cursors
