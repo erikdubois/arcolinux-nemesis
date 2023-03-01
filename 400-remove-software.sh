@@ -179,8 +179,15 @@ if grep -q "EndeavourOS" /etc/os-release; then
 
   sudo pacman -R --noconfirm arc-gtk-theme-eos
   sudo pacman -Rdd --noconfirm endeavouros-skel-default endeavouros-skel-xfce4
-  sudo pacman -R --noconfirm modemmanager modemmanager-qt
+  sudo pacman -Rdd --noconfirm modemmanager modemmanager-qt
   sudo pacman -R --noconfirm yay
+
+  sudo rm -r /etc/skel/.config/Kvantum
+  sudo rm -r /etc/skel/.config/gtk-3
+  sudo rm -r /etc/skel/.config/variety
+  sudo rm -r /etc/skel/.config/Thunar
+  sudo rm -r /etc/skel/.config/xfce4
+  sudo rm -r /etc/skel/.zshrc
 
   echo
   tput setaf 2
