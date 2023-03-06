@@ -28,11 +28,11 @@
 ##################################################################################################################
 
 echo "###########################################################################"
-echo "##     This script assumes you have the linux kernel running             ##"
+echo "##     This script assumes you have the linux zen kernel running             ##"
 echo "###########################################################################"
 
 sudo pacman -S --noconfirm --needed virtualbox
-sudo pacman -S --noconfirm --needed linux-hardened-headers
+sudo pacman -S --noconfirm --needed linux-zen-headers
 sudo pacman -S --needed virtualbox-host-dkms
 
 echo "###########################################################################"
