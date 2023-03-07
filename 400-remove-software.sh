@@ -267,10 +267,17 @@ if grep -q "Garuda" /etc/os-release; then
   sudo pacman -R --noconfirm garuda-common-settings
   sudo pacman -R --noconfirm garuda-bash-config
   sudo pacman -R --noconfirm redshift
-  sudo pacman -R --noconfirm transmission-gtk
-  sudo pacman -R --noconfirm geary
+  sudo pacman -Rs --noconfirm transmission-gtk
+  sudo pacman -Rs --noconfirm geary
+  sudo pacman -Rs --noconfirm celluloid
+  sudo pacman -Rs --noconfirm pitivi
+  sudo pacman -Rs --noconfirm audacity
+  sudo pacman -Rs --noconfirm xfburn
+  sudo pacman -Rs --noconfirm abiword
+  sudo pacman -Rs --noconfirm veracrypt
   sudo pacman -Rdd --noconfirm hblock
   sudo pacman -Rdd --noconfirm modemmanager modem-manager-gui
+  sudo pacman -Rdd --noconfirm linux-wifi-hotspot
 
   echo
   tput setaf 2
