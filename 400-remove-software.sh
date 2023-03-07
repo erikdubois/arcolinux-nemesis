@@ -268,7 +268,7 @@ if grep -q "Garuda" /etc/os-release; then
   sudo pacman -R --noconfirm garuda-bash-config
   sudo pacman -R --noconfirm redshift
   sudo pacman -Rdd --noconfirm hblock
-  sudo pacman -Rdd --noconfirm modemmanager modem-manager-qui
+  sudo pacman -Rdd --noconfirm modemmanager modem-manager-gui
 
   echo
   tput setaf 2
