@@ -424,3 +424,26 @@ if grep -q "archcraft" /etc/os-release; then
   echo
 
 fi
+
+# when on BigLinux - remove conflicting files
+if grep -q "BigLinux" /etc/os-release; then
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "####### Removing software for BigLinux"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+  sudo rm -r /etc/skel/.config/variety/variety.conf
+  sudo pacman -R --nonconfirm big-skel
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Software removed"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+fi
