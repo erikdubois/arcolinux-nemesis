@@ -436,7 +436,7 @@ if grep -q "BigLinux" /etc/os-release; then
   echo
 
   sudo rm -r /etc/skel/.config/variety/variety.conf
-  sudo pacman -R --nonconfirm big-skel
+  sudo pacman -R --noconfirm big-skel
 
   echo
   tput setaf 2
