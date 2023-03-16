@@ -275,6 +275,11 @@ if grep -q "Garuda" /etc/os-release; then
   sudo pacman -Rs --noconfirm xfburn
   sudo pacman -Rs --noconfirm abiword
   sudo pacman -Rs --noconfirm veracrypt
+  sudo pacman -Rs --noconfirm gtkhash
+  sudo pacman -Rs --noconfirm onboard
+  sudo pacman -Rs --noconfirm vim vim-runtime
+  sudo pacman -Rs --noconfirm gestures
+  sudo pacman -Rs --noconfirm pinta
   sudo pacman -Rdd --noconfirm hblock
   sudo pacman -Rdd --noconfirm modemmanager modem-manager-gui
   sudo pacman -Rdd --noconfirm linux-wifi-hotspot
