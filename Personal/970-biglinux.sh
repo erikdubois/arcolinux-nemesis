@@ -52,60 +52,6 @@ if grep -q "BigLinux" /etc/os-release; then
   	sudo pacman -S --noconfirm  edu-system-git
 	echo
 
-	echo
-	echo "Change gtk-3.0 config"
-	echo
-	FIND="Sardi-Arc"
-	REPLACE="arcolinux-candy-beauty"
-	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
-
-	echo
-	echo "Setting environment variables"
-	echo
-	if [ -f /etc/environment ]; then
-		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
-		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
-		echo "EDITOR=nano" | sudo tee -a /etc/environment
-		echo "BROWSER=firefox" | sudo tee -a /etc/environment
-	fi
-
-	if [ -f /boot/loader/loader.conf ]; then
-		echo
-		echo "Removing pacman hook for grub"
-		echo "By default Ariser is systemd-boot"
-		echo
-		if [ -f /etc/pacman.d/hooks/grub-install.hook ]; then
-			sudo rm /etc/pacman.d/hooks/grub-install.hook
-		else
-			echo "Already removed /etc/pacman.d/hooks/grub-install.hook"
-		fi
-		if [ -f /etc/pacman.d/hooks/grub-mkconfig.hook ]; then
-			sudo rm /etc/pacman.d/hooks/grub-mkconfig.hook
-		else
-			echo "Already removed /etc/pacman.d/hooks/grub-mkconfig.hook"
-		fi
-	fi
-
-	echo
-	echo "copying cursor file"
-	if [ -d /usr/share/icons/default/cursors ]; then
-		sudo rm /usr/share/icons/default/cursors
-	fi
-	[ -d /usr/share/icons/default ] || sudo mkdir -p /usr/share/icons/default
-	sudo cp -f $installed_dir/settings/cursor/* /usr/share/icons/default
-	echo
-
-	echo
-	echo "Bootloader time to 1 second"
-	if [ -f /boot/loader/loader.conf ]; then
-		FIND="timeout 5"
-		REPLACE="timeout 1"
-		sudo sed -i "s/$FIND/$REPLACE/g" /boot/loader/loader.conf
-
-	fi
-	echo
-
 	echo "Check if neofetch lolcat is in there"
 	echo "Line may change in the future"
 	
@@ -116,50 +62,6 @@ if grep -q "BigLinux" /etc/os-release; then
 		echo
 	fi
 
-	if grep -q 'ascii_distro="arcolinux_small"' /etc/skel/.config/neofetch/config.conf; then
-		echo "Change from Arco logo to Arch logo"
-		FIND='ascii_distro="arcolinux_small"'
-		REPLACE='ascii_distro="archlinux"'
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/neofetch/config.conf
-		[ -d ~/.config/neofetch ] || mkdir -p ~/.config/neofetch
-		cp /etc/skel/.config/neofetch/config.conf ~/.config/neofetch/config.conf
-	fi
-
-	if [ -f /usr/share/xsessions/xfce.desktop ]; then
-		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on Xfce4"
-		echo "################################################################"
-		tput sgr0
-		echo
-
-		cp -arf /etc/skel/. ~
-
-		echo
-		echo "Changing the whiskermenu"
-		echo
-		[ -d ~/.config/xfce4/panel ] || mkdir -p ~/.config/xfce4/panel
-		cp $installed_dir/settings/ariser/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
-		[ -d /etc/skel/.config/xfce4/panel ] || sudo mkdir -p /etc/skel/.config/xfce4/panel
-		sudo cp $installed_dir/settings/ariser/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
-
-		echo
-		echo "Changing the icons and theme"
-		echo
-
-		FIND="Arc-Dark"
-		REPLACE="Arc-Dawn-Dark"
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-		FIND="Sardi-Arc"
-		REPLACE="arcolinux-candy-beauty"
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-	fi
-
 	# systemd
 
 	echo "Journald.conf - volatile"
@@ -168,27 +70,6 @@ if grep -q "BigLinux" /etc/os-release; then
 	REPLACE="Storage=auto"
 	#REPLACE="Storage=volatile"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/systemd/journald.conf
-
-	echo
-	echo "ArchLinux Logout - handy icons"
-	echo
-
-	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
-	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
-	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-hand.conf /etc/archlinux-logout.conf
-
-	echo
-	echo "Azerty config"
-	cp -v $HOME/.config/arco-chadwm/chadwm/config.def-azerty.h $HOME/.config/arco-chadwm/chadwm/config.def.h
-	echo
-
-	if [ -f $HOME/.config/arco-chadwm/chadwm/config.h ]; then
-		rm $HOME/.config/arco-chadwm/chadwm/config.h
-	fi
-
-	cd $HOME/.config/arco-chadwm/chadwm/
-	make
-	sudo make install
 
 	echo
 	echo
