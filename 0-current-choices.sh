@@ -93,6 +93,7 @@ sh 970-carli*
 sh 970-eos*
 sh 970-garuda*
 sh 970-sierra*
+sh 970-biglinux*
 
 #has to be last - they are all Arch
 sh 970-arch.sh
