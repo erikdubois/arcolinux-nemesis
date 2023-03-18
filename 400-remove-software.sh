@@ -35,19 +35,7 @@ echo "######################################################"
 tput sgr0
 echo
 
-sudo pacman -R --noconfirm adobe-source-han-sans-cn-fonts
-sudo pacman -R --noconfirm adobe-source-han-sans-jp-fonts
-sudo pacman -R --noconfirm adobe-source-han-sans-kr-fonts
 sudo pacman -R --noconfirm archinstall
-
-# remove where ever we are
-
-sudo pacman -R --noconfirm xfce4-artwork
-
-sudo rm -rf /usr/share/backgrounds/xfce
-
-sudo pacman -Rs broadcom-wl-dkms --noconfirm
-sudo pacman -Rs rtl8821cu-morrownr-dkms-git --noconfirm
 sudo pacman -Rs xf86-video-amdgpu --noconfirm
 sudo pacman -Rs xf86-video-fbdev --noconfirm
 sudo pacman -Rs xf86-video-openchrome --noconfirm
@@ -57,6 +45,20 @@ fi
 sudo pacman -Rs xf86-video-ati --noconfirm
 sudo pacman -Rs xf86-video-nouveau --noconfirm
 sudo pacman -Rs xf86-video-vesa --noconfirm
+
+sudo pacman -R --noconfirm adobe-source-han-sans-cn-fonts
+sudo pacman -R --noconfirm adobe-source-han-sans-jp-fonts
+sudo pacman -R --noconfirm adobe-source-han-sans-kr-fonts
+
+# remove where ever we are
+
+sudo pacman -R --noconfirm xfce4-artwork
+
+sudo rm -rf /usr/share/backgrounds/xfce
+
+sudo pacman -Rs broadcom-wl-dkms --noconfirm
+sudo pacman -Rs rtl8821cu-morrownr-dkms-git --noconfirm
+
 
 # always put the current .bashrc .zshrc away
 if [ -f /etc/skel/.bashrc ]; then
