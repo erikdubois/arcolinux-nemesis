@@ -45,14 +45,13 @@ fi
 sudo pacman -Rs xf86-video-ati --noconfirm
 sudo pacman -Rs xf86-video-nouveau --noconfirm
 sudo pacman -Rs xf86-video-vesa --noconfirm
+sudo pacman -R --noconfirm xfce4-artwork
 
 sudo pacman -R --noconfirm adobe-source-han-sans-cn-fonts
 sudo pacman -R --noconfirm adobe-source-han-sans-jp-fonts
 sudo pacman -R --noconfirm adobe-source-han-sans-kr-fonts
 
 # remove where ever we are
-
-sudo pacman -R --noconfirm xfce4-artwork
 
 sudo rm -rf /usr/share/backgrounds/xfce
 
