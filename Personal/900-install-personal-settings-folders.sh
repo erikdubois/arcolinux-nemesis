@@ -147,7 +147,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	echo
 	echo "Adding personal looks to /personal"
 	echo
-	sudo cp -arf $installed_dir/Settings/personal-folder/personal-iso/* /personal
+	sudo cp -arf $installed_dir/settings/personal-folder/personal-iso/* /personal
 	echo
 
 	echo
