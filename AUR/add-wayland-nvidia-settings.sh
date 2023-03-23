@@ -108,6 +108,14 @@ echo "options nvidia-drm modeset=1" | sudo tee  /etc/modprobe.d/nvidia-arco-hypr
 #sudo pacman -Rdd --noconfirm sddm
 #sudo pacman -S --noconfirm sddm-git
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Mkinitcpio and update-grub"
+echo "################################################################"
+tput sgr0
+echo
+
 sudo mkinitcpio -P
 
 sudo grub-mkconfig -o /boot/grub/grub.cfg
