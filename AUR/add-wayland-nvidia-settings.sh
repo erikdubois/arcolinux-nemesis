@@ -78,8 +78,6 @@ FIND='MODULES=""'
 REPLACE='MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"'
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
-sudo mkinitcpio -P
-
 echo
 tput setaf 2
 echo "################################################################"
@@ -109,6 +107,10 @@ echo "options nvidia-drm modeset=1" | sudo tee  /etc/modprobe.d/nvidia-arco-hypr
 
 #sudo pacman -Rdd --noconfirm sddm
 #sudo pacman -S --noconfirm sddm-git
+
+sudo mkinitcpio -P
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo
 tput setaf 6
