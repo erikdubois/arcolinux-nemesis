@@ -95,16 +95,19 @@ sudo sed -i "s/$FIND/$REPLACE/g" /etc/default/grub
 
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Removing sddm and installing sddm-git"
-echo "################################################################"
-tput sgr0
-echo
+# echo
+# tput setaf 2
+# echo "################################################################"
+# echo "################### Removing sddm and installing sddm-git"
+# echo "################################################################"
+# tput sgr0
+# echo
 
-sudo pacman -Rdd --noconfirm sddm
-sudo pacman -S --noconfirm sddm-git
+# we created our very own sddm release based on git code
+
+#sudo pacman -Rdd --noconfirm sddm
+#sudo pacman -S --noconfirm sddm-git
+
 echo
 tput setaf 6
 echo "################################################################"
