@@ -56,10 +56,9 @@ else
 	tput setaf 1
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!!!!!!!!!  Nvidia-dkms has NOT been installed"
-	echo "!!!!!!!!!  Script can not continue"
+	echo "!!!!!!!!!  Know what you are doing"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	tput sgr0
-	exit 1
 
 fi
 
