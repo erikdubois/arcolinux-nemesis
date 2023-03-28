@@ -10,8 +10,6 @@ alias run-all-scripts-here="for script in ./*.sh ; do bash $script ; done"
 
 alias mirrore="sudo reflector --verbose -c BE -c FR -c DE -c LU -c NL -c GB --protocol https --age 8 --sort rate --number 10 --save /etc/pacman.d/mirrorlist"
 
-alias var="cp ~/DATA/arcolinux-nemesis/Personal/settings/variety/variety.conf ~/.config/variety/variety.conf"
-
 alias slu='slurm -i enp0s31f6'
 
 alias sysfailed="systemctl list-units --failed"
