@@ -11,6 +11,44 @@
 	<directories/>
 </action>
 <action>
+	<icon>meld</icon>
+	<name>Compare</name>
+	<unique-id>1492232362549799-1</unique-id>
+	<command>meld %F</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>system-file-manager-root</icon>
+	<name>Open folder as root</name>
+	<unique-id>1493475601060449-3</unique-id>
+	<command>pkexec thunar %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>gitahead</icon>
+	<name>Open with gitahead</name>
+	<unique-id>1587287434852027-1</unique-id>
+	<command>gitahead %F</command>
+	<description>Open with gitahead</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>gitfiend</icon>
+	<name>Open with gitfiend</name>
+	<unique-id>1587287435012027-1</unique-id>
+	<command>gitfiend %F</command>
+	<description>Open with gitfiend</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
 	<icon>checkbox</icon>
 	<name>Check sha1sum</name>
 	<unique-id>1526633271260079-26</unique-id>
@@ -38,17 +76,6 @@
 	<other-files/>
 </action>
 <action>
-	<icon>insert-link-symbolic</icon>
-	<name>Create symlink</name>
-	<unique-id>1526631663081446-14</unique-id>
-	<command>ln -s  %f &quot;%n&quot;</command>
-	<description>Softlink between two files or directories</description>
-	<patterns>*</patterns>
-	<directories/>
-	<other-files/>
-	<text-files/>
-</action>
-<action>
 	<icon>catfish</icon>
 	<name>Search with catfish</name>
 	<unique-id>1489089852658523-2</unique-id>
@@ -67,17 +94,6 @@
 	<other-files/>
 </action>
 <action>
-	<icon>meld</icon>
-	<name>Compare</name>
-	<unique-id>1492232362549799-1</unique-id>
-	<command>meld %F</command>
-	<description></description>
-	<patterns>*</patterns>
-	<directories/>
-	<other-files/>
-	<text-files/>
-</action>
-<action>
 	<icon>cs-startup-programs</icon>
 	<name>Run</name>
 	<unique-id>1526630606202525-4</unique-id>
@@ -86,15 +102,6 @@
 	<patterns>*</patterns>
 	<other-files/>
 	<text-files/>
-</action>
-<action>
-	<icon>system-file-manager-root</icon>
-	<name>Open folder as root</name>
-	<unique-id>1493475601060449-3</unique-id>
-	<command>pkexec thunar %f</command>
-	<description></description>
-	<patterns>*</patterns>
-	<directories/>
 </action>
 <action>
 	<icon>system-reboot</icon>
@@ -158,24 +165,6 @@
 	<video-files/>
 </action>
 <action>
-	<icon>gitahead</icon>
-	<name>Open with gitahead</name>
-	<unique-id>1587287434852027-1</unique-id>
-	<command>gitahead %F</command>
-	<description>Open with gitahead</description>
-	<patterns>*</patterns>
-	<directories/>
-</action>
-<action>
-	<icon>gitfiend</icon>
-	<name>Open with gitfiend</name>
-	<unique-id>1587287435012027-1</unique-id>
-	<command>gitfiend %F</command>
-	<description>Open with gitfiend</description>
-	<patterns>*</patterns>
-	<directories/>
-</action>
-<action>
 	<icon>com.deepin.ScreenShot</icon>
 	<name>Set as wallpaper DS</name>
 	<unique-id>1637670737487118-1</unique-id>
@@ -192,5 +181,16 @@
 	<description>Set as wallpaper using feh single screen</description>
 	<patterns>*</patterns>
 	<image-files/>
+</action>
+<action>
+	<icon>insert-link-symbolic</icon>
+	<name>Create symlink</name>
+	<unique-id>1526631663081446-14</unique-id>
+	<command>ln -s  %f &quot;%n&quot;</command>
+	<description>Softlink between two files or directories</description>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
 </action>
 </actions>
