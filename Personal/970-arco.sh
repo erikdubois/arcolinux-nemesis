@@ -87,7 +87,8 @@ if grep -q "ArcoLinux" /etc/os-release; then
 		echo "Installing extra packages"
 		echo
 
-		sudo pacman -S --noconfirm --needed wf-recorder
+		sudo pacman -S --noconfirm --needed wf-recorder-git
+		sudo pacman -S --noconfirm --needed libva-intel-driver
 		sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
 
 	fi
@@ -105,7 +106,8 @@ if grep -q "ArcoLinux" /etc/os-release; then
 		echo "Installing extra packages"
 		echo
 
-		sudo pacman -S --noconfirm --needed wf-recorder
+		sudo pacman -S --noconfirm --needed wf-recorder-git
+		sudo pacman -S --noconfirm --needed libva-intel-driver
 		sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
 
 	fi
