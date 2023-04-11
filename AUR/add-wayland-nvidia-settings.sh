@@ -86,7 +86,7 @@ echo "################################################################"
 tput sgr0
 echo
 
-echo "options nvidia-drm modeset=1" | sudo tee  /etc/modprobe.d/nvidia-arco-hyprland.conf
+echo "options nvidia-drm modeset=1" | sudo tee  /etc/modprobe.d/nvidia-wayland-nemesis.conf
 
 # FIND="GRUB_CMDLINE_LINUX_DEFAULT='quiet loglevel=3 audit=0 nvme_load=yes'"
 # REPLACE="GRUB_CMDLINE_LINUX_DEFAULT='quiet loglevel=3 audit=0 nvme_load=yes nvidia-drm.modeset=1'"
