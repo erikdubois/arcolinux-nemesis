@@ -63,7 +63,14 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
     echo "################################################################"
     tput sgr0
     echo
-    
+
+    echo
+    echo "Removing packages"
+    echo
+
+    sudo pacman -Rs flameshot-git --noconfirm
+    sudo pacman -S edu-flameshot-git
+
     echo
     echo "Installing extra packages"
     echo
