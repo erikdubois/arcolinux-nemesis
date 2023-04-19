@@ -62,6 +62,8 @@ sh 200-software-AUR-repo*
 #sh 310-sardi-mint-y-icons-AUR-repo*
 #sh 320-surfn-mint-y-icons-git-AUR-repo*
 
+sh 500-what*
+
 echo
 tput setaf 3
 echo "################################################################"
