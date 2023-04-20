@@ -31,9 +31,6 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-# https://wiki.hyprland.org/Nvidia/
-# https://community.kde.org/Plasma/Wayland/Nvidia
-
 echo
 tput setaf 2
 echo "################################################################"
@@ -57,7 +54,7 @@ REPLACE='BINARIES=(setfont)'
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
 FIND='BINARIES=""'
-REPLACE='BINARIES="setfont"'
+REPLACE='BINARIES=(setfont)'
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
 echo
@@ -75,7 +72,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### KDFONTOP is gone"
+echo "###### KDFONTOP message is gone"
 echo "################################################################"
 tput sgr0
 echo
