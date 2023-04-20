@@ -86,7 +86,7 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo remove  /etc/modprobe.d/nvidia-wayland-nemesis.conf
+sudo rm  /etc/modprobe.d/nvidia-wayland-nemesis.conf
 
 echo
 tput setaf 2
