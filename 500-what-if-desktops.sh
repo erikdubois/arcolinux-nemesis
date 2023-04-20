@@ -54,7 +54,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
     sudo pacman -S --noconfirm --needed wf-recorder-git
     sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
-    sudo pacman -S edu-flameshot-git
+    sudo pacman -S edu-flameshot-git --noconfirm
 
     if ! pacman -Qi nvidia-dkms &> /dev/null; then
       sudo pacman -S --noconfirm --needed libva-intel-driver
@@ -83,7 +83,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
     sudo pacman -S --noconfirm --needed wf-recorder-git
     sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
-    sudo pacman -S edu-flameshot-git
+    sudo pacman -S edu-flameshot-git --noconfirm
 
     if ! pacman -Qi nvidia-dkms &> /dev/null; then
       sudo pacman -S --noconfirm --needed libva-intel-driver
