@@ -65,7 +65,7 @@ fi
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Adding nvidia modules for Wayland and Nvidia"
+echo "################### Removing nvidia modules for Wayland and Nvidia"
 echo "################### MODULES= nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 echo "################### in /etc/mkinitcpio.conf"
 echo "################### and rebuilding /boot files"
@@ -73,20 +73,20 @@ echo "################################################################"
 tput sgr0
 echo
 
-FIND='MODULES=""'
-REPLACE='MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"'
+FIND='MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"'
+REPLACE='MODULES=""'
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Adding option nvidia-drm.modeset=1"
+echo "################### Removing option nvidia-drm.modeset=1"
 echo "################### to the kernel"
 echo "################################################################"
 tput sgr0
 echo
 
-echo "options nvidia-drm modeset=1" | sudo tee  /etc/modprobe.d/nvidia-wayland-nemesis.conf
+sudo remove  /etc/modprobe.d/nvidia-wayland-nemesis.conf
 
 echo
 tput setaf 2
