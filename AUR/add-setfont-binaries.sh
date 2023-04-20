@@ -31,65 +31,51 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-# software from AUR (Arch User Repositories)
-# https://aur.archlinux.org/packages/
+# https://wiki.hyprland.org/Nvidia/
+# https://community.kde.org/Plasma/Wayland/Nvidia
 
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### AUR from folder - Software to install"
+echo "################### Making sure KDFONTOP at boot is gone"
 echo "################################################################"
 tput sgr0
 echo
-
-result=$(systemd-detect-virt)
-
-if [ $result = "none" ];then
-
-	echo
-	tput setaf 2
-	echo "################################################################"
-	echo "####### Installing VirtualBox"
-	echo "################################################################"
-	tput sgr0
-	echo	
-
-	sh AUR/install-virtualbox-for-linux.sh	
-
-else
-
-
-	echo
-	tput setaf 3
-	echo "################################################################"
-	echo "### You are on a virtual machine - skipping VirtualBox"
-	echo "################################################################"
-	tput sgr0
-	echo
-
-fi
 
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Fixing KDFONTOP"
+echo "###### Adding setfont to the binaries to avoid error message"
+echo "###### in /etc/mkinitcpio.conf"
+echo "###### and rebuilding /boot files"
 echo "################################################################"
 tput sgr0
 echo
 
-sh AUR/add-setfont-binaries.sh
+FIND='BINARIES=()'
+REPLACE='BINARIES=(setfont)'
+sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
-# these come last always
-echo "Checking if icons from applications have a hardcoded path"
-echo "and fixing them"
-echo "Wait for it ..."
+FIND='BINARIES=""'
+REPLACE='BINARIES="setfont"'
+sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
-sudo hardcode-fixer
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Mkinitcpio and update-grub"
+echo "################################################################"
+tput sgr0
+echo
+
+sudo mkinitcpio -P
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "################### Done"
+echo "###### KDFONTOP is gone"
 echo "################################################################"
 tput sgr0
 echo
