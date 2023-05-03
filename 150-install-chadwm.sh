@@ -88,7 +88,6 @@ func_install_chadwm() {
     thunar-archive-plugin
     thunar-volman
     ttf-hack
-    ttf-jetbrains-mono-nerd
     volumeicon
     xfce4-notifyd
     xfce4-power-manager
