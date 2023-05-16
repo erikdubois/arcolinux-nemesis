@@ -113,3 +113,13 @@ exec chadwm  > ~/.xsession-errors 2>&1
 #   # No known session, try to run it as command
 #   *) exec $1;;
 # esac
+
+
+# https://wiki.archlinux.org/title/Xinit
+
+# Autostart X at login
+# Put this in ~/.bash_profile or ~/.zprofile
+
+#if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+#  exec startx
+#fi
