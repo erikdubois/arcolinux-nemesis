@@ -177,3 +177,25 @@ if [ -f /usr/local/bin/get-nemesis-on-area ]; then
     echo
 
 fi
+
+if grep -q "arch" /etc/os-release; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### We are on ArchLinux"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    func_install_chadwm
+
+    echo
+    tput setaf 6
+    echo "################################################################"
+    echo "################### Done"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+fi
