@@ -36,6 +36,7 @@ tput sgr0
 echo
 
 sudo pacman -R --noconfirm archinstall
+sudo pacman -Rs pragha --noconfirm
 sudo pacman -Rs xf86-video-amdgpu --noconfirm
 sudo pacman -Rs xf86-video-fbdev --noconfirm
 sudo pacman -Rs xf86-video-openchrome --noconfirm
