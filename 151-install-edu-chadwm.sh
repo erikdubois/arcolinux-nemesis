@@ -63,7 +63,10 @@ func_install_chadwm() {
     list=(
     alacritty
     archlinux-logout-git
-    arcolinux-chadwm-git
+    edu-chadwm-git
+    edu-skel-git
+    edu-system-git
+    edu-xfce-git
     arcolinux-paleofetch-git
     arcolinux-wallpapers-candy-git
     arcolinux-wallpapers-git
