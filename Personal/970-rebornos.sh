@@ -41,31 +41,11 @@ if grep -q "RebornOS" /etc/os-release; then
 	tput sgr0
 	echo
 
-	# echo "Removing conflicting folders"
-	# sudo rm /etc/skel/.zshrc
-	# sudo rm -r /etc/skel/.config/Thunar
-	
-	# echo
-	# echo "Installing edu packages"
-	# sudo pacman -S --noconfirm --needed edu-skel-git
-  	# sudo pacman -S --noconfirm --needed edu-xfce-git
-  	# sudo pacman -S --noconfirm --needed edu-system-git
-
 	echo
 	echo "Pacman parallel downloads	"
 	FIND="ParallelDownloads = 16"
 	REPLACE="ParallelDownloads = 20"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
-
-	echo
-	echo "Bootloader time to 1 second"
-	if [ -f /boot/loader/loader.conf ]; then
-		FIND="timeout 5"
-		REPLACE="timeout 1"
-		sudo sed -i "s/$FIND/$REPLACE/g" /boot/loader/loader.conf
-
-	fi
-	echo
 
 	echo
 	echo "Adding nanorc"
@@ -83,9 +63,6 @@ if grep -q "RebornOS" /etc/os-release; then
 		echo "################################################################"
 		tput sgr0
 		echo
-
-		# cp -arf /etc/skel/. ~
-		# cp -arf /etc/skel/.config ~
 
 		echo "Changing theme and icon theme"
 		cp $installed_dir/settings/rebornos/xfce/xsettings.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml

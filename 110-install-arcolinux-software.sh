@@ -63,6 +63,7 @@ fi
 sudo pacman -S --noconfirm --needed arcolinux-candy-beauty-git
 
 sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
+sudo pacman -S --noconfirm --needed arcolinux-app-glade-git
 
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
 sudo pacman -S --noconfirm --needed arcolinux-pamac-all
