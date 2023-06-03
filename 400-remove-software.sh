@@ -444,3 +444,25 @@ if grep -q "BigLinux" /etc/os-release; then
   echo
 
 fi
+
+# when on BigLinux - remove conflicting files
+if grep -q "RebornOS" /etc/os-release; then
+  echo
+  tput setaf 2
+  echo "######################################################"
+  echo "####### Removing software for RebornOS"
+  echo "######################################################"
+  tput sgr0
+  echo
+
+  sudo rm -r /etc/skel/.config/variety/variety.conf
+
+  echo
+  tput setaf 2
+  echo "######################################################"
+  echo "################### Software removed"
+  echo "######################################################"
+  tput sgr0
+  echo
+
+fi

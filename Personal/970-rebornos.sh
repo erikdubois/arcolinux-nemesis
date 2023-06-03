@@ -47,6 +47,9 @@ if grep -q "RebornOS" /etc/os-release; then
 	REPLACE="ParallelDownloads = 20"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
 
+	echo "Variety conf ArcoLinux"
+	sudo pacman -S --noconfirm --needed arcolinux-variety-git
+
 	echo
 	echo "Adding nanorc"
 	if [ -f /etc/nanorc ]; then
@@ -66,7 +69,6 @@ if grep -q "RebornOS" /etc/os-release; then
 
 		echo "Changing theme and icon theme"
 		cp $installed_dir/settings/rebornos/xfce/xsettings.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
 
 	fi
 
