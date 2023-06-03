@@ -175,7 +175,7 @@ if [ -f /usr/local/bin/get-nemesis-on-area ]; then
 
 fi
 
-if grep -q "arch" /etc/os-release; then
+if grep -q 'NAME="Arch Linux"' /etc/os-release; then
 
     echo
     tput setaf 2

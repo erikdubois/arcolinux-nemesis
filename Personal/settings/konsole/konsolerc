@@ -1,0 +1,45 @@
+MenuBar=Disabled
+
+[Desktop Entry]
+DefaultProfile=arcolinux.profile
+
+[Favorite Profiles]
+Favorites=
+
+[General]
+ConfigVersion=1
+
+[KonsoleWindow]
+ShowMenuBarByDefault=false
+
+[MainWindow]
+2 screens: Height=648
+2 screens: Width=918
+2 screens: XPosition=529
+2 screens: YPosition=153
+HDMI-1 HDMI-2=HDMI-1
+Height 1080=574
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAQAAAAAAAAAAAAAAAPwCAAAAAvsAAAAiAFEAdQBpAGMAawBDAG8AbQBtAGEAbgBkAHMARABvAGMAawAAAAAA/////wAAATUA////+wAAABwAUwBTAEgATQBhAG4AYQBnAGUAcgBEAG8AYwBrAAAAAAD/////AAAA4gD///8AAAOWAAACZgAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAAAAABwAcwBlAHMAcwBpAG8AbgBUAG8AbwBsAGIAYQByAQAAAFD/////AAAAAAAAAAA=
+StatusBar=Disabled
+ToolBarsMovable=Disabled
+VGA-1 Height 1920x1080=574
+VGA-1 Width 1920x1080=821
+VGA-1 XPosition 1920x1080=192
+VGA-1 YPosition 1920x1080=86
+Width 1920=821
+
+[MainWindow][Toolbar mainToolBar]
+IconSize=16
+ToolButtonStyle=IconOnly
+
+[MainWindow][Toolbar sessionToolbar]
+IconSize=16
+ToolButtonStyle=IconOnly
+
+[Toolbar sessionToolbar]
+IconSize=16
+ToolButtonStyle=IconOnly
+
+[UiSettings]
+ColorScheme=
