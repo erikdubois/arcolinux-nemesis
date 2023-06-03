@@ -53,7 +53,7 @@ if grep -q "RebornOS" /etc/os-release; then
 
 	echo
 	echo "Pacman parallel downloads	"
-	FIND="#ParallelDownloads = 16"
+	FIND="ParallelDownloads = 16"
 	REPLACE="ParallelDownloads = 20"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
 
