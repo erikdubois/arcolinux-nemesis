@@ -456,6 +456,7 @@ if grep -q "RebornOS" /etc/os-release; then
   echo
 
   sudo rm -r /etc/skel/.config/variety/variety.conf
+  sudo pacman -Rs parole --noconfirm
 
   echo
   tput setaf 2
