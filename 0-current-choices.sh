@@ -102,6 +102,7 @@ sh 970-eos*
 sh 970-garuda*
 sh 970-sierra*
 sh 970-biglinux*
+sh 970-rebornos*
 
 #has to be last - they are all Arch
 sh 970-arch.sh
