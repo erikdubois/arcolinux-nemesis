@@ -87,21 +87,9 @@ if grep -q "RebornOS" /etc/os-release; then
 		# cp -arf /etc/skel/. ~
 		# cp -arf /etc/skel/.config ~
 
-		echo
-		echo "Changing the whiskermenu"
-		echo
-		cp $installed_dir/settings/archlinux/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
-		sudo cp $installed_dir/settings/archlinux/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
+		echo "Changing theme and icon theme"
+		cp $installed_dir/settings/rebornos/xfce/xsettings.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
-		FIND="Arc-Dark"
-		REPLACE="Arc-Dawn-Dark"
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-		FIND="Sardi-Arc"
-		REPLACE="arcolinux-candy-beauty"
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 	fi
 
