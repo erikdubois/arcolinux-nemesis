@@ -30,6 +30,14 @@
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
+echo "Do you want to install Chadwm on your system?"
+echo "Answer with Y/y or N/n"
+read response
+
+if [[ "$response" == [yY] ]]; then
+    touch /tmp/install-chadwm
+fi
+
 
 echo
 echo "Pacman parallel downloads if needed -for ArcoLinux"
@@ -59,7 +67,7 @@ sh 100-install-nemesis-software*
 sh 110-install-arcolinux-software*
 sh 120-install-core-software*
 #sh 130-install-leftwm*
-sh 150-install-chadwm*
+
 sh 160-install-bluetooth*
 sh 170-install-cups*
 

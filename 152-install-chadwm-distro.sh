@@ -105,16 +105,94 @@ func_install_chadwm() {
     done
 }
 
+# install chadwm on Sierra
 
-if [ -f /tmp/install-chadwm ]; then
+if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 
     echo
     tput setaf 2
     echo "################################################################"
-    echo "################### Let us install Chadwm"
+    echo "################### We are on SIERRA"
     echo "################################################################"
     tput sgr0
     echo
 
     func_install_chadwm
+
+    echo
+    tput setaf 6
+    echo "################################################################"
+    echo "################### Done"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+fi
+
+if grep -q "archcraft" /etc/os-release; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### We are on Archcraft"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    func_install_chadwm
+
+    echo
+    tput setaf 6
+    echo "################################################################"
+    echo "################### Done"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+fi
+
+# install chadwm on Area
+
+if [ -f /usr/local/bin/get-nemesis-on-area ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### We are on Area"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    func_install_chadwm
+
+    echo
+    tput setaf 6
+    echo "################################################################"
+    echo "################### Done"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+fi
+
+if grep -q 'NAME="Arch Linux"' /etc/os-release; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### We are on Arch Linux"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    func_install_chadwm
+
+    echo
+    tput setaf 6
+    echo "################################################################"
+    echo "################### Done"
+    echo "################################################################"
+    tput sgr0
+    echo
+
 fi
