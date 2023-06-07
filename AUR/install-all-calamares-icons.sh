@@ -59,7 +59,7 @@ echo "Installation of the core software"
 
 list=(
 arc-icon-theme
-arcolinux-candy-beauty-git
+a-candy-beauty-icon-theme-git
 breeze
 faba-icon-theme-git
 faba-mono-icons-git
@@ -90,6 +90,6 @@ for name in "${list[@]}" ; do
 done
 
 # onliner
-# sudo pacman -S arc-icon-theme arcolinux-candy-beauty-git breeze faba-icon-theme-git faba-mono-icons-git flat-remix-git halo-icons-git la-capitaine-icon-theme-git moka-icon-theme-git numix-circle-arc-icons-git numix-circle-icon-theme-git obsidian-icon-theme oranchelo-icon-theme-git paper-icon-theme papirus-icon-theme qogir-icon-theme surfn-mint-y-icons-git tela-circle-icon-theme-git vimix-icon-theme-git we10x-icon-theme-git whitesur-icon-theme-git zafiro-icon-theme
+# sudo pacman -S arc-icon-theme a-candy-beauty-icon-theme-git breeze faba-icon-theme-git faba-mono-icons-git flat-remix-git halo-icons-git la-capitaine-icon-theme-git moka-icon-theme-git numix-circle-arc-icons-git numix-circle-icon-theme-git obsidian-icon-theme oranchelo-icon-theme-git paper-icon-theme papirus-icon-theme qogir-icon-theme surfn-mint-y-icons-git tela-circle-icon-theme-git vimix-icon-theme-git we10x-icon-theme-git whitesur-icon-theme-git zafiro-icon-theme
 # 166MB to download
 # 1,985 GB to install
