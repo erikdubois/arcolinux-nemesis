@@ -18,17 +18,17 @@ sudo pacman -U --noconfirm --needed /tmp/arcolinux-mirrorlist-git-23.06-01-any.p
 echo '
 
 #[arcolinux_repo_testing]
-#SigLevel = Optional TrustedOnly
+#SigLevel = PackageRequired DatabaseNever
 #Include = /etc/pacman.d/arcolinux-mirrorlist
 
 [arcolinux_repo]
-SigLevel = Optional TrustedOnly
+SigLevel = PackageRequired DatabaseNever
 Include = /etc/pacman.d/arcolinux-mirrorlist
 
 [arcolinux_repo_3party]
-SigLevel = Optional TrustedOnly
+SigLevel = PackageRequired DatabaseNever
 Include = /etc/pacman.d/arcolinux-mirrorlist
 
 [arcolinux_repo_xlarge]
-SigLevel = Optional TrustedOnly
+SigLevel = PackageRequired DatabaseNever
 Include = /etc/pacman.d/arcolinux-mirrorlist' | sudo tee --append /etc/pacman.conf
