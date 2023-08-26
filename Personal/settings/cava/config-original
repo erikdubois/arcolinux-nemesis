@@ -1,4 +1,5 @@
-## Configuration file for CAVA. Default values are commented out. Use either ';' or '#' for commenting.
+## Configuration file for CAVA.
+# Remove the ; to change parameters.
 
 
 [general]
@@ -19,15 +20,21 @@
 # 200 means double height. Accepts only non-negative values.
 ; sensitivity = 100
 
-# The number of bars (0-200). 0 sets it to auto (fill up console).
+# The number of bars (0-512). 0 sets it to auto (fill up console).
 # Bars' width and space between bars in number of characters.
 ; bars = 0
 ; bar_width = 2
 ; bar_spacing = 1
+# bar_height is only used for output in "noritake" format
+; bar_height = 32
 
 # For SDL width and space between bars is in pixels, defaults are:
 ; bar_width = 20
 ; bar_spacing = 5
+
+# sdl_glsl have these default values, they are only used to calulate max number of bars.
+; bar_width = 1
+; bar_spacing = 0
 
 
 # Lower and higher cutoff frequencies for lowest and highest bars
@@ -46,18 +53,26 @@
 [input]
 
 # Audio capturing method. Possible methods are: 'pulse', 'alsa', 'fifo', 'sndio' or 'shmem'
-# Defaults to 'pulse', 'alsa' or 'fifo', in that order, dependent on what support cava was built with.
+# Defaults to 'pulse', 'pipewire', 'alsa' or 'fifo', in that order, dependent on what support cava was built with.
+# On Mac it defaults to 'portaudio' or 'fifo'
+# On windows this is automatic and no input settings are needed.
 #
 # All input methods uses the same config variable 'source'
 # to define where it should get the audio.
 #
-# For pulseaudio 'source' will be the source. Default: 'auto', which uses the monitor source of the default sink
+# For pulseaudio and pipewire 'source' will be the source. Default: 'auto', which uses the monitor source of the default sink
 # (all pulseaudio sinks(outputs) have 'monitor' sources(inputs) associated with them).
+#
+# For piepwire 'source' will be the object name or object.serial of the device to capture from.
+# Both input and output devices are supported.
 #
 # For alsa 'source' will be the capture device.
 # For fifo 'source' will be the path to fifo-file.
 # For shmem 'source' will be /squeezelite-AA:BB:CC:DD:EE:FF where 'AA:BB:CC:DD:EE:FF' will be squeezelite's MAC address
 ; method = pulse
+; source = auto
+
+; method = pipewire
 ; source = auto
 
 ; method = alsa
@@ -77,7 +92,8 @@
 
 [output]
 
-# Output method. Can be 'ncurses', 'noncurses', 'raw' or 'sdl'.
+# Output method. Can be 'ncurses', 'noncurses', 'raw', 'noritake', 'sdl'
+# or 'sdl_glsl'.
 # 'noncurses' uses a custom framebuffer technique and prints only changes
 # from frame to frame in the terminal. 'ncurses' is default if supported.
 #
@@ -85,15 +101,28 @@
 # stream of the bar heights that can be used to send to other applications.
 # 'raw' defaults to 200 bars, which can be adjusted in the 'bars' option above.
 #
+# 'noritake' outputs a bitmap in the format expected by a Noritake VFD display
+#  in graphic mode. It only support the 3000 series graphical VFDs for now.
+#
 # 'sdl' uses the Simple DirectMedia Layer to render in a graphical context.
+# 'sdl_glsl' uses SDL to create an OpenGL context. Write your own shaders or
+# use one of the predefined ones.
 ; method = ncurses
+
+# Orientation of the visualization. Can be 'bottom', 'top', 'left' or 'right'.
+# Default is 'bottom'. Other orientations are only supported on sdl and ncruses
+# output. Note: many fonts have weird glyphs for 'top' and 'right' characters,
+# which can make ncurses not look right.
+; orientation = bottom
 
 # Visual channels. Can be 'stereo' or 'mono'.
 # 'stereo' mirrors both channels with low frequencies in center.
 # 'mono' outputs left to right lowest to highest frequencies.
 # 'mono_option' set mono to either take input from 'left', 'right' or 'average'.
+# set 'reverse' to 1 to display frequencies the other way around.
 ; channels = stereo
 ; mono_option = average
+; reverse = 0
 
 # Raw output target. A fifo will be created if target does not exist.
 ; raw_target = /dev/stdout
@@ -118,23 +147,39 @@
 ; sdl_x = -1
 ; sdl_y= -1
 
+# set label on bars on the x-axis. Can be 'frequency' or 'none'. Default: 'none'
+# 'frequency' displays the lower cut off frequency of the bar above.
+# Only supported on ncurses and noncurses output.
+; xaxis = none
+
+# enable alacritty synchronized updates. 1 = on, 0 = off
+# removes flickering in alacritty terminal emulator.
+# defaults to off since the behaviour in other terminal emulators is unknown
+; alacritty_sync = 0
+
+# Shaders for sdl_glsl, located in $HOME/.config/cava/shaders
+; vertex_shader = pass_through.vert
+; fragment_shader = bar_spectrum.frag
+
+; for glsl output mode, keep rendering even if no audio
+; continuous_rendering = 0
+
 [color]
 
 # Colors can be one of seven predefined: black, blue, cyan, green, magenta, red, white, yellow.
 # Or defined by hex code '#xxxxxx' (hex code must be within ''). User defined colors requires
-# ncurses output method and a terminal that can change color definitions such as Gnome-terminal or rxvt.
-# if supported, ncurses mode will be forced on if user defined colors are used.
+# a terminal that can change color definitions such as Gnome-terminal or rxvt.
 # default is to keep current terminal color
 ; background = default
 ; foreground = default
 
-# SDL only support hex code colors, these are the default:
+# SDL and sdl_glsl only support hex code colors, these are the default:
 ; background = '#111111'
-; foreground = '#33cccc'
+; foreground = '#33ffff'
 
 
-# Gradient mode, only hex defined colors (and thereby ncurses mode) are supported,
-# background must also be defined in hex  or remain commented out. 1 = on, 0 = off.
+# Gradient mode, only hex defined colors are supported,
+# background must also be defined in hex or remain commented out. 1 = on, 0 = off.
 # You can define as many as 8 different colors. They range from bottom to top of screen
 ; gradient = 0
 ; gradient_count = 8
@@ -153,6 +198,7 @@
 
 # Percentage value for integral smoothing. Takes values from 0 - 100.
 # Higher values means smoother, but less precise. 0 to disable.
+# DEPRECATED as of 0.8.0, use noise_reduction instead
 ; integral = 77
 
 # Disables or enables the so-called "Monstercat smoothing" with or without "waves". Set to 0 to disable.
@@ -161,17 +207,24 @@
 
 # Set gravity percentage for "drop off". Higher values means bars will drop faster.
 # Accepts only non-negative values. 50 means half gravity, 200 means double. Set to 0 to disable "drop off".
+# DEPRECATED as of 0.8.0, use noise_reduction instead
 ; gravity = 100
 
 
 # In bar height, bars that would have been lower that this will not be drawn.
+# DEPRECATED as of 0.8.0
 ; ignore = 0
+
+# Noise reduction, int 0 - 100. default 77
+# the raw visualization is very noisy, this factor adjusts the integral and gravity filters to keep the signal smooth
+# 100 will be very slow and smooth, 0 will be fast but noisy.
+; noise_reduction = 77
 
 
 [eq]
 
 # This one is tricky. You can have as much keys as you want.
-# Remember to uncomment more then one key! More keys = more precision.
+# Remember to uncomment more than one key! More keys = more precision.
 # Look at readme.md on github for further explanations and examples.
 ; 1 = 1 # bass
 ; 2 = 1
