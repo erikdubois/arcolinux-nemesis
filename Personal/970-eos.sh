@@ -55,7 +55,7 @@ if grep -q "EndeavourOS" /etc/os-release; then
 	echo
 	tput sgr0
 
-	#sudo pacman -S --noconfirm --needed edu-skel-git
+	sudo pacman -S --noconfirm --needed arcolinux-root-git
   	sudo pacman -S --noconfirm --needed edu-xfce-git
   	sudo pacman -S --noconfirm --needed edu-system-git
 
