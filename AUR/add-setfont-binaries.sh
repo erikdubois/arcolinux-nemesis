@@ -31,48 +31,52 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Making sure KDFONTOP at boot is gone"
-echo "################################################################"
-tput sgr0
-echo
+#endeavouros is all about dracut
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "###### Adding setfont to the binaries to avoid error message"
-echo "###### in /etc/mkinitcpio.conf"
-echo "###### and rebuilding /boot files"
-echo "################################################################"
-tput sgr0
-echo
+if [ -f /etc/mkinitcpio.conf ]; then
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "################### Making sure KDFONTOP at boot is gone"
+	echo "################################################################"
+	tput sgr0
+	echo
 
-FIND='BINARIES=()'
-REPLACE='BINARIES=(setfont)'
-sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "###### Adding setfont to the binaries to avoid error message"
+	echo "###### in /etc/mkinitcpio.conf"
+	echo "###### and rebuilding /boot files"
+	echo "################################################################"
+	tput sgr0
+	echo
 
-FIND='BINARIES=""'
-REPLACE='BINARIES=(setfont)'
-sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
+	FIND='BINARIES=()'
+	REPLACE='BINARIES=(setfont)'
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "###### Mkinitcpio and update-grub"
-echo "################################################################"
-tput sgr0
-echo
+	FIND='BINARIES=""'
+	REPLACE='BINARIES=(setfont)'
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
-sudo mkinitcpio -P
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "###### Mkinitcpio and update-grub"
+	echo "################################################################"
+	tput sgr0
+	echo
 
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+	sudo mkinitcpio -P
 
-echo
-tput setaf 6
-echo "################################################################"
-echo "###### KDFONTOP message is gone"
-echo "################################################################"
-tput sgr0
-echo
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+	echo
+	tput setaf 6
+	echo "################################################################"
+	echo "###### KDFONTOP message is gone"
+	echo "################################################################"
+	tput sgr0
+	echo
+fi
