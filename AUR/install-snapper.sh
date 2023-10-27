@@ -28,12 +28,12 @@
 ##################################################################################################################
 
 
-sudo pacman -S --noconfirm --needed btrfs-assistant
-sudo pacman -S --noconfirm --needed grub-btrfs
-sudo pacman -S --noconfirm --needed snap-pac-git
-sudo pacman -S --noconfirm --needed snapper
-sudo pacman -S --noconfirm --needed snapper-tools-git
-sudo pacman -S --noconfirm --needed snapper-support
+yay -S --noconfirm --needed btrfs-assistant
+yay -S --noconfirm --needed grub-btrfs
+yay -S --noconfirm --needed snap-pac-git
+yay -S --noconfirm --needed snapper
+yay -S --noconfirm --needed snapper-tools-git
+yay -S --noconfirm --needed snapper-support
 
 sudo snapper -c root create-config /
 
