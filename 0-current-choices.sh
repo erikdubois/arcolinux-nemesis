@@ -78,6 +78,7 @@ sh 120-install-core-software*
 sh 150-install-chadwm*
 sh 160-install-bluetooth*
 sh 170-install-cups*
+sh 180-install-test-software*
 
 sh 200-software-AUR-repo*
 #sh 300-sardi-extra-icons-AUR-repo*
