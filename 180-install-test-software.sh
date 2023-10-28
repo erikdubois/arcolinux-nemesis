@@ -61,7 +61,7 @@ func_install() {
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-sudo pacman -S --noconfirm --needed libadwaita-without-adwaita-git
+yes | sudo pacman -S --needed libadwaita-without-adwaita-git
 
 echo
 tput setaf 6
