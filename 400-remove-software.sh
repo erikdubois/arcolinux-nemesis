@@ -185,7 +185,7 @@ if grep -q "EndeavourOS" /etc/os-release; then
   # sudo rm -r /etc/skel/.config/variety
   # sudo rm -r /etc/skel/.config/Thunar
   # sudo rm -r /etc/skel/.config/xfce4
-  # sudo rm -r /etc/skel/.zshrc
+  sudo rm /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
 
   echo
   tput setaf 2
