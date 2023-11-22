@@ -60,6 +60,12 @@ REPLACE="ParallelDownloads = 20"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
 
 echo
+echo "Pacman parallel downloads if needed - for EOS"
+FIND="ParallelDownloads = 5"
+REPLACE="ParallelDownloads = 20"
+sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
+
+echo
 tput setaf 3
 echo "################################################################"
 echo "################### Start current choices"
