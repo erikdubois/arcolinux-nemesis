@@ -54,7 +54,8 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
     sudo pacman -S --noconfirm --needed wf-recorder-git
     sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
-    sudo pacman -S edu-flameshot-git --noconfirm
+    #sudo pacman -S edu-flameshot-git --noconfirm
+    sudo pacman -S --noconfirm --needed obs-studio
 
     if ! pacman -Qi nvidia-dkms &> /dev/null; then
       sudo pacman -S --noconfirm --needed libva-intel-driver
@@ -75,7 +76,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
     echo "Removing packages"
     echo
 
-    sudo pacman -R flameshot-git --noconfirm
+    #sudo pacman -R flameshot-git --noconfirm
 
     echo
     echo "Installing extra packages"
@@ -83,6 +84,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
     sudo pacman -S --noconfirm --needed wf-recorder-git
     sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
+    sudo pacman -S --noconfirm --needed obs-studio
     sudo pacman -S edu-flameshot-git --noconfirm
 
     if ! pacman -Qi nvidia-dkms &> /dev/null; then
