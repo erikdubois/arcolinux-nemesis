@@ -69,15 +69,15 @@ else
 
 fi
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Fixing KDFONTOP"
-echo "################################################################"
-tput sgr0
-echo
+# echo
+# tput setaf 2
+# echo "################################################################"
+# echo "################### Fixing KDFONTOP"
+# echo "################################################################"
+# tput sgr0
+# echo
 
-sh AUR/add-setfont-binaries.sh
+# sh AUR/add-setfont-binaries.sh
 
 # these come last always
 echo "Checking if icons from applications have a hardcoded path"
