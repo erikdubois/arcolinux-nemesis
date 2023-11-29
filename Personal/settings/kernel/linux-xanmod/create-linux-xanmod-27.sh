@@ -18,7 +18,7 @@
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Start - Skylake cpu"
+echo "################### Start - Skylake cpu - 27"
 echo "################################################################"
 tput sgr0
 echo
@@ -32,7 +32,7 @@ tar xzf linux-xanmod*
 rm linux-xanmod.tar.gz
 
 FIND="_microarchitecture=0"
-REPLACE="_microarchitecture=38"
+REPLACE="_microarchitecture=27"
 sed -i "s/$FIND/$REPLACE/g" linux-xanmod/PKGBUILD
 
 # FIND="use_numa=y"
