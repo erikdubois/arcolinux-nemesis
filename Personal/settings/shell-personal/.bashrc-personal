@@ -31,3 +31,9 @@ alias ans="cd $HOME/DATA/arcolinux-nemesis && git pull && bash ./0-current*"
 
 alias rnd="nitrogen --set-zoom-fill --random /home/erik/Insync/Apps/Desktoppr/ --head=0 &&
 nitrogen --set-zoom-fill --random /home/erik/Insync/Apps/Desktoppr/ --head=1"
+
+alias pamac-tray='env GTK_THEME=Arc-Dark /usr/bin/pamac-tray'
+
+#alias update='cp -Rf /etc/skel ~/.skel-backup-$(date +%Y.%m.%d-%H.%M.%S) & sudo pacman -Syyu'
+
+alias smp="sudo mkinitcpio -P"
