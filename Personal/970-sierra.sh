@@ -46,11 +46,11 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	if [ -f /etc/pacman.d/hooks/kernel-linux.hook ]; then
 	    
 		if [ -f /boot/efi/EFI/systemd/systemd-bootx64.efi ]; then
-	    	rm /etc/pacman.d/hooks/kernel-linux.hook
+	    	sudo rm -v /etc/pacman.d/hooks/kernel-linux.hook
 	    fi
 
 		if [ -f /boot/EFI/systemd/systemd-bootx64.efi ]; then
-	    	rm /etc/pacman.d/hooks/kernel-linux.hook
+	    	sudo rm -v /etc/pacman.d/hooks/kernel-linux.hook
 	    fi	   
 	    
 	fi
