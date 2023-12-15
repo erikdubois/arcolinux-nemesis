@@ -43,6 +43,14 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	tput sgr0
 	echo
 
+	if [ -f /etc/pacman.d/hooks/kernel-linux.hook ]; then
+	    
+		if [ -f /boot/efi/EFI/systemd/systemd-bootx64.efi ]; then
+	    	rm /etc/pacman.d/hooks/kernel-linux.hook
+	    fi
+	    
+	fi
+	
 	echo
 	tput setaf 2
 	echo "################################################################"
