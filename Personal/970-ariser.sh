@@ -220,7 +220,7 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 		if [ -f /boot/EFI/systemd/systemd-bootx64.efi ]; then
 	    	sudo rm -v /etc/pacman.d/hooks/kernel-linux.hook
 	    fi
-	    sudo pacman -S --noconfirm -needed kernel-install-mkinitcpio
+	    sudo pacman -S --noconfirm --needed kernel-install-mkinitcpio
 	fi
 
 	tput setaf 6
