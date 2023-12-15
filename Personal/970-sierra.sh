@@ -44,6 +44,15 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	echo
 
 	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "################### Removing conflicting files"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+	sudo rm -f /etc/skel/.config/variety/variety.conf
+	echo
 	echo "Installing edu packages"
 	sudo pacman -S --noconfirm  edu-skel-git
   	sudo pacman -S --noconfirm  edu-xfce-git
