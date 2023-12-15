@@ -204,7 +204,8 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 
 		if [ -f /boot/EFI/systemd/systemd-bootx64.efi ]; then
 	    	sudo rm -v /etc/pacman.d/hooks/kernel-linux.hook
-	    fi	   
+	    fi
+	    sudo pacman -S --noconfirm --needed kernel-install-mkinitcpio
 	    
 	fi
 
