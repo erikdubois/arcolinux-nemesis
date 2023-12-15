@@ -43,18 +43,6 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	tput sgr0
 	echo
 
-	if [ -f /etc/pacman.d/hooks/kernel-linux.hook ]; then
-	    
-		if [ -f /boot/efi/EFI/systemd/systemd-bootx64.efi ]; then
-	    	sudo rm -v /etc/pacman.d/hooks/kernel-linux.hook
-	    fi
-
-		if [ -f /boot/EFI/systemd/systemd-bootx64.efi ]; then
-	    	sudo rm -v /etc/pacman.d/hooks/kernel-linux.hook
-	    fi	   
-	    
-	fi
-
 	echo
 	echo "Installing edu packages"
 	sudo pacman -S --noconfirm  edu-skel-git
@@ -199,6 +187,26 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	cd $HOME/.config/arco-chadwm/chadwm/
 	make
 	sudo make install
+
+	echo
+	tput setaf 6
+	echo "################################################################"
+	echo "################### Remove /etc/pacman.d/hooks/kernel-linux.hook"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+	if [ -f /etc/pacman.d/hooks/kernel-linux.hook ]; then
+	    
+		if [ -f /boot/efi/EFI/systemd/systemd-bootx64.efi ]; then
+	    	sudo rm -v /etc/pacman.d/hooks/kernel-linux.hook
+	    fi
+
+		if [ -f /boot/EFI/systemd/systemd-bootx64.efi ]; then
+	    	sudo rm -v /etc/pacman.d/hooks/kernel-linux.hook
+	    fi	   
+	    
+	fi
 
 	echo
 	echo

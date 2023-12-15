@@ -203,6 +203,26 @@ if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
 	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-beauty.conf /etc/archlinux-logout.conf
 	echo
 
+	echo
+	tput setaf 6
+	echo "################################################################"
+	echo "################### Remove /etc/pacman.d/hooks/kernel-linux.hook"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+	if [ -f /etc/pacman.d/hooks/kernel-linux.hook ]; then
+	    
+		if [ -f /boot/efi/EFI/systemd/systemd-bootx64.efi ]; then
+	    	sudo rm -v /etc/pacman.d/hooks/kernel-linux.hook
+	    fi
+
+		if [ -f /boot/EFI/systemd/systemd-bootx64.efi ]; then
+	    	sudo rm -v /etc/pacman.d/hooks/kernel-linux.hook
+	    fi
+	    
+	fi
+
 	tput setaf 6
 	echo "################################################################"
 	echo "################### Done"
