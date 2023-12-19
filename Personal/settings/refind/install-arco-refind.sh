@@ -45,6 +45,10 @@ git clone https://github.com/erikdubois/arco-refind /tmp/arco-refind
 sudo mkdir -p /boot/EFI/refind/themes
 sudo cp -r /tmp/arco-refind /boot/EFI/refind/themes
 
+echo '
+
+include themes/arco-refind/theme.conf' | sudo tee -a /boot/EFI/refind/refind.conf
+
 echo
 tput setaf 6
 echo "################################################################"
