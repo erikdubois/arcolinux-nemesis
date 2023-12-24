@@ -92,3 +92,30 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
     fi
 
   fi
+
+  if [ -f /usr/share/wayland-sessions/wayfire.desktop ]; then
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### We are on Wayfire"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    echo
+    echo "Removing packages"
+    echo
+
+    #sudo pacman -R flameshot-git --noconfirm
+
+    echo
+    echo "Installing extra packages"
+    echo
+
+    #sudo pacman -S --noconfirm --needed wf-recorder-git
+    sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
+    sudo pacman -S --noconfirm --needed obs-studio
+    sudo pacman -S --noconfirm --needed wlrobs
+    sudo pacman -S edu-flameshot-git --noconfirm
+
+  fi
