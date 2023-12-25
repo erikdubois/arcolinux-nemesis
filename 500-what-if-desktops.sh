@@ -116,6 +116,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
     sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
     sudo pacman -S --noconfirm --needed obs-studio
     sudo pacman -S --noconfirm --needed wlrobs
+    sudo pacman -S --noconfirm --needed spotify-wayland
     sudo pacman -S edu-flameshot-git --noconfirm
 
   fi
