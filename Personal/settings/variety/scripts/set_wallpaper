@@ -216,24 +216,14 @@ fi
 # For simple WMs, use either feh or nitrogen
 # Implementation note: this uses spaces around list items to enforce matching whole words.
 # This also means that an empty variable won't cause false positives, since it expands to "  "
-# FOR SDDM
-SIMPLE_WMS=("/usr/share/xsessions/awesome" "/usr/share/xsessions/bspwm" "/usr/share/xsessions/chadwm" "/usr/share/xsessions/cwm" "/usr/share/xsessions/dk" "/usr/share/xsessions/dusk" "/usr/share/xsessions/dwm" "/usr/share/xsessions/fvwm3" "/usr/share/xsessions/herbstluftwm" "/usr/share/xsessions/hypr""/usr/share/xsessions/i3" "/usr/share/xsessions/i3-with-shmlog" "/usr/share/xsessions/icewm" "/usr/share/xsessions/icewm-session" "/usr/share/xsessions/jwm" "/usr/share/xsessions/leftwm" "/usr/share/xsessions/openbox" "/usr/share/xsessions/qtile" "/usr/share/xsessions/spectrwm" "/usr/share/xsessions/wmderland" "/usr/share/xsessions/xmonad")
+SIMPLE_WMS=("bspwm" "dwm" "herbstluftwm" "i3" "i3-gnome" "i3-with-shmlog" "jwm" "LeftWM" "openbox" "qtile" "qtile-venv" "spectrwm" "xmonad")
 if [[ " ${SIMPLE_WMS[*]} " = *" $XDG_CURRENT_DESKTOP "* || " ${SIMPLE_WMS[*]} " = *" $XDG_SESSION_DESKTOP "* ||
       " ${SIMPLE_WMS[*]} " = *" $DESKTOP_SESSION "* ]]; then
 	if command -v "feh" >/dev/null 2>&1; then
 	      # TODO: This should take the scaling parameter $4 into account and use other options than --bg-fill
         feh --bg-fill "$WP" 2> /dev/null
     elif command -v "nitrogen" >/dev/null 2>&1; then
-        nitrogen --set-zoom-fill --save "$WP" 2> /dev/null
-    fi
-fi
-#FOR LIGHTDM
-SIMPLE_WMS=("awesome" "berry" "bspwm" "chadwm" "cwm" "dk" "dusk" "dwm" "fvwm3" "herbstluftwm" "hypr" "i3" "i3-with-shmlog" "icewm" "icewm-session" "jwm" "leftwm" "openbox" "qtile" "spectrwm" "worm" "wmderland" "xmonad")
-if [[ " ${SIMPLE_WMS[*]} " = *" $XDG_CURRENT_DESKTOP "* || " ${SIMPLE_WMS[*]} " = *" $XDG_SESSION_DESKTOP "* ||
-      " ${SIMPLE_WMS[*]} " = *" $DESKTOP_SESSION "* ]]; then
-    if command -v "feh" >/dev/null 2>&1; then
-        feh --bg-fill "$WP" 2> /dev/null
-    elif command -v "nitrogen" >/dev/null 2>&1; then
+	      # TODO: This should take the scaling parameter $4 into account and use other options than --set-zoom-fill
         nitrogen --set-zoom-fill --save "$WP" 2> /dev/null
     fi
 fi
@@ -244,19 +234,6 @@ if [[ -n $SWAYSOCK || $XDG_CURRENT_DESKTOP == "Hyprland" ]]; then
     if command -v "swaybg" >/dev/null 2>&1; then
         # Grey background flicker is prevented by killing old swaybg process after new one.
         # See https://github.com/swaywm/swaybg/issues/17#issuecomment-851680720
-        PID=`pidof swaybg`
-        swaybg -i "$WP" -m fill &
-        if [ ! -z "$PID" ]; then
-            sleep 1
-            kill $PID 2>/dev/null
-        fi
-    else
-        swaymsg output "*" bg "$WP" fill 2> /dev/null
-    fi
-fi
-
-if [ "$XDG_CURRENT_DESKTOP" == "wayfire" ]; then
-    if command -v "swaybg" >/dev/null 2>&1; then
         PID=`pidof swaybg`
         swaybg -i "$WP" -m fill &
         if [ ! -z "$PID" ]; then
@@ -302,95 +279,4 @@ fi
 
 # =====================================================================================
 
-# OPTIONAL: Show a notification on automatic wallpaper change.
-# Display the original filename in the notification, but actually apply the post-effects image.
-# name=$(echo "$3" | sed 's/\//\n/g'| tail -n 1)
-# if [ "$2" == "auto" ]; then notify-send --icon "$WP" "Wallpaper changed" "$name" ; fi
-
-
-### ArcoLinux Solutions ###
-
-# awesome: use either feh or nitrogen
-# if [ "$DESKTOP_SESSION" == "awesome" ]; then
-#   if command -v "feh" >/dev/null 2>&1; then
-#     feh --bg-fill "$WP" 2> /dev/null
-#   elif command -v "nitrogen" >/dev/null 2>&1; then
-#     nitrogen --set-zoom-fill --save "$WP" 2> /dev/null
-#   fi
-# fi
-
-# variety v0.7.2 provides good code for bspwm
-# Bspwm : use either feh or nitrogen
-# if [ "$DESKTOP_SESSION" == "bspwm" ] ; then
-#   if command -v "feh" >/dev/null 2>&1; then
-#     feh --bg-fill "$WP" 2> /dev/null
-#   elif command -v "nitrogen" >/dev/null 2>&1; then
-#     nitrogen --set-zoom-fill --save "$WP" 2> /dev/null
-#   fi
-# fi
-
-
-# Xmonad : use either feh or nitrogen
-# if [ "$DESKTOP_SESSION" == "xmonad" ] ; then
-#   if command -v "feh" >/dev/null 2>&1; then
-#     feh --bg-fill "$WP" 2> /dev/null
-#   elif command -v "nitrogen" >/dev/null 2>&1; then
-#     nitrogen --set-zoom-fill --save "$WP" 2> /dev/null
-#   fi
-# fi
-
-# Qtile : use either feh or nitrogen
-# if [ "$DESKTOP_SESSION" == "qtile" ] ; then
-#   if command -v "feh" >/dev/null 2>&1; then
-#     feh --bg-fill "$WP" 2> /dev/null
-#   elif command -v "nitrogen" >/dev/null 2>&1; then
-#     nitrogen --set-zoom-fill --save "$WP" 2> /dev/null
-#   fi
-# fi
-
-
-# herbstluftwm : use either feh or nitrogen
-# if [ "$DESKTOP_SESSION" == "herbstluftwm" ] ; then
-#   if command -v "feh" >/dev/null 2>&1; then
-#     feh --bg-fill "$WP" 2> /dev/null
-#   elif command -v "nitrogen" >/dev/null 2>&1; then
-#     nitrogen --set-zoom-fill --save "$WP" 2> /dev/null
-#   fi
-# fi
-
-# jwm : use either feh or nitrogen
-# if [ "$DESKTOP_SESSION" == "jwm" ] ; then
-#   if command -v "feh" >/dev/null 2>&1; then
-#     feh --bg-fill "$WP" 2> /dev/null
-#   elif command -v "nitrogen" >/dev/null 2>&1; then
-#     nitrogen --set-zoom-fill --save "$WP" 2> /dev/null
-#   fi
-# fi
-
-#spectrwm : use either feh or nitrogen
-# if [ "$DESKTOP_SESSION" == "spectrwm" ] ; then
-#   if command -v "feh" >/dev/null 2>&1; then
-#     feh --bg-fill "$WP" 2> /dev/null
-#   elif command -v "nitrogen" >/dev/null 2>&1; then
-#     nitrogen --set-zoom-fill --save "$WP" 2> /dev/null
-#   fi
-# fi
-
-# icewm : use either feh or nitrogen
-# if [ "$DESKTOP_SESSION" == "icewm-session" ] ; then
-#   if command -v "feh" >/dev/null 2>&1; then
-#     feh --bg-fill "$WP" 2> /dev/null
-#   elif command -v "nitrogen" >/dev/null 2>&1; then
-#     nitrogen --set-zoom-fill --save "$WP" 2> /dev/null
-#   fi
-# fi
-
-# fvwm3 : use either feh or nitrogen
-# if [ "$DESKTOP_SESSION" == "fvwm3" ] ; then
-#   if command -v "feh" >/dev/null 2>&1; then
-#     feh --bg-fill "$WP" 2> /dev/null
-#   elif command -v "nitrogen" >/dev/null 2>&1; then
-#     nitrogen --set-zoom-fill --save "$WP" 2> /dev/null
-#   fi
-# fi
 exit 0
