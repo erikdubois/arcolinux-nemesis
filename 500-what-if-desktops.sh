@@ -52,14 +52,19 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
     echo "Installing extra packages"
     echo
 
-    sudo pacman -S --noconfirm --needed wf-recorder-git
+    #sudo pacman -S --noconfirm --needed wf-recorder-git
     sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
     #sudo pacman -S edu-flameshot-git --noconfirm
     sudo pacman -S --noconfirm --needed obs-studio
+    sudo pacman -S --noconfirm --needed wlrobs
 
     if ! pacman -Qi nvidia-dkms &> /dev/null; then
       sudo pacman -S --noconfirm --needed libva-intel-driver
     fi
+    echo "Adding thunar - gitahead setting"
+    echo
+    sudo cp -arf $installed_dir/settings/wayland/thunar/uca.xml ~/.config/Thunar/
+    echo
 
   fi
 
@@ -82,9 +87,10 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
     echo "Installing extra packages"
     echo
 
-    sudo pacman -S --noconfirm --needed wf-recorder-git
+    #sudo pacman -S --noconfirm --needed wf-recorder-git
     sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
     sudo pacman -S --noconfirm --needed obs-studio
+    sudo pacman -S --noconfirm --needed wlrobs
     sudo pacman -S edu-flameshot-git --noconfirm
 
     if ! pacman -Qi nvidia-dkms &> /dev/null; then
