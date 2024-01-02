@@ -61,6 +61,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
     if ! pacman -Qi nvidia-dkms &> /dev/null; then
       sudo pacman -S --noconfirm --needed libva-intel-driver
     fi
+    
     echo "Adding thunar - gitahead setting"
     echo
     sudo cp -arf $installed_dir/settings/wayland/thunar/uca.xml ~/.config/Thunar/
@@ -82,6 +83,11 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
     echo
 
     #sudo pacman -R flameshot-git --noconfirm
+
+    echo "Adding thunar - gitahead setting"
+    echo
+    sudo cp -arf $installed_dir/settings/wayland/thunar/uca.xml ~/.config/Thunar/
+    echo
 
     echo
     echo "Installing extra packages"
@@ -114,7 +120,12 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
     #sudo pacman -R flameshot-git --noconfirm
 
+    echo "Adding thunar - gitahead setting"
     echo
+    sudo cp -arf $installed_dir/settings/wayland/thunar/uca.xml ~/.config/Thunar/
+    echo
+    echo
+
     echo "Installing extra packages"
     echo
 
