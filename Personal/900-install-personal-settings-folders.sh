@@ -62,6 +62,7 @@ echo
 [ -d $HOME"/.config/gtk-4.0" ] || mkdir -p $HOME"/.config/gtk-4.0"
 [ -d $HOME"/.config/variety" ] || mkdir -p $HOME"/.config/variety"
 [ -d $HOME"/.config/fish" ] || mkdir -p $HOME"/.config/fish"
+[ -d $HOME"/.config/obs-studio" ] || mkdir -p $HOME"/.config/obs-studio"
 [ -d $HOME"/.config/neofetch" ] || mkdir -p $HOME"/.config/neofetch"
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
@@ -148,6 +149,10 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	echo "Adding personal looks to /personal"
 	echo
 	sudo cp -arf $installed_dir/settings/personal-folder/personal-iso/* /personal
+	echo
+	echo "Adding obs-studio settings"
+	echo
+	sudo cp -arf $installed_dir/settings/obs-studio/* ~/.config/obs-studio/
 	echo
 	
 	echo "To personal Kvantum setup"
