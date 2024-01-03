@@ -134,7 +134,7 @@ sh 970-arch.sh
 
 sh 999-skel*
 
-sh 500-what*
+sh 500-what-if-desktops.sh
 
 tput setaf 3
 echo "################################################################"
