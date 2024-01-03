@@ -42,6 +42,8 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
     tput sgr0
     echo
 
+    give-me-azerty-sway
+
     echo
     echo "Removing packages"
     echo
@@ -78,6 +80,8 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
     tput sgr0
     echo
 
+    give-me-azerty-hyprland
+
     echo
     echo "Removing packages"
     echo
@@ -113,6 +117,8 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
     echo "################################################################"
     tput sgr0
     echo
+
+    give-me-azerty-wayfire
 
     echo
     echo "Removing packages"
