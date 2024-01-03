@@ -31,115 +31,68 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+hyprland="/usr/share/wayland-sessions/hyprland.desktop"
+wayfire="/usr/share/wayland-sessions/wayfire.desktop"
+sway="/usr/share/wayland-sessions/sway.desktop"
 
+# common to all desktops
 
-  if [ -f /usr/share/wayland-sessions/sway.desktop ]; then
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### We are on Sway"
-    echo "################################################################"
-    tput sgr0
-    echo
+if [[ -f $hyprland || -f $wayfire || -f $sway ]]; then
 
-    give-me-azerty-sway
+  echo
+  echo "Adding thunar - gitahead setting - righ mouse click"
+  echo
+  sudo cp -arf $installed_dir/settings/wayland/thunar/uca.xml ~/.config/Thunar/
+  echo
 
-    echo
-    echo "Removing packages"
-    echo
+  echo
+  echo "Installing extra packages"
+  echo
 
-    sudo pacman -R flameshot-git --noconfirm
+  sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
+  sudo pacman -S --noconfirm --needed obs-studio
+  sudo pacman -S --noconfirm --needed wlrobs
+  sudo pacman -S --noconfirm --needed spotify-wayland
 
-    echo
-    echo "Installing extra packages"
-    echo
+fi
 
-    #sudo pacman -S --noconfirm --needed wf-recorder-git
-    sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
-    #sudo pacman -S edu-flameshot-git --noconfirm
-    sudo pacman -S --noconfirm --needed obs-studio
-    sudo pacman -S --noconfirm --needed wlrobs
+# each desktop is unique
 
-    if ! pacman -Qi nvidia-dkms &> /dev/null; then
-      sudo pacman -S --noconfirm --needed libva-intel-driver
-    fi
-    
-    echo "Adding thunar - gitahead setting"
-    echo
-    sudo cp -arf $installed_dir/settings/wayland/thunar/uca.xml ~/.config/Thunar/
-    echo
+if [ -f /usr/share/wayland-sessions/sway.desktop ]; then
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### We are on Sway"
+  echo "################################################################"
+  tput sgr0
+  echo
+  
+  give-me-azerty-sway
 
-  fi
+fi
 
-  if [ -f /usr/share/wayland-sessions/hyprland.desktop ]; then
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### We are on Hyprland"
-    echo "################################################################"
-    tput sgr0
-    echo
+if [ -f /usr/share/wayland-sessions/wayfire.desktop ]; then
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### We are on Wayfire"
+  echo "################################################################"
+  tput sgr0
+  echo
 
-    give-me-azerty-hyprland
+  give-me-azerty-wayfire
 
-    echo
-    echo "Removing packages"
-    echo
+fi
 
-    #sudo pacman -R flameshot-git --noconfirm
+if [ -f /usr/share/wayland-sessions/hyprland.desktop ]; then
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### We are on Hyprland"
+  echo "################################################################"
+  tput sgr0
+  echo
 
-    echo "Adding thunar - gitahead setting"
-    echo
-    sudo cp -arf $installed_dir/settings/wayland/thunar/uca.xml ~/.config/Thunar/
-    echo
-
-    echo
-    echo "Installing extra packages"
-    echo
-
-    #sudo pacman -S --noconfirm --needed wf-recorder-git
-    sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
-    sudo pacman -S --noconfirm --needed obs-studio
-    sudo pacman -S --noconfirm --needed wlrobs
-    sudo pacman -S edu-flameshot-git --noconfirm
-
-    if ! pacman -Qi nvidia-dkms &> /dev/null; then
-      sudo pacman -S --noconfirm --needed libva-intel-driver
-    fi
-
-  fi
-
-  if [ -f /usr/share/wayland-sessions/wayfire.desktop ]; then
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### We are on Wayfire"
-    echo "################################################################"
-    tput sgr0
-    echo
-
-    give-me-azerty-wayfire
-
-    echo
-    echo "Removing packages"
-    echo
-
-    #sudo pacman -R flameshot-git --noconfirm
-
-    echo "Adding thunar - gitahead setting"
-    echo
-    sudo cp -arf $installed_dir/settings/wayland/thunar/uca.xml ~/.config/Thunar/
-    echo
-    echo
-
-    echo "Installing extra packages"
-    echo
-
-    #sudo pacman -S --noconfirm --needed wf-recorder-git
-    sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
-    sudo pacman -S --noconfirm --needed obs-studio
-    sudo pacman -S --noconfirm --needed wlrobs
-    sudo pacman -S --noconfirm --needed spotify-wayland
-    sudo pacman -S edu-flameshot-git --noconfirm
-
-  fi
+  give-me-azerty-hyprland
+  
+fi
