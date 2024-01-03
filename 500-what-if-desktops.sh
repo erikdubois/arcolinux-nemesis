@@ -67,7 +67,7 @@ if [ -f /usr/share/wayland-sessions/sway.desktop ]; then
   tput sgr0
   echo
   
-  give-me-azerty-sway
+  give-me-azerty-be-sway
 
 fi
 
@@ -80,7 +80,7 @@ if [ -f /usr/share/wayland-sessions/wayfire.desktop ]; then
   tput sgr0
   echo
 
-  give-me-azerty-wayfire
+  give-me-azerty-be-wayfire
 
 fi
 
@@ -93,6 +93,6 @@ if [ -f /usr/share/wayland-sessions/hyprland.desktop ]; then
   tput sgr0
   echo
 
-  give-me-azerty-hyprland
+  give-me-azerty-be-hyprland
   
 fi
