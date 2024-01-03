@@ -115,7 +115,8 @@ sudo pacman -S --noconfirm --needed htop
 sudo pacman -S --noconfirm --needed hw-probe
 sudo pacman -S --noconfirm --needed inkscape
 sudo pacman -S --noconfirm --needed insync
-sudo pacman -S --noconfirm --needed kvantum
+sudo pacman -S --noconfirm --needed kvantum-qt5-git
+sudo pacman -S --noconfirm --needed kvantum-qt6-git
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed lastpass
 sudo pacman -S --noconfirm --needed logrotate
