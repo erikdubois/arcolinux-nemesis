@@ -133,7 +133,7 @@ sudo pacman -S --noconfirm --needed neofetch
 sudo pacman -S --noconfirm --needed network-manager-applet
 sudo pacman -S --noconfirm --needed networkmanager-openvpn
 sudo pacman -S --noconfirm --needed nitrogen
-sudo pacman -S --noconfirm --needed nomacs
+sudo pacman -S --noconfirm --needed nomacs-qt6-git
 sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed ntp
 sudo pacman -S --noconfirm --needed nss-mdns
