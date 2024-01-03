@@ -131,10 +131,9 @@ sh 970-rebornos*
 #has to be last - they are all Arch
 sh 970-arch.sh
 
+sh 998-skel*
 
-sh 999-skel*
-
-sh 500-what-if-desktops.sh
+sh 999-what*
 
 tput setaf 3
 echo "################################################################"
