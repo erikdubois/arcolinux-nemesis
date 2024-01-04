@@ -39,3 +39,7 @@ alias pamac-tray='env GTK_THEME=Arc-Dark /usr/bin/pamac-tray'
 alias smp="sudo mkinitcpio -P"
 
 alias warning="pacman -Q -kk | grep warning"
+
+if [ -f "/usr/bin/wal" ] ; then
+	neofetch && wal -q -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)
+fi
