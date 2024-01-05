@@ -120,11 +120,5 @@ if [ -f /usr/share/wayland-sessions/hyprland.desktop ]; then
   echo
 
   give-me-azerty-be-hyprland
-
-  echo "Installing bashrc-personal with wal files"
-  echo
-  cp $installed_dir/settings/shell-personal/.bashrc-personal-wal ~/.bashrc-personal
-  sudo cp -f $installed_dir/settings/shell-personal/.bashrc-personal-wal /etc/skel/.bashrc-personal
-  echo
   
 fi
