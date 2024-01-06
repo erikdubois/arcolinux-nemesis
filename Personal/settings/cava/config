@@ -1,5 +1,4 @@
-## Configuration file for CAVA.
-# Remove the ; to change parameters.
+## Configuration file for CAVA. Default values are commented out. Use either ';' or '#' for commenting.
 
 
 [general]
@@ -69,8 +68,8 @@
 # For alsa 'source' will be the capture device.
 # For fifo 'source' will be the path to fifo-file.
 # For shmem 'source' will be /squeezelite-AA:BB:CC:DD:EE:FF where 'AA:BB:CC:DD:EE:FF' will be squeezelite's MAC address
-method = pulse
-source = auto
+; method = pulse
+; source = auto
 
 ; method = pipewire
 ; source = auto
@@ -171,7 +170,7 @@ source = auto
 # a terminal that can change color definitions such as Gnome-terminal or rxvt.
 # default is to keep current terminal color
 ; background = default
-foreground = blue
+; foreground = default
 
 # SDL and sdl_glsl only support hex code colors, these are the default:
 ; background = '#111111'
@@ -191,6 +190,15 @@ gradient_color_5 = '#cca633'
 gradient_color_6 = '#cc8033'
 gradient_color_7 = '#cc5933'
 gradient_color_8 = '#cc3333'
+
+;gradient_color_1 = '#94e2d5'
+;gradient_color_2 = '#89dceb'
+;gradient_color_3 = '#74c7ec'
+;gradient_color_4 = '#89b4fa'
+;gradient_color_5 = '#cba6f7'
+;gradient_color_6 = '#f5c2e7'
+;gradient_color_7 = '#eba0ac'
+;gradient_color_8 = '#f38ba8'
 
 
 
