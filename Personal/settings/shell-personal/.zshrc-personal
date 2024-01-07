@@ -34,3 +34,4 @@ alias var="cp ~/DATA/arcolinux-nemesis/Personal/settings/variety/variety.conf ~/
 
 alias cpu="cpuid -i | grep uarch | head -n 1"
 
+alias howold="sudo lshw | grep -B 3 -A 8 BIOS"
