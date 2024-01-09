@@ -46,7 +46,13 @@ echo
 
 #sudo pacman -Runs gnome gnome-extra
 
+echo "################### Removing gnome"
+
 sudo pacman -Rdd gnome-session gnome-settings-daemon gnome-shell
+
+echo "################### Removing kodi"
+
+sudo pacman -Rscn kodi
 
 echo
 tput setaf 6
