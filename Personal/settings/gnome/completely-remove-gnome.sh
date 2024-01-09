@@ -42,7 +42,11 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo pacman -Rscn gnome
+#sudo pacman -Rscn gnome
+
+#sudo pacman -Runs gnome gnome-extra
+
+sudo pacman -Rdd gnome-session gnome-session-daemon gnome-shell
 
 echo
 tput setaf 6
