@@ -46,7 +46,7 @@ echo
 
 #sudo pacman -Runs gnome gnome-extra
 
-sudo pacman -Rdd gnome-session gnome-session-daemon gnome-shell
+sudo pacman -Rdd gnome-session gnome-settings-daemon gnome-shell
 
 echo
 tput setaf 6
