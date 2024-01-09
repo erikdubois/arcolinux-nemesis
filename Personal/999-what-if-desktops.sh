@@ -40,7 +40,7 @@ sway="/usr/share/wayland-sessions/sway.desktop"
 if [[ -f $hyprland || -f $wayfire || -f $sway ]]; then
 
   echo
-  echo "Adding thunar - gitahead setting - righ mouse click"
+  echo "Adding thunar - gitahead setting - right mouse click"
   echo
   sudo cp -arf $installed_dir/settings/wayland/thunar/uca.xml ~/.config/Thunar/
   echo
