@@ -1,5 +1,5 @@
 <h1 align="center">
- <img src="https://user-images.githubusercontent.com/45159366/128645103-795eebbd-f853-47cc-8087-916dfd98347b.png">
+ <img src="https://github.com/erikdubois/arcolinux-nemesis/blob/master/Personal/settings/arcolinux.png">
   <br />
    ArcoLinux Nemesis
 </h1>
