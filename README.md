@@ -10,6 +10,48 @@
 ![Maintenance](https://img.shields.io/maintenance/yes/2024?style=for-the-badge)
 ![Last-Commit](https://img.shields.io/github/last-commit/erikdubois/arcolinux-nemesis?style=for-the-badge)
 
+<p align="center">
+  <a href="#">
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/metrics/shields-repo-size.svg" valign="middle" alt="GitHub repo size in bytes" /></a>
+<!-- -- >
+• <a href="#">
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/metrics/shields-code-size.svg" valign="middle" alt="code size in bytes" /></a>
+<!-- -->
+• <a href="https://github.com/XAMPPRocky/tokei">
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/metrics/tokei-lines-of-code.svg" valign="middle" alt="lines of code by tokei.rs" /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/andry81-stats/gh-action--accum-gh-stats--gh-stats/commits/master/traffic/views">
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/traffic/views/all.svg" valign="middle" alt="GitHub views|any|total" />
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/traffic/views/all-14d.svg" valign="middle" alt="GitHub views|any|14d" /></a>
+• <a href="https://github.com/andry81-stats/gh-action--accum-gh-stats--gh-stats/commits/master/traffic/views">
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/traffic/views/unq.svg" valign="middle" alt="GitHub views|unique per day|total" />
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/traffic/views/unq-14d.svg" valign="middle" alt="GitHub views|unique per day|14d" /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/andry81-stats/gh-action--accum-gh-stats--gh-stats/commits/master/traffic/clones">
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/traffic/clones/all.svg" valign="middle" alt="GitHub clones|any|total" />
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/traffic/clones/all-14d.svg" valign="middle" alt="GitHub clones|any|14d" /></a>
+• <a href="https://github.com/andry81-stats/gh-action--accum-gh-stats--gh-stats/commits/master/traffic/clones">
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/traffic/clones/unq.svg" valign="middle" alt="GitHub clones|unique per day|total" />
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/traffic/clones/unq-14d.svg" valign="middle" alt="GitHub clones|unique per day|14d" /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/erikdubois-devops/gh-action--accum-gh-stats/commits">
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/metrics/commits-since-latest.svg" valign="middle" alt="GitHub commits since latest version" /></a>
+  <a href="https://github.com/erikdubois-devops/gh-action--accum-gh-stats/releases">
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/metrics/latest-release-name.svg" valign="middle" alt="latest release name" /></a>
+• <a href="https://github.com/erikdubois-devops/gh-action--accum-gh-stats/releases">
+    <img src="https://github.com/erikdubois/erikdubois-devops--gh-content-cache/raw/master/repo/erikdubois-devops/gh-action--accum-gh-stats/badges/metrics/github-all-releases.svg" valign="middle" alt="GitHub all releases" /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/andry81/donate"><img src="https://github.com/erikdubois/gh-content-static-cache/raw/master/common/badges/donate/donate.svg" valign="middle" alt="donate" /></a>
+</p>
+
 # ArcoLinux Nemesis
 
 What to do after the installation of the latest version of ArcoLinux?
