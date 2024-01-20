@@ -40,6 +40,9 @@ tput sgr0
 
 yay -S xampp --noconfirm --needed
 
+sudo rm /tmp/latest.tar.gz
+sudo rm -r /tmp/wp
+
 sudo wget http://wordpress.org/latest.tar.gz -O /tmp/latest.tar.gz
 
 cd /tmp
