@@ -48,9 +48,9 @@ sudo wget http://wordpress.org/latest.tar.gz -O /tmp/latest.tar.gz
 cd /tmp
 mkdir /tmp/wp
 sudo tar -xzvf /tmp/latest.tar.gz --strip-components 1
-sudo cp -r /tmp/wordpress /opt/lampp/htdocs/wp
-#sudo rm /tmp/latest.tar.gz
-#sudo rm -r /tmp/wordpress
+sudo cp -r /tmp/wordpress /opt/lampp/htdocs/
+sudo rm /tmp/latest.tar.gz
+sudo rm -r /tmp/wordpress
 
 # sudo cp /srv/http/wp-config-sample.php /srv/http/wp-config.php
 # #sudo cp /srv/http/wordpress/wp-config-sample.php /srv/http/wp-config.php
