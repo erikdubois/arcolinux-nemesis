@@ -83,7 +83,7 @@ if [ -f /tmp/latest.tar.gz ]; then
 fi
 
 if [ -d /tmp/wordpress ]; then
-	sudo rm -r /tmp/wordpress
+	#sudo rm -r /tmp/wordpress
 fi
 
 tput setaf 2
