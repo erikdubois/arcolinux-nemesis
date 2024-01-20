@@ -34,62 +34,32 @@
 
 tput setaf 1
 echo "###################################################################################################"
-echo "WORK IN PROGRESS"
-echo "THIS IS NOT WORKING YET"
+echo "INSTALLING XAMPP"
 echo "###################################################################################################"
 tput sgr0
 
-sudo pacman -S wget --noconfirm --needed
+yay -S xampp --noconfirm --needed
 
-# if [ -f /srv/http/wordpress/wp-config-sample.php ];then
-#   sudo rm -r /srv/http/wordpress/*
-# fi
+sudo wget http://wordpress.org/latest.tar.gz -O /tmp/latest.tar.gz
 
-if [ -f /srv/http/wp-config-sample.php ];then
-  sudo rm -r /srv/http/*
-fi
+cd /tmp
+sudo tar -xzvf /tmp/latest.tar.gz --strip-components 1
 
-sudo wget http://wordpress.org/latest.tar.gz -O /srv/http/latest.tar.gz
-#sudo wget http://wordpress.org/latest.tar.gz -O /srv/http/wordpress/latest.tar.gz
+sudo rm /tmp/latest.tar.gz
 
-cd /srv/http/
-sudo tar -xzvf /srv/http/latest.tar.gz --strip-components 1
-
-sudo rm /srv/http/latest.tar.gz
-
-sudo cp /srv/http/wp-config-sample.php /srv/http/wp-config.php
-#sudo cp /srv/http/wordpress/wp-config-sample.php /srv/http/wp-config.php
-
-echo "Now create a database - type these commands"
-echo "Start the shell with this command"
-echo "mariadb -u root -p"
-echo
-echo "create database wordpress;"
-echo "grant all on wordpress.* to wordpress@localhost identified by 'wordpress';"
-echo "flush privileges;"
-echo
-echo "Now quit the shell"
-
-echo "change the user password and the database in /srv/http/wp-config.php"
-
-echo "Press ENTER if you are finished"
-
-read
-
-#sudo touch /srv/http/.htaccess
-
-#sudo chown -v http:http /srv/http/.htaccess
+# sudo cp /srv/http/wp-config-sample.php /srv/http/wp-config.php
+# #sudo cp /srv/http/wordpress/wp-config-sample.php /srv/http/wp-config.php
 
 
-#sudo chown -Rv http:http /srv/http/
+# #sudo chown -Rv http:http /srv/http/
 
-#sudo find /srv/http/ -type d -exec chmod -v 775 {} \;
+# #sudo find /srv/http/ -type d -exec chmod -v 775 {} \;
 
-#sudo find /srv/http/ -type f -exec chmod -v 644 {} \;
+# #sudo find /srv/http/ -type f -exec chmod -v 644 {} \;
 
 
-sudo systemctl restart httpd
-sudo systemctl restart mariadb
+sudo xampp start
 
-#firefox http://localhost &
-#firefox --new-tab http://localhost/phpMyAdmin &
+firefox http://localhost &
+firefox --new-tab http://localhost/wp &
+firefox --new-tab http://localhost/phpMyAdmin &
