@@ -98,6 +98,7 @@ tput setaf 2
 echo "###################################################################################################"
 echo "Done"
 echo "Steps to take now"
+echo "Your wordpress website is here - /opt/lampp/htdocs/wordpress"
 echo "Open your browser and surf to http://localhost"
 echo "1. Create a new database in phpmyadmin - see menu"
 echo "2. with collation - name = wp"
