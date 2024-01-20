@@ -85,28 +85,50 @@ if [ -d /tmp/wordpress ]; then
 	sudo rm -r /tmp/wordpress
 fi
 
-sudo xampp start
+tput setaf 2
+echo "###################################################################################################"
+echo "Move wp-config-sample.php to wp-config.php"
+echo "###################################################################################################"
+tput sgr0
+
+mv /opt/lampp/htdocs/wordpress/wp-config-sample.php /opt/lampp/htdocs/wordpress/wp-config.php
+
+tput setaf 2
+echo "###################################################################################################"
+echo "Start XAMPP"
+echo "###################################################################################################"
+tput sgr0
+
+
+
 
 sleep 5
 
-firefox http://localhost &
 firefox --new-tab http://localhost/wordpress &
-firefox --new-tab http://localhost/phpMyAdmin &
+firefox --new-tab http://localhost/phpmyadmin/ &
 
 
 tput setaf 2
 echo "###################################################################################################"
 echo "Done"
 echo "Steps to take now"
+echo "1. Create a new database in phpmyadmin - collation "
+echo "2. Edit wp-config.php and change the database name - DB_NAME"
+echo "3. "
+echo "4. "
+echo "5. "
+echo "6. "
 echo "1. "
 echo "1. "
 echo "1. "
 echo "1. "
-echo "1. "
-echo "1. "
-echo "1. "
-echo "1. "
-echo "1. "
-echo "1. "
+echo "###################################################################################################"
+tput sgr0
+
+
+tput setaf 2
+echo "###################################################################################################"
+echo "When you are ready type"
+echo "sudo xampp start"
 echo "###################################################################################################"
 tput sgr0
