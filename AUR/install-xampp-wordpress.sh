@@ -92,17 +92,16 @@ echo "Copy wp-config-sample.php to wp-config.php"
 echo "###################################################################################################"
 tput sgr0
 
-sudo cp /opt/lampp/htdocs/wordpress/wp-config-sample.php /opt/lampp/htdocs/wordpress/wp-config.php
-
-sudo chown erik:erik -R /opt/lampp/htdocs/wordpress
+sudo chown $USER:$USER -R /opt/lampp/htdocs/wordpress
 
 tput setaf 2
 echo "###################################################################################################"
 echo "Done"
 echo "Steps to take now"
-echo "1. Create a new database in phpmyadmin "
-echo "2. with collation - name = wp "
-echo "3. Surf to https://localhost/wordpress - Let's go button"
+echo "Open your browser and surf to http://localhost"
+echo "1. Create a new database in phpmyadmin - see menu"
+echo "2. with collation - name = wp"
+echo "3. Surf to http://localhost/wordpress - Let's go button"
 echo "4. Fill in Database Name = wp"
 echo "5. Fill in Username = root"
 echo "6. Keep Password empty"
@@ -112,17 +111,22 @@ echo "9. Click button - Run the installation"
 echo "9. Welcome screen"
 echo "10. Fill in all the blancs"
 echo "11. Press install Wordpress - wp-admin - to login"
+echo "12. FTP credentials are localhost - your username and your userpassword and FTP"
 echo "###################################################################################################"
 tput sgr0
 
 
 tput setaf 2
 echo "###################################################################################################"
-echo "When you are ready type"
+echo "Starting Xampp"
 echo "sudo xampp start"
 echo "###################################################################################################"
 tput sgr0
 
-#firefox --new-tab http://localhost/wordpress &
-#firefox --new-tab http://localhost/phpmyadmin/ &
+sudo xampp start
+
+sleep 5
+
+firefox --new-tab http://localhost/wordpress &
+firefox --new-tab http://localhost/phpmyadmin/ &
 
