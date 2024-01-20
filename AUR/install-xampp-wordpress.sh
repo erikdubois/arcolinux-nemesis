@@ -68,7 +68,7 @@ echo "Extract and copy to /opt/lampp/htdocs/"
 echo "###################################################################################################"
 tput sgr0
 
-sudo tar -xzvf /tmp/latest.tar.gz --strip-components 1
+sudo tar -xzvf /tmp/latest.tar.gz --strip-components 1 -C /tmp/wordpress
 sudo cp -r /tmp/wordpress /opt/lampp/htdocs/
 
 tput setaf 2
