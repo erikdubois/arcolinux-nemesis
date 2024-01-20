@@ -43,8 +43,9 @@ yay -S xampp --noconfirm --needed
 sudo wget http://wordpress.org/latest.tar.gz -O /tmp/latest.tar.gz
 
 cd /tmp
-sudo tar -xzvf /tmp/latest.tar.gz --strip-components 1 -O /tmp/latest
-
+mkdir /tmp/wp
+sudo tar -xzvf /tmp/latest.tar.gz --strip-components 1 -O /tmp/wp
+sudo mv -r /tmp/wp /opt/lampp/htdocs
 sudo rm /tmp/latest.tar.gz
 
 # sudo cp /srv/http/wp-config-sample.php /srv/http/wp-config.php
