@@ -65,6 +65,8 @@ sudo rm -r /tmp/wordpress
 
 sudo xampp start
 
+sleep 5
+
 firefox http://localhost &
-firefox --new-tab http://localhost/wp &
+firefox --new-tab http://localhost/wordpress &
 firefox --new-tab http://localhost/phpMyAdmin &
