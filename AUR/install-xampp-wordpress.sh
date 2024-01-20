@@ -91,22 +91,7 @@ echo "Move wp-config-sample.php to wp-config.php"
 echo "###################################################################################################"
 tput sgr0
 
-mv /opt/lampp/htdocs/wordpress/wp-config-sample.php /opt/lampp/htdocs/wordpress/wp-config.php
-
-tput setaf 2
-echo "###################################################################################################"
-echo "Start XAMPP"
-echo "###################################################################################################"
-tput sgr0
-
-
-
-
-sleep 5
-
-firefox --new-tab http://localhost/wordpress &
-firefox --new-tab http://localhost/phpmyadmin/ &
-
+#sudo mv /opt/lampp/htdocs/wordpress/wp-config-sample.php /opt/lampp/htdocs/wordpress/wp-config.php
 
 tput setaf 2
 echo "###################################################################################################"
@@ -132,3 +117,7 @@ echo "When you are ready type"
 echo "sudo xampp start"
 echo "###################################################################################################"
 tput sgr0
+
+#firefox --new-tab http://localhost/wordpress &
+#firefox --new-tab http://localhost/phpmyadmin/ &
+
