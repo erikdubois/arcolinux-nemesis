@@ -88,11 +88,13 @@ fi
 
 tput setaf 2
 echo "###################################################################################################"
-echo "Move wp-config-sample.php to wp-config.php"
+echo "Copy wp-config-sample.php to wp-config.php"
 echo "###################################################################################################"
 tput sgr0
 
-#sudo mv /opt/lampp/htdocs/wordpress/wp-config-sample.php /opt/lampp/htdocs/wordpress/wp-config.php
+sudo cp /opt/lampp/htdocs/wordpress/wp-config-sample.php /opt/lampp/htdocs/wordpress/wp-config.php
+
+sudo chown erik:erik -R /opt/lampp/htdocs/wordpress
 
 tput setaf 2
 echo "###################################################################################################"
@@ -100,14 +102,16 @@ echo "Done"
 echo "Steps to take now"
 echo "1. Create a new database in phpmyadmin "
 echo "2. with collation - name = wp "
-echo "3. Surf to https://localhost/wordpress"
+echo "3. Surf to https://localhost/wordpress - Let's go button"
 echo "4. Fill in Database Name = wp"
 echo "5. Fill in Username = root"
 echo "6. Keep Password empty"
 echo "7. Press Submit"
-echo "8. Welcome screen"
-echo "9. Fill in all the blancs"
-echo "10. Press install Wordpress - wp-admin - to login"
+echo "8. Copy paste code into a new file wp-config.php - save it - 644 permissions !!!"
+echo "9. Click button - Run the installation"
+echo "9. Welcome screen"
+echo "10. Fill in all the blancs"
+echo "11. Press install Wordpress - wp-admin - to login"
 echo "###################################################################################################"
 tput sgr0
 
