@@ -52,17 +52,6 @@ sudo cp -r /tmp/wordpress /opt/lampp/htdocs/
 sudo rm /tmp/latest.tar.gz
 sudo rm -r /tmp/wordpress
 
-# sudo cp /srv/http/wp-config-sample.php /srv/http/wp-config.php
-# #sudo cp /srv/http/wordpress/wp-config-sample.php /srv/http/wp-config.php
-
-
-# #sudo chown -Rv http:http /srv/http/
-
-# #sudo find /srv/http/ -type d -exec chmod -v 775 {} \;
-
-# #sudo find /srv/http/ -type f -exec chmod -v 644 {} \;
-
-
 sudo xampp start
 
 sleep 5
@@ -70,3 +59,10 @@ sleep 5
 firefox http://localhost &
 firefox --new-tab http://localhost/wordpress &
 firefox --new-tab http://localhost/phpMyAdmin &
+
+
+tput setaf 2
+echo "###################################################################################################"
+echo "DONE"
+echo "###################################################################################################"
+tput sgr0
