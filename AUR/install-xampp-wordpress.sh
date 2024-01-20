@@ -32,7 +32,7 @@
 # https://computingforgeeks.com/how-setup-wordpress-on-arch-linux/
 # https://wiki.archlinux.org/title/Wordpress
 
-tput setaf 1
+tput setaf 2
 echo "###################################################################################################"
 echo "INSTALLING XAMPP"
 echo "###################################################################################################"
@@ -43,7 +43,7 @@ yay -S xampp --noconfirm --needed
 sudo wget http://wordpress.org/latest.tar.gz -O /tmp/latest.tar.gz
 
 cd /tmp
-sudo tar -xzvf /tmp/latest.tar.gz --strip-components 1
+sudo tar -xzvf /tmp/latest.tar.gz --strip-components 1 -O /tmp/latest
 
 sudo rm /tmp/latest.tar.gz
 
