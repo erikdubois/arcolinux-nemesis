@@ -40,17 +40,50 @@ tput sgr0
 
 yay -S xampp --noconfirm --needed
 
-sudo rm /tmp/latest.tar.gz
-sudo rm -r /tmp/wp
+tput setaf 2
+echo "###################################################################################################"
+echo "Cleanup action"
+echo "###################################################################################################"
+tput sgr0
+
+if [ -f /tmp/latest.tar.gz ]; then
+	sudo rm /tmp/latest.tar.gz
+fi
+
+if [ -d /tmp/wordpress ]; then
+	sudo rm -r /tmp/wordpress
+fi
+
+tput setaf 2
+echo "###################################################################################################"
+echo "Download last wordpress release"
+echo "###################################################################################################"
+tput sgr0
 
 sudo wget http://wordpress.org/latest.tar.gz -O /tmp/latest.tar.gz
 
-cd /tmp
-mkdir /tmp/wp
+tput setaf 2
+echo "###################################################################################################"
+echo "Extract and copy to /opt/lampp/htdocs/"
+echo "###################################################################################################"
+tput sgr0
+
 sudo tar -xzvf /tmp/latest.tar.gz --strip-components 1
 sudo cp -r /tmp/wordpress /opt/lampp/htdocs/
-sudo rm /tmp/latest.tar.gz
-sudo rm -r /tmp/wordpress
+
+tput setaf 2
+echo "###################################################################################################"
+echo "Cleanup action"
+echo "###################################################################################################"
+tput sgr0
+
+if [ -f /tmp/latest.tar.gz ]; then
+	sudo rm /tmp/latest.tar.gz
+fi
+
+if [ -d /tmp/wordpress ]; then
+	sudo rm -r /tmp/wordpress
+fi
 
 sudo xampp start
 
@@ -63,6 +96,17 @@ firefox --new-tab http://localhost/phpMyAdmin &
 
 tput setaf 2
 echo "###################################################################################################"
-echo "DONE"
+echo "Done"
+echo "Steps to take now"
+echo "1. "
+echo "1. "
+echo "1. "
+echo "1. "
+echo "1. "
+echo "1. "
+echo "1. "
+echo "1. "
+echo "1. "
+echo "1. "
 echo "###################################################################################################"
 tput sgr0
