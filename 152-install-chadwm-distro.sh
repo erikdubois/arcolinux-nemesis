@@ -65,6 +65,7 @@ func_install_chadwm() {
     archlinux-logout-git
     arcolinux-chadwm-git
     arcolinux-paleofetch-git
+    arcolinux-powermenu-git
     arcolinux-wallpapers-candy-git
     arcolinux-wallpapers-git
     autorandr
