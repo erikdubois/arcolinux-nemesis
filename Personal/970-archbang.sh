@@ -41,11 +41,8 @@ if grep -q "ArchBang" /etc/os-release; then
 	tput sgr0
 	echo
 
-	echo
-	echo "Pacman parallel downloads	"
-	FIND="ParallelDownloads = 16"
-	REPLACE="ParallelDownloads = 20"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
+	echo "Removing conflicting files"
+	sudo rm -f /etc/skel/.config/variety/variety.conf
 
 	echo "Variety conf ArcoLinux"
 	sudo pacman -S --noconfirm --needed arcolinux-variety-git
@@ -54,6 +51,16 @@ if grep -q "ArchBang" /etc/os-release; then
 	echo "Adding nanorc"
 	if [ -f /etc/nanorc ]; then
     	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+	fi
+
+	echo
+	echo "Setting environment variables"
+	echo
+	if [ -f /etc/environment ]; then
+		echo "XDG" | sudo tee /etc/environment
+		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
+		echo "EDITOR=nano" | sudo tee -a /etc/environment
+		echo "BROWSER=firefox" | sudo tee -a /etc/environment
 	fi
 
 	echo	
