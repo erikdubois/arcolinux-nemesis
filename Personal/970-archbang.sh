@@ -75,6 +75,8 @@ if grep -q "ArchBang" /etc/os-release; then
 		echo
 
 		echo "Changing theme and icon theme"
+		sudo pacman -S --noconfirm --needed openbox-arc-git 
+		sudo pacman -S --noconfirm --needed arcolinux-openbox-themes-git
 
 	fi
 
