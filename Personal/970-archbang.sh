@@ -93,10 +93,10 @@ if grep -q "ArchBang" /etc/os-release; then
 
 	fi
 
-   	echo "Putting back the backups of important files to start openbox"
-	sudo cp -f /etc/skel/.bash_profile_nemesis /etc/skel/.bash_profile
-	sudo cp -f $HOME/.bash_profile_nemesis $HOME/.bash_profile
-	sudo cp -f $HOME/.xinitrc-nemesis $HOME/.xinitrc
+   	#echo "Putting back the backups of important files to start openbox"
+	#sudo cp -f /etc/skel/.bash_profile_nemesis /etc/skel/.bash_profile
+	#sudo cp -f $HOME/.bash_profile_nemesis $HOME/.bash_profile
+	#sudo cp -f $HOME/.xinitrc-nemesis $HOME/.xinitrc
 
   	echo
   	tput setaf 6
