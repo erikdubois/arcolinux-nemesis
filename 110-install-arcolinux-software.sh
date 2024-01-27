@@ -108,15 +108,6 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
 
 fi
 
-echo
-tput setaf 6
-echo "################################################################"
-echo "################### Done"
-echo "################################################################"
-tput sgr0
-echo
-
-
 if [ -f /usr/share/xsessions/cinnamon.desktop ]; then
 
   echo
@@ -137,3 +128,11 @@ if [ -f /usr/share/xsessions/cinnamon.desktop ]; then
   sudo pacman -S --noconfirm --needed xed
 
 fi
+
+echo
+tput setaf 6
+echo "################################################################"
+echo "################### Done"
+echo "################################################################"
+tput sgr0
+echo

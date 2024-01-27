@@ -342,13 +342,6 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 
 fi
 
-echo
-tput setaf 6
-echo "######################################################"
-echo "################### Done"
-echo "######################################################"
-tput sgr0
-echo
 
 # when on Archman - remove conflicting files
 
@@ -468,3 +461,11 @@ if grep -q "RebornOS" /etc/os-release; then
   echo
 
 fi
+
+echo
+tput setaf 6
+echo "######################################################"
+echo "################### Done"
+echo "######################################################"
+tput sgr0
+echo

@@ -118,3 +118,11 @@ if [ -f /tmp/install-chadwm ]; then
 
     func_install_chadwm
 fi
+
+echo
+tput setaf 6
+echo "################################################################"
+echo "################### Done"
+echo "################################################################"
+tput sgr0
+echo
