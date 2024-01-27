@@ -42,10 +42,15 @@ if grep -q "ArchBang" /etc/os-release; then
   echo
 
   echo "Making backups of important files to start openbox"
-  sudo cp -f /etc/skel/.bash_profile /etc/skel/.bash_profile_nemesis
-  sudo cp -f $HOME/.bash_profile $HOME/.bash_profile_nemesis
-  sudo cp -f $HOME/.xinitrc $HOME/.xinitrc-nemesis
-
+  if ! -f /etc/skel/.bash_profile_nemesis; then
+    sudo cp -f /etc/skel/.bash_profile /etc/skel/.bash_profile_nemesis
+  fi
+  if ! $HOME/.bash_profile_nemesis; then
+    sudo cp -f $HOME/.bash_profile $HOME/.bash_profile_nemesis
+  fi
+  if ! $HOME/.xinitrc-nemesis;
+    sudo cp -f $HOME/.xinitrc $HOME/.xinitrc-nemesis
+  fi
 
   echo
   tput setaf 6
