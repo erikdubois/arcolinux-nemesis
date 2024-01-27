@@ -47,7 +47,7 @@ if grep -q "ArchBang" /etc/os-release; then
     cp -vf $HOME/.bash_profile $HOME/.bash_profile_nemesis
   fi
 
-  if [ ! $HOME/.xinitrc-nemesis ]; then
+  if [ ! -f $HOME/.xinitrc-nemesis ]; then
     cp -vf $HOME/.xinitrc $HOME/.xinitrc-nemesis
   fi
 
