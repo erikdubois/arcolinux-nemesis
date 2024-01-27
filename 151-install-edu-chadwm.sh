@@ -68,6 +68,7 @@ func_install_chadwm() {
     edu-system-git
     edu-xfce-git
     arcolinux-paleofetch-git
+    arcolinux-powermenu-git
     arcolinux-wallpapers-candy-git
     arcolinux-wallpapers-git
     autorandr
@@ -178,12 +179,12 @@ if [ -f /usr/local/bin/get-nemesis-on-area ]; then
 
 fi
 
-if grep -q "arch" /etc/os-release; then
+if grep -q 'NAME="Arch Linux"' /etc/os-release; then
 
     echo
     tput setaf 2
     echo "################################################################"
-    echo "################### We are on ArchLinux"
+    echo "################### We are on Arch Linux"
     echo "################################################################"
     tput sgr0
     echo
