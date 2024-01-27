@@ -78,8 +78,8 @@ echo
 
 sudo pacman -Sy
 
-sh 400-remove-software*
 sh 410-intervention*
+sh 400-remove-software*
 
 sh 100-install-nemesis-software*
 sh 110-install-arcolinux-software*
