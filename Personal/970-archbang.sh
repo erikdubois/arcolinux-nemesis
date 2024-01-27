@@ -59,6 +59,7 @@ if grep -q "ArchBang" /etc/os-release; then
 	echo
 
 	if ! grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
+		echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/environment
 		echo "XDG_CURRENT_DESKTOP=openbox" | sudo tee -a $HOME/.config/openbox/environment
 		echo "XDG_SESSION_DESKTOP=openbox" | sudo tee -a $HOME/.config/openbox/environment
 		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a $HOME/.config/openbox/environment
