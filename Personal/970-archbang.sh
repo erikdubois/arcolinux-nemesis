@@ -91,6 +91,11 @@ if grep -q "ArchBang" /etc/os-release; then
 		sudo pacman -S --noconfirm --needed openbox-arc-git 
 		sudo pacman -S --noconfirm --needed arcolinux-openbox-themes-git
 
+		if ! grep -q "picom" $HOME/.config/openbox/autostart; then
+			echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/autostart;
+			echo "picom &" | sudo tee -a $HOME/.config/openbox/autostart;
+		fi
+
 	fi
 
    	#echo "Putting back the backups of important files to start openbox"
