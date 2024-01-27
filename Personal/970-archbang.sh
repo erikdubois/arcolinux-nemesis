@@ -57,11 +57,13 @@ if grep -q "ArchBang" /etc/os-release; then
 	echo
 	echo "Setting environment variables"
 	echo
-	if [ -f /etc/environment ]; then
-		echo "XDG_CURRENT_DESKTOP=openbox" | sudo tee -a /etc/environment
-		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
-		echo "EDITOR=nano" | sudo tee -a /etc/environment
-		echo "BROWSER=firefox" | sudo tee -a /etc/environment
+
+	if ! grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
+		echo "XDG_CURRENT_DESKTOP=openbox" | sudo tee -a $HOME/.config/openbox/environment
+		echo "XDG_SESSION_DESKTOP=openbox" | sudo tee -a $HOME/.config/openbox/environment
+		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a $HOME/.config/openbox/environment
+		echo "EDITOR=nano" | sudo tee -a $HOME/.config/openbox/environment
+		echo "BROWSER=firefox" | sudo tee -a $HOME/.config/openbox/environment
 	fi
 
 	echo	
