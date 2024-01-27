@@ -43,6 +43,7 @@ if grep -q "ArchBang" /etc/os-release; then
 
   echo "Making backups of important files to start openbox"
   sudo cp -f /etc/skel/.bash_profile /etc/skel/.bash_profile_nemesis
+  sudo cp -f $HOME/.bash_profile $HOME/.bash_profile_nemesis
   sudo cp -f $HOME/.xinitrc $HOME/.xinitrc-nemesis
 
 
