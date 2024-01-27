@@ -46,6 +46,7 @@ if grep -q "ArchBang" /etc/os-release; then
 
 	echo "Variety conf ArcoLinux"
 	sudo pacman -S --noconfirm --needed arcolinux-variety-git
+	sudo pacman -S --noconfirm --needed arcolinux-variety-autostart-git
 
 	echo
 	echo "Adding nanorc"

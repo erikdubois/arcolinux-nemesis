@@ -51,7 +51,7 @@ if [ ! -d /usr/share/wayland-sessions/ ]; then
 fi
 
 echo
-echo "Pacman parallel downloads if needed -for ArcoLinux"
+echo "Pacman parallel downloads from 8 to 20"
 FIND="ParallelDownloads = 8"
 REPLACE="ParallelDownloads = 20"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
@@ -63,7 +63,7 @@ REPLACE="ParallelDownloads = 20"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
 
 echo
-echo "Pacman parallel downloads if needed - for EOS"
+echo "Pacman parallel downloads from 5 to 20"
 FIND="ParallelDownloads = 5"
 REPLACE="ParallelDownloads = 20"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
@@ -127,6 +127,7 @@ sh 970-garuda*
 sh 970-sierra*
 sh 970-biglinux*
 sh 970-rebornos*
+sh 970-archbang*
 
 #has to be last - they are all Arch
 sh 970-arch.sh
