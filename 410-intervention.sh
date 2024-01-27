@@ -44,11 +44,11 @@ if grep -q "ArchBang" /etc/os-release; then
   echo "Making backups of important files to start openbox"
 
   if [ ! -f $HOME/.bash_profile_nemesis ]; then
-    cp -f $HOME/.bash_profile $HOME/.bash_profile_nemesis
+    cp -vf $HOME/.bash_profile $HOME/.bash_profile_nemesis
   fi
 
   if [ ! $HOME/.xinitrc-nemesis ]; then
-    cp -f $HOME/.xinitrc $HOME/.xinitrc-nemesis
+    cp -vf $HOME/.xinitrc $HOME/.xinitrc-nemesis
   fi
 
   echo
