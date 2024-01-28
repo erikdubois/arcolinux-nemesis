@@ -51,6 +51,8 @@ if grep -q "ArchBang" /etc/os-release; then
     cp -vf $HOME/.xinitrc $HOME/.xinitrc-nemesis
   fi
 
+  sudo cp mirrorlist /etc/pacman.d/mirrorlist
+
   echo
   tput setaf 6
   echo "################################################################"
