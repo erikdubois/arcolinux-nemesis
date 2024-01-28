@@ -82,6 +82,30 @@ if grep -q "ArchBang" /etc/os-release; then
 		echo "BROWSER=firefox" | sudo tee -a /etc/environment
 	fi
 
+	echo
+	echo "Change gtk-3.0 config"
+	echo
+	FIND="gtk-theme-name=Adwaita-dark"
+	REPLACE="gtk-theme-name=Arc-Dark"
+	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
+
+	echo
+	echo "Change gtk-3.0 config"
+	echo
+	FIND="gtk-icon-theme-name=Adwaita"
+	REPLACE="gtk-icon-theme-name=a-candy-beauty-icon-theme"
+	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
+
+	echo
+	echo "Change gtk-3.0 config"
+	echo
+	FIND="gtk-cursor-theme-name=Adwaita"
+	REPLACE="gtk-cursor-theme-name=Bibata-Modern-Ice"
+	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
+
 	echo	
 	echo "When on Openbox"
 	if [ -f /usr/share/xsessions/openbox.desktop ]; then
