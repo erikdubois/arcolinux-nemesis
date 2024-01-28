@@ -117,9 +117,12 @@ else
 	echo "################################################################"
 	echo "### You are on a virtual machine - skipping VirtualBox"
 	echo "### Template not copied over"
+	echo "### We will set your screen resolution with xrandr"
 	echo "################################################################"
 	tput sgr0
 	echo
+
+	xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 
 fi
 
