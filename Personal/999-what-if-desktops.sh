@@ -122,3 +122,21 @@ if [ -f /usr/share/wayland-sessions/hyprland.desktop ]; then
   give-me-azerty-be-hyprland
   
 fi
+
+if grep -q "ArchBang" /etc/os-release; then
+  result=$(systemd-detect-virt)
+  if [ $result = "oracle" ];then
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### We are on ArchBang in Virtualbox"
+    echo "################################################################"
+    tput sgr0
+    echo
+
+    if ! grep -q "xrandr" $HOME/.config/openbox/autostart; then
+      echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/autostart;
+      echo "xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal &" | sudo tee -a $HOME/.config/openbox/autostart;
+    fi
+  fi
+fi
