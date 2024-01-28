@@ -120,23 +120,6 @@ if [ -f /tmp/install-chadwm ]; then
     func_install_chadwm
 fi
 
-result=$(systemd-detect-virt)
-if [ $result = "oracle" ];then
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### We are on Virtualbox - going for 1920x1080"
-    echo "################################################################"
-    tput sgr0
-    echo
-
-    if ! grep -q "xrandr --output Virtual-1" $HOME/.config/arco-chadwm/scripts/run.sh; then
-      echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/arco-chadwm/scripts/run.sh
-      sed -i '1s/^/xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal &/' $HOME/.config/arco-chadwm/scripts/run.sh
-    fi
-fi
-
-
 echo
 tput setaf 6
 echo "################################################################"
