@@ -41,6 +41,16 @@ if grep -q "ArchBang" /etc/os-release; then
   tput sgr0
   echo
 
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Running fixkey"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+  /usr/local/bin/fixkey
+
   echo "Making backups of important files to start openbox"
 
   if [ ! -f $HOME/.bash_profile_nemesis ]; then
