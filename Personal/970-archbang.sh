@@ -93,7 +93,7 @@ if grep -q "ArchBang" /etc/os-release; then
 	echo
 	echo "Change gtk-3.0 config"
 	echo
-	FIND="gtk-icon-theme-name=Adwaita"
+	FIND="gtk-icon-theme-name=Arc"
 	REPLACE="gtk-icon-theme-name=a-candy-beauty-icon-theme"
 	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
 	#sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
