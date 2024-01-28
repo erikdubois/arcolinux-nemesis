@@ -139,7 +139,7 @@ if grep -q "ArchBang" /etc/os-release; then
       echo "xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal &" | sudo tee -a $HOME/.config/openbox/autostart;
     fi
 
-    if [ -f /usr/share/xsessions/chadwm.desktop ];
+    if [ -f /usr/share/xsessions/chadwm.desktop ]; then
       if ! grep -q "xrandr --output Virtual-1" $HOME/.config/arco-chadwm/scripts/run.sh; then
         echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/arco-chadwm/scripts/run.sh
         sed -i '1s/^/xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal &/' $HOME/.config/arco-chadwm/scripts/run.sh
