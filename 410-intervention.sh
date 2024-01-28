@@ -54,6 +54,17 @@ if grep -q "ArchBang" /etc/os-release; then
   sudo cp mirrorlist /etc/pacman.d/mirrorlist
 
   echo
+  echo "Change to zstd in mkinitcpio"
+  echo
+  FIND='COMPRESSION="xz"'
+  REPLACE='COMPRESSION="zstd"'
+  sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
+
+  #plenty of opportunity for this to run later
+  #sudo mkinitcpio -P
+  #sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+  echo
   tput setaf 6
   echo "################################################################"
   echo "################### Done"
