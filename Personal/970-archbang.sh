@@ -139,6 +139,33 @@ if grep -q "ArchBang" /etc/os-release; then
 
 	fi
 
+
+	echo	
+	echo "When Chadwm is installed - default to it"
+	if [ -f /usr/share/xsessions/chadwm.desktop ]; then
+		echo
+		tput setaf 2
+		echo "################################################################"
+		echo "################### We choose to install chadwm"
+		echo "################################################################"
+		tput sgr0
+		echo
+		
+		if ! grep -q "#exec openbox-session" $HOME/.xinitrc; then
+			FIND="exec openbox-session"
+			REPLACE="#exec openbox-session"
+			sed -i "s/$FIND/$REPLACE/g" $HOME/.xinitrc
+		fi
+
+
+		if ! grep -q "exec-chadwm" $HOME/.xinitrc; then
+			echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.xinitrc;
+			echo "exec exec-chadwm" | sudo tee -a $HOME/.xinitrc;
+		fi
+
+	fi
+
+
   	echo
   	tput setaf 6
   	echo "################################################################"
