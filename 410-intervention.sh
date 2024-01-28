@@ -56,9 +56,9 @@ if grep -q "ArchBang" /etc/os-release; then
   echo
   echo "Change to zstd in mkinitcpio"
   echo
-  FIND='COMPRESSION="xz"'
-  REPLACE='COMPRESSION="zstd"'
-  sudo sed -i 's/$FIND/$REPLACE/g' /etc/mkinitcpio.conf
+  FIND="COMPRESSION=\"xz\""
+  REPLACE="COMPRESSION=\"zstd\""
+  sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
   #plenty of opportunity for this to run later
   #sudo mkinitcpio -P
