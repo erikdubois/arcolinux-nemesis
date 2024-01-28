@@ -115,6 +115,8 @@ sh 950-*
 
 sh 960-*
 
+sh 969-skel*
+
 sh 970-all*
 
 sh 970-alci*
@@ -132,8 +134,6 @@ sh 970-archbang*
 
 #has to be last - they are all Arch
 sh 970-arch.sh
-
-sh 998-skel*
 
 sh 999-what*
 
