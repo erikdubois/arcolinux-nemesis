@@ -130,9 +130,9 @@ if [ $result = "oracle" ];then
     tput sgr0
     echo
 
-    if ! grep -q "xrandr --output Virtual-1" $HOME/.config/arcochadwm/scripts/run.sh; then
-      echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/arcochadwm/scripts/run.sh
-      echo "xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal &" | sudo tee -a $HOME/.config/arcochadwm/scripts/run.sh
+    if ! grep -q "xrandr --output Virtual-1" $HOME/.config/arco-chadwm/scripts/run.sh; then
+      echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/arco-chadwm/scripts/run.sh
+      echo "xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal &" | sudo tee -a $HOME/.config/arco-chadwm/scripts/run.sh
     fi
   fi
 fi
