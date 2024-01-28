@@ -163,6 +163,12 @@ if grep -q "ArchBang" /etc/os-release; then
 			echo "exec exec-chadwm" | sudo tee -a $HOME/.xinitrc;
 		fi
 
+		if ! grep -q '#run "conky' $HOME/.config/arco-chadwm/scripts/run.sh; then
+			FIND='run "conky'
+			REPLACE='#run "conky'
+			sed -i "s/$FIND/$REPLACE/g" $HOME/.config/arco-chadwm/scripts/run.sh
+		fi
+
 	fi
 
 
