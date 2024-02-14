@@ -10,9 +10,7 @@
 ![Maintenance](https://img.shields.io/maintenance/yes/2024?style=for-the-badge)
 ![Last-Commit](https://img.shields.io/github/last-commit/erikdubois/arcolinux-nemesis?style=for-the-badge)
 
-<a href="https://github.com/erikdubois?tab=followers">
-<img alt="followers" title="Follow for Updates" src="https://custom-icon-badges.demolab.com/github/followers/erikdubois?color=236ad3&labelColor=1155ba&style=for-the-badge&logo=person-add&label=Follow&logoColor=white"/>
-</a><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/erikdubois/arcolinux-nemesis"><img alt="GitHub forks" src="https://img.shields.io/github/forks/erikdubois/arcolinux-nemesis">
+<img alt="GitHub followers" src="https://img.shields.io/github/followers/erikdubois?style=flat"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/erikdubois/arcolinux-nemesis"><img alt="GitHub forks" src="https://img.shields.io/github/forks/erikdubois/arcolinux-nemesis">
 
 
 
