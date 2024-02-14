@@ -12,8 +12,9 @@
 
 <a href="https://github.com/erikdubois?tab=followers">
 <img alt="followers" title="Follow for Updates" src="https://custom-icon-badges.demolab.com/github/followers/erikdubois?color=236ad3&labelColor=1155ba&style=for-the-badge&logo=person-add&label=Follow&logoColor=white"/>
-</a>
- <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/erikdubois/arcolinux-nemesis">
+</a><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/erikdubois/arcolinux-nemesis">![GitHub forks](https://img.shields.io/github/forks/erikdubois/arcolinux-nemesis)
+
+
 
 # ArcoLinux Nemesis
 
