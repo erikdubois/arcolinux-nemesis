@@ -14,6 +14,7 @@
 
 <img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCJdmdUp5BrsWsYVQUylCMLg">&nbsp;&nbsp;<img alt="YouTube Channel Views" src="https://img.shields.io/youtube/channel/views/UCJdmdUp5BrsWsYVQUylCMLg">
 
+<img alt="AUR Last Modified" src="https://img.shields.io/aur/last-modified/archlinux-tweak-tool-git?label=AUR%20-%20ArchLinux-Tweak-Tool%20or%20ATT">
 
 
 # ArcoLinux Nemesis
