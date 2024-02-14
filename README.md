@@ -3,12 +3,12 @@
   <br />
    ArcoLinux Nemesis
 </h1>
-<a href="https://discord.gg/stBhS4taje" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/discord/1068192254365282405?logo=discord&label=discord" alt="discord"/></a>
-<a href="https://t.me/arcolinux_d_b" target="_blank" rel="noopener noreferrer"><img alt="Telegram" src="https://img.shields.io/badge/telegram-chat-blue?logo=telegram"></a>
-
 
 ![Maintenance](https://img.shields.io/maintenance/yes/2024?style=for-the-badge)
 ![Last-Commit](https://img.shields.io/github/last-commit/erikdubois/arcolinux-nemesis?style=for-the-badge)
+
+<a href="https://discord.gg/stBhS4taje" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/discord/1068192254365282405?logo=discord&label=discord" alt="discord"/></a>
+<a href="https://t.me/arcolinux_d_b" target="_blank" rel="noopener noreferrer"><img alt="Telegram" src="https://img.shields.io/badge/telegram-chat-blue?logo=telegram"></a>
 
 <img alt="GitHub followers" src="https://img.shields.io/github/followers/erikdubois?style=flat">&nbsp;&nbsp;<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/erikdubois/arcolinux-nemesis">&nbsp;&nbsp;<img alt="GitHub forks" src="https://img.shields.io/github/forks/erikdubois/arcolinux-nemesis">
 
