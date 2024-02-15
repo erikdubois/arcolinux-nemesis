@@ -41,6 +41,9 @@ echo
 
 sh 410-intervention*
 
+if [ -f /usr/local/bin/velo ]; then
+    velo
+fi
 
 if [ ! -d /usr/share/wayland-sessions/ ]; then
 
