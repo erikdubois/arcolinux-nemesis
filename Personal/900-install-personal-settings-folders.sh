@@ -200,13 +200,6 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	sudo cp $installed_dir/settings/variety/variety.conf /etc/skel/.config/variety/
 	echo
 
-	echo
-	echo "Installing personal settings of variety scripts"
-	[ -d $HOME"/.config/variety/scripts" ] || mkdir -p $HOME"/.config/variety/scripts"
-	cp $installed_dir/settings/variety/scripts/* ~/.config/variety/scripts/
-	[ -d /etc/skel/.config/variety/scripts ] || sudo mkdir -p /etc/skel/.config/variety/scripts
-	sudo cp $installed_dir/settings/variety/scripts/* /etc/skel/.config/variety/scripts/
-	echo
 fi
 
 echo
