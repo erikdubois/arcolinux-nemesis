@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-02-15
+## Generated on 2024-02-17
 ##
 
 ## Worldwide
@@ -733,8 +733,6 @@ Server = http://ftp.lanet.kr/pub/archlinux/$repo/os/$arch
 Server = https://ftp.lanet.kr/pub/archlinux/$repo/os/$arch
 Server = http://mirror.morgan.kr/archlinux/$repo/os/$arch
 Server = https://mirror.morgan.kr/archlinux/$repo/os/$arch
-Server = http://mirror.premi.st/archlinux/$repo/os/$arch
-Server = https://mirror.premi.st/archlinux/$repo/os/$arch
 Server = http://mirror.siwoo.org/archlinux/$repo/os/$arch
 Server = https://mirror.siwoo.org/archlinux/$repo/os/$arch
 Server = http://mirror.yuki.net.uk/archlinux/$repo/os/$arch
