@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-02-18
+## Generated on 2024-02-19
 ##
 
 ## Worldwide
@@ -157,6 +157,8 @@ Server = https://mirrors.xjtu.edu.cn/archlinux/$repo/os/$arch
 Server = http://mirrors.zju.edu.cn/archlinux/$repo/os/$arch
 
 ## Colombia
+Server = http://mirrors.atlas.net.co/archlinux/$repo/os/$arch
+Server = https://mirrors.atlas.net.co/archlinux/$repo/os/$arch
 Server = http://edgeuno-bog2.mm.fcix.net/archlinux/$repo/os/$arch
 Server = https://edgeuno-bog2.mm.fcix.net/archlinux/$repo/os/$arch
 Server = http://mirrors.udenar.edu.co/archlinux/$repo/os/$arch
@@ -247,6 +249,7 @@ Server = https://arch.nimukaito.net/$repo/os/$arch
 Server = http://mirror.oldsql.cc/archlinux/$repo/os/$arch
 Server = https://mirror.oldsql.cc/archlinux/$repo/os/$arch
 Server = http://archlinux.mirrors.ovh.net/archlinux/$repo/os/$arch
+Server = https://archlinux.mirrors.ovh.net/archlinux/$repo/os/$arch
 Server = http://archlinux.rezopole.net/$repo/os/$arch
 Server = http://mirror.spaceint.fr/archlinux/$repo/os/$arch
 Server = https://mirror.spaceint.fr/archlinux/$repo/os/$arch
@@ -917,6 +920,8 @@ Server = http://arch.hu.fo/archlinux/$repo/os/$arch
 Server = https://arch.hu.fo/archlinux/$repo/os/$arch
 Server = http://repo.ialab.dsu.edu/archlinux/$repo/os/$arch
 Server = https://repo.ialab.dsu.edu/archlinux/$repo/os/$arch
+Server = http://mirrors.iu13.net/archlinux/$repo/os/$arch
+Server = https://mirrors.iu13.net/archlinux/$repo/os/$arch
 Server = https://arch.mirror.ivo.st/$repo/os/$arch
 Server = http://mirrors.kernel.org/archlinux/$repo/os/$arch
 Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
