@@ -929,67 +929,61 @@ xfce4-whiskermenu-plugin
 xfce4-panel-profiles
 
 ###########################################################################
-#                                ISO SPECIFIC
+#                                ARCOLINUX SPECIFIC
 ###########################################################################
-arcolinux-meta-log
-#tempus-themes-xfce4-terminal-git
-#prot16-xfce4-terminal
+
 alacritty-themes
-base16-alacritty-git
-#xfce4-terminal-base16-colors-git
-time
-pace
-sparklines-git
-fish
-arcolinux-fish-git
-ripgrep-all
-#archlinux-login-backgrounds-plain-git
-vimix-cursors
-mkinitcpio-firmware
 arcolinux-app-glade-git
-sofirem-git
-noto-fonts-emoji
-hyfetch
+arcolinux-arc-dawn-git
+arcolinux-fish-git
 arcolinux-hyfetch-git
-#does this create issues?
-#kernel-modules-hook
-
-## chaotics-aur
-flat-remix
-colloid-cursors-git
-#firefox-esr
+arcolinux-meta-log
+base16-alacritty-git
+btop
+cpuid
+dropbox
+fish
+flameshot-git
+gitfiend
+hyfetch
+insync
+lastpass
+mkinitcpio-firmware
+nomacs-qt6-git
+noto-fonts-emoji
+pace
+python-pylint
+ripgrep-all
+sofirem-git
+sparklines-git
+spotify
+time
+vimix-cursors
+visual-studio-code-bin
+xcolor
+yay-git
 
 ###########################################################################
-#                                ISO SPECIFIC
+#                                CHADWM SPECIFIC
 ###########################################################################
 
-#desktop specific chadwm
-#pa-applet-git
 arcolinux-chadwm-git
 arcolinux-chadwm-pacman-hook-git
 arcolinux-paleofetch-git
+arcolinux-powermenu-git
 arcolinux-wallpapers-candy-git
 autorandr
-btop
 dash
 eww
+inetutils
 lolcat
 sxhkd
 ttf-jetbrains-mono-nerd
 ttf-meslo-nerd-font-powerlevel10k
-arcolinux-powermenu-git
-inetutils
 
-## ArcoLinuXL Prime
-nomacs-qt6-git
-
-yay-git
-flameshot-git
-visual-studio-code-bin
-gitfiend
-#obs-studio
-
-## personal repo
+###########################################################################
+#                                NEMESIS REPO
+###########################################################################
 
 edu-candy-beauty-arc-git
 edu-candy-beauty-arc-mint-grey-git
@@ -1001,9 +995,9 @@ edu-papirus-dark-tela-grey-git
 edu-surfn-numixs-blue-git
 edu-vimix-dark-tela-git
 
-arcolinux-arc-dawn-git
-cpuid
-insync
-dropbox
-lastpass
-python-pylint
+###########################################################################
+#                                CHAOTIC REPO
+###########################################################################
+
+#flat-remix
+#colloid-cursors-git
