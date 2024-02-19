@@ -107,7 +107,7 @@ sudo pacman -S --noconfirm --needed gitfiend
 sudo pacman -S --noconfirm --needed gnome-disk-utility
 sudo pacman -S --noconfirm --needed gparted
 #sudo pacman -S --noconfirm --needed grub-customizer
-sudo pacman -S --noconfirm --needed gtop
+#sudo pacman -S --noconfirm --needed gtop
 sudo pacman -S --noconfirm --needed gvfs-smb
 sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hardinfo-gtk3
@@ -191,17 +191,17 @@ sudo pacman -S --noconfirm --needed wttr
 sudo pacman -S --noconfirm --needed xcolor
 sudo pacman -S --noconfirm --needed xdg-user-dirs
 sudo pacman -S --noconfirm --needed xorg-xkill
-sudo pacman -S --noconfirm --needed yay-bin
+sudo pacman -S --noconfirm --needed yay-git
 sudo pacman -S --noconfirm --needed zsh
 sudo pacman -S --noconfirm --needed zsh-completions
 sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable ntpd.service
 
-sudo pacman -S --noconfirm --needed rxvt-unicode
-sudo pacman -S --noconfirm --needed urxvt-fullscreen
-sudo pacman -S --noconfirm --needed urxvt-perls
-sudo pacman -S --noconfirm --needed urxvt-resize-font-git
+#sudo pacman -S --noconfirm --needed rxvt-unicode
+#sudo pacman -S --noconfirm --needed urxvt-fullscreen
+#sudo pacman -S --noconfirm --needed urxvt-perls
+#sudo pacman -S --noconfirm --needed urxvt-resize-font-git
 
 sudo pacman -S --noconfirm --needed gzip
 sudo pacman -S --noconfirm --needed p7zip
@@ -229,9 +229,9 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
 
   sudo pacman -S --noconfirm --needed menulibre
   sudo pacman -S --noconfirm --needed mugshot
-  sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
-  sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
-  sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
+  #sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
+  #sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
+  #sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
 
 fi
 

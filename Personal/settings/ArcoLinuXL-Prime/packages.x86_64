@@ -249,7 +249,7 @@ chromium
 dmenu
 #evolution
 feh
-#firefox
+firefox
 #flashplugin
 galculator
 #geany
@@ -734,9 +734,9 @@ squashfs-tools
 plasma-framework5
 hwinfo
 qt5-xmlpatterns
-adobe-source-han-sans-jp-fonts
-adobe-source-han-sans-kr-fonts
-adobe-source-han-sans-cn-fonts
+#adobe-source-han-sans-jp-fonts
+#adobe-source-han-sans-kr-fonts
+#adobe-source-han-sans-cn-fonts
 
 ###########################################################################
 #                                ARCOLINUX CONFIG CALAMARES
@@ -957,7 +957,7 @@ arcolinux-hyfetch-git
 ## chaotics-aur
 flat-remix
 colloid-cursors-git
-firefox-esr
+#firefox-esr
 
 ###########################################################################
 #                                ISO SPECIFIC
@@ -1000,3 +1000,10 @@ edu-papirus-dark-tela-git
 edu-papirus-dark-tela-grey-git
 edu-surfn-numixs-blue-git
 edu-vimix-dark-tela-git
+
+arcolinux-arc-dawn-git
+cpuid
+insync
+dropbox
+lastpass
+python-pylint
