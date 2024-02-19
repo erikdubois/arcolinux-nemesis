@@ -427,7 +427,7 @@ ttf-ms-fonts
 #numix-icon-theme-git
 #numix-circle-icon-theme-git
 #paper-icon-theme
-sardi-icons
+#sardi-icons
 surfn-icons-git
 #surfn-arc-breeze-icons-git
 #zafiro-icon-theme
@@ -991,21 +991,12 @@ gitfiend
 
 ## personal repo
 
-edu-alci-grub-theme-git
-edu-arcolinux-grub-theme-git
-edu-ariser-grub-theme-git
-edu-asus-grub-theme-git
-edu-bao-grub-theme-git
 edu-candy-beauty-arc-git
 edu-candy-beauty-arc-mint-grey-git
 edu-candy-beauty-arc-mint-red-git
 edu-candy-beauty-qogir-git
 edu-candy-beauty-tela-git
-edu-evi-grub-theme-git
 edu-papirus-dark-tela-git
 edu-papirus-dark-tela-grey-git
-edu-radar-mono-grub-theme-git
 edu-surfn-numixs-blue-git
-edu-ubuntu-grub-theme-git
 edu-vimix-dark-tela-git
-edu-vimix-mono-grub-theme-git
