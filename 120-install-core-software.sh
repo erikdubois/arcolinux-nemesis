@@ -168,6 +168,9 @@ sudo pacman -S --noconfirm --needed telegram-desktop
 sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
 sudo pacman -S --noconfirm --needed the_silver_searcher
 sudo pacman -S --noconfirm --needed time
+sudo pacman -S --noconfirm --needed thunar
+sudo pacman -S --noconfirm --needed thunar-archive-plugin
+sudo pacman -S --noconfirm --needed thunar-volman
 sudo pacman -S --noconfirm --needed tree
 sudo pacman -S --noconfirm --needed ttf-bitstream-vera
 sudo pacman -S --noconfirm --needed ttf-dejavu

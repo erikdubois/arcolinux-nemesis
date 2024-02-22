@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-02-19
+## Generated on 2024-02-22
 ##
 
 ## Worldwide
@@ -116,6 +116,8 @@ Server = https://mirror.xenyth.net/archlinux/$repo/os/$arch
 ## Chile
 Server = http://mirror.anquan.cl/archlinux/$repo/os/$arch
 Server = https://mirror.anquan.cl/archlinux/$repo/os/$arch
+Server = http://elmirror.cl/archlinux/$repo/os/$arch
+Server = https://elmirror.cl/archlinux/$repo/os/$arch
 Server = http://mirror.hnd.cl/archlinux/$repo/os/$arch
 Server = https://mirror.hnd.cl/archlinux/$repo/os/$arch
 
@@ -631,6 +633,8 @@ Server = http://mirror.barata.pt/archlinux/$repo/os/$arch
 Server = https://mirror.barata.pt/archlinux/$repo/os/$arch
 Server = http://glua.ua.pt/pub/archlinux/$repo/os/$arch
 Server = https://glua.ua.pt/pub/archlinux/$repo/os/$arch
+Server = http://mirror.leitecastro.com/archlinux/$repo/os/$arch
+Server = https://mirror.leitecastro.com/archlinux/$repo/os/$arch
 Server = http://mirrors.up.pt/pub/archlinux/$repo/os/$arch
 Server = https://mirrors.up.pt/pub/archlinux/$repo/os/$arch
 Server = http://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/$repo/os/$arch
@@ -782,6 +786,7 @@ Server = https://mirror.archlinux.tw/ArchLinux/$repo/os/$arch
 Server = http://archlinux.ccns.ncku.edu.tw/archlinux/$repo/os/$arch
 Server = http://free.nchc.org.tw/arch/$repo/os/$arch
 Server = https://free.nchc.org.tw/arch/$repo/os/$arch
+Server = https://ncuesaweb.ncue.edu.tw/linux/archlinux/$repo/os/$arch
 Server = http://archlinux.cs.nycu.edu.tw/$repo/os/$arch
 Server = https://archlinux.cs.nycu.edu.tw/$repo/os/$arch
 Server = http://ftp.tku.edu.tw/Linux/ArchLinux/$repo/os/$arch
