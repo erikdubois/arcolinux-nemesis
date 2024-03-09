@@ -66,6 +66,12 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed ripgrep
   sudo pacman -S --noconfirm --needed sublime-text-4
   sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
+
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-keybindings-git
+
+  cp /etc/skel/.config/kglobalshortcutsrc ~/.config/
+  cp /etc/skel/.config/kglobalshortcutsrc-or ~/.config/
+
 fi
 
 
