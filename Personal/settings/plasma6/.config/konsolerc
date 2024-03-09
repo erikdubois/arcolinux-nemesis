@@ -1,0 +1,11 @@
+[Desktop Entry]
+DefaultProfile=edu.profile
+
+[General]
+ConfigVersion=1
+
+[MainWindow]
+ToolBarsMovable=Disabled
+
+[UiSettings]
+ColorScheme=
