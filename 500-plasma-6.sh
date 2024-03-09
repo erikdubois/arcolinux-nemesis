@@ -82,6 +82,8 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   
   cp /etc/skel/.local/share/kio/servicemenus/* ~/.local/share/kio/servicemenus/
 
+  cp -rv $HOME/DATA/arcolinux-nemesis/Personal/settings/plasma6/.* ~
+
 fi
 
 
