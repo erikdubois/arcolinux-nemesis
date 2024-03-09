@@ -31,6 +31,16 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+echo
+tput setaf 3
+echo "################################################################"
+echo "################### No neofetch by default"
+echo "################################################################"
+tput sgr0
+echo
+
+sed -i 's/^neofetch/#neofetch/' ~/.bashrc
+
 # when on Plasma
 
 if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
