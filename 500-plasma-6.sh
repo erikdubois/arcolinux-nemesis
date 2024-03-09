@@ -43,18 +43,6 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   tput sgr0
   echo
 
-  sudo pacman -R --noconfirm archinstall
-  sudo pacman -Rs lftp --noconfirm
-  sudo pacman -Rs xf86-video-amdgpu --noconfirm
-  sudo pacman -Rs xf86-video-fbdev --noconfirm
-  sudo pacman -Rs xf86-video-openchrome --noconfirm
-  if pacman -Qi xf86-video-vmware &> /dev/null; then
-    sudo pacman -Rs xf86-video-vmware --noconfirm
-  fi
-  sudo pacman -Rs xf86-video-ati --noconfirm
-  sudo pacman -Rs xf86-video-nouveau --noconfirm
-  sudo pacman -Rs xf86-video-vesa --noconfirm
-  sudo pacman -R --noconfirm xfce4-artwork
   sudo pacman -Rs broadcom-wl-dkms --noconfirm
   sudo pacman -Rs rtl8821cu-morrownr-dkms-git --noconfirm
 
