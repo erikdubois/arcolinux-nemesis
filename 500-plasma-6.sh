@@ -31,18 +31,6 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Plasma 6 Software to install"
-echo "################################################################"
-tput sgr0
-echo
-
-
-
-###############################################################################
-
 # when on Plasma
 
 if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
@@ -50,7 +38,34 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   echo
   tput setaf 2
   echo "################################################################"
-  echo "################### Plasma related applications"
+  echo "################### Plasma 6 Software to remove"
+  echo "################################################################"
+  tput sgr0
+  echo
+
+  sudo pacman -R --noconfirm archinstall
+  sudo pacman -Rs lftp --noconfirm
+  sudo pacman -Rs xf86-video-amdgpu --noconfirm
+  sudo pacman -Rs xf86-video-fbdev --noconfirm
+  sudo pacman -Rs xf86-video-openchrome --noconfirm
+  if pacman -Qi xf86-video-vmware &> /dev/null; then
+    sudo pacman -Rs xf86-video-vmware --noconfirm
+  fi
+  sudo pacman -Rs xf86-video-ati --noconfirm
+  sudo pacman -Rs xf86-video-nouveau --noconfirm
+  sudo pacman -Rs xf86-video-vesa --noconfirm
+  sudo pacman -R --noconfirm xfce4-artwork
+  sudo pacman -Rs broadcom-wl-dkms --noconfirm
+  sudo pacman -Rs rtl8821cu-morrownr-dkms-git --noconfirm
+
+  sudo pacman -R --noconfirm adobe-source-han-sans-cn-fonts
+  sudo pacman -R --noconfirm adobe-source-han-sans-jp-fonts
+  sudo pacman -R --noconfirm adobe-source-han-sans-kr-fonts
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Plasma 6 Software to install"
   echo "################################################################"
   tput sgr0
   echo
