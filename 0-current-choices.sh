@@ -87,6 +87,16 @@ sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
 echo
 tput setaf 3
 echo "################################################################"
+echo "################### No neofetch by default"
+echo "################################################################"
+tput sgr0
+echo
+
+sed -i 's/^neofetch/#neofetch/' ~/.bashrc
+
+echo
+tput setaf 3
+echo "################################################################"
 echo "################### Start current choices"
 echo "################################################################"
 tput sgr0
