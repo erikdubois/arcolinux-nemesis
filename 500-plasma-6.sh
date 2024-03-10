@@ -88,18 +88,20 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
 
   sudo pacman -S --noconfirm --needed arcolinux-plasma-servicemenus-git
 
-  if [ ! ~/.local/share/kio/servicemenus/ ]; then
+  if [ ! -d ~/.local/share/kio/servicemenus/ ]; then
     mkdir -p ~/.local/share/kio/servicemenus/
   fi
   
-  cp /etc/skel/.local/share/kio/servicemenus/* ~/.local/share/kio/servicemenus/
+  cp -v /etc/skel/.local/share/kio/servicemenus/* ~/.local/share/kio/servicemenus/
 
   cp -rv $HOME/DATA/arcolinux-nemesis/Personal/settings/plasma6/.* ~
 
+  if ! grep -q "wobblywindowsEnabled=true" $HOME/.config/kwinrc; then
   echo '
 
 [Plugins]
 wobblywindowsEnabled=true' | sudo tee -a ~/.config/kwinrc
+  fi
 
 fi
 
