@@ -104,7 +104,8 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   echo "################################################################"
   tput sgr0
   echo
-  # nothing yet
+  sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
+  sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
 fi
 
 
