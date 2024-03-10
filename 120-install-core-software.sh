@@ -69,10 +69,12 @@ if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed dmenu
   sudo pacman -S --noconfirm --needed evince
   sudo pacman -S --noconfirm --needed galculator
+  sudo pacman -S --noconfirm --needed lolcat
   sudo pacman -S --noconfirm --needed network-manager-applet
   sudo pacman -S --noconfirm --needed networkmanager-openvpn
   sudo pacman -S --noconfirm --needed nitrogen
   sudo pacman -S --noconfirm --needed nomacs-qt6-git
+  sudo pacman -S --noconfirm --needed numlockx
   sudo pacman -S --noconfirm --needed pamac-aur
   sudo pacman -S --noconfirm --needed playerctl
   sudo pacman -S --noconfirm --needed sardi-icons
@@ -124,7 +126,6 @@ sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed lastpass
 sudo pacman -S --noconfirm --needed logrotate
-sudo pacman -S --noconfirm --needed lolcat
 sudo pacman -S --noconfirm --needed lollypop
 sudo pacman -S --noconfirm --needed lshw
 sudo pacman -S --noconfirm --needed man-db
@@ -138,7 +139,6 @@ sudo pacman -S --noconfirm --needed neofetch
 sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed ntp
 sudo pacman -S --noconfirm --needed nss-mdns
-sudo pacman -S --noconfirm --needed numlockx
 sudo pacman -S --noconfirm --needed oh-my-zsh-git
 sudo pacman -S --noconfirm --needed openresolv
 sudo pacman -S --noconfirm --needed paru-bin
