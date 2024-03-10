@@ -80,6 +80,7 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
   sudo pacman -S --noconfirm --needed telegram-desktop
   sudo pacman -S --noconfirm --needed discord
+  sudo pacman -S --noconfirm --needed python-pywal
 
   sudo pacman -S --noconfirm --needed arcolinux-plasma-keybindings-git
 
