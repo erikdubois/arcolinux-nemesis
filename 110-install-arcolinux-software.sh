@@ -82,7 +82,7 @@ if [ -f /usr/bin/startplasma-x11 ]; then
   echo
   tput setaf 2
   echo "################################################################"
-  echo "################### Plasma related applications"
+  echo "################### Plasma X11 related applications"
   echo "################################################################"
   tput sgr0
   echo

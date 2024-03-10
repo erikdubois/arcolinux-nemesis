@@ -41,6 +41,22 @@ echo
 
 sh 410-intervention*
 
+echo
+tput setaf 3
+echo "################################################################"
+echo "################### Intervention done"
+echo "################################################################"
+tput sgr0
+echo
+
+echo
+tput setaf 3
+echo "################################################################"
+echo "################### Installing velo/velow - development software"
+echo "################################################################"
+tput sgr0
+echo
+
 # when NOT on a wayland session
 if [ ! -d /usr/share/wayland-sessions/ ]; then
     if [ -f /usr/local/bin/velo ]; then
