@@ -36,6 +36,16 @@ sudo pacman -Syyu
 echo
 tput setaf 3
 echo "################################################################"
+echo "################### Get my personal variety settings"
+echo "################################################################"
+tput sgr0
+echo
+
+sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
+
+echo
+tput setaf 3
+echo "################################################################"
 echo "################### No neofetch by default"
 echo "################################################################"
 tput sgr0
