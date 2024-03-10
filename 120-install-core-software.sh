@@ -76,6 +76,7 @@ if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed nomacs-qt6-git
   sudo pacman -S --noconfirm --needed numlockx
   sudo pacman -S --noconfirm --needed pamac-aur
+  sudo pacman -S --noconfirm --needed pavucontrol
   sudo pacman -S --noconfirm --needed playerctl
   sudo pacman -S --noconfirm --needed sardi-icons
   sudo pacman -S --noconfirm --needed simplescreenrecorder
@@ -142,7 +143,6 @@ sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed oh-my-zsh-git
 sudo pacman -S --noconfirm --needed openresolv
 sudo pacman -S --noconfirm --needed paru-bin
-sudo pacman -S --noconfirm --needed pavucontrol
 sudo pacman -S --noconfirm --needed polkit-gnome
 sudo pacman -S --noconfirm --needed python-pylint
 sudo pacman -S --noconfirm --needed python-pywal
@@ -186,7 +186,7 @@ sudo pacman -S --noconfirm --needed wd719x-firmware
 sudo pacman -S --noconfirm --needed wget
 sudo pacman -S --noconfirm --needed wttr
 sudo pacman -S --noconfirm --needed xdg-user-dirs
-sudo pacman -S --noconfirm --needed yay-git
+sudo pacman -S --noconfirm --needed yay-bin
 sudo pacman -S --noconfirm --needed zsh
 sudo pacman -S --noconfirm --needed zsh-completions
 sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
@@ -199,7 +199,7 @@ sudo pacman -S --noconfirm --needed unace
 sudo pacman -S --noconfirm --needed unrar
 sudo pacman -S --noconfirm --needed unzip
 
-if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
+if [ ! -f /usr/share/xsessions/plasmax11.desktop ]; then
   sudo pacman -S --noconfirm --needed qt5ct
 fi
 
