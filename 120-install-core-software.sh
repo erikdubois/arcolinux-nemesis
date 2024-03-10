@@ -70,11 +70,14 @@ if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed galculator
   sudo pacman -S --noconfirm --needed network-manager-applet
   sudo pacman -S --noconfirm --needed networkmanager-openvpn
+  sudo pacman -S --noconfirm --needed nitrogen
+  sudo pacman -S --noconfirm --needed nomacs-qt6-git
   sudo pacman -S --noconfirm --needed pamac-aur
   sudo pacman -S --noconfirm --needed playerctl
   sudo pacman -S --noconfirm --needed sardi-icons
   sudo pacman -S --noconfirm --needed simplescreenrecorder
   sudo pacman -S --noconfirm --needed surfn-icons-git
+  sudo pacman -S --noconfirm --needed xcolor
   sudo pacman -S --noconfirm --needed xorg-xkill
 fi
 
@@ -132,8 +135,6 @@ sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed mintstick-git
 sudo pacman -S --noconfirm --needed most
 sudo pacman -S --noconfirm --needed neofetch
-sudo pacman -S --noconfirm --needed nitrogen
-sudo pacman -S --noconfirm --needed nomacs-qt6-git
 sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed ntp
 sudo pacman -S --noconfirm --needed nss-mdns
@@ -184,7 +185,6 @@ sudo pacman -S --noconfirm --needed vlc
 sudo pacman -S --noconfirm --needed wd719x-firmware
 sudo pacman -S --noconfirm --needed wget
 sudo pacman -S --noconfirm --needed wttr
-sudo pacman -S --noconfirm --needed xcolor
 sudo pacman -S --noconfirm --needed xdg-user-dirs
 sudo pacman -S --noconfirm --needed yay-git
 sudo pacman -S --noconfirm --needed zsh

@@ -35,6 +35,7 @@ echo "######################################################"
 tput sgr0
 echo
 
+sudo pacman -Rs --noconfirm vim vim-runtime
 sudo pacman -R --noconfirm archinstall
 sudo pacman -Rs pragha --noconfirm
 sudo pacman -Rs lftp --noconfirm
