@@ -96,6 +96,11 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
 
   cp -rv $HOME/DATA/arcolinux-nemesis/Personal/settings/plasma6/.* ~
 
+  echo '
+
+[Plugins]
+wobblywindowsEnabled=true' | sudo tee -a ~/.config/kwinrc
+
 fi
 
 
