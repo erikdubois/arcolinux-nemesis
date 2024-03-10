@@ -67,6 +67,7 @@ if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed awesome-terminal-fonts
   sudo pacman -S --noconfirm --needed catfish
   sudo pacman -S --noconfirm --needed dmenu
+  sudo pacman -S --noconfirm --needed evince
   sudo pacman -S --noconfirm --needed galculator
   sudo pacman -S --noconfirm --needed network-manager-applet
   sudo pacman -S --noconfirm --needed networkmanager-openvpn
@@ -99,7 +100,6 @@ sudo pacman -S --noconfirm --needed downgrade
 if [ ! -f /usr/bin/duf ]; then
   sudo pacman -S --noconfirm --needed duf
 fi
-sudo pacman -S --noconfirm --needed evince
 sudo pacman -S --noconfirm --needed expac
 sudo pacman -S --noconfirm --needed feh
 sudo pacman -S --noconfirm --needed file-roller

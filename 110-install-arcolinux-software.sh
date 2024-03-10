@@ -61,16 +61,14 @@ if grep -q arcolinux_repo /etc/pacman.conf; then
 fi
 
 sudo pacman -S --noconfirm --needed a-candy-beauty-icon-theme-git
-
-sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
 sudo pacman -S --noconfirm --needed arcolinux-app-glade-git
-
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
-if [ ! -f /usr/bin/startplasma-x11 ]; then
+if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed archlinux-logout-git
+  sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
 fi
 
 ###############################################################################
