@@ -75,7 +75,7 @@ fi
 
 ###############################################################################
 
-# when on Plasma
+# when on Plasma X11
 
 if [ -f /usr/bin/startplasma-x11 ]; then
 
@@ -87,10 +87,24 @@ if [ -f /usr/bin/startplasma-x11 ]; then
   tput sgr0
   echo
 
-  sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
-  sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
-  sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
-  sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
+  #sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
+  #sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
+  #sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
+  #sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
+fi
+
+# when on Plasma Wayland
+
+if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Plasma wayland related applications"
+  echo "################################################################"
+  tput sgr0
+  echo
+  # nothing yet
 fi
 
 

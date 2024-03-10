@@ -202,11 +202,6 @@ sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable ntpd.service
 
-#sudo pacman -S --noconfirm --needed rxvt-unicode
-#sudo pacman -S --noconfirm --needed urxvt-fullscreen
-#sudo pacman -S --noconfirm --needed urxvt-perls
-#sudo pacman -S --noconfirm --needed urxvt-resize-font-git
-
 sudo pacman -S --noconfirm --needed gzip
 sudo pacman -S --noconfirm --needed p7zip
 sudo pacman -S --noconfirm --needed unace
@@ -233,9 +228,6 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
 
   sudo pacman -S --noconfirm --needed menulibre
   sudo pacman -S --noconfirm --needed mugshot
-  #sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
-  #sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
-  #sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
 
 fi
 

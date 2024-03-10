@@ -41,9 +41,20 @@ echo
 
 sh 410-intervention*
 
-if [ -f /usr/local/bin/velo ]; then
-    velo
+# when NOT on a wayland session
+if [ ! -d /usr/share/wayland-sessions/ ]; then
+    if [ -f /usr/local/bin/velo ]; then
+        velo
+    fi
 fi
+
+# when on a wayland session
+if [ -d /usr/share/wayland-sessions/ ]; then
+    if [ -f /usr/local/bin/velow ]; then
+        velow
+    fi
+fi
+
 
 if [ ! -d /usr/share/wayland-sessions/ ]; then
 
