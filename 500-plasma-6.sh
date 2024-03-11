@@ -91,6 +91,10 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed telegram-desktop
   sudo pacman -S --noconfirm --needed discord
   sudo pacman -S --noconfirm --needed python-pywal
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-candy-beauty-nordic-git
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-surfn-nordic-git
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-candy-beauty-arc-dark-git
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-surfn-arc-dark-git
 
   sudo pacman -S --noconfirm --needed arcolinux-plasma-keybindings-git
 
