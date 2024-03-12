@@ -31,7 +31,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-sudo pacman -Syyu
+sudo pacman -Syyu --noconfirm
 
 echo
 tput setaf 3
