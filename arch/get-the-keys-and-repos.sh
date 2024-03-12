@@ -3,6 +3,7 @@
 ######################################################################################################################
 
 sudo pacman -S wget --noconfirm --needed
+sudo pacman -S jq --noconfirm --needed
 
 echo "Getting the ArcoLinux keys from the ArcoLinux repo"
 
