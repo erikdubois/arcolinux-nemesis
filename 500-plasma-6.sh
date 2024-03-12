@@ -81,6 +81,8 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   echo
 
   sudo pacman -S --noconfirm --needed obs-studio
+  # design for Thunar
+  sudo pacman -S --noconfirm --needed arc-gtk-theme
   sudo pacman -S --noconfirm --needed thunar
   sudo pacman -S --noconfirm --needed thunar-volman
   sudo pacman -S --noconfirm --needed thunar-archive-plugin
