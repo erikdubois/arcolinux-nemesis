@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-03-12
+## Generated on 2024-03-13
 ##
 
 ## Worldwide
@@ -540,6 +540,8 @@ Server = https://mirror.bouwhuis.network/archlinux/$repo/os/$arch
 Server = http://mirror.cj2.nl/archlinux/$repo/os/$arch
 Server = https://mirror.cj2.nl/archlinux/$repo/os/$arch
 Server = https://mirrors.daan.vodka/archlinux/$repo/os/$arch
+Server = http://mirror.erickochen.nl/archlinux/$repo/os/$arch
+Server = https://mirror.erickochen.nl/archlinux/$repo/os/$arch
 Server = http://mirrors.evoluso.com/archlinux/$repo/os/$arch
 Server = http://nl.mirror.flokinet.net/archlinux/$repo/os/$arch
 Server = https://nl.mirror.flokinet.net/archlinux/$repo/os/$arch
