@@ -1,5 +1,6 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
+switch-to-activity-a36d36d0-2c4a-40bb-8e52-8bb46759160c=none,none,Switch to activity "Default"
 switch-to-activity-d0d6ad83-ccb4-485f-adde-1013aa63866d=none,none,Switch to activity "Default"
 switch-to-activity-d632d307-3585-457c-befe-d6909230e138=none,none,Switch to activity "Default"
 
@@ -274,6 +275,7 @@ _launch=Alt+F
 
 [services][variety.desktop]
 Next=Alt+N
+PauseResume=Alt+R
 Previous=Alt+P
 
 [wacomtablet]
