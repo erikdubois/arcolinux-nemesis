@@ -111,6 +111,7 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   
   cp -v /etc/skel/.local/share/kio/servicemenus/* ~/.local/share/kio/servicemenus/
 
+  echo "Overwriting plasma settings here!"
   cp -rv $HOME/DATA/arcolinux-nemesis/Personal/settings/plasma6/.* ~
 
   if ! grep -q "wobblywindowsEnabled=true" $HOME/.config/kwinrc; then
