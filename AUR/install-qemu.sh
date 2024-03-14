@@ -61,12 +61,6 @@ user=$(whoami)
 sudo gpasswd -a $user libvirt
 sudo gpasswd -a $user kvm
 
-
-echo '
-nvram = [
-    "/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd"
-]' | sudo tee --append /etc/libvirt/qemu.conf
-
 sudo virsh net-define /etc/libvirt/qemu/networks/default.xml
 
 sudo virsh net-autostart default
