@@ -87,6 +87,7 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed thunar-volman
   sudo pacman -S --noconfirm --needed thunar-archive-plugin
   sudo pacman -S --noconfirm --needed meld
+  sudo pacman -S --noconfirm --needed kio-admin
   sudo pacman -S --noconfirm --needed ripgrep
   sudo pacman -S --noconfirm --needed sublime-text-4
   sudo pacman -S --noconfirm --needed the_platinum_searcher-bin

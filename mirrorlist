@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-03-16
+## Generated on 2024-03-18
 ##
 
 ## Worldwide
@@ -417,9 +417,9 @@ Server = https://mirror.system.is/arch/$repo/os/$arch
 Server = http://mirror.4v1.in/archlinux/$repo/os/$arch
 Server = https://mirror.4v1.in/archlinux/$repo/os/$arch
 Server = https://mirrors.abhy.me/archlinux/$repo/os/$arch
-Server = http://mirror.albony.in/archlinux/$repo/os/$arch
-Server = http://mirror.maa.albony.in/archlinux/$repo/os/$arch
-Server = http://mirror.nag.albony.in/archlinux/$repo/os/$arch
+Server = https://mirror.albony.in/archlinux/$repo/os/$arch
+Server = https://mirror.maa.albony.in/archlinux/$repo/os/$arch
+Server = https://mirror.nag.albony.in/archlinux/$repo/os/$arch
 Server = http://in.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://in.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = http://mirror.cse.iitk.ac.in/archlinux/$repo/os/$arch
@@ -935,7 +935,7 @@ Server = http://repo.ialab.dsu.edu/archlinux/$repo/os/$arch
 Server = https://repo.ialab.dsu.edu/archlinux/$repo/os/$arch
 Server = http://mirrors.iu13.net/archlinux/$repo/os/$arch
 Server = https://mirrors.iu13.net/archlinux/$repo/os/$arch
-Server = https://arch.mirror.ivo.st/$repo/os/$arch
+Server = https://arch.mirror.k0.ae/$repo/os/$arch
 Server = http://mirrors.kernel.org/archlinux/$repo/os/$arch
 Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 Server = http://mirror.dal10.us.leaseweb.net/archlinux/$repo/os/$arch
