@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-03-21
+## Generated on 2024-03-24
 ##
 
 ## Worldwide
@@ -924,8 +924,6 @@ Server = http://mirrors.gigenet.com/archlinux/$repo/os/$arch
 Server = http://arch.goober.cloud/$repo/os/$arch
 Server = https://arch.goober.cloud/$repo/os/$arch
 Server = http://www.gtlib.gatech.edu/pub/archlinux/$repo/os/$arch
-Server = http://mirror.hackingand.coffee/arch/$repo/os/$arch
-Server = https://mirror.hackingand.coffee/arch/$repo/os/$arch
 Server = https://mirror.hodgepodge.dev/archlinux/$repo/os/$arch
 Server = http://mirror.hostup.org/archlinux/$repo/os/$arch
 Server = https://mirror.hostup.org/archlinux/$repo/os/$arch
