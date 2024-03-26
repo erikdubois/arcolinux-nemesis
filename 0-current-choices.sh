@@ -27,6 +27,9 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+#networkmanager issue
+#nmcli connection modify Wired\ connection\ 1 ipv6.method "disabled"
+
 # what is the present working directory
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
