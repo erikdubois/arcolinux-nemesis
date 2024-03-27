@@ -71,7 +71,6 @@ if [[ -f $hyprland || -f $wayfire || -f $sway ]]; then
 
   sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
   sudo pacman -S --noconfirm --needed obs-studio
-  sudo pacman -S --noconfirm --needed wlrobs
   sudo pacman -S --noconfirm --needed spotify-wayland
 
 fi
