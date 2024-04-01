@@ -27,7 +27,7 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-#tutorial https://www.youtube.com/watch?v=JxSGT_3UU8w
+#tutorials https://www.youtube.com/playlist?list=PLlloYVGq5pS6WhIdpcrgoj_XszquIyKCQ
 
 #https://computingforgeeks.com/install-kvm-qemu-virt-manager-arch-manjar/
 
