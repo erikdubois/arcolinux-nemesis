@@ -25,6 +25,9 @@
 #tput setaf 6 = cyan
 #tput setaf 7 = gray
 #tput setaf 8 = light blue
+
+#end colors
+#tput sgr0
 ##################################################################################################################
 
 #networkmanager issue

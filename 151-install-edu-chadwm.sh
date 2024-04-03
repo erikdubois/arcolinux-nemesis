@@ -79,11 +79,11 @@ func_install_chadwm() {
     gvfs
     lolcat
     lxappearance
-    pa-applet-git
+    #pa-applet-git
     picom
     polkit-gnome
     rofi
-    rxvt-unicode
+    #rxvt-unicode
     sxhkd
     thunar
     thunar-archive-plugin
