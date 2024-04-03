@@ -108,7 +108,8 @@ func_install_chadwm() {
 
 # install chadwm on Sierra
 
-if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
+if [ -f /usr/local/bin/get-nemesis-on-sierra ]  || \
+   [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
 
     echo
     tput setaf 2
