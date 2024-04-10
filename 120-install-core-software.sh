@@ -142,7 +142,7 @@ sudo pacman -S --noconfirm --needed ntp
 sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed oh-my-zsh-git
 sudo pacman -S --noconfirm --needed openresolv
-sudo pacman -S --noconfirm --needed paru-bin
+sudo pacman -S --noconfirm --needed paru-git
 sudo pacman -S --noconfirm --needed polkit-gnome
 sudo pacman -S --noconfirm --needed python-pylint
 sudo pacman -S --noconfirm --needed python-pywal
@@ -186,7 +186,7 @@ sudo pacman -S --noconfirm --needed wd719x-firmware
 sudo pacman -S --noconfirm --needed wget
 sudo pacman -S --noconfirm --needed wttr
 sudo pacman -S --noconfirm --needed xdg-user-dirs
-sudo pacman -S --noconfirm --needed yay-bin
+sudo pacman -S --noconfirm --needed yay-git
 sudo pacman -S --noconfirm --needed zsh
 sudo pacman -S --noconfirm --needed zsh-completions
 sudo pacman -S --noconfirm --needed zsh-syntax-highlighting

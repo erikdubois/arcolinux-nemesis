@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-04-03
+## Generated on 2024-04-10
 ##
 
 ## Worldwide
@@ -90,6 +90,8 @@ Server = https://mirror.sabay.com.kh/archlinux/$repo/os/$arch
 ## Canada
 Server = http://mirror.0xem.ma/arch/$repo/os/$arch
 Server = https://mirror.0xem.ma/arch/$repo/os/$arch
+Server = http://mirror.accuris.ca/archlinux/$repo/os/$arch
+Server = https://mirror.accuris.ca/archlinux/$repo/os/$arch
 Server = https://arch.mirror.winslow.cloud/$repo/os/$arch
 Server = http://mirror.cedille.club/archlinux/$repo/os/$arch
 Server = http://ca.mirrors.cicku.me/archlinux/$repo/os/$arch
@@ -193,8 +195,8 @@ Server = http://mirror.vpsfree.cz/archlinux/$repo/os/$arch
 ## Denmark
 Server = http://mirrors.dotsrc.org/archlinux/$repo/os/$arch
 Server = https://mirrors.dotsrc.org/archlinux/$repo/os/$arch
-Server = http://mirror.one.com/archlinux/$repo/os/$arch
-Server = https://mirror.one.com/archlinux/$repo/os/$arch
+Server = http://mirror.group.one/archlinux/$repo/os/$arch
+Server = https://mirror.group.one/archlinux/$repo/os/$arch
 Server = https://mirror.safe-con.dk/archlinux/$repo/os/$arch
 
 ## Ecuador
@@ -333,7 +335,6 @@ Server = http://mirror.moson.org/arch/$repo/os/$arch
 Server = https://mirror.moson.org/arch/$repo/os/$arch
 Server = http://mirrors.n-ix.net/archlinux/$repo/os/$arch
 Server = https://mirrors.n-ix.net/archlinux/$repo/os/$arch
-Server = https://mirror.nekos.host/$repo/os/$arch
 Server = http://mirror.netcologne.de/archlinux/$repo/os/$arch
 Server = https://mirror.netcologne.de/archlinux/$repo/os/$arch
 Server = http://mirrors.niyawe.de/archlinux/$repo/os/$arch
@@ -632,6 +633,8 @@ Server = http://arch.sakamoto.pl/$repo/os/$arch
 Server = https://arch.sakamoto.pl/$repo/os/$arch
 Server = http://repo.skni.umcs.pl/archlinux/$repo/os/$arch
 Server = https://repo.skni.umcs.pl/archlinux/$repo/os/$arch
+Server = http://arch.takehiko.pl/$repo/os/$arch
+Server = https://arch.takehiko.pl/$repo/os/$arch
 Server = http://ftp.vectranet.pl/archlinux/$repo/os/$arch
 
 ## Portugal
@@ -796,6 +799,8 @@ Server = https://ncuesaweb.ncue.edu.tw/linux/archlinux/$repo/os/$arch
 Server = http://archlinux.cs.nycu.edu.tw/$repo/os/$arch
 Server = https://archlinux.cs.nycu.edu.tw/$repo/os/$arch
 Server = http://ftp.tku.edu.tw/Linux/ArchLinux/$repo/os/$arch
+Server = http://mirror.twds.com.tw/archlinux/$repo/os/$arch
+Server = https://mirror.twds.com.tw/archlinux/$repo/os/$arch
 Server = http://ftp.yzu.edu.tw/Linux/archlinux/$repo/os/$arch
 Server = https://ftp.yzu.edu.tw/Linux/archlinux/$repo/os/$arch
 
@@ -846,6 +851,7 @@ Server = http://lon.mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://lon.mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = http://arch.serverspace.co.uk/arch/$repo/os/$arch
 Server = https://repo.slithery.uk/$repo/os/$arch
+Server = https://mirror.st2projects.com/archlinux/$repo/os/$arch
 Server = http://mirrors.ukfast.co.uk/sites/archlinux.org/$repo/os/$arch
 Server = https://mirrors.ukfast.co.uk/sites/archlinux.org/$repo/os/$arch
 Server = http://mirror.cov.ukservers.com/archlinux/$repo/os/$arch
@@ -1017,5 +1023,7 @@ Server = https://mirror.dc.uz/arch/$repo/os/$arch
 
 ## Vietnam
 Server = http://mirror.bizflycloud.vn/archlinux/$repo/os/$arch
+Server = http://mirror.kirbee.tech/archlinux/$repo/os/$arch
+Server = https://mirror.kirbee.tech/archlinux/$repo/os/$arch
 Server = https://mirrors.nguyenhoang.cloud/archlinux/$repo/os/$arch
 
