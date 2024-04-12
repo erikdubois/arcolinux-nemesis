@@ -45,7 +45,7 @@ if grep -q "ArchBang" /etc/os-release; then
 	sudo rm -f /etc/skel/.config/variety/variety.conf
 
 	echo "Variety conf ArcoLinux"
-	sudo pacman -S --noconfirm --needed arcolinux-variety-git
+	sudo pacman -S --noconfirm --needed arconet-variety-config
 	sudo pacman -S --noconfirm --needed arcolinux-variety-autostart-git
 	
 	echo "Alacritty conf ArcoLinux"

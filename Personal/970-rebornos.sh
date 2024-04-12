@@ -48,7 +48,7 @@ if grep -q "RebornOS" /etc/os-release; then
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
 
 	echo "Variety conf ArcoLinux"
-	sudo pacman -S --noconfirm --needed arcolinux-variety-git
+	sudo pacman -S --noconfirm --needed arconet-variety-config
 
 	echo
 	echo "Adding nanorc"
