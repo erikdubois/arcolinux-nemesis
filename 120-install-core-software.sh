@@ -141,7 +141,6 @@ sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed ntp
 sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed oh-my-zsh-git
-sudo pacman -S --noconfirm --needed openresolv
 sudo pacman -S --noconfirm --needed paru-git
 sudo pacman -S --noconfirm --needed polkit-gnome
 sudo pacman -S --noconfirm --needed python-pylint
