@@ -39,3 +39,20 @@ alias pamac-tray='env GTK_THEME=Arc-Dark /usr/bin/pamac-tray'
 alias smp="sudo mkinitcpio -P"
 
 alias warning="pacman -Q -kk | grep warning"
+
+#if [ -f "/usr/bin/wal" ] ; then
+#	neofetch && wal -q -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)
+#fi
+
+# Tree command aliases
+alias treeall='tree -a -C'
+alias treed='tree -L 2 -C'  # Adjust the depth as needed
+alias trees='tree -C --du -h'
+alias treedir='tree -d -C'
+alias treec='tree -C -F'
+alias treeni='tree -I -C"node_modules"'
+alias treep='tree -p -C'
+alias treefp='tree -f -C'
+alias treemt='tree --sort=mtime -C'
+
+alias ip='ip --color=always'
