@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-04-23
+## Generated on 2024-04-29
 ##
 
 ## Worldwide
@@ -271,8 +271,6 @@ Server = http://mirror.theo546.fr/archlinux/$repo/os/$arch
 Server = https://mirror.theo546.fr/archlinux/$repo/os/$arch
 Server = http://ftp.u-strasbg.fr/linux/distributions/archlinux/$repo/os/$arch
 Server = https://mirror.wormhole.eu/archlinux/$repo/os/$arch
-Server = http://mirroir.wptheme.fr/archlinux/$repo/os/$arch
-Server = https://mirroir.wptheme.fr/archlinux/$repo/os/$arch
 Server = http://arch.yourlabs.org/$repo/os/$arch
 Server = https://arch.yourlabs.org/$repo/os/$arch
 
@@ -455,7 +453,6 @@ Server = https://mirror.papua.go.id/archlinux/$repo/os/$arch
 Server = http://mirror.poliwangi.ac.id/archlinux/$repo/os/$arch
 Server = http://mirror.repository.id/archlinux/$repo/os/$arch
 Server = https://mirror.repository.id/archlinux/$repo/os/$arch
-Server = http://suro.ubaya.ac.id/archlinux/$repo/os/$arch
 Server = http://mirror.telkomuniversity.ac.id/archlinux/$repo/os/$arch
 Server = https://mirror.telkomuniversity.ac.id/archlinux/$repo/os/$arch
 Server = https://kacabenggala.uny.ac.id/archlinux/$repo/os/$arch
@@ -570,8 +567,6 @@ Server = https://mirror.mijn.host/archlinux/$repo/os/$arch
 Server = http://mirror.neostrada.nl/archlinux/$repo/os/$arch
 Server = https://mirror.neostrada.nl/archlinux/$repo/os/$arch
 Server = http://ftp.nluug.nl/os/Linux/distr/archlinux/$repo/os/$arch
-Server = http://archlinux.mirror.pcextreme.nl/$repo/os/$arch
-Server = https://archlinux.mirror.pcextreme.nl/$repo/os/$arch
 Server = http://mirror.serverion.com/archlinux/$repo/os/$arch
 Server = https://mirror.serverion.com/archlinux/$repo/os/$arch
 Server = http://ftp.snt.utwente.nl/pub/os/linux/archlinux/$repo/os/$arch

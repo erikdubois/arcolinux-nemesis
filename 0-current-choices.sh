@@ -138,6 +138,11 @@ echo
 
 sudo pacman -Sy
 
+if grep -q "arconet" /etc/dev-rel || grep -q "arcopro" /etc/dev-rel || grep -q "arcoplasma" /etc/dev-rel; then
+    sh get-me-started
+fi
+
+
 sh 400-remove-software*
 
 sh 100-install-nemesis-software*
