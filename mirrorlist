@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-04-29
+## Generated on 2024-04-30
 ##
 
 ## Worldwide
@@ -112,7 +112,7 @@ Server = http://muug.ca/mirror/archlinux/$repo/os/$arch
 Server = https://muug.ca/mirror/archlinux/$repo/os/$arch
 Server = http://mirror.powerfly.ca/archlinux/$repo/os/$arch
 Server = https://mirror.powerfly.ca/archlinux/$repo/os/$arch
-Server = https://dl.ptse.host/archlinux/$repo/os/$arch
+Server = https://mirror.qctronics.com/archlinux/$repo/os/$arch
 Server = http://archlinux.mirror.rafal.ca/$repo/os/$arch
 Server = http://mirror.scd31.com/arch/$repo/os/$arch
 Server = https://mirror.scd31.com/arch/$repo/os/$arch
