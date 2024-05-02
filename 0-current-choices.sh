@@ -41,6 +41,21 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 3
 echo "################################################################"
+echo "Do you want to install Chadwm on your system?"
+echo "Answer with Y/y or N/n"
+echo "################################################################"
+tput sgr0
+echo
+
+read response
+
+if [[ "$response" == [yY] ]]; then
+    touch /tmp/install-chadwm
+fi
+
+echo
+tput setaf 3
+echo "################################################################"
 echo "################### Intervention first"
 echo "################################################################"
 tput sgr0
@@ -76,26 +91,6 @@ if [ -d /usr/share/wayland-sessions/ ]; then
     if [ -f /usr/local/bin/velow ]; then
         velow
     fi
-fi
-
-
-if [ ! -d /usr/share/wayland-sessions/ ]; then
-
-    echo
-    tput setaf 3
-    echo "################################################################"
-    echo "Do you want to install Chadwm on your system?"
-    echo "Answer with Y/y or N/n"
-    echo "################################################################"
-    tput sgr0
-    echo
-
-    read response
-
-    if [[ "$response" == [yY] ]]; then
-        touch /tmp/install-chadwm
-    fi
-
 fi
 
 echo
@@ -137,6 +132,11 @@ tput sgr0
 echo
 
 sudo pacman -Sy
+
+if grep -q "arconet" /etc/dev-rel || grep -q "arcopro" /etc/dev-rel || grep -q "arcoplasma" /etc/dev-rel; then
+    sh get-me-started
+fi
+
 
 sh 400-remove-software*
 

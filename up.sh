@@ -59,6 +59,8 @@ echo "getting mirrorlist"
 wget "https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6" -O ->> $workdir/mirrorlist
 sed -i "s/#Server/Server/g" $workdir/mirrorlist
 
+cp -v /home/erik/ARCO/ARCOLINUX/arcolinux-system-config/usr/local/bin/get-me-started /home/erik/DATA/arcolinux-nemesis/get-me-started
+
 # Below command will backup everything inside the project folder
 git add --all .
 

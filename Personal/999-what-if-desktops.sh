@@ -101,12 +101,6 @@ if [ -f /usr/share/wayland-sessions/wayfire.desktop ]; then
 
   give-me-azerty-be-wayfire
 
-  echo "Installing bashrc-personal with wal files"
-  echo
-  cp $installed_dir/settings/shell-personal/.bashrc-personal-wal ~/.bashrc-personal
-  sudo cp -f $installed_dir/settings/shell-personal/.bashrc-personal-wal /etc/skel/.bashrc-personal
-  echo
-
 fi
 
 if [ -f /usr/share/wayland-sessions/hyprland.desktop ]; then
