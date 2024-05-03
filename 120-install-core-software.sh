@@ -79,7 +79,6 @@ if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed pavucontrol
   sudo pacman -S --noconfirm --needed playerctl
   sudo pacman -S --noconfirm --needed sardi-icons
-  sudo pacman -S --noconfirm --needed simplescreenrecorder
   sudo pacman -S --noconfirm --needed surfn-icons-git
   sudo pacman -S --noconfirm --needed xcolor
   sudo pacman -S --noconfirm --needed xorg-xkill
@@ -151,6 +150,7 @@ sudo pacman -S --noconfirm --needed rate-mirrors-bin
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
+sudo pacman -S --noconfirm --needed simplescreenrecorder
 sudo pacman -S --noconfirm --needed sparklines-git
 sudo pacman -S --noconfirm --needed speedtest-cli-git
 sudo pacman -S --noconfirm --needed spotify

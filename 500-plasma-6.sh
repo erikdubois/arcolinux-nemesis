@@ -83,22 +83,23 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed obs-studio
   # design for Thunar
   sudo pacman -S --noconfirm --needed arc-gtk-theme
-  sudo pacman -S --noconfirm --needed thunar
-  sudo pacman -S --noconfirm --needed thunar-volman
-  sudo pacman -S --noconfirm --needed thunar-archive-plugin
-  sudo pacman -S --noconfirm --needed meld
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-candy-beauty-arc-dark-git
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-candy-beauty-nordic-git
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-surfn-arc-dark-git
+  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-surfn-nordic-git
+  sudo pacman -S --noconfirm --needed discord
   sudo pacman -S --noconfirm --needed kio-admin
   sudo pacman -S --noconfirm --needed kwin-polonium
+  sudo pacman -S --noconfirm --needed meld
+  sudo pacman -S --noconfirm --needed pavucontrol
+  sudo pacman -S --noconfirm --needed python-pywal
   sudo pacman -S --noconfirm --needed ripgrep
   sudo pacman -S --noconfirm --needed sublime-text-4
-  sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
   sudo pacman -S --noconfirm --needed telegram-desktop
-  sudo pacman -S --noconfirm --needed discord
-  sudo pacman -S --noconfirm --needed python-pywal
-  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-candy-beauty-nordic-git
-  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-surfn-nordic-git
-  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-candy-beauty-arc-dark-git
-  sudo pacman -S --noconfirm --needed arcolinux-plasma-theme-surfn-arc-dark-git
+  sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
+  sudo pacman -S --noconfirm --needed thunar
+  sudo pacman -S --noconfirm --needed thunar-archive-plugin
+  sudo pacman -S --noconfirm --needed thunar-volman
 
   sudo pacman -S --noconfirm --needed arcolinux-plasma-keybindings-git
 
