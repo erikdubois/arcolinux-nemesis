@@ -15,24 +15,11 @@ colorscript random
 
 alias sf='sudo setfont ter-128b'
 alias c='clear'
-alias nf='neofetch'
-alias pf='pfetch'
-alias ls='eza -al'
-alias mutt='neomutt'
-alias qlog='cat ~/.local/share/qtile/qtile.log'
-alias qlogdel='rm ~/.local/share/qtile/qtile.log'
-alias m='neomutt'
 alias shutdown='systemctl poweroff'
 alias v='nvim'
-alias r='ranger'
-alias t='sudo timeshift --list'
-alias ts='~/dotfiles/scripts/snapshot.sh'
-alias matrix='cmatrix'
 alias shot='scrot -d 3 -c -z -u'
 alias shotsel='scrot -s'
 alias wifi='nmtui'
-alias rw='~/dotfiles/waybar/reload.sh'
-alias winclass="xprop | grep 'CLASS'"
 alias wdownload='sudo mount --bind ~/Downloads ~/.local/share/waydroid/data/media/0/Download'
 alias dot="cd ~/dotfiles"
 # Window Managers
@@ -43,7 +30,6 @@ alias xfce='exec startxfce4'
 alias chadwm='startx ~/.config/arco-chadwm/scripts/run.sh'
 alias xdwm='startx ~/.suckless/dwm/scripts/run.sh'
 
-# Hyprland with Hyprland
 # -----------------------------------------------------
 # GIT
 # -----------------------------------------------------
@@ -60,11 +46,6 @@ alias gcheck="git checkout"
 
 #list
 #alias ls='ls --color=auto'
-alias la='eza -a'
-alias ll='eza -alFh'
-alias l='eza'
-alias l.="eza -A | grep -E '^\.'"
-
 
 # SCRIPTS
 
@@ -100,26 +81,12 @@ alias notes='vim ~/notes.txt'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias setkb='setxkbmap gb;echo "Keyboard set back to gb."'
 
-# -----------------------------------------------------
-# SCREEN RESOLUTINS
-# -----------------------------------------------------
-alias res1='xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120'
-alias res2='xrandr --output DisplayPort-0 --mode 1920x1080 --rate 120'
-
-
-
 #reload qtile
 alias ql="qtile cmd-obj -o cmd -f reload_config"
 
 #pacman unlock
 alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias rmpacmanlock="sudo rm /var/lib/pacman/db.lck"
-
-#arcolinux logout unlock
-alias rmlogoutlock="sudo rm /tmp/arcologout.lock"
-
-
-#bind 'TAB:menu-complete'
 
 
 # Expand the history size
@@ -129,18 +96,7 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$
 export PATH="/usr/lib/ccache/bin/:$PATH"
 
 
-# Searches for text in all files in the current folder
-ftext ()
-{
-	# -i case-insensitive
-	# -I ignore binary files
-	# -H causes filename to be printed
-	# -r recursive search
-	# -n causes line number to be printed
-	# optional: -F treat search term as a literal, not a regular expression
-	# optional: -l only print filenames and not the matching lines ex. grep -irl "$1" *
-	grep -iIHrn --color=always "$1" . | less -r
-}
+
 
 # Copy file with a progress bar
 cpp()
