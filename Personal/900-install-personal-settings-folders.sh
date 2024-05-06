@@ -200,6 +200,16 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	sudo cp $installed_dir/settings/variety/variety.conf /etc/skel/.config/variety/
 	echo
 
+	echo
+	echo "Changing icons for telegram"
+	sh settings/telegram/adapt-telegram.sh
+	echo
+
+	echo
+	echo "Changing icons for flameshot"
+	sh settings/flameshot/adapt-flameshot.sh
+	echo
+
 fi
 
 echo
