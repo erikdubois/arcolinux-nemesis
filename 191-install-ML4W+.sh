@@ -33,6 +33,9 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 # https://www.youtube.com/watch?v=HMxHUvN6VGo
 # https://gitlab.com/stephan-raabe/
+
+sudo pacman -S --noconfirm starship fastfetch
+
 cp /usr/local/share/arcolinux/.bashrc $HOME/dotfiles/.bashrc-arcolinux
 
 if ! grep -q "~/dotfiles/.bashrc-arcolinux" $HOME/.bashrc; then
