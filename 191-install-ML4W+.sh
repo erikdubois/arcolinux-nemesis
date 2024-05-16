@@ -46,13 +46,13 @@ if ! grep -q "# Keybindings ArcoLinux" $HOME/dotfiles/hypr/conf/keybindings/defa
 echo "
 
 # Keybindings ArcoLinux
-bind = $mainMod SHIFT, Return, exec, ~/dotfiles/.settings/filemanager.sh
-bind = $mainMod SHIFT, Q, killactive
-bind = $mainMod, X, exec, archlinux-logout
-bind = $mainMod SHIFT, X, exec, arcolinux-powermenu
+bind = SUPER SHIFT, Return, exec, ~/dotfiles/.settings/filemanager.sh
+bind = SUPER SHIFT, Q, killactive
+bind = SUPER, X, exec, archlinux-logout
+bind = SUPER SHIFT, X, exec, arcolinux-powermenu
 bind = , F12, exec, xfce4-terminal --drop-down
 bind = CTRL ALT, T, exec, kitty
 bind = CTRL ALT, Return, exec, kitty
-bind = $mainMod , D, exec, rofi -show drun -replace -i
-bind = $mainMod SHIFT, D, exec, rofi -show drun -replace -i" | tee -a $HOME/dotfiles/hypr/conf/keybindings/default.conf
+bind = SUPER , D, exec, rofi -show drun -replace -i
+bind = SUPER SHIFT, D, exec, rofi -show drun -replace -i" | tee -a $HOME/dotfiles/hypr/conf/keybindings/default.conf
 fi
