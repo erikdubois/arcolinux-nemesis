@@ -33,11 +33,11 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 # https://www.youtube.com/watch?v=HMxHUvN6VGo
 # https://gitlab.com/stephan-raabe/
-cp /etc/skel/.bashrc $HOME/dotfiles/.bashrc-personal
+cp /etc/skel/.bashrc $HOME/dotfiles/.bashrc-arcolinux
 
-if ! grep -q "~/dotfiles/.bashrc-personal" $HOME/.bashrc; then
+if ! grep -q "~/dotfiles/.bashrc-arcolinux" $HOME/.bashrc; then
 	echo "
-[[ -f ~/dotfiles/.bashrc-personal ]] && . ~/dotfiles/.bashrc-personal" | tee -a $HOME/dotfiles/.bashrc
+[[ -f ~/dotfiles/.bashrc-arcolinux ]] && . ~/dotfiles/.bashrc-arcolinux" | tee -a $HOME/dotfiles/.bashrc
 	source  ~/.bashrc
 fi
 
