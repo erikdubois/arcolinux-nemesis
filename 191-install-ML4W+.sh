@@ -34,7 +34,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 # https://www.youtube.com/watch?v=HMxHUvN6VGo
 # https://gitlab.com/stephan-raabe/
 
-sudo pacman -S --noconfirm starship fastfetch
+sudo pacman -S --noconfirm starship fastfetch rofi-lbonn-wayland hyprland-git waybar-git
 
 cp /usr/local/share/arcolinux/.bashrc $HOME/dotfiles/.bashrc-arcolinux
 
