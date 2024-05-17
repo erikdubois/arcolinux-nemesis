@@ -35,7 +35,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 # https://gitlab.com/stephan-raabe/
 
 sudo pacman -S --noconfirm starship fastfetch rofi-lbonn-wayland hyprland-git waybar-git
-sudo pacman -S --noconfirm hyprpaper
+sudo pacman -S --noconfirm hyprpaper arcolinux-sddm-simplicity-git
 
 cp /usr/local/share/arcolinux/.bashrc $HOME/dotfiles/.bashrc-arcolinux
 cp /etc/skel/.config/alacritty/alacritty.toml $HOME/dotfiles/alacritty/alacritty.toml
