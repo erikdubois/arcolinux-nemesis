@@ -34,8 +34,15 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 # https://www.youtube.com/watch?v=HMxHUvN6VGo
 # https://gitlab.com/stephan-raabe/
 
-sudo pacman -S --noconfirm starship fastfetch rofi-lbonn-wayland hyprland-git waybar-git
-sudo pacman -S --noconfirm hyprpaper arcolinux-sddm-simplicity-git hypridle
+sudo pacman -S --noconfirm --needed starship
+sudo pacman -S --noconfirm --needed fastfetch
+sudo pacman -S --noconfirm --needed rofi-lbonn-wayland
+sudo pacman -S --noconfirm --needed hyprland-git
+sudo pacman -S --noconfirm --needed waybar-git
+sudo pacman -S --noconfirm --needed hyprpaper
+sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
+sudo pacman -S --noconfirm --needed hypridle
+sudo pacman -S --noconfirm --needed chromium
 
 cp /usr/local/share/arcolinux/.bashrc $HOME/dotfiles/.bashrc-arcolinux
 cp /etc/skel/.config/alacritty/alacritty.toml $HOME/dotfiles/alacritty/alacritty.toml
