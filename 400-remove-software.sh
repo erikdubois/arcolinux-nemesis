@@ -56,6 +56,8 @@ sudo pacman -Rs rtl8821cu-morrownr-dkms-git --noconfirm
 sudo pacman -R --noconfirm adobe-source-han-sans-cn-fonts
 sudo pacman -R --noconfirm adobe-source-han-sans-jp-fonts
 sudo pacman -R --noconfirm adobe-source-han-sans-kr-fonts
+sudo pacman -R --noconfirm nomacs
+sudo pacman -R --noconfirm hardinfo-gtk3
 
 # always put the current .bashrc .zshrc away
 if [ -f /etc/skel/.bashrc ]; then
