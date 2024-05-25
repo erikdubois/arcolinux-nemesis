@@ -58,6 +58,7 @@ sudo pacman -R --noconfirm adobe-source-han-sans-jp-fonts
 sudo pacman -R --noconfirm adobe-source-han-sans-kr-fonts
 sudo pacman -R --noconfirm nomacs
 sudo pacman -R --noconfirm hardinfo-gtk3
+sudo pacman -R --noconfirm paru-bin
 
 # always put the current .bashrc .zshrc away
 if [ -f /etc/skel/.bashrc ]; then
