@@ -47,7 +47,12 @@ echo "######################################################"
 tput sgr0
 echo
 
-sudo pacman -Rs --noconfirm vim vim-runtime
+sudo pacman -Rs --noconfirm nomacs
+sudo pacman -Rs --noconfirm hardinfo-gtk3
+sudo pacman -Rs --noconfirm paru-bin
+sudo pacman -Rs --noconfirm yay-bin
+sudo pacman -Rs broadcom-wl-dkms --noconfirm
+sudo pacman -Rs rtl8821cu-morrownr-dkms-git --noconfirm
 sudo pacman -Rs --noconfirm archinstall
 sudo pacman -Rs pragha --noconfirm
 sudo pacman -Rs lftp --noconfirm
@@ -62,16 +67,11 @@ sudo pacman -Rs xf86-video-nouveau --noconfirm
 sudo pacman -Rs xf86-video-vesa --noconfirm
 sudo pacman -Rs --noconfirm xfce4-artwork
 sudo rm -rf /usr/share/backgrounds/xfce
-sudo pacman -Rs broadcom-wl-dkms --noconfirm
-sudo pacman -Rs rtl8821cu-morrownr-dkms-git --noconfirm
 
 sudo pacman -Rs --noconfirm adobe-source-han-sans-cn-fonts
 sudo pacman -Rs --noconfirm adobe-source-han-sans-jp-fonts
 sudo pacman -Rs --noconfirm adobe-source-han-sans-kr-fonts
-sudo pacman -Rs --noconfirm nomacs
-sudo pacman -Rs --noconfirm hardinfo-gtk3
-sudo pacman -Rs --noconfirm paru-bin
-sudo pacman -Rs --noconfirm yay-bin
+sudo pacman -Rs --noconfirm vim vim-runtime
 
 # always put the current .bashrc .zshrc away
 if [ -f /etc/skel/.bashrc ]; then

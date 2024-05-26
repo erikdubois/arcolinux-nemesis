@@ -138,6 +138,13 @@ echo
 sudo pacman -Sy
 
 if grep -q "arconet" /etc/dev-rel || grep -q "arcopro" /etc/dev-rel || grep -q "arcoplasma" /etc/dev-rel; then
+    echo
+    tput setaf 3
+    echo "################################################################"
+    echo "################### We are either on arconet, arcopro or arcoplasma"
+    echo "################################################################"
+    tput sgr0
+    echo
     sh get-me-started
 fi
 
