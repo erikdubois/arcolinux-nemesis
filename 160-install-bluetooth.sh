@@ -77,7 +77,9 @@ if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed blueberry
 fi
 
-sudo pacman -S --noconfirm --needed pulseaudio-bluetooth
+if ! pacman -Qi pipewire-pulse &> /dev/null; then 
+    sudo pacman -S --noconfirm --needed pulseaudio-bluetooth
+fi
 sudo pacman -S --noconfirm --needed bluez
 sudo pacman -S --noconfirm --needed bluez-libs
 sudo pacman -S --noconfirm --needed bluez-utils
