@@ -39,7 +39,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 ##################################################################################################################
 
 # set DEBUG to true to be able to analyze the scripts file per file
-export DEBUG=true
+export DEBUG=false
 
 ##################################################################################################################
 
@@ -70,7 +70,7 @@ if [[ "$response" == [yY] ]]; then
     touch /tmp/install-chadwm
 fi
 
-sh 410-intervention*
+#sh 410-intervention*
 
 echo
 tput setaf 3
@@ -124,7 +124,6 @@ if grep -q "arconet" /etc/dev-rel || grep -q "arcopro" /etc/dev-rel || grep -q "
     echo
     sh get-me-started
 fi
-
 
 sh 400-remove-software*
 
