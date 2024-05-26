@@ -55,45 +55,8 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
 	tput sgr0
 	echo
 
-	sudo pacman -S --noconfirm --needed edu-skel-git
-	sudo pacman -S --noconfirm --needed edu-xfce-git
-  	sudo pacman -S --noconfirm --needed edu-system-git
-
-	if [ -f /usr/share/xsessions/xfce.desktop ]; then
-		echo
-		tput setaf 2
-		echo "################################################################"
-		echo "################### We are on Xfce4"
-		echo "################################################################"
-		tput sgr0
-		echo
-
-		cp -arf /etc/skel/. ~
-
-		echo
-		echo "Changing the whiskermenu"
-		echo
-		cp $installed_dir/settings/carli/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
-		sudo cp $installed_dir/settings/carli/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
-
-		FIND="Arc-Dark"
-		REPLACE="Arc-Dawn-Dark"
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-		FIND="Sardi-Arc"
-		REPLACE="a-candy-beauty-icon-theme"
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-	fi
-	echo
-	echo "ArchLinux Logout - breeze-blur icons"
-	echo
-	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
-	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-breeze-blur.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
-	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-breeze-blur.conf /etc/archlinux-logout.conf
-
+	echo "Nothing to do"
+	
 	echo
 	tput setaf 6
 	echo "################################################################"

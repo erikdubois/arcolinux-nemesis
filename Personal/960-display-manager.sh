@@ -65,8 +65,6 @@ if grep -q "archlinux" /etc/os-release; then
 
 	echo
 	echo "Installing and changing sddm theme"
-	echo "Archinstall is by default lightdm"
-	echo "Any time tosddm"
 	echo
 	echo "Copying sddm files"
 	sudo pacman -S --noconfirm --needed sddm arcolinux-sddm-simplicity-git
@@ -74,6 +72,7 @@ if grep -q "archlinux" /etc/os-release; then
 
 	[ -d /etc/sddm.conf.d ] || sudo mkdir /etc/sddm.conf.d
 	sudo cp -f /usr/share/archlinux-tweak-tool/data/arco/sddm.conf.d/kde_settings.conf /etc/sddm.conf.d/kde_settings.conf
+	
 	FIND="Current=breeze"
 	REPLACE="Current=arcolinux-simplicity"
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
