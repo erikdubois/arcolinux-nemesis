@@ -55,7 +55,7 @@ if grep -q "arconet" /etc/dev-rel || grep -q "arcopro" /etc/dev-rel || grep -q "
     cp $installed_dir/settings/bookmarks-arco/bookmarks* ~/.config/gtk-3.0/
 fi
 
-if grep -q "alci" /etc/lsb-release; then
+if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
     [ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
     cp $installed_dir/settings/bookmarks-alci/bookmarks* ~/.config/gtk-3.0/
 fi
