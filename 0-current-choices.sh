@@ -114,7 +114,7 @@ echo
 
 sudo pacman -Sy
 
-if -f /etc/dev-rel; then
+if [ -f /etc/dev-rel ]; then
 
     if grep -q "arconet" /etc/dev-rel || grep -q "arcopro" /etc/dev-rel || grep -q "arcoplasma" /etc/dev-rel; then
         echo
