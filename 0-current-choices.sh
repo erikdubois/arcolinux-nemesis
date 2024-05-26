@@ -74,6 +74,7 @@ fi
 
 if ! pacman -Qi arcolinux-keyring &> /dev/null; then
     sh arch/get-the-keys-and-repos.sh
+    sudo pacman -Syyu
 fi
 
 echo
