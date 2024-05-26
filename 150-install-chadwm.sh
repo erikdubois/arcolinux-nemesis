@@ -76,7 +76,6 @@ func_install_chadwm() {
     alacritty
     archlinux-logout-git
     arcolinux-chadwm-git
-    arcolinux-paleofetch-git
     arcolinux-powermenu-git
     arcolinux-wallpapers-candy-git
     arcolinux-wallpapers-git
@@ -88,11 +87,8 @@ func_install_chadwm() {
     gvfs
     lolcat
     lxappearance
-    #pa-applet-git
     picom
     polkit-gnome
-    rofi
-    #rxvt-unicode
     sxhkd
     thunar
     thunar-archive-plugin
