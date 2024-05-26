@@ -31,6 +31,18 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+if [ "$DEBUG" = true ]; then
+    echo
+    echo "------------------------------------------------------------"
+    echo "Running $(basename $0)"
+    echo "------------------------------------------------------------"
+    echo
+    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
+    echo
+fi
+
+##################################################################################################################
+
 # https://www.youtube.com/watch?v=HMxHUvN6VGo
 # https://gitlab.com/stephan-raabe/
 echo "getting install script"
@@ -39,3 +51,11 @@ wget https://gitlab.com/stephan-raabe/installer/-/raw/main/install.sh?ref_type=h
 chmod +x /tmp/install.sh
 
 sh /tmp/install.sh
+
+echo
+tput setaf 6
+echo "######################################################"
+echo "###################  $(basename $0) done"
+echo "######################################################"
+tput sgr0
+echo

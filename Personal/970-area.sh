@@ -31,6 +31,18 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+if [ "$DEBUG" = true ]; then
+    echo
+    echo "------------------------------------------------------------"
+    echo "Running $(basename $0)"
+    echo "------------------------------------------------------------"
+    echo
+    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
+    echo
+fi
+
+##################################################################################################################
+
 # we are on Area
 
 if [ -f /usr/local/bin/get-nemesis-on-area ]; then
@@ -184,3 +196,11 @@ if [ -f /usr/local/bin/get-nemesis-on-area ]; then
 	echo
 
 fi
+
+echo
+tput setaf 6
+echo "######################################################"
+echo "###################  $(basename $0) done"
+echo "######################################################"
+tput sgr0
+echo

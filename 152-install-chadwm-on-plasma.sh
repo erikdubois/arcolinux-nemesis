@@ -31,6 +31,18 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+if [ "$DEBUG" = true ]; then
+    echo
+    echo "------------------------------------------------------------"
+    echo "Running $(basename $0)"
+    echo "------------------------------------------------------------"
+    echo
+    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
+    echo
+fi
+
+##################################################################################################################
+
 func_install() {
     if pacman -Qi $1 &> /dev/null; then
         tput setaf 2
@@ -198,3 +210,11 @@ if grep -q 'NAME="Arch Linux"' /etc/os-release; then
     echo
 
 fi
+
+echo
+tput setaf 6
+echo "######################################################"
+echo "###################  $(basename $0) done"
+echo "######################################################"
+tput sgr0
+echo

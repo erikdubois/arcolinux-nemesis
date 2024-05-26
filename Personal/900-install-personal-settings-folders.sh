@@ -31,20 +31,22 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Personal settings to reset to default"
-echo "################################################################"
-tput sgr0
+if [ "$DEBUG" = true ]; then
+    echo
+    echo "------------------------------------------------------------"
+    echo "Running $(basename $0)"
+    echo "------------------------------------------------------------"
+    echo
+    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
+    echo
+fi
+
+##################################################################################################################
 
 echo "################################################################"
 echo "################### Personal directories to create"
 echo "################################################################"
 tput sgr0
-echo
-echo "Creating folders we use later"
-echo
 
 [ -d /etc/skel/.config ] || sudo mkdir -p /etc/skel/.config
 [ -d /personal ] || sudo mkdir -p /personal
@@ -83,7 +85,6 @@ echo
 cp  $installed_dir/settings/sublimetext/Preferences.sublime-settings $HOME/.config/sublime-text/Packages/User/Preferences.sublime-settings
 echo
 
-echo
 echo "Blueberry symbolic link"
 echo
 #uncommenting so that we see the bluetooth icon in our toolbars
@@ -95,14 +96,6 @@ echo
 
 result=$(systemd-detect-virt)
 if [ $result = "none" ];then
-
-	echo
-	tput setaf 2
-	echo "################################################################"
-	echo "####### Copy paste virtual box template"
-	echo "################################################################"
-	tput sgr0
-	echo	
 
 	[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
 	sudo cp -rf settings/virtualbox-template/* ~/VirtualBox\ VMs/
@@ -164,7 +157,6 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	cp -r $installed_dir/settings/Kvantum/* $HOME/.config/Kvantum
 	[ -d /etc/skel/.config/Kvantum ] || sudo mkdir -p /etc/skel/.config/Kvantum
 	sudo cp -r $installed_dir/settings/Kvantum/* /etc/skel/.config/Kvantum
-	echo
 
 	echo
 	echo "To default xfce settings"
@@ -202,20 +194,20 @@ if grep -q "ArcoLinux" /etc/os-release; then
 
 	echo
 	echo "Changing icons for telegram"
-	sh settings/telegram/adapt-telegram.sh
+	sh $installed_dir/settings/telegram/adapt-telegram.sh
 	echo
 
 	echo
 	echo "Changing icons for flameshot"
-	sh settings/flameshot/adapt-flameshot.sh
+	sh $installed_dir/settings/flameshot/adapt-flameshot.sh
 	echo
 
 fi
 
 echo
 tput setaf 6
-echo "################################################################"
-echo "################### Done"
-echo "################################################################"
+echo "######################################################"
+echo "###################  $(basename $0) done"
+echo "######################################################"
 tput sgr0
 echo

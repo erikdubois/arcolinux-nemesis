@@ -31,6 +31,18 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+if [ "$DEBUG" = true ]; then
+    echo
+    echo "------------------------------------------------------------"
+    echo "Running $(basename $0)"
+    echo "------------------------------------------------------------"
+    echo
+    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
+    echo
+fi
+
+##################################################################################################################
+
 # https://www.youtube.com/watch?v=HMxHUvN6VGo
 # https://gitlab.com/stephan-raabe/
 
@@ -68,3 +80,11 @@ bind = CTRL ALT, Return, exec, kitty
 bind = SUPER , D, exec, rofi -show drun -replace -i
 bind = SUPER SHIFT, D, exec, rofi -show drun -replace -i" | tee -a $HOME/dotfiles/hypr/conf/keybindings/default.conf
 fi
+
+echo
+tput setaf 6
+echo "######################################################"
+echo "###################  $(basename $0) done"
+echo "######################################################"
+tput sgr0
+echo

@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-05-25
+## Generated on 2024-05-26
 ##
 
 ## Worldwide
@@ -770,6 +770,10 @@ Server = https://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch
 Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
 
 ## Switzerland
+Server = http://pkg.adfinis-on-exoscale.ch/archlinux-pkgbuild/$repo/os/$arch
+Server = http://pkg.adfinis-on-exoscale.ch/archlinux/$repo/os/$arch
+Server = https://pkg.adfinis-on-exoscale.ch/archlinux-pkgbuild/$repo/os/$arch
+Server = https://pkg.adfinis-on-exoscale.ch/archlinux/$repo/os/$arch
 Server = http://pkg.adfinis.com/archlinux/$repo/os/$arch
 Server = https://pkg.adfinis.com/archlinux/$repo/os/$arch
 Server = http://mirror.init7.net/archlinux/$repo/os/$arch
@@ -875,6 +879,8 @@ Server = http://us.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://us.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = http://mirror.clarkson.edu/archlinux/$repo/os/$arch
 Server = https://mirror.clarkson.edu/archlinux/$repo/os/$arch
+Server = http://mirror.colonelhosting.com/archlinux/$repo/os/$arch
+Server = https://mirror.colonelhosting.com/archlinux/$repo/os/$arch
 Server = http://arch.mirror.constant.com/$repo/os/$arch
 Server = https://arch.mirror.constant.com/$repo/os/$arch
 Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch
