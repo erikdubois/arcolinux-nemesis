@@ -72,7 +72,7 @@ fi
 
 #sh 410-intervention*
 
-if ! pacman -Si arcolinux-keyring; then
+if ! pacman -Qi arcolinux-keyring &> /dev/null; then
     sh arch/get-the-keys-and-repos.sh
 fi
 
