@@ -90,10 +90,6 @@ if grep -q "ArchBang" /etc/os-release; then
   REPLACE="COMPRESSION=\"zstd\""
   sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
-  #plenty of opportunity for this to run later
-  #sudo mkinitcpio -P
-  #sudo grub-mkconfig -o /boot/grub/grub.cfg
-
 fi
 
 echo
