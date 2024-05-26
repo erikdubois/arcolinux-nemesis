@@ -89,6 +89,7 @@ func_install_chadwm() {
     lxappearance
     picom
     polkit-gnome
+    rofi-lbonn-wayland
     sxhkd
     thunar
     thunar-archive-plugin
