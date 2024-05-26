@@ -60,6 +60,11 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
     cp $installed_dir/settings/bookmarks-alci/bookmarks* ~/.config/gtk-3.0/
 fi
 
+if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
+    [ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
+    cp $installed_dir/settings/bookmarks-alci/bookmarks* ~/.config/gtk-3.0/
+fi
+
 echo
 tput setaf 6
 echo "######################################################"
