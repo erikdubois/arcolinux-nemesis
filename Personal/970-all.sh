@@ -56,7 +56,6 @@ echo "Adding xorg xkill"
 echo
 [ -d /etc/X11/xorg.conf.d/ ] || mkdir -p /etc/X11/xorg.conf.d/
 sudo cp  settings/xorg/* /etc/X11/xorg.conf.d/
-echo
 
 echo
 echo "copying cursor file"
@@ -88,6 +87,7 @@ fi
 
 echo
 echo "Adding nanorc settings"
+echo
 
 if [ -f /etc/nanorc ]; then
 	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
