@@ -70,8 +70,10 @@ if [[ "$response" == [yY] ]]; then
     touch /tmp/install-chadwm
 fi
 
-#sh 410-intervention*
+# only for ArchBang
+# sh 410-intervention*
 
+# Check if arcolinux-repos etc are there
 if ! pacman -Qi arcolinux-keyring &> /dev/null; then
     sh arch/get-the-keys-and-repos.sh
     sudo pacman -Syyu
@@ -84,20 +86,6 @@ echo "################### Installing velo/velow - development software"
 echo "################################################################"
 tput sgr0
 echo
-
-# when NOT on a wayland session
-if [ ! -d /usr/share/wayland-sessions/ ]; then
-    if [ -f /usr/local/bin/velo ]; then
-        velo
-    fi
-fi
-
-# when on a wayland session
-if [ -d /usr/share/wayland-sessions/ ]; then
-    if [ -f /usr/local/bin/velow ]; then
-        velow
-    fi
-fi
 
 echo
 tput setaf 3
