@@ -70,10 +70,7 @@ if [[ "$response" == [yY] ]]; then
     touch /tmp/install-chadwm
 fi
 
-
-
 sh 410-intervention*
-
 
 echo
 tput setaf 3
@@ -100,32 +97,12 @@ fi
 echo
 tput setaf 3
 echo "################################################################"
-echo "################### Pacman parallel downloads to 20"
+echo "################### Pacman parallel downloads to 21"
 echo "################################################################"
 tput sgr0
 echo
 
-FIND="ParallelDownloads = 8"
-REPLACE="ParallelDownloads = 20"
-sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
-
-FIND="#ParallelDownloads = 5"
-REPLACE="ParallelDownloads = 20"
-sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
-
-FIND="ParallelDownloads = 5"
-REPLACE="ParallelDownloads = 20"
-sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
-
-echo
-tput setaf 3
-echo "################################################################"
-echo "################### No neofetch by default"
-echo "################################################################"
-tput sgr0
-echo
-
-sed -i 's/^neofetch/#neofetch/' ~/.bashrc
+sudo sed -i 's/^#*ParallelDownloads = .*/ParallelDownloads = 21/' /etc/pacman.conf
 
 echo
 tput setaf 3
