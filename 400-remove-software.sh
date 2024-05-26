@@ -118,7 +118,6 @@ if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
   tput sgr0
   echo
 
-  sudo pacman -R --noconfirm carli-xfce-config
   sudo pacman -R --noconfirm grml-zsh-config
 
   echo
@@ -225,8 +224,9 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
   echo "######################################################"
   tput sgr0
   echo
-
-  sudo rm /etc/skel/.Xresources
+  if [ -f /etc/skel/.Xresources ]; then
+    sudo rm /etc/skel/.Xresources
+  fi
   sudo pacman -R --noconfirm amd-ucode
   sudo pacman -R --noconfirm b43-fwcutter
   sudo pacman -R --noconfirm broadcom-wl
