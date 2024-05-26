@@ -51,41 +51,6 @@ echo "################################################################"
 tput sgr0
 echo
 
-# we are on ALCI
-
-if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
-
-	echo
-	tput setaf 2
-	echo "################################################################"
-	echo "################### We are on ALCI"
-	echo "################################################################"
-	tput sgr0
-	echo
-
-	echo
-	echo "Changing sddm theme"
-	if [ -f /usr/lib/sddm/sddm.conf.d/default.conf ]; then
-		sudo cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
-		echo
-		echo "Changing sddm theme"
-		echo
-		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
-		FIND="Current="
-		REPLACE="Current=arcolinux-simplicity"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
-	fi
-
-	echo
-	tput setaf 6
-	echo "################################################################"
-	echo "################### Done"
-	echo "################################################################"
-	tput sgr0
-	echo
-
-fi
-
 # we are on Arch Linux
 
 if grep -q "archlinux" /etc/os-release; then
@@ -147,6 +112,41 @@ if grep -q "archlinux" /etc/os-release; then
 		REPLACE="background=\/etc\/lightdm\/lightdm.jpg"
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/lightdm/lightdm-gtk-greeter.conf
 
+	fi
+
+	echo
+	tput setaf 6
+	echo "################################################################"
+	echo "################### Done"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+fi
+
+# we are on ALCI
+
+if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
+
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "################### We are on ALCI"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+	echo
+	echo "Changing sddm theme"
+	if [ -f /usr/lib/sddm/sddm.conf.d/default.conf ]; then
+		sudo cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
+		echo
+		echo "Changing sddm theme"
+		echo
+		sudo pacman -S --noconfirm --needed arcolinux-sddm-simplicity-git
+		FIND="Current="
+		REPLACE="Current=arcolinux-simplicity"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 	fi
 
 	echo
