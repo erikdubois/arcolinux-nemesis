@@ -72,10 +72,6 @@ if grep -q "archlinux" /etc/os-release; then
 
 	[ -d /etc/sddm.conf.d ] || sudo mkdir /etc/sddm.conf.d
 	sudo cp -f /usr/share/archlinux-tweak-tool/data/arco/sddm.conf.d/kde_settings.conf /etc/sddm.conf.d/kde_settings.conf
-	
-	FIND="Current=breeze"
-	REPLACE="Current=arcolinux-simplicity"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/sddm.conf
 
 	if [ -f /etc/lightdm/lightdm.conf ]; then
 
