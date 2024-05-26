@@ -72,6 +72,10 @@ fi
 
 #sh 410-intervention*
 
+if ! pacman -Si arcolinux-keyring; then
+    sh arch/get-the-keys-and-repos
+fi
+
 echo
 tput setaf 3
 echo "################################################################"
