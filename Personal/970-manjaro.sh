@@ -43,7 +43,7 @@ fi
 
 ##################################################################################################################
 
-# when on EOS
+# when on MANJARO
 
 ###############################################################################
 #
@@ -55,7 +55,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ###############################################################################
 
-# when on Eos
+# when on Manjaro
 
 if grep -q "Manjaro" /etc/os-release; then
 
@@ -72,68 +72,27 @@ if grep -q "Manjaro" /etc/os-release; then
   	sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
   	sudo rm -f /etc/skel/.config/variety/variety.conf
   	sudo pacman -S --noconfirm --needed arcolinux-variety-git
+  	sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
+	if [ -f /etc/environment ]; then
+		echo "EDITOR=nano" | sudo tee -a /etc/environment
+		echo "BROWSER=firefox" | sudo tee -a /etc/environment
+	fi
 
-	# echo "Variety conf ArcoLinux"
-	# sudo rm /etc/skel/.config/variety/variety.conf
-	# sudo pacman -S --noconfirm --needed arconet-variety-config
+	echo
+	tput setaf 6
+	echo "################################################################"
+	echo "################### Done"
+	echo "################################################################"
+	tput sgr0
+	echo
 
+	if ! grep -q "wobblywindowsEnabled=true" $HOME/.config/kwinrc; then
+echo '
 
-	# if [ -f /etc/environment ]; then
-	# 	echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
-	# 	echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
-	# 	echo "EDITOR=nano" | sudo tee -a /etc/environment
-	# 	echo "BROWSER=firefox" | sudo tee -a /etc/environment
-	# fi
-
-	# echo
-	# echo "################################################################"
-	# echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
-	# echo "################################################################"
-	# echo
-	# sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
-	# sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
-
-#   	if [ -f /usr/share/xsessions/xfce.desktop ]; then
-# 		echo
-# 		tput setaf 2
-# 		echo "################################################################"
-# 		echo "################### We are on Xfce4"
-# 		echo "################################################################"
-# 		tput sgr0
-# 		echo
-
-#     	cp -arf /etc/skel/. ~
-
-# 		echo
-# 		echo "Changing the whiskermenu"
-# 		echo
-# 		cp $installed_dir/settings/eos/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
-# 		sudo cp $installed_dir/settings/eos/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
-
-# 		echo
-# 		echo "Changing the icons and theme"
-# 		echo
-
-# 		FIND="Arc-Dark"
-# 		REPLACE="Arc-Dawn-Dark"
-# 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-#     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-# 		FIND="Sardi-Arc"
-# 		REPLACE="a-candy-beauty-icon-theme"
-# 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-#     	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-#     fi
-
-# 	echo
-# 	tput setaf 6
-# 	echo "################################################################"
-# 	echo "################### Done"
-# 	echo "################################################################"
-# 	tput sgr0
-# 	echo
+[Plugins]
+wobblywindowsEnabled=true' | sudo tee -a ~/.config/kwinrc
+  	fi
 
 fi
 
