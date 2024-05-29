@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-05-26
+## Generated on 2024-05-29
 ##
 
 ## Worldwide
@@ -295,6 +295,7 @@ Server = https://mirror.cmt.de/archlinux/$repo/os/$arch
 Server = http://os.codefionn.eu/archlinux/$repo/os/$arch
 Server = https://os.codefionn.eu/archlinux/$repo/os/$arch
 Server = https://mirror.dogado.de/archlinux/$repo/os/$arch
+Server = https://mirror.eto.dev/arch/$repo/os/$arch
 Server = http://mirror.f4st.host/archlinux/$repo/os/$arch
 Server = https://mirror.f4st.host/archlinux/$repo/os/$arch
 Server = http://ftp.fau.de/archlinux/$repo/os/$arch
@@ -490,6 +491,8 @@ Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
 Server = https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
 Server = http://repo.jing.rocks/archlinux/$repo/os/$arch
 Server = https://repo.jing.rocks/archlinux/$repo/os/$arch
+Server = http://www.miraa.jp/archlinux/$repo/os/$arch
+Server = https://www.miraa.jp/archlinux/$repo/os/$arch
 Server = http://mirror.nishi.network/archlinux/$repo/os/$arch
 Server = https://mirror.nishi.network/archlinux/$repo/os/$arch
 Server = https://mirror.saebasol.org/archlinux/$repo/os/$arch
