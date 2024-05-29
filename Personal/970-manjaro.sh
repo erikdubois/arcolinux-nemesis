@@ -70,6 +70,8 @@ if grep -q "Manjaro" /etc/os-release; then
 	sudo pacman -R --noconfirm sardi-icons
   	sudo pacman -R --noconfirm surfn-icons-git
   	sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
+  	sudo pacman -S --noconfirm --needed arcolinux-variety-git
+
 
 	# echo "Variety conf ArcoLinux"
 	# sudo rm /etc/skel/.config/variety/variety.conf
