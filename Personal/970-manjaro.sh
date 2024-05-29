@@ -69,6 +69,7 @@ if grep -q "Manjaro" /etc/os-release; then
 
 	sudo pacman -R --noconfirm sardi-icons
 	sudo pacman -R --noconfirm qt5ct
+	sudo pacman -R --noconfirm qt6ct
   	sudo pacman -R --noconfirm surfn-icons-git
   	sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git 
   	sudo pacman -S --noconfirm --needed arcolinux-meta-plasma-design
