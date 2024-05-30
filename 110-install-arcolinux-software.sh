@@ -51,6 +51,8 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo pacman -S --noconfirm --needed archlinux-kernel-manager-dev
+
 if grep -q arcolinux_repo /etc/pacman.conf; then
 
   echo
