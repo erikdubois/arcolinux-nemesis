@@ -25,7 +25,7 @@ echo
 
 #https://wiki.archlinux.org/title/Modprobed-db
 
-sudo pacman -S modprobed-db --noconfirm --needed
+yay -S modprobed-db --noconfirm --needed
 modprobed-db
 modprobed-db store
 systemctl --user enable --now modprobed-db.service
