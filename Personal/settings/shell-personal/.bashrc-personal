@@ -56,3 +56,19 @@ alias treefp='tree -f -C'
 alias treemt='tree --sort=mtime -C'
 
 alias ip='ip --color=always'
+alias yoda='sudo pacman -Syyu'
+
+
+# systemctl aliases
+alias sc='sudo systemctl'
+alias sc-serv='systemctl list-units --type=service | grep --color -E "active running|$"'
+alias scs='systemctl status'
+alias sc-f='systemctl --failed'
+alias sc-r='systemctl|grep running'
+alias sc-e='systemctl list-unit-files --state=enabled'
+alias sc-d='systemctl list-unit-files --state=disabled'
+alias sc-m='systemctl list-unit-files --state=masked'
+
+alias sa='systemd-analyze'
+alias sab='systemd-analyze blame'
+alias sac='systemd-analyze critical-chain'
