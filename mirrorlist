@@ -9,12 +9,11 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-06-09
+## Generated on 2024-06-20
 ##
 
 ## Worldwide
 Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
-Server = https://mirror.onet.pl/pub/mirrors/archlinux/$repo/os/$arch
 Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 
@@ -80,6 +79,8 @@ Server = https://mirror.ufscar.br/archlinux/$repo/os/$arch
 ## Bulgaria
 Server = https://mirror.darklinux.uk/archlinux/$repo/os/$arch
 Server = http://mirror.host.ag/archlinux/$repo/os/$arch
+Server = http://mirrors.neterra.net/archlinux/$repo/os/$arch
+Server = https://mirrors.neterra.net/archlinux/$repo/os/$arch
 Server = http://mirrors.netix.net/archlinux/$repo/os/$arch
 Server = http://mirror.telepoint.bg/archlinux/$repo/os/$arch
 Server = https://mirror.telepoint.bg/archlinux/$repo/os/$arch
@@ -532,6 +533,8 @@ Server = http://archlinux-mirror.cloud.mu/$repo/os/$arch
 Server = https://archlinux-mirror.cloud.mu/$repo/os/$arch
 
 ## Mexico
+Server = http://lidsol.fi-b.unam.mx/archlinux/$repo/os/$arch
+Server = https://lidsol.fi-b.unam.mx/archlinux/$repo/os/$arch
 Server = https://arch.jsc.mx/$repo/os/$arch
 
 ## Moldova
@@ -628,7 +631,8 @@ Server = http://mirror.juniorjpdj.pl/archlinux/$repo/os/$arch
 Server = https://mirror.juniorjpdj.pl/archlinux/$repo/os/$arch
 Server = http://arch.midov.pl/arch/$repo/os/$arch
 Server = https://arch.midov.pl/arch/$repo/os/$arch
-Server = http://mirror.onet.pl/pub/mirrors/archlinux/$repo/os/$arch
+Server = http://mirroronet.pl/pub/mirrors/archlinux/$repo/os/$arch
+Server = https://mirroronet.pl/pub/mirrors/archlinux/$repo/os/$arch
 Server = http://piotrkosoft.net/pub/mirrors/ftp.archlinux.org/$repo/os/$arch
 Server = http://ftp.psnc.pl/linux/archlinux/$repo/os/$arch
 Server = https://ftp.psnc.pl/linux/archlinux/$repo/os/$arch
@@ -765,8 +769,8 @@ Server = https://nox.panibrez.com/archlinux/$repo/os/$arch
 Server = http://ftp.rediris.es/mirror/archlinux/$repo/os/$arch
 
 ## Sweden
-Server = http://ftp.acc.umu.se/mirror/archlinux/$repo/os/$arch
-Server = https://ftp.acc.umu.se/mirror/archlinux/$repo/os/$arch
+Server = http://mirror.accum.se/mirror/archlinux/$repo/os/$arch
+Server = https://mirror.accum.se/mirror/archlinux/$repo/os/$arch
 Server = http://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch
 Server = https://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch
 Server = http://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch
@@ -819,6 +823,8 @@ Server = http://mirror2.totbb.net/archlinux/$repo/os/$arch
 Server = http://ftp.linux.org.tr/archlinux/$repo/os/$arch
 Server = http://depo.turkiye.linux.web.tr/archlinux/$repo/os/$arch
 Server = https://depo.turkiye.linux.web.tr/archlinux/$repo/os/$arch
+Server = http://mirror.timtal.com.tr/archlinux/$repo/os/$arch
+Server = https://mirror.timtal.com.tr/archlinux/$repo/os/$arch
 Server = http://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch
 
 ## Ukraine
