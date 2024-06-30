@@ -72,7 +72,6 @@ sudo pacman -Rs --noconfirm adobe-source-han-sans-cn-fonts
 sudo pacman -Rs --noconfirm adobe-source-han-sans-jp-fonts
 sudo pacman -Rs --noconfirm adobe-source-han-sans-kr-fonts
 sudo pacman -Rs --noconfirm vim vim-runtime
-sudo pacman -Rs --noconfirm simplescreenrecorder
 
 # always put the current .bashrc .zshrc away
 if [ -f /etc/skel/.bashrc ]; then

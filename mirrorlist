@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-06-20
+## Generated on 2024-06-30
 ##
 
 ## Worldwide
@@ -112,6 +112,8 @@ Server = http://mirror.quantum5.ca/archlinux/$repo/os/$arch
 Server = https://mirror.quantum5.ca/archlinux/$repo/os/$arch
 Server = http://muug.ca/mirror/archlinux/$repo/os/$arch
 Server = https://muug.ca/mirror/archlinux/$repo/os/$arch
+Server = http://mirrors.pablonara.com/archlinux/$repo/os/$arch
+Server = https://mirrors.pablonara.com/archlinux/$repo/os/$arch
 Server = http://mirror.powerfly.ca/archlinux/$repo/os/$arch
 Server = https://mirror.powerfly.ca/archlinux/$repo/os/$arch
 Server = https://mirror.qctronics.com/archlinux/$repo/os/$arch
@@ -304,8 +306,6 @@ Server = http://os.codefionn.eu/archlinux/$repo/os/$arch
 Server = https://os.codefionn.eu/archlinux/$repo/os/$arch
 Server = https://mirror.dogado.de/archlinux/$repo/os/$arch
 Server = https://mirror.eto.dev/arch/$repo/os/$arch
-Server = http://mirror.f4st.host/archlinux/$repo/os/$arch
-Server = https://mirror.f4st.host/archlinux/$repo/os/$arch
 Server = http://ftp.fau.de/archlinux/$repo/os/$arch
 Server = https://ftp.fau.de/archlinux/$repo/os/$arch
 Server = https://pkg.fef.moe/archlinux/$repo/os/$arch
@@ -435,6 +435,7 @@ Server = http://in-mirror.garudalinux.org/archlinux/$repo/os/$arch
 Server = https://in-mirror.garudalinux.org/archlinux/$repo/os/$arch
 Server = http://archlinux.mirror.net.in/archlinux/$repo/os/$arch
 Server = https://archlinux.mirror.net.in/archlinux/$repo/os/$arch
+Server = https://arch.niranjan.co/$repo/os/$arch
 Server = http://mirrors.nxtgen.com/archlinux-mirror/$repo/os/$arch
 Server = https://mirrors.nxtgen.com/archlinux-mirror/$repo/os/$arch
 Server = http://mirrors.piconets.webwerks.in/archlinux-mirror/$repo/os/$arch
@@ -482,7 +483,6 @@ Server = https://mirror.isoc.org.il/pub/archlinux/$repo/os/$arch
 Server = https://archlinux.mivzakim.net/$repo/os/$arch
 
 ## Italy
-Server = https://archmirror.it/repos/$repo/os/$arch
 Server = http://archlinux.mirror.garr.it/archlinux/$repo/os/$arch
 Server = http://archlinux.mirror.server24.net/$repo/os/$arch
 Server = https://archlinux.mirror.server24.net/$repo/os/$arch
@@ -670,6 +670,8 @@ Server = https://mirrors.hosterion.ro/archlinux/$repo/os/$arch
 Server = http://mirrors.hostico.ro/archlinux/$repo/os/$arch
 Server = https://mirrors.hostico.ro/archlinux/$repo/os/$arch
 Server = http://archlinux.mirrors.linux.ro/$repo/os/$arch
+Server = http://linuxromania.ro/archlinux/$repo/os/$arch
+Server = https://linuxromania.ro/archlinux/$repo/os/$arch
 Server = http://mirrors.m247.ro/archlinux/$repo/os/$arch
 Server = http://mirrors.nav.ro/archlinux/$repo/os/$arch
 Server = http://mirrors.nxthost.com/archlinux/$repo/os/$arch
