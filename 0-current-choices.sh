@@ -71,7 +71,7 @@ if [[ "$response" == [yY] ]]; then
 fi
 
 # only for ArchBang
-# sh 410-intervention*
+sh 410-intervention*
 
 # Check if arcolinux-repos etc are there
 if ! pacman -Qi arcolinux-keyring &> /dev/null; then
