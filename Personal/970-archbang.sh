@@ -66,6 +66,10 @@ if grep -q "ArchBang" /etc/os-release; then
 	echo "Adding picom"
 	sudo pacman -S --noconfirm --needed picom
 
+	echo "Installing and setting sddm"
+	sudo pacman -S --noconfirm --needed sddm arcolinux-sddm-simplicity-git
+	sudo systemctl enable -f sddm
+
 	echo
 	echo "Adding nanorc"
 	if [ -f /etc/nanorc ]; then
