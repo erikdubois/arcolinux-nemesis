@@ -79,13 +79,9 @@ if ! pacman -Qi arcolinux-keyring &> /dev/null; then
     sudo pacman -Syyu
 fi
 
-echo
-tput setaf 3
-echo "################################################################"
-echo "################### Installing velo/velow - development software"
-echo "################################################################"
-tput sgr0
-echo
+sudo pacman -S sublime-text-4 --noconfirm --needed
+sudo pacman -S ripgrep --noconfirm --needed
+sudo pacman -S meld --noconfirm --needed
 
 echo
 tput setaf 3
