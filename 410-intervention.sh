@@ -62,14 +62,15 @@ if grep -q "ArchBang" /etc/os-release; then
   tput sgr0
   echo
 
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Running fixkey if it exists"
-  echo "################################################################"
-  tput sgr0
-  echo
+
   if [ -f /usr/local/bin/fixkey ]; then
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Running fixkey if it exists"
+    echo "################################################################"
+    tput sgr0
+    echo
     /usr/local/bin/fixkey
   fi
 
