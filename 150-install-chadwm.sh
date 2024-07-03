@@ -80,7 +80,7 @@ func_install_chadwm() {
     arcolinux-powermenu-git
     arcolinux-wallpapers-candy-git
     arcolinux-wallpapers-git
-    arconet-xfce4
+    arconet-xfce
     autorandr
     dash
     dmenu
