@@ -85,9 +85,11 @@ func_install_chadwm() {
     dmenu
     eww
     feh
+    gcc
     gvfs
     lolcat
     lxappearance
+    make
     picom
     polkit-gnome
     rofi-lbonn-wayland
