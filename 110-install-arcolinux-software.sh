@@ -78,6 +78,7 @@ sudo pacman -S --noconfirm --needed a-candy-beauty-icon-theme-git
 sudo pacman -S --noconfirm --needed arcolinux-app-glade-git
 sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
+sudo pacman -S --noconfirm --needed sofirem-git
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
