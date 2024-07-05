@@ -5,6 +5,7 @@ file:///home/erik/Projects
 file:///home/erik/Videos Videos
 file:///etc/skel /etc/skel
 file:///home/erik/.config .config
+file:///home/erik/.config/arco-chadwm
 file:///home/erik/.local
 file:///home/erik/Dropbox Dropbox
 file:///home/erik/Insync Insync
@@ -13,6 +14,7 @@ file:///home/erik/arconet-Out
 file:///home/erik/arcoplasma-Out
 file:///home/erik/arcopro-Out
 file:///home/erik/arconext-Out
+file:///home/erik/Insync/JUST-CORETEAM
 file:///home/erik/Insync/SHARED-CORETEAM
 file:///home/erik/ARCO/ARCHLINUX-PKGBUILD/archlinux-pkgbuild
 file:///home/erik/ARCO/ARCOLINUX-PKGBUILD/arcolinux-pkgbuild
@@ -23,8 +25,6 @@ file:///home/erik/ARCO/ARCOLINUX-DESKTOP
 file:///home/erik/ARCO/ARCOLINUX-REPO
 file:///home/erik/ARCO/ARCOLINUX-ARC
 file:///home/erik/ARCO/ARCOLINUX
-file:///home/erik/ARCO/ARCOLINUXB
-file:///home/erik/ARCO/ARCOLINUXD
 file:///home/erik/ARCO/ARCOLINUX-CAL
 file:///home/erik/ARCO/ARCOLINUX-ISO
 file:///usr/share/applications applications
