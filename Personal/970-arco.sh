@@ -61,7 +61,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf /etc/archlinux-logout.conf
 
 	if [ -f /usr/bin/hyprctl ]; then
-		cp -r $installed_dir/settings/hypr/ ~/.config/hypr/
+		cp -rv $installed_dir/settings/hypr/ ~/.config/
 	fi
 
 	echo
