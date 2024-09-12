@@ -66,6 +66,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 
 	if [ -f /usr/bin/hyprctl ]; then
 		cp -rv $installed_dir/settings/hypr/ ~/.config/
+		/usr/local/bin/var
 	fi
 
 	echo
