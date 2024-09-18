@@ -70,6 +70,12 @@ sudo apt install -y thunar
 sudo apt install -y sxhkd
 sudo apt install -y variety
 
+git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
+
+sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcoliunux-powermenu /usr/local/bin
+cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
+cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
+
 git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
 
 sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
