@@ -103,7 +103,7 @@ static const Launcher launchers[] = {
     { firefox,       "" },
     { mintstick,     "" },
     { pavucontrol,   "" },
-    { telegram,      "" },
+    { telegram-desktop,      "" },
     { vivaldi.vivaldi-stable,       "" },
 };
 
