@@ -73,6 +73,8 @@ sudo apt install -y simplescreenrecorder
 sudo apt install -y suckless-tools
 sudo apt install -y sxhkd
 sudo apt install -y thunar
+sudo apt install -y thunar-archive-plugin
+sudo apt install -y thunar-volman
 sudo apt install -y variety
 sudo apt install -y vlc
 
