@@ -55,12 +55,14 @@ sudo apt install -y build-essential
 sudo apt install -y feh
 sudo apt install -y file-roller
 sudo apt install -y font-manager
+sudo apt install -y fonts-hack
 sudo apt install -y fonts-font-awesome
 sudo apt install -y libimlib2-dev
 sudo apt install -y libx11-dev
 sudo apt install -y libxft-dev
 sudo apt install -y libxinerama-dev
 sudo apt install -y lxappearance
+sudo apt install -y neofetch
 sudo apt install -y nitrogen
 sudo apt install -y numlockx
 sudo apt install -y pavucontrol
