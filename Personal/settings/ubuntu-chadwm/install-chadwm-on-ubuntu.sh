@@ -73,6 +73,10 @@ sudo apt install -y thunar
 sudo apt install -y sxhkd
 sudo apt install -y variety
 
+git clone https://github.com/arcolinux/arcolinux-alacritty /tmp/arcolinux-alacritty
+
+cp -r /tmp/arcolinux-alacritty/etc/skel/.config ~
+
 git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
