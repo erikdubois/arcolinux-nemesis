@@ -87,7 +87,7 @@ git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 
-git clone https://github.com/arcolinux/arconet-xfce  /tmp/arconet-xfce
+git clone https://github.com/arconetpro/arconet-xfce  /tmp/arconet-xfce
 
 cp -r /tmp/arconet-xfce/etc/skel/.config/Thunar ~/.config/
 
