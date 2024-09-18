@@ -62,6 +62,7 @@ sudo apt install -y libx11-dev
 sudo apt install -y libxft-dev
 sudo apt install -y libxinerama-dev
 sudo apt install -y lxappearance
+sudo apt install -y meld
 sudo apt install -y neofetch
 sudo apt install -y nitrogen
 sudo apt install -y numlockx
