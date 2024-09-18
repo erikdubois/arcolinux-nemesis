@@ -87,6 +87,10 @@ git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 
+git clone https://github.com/arcolinux/arconet-xfce  /tmp/arconet-xfce
+
+cp -r /tmp/arconet-xfce/etc/skel/.config/Thunar ~/.config/
+
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
 
 sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
