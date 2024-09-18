@@ -68,7 +68,7 @@ sudo apt install -y thunar
 sudo apt install -y sxhkd
 sudo apt install -y variety
 
-git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/
+git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
 cd /tmp/arcolinux-chadwm
 
 sudo cp /usr/bin/exec-chadwm /usr/bin
