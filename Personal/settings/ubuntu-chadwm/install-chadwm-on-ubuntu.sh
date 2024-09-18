@@ -77,6 +77,7 @@ sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xses
 
 cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
 cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
+cp run.sh  ~/.config/arco-chadwm/scripts
 
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
