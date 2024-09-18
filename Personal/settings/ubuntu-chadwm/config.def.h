@@ -89,7 +89,7 @@ static char *tags[] = { "", "", "", "", "", "", "", "", 
 //static char *tags[] = {"一", "二", "三", "四", "五", "六", "七", "八", "九", "十"};
 
 static const char* firefox[] = { "firefox", NULL };
-static const char* vivaldi[] = { "vivaldi", NULL };
+static const char* vivaldi[] = { "vivaldi.vivaldi-stable", NULL };
 static const char* eww[] = { "eww", "open" , "eww", NULL };
 static const char* discord[] = { "discord", "open" , "discord", NULL };
 static const char* telegram[] = { "telegram-desktop", "open" , "telegram-desktop", NULL };
