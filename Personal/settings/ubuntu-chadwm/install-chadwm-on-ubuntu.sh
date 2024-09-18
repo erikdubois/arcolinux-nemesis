@@ -73,11 +73,11 @@ sudo apt install -y variety
 git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/
 cd /tmp/arcolinux-chadwm
 
-sudo cp /usr/bin/exec-chadwm /usr/bin
-sudo cp /usr/share/xsessions/chadwm.desktop /usr/share/xsessions
+sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
+sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
 
-cp -r /etc/skel/.bin ~
-cp -r /etc/skel/.config ~
+cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
+cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
 
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
