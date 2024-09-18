@@ -52,6 +52,7 @@ sudo apt install -y arandr
 sudo apt install -y arc-theme
 sudo apt install -y btop
 sudo apt install -y build-essential
+sudo apt install -y catfish
 sudo apt install -y feh
 sudo apt install -y file-roller
 sudo apt install -y font-manager
