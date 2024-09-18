@@ -72,7 +72,7 @@ sudo apt install -y variety
 
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
 
-sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcoliunux-powermenu /usr/local/bin
+sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
 cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
 cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
 
