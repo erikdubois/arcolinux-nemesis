@@ -49,6 +49,7 @@ echo
 
 sudo snap install code --classic
 sudo snap install sublime-text --classic
+sudo snap install spotify --classic
 
 echo
 tput setaf 6
