@@ -104,7 +104,7 @@ static const Launcher launchers[] = {
     { mintstick,     "" },
     { pavucontrol,   "" },
     { telegram,      "" },
-    { vivaldi,       "" },
+    { vivaldi.vivaldi-stable,       "" },
 };
 
 static const int tagschemes[] = {
