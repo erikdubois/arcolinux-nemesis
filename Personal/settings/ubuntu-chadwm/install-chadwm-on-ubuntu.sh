@@ -110,6 +110,7 @@ cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
 cp run.sh  ~/.config/arco-chadwm/scripts
 cp picom.conf  ~/.config/arco-chadwm/picom
 cp config.def.h ~/.config/arco-chadwm/chadwm
+cp bar.sh ~/.config/arco-chadwm/scripts
 
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
