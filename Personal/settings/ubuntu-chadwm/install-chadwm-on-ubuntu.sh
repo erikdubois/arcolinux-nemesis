@@ -52,7 +52,6 @@ sudo apt install -y arandr
 sudo apt install -y arc-theme
 sudo apt install -y btop
 sudo apt install -y build-essential
-sudo apt install -y dmenu
 sudo apt install -y feh
 sudo apt install -y font-manager
 sudo apt install -y fonts-font-awesome
@@ -67,6 +66,7 @@ sudo apt install -y pavucontrol
 sudo apt install -y picom
 #sudo apt install -y polkit-kde-agent-1
 sudo apt install -y rofi
+sudo apt install -y suckless-tools
 sudo apt install -y thunar
 sudo apt install -y sxhkd
 sudo apt install -y variety
