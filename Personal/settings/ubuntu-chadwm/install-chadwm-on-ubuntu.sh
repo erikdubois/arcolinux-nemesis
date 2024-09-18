@@ -71,9 +71,10 @@ sudo apt install -y picom
 sudo apt install -y rofi
 sudo apt install -y simplescreenrecorder
 sudo apt install -y suckless-tools
-sudo apt install -y thunar
 sudo apt install -y sxhkd
+sudo apt install -y thunar
 sudo apt install -y variety
+sudo apt install -y vlc
 
 git clone https://github.com/arcolinux/arcolinux-alacritty /tmp/arcolinux-alacritty
 
