@@ -53,6 +53,7 @@ sudo apt install -y arc-theme
 sudo apt install -y btop
 sudo apt install -y build-essential
 sudo apt install -y feh
+sudo apt install -y file-roller
 sudo apt install -y font-manager
 sudo apt install -y fonts-font-awesome
 sudo apt install -y libimlib2-dev
