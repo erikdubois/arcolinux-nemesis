@@ -67,10 +67,15 @@ sudo apt install -y pavucontrol
 sudo apt install -y picom
 #sudo apt install -y polkit-kde-agent-1
 sudo apt install -y rofi
+sudo apt install -y simplescreenrecorder
 sudo apt install -y suckless-tools
 sudo apt install -y thunar
 sudo apt install -y sxhkd
 sudo apt install -y variety
+
+git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
+
+cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
 
