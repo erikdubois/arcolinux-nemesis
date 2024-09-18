@@ -63,6 +63,7 @@ sudo apt install -y libxinerama-dev
 sudo apt install -y lxappearance
 sudo apt install -y nitrogen
 sudo apt install -y numlockx
+sudo apt install -y pavucontrol
 sudo apt install -y picom
 #sudo apt install -y polkit-kde-agent-1
 sudo apt install -y rofi
