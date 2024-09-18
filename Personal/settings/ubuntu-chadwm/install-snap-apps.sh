@@ -48,11 +48,12 @@ tput sgr0
 echo
 
 sudo snap install code --classic
-sudo snap install sublime-text --classic
-sudo snap install spotify --classic
-sudo snap install vivaldi --classic
+sudo snap install discord --classic
 sudo snap install opera --classic
+sudo snap install spotify --classic
+sudo snap install sublime-text --classic
 sudo snap install telegram-desktop --classic
+sudo snap install vivaldi --classic
 
 echo
 tput setaf 6
