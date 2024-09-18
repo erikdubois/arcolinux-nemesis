@@ -60,5 +60,5 @@ while true; do
   interval=$((interval + 1))
 
 #  sleep 3 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  sleep 3 && xsetroot -name "$updates  $(cpu) $(mem) $(clock)"
+  sleep 3 && xsetroot -name "  $(cpu) $(mem) $(clock)"
 done
