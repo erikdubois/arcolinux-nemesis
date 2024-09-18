@@ -62,20 +62,22 @@ sudo apt install -y libxft-dev
 sudo apt install -y libxinerama-dev
 sudo apt install -y lxappearance
 sudo apt install -y nitrogen
+sudo apt install -y numlockx
 sudo apt install -y picom
+#sudo apt install -y polkit-kde-agent-1
 sudo apt install -y rofi
 sudo apt install -y thunar
 sudo apt install -y sxhkd
 sudo apt install -y variety
 
-git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
+git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/
 cd /tmp/arcolinux-chadwm
 
-sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
-sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
+sudo cp /usr/bin/exec-chadwm /usr/bin
+sudo cp /usr/share/xsessions/chadwm.desktop /usr/share/xsessions
 
-cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
-cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
+cp -r /etc/skel/.bin ~
+cp -r /etc/skel/.config ~
 
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
