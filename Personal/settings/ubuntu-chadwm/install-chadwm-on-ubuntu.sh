@@ -91,14 +91,16 @@ if [ -f ~/.bashrc ]; then
 	echo '
 alias update="sudo apt update && sudo apt upgrade"
 alias tofish="sudo chsh $USER -s /usr/bin/fish"
-alias tobash="sudo chsh $USER -s /usr/bin/bash"' | tee -a ~/.bashrc
+alias tobash="sudo chsh $USER -s /usr/bin/bash"
+alias sr="reboot"' | tee -a ~/.bashrc
 fi
 
 if [ -f ~/.config/fish/config.fish ]; then
 	echo '
 alias update="sudo apt update && sudo apt upgrade"
 alias tofish="sudo chsh $USER -s /usr/bin/fish"
-alias tobash="sudo chsh $USER -s /usr/bin/bash"' | tee -a ~/.config/fish/config.fish
+alias tobash="sudo chsh $USER -s /usr/bin/bash"
+alias sr="reboot"' | tee -a ~/.config/fish/config.fish
 fi
 
 echo
