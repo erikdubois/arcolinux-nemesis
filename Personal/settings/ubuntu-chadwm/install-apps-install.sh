@@ -54,6 +54,7 @@ sudo apt install -y catfish
 sudo apt install -y chromium-browser
 sudo apt install -y feh
 sudo apt install -y file-roller
+sudo apt install -y flameshot
 sudo apt install -y font-manager
 sudo apt install -y fonts-hack
 sudo apt install -y lxappearance

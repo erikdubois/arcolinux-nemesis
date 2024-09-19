@@ -86,6 +86,12 @@ sudo make install
 
 sudo apt remove -y xdg-desktop-portal-gnome
 
+
+
+echo '
+alias update="sudo apt update && sudo apt upgrade"' | tee ~/.bashrc
+exec bash
+
 echo
 tput setaf 6
 echo "################################################################"
