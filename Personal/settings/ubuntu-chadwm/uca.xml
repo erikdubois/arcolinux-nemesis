@@ -141,7 +141,7 @@
 	<name>Ownership to root</name>
 	<submenu></submenu>
 	<unique-id>1526631155250282-8</unique-id>
-	<command>gnome-keyring-daemon -r -d;gksu &quot;chown -R root:root %F&quot;</command>
+	<command>gnome-keyring-daemon -r -d;pkexec chown -R root:root %F</command>
 	<description>Change permissions to root</description>
 	<range></range>
 	<patterns>*</patterns>
