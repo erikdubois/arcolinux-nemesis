@@ -89,12 +89,12 @@ sudo apt remove -y xdg-desktop-portal-gnome
 
 if [ -f ~/.bashrc ]; then
 	echo '
-	alias update="sudo apt update && sudo apt upgrade"' | tee -a ~/.bashrc
+alias update="sudo apt update && sudo apt upgrade"' | tee -a ~/.bashrc
 fi
 
 if [ -f ~/.config/fish/config.fish ]; then
 	echo '
-	alias update="sudo apt update && sudo apt upgrade"' | tee -a ~/.config/fish/config.fish
+alias update="sudo apt update && sudo apt upgrade"' | tee -a ~/.config/fish/config.fish
 fi
 
 echo
