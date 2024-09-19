@@ -79,6 +79,7 @@ cp run.sh  ~/.config/arco-chadwm/scripts
 cp picom.conf  ~/.config/arco-chadwm/picom
 cp config.def.h ~/.config/arco-chadwm/chadwm
 cp bar.sh ~/.config/arco-chadwm/scripts
+cp uca.xml ~/.config/Thunar
 
 cd ~/.config/arco-chadwm/chadwm
 sudo make install

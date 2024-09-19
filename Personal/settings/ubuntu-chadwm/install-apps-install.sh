@@ -72,11 +72,8 @@ cp -r /tmp/arcolinux-alacritty/etc/skel/.config ~
 git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 
-git clone https://github.com/arconetpro/arconet-xfce  /tmp/arconet-xfce
-cp -r /tmp/arconet-xfce/etc/skel/.config/Thunar ~/.config/
-
 #if you want to build it you need debhelper and gettext
-#rest is on the github of mintstick
+#rest is on the github of mintstick or use our script or our package
 sudo apt install -y ./mintstick_1.6.2_all.deb
 
 echo
