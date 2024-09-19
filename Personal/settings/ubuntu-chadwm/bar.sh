@@ -11,7 +11,7 @@ interval=0
 cpu() {
   cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
-  printf "^c$white^^b$black^ CPU"
+  printf "^c$white^ ^b$black^  CPU"
   printf "^c$white^ ^b$black^ $cpu_val"
 }
 
