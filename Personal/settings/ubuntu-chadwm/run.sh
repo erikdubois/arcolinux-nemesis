@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 picom -b  --config ~/.config/arco-chadwm/picom/picom.conf &
 variety -n &
 run "numlockx on"
