@@ -42,6 +42,7 @@ echo
 ./install-chadwm-on-ubuntu.sh
 ./install-apps-install.sh
 ./install-apps-snap.sh
+./personal-configs.sh
 
 echo
 tput setaf 6

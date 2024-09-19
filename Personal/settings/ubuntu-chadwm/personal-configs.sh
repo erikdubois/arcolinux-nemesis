@@ -34,62 +34,33 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Installing Chadwm on Ubuntu 24.04"
+echo "################### Personal choices"
 echo "################################################################"
 tput sgr0
 echo
 
+if [ -f ~/.bashrc ]; then
+	echo '
+alias update="sudo apt update && sudo apt upgrade"
+alias sr="reboot"' | tee -a ~/.bashrc
+fi
+
+if [ -f ~/.config/fish/config.fish ]; then
+	echo '
+alias update="sudo apt update && sudo apt upgrade"
+alias sr="reboot"' | tee -a ~/.config/fish/config.fish
+fi
+
 echo
-tput setaf 2
-echo "################################################################"
-echo "###### Installing packages"
-echo "################################################################"
-tput sgr0
+echo "To fish we go"
 echo
-
-sudo apt install -y build-essential
-sudo apt install -y fonts-font-awesome
-sudo apt install -y libimlib2-dev
-sudo apt install -y libx11-dev
-sudo apt install -y libxft-dev
-sudo apt install -y libxinerama-dev
-
-sudo apt install -y alacritty
-sudo apt install -y picom
-sudo apt install -y policykit-1-gnome
-sudo apt install -y rofi
-sudo apt install -y sxhkd
-sudo apt install -y suckless-tools
-sudo apt install -y thunar
-sudo apt install -y thunar-archive-plugin
-sudo apt install -y thunar-volman
-
-git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
-sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
-cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
-cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
-
-git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
-sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
-sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
-cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
-cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
-
-cp run.sh  ~/.config/arco-chadwm/scripts
-cp picom.conf  ~/.config/arco-chadwm/picom
-cp config.def.h ~/.config/arco-chadwm/chadwm
-cp bar.sh ~/.config/arco-chadwm/scripts
-cp uca.xml ~/.config/Thunar
-
-cd ~/.config/arco-chadwm/chadwm
-sudo make install
-
-sudo apt remove -y xdg-desktop-portal-gnome
-
+FIND="bash"
+REPLACE="fish"
+sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### Chadwm is installed - reboot"
+echo "###### Done"
 echo "################################################################"
 tput sgr0
 echo
