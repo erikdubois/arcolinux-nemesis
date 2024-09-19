@@ -67,6 +67,7 @@ sudo apt install -y neofetch
 sudo apt install -y nitrogen
 sudo apt install -y numlockx
 sudo apt install -y pavucontrol
+sudo apt install -y scrot
 sudo apt install -y simplescreenrecorder
 sudo apt install -y variety
 sudo apt install -y virtualbox
