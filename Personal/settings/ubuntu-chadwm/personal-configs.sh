@@ -59,6 +59,11 @@ REPLACE="fish"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
 echo
 
+echo "###########################################################################"
+echo "##      Removing all the messages virtualbox produces         ##"
+echo "###########################################################################"
+VBoxManage setextradata global GUI/SuppressMessages "all"
+
 result=$(systemd-detect-virt)
 if [ $result = "none" ];then
 
