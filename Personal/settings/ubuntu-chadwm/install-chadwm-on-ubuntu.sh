@@ -54,6 +54,7 @@ sudo apt install -y libx11-dev
 sudo apt install -y libxft-dev
 sudo apt install -y libxinerama-dev
 
+sudo apt install -y alacritty
 sudo apt install -y picom
 sudo apt install -y rofi
 sudo apt install -y sxhkd

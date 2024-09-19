@@ -47,7 +47,6 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo apt install -y alacritty
 sudo apt install -y arandr
 sudo apt install -y arc-theme
 sudo apt install -y btop
