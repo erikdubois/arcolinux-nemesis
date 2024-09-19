@@ -108,7 +108,7 @@ echo "To fish we go"
 echo
 FIND="bash"
 REPLACE="fish"
-sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwords
+sudo sed -i "s/$FIND/$REPLACE/g" /etc/password
 
 echo
 tput setaf 6
