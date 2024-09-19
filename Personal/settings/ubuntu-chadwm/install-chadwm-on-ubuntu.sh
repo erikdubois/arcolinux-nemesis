@@ -104,6 +104,13 @@ alias sr="reboot"' | tee -a ~/.config/fish/config.fish
 fi
 
 echo
+echo "To fish we go"
+echo
+FIND="bash"
+REPLACE="fish"
+sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwords
+
+echo
 tput setaf 6
 echo "################################################################"
 echo "###### Chadwm is installed - reboot"
