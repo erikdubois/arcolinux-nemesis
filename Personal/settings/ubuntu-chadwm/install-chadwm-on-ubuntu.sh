@@ -87,16 +87,14 @@ sudo make install
 sudo apt remove -y xdg-desktop-portal-gnome
 
 
-if -f ~/.bashrc; then
+if [ -f ~/.bashrc ]; then
 	echo '
 	alias update="sudo apt update && sudo apt upgrade"' | tee -a ~/.bashrc
-	exec bash
 fi
 
-if -f ~/.config/fish/config.fish; then
+if [ -f ~/.config/fish/config.fish ]; then
 	echo '
 	alias update="sudo apt update && sudo apt upgrade"' | tee -a ~/.config/fish/config.fish
-	exec fish
 fi
 
 echo
