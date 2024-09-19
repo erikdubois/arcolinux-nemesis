@@ -69,6 +69,7 @@ sudo apt install -y numlockx
 sudo apt install -y pavucontrol
 sudo apt install -y simplescreenrecorder
 sudo apt install -y variety
+sudo apt install -y virtualbox
 sudo apt install -y vlc
 
 git clone https://github.com/arcolinux/arcolinux-alacritty /tmp/arcolinux-alacritty
