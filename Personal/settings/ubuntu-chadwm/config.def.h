@@ -92,7 +92,7 @@ static const char* firefox[] = { "firefox", NULL };
 static const char* vivaldi[] = { "vivaldi.vivaldi-stable", NULL };
 static const char* eww[] = { "eww", "open" , "eww", NULL };
 static const char* discord[] = { "discord", "open" , "discord", NULL };
-static const char* telegram[] = { "telegram", "open" , "telegram-desktop", NULL };
+static const char* telegram[] = { "telegram-desktop", NULL };
 static const char* mintstick[] = { "mintstick", "-m", "iso", NULL};
 static const char* pavucontrol[] = { "pavucontrol", NULL };
 
