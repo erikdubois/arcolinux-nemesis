@@ -62,7 +62,6 @@ sudo apt install -y neofetch
 sudo apt install -y nitrogen
 sudo apt install -y numlockx
 sudo apt install -y pavucontrol
-#sudo apt install -y polkit-kde-agent-1
 sudo apt install -y simplescreenrecorder
 sudo apt install -y variety
 sudo apt install -y vlc
@@ -75,6 +74,10 @@ cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 
 git clone https://github.com/arconetpro/arconet-xfce  /tmp/arconet-xfce
 cp -r /tmp/arconet-xfce/etc/skel/.config/Thunar ~/.config/
+
+#if you want to build it you need debhelper and gettext
+#rest is on the github of mintstick
+sudo apt install -y ./mintstick_1.6.2_all.deb
 
 echo
 tput setaf 6
