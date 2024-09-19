@@ -57,6 +57,8 @@ sudo apt install -y file-roller
 sudo apt install -y flameshot
 sudo apt install -y font-manager
 sudo apt install -y fonts-hack
+sudo apt install -y gimp
+sudo apt install -y inkscape
 sudo apt install -y lxappearance
 sudo apt install -y meld
 sudo apt install -y neofetch
