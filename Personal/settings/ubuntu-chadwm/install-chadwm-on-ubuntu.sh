@@ -82,6 +82,8 @@ cp bar.sh ~/.config/arco-chadwm/scripts
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
 
+sudo apt remove -y xdg-desktop-portal-gnome
+
 echo
 tput setaf 6
 echo "################################################################"
