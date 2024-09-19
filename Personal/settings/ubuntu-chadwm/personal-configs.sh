@@ -58,6 +58,33 @@ FIND="bash"
 REPLACE="fish"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
 echo
+
+result=$(systemd-detect-virt)
+if [ $result = "none" ];then
+
+	[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
+	sudo cp -rf template.tar.gz ~/VirtualBox\ VMs/
+	cd ~/VirtualBox\ VMs/
+	tar -xzf template.tar.gz
+	rm -f template.tar.gz	
+
+else
+
+	echo
+	tput setaf 3
+	echo "################################################################"
+	echo "### You are on a virtual machine - skipping VirtualBox"
+	echo "### Template not copied over"
+	echo "### We will set your screen resolution with xrandr"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+	xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+
+fi
+
+
 tput setaf 6
 echo "################################################################"
 echo "###### Done"
