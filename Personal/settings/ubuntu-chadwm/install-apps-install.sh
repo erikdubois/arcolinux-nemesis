@@ -49,6 +49,7 @@ echo
 
 sudo apt install -y arandr
 sudo apt install -y arc-theme
+sudo apt install -y bibata-cursor-theme
 sudo apt install -y btop
 sudo apt install -y catfish
 sudo apt install -y chromium-browser
