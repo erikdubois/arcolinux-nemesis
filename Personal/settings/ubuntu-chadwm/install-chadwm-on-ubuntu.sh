@@ -56,6 +56,7 @@ sudo apt install -y libxinerama-dev
 
 sudo apt install -y alacritty
 sudo apt install -y picom
+sudo apt install -y policykit-1-gnome
 sudo apt install -y rofi
 sudo apt install -y sxhkd
 sudo apt install -y suckless-tools
