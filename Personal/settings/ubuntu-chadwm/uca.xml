@@ -41,8 +41,8 @@
 	<name>Open with gitkraken</name>
 	<submenu></submenu>
 	<unique-id>1587287434852027-1</unique-id>
-	<command>gitahead %F</command>
-	<description>Open with gitahead</description>
+	<command>gitkraken %F</command>
+	<description>Open with gitkraken</description>
 	<range></range>
 	<patterns>*</patterns>
 	<directories/>
