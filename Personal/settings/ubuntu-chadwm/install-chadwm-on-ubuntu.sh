@@ -89,7 +89,7 @@ sudo apt remove -y xdg-desktop-portal-gnome
 
 
 echo '
-alias update="sudo apt update && sudo apt upgrade"' | tee ~/.bashrc
+alias update="sudo apt update && sudo apt upgrade"' | tee -a ~/.bashrc
 exec bash
 
 echo
