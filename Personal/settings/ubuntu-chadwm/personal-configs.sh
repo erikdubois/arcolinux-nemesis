@@ -49,6 +49,8 @@ cp -rv dotfiles/* ~/.config
 echo "getting latest variety config from github"
 sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
+sudo cp 99-killX.conf  /etc/X11/xorg.conf.d/
+
 if [ -f ~/.bashrc ]; then
 	echo '
 ### EXPORT ###
