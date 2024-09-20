@@ -60,6 +60,8 @@ sudo apt install -y gimp
 sudo apt install -y gnome-bluetooth
 sudo apt install -y gnome-shell-extension-manager
 sudo apt install -y gnome-software
+sudo apt install -y gnome-software-plugin-flatpak
+sudo apt install -y gnome-software-snap
 sudo apt install -y gnome-tweaks
 sudo apt install -y gnome-weather
 sudo apt install -y hardinfo
