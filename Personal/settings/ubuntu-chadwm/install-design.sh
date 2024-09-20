@@ -34,21 +34,35 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one"
+echo "################### Installing icons ..."
 echo "################################################################"
 tput sgr0
 echo
 
-./install-chadwm-on-ubuntu.sh
-./install-apps-install.sh
-./install-apps-snap.sh
-./personal-configs.sh
-./install-ckb-next.sh
-./install-design.sh
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Installing packages"
+echo "################################################################"
+tput sgr0
+echo
+
+[ -d $HOME"/.bin" ] || mkdir -p $HOME"/.bin"
+[ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
+[ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
+[ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
+
+
+git clone https://github.com/arcolinux/a-candy-beauty-icon-theme  /tmp/a-candy-beauty-icon-theme
+cp -r /tmp/a-candy-beauty-icon-theme/usr/share/icons/* ~/.icons/
+
+sudo apt install -y arc-theme
+sudo apt install -y bibata-cursor-theme
+
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
+echo "###### Chadwm is installed - reboot"
 echo "################################################################"
 tput sgr0
 echo
