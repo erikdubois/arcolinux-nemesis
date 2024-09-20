@@ -61,6 +61,7 @@ sudo apt install -y gnome-software
 sudo apt install -y gnome-tweaks
 sudo apt install -y hardinfo
 sudo apt install -y hw-probe
+sudo apt install -y i3lock-fancy
 sudo apt install -y inkscape
 sudo apt install -y lollypop
 sudo apt install -y lxappearance
