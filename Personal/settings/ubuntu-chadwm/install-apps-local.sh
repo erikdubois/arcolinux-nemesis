@@ -43,7 +43,7 @@ rcolinux-variety/etc/skel/.config ~
 
 #if you want to build it you need debhelper and gettext
 #rest is on the github of mintstick or use our script or our package
-#sudo apt install -y ./mintstick_1.6.2_all.deb
+#sudo apt install -y packages/mintstick_1.6.2_all.deb
 sudo apt install -y mintstick
 
 sudo apt install -y packages/bat_0.24.0_amd64.deb
