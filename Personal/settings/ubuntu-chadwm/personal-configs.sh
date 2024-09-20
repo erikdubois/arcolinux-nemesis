@@ -112,9 +112,9 @@ cd /tmp/hblock
 sudo make install
 hblock
 
-git clone https://github.com/arcolinux/https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
-cp -r /tmp/archlinux-logout/etc/* /etc
-cp -r /tmp/archlinux-logout/usr/* /usr
+git clone https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
+cp -rv /tmp/archlinux-logout/etc/* /etc
+cp -rv /tmp/archlinux-logout/usr/* /usr
 
 tput setaf 6
 echo "################################################################"
