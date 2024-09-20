@@ -92,7 +92,7 @@ sudo apt install -y ./mintstick_1.6.2_all.deb
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### Chadwm is installed - reboot"
+echo "###### Packages via apt install done"
 echo "################################################################"
 tput sgr0
 echo
