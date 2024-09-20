@@ -107,6 +107,11 @@ else
 fi
 
 
+git clone https://github.com/hectorm/hblock  /tmp/hblock
+cd /tmp/hblock
+sudo make install
+hblock
+
 tput setaf 6
 echo "################################################################"
 echo "###### Personal choices done"
