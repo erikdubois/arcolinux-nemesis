@@ -48,6 +48,7 @@ sudo apt install -y curl
 sudo apt install -y duf
 sudo apt install -y feh
 sudo apt install -y file-roller
+sudo apt install -y fish
 sudo apt install -y flameshot
 sudo apt install -y font-manager
 sudo apt install -y fonts-hack
