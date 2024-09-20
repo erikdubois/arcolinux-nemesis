@@ -39,6 +39,13 @@ echo "################################################################"
 tput sgr0
 echo
 
+[ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
+[ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
+[ -d $HOME"/Projects" ] || mkdir -p $HOME"/Projects"
+
+echo "getting latest variety config from github"
+sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
+
 if [ -f ~/.bashrc ]; then
 	echo '
 alias update="sudo apt update && sudo apt upgrade"
