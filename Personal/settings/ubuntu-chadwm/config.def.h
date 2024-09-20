@@ -99,9 +99,9 @@ static const char* pavucontrol[] = { "pavucontrol", NULL };
 static const Launcher launchers[] = {
     /* command     name to display */
 
-    { discord,       "" },
+    { discord,       "" },
     { firefox,       "" },
-    { mintstick,     "" },
+    { mintstick,     "" },
     { pavucontrol,   "" },
     { telegram,      "" },
     { vivaldi,       "" },
