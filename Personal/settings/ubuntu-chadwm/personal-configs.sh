@@ -51,15 +51,29 @@ sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/
 
 if [ -f ~/.bashrc ]; then
 	echo '
+### EXPORT ###
+export EDITOR='nano'
+export VISUAL='nano'
+export HISTCONTROL=ignoreboth:erasedups
+export PAGER='most'
+
 alias update="sudo apt update && sudo apt upgrade"
 alias probe="sudo -E hw-probe -all -upload"
+alias nenvironment="sudo $EDITOR /etc/environment"
 alias sr="reboot"' | tee -a ~/.bashrc
 fi
 
 if [ -f ~/.config/fish/config.fish ]; then
 	echo '
+### EXPORT ###
+export EDITOR='nano'
+export VISUAL='nano'
+export HISTCONTROL=ignoreboth:erasedups
+export PAGER='most'
+
 alias update="sudo apt update && sudo apt upgrade"
 alias probe="sudo -E hw-probe -all -upload"
+alias nenvironment="sudo $EDITOR /etc/environment"
 alias sr="reboot"' | tee -a ~/.config/fish/config.fish
 fi
 
