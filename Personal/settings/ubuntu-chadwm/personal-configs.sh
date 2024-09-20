@@ -39,6 +39,8 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo apt install -y fish
+
 sudo cp environment /etc/environment
 cp -rv dotfiles/* ~/.config
 cp -v .gtkrc-2 ~
@@ -64,20 +66,6 @@ alias update="sudo apt upgrade"
 alias probe="sudo -E hw-probe -all -upload"
 alias nenvironment="sudo $EDITOR /etc/environment"
 alias sr="reboot"' | tee -a ~/.bashrc
-fi
-
-if [ -f ~/.config/fish/config.fish ]; then
-	echo '
-### EXPORT ###
-export EDITOR='nano'
-export VISUAL='nano'
-export HISTCONTROL=ignoreboth:erasedups
-export PAGER='most'
-
-alias update="sudo apt upgrade"
-alias probe="sudo -E hw-probe -all -upload"
-alias nenvironment="sudo $EDITOR /etc/environment"
-alias sr="reboot"' | tee -a ~/.config/fish/config.fish
 fi
 
 echo
