@@ -50,6 +50,10 @@ sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text.png
 sudo cp -v empty.png /usr/share/plymouth/ubuntu-logo.png
 sudo cp -v empty.png /usr/share/plymouth/themes/spinner/watermark.png
 
+cp -rv default ~/.icons
+sudo rm -r /usr/share/icons/default
+sudo cp -rv default /usr/share/icons/
+
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
 [ -d $HOME"/Projects" ] || mkdir -p $HOME"/Projects"
