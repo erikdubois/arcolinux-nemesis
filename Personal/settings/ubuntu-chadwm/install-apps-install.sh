@@ -47,6 +47,7 @@ sudo apt install -y catfish
 sudo apt install -y chromium-browser
 sudo apt install -y curl
 sudo apt install -y dex
+sudo apt install -y dconf-editor
 sudo apt install -y duf
 sudo apt install -y feh
 sudo apt install -y file-roller
