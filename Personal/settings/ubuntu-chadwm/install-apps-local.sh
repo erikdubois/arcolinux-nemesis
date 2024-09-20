@@ -39,8 +39,6 @@ echo "################################################################"
 tput sgr0
 echo
 
-rcolinux-variety/etc/skel/.config ~
-
 #if you want to build it you need debhelper and gettext
 #rest is on the github of mintstick or use our script or our package
 #sudo apt install -y packages/mintstick_1.6.2_all.deb
