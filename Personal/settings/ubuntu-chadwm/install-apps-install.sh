@@ -55,6 +55,7 @@ sudo apt install -y fonts-noto
 sudo apt install -y fonts-roboto
 sudo apt install -y gimp
 sudo apt install -y gnome-bluetooth
+sudo apt install -y gnome-tweaks
 sudo apt install -y hardinfo
 sudo apt install -y hw-probe
 sudo apt install -y inkscape
