@@ -39,6 +39,7 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo apt install -y apt-file
 sudo apt install -y arandr
 sudo apt install -y bat
 sudo apt install -y btop
