@@ -84,6 +84,9 @@ sudo apt install -y virtualbox
 sudo apt install -y vlc
 sudo apt install -y xfce4-screenshooter
 
+git clone https://github.com/arcolinux/arcolinux-btop /tmp/arcolinux-btop
+cp -r /tmp/arcolinux-btop/etc/skel/.config ~
+
 git clone https://github.com/arcolinux/arcolinux-alacritty /tmp/arcolinux-alacritty
 cp -r /tmp/arcolinux-alacritty/etc/skel/.config ~
 
