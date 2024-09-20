@@ -110,6 +110,8 @@ git clone https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
 sudo cp -rv /tmp/archlinux-logout/etc/* /etc
 sudo cp -rv /tmp/archlinux-logout/usr/* /usr
 
+cp -v archlinux-logout.conf ~/.config/archlinux-logout/
+
 git clone https://github.com/hectorm/hblock  /tmp/hblock
 cd /tmp/hblock
 sudo make install
