@@ -58,8 +58,10 @@ sudo apt install -y fonts-roboto
 sudo apt install -y galculator
 sudo apt install -y gimp
 sudo apt install -y gnome-bluetooth
+sudo apt install -y gnome-shell-extension-manager
 sudo apt install -y gnome-software
 sudo apt install -y gnome-tweaks
+sudo apt install -y gnome-weather
 sudo apt install -y hardinfo
 sudo apt install -y hw-probe
 sudo apt install -y i3lock-fancy
