@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -e
+#set -e
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -34,20 +34,24 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one"
+echo "###### Installing packages"
 echo "################################################################"
 tput sgr0
 echo
 
-./install-chadwm-on-ubuntu.sh
-./install-apps-install.sh
-./install-apps-snap.sh
-./personal-configs.sh
-./install-ckb-next.sh
+	sudo apt install -y qemu-system
+	sudo apt install -y virt-manager
+	
+	#installed_dir=$(pwd)
+	#[ -d $HOME"/.config/ckb-next" ] || mkdir -p $HOME"/.config/ckb-next"
+
+	#cp -r $installed_dir/settings/ckb-next/ckb-next.conf ~/.config/ckb-next.conf
+	#cp -f $installed_dir/settings/ckb-next/ckb-next.autostart.desktop ~/.config/autostart/ckb-next.autostart.desktop
+
 echo
 tput setaf 6
-echo "################################################################"
-echo "###### All in one done"
-echo "################################################################"
+echo "######################################################"
+echo "###################  $(basename $0) done"
+echo "######################################################"
 tput sgr0
 echo
