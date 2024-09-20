@@ -31,6 +31,14 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Checking if their is a Corsair K70 keyboard"
+echo "################################################################"
+tput sgr0
+echo
+
 if [ ! -f /usr/bin/hwinfo ]; then
   sudo apt install -y hwinfo
 fi
