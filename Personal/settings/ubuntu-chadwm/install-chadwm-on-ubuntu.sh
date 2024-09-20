@@ -80,7 +80,8 @@ cp picom.conf  ~/.config/arco-chadwm/picom
 cp config.def.h ~/.config/arco-chadwm/chadwm
 cp sxhkdrc  ~/.config/arco-chadwm/sxhkd
 cp bar.sh ~/.config/arco-chadwm/scripts
-cp uca.xml ~/.config/Thunar
+[ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
+cp uca.xml ~/.config/Thunar/
 
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
