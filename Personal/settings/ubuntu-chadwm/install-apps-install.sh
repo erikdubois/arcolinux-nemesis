@@ -82,6 +82,7 @@ sudo apt install -y system-config-printer
 sudo apt install -y variety
 sudo apt install -y virtualbox
 sudo apt install -y vlc
+sudo apt install -y xfce4-screenshooter
 
 git clone https://github.com/arcolinux/arcolinux-alacritty /tmp/arcolinux-alacritty
 cp -r /tmp/arcolinux-alacritty/etc/skel/.config ~
