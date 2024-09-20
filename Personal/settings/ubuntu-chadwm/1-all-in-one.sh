@@ -39,6 +39,8 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo apt upgrade -y
+
 ./install-chadwm-on-ubuntu.sh
 ./install-apps-install.sh
 ./install-apps-snap.sh
