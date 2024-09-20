@@ -43,7 +43,7 @@ echo
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
 [ -d $HOME"/Projects" ] || mkdir -p $HOME"/Projects"
 
-cp -r dotfiles/* ~/.config
+cp -rv dotfiles/* ~/.config
 
 echo "getting latest variety config from github"
 sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
