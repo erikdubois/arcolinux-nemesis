@@ -44,7 +44,8 @@ echo
 #sudo apt install -y packages/mintstick_1.6.2_all.deb
 sudo apt install -y mintstick
 
-sudo apt install -y ./packages/bat_0.24.0_amd64.deb
+#sudo apt install -y ./packages/bat_0.24.0_amd64.deb
+sudo apt install -y bat
 
 echo
 tput setaf 6
