@@ -34,7 +34,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "###### Installing packages"
+echo "###### Installing packages with apt install"
 echo "################################################################"
 tput sgr0
 echo
