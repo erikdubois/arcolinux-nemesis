@@ -42,12 +42,14 @@ echo
 if [ -f ~/.bashrc ]; then
 	echo '
 alias update="sudo apt update && sudo apt upgrade"
+alias probe="sudo -E hw-probe -all -upload"
 alias sr="reboot"' | tee -a ~/.bashrc
 fi
 
 if [ -f ~/.config/fish/config.fish ]; then
 	echo '
 alias update="sudo apt update && sudo apt upgrade"
+alias probe="sudo -E hw-probe -all -upload"
 alias sr="reboot"' | tee -a ~/.config/fish/config.fish
 fi
 
