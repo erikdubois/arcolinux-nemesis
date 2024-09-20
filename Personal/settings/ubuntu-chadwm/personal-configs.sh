@@ -39,11 +39,12 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo cp environment /etc/environment
+cp -rv dotfiles/* ~/.config
+
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
 [ -d $HOME"/Projects" ] || mkdir -p $HOME"/Projects"
-
-cp -rv dotfiles/* ~/.config
 
 echo "getting latest variety config from github"
 sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
