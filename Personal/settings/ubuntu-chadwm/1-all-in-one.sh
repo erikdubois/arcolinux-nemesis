@@ -46,7 +46,7 @@ echo
 ./install-design.sh
 ./personal-configs.sh
 
-sudo apt autoremove
+sudo apt autoremove -y
 
 echo
 tput setaf 6
