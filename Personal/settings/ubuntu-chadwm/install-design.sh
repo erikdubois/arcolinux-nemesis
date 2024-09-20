@@ -62,7 +62,7 @@ sudo apt install -y bibata-cursor-theme
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### Chadwm is installed - reboot"
+echo "###### installing icons ... done"
 echo "################################################################"
 tput sgr0
 echo

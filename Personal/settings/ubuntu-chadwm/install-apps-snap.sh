@@ -59,7 +59,7 @@ sudo snap install vivaldi --classic
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### Done"
+echo "###### Done installing snap software"
 echo "################################################################"
 tput sgr0
 echo
