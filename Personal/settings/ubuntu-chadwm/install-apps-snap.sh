@@ -47,6 +47,7 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo snap install colorwall --classic
 sudo snap install code --classic
 sudo snap install discord --classic
 sudo snap install gitkraken --classic
