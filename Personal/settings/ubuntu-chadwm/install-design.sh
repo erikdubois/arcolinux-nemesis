@@ -52,6 +52,8 @@ echo
 [ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
 [ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
 
+git clone https://github.com/erikdubois/Surfn  /tmp/surfn
+cp -r /tmp/surfn/surfn-icons/* ~/.icons/
 
 git clone https://github.com/arcolinux/a-candy-beauty-icon-theme  /tmp/a-candy-beauty-icon-theme
 cp -r /tmp/a-candy-beauty-icon-theme/usr/share/icons/* ~/.icons/
