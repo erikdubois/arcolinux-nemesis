@@ -55,6 +55,7 @@ sudo apt install -y font-manager
 sudo apt install -y fonts-hack
 sudo apt install -y fonts-noto
 sudo apt install -y fonts-roboto
+sudo apt install -y galculator
 sudo apt install -y gimp
 sudo apt install -y gnome-bluetooth
 sudo apt install -y gnome-software
