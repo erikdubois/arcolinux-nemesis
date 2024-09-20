@@ -42,9 +42,10 @@ echo
 ./install-chadwm-on-ubuntu.sh
 ./install-apps-install.sh
 ./install-apps-snap.sh
-./personal-configs.sh
 ./install-ckb-next.sh
 ./install-design.sh
+./personal-configs.sh
+
 echo
 tput setaf 6
 echo "################################################################"

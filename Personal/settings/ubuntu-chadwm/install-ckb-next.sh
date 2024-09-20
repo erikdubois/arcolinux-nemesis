@@ -62,11 +62,3 @@ if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 	echo
 
 fi
-
-echo
-tput setaf 6
-echo "######################################################"
-echo "###################  $(basename $0) done"
-echo "######################################################"
-tput sgr0
-echo
