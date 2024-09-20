@@ -76,8 +76,8 @@ sudo apt install -y numlockx
 sudo apt install -y pavucontrol
 sudo apt install -y pylint
 sudo apt install -y qbittorrent
-sudo apt install -y qt-style-kvantum
-sudo apt install -y qt-style-kvanum-themes
+sudo apt install -y qt5-style-kvantum
+sudo apt install -y qt5-style-kvanum-themes
 sudo apt install -y ripgrep
 sudo apt install -y scrot
 sudo apt install -y simplescreenrecorder
