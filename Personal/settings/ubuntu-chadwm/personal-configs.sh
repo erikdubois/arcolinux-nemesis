@@ -41,6 +41,7 @@ echo
 
 sudo cp environment /etc/environment
 cp -rv dotfiles/* ~/.config
+cp -v .gtkrc-2 ~
 
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
