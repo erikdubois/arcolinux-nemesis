@@ -47,7 +47,7 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo apt install -y snap
+sudo apt install -y snapd
 
 # installing software
 sudo snap install brave --classic
