@@ -132,6 +132,8 @@ cd $installed_dir
 git clone https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
 sudo cp -r /tmp/archlinux-logout/etc/* /etc
 sudo cp -r /tmp/archlinux-logout/usr/* /usr
+sudo rm -r /usr/share/archlinux-betterlockscreen
+sudo rm /usr/share/applications/archlinux-betterlockscreen.desktop
 
 # personalisation of archlinux-logout
 [ -d $HOME"/.config/archlinux-logout" ] || mkdir -p $HOME"/.config/archlinux-logout"
