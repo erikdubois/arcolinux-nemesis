@@ -92,7 +92,7 @@ echo
 echo "To fish we go"
 echo
 FIND="bash"
-REPLACE="/usr/bin/fish"
+REPLACE="\/usr\/bin\/fish"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
 echo
 echo
