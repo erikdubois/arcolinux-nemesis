@@ -41,7 +41,7 @@ echo
 
 sudo apt upgrade -y
 
-./install-chadwm-on-mint.sh
+./install-chadwm.sh
 ./install-apps-install.sh
 ./install-apps-snap.sh
 ./install-ckb-next.sh
