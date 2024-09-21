@@ -38,6 +38,7 @@ echo "################### Installing fisher and tide"
 echo "################################################################"
 tput sgr0
 echo
+# copy paste line 42 in a terminal for now
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 fisher install IlanCosman/tide@v6
 echo

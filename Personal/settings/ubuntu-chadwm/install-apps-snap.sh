@@ -47,6 +47,8 @@ echo "################################################################"
 tput sgr0
 echo
 
+# installing software
+sudo snap install brave --classic
 sudo snap install colorwall --classic
 sudo snap install code --classic
 sudo snap install discord --classic

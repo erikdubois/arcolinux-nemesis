@@ -39,10 +39,12 @@ echo "################################################################"
 tput sgr0
 echo
 
+# making sure hwinfo exists in the system
 if [ ! -f /usr/bin/hwinfo ]; then
   sudo apt install -y hwinfo
 fi
 
+# do we have a CORSAIR K70?
 if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 
 	echo
@@ -55,12 +57,6 @@ if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 
 	sudo apt install -y ckb-next
 	
-	#installed_dir=$(pwd)
-	#[ -d $HOME"/.config/ckb-next" ] || mkdir -p $HOME"/.config/ckb-next"
-
-	#cp -r $installed_dir/settings/ckb-next/ckb-next.conf ~/.config/ckb-next.conf
-	#cp -f $installed_dir/settings/ckb-next/ckb-next.autostart.desktop ~/.config/autostart/ckb-next.autostart.desktop
-
 	echo
 	tput setaf 6
 	echo "################################################################"

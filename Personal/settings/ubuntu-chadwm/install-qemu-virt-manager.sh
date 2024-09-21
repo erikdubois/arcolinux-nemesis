@@ -42,12 +42,6 @@ echo
 	sudo apt install -y qemu-system
 	sudo apt install -y virt-manager
 	
-	#installed_dir=$(pwd)
-	#[ -d $HOME"/.config/ckb-next" ] || mkdir -p $HOME"/.config/ckb-next"
-
-	#cp -r $installed_dir/settings/ckb-next/ckb-next.conf ~/.config/ckb-next.conf
-	#cp -f $installed_dir/settings/ckb-next/ckb-next.autostart.desktop ~/.config/autostart/ckb-next.autostart.desktop
-
 echo
 tput setaf 6
 echo "######################################################"

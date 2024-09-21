@@ -39,30 +39,40 @@ echo "################################################################"
 tput sgr0
 echo
 
+# installing extra shell
 sudo apt install -y fish
 
+# making sure simplescreenrecorder, virtualbox and other apps are dark
 sudo cp environment /etc/environment
+# .config I would like to have
 cp -rv dotfiles/* ~/.config
+# theme, cursor, icons, ...
 cp -v .gtkrc-2.0 ~
 
+# changing the appearance of GDM - no bottom logo (ubuntu text)
 sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text-dark.png
 sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text.png
 sudo cp -v empty.png /usr/share/plymouth/ubuntu-logo.png
 sudo cp -v empty.png /usr/share/plymouth/themes/spinner/watermark.png
 
+# setting the cursor to bibata everywhere
 cp -rv default ~/.icons
 sudo rm -r /usr/share/icons/default
 sudo cp -rv default /usr/share/icons/
 
+# personal folders I like to have
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
 [ -d $HOME"/Projects" ] || mkdir -p $HOME"/Projects"
 
+# setting my personal configuration for variety
 echo "getting latest variety config from github"
 sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
+# kill my system and go to GDM - CTRL ALT BACKSPACE
 sudo cp 99-killX.conf  /etc/X11/xorg.conf.d/
 
+# minimal setup for bashrc
 if [ -f ~/.bashrc ]; then
 	echo '
 ### EXPORT ###
@@ -77,6 +87,7 @@ alias nenvironment="sudo $EDITOR /etc/environment"
 alias sr="reboot"' | tee -a ~/.bashrc
 fi
 
+# Going for fish as the default shell
 echo
 echo "To fish we go"
 echo
@@ -84,12 +95,13 @@ FIND="bash"
 REPLACE="fish"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
 echo
+echo
+echo "Removing all the messages virtualbox produces"
+echo
 
-echo "###########################################################################"
-echo "##      Removing all the messages virtualbox produces         ##"
-echo "###########################################################################"
 VBoxManage setextradata global GUI/SuppressMessages "all"
 
+# when on real metal install a template
 result=$(systemd-detect-virt)
 if [ $result = "none" ];then
 
@@ -115,14 +127,18 @@ else
 
 fi
 
+# getting archlinux-logout
 cd $installed_dir
 git clone https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
 sudo cp -r /tmp/archlinux-logout/etc/* /etc
 sudo cp -r /tmp/archlinux-logout/usr/* /usr
 
+# personalisation of archlinux-logout
 [ -d $HOME"/.config/archlinux-logout" ] || mkdir -p $HOME"/.config/archlinux-logout"
 cp -v archlinux-logout.conf ~/.config/archlinux-logout/
 
+# prevention ads - tracking - hblock
+# https://github.com/hectorm/hblock
 git clone https://github.com/hectorm/hblock  /tmp/hblock
 cd /tmp/hblock
 sudo make install

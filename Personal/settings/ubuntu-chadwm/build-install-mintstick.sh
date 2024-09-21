@@ -39,9 +39,11 @@ echo "################################################################"
 tput sgr0
 echo
 
+# getting dependencies
 sudo apt install -y debhelper
 sudo apt install -y gettext
 
+# building from source
 git clone https://github.com/linuxmint/mintstick.git  /tmp/mintstick
 cd /tmp/mintstick
 dpkg-buildpackage

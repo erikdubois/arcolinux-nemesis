@@ -41,6 +41,7 @@ echo
 
 sudo apt install -y apt-file
 sudo apt install -y arandr
+# on Ubuntu the command is batcat
 sudo apt install -y bat
 sudo apt install -y btop
 sudo apt install -y catfish
@@ -94,19 +95,17 @@ sudo apt install -y virtualbox
 sudo apt install -y vlc
 sudo apt install -y xfce4-screenshooter
 
+# getting design from ArcoLinux
 git clone https://github.com/arcolinux/arcolinux-btop /tmp/arcolinux-btop
 cp -r /tmp/arcolinux-btop/etc/skel/.config ~
 
+# getting config for Alacritty - transparency
 git clone https://github.com/arcolinux/arcolinux-alacritty /tmp/arcolinux-alacritty
 cp -r /tmp/arcolinux-alacritty/etc/skel/.config ~
 
+# script to change wallpaper on Chadwm
 git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
-
-#if you want to build it you need debhelper and gettext
-#rest is on the github of mintstick or use our script or our package
-#sudo apt install -y ./mintstick_1.6.2_all.deb
-sudo apt install -y mintstick
 
 echo
 tput setaf 6

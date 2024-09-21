@@ -47,6 +47,7 @@ echo "################################################################"
 tput sgr0
 echo
 
+# getting dependencies to be able to build Chadwm
 sudo apt install -y build-essential
 sudo apt install -y fonts-font-awesome
 sudo apt install -y libimlib2-dev
@@ -54,27 +55,32 @@ sudo apt install -y libx11-dev
 sudo apt install -y libxft-dev
 sudo apt install -y libxinerama-dev
 
+# applications to be used in Chadwm
 sudo apt install -y alacritty
 sudo apt install -y picom
 sudo apt install -y policykit-1-gnome
 sudo apt install -y rofi
 sudo apt install -y sxhkd
+# next item is dmenu
 sudo apt install -y suckless-tools
 sudo apt install -y thunar
 sudo apt install -y thunar-archive-plugin
 sudo apt install -y thunar-volman
 
+# exit strategy - super + shift + x
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
 sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
 cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
 cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
 
+# getting the official code from ArcoLinux
 git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
 sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
 sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
 cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
 cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
 
+# overwriting the official code from ArcoLinux with my own
 cp run.sh  ~/.config/arco-chadwm/scripts
 cp picom.conf  ~/.config/arco-chadwm/picom
 cp config.def.h ~/.config/arco-chadwm/chadwm
@@ -83,12 +89,12 @@ cp bar.sh ~/.config/arco-chadwm/scripts
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
 cp uca.xml ~/.config/Thunar/
 
+# building Chadwm
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
 
+# removing this package - it slows down terminals and thunar
 sudo apt remove -y xdg-desktop-portal-gnome
-
-
 
 echo
 tput setaf 6

@@ -46,7 +46,7 @@ sudo apt upgrade -y
 ./install-apps-snap.sh
 ./install-ckb-next.sh
 ./install-design.sh
-./install-apps-install.sh
+./install-apps-local.sh
 ./personal-configs.sh
 
 sudo apt autoremove -y
