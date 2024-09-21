@@ -49,12 +49,6 @@ cp -rv dotfiles/* ~/.config
 # theme, cursor, icons, ...
 cp -v .gtkrc-2.0 ~
 
-# changing the appearance of GDM - no bottom logo (ubuntu text)
-sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text-dark.png
-sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text.png
-sudo cp -v empty.png /usr/share/plymouth/ubuntu-logo.png
-sudo cp -v empty.png /usr/share/plymouth/themes/spinner/watermark.png
-
 # setting the cursor to bibata everywhere
 cp -rv default ~/.icons
 sudo rm -r /usr/share/icons/default
