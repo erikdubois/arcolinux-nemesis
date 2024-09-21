@@ -47,6 +47,8 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo apt install -y snap
+
 # installing software
 sudo snap install brave --classic
 sudo snap install colorwall --classic
