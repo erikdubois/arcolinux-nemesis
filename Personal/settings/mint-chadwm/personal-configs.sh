@@ -85,7 +85,7 @@ fi
 echo
 echo "To fish we go"
 echo
-FIND="bash"
+FIND="\/bin\/bash"
 REPLACE="\/usr\/bin\/fish"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
 echo
