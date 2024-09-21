@@ -89,6 +89,7 @@ sudo apt install -y ripgrep
 sudo apt install -y scrot
 sudo apt install -y simplescreenrecorder
 sudo apt install -y speedtest-cli
+sudo apt install -y sublime-text
 sudo apt install -y system-config-printer
 sudo apt install -y variety
 sudo apt install -y virtualbox
