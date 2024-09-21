@@ -46,7 +46,8 @@ echo "###### Installing packages"
 echo "################################################################"
 tput sgr0
 echo
-
+# https://snapcraft.io/docs/installing-snap-on-linux-mint
+sudo rm /etc/apt/preferences.d/nosnap.pref
 sudo apt install -y snapd
 
 # installing software
