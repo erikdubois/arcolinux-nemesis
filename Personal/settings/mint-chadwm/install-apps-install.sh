@@ -45,7 +45,7 @@ sudo apt install -y arandr
 sudo apt install -y bat
 sudo apt install -y btop
 sudo apt install -y catfish
-sudo apt install -y chromium-browser
+sudo apt install -y chromium
 sudo apt install -y curl
 sudo apt install -y dex
 sudo apt install -y dconf-editor
@@ -65,7 +65,7 @@ sudo apt install -y gnome-bluetooth
 sudo apt install -y gnome-shell-extension-manager
 sudo apt install -y gnome-software
 sudo apt install -y gnome-software-plugin-flatpak
-sudo apt install -y gnome-software-snap
+sudo apt install -y gnome-software-plugin-snap
 sudo apt install -y gnome-tweaks
 sudo apt install -y gnome-weather
 sudo apt install -y hardinfo
