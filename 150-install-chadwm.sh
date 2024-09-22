@@ -109,6 +109,7 @@ func_install_chadwm() {
     xfce4-settings
     xfce4-taskmanager
     xfce4-terminal
+    xorg-xsetroot
     )
 
     count=0
