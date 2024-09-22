@@ -75,7 +75,7 @@ export VISUAL='nano'
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER='most'
 
-alias update="sudo apt upgrade"
+alias update="sudo apt update && sudo apt upgrade"
 alias probe="sudo -E hw-probe -all -upload"
 alias nenvironment="sudo $EDITOR /etc/environment"
 alias sr="reboot"' | tee -a ~/.bashrc
