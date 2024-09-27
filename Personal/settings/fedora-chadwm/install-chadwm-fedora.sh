@@ -29,13 +29,14 @@ sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xses
 sudo cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
 sudo cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
 # overwriting the official code from ArcoLinux with my own
-cp run.sh  ~/.config/arco-chadwm/scripts
-cp picom.conf  ~/.config/arco-chadwm/picom
-cp config.def.h ~/.config/arco-chadwm/chadwm
-cp sxhkdrc  ~/.config/arco-chadwm/sxhkd
-cp bar.sh ~/.config/arco-chadwm/scripts
-[ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
-cp uca.xml ~/.config/Thunar/
+# see the UBUNTU folder for the scripts beneath
+#cp run.sh  ~/.config/arco-chadwm/scripts
+#cp picom.conf  ~/.config/arco-chadwm/picom
+#cp config.def.h ~/.config/arco-chadwm/chadwm
+#cp sxhkdrc  ~/.config/arco-chadwm/sxhkd
+#cp bar.sh ~/.config/arco-chadwm/scripts
+#[ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
+#cp uca.xml ~/.config/Thunar/
 # building Chadwm
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
