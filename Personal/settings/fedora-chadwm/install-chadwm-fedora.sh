@@ -1,16 +1,17 @@
 #!/usr/bin/bash
 # Credits to D3xter on Discord
+# please run 'dos2unix install-chadwm-fedora.sh'to remove the hidden \r
 # getting dependencies to be able to build Chadwm
-# had to run dos2unix on this file to remove the hidden \r
 sudo dnf group install -y "C Development Tools and Libraries"
 sudo dnf install -y fontawesome-fonts
 sudo dnf install -y imlib2-devel
 sudo dnf install -y libX11-devel
 sudo dnf install -y libXft-devel
 sudo dnf install -y libXinerama-devel
-# applications to be used in Chadwm
+# basic applications to be used in Chadwm
 sudo dnf install -y alacritty
 sudo dnf install -y arc-theme
+sudo dnf install -y breeze-cursor-theme
 sudo dnf install -y feh
 sudo dnf install -y lxappearance
 sudo dnf install -y nitrogen
