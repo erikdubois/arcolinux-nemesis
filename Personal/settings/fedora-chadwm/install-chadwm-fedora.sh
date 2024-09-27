@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 # Credits to D3xter on Discord
 # getting dependencies to be able to build Chadwm
+# had to run dos2unix on this file to remove the hidden \r
 sudo dnf group install -y "C Development Tools and Libraries"
 sudo dnf install -y fontawesome-fonts
 sudo dnf install -y imlib2-devel
