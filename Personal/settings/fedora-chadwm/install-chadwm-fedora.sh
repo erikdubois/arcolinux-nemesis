@@ -10,6 +10,8 @@ sudo dnf install -y libXft-devel
 sudo dnf install -y libXinerama-devel
 # applications to be used in Chadwm
 sudo dnf install -y alacritty
+sudo dnf install -y feh
+sudo dnf install -y nitrogen
 sudo dnf install -y picom
 sudo dnf install -y rofi
 sudo dnf install -y sxhkd
