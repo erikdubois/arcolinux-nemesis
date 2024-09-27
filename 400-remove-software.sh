@@ -186,6 +186,9 @@ if grep -q "EndeavourOS" /etc/os-release; then
   echo "######################################################"
   tput sgr0
   echo
+  if [ -f /etc/skel/.config/rofi/config.rasi ]; then
+    sudo rm /etc/skel/.config/rofi/config.rasi
+  fi   
 
   sudo systemctl disable firewalld
   sudo pacman -R --noconfirm firewalld
