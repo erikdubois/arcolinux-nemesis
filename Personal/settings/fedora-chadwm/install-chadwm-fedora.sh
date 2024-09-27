@@ -28,8 +28,8 @@ cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
 git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
 sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
 sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
-sudo cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
-sudo cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
+cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
+cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
 # overwriting the official code from ArcoLinux with my own
 # see the UBUNTU folder for the scripts beneath
 #cp run.sh  ~/.config/arco-chadwm/scripts
