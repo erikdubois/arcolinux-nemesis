@@ -252,7 +252,7 @@ export VISUAL=nano
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER=most
 
-alias update="sudo apt update && sudo apt upgrade"
+alias update="sudo apt update && sudo apt upgrade && sudo snap refresh"
 alias probe="sudo -E hw-probe -all -upload"
 alias nenvironment="sudo $EDITOR /etc/environment"
 alias nfstab="sudo $EDITOR /etc/fstab"
