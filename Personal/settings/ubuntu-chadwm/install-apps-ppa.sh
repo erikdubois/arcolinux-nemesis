@@ -34,7 +34,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "###### Installing packages local install"
+echo "###### Installing packages from PPA"
 echo "################################################################"
 tput sgr0
 echo
