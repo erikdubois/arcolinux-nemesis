@@ -46,7 +46,7 @@ sudo apt install -y fastfetch
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### Packages local install done"
+echo "###### Packages PPA install done"
 echo "################################################################"
 tput sgr0
 echo
