@@ -34,29 +34,19 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one"
+echo "###### Installing packages local install"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt upgrade -y
+sudo add-apt-repository ppa:zhangsongcui3371/fastfetch -y
 
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-snap.sh
-./install-ckb-next.sh
-./install-design.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./personal-configs.sh
-
-sudo apt autoremove -y
+sudo apt install -y fastfetch
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
+echo "###### Packages local install done"
 echo "################################################################"
 tput sgr0
 echo
