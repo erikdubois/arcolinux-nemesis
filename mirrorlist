@@ -84,7 +84,6 @@ Server = http://mirror.ufscar.br/archlinux/$repo/os/$arch
 Server = https://mirror.ufscar.br/archlinux/$repo/os/$arch
 
 ## Bulgaria
-Server = https://mirror.darklinux.uk/archlinux/$repo/os/$arch
 Server = http://mirror.host.ag/archlinux/$repo/os/$arch
 Server = http://mirrors.neterra.net/archlinux/$repo/os/$arch
 Server = https://mirrors.neterra.net/archlinux/$repo/os/$arch
