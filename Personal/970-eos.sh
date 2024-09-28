@@ -73,6 +73,9 @@ if grep -q "EndeavourOS" /etc/os-release; then
   	sudo pacman -S --noconfirm --needed arconet-xfce
   	sudo pacman -S --noconfirm --needed fish
   	sudo pacman -S --noconfirm --needed arcolinux-fish-git
+  	sudo pacman -S --noconfirm --needed kvantum-qt5
+  	sudo pacman -S --noconfirm --needed arcolinux-kvantum-git
+  	sudo pacman -S --noconfirm --needed fisher
 
 	echo "Variety conf ArcoLinux"
 	if [ -f /etc/skel/.config/variety/variety.conf ]; then

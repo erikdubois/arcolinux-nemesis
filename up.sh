@@ -43,6 +43,11 @@ git pull
 
 workdir=$(pwd)
 
+# getting the official code from ArcoLinux
+git clone https://github.com/arcolinux/arcolinux-fish  /tmp/arcolinux-fish
+cp -rv /tmp/arcolinux-fish/etc/skel/.config/fish Personal/settings/ubuntu-chadwm/dotfiles
+cp -rv /tmp/arcolinux-fish/etc/skel/.config/fish Personal/settings/mint-chadwm/dotfiles
+
 rm $workdir/mirrorlist
 touch $workdir/mirrorlist
 echo "## Best Arch Linux servers worldwide
