@@ -47,6 +47,9 @@ workdir=$(pwd)
 git clone https://github.com/arcolinux/arcolinux-fish  /tmp/arcolinux-fish
 cp -rv /tmp/arcolinux-fish/etc/skel/.config/fish Personal/settings/ubuntu-chadwm/dotfiles
 cp -rv /tmp/arcolinux-fish/etc/skel/.config/fish Personal/settings/mint-chadwm/dotfiles
+# overwriting with our config.fish without pacman and other Arch aliases
+cp -v Personal/settings/ubuntu-chadwm/config.fish Personal/settings/ubuntu-chadwm/dotfiles/fish/config.fish
+cp -v Personal/settings/mint-chadwm/config.fish Personal/settings/mint-chadwm/dotfiles/fish/config.fish
 
 rm $workdir/mirrorlist
 touch $workdir/mirrorlist
