@@ -60,6 +60,7 @@ sudo apt install -y alacritty
 sudo apt install -y picom
 sudo apt install -y playerctl
 sudo apt install -y policykit-1-gnome
+sudo apt install -y pulsemixer
 sudo apt install -y rofi
 sudo apt install -y sxhkd
 # next item is dmenu
