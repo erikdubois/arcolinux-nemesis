@@ -67,11 +67,15 @@ if grep -q "EndeavourOS" /etc/os-release; then
 	echo
 	tput sgr0
 
+	sudo pacman -R --noconfirm eos-settings-xfce4
+
 	sudo pacman -S --noconfirm --needed arcolinux-root-git
   	sudo pacman -S --noconfirm --needed arconet-xfce
 
 	echo "Variety conf ArcoLinux"
-	sudo rm /etc/skel/.config/variety/variety.conf
+	if [ -f /etc/skel/.config/variety/variety.conf ]; then
+		sudo rm /etc/skel/.config/variety/variety.conf
+	fi
 	sudo pacman -S --noconfirm --needed arconet-variety-config
 
 
