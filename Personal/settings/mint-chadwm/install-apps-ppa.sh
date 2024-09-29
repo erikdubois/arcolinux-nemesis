@@ -40,7 +40,7 @@ tput sgr0
 echo
 
 sudo add-apt-repository ppa:zhangsongcui3371/fastfetch -y
-
+sudo apt update
 sudo apt install -y fastfetch
 
 #https://www.spotify.com/cw-nl/download/linux/
