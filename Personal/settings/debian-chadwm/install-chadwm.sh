@@ -37,7 +37,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Installing Chadwm on Debian 12"
+echo "################### Installing Chadwm on Debian"
 echo "################################################################"
 tput sgr0
 echo
