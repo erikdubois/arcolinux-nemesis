@@ -58,6 +58,8 @@ sudo cp -rv default /usr/share/icons/
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
 [ -d $HOME"/Projects" ] || mkdir -p $HOME"/Projects"
+[ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
+[ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
 
 # setting my personal configuration for variety
 echo "getting latest variety config from github"
@@ -140,6 +142,20 @@ git clone https://github.com/hectorm/hblock  /tmp/hblock
 cd /tmp/hblock
 sudo make install
 hblock
+
+# Arc Dawn
+git clone https://github.com/arcolinux/arcolinux-arc-dawn  /tmp/arcolinux-arc-dawn
+cd /tmp/arcolinux-arc-dawn/usr/share/themes
+
+cp -r * ~/.themes
+
+echo
+FIND="export GTK_THEME=Arc-Dark"
+REPLACE="export GTK_THEME=Arc-Dawn-Dark"
+sudo sed -i "s/$FIND/$REPLACE/g" /etc/environment
+
+# installing sparklines/spark
+sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark"
 
 tput setaf 6
 echo "################################################################"

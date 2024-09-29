@@ -34,29 +34,25 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one"
+echo "###### Installing packages from PPA"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt upgrade -y
+sudo add-apt-repository ppa:zhangsongcui3371/fastfetch -y
 
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-snap.sh
-./install-ckb-next.sh
-./install-design.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./personal-configs.sh
+sudo apt install -y fastfetch
 
-sudo apt autoremove -y
+#https://www.spotify.com/cw-nl/download/linux/
+curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+
+sudo apt-get update && sudo apt-get install spotify-client
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
+echo "###### Packages local install done"
 echo "################################################################"
 tput sgr0
 echo
