@@ -60,16 +60,17 @@ sudo yum install -y xorg-x11-drv-intel-2.99.917-57.20210115.fc40.x86_64
 
 # applications to be used in Chadwm
 sudo yum install -y alacritty
+sudo yum install -y dash
+sudo yum install -y dmenu
 sudo yum install -y picom
 sudo yum install -y playerctl
 sudo yum install -y polkit-gnome.x86_64
 sudo yum install -y rofi
 sudo yum install -y sxhkd
-# next item is dmenu
-sudo yum install -y dmenu
 sudo yum install -y thunar
 sudo yum install -y thunar-archive-plugin
 sudo yum install -y thunar-volman
+sudo yum install -y xsetroot
 
 # exit strategy - super + shift + x
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
