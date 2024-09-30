@@ -50,6 +50,10 @@ sudo dnf update -y
 sudo dnf upgrade -y
 sudo dnf autoremove -y
 
+# building Chadwm
+cd ~/.config/arco-chadwm/chadwm
+sudo make install
+
 echo
 tput setaf 6
 echo "################################################################"
