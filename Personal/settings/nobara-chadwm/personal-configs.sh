@@ -40,7 +40,7 @@ tput sgr0
 echo
 
 # installing extra shell
-sudo apt install -y fish
+sudo dnf install -y fish
 
 # making sure simplescreenrecorder, virtualbox and other apps are dark
 sudo cp environment /etc/environment
