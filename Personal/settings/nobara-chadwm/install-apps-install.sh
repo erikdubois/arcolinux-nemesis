@@ -41,7 +41,6 @@ echo
 
 sudo dnf install -y arandr
 sudo dnf install -y arc-kde-kvantum
-# on Ubuntu the command is batcat
 sudo dnf install -y bat
 sudo dnf install -y btop
 sudo dnf install -y catfish
