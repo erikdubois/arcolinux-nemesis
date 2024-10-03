@@ -48,14 +48,9 @@ tput sgr0
 echo
 
 # installing software
-sudo snap install brave --classic
-sudo snap install colorwall --classic
-sudo snap install code --classic
 sudo snap install discord --classic
 sudo snap install gitkraken --classic
-sudo snap install opera --classic
 sudo snap install telegram-desktop --classic
-sudo snap install vivaldi --classic
 
 echo
 tput setaf 6
