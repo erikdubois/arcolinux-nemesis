@@ -42,12 +42,13 @@ echo
 sudo apt upgrade -y
 
 ./install-chadwm.sh
-./install-apps-snap.sh
-./install-ckb-next.sh
-./install-design.sh
+./install-apps-install.sh
 ./install-apps-local.sh
 ./install-apps-ppa.sh
-./install-apps-install.sh
+./install-apps-snap.sh
+# personal stuff
+./install-ckb-next.sh
+./install-design.sh
 ./personal-configs.sh
 
 sudo apt autoremove -y
