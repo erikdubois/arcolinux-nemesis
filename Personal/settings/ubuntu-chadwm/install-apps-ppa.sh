@@ -79,18 +79,6 @@ sudo apt-get update && sudo apt-get install spotify-client
 
 echo
 echo "################################################################"
-echo "###### Opera"
-echo "################################################################"
-echo
-
-wget -qO- https://deb.opera.com/archive.key | gpg --dearmor | sudo dd of=/usr/share/keyrings/opera-browser.gpg
-echo "deb [signed-by=/usr/share/keyrings/opera-browser.gpg] https://deb.opera.com/opera-stable/ stable non-free" | sudo dd of=/etc/apt/sources.list.d/opera-archive.list
-
-sudo apt-get update
-sudo apt-get install opera-stable -y
-
-echo
-echo "################################################################"
 echo "###### Vivaldi"
 echo "################################################################"
 echo
@@ -164,6 +152,19 @@ wget -qO-  https://palfrey.github.io/discord-apt/discord-apt.gpg.asc | sudo tee 
 echo "deb https://palfrey.github.io/discord-apt/debian/ ./" | sudo tee /etc/apt/sources.list.d/discord.list > /dev/null
 sudo apt update
 sudo apt install discord
+
+
+echo
+echo "################################################################"
+echo "###### Opera"
+echo "################################################################"
+echo
+
+wget -qO- https://deb.opera.com/archive.key | gpg --dearmor | sudo dd of=/usr/share/keyrings/opera-browser.gpg
+echo "deb [signed-by=/usr/share/keyrings/opera-browser.gpg] https://deb.opera.com/opera-stable/ stable non-free" | sudo dd of=/etc/apt/sources.list.d/opera-archive.list
+
+sudo apt-get update
+sudo apt-get install opera-stable -y
 
 echo
 tput setaf 6
