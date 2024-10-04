@@ -136,17 +136,6 @@ sudo apt install -y firefox
 
 echo
 echo "################################################################"
-echo "###### Telegram"
-echo "################################################################"
-echo
-
-sudo add-apt-repository -y ppa:atareao/telegram
-sudo apt update
-sudo apt install -y telegram
-
-
-echo
-echo "################################################################"
 echo "###### Chromium"
 echo "################################################################"
 echo
