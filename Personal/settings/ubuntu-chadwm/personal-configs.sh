@@ -165,7 +165,7 @@ sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o 
 
 tput setaf 6
 echo "################################################################"
-echo "###### Personal choices done"
+echo "###### Personal choices done - reboot for fish"
 echo "################################################################"
 tput sgr0
 echo
