@@ -48,7 +48,6 @@ tput sgr0
 echo
 
 # installing software
-sudo snap install discord --classic
 sudo snap install gitkraken --classic
 
 echo
