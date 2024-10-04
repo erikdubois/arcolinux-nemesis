@@ -55,6 +55,12 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 sudo apt update
 sudo apt install sublime-text
 
+echo
+echo "################################################################"
+echo "###### Fastfetch"
+echo "################################################################"
+echo
+
 sudo add-apt-repository ppa:zhangsongcui3371/fastfetch -y
 sudo apt update
 sudo apt install -y fastfetch
