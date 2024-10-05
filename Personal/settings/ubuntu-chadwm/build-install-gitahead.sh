@@ -49,7 +49,7 @@ sudo apt install -y qttools5-dev
 
 # building from source
 git clone https://github.com/gitahead/gitahead/  /tmp/gitahead
-cp -v gitahead.desktop /tmp/gitahead
+cp -v gitahead.desktop /tmp/gitahead/
 cd /tmp/gitahead
 git submodule init
 git submodule update --depth 1
