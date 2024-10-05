@@ -51,7 +51,7 @@ cp -v .gtkrc-2.0 ~
 
 # double - also in install-chadwm for convenience
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
-cp uca.xml ~/.config/Thunar/
+cp -v uca.xml ~/.config/Thunar/
 
 # changing the appearance of GDM - no bottom logo (ubuntu text)
 sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text-dark.png
