@@ -130,11 +130,8 @@ function backup --argument filename
 end
 
 # recently installed packages
-function ripp --argument length -d "List the last n (100) packages installed"
-    if test -z $length
-        set length 100
-    end
-    expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n $length | nl
+function rip
+   dpkg-query -Wf '${Installed-size}\t${Package}\n' | column -t | sort -n
 end
 
 function gl
@@ -274,7 +271,6 @@ alias xd="ls /usr/share/xsessions"
 alias xdw="ls /usr/share/wayland-sessions"
 
 alias clean="clear; seq 1 $(tput cols) | sort -R | spark | /usr/games/lolcat"
-
 
 set fish_color_autosuggestion "#969896"
 set fish_color_cancel -r
