@@ -47,10 +47,9 @@ sudo apt install -y qtbase5-dev
 sudo apt install -y qtdeclarative5-dev
 sudo apt install -y qttools5-dev
 
-cp gitahead.desktop /tmp/gitahead
-
 # building from source
 git clone https://github.com/gitahead/gitahead/  /tmp/gitahead
+cp -v gitahead.desktop /tmp/gitahead
 cd /tmp/gitahead
 git submodule init
 git submodule update --depth 1
