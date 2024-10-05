@@ -26,6 +26,17 @@
 	<text-files/>
 </action>
 <action>
+	<icon>gitahead</icon>
+	<name>Open with gitahead</name>
+	<submenu></submenu>
+	<unique-id>1587287434852027-3</unique-id>
+	<command>gitahead %F</command>
+	<description>Open with gitahead</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
 	<icon>gittyup</icon>
 	<name>Open with gittyup</name>
 	<submenu></submenu>
