@@ -46,6 +46,7 @@ sudo apt install -y ninja-build
 sudo apt install -y qtbase5-dev
 sudo apt install -y qtdeclarative5-dev
 sudo apt install -y qttools5-dev
+sudo apt install -y qt6-base-dev
 
 # building from source
 git clone https://github.com/gitahead/gitahead/  /tmp/gitahead
