@@ -41,6 +41,7 @@ echo
 
 # getting dependencies
 
+sudo apt install -y cmake
 sudo apt install -y qtbase5-dev
 sudo apt install -y qtdeclarative5-dev
 sudo apt install -y qttools5-dev
