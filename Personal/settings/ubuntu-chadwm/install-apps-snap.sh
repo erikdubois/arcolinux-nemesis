@@ -48,7 +48,7 @@ tput sgr0
 echo
 
 # installing software
-sudo snap install gitkraken --classic
+#sudo snap install gitkraken --classic
 sudo snap install telegram-desktop --classic
 
 echo

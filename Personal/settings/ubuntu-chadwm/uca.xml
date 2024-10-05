@@ -48,17 +48,6 @@
 	<directories/>
 </action>
 <action>
-	<icon>gitkraken</icon>
-	<name>Open with gitkraken</name>
-	<submenu></submenu>
-	<unique-id>1587287434852027-1</unique-id>
-	<command>gitkraken %F</command>
-	<description>Open with gitkraken</description>
-	<range></range>
-	<patterns>*</patterns>
-	<directories/>
-</action>
-<action>
 	<icon>system-file-manager-root</icon>
 	<name>Open folder as root</name>
 	<submenu></submenu>
