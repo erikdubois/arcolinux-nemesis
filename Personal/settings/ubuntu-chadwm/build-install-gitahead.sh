@@ -65,7 +65,7 @@ cd /tmp/gitahead
 mkdir -p build/release
 cd build/release
 cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../..
-ninja -C build install
+ninja
 sudo cp -v GitAhead /usr/bin/gitahead
 sudo cp -v gitahead.desktop /usr/share/applications
 
