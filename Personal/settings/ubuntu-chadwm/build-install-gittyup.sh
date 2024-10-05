@@ -65,6 +65,7 @@ cd /tmp/gittyup
 mkdir -p build/release
 cd build/release
 cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../..
+ninja
 sudo cp gittyup /usr/bin
 
 cd /tmp/gittyup
