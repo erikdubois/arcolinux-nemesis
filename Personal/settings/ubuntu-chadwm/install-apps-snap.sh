@@ -49,6 +49,7 @@ echo
 
 # installing software
 #sudo snap install gitkraken --classic
+sudo snap install skype --classic
 sudo snap install telegram-desktop --classic
 
 echo
