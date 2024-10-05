@@ -42,6 +42,7 @@ echo
 # getting dependencies
 
 sudo apt install -y cmake
+sudo apt install -y libssl-dev
 sudo apt install -y ninja-build
 sudo apt install -y qt6-5compat-dev
 sudo apt install -y qt6-base-dev
