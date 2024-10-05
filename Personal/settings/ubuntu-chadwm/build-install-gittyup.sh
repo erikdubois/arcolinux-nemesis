@@ -73,7 +73,7 @@ sudo cp -v rsrc/linux/com.github.Murmele.Gittyup.desktop /usr/share/applications
 sudo cp -v rsrc/linux/com.github.Murmele.Gittyup.appdata.xml.in /usr/share/metainfo/com.github.Murmele.Gittyup.appdata.xml
 sudo cp -v rsrc/Gittyup.iconset/gittyup_logo.svg /usr/share/icons/hicolor/scalable/apps/gittyup.svg
 for s in 16x16 32x32 64x64 128x128 256x256 512x512; do
-    sudo cp -v rsrc/Gittyup.iconset/icon_$s.png /usr/share/icons/hicolor/$s/apps/$pkgname.png
+    sudo cp -v rsrc/Gittyup.iconset/icon_$s.png /usr/share/icons/hicolor/$s/apps/gittyup.png
 done
 
 
