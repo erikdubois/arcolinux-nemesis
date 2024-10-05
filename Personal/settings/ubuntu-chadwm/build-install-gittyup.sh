@@ -66,7 +66,7 @@ mkdir -p build/release
 cd build/release
 cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../..
 ninja
-sudo cp gittyup /usr/bin
+sudo cp -v gittyup /usr/bin
 
 cd /tmp/gittyup
 sudo cp -v rsrc/linux/com.github.Murmele.Gittyup.desktop /usr/share/applications/
