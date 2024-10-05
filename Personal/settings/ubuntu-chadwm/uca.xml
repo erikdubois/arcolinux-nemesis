@@ -26,12 +26,12 @@
 	<text-files/>
 </action>
 <action>
-	<icon>gitkraken</icon>
-	<name>Open with gitkraken</name>
+	<icon>gittyup</icon>
+	<name>Open with gittyup</name>
 	<submenu></submenu>
-	<unique-id>1587287434852027-1</unique-id>
-	<command>gitkraken %F</command>
-	<description>Open with gitkraken</description>
+	<unique-id>1587287434852027-5</unique-id>
+	<command>gittyup %F</command>
+	<description>Open with gittyup</description>
 	<range></range>
 	<patterns>*</patterns>
 	<directories/>
@@ -43,6 +43,17 @@
 	<unique-id>1587287434852027-2</unique-id>
 	<command>gitfiend %F</command>
 	<description>Open with gitfiend</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>gitkraken</icon>
+	<name>Open with gitkraken</name>
+	<submenu></submenu>
+	<unique-id>1587287434852027-1</unique-id>
+	<command>gitkraken %F</command>
+	<description>Open with gitkraken</description>
 	<range></range>
 	<patterns>*</patterns>
 	<directories/>
