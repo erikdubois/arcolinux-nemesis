@@ -67,7 +67,7 @@ cd build/release
 cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../..
 ninja
 sudo cp -v GitAhead /usr/bin/gitahead
-sudo cp -v gitahead.desktop /usr/share/applications
+sudo cp -v /tmp/gitahead/gitahead.desktop /usr/share/applications
 
 cd /tmp/gitahead
 for s in 16x16 32x32 64x64 128x128 256x256 512x512; do
