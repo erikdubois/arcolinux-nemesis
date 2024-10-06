@@ -39,6 +39,7 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo apt update -y
 sudo apt upgrade -y
 
 ./install-chadwm.sh
