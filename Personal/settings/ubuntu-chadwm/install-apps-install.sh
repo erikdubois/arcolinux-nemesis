@@ -52,6 +52,7 @@ sudo apt install -y dconf-editor
 sudo apt install -y duf
 sudo apt install -y feh
 sudo apt install -y file-roller
+sudo apt install -y filezilla
 sudo apt install -y flameshot
 sudo apt install -y flatpak
 sudo apt install -y font-manager

@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-10-05
+## Generated on 2024-10-06
 ##
 
 ## Worldwide
@@ -85,8 +85,6 @@ Server = https://mirror.ufscar.br/archlinux/$repo/os/$arch
 
 ## Bulgaria
 Server = http://mirror.host.ag/archlinux/$repo/os/$arch
-Server = http://mirrors.neterra.net/archlinux/$repo/os/$arch
-Server = https://mirrors.neterra.net/archlinux/$repo/os/$arch
 Server = http://mirror.telepoint.bg/archlinux/$repo/os/$arch
 Server = https://mirror.telepoint.bg/archlinux/$repo/os/$arch
 Server = http://mirrors.uni-plovdiv.net/archlinux/$repo/os/$arch
