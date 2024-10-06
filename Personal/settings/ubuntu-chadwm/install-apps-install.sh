@@ -80,6 +80,7 @@ sudo apt install -y meld
 sudo apt install -y most
 sudo apt install -y neofetch
 sudo apt install -y nitrogen
+sudo apt install -y nomacs
 sudo apt install -y numlockx
 sudo apt install -y obs-studio
 sudo apt install -y pavucontrol
