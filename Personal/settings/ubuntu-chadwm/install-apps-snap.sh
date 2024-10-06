@@ -51,6 +51,8 @@ echo
 #sudo snap install gitkraken --classic
 sudo snap install skype --classic
 sudo snap install telegram-desktop --classic
+sudo snap install wps-office --classic
+
 
 echo
 tput setaf 6
