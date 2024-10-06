@@ -161,7 +161,7 @@ echo
 wget -qO-  https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo tee /etc/apt/trusted.gpg.d/anydesk.gpg.asc > /dev/null
 sudo sh -c 'echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list'
 sudo apt update
-sudo apt install anydesk
+sudo apt install -y anydesk
 
 echo
 echo "################################################################"
