@@ -57,7 +57,8 @@ fi
 
 
 if grep -q "ubuntu" /etc/os-release; then
-    sh Personal/settings/ubuntu-chadwm/1-all-in-one.sh
+    cd Personal/settings/ubuntu-chadwm/
+    sh ./1-all-in-one.sh
     exit 1
 fi
 
