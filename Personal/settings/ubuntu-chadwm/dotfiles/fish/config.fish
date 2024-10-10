@@ -204,6 +204,9 @@ alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 
+# fastfetch --short
+alias ff="fastfetch"
+
 #readable output
 alias df="df -h"
 
