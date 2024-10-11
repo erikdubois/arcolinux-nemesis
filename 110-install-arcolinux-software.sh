@@ -65,6 +65,9 @@ sudo pacman -S --noconfirm --needed archlinux-kernel-manager-dev
 sudo pacman -R --noconfirm archlinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-dev-git
 
+sudo pacman -R --noconfirm sofirem-git
+sudo pacman -S --noconfirm --needed sofirem-dev-git
+
 if grep -q arcolinux_repo /etc/pacman.conf; then
 
   echo
@@ -90,8 +93,6 @@ sudo pacman -S --noconfirm --needed a-candy-beauty-icon-theme-git
 sudo pacman -S --noconfirm --needed arcolinux-app-glade-git
 sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
-sudo pacman -S --noconfirm --needed sofirem-git
-sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
 if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
