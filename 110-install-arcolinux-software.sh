@@ -51,8 +51,19 @@ echo "################################################################"
 tput sgr0
 echo
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Getting dev versions"
+echo "################################################################"
+tput sgr0
+echo
+
 sudo pacman -R --noconfirm archlinux-kernel-manager
 sudo pacman -S --noconfirm --needed archlinux-kernel-manager-dev
+
+sudo pacman -R --noconfirm archlinux-tweak-tool-git
+sudo pacman -S --noconfirm --needed archlinux-tweak-tool-dev-git
 
 if grep -q arcolinux_repo /etc/pacman.conf; then
 
