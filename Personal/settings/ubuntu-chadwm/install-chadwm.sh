@@ -39,6 +39,8 @@ echo "################################################################"
 tput sgr0
 echo
 
+# https://sysadminsage.com/ubuntu-remove-a-package/
+
 # echo
 # tput setaf 1
 # echo "################################################################"
