@@ -39,18 +39,18 @@ echo "################################################################"
 tput sgr0
 echo
 
-echo
-tput setaf 1
-echo "################################################################"
-echo "################### This will remove the Ubuntu desktop"
-echo "################### The following packages will be removed:"
-echo "################### - ubuntu-desktop-minimal"
-echo "################### - ubuntu-session-xsession"
-echo "################### - ubuntu-session"
-echo "################### - xdg-desktop-portal-gnome"
-echo "################################################################"
-tput sgr0
-echo
+# echo
+# tput setaf 1
+# echo "################################################################"
+# echo "################### This will remove the Ubuntu desktop"
+# echo "################### The following packages will be removed:"
+# echo "################### - ubuntu-desktop-minimal"
+# echo "################### - ubuntu-session-xsession"
+# echo "################### - ubuntu-session"
+# echo "################### - xdg-desktop-portal-gnome"
+# echo "################################################################"
+# tput sgr0
+# echo
 
 echo
 tput setaf 2
@@ -111,7 +111,8 @@ if [ ! -f /usr/local/bin/chadwm ] ; then
 fi
 
 # removing this package - it slows down terminals and thunar
-sudo apt remove -y xdg-desktop-portal-gnome
+# this will remove the complete ubuntu desktop in 24.10 not in 24.04
+# sudo apt remove -y xdg-desktop-portal-gnome
 
 sudo apt autoremove -y
 
