@@ -263,7 +263,8 @@ alias nb="$EDITOR ~/.bashrc"
 alias nz="$EDITOR ~/.zshrc"
 alias nf="$EDITOR ~/.config/fish/config.fish"
 alias nneofetch="$EDITOR ~/.config/neofetch/config.conf"
-alias nalacritty="nano /home/$USER/.config/alacritty/alacritty.toml"
+alias nalacritty="$EDITOR /home/$USER/.config/alacritty/alacritty.toml"
+alias ngdm="sudo $EDITOR /etc/gdm3/custom.conf"
 
 #shutdown or reboot
 alias ssn="sudo shutdown now"
