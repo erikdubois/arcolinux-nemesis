@@ -47,7 +47,7 @@ echo "################### The following packages will be removed:"
 echo "################### - ubuntu-desktop-minimal"
 echo "################### - ubuntu-session-xsession"
 echo "################### - ubuntu-session"
-echo "################### - xdg-desktop-portol-gnome"
+echo "################### - xdg-desktop-portal-gnome"
 echo "################################################################"
 tput sgr0
 echo
