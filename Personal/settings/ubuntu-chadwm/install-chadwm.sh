@@ -40,6 +40,14 @@ tput sgr0
 echo
 
 echo
+tput setaf 1
+echo "################################################################"
+echo "################### This will remove the Ubuntu desktop"
+echo "################################################################"
+tput sgr0
+echo
+
+echo
 tput setaf 2
 echo "################################################################"
 echo "###### Installing packages"
