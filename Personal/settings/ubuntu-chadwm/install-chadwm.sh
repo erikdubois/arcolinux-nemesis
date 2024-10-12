@@ -43,6 +43,11 @@ echo
 tput setaf 1
 echo "################################################################"
 echo "################### This will remove the Ubuntu desktop"
+echo "################### The following packages will be removed:"
+echo "################### - ubuntu-desktop-minimal"
+echo "################### - ubuntu-session-xsession"
+echo "################### - ubuntu-session"
+echo "################### - xdg-desktop-portol-gnome"
 echo "################################################################"
 tput sgr0
 echo
