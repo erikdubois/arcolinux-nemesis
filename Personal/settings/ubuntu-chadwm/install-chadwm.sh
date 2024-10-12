@@ -92,7 +92,7 @@ cp bar.sh ~/.config/arco-chadwm/scripts
 cp uca.xml ~/.config/Thunar/
 
 # building Chadwm
-if [ env | grep chadwm > /dev/null 2>&1 ] ; then
+if [ ! /usr/local/bin/chadwm ] ; then
 	cd ~/.config/arco-chadwm/chadwm
 	sudo make install
 fi
