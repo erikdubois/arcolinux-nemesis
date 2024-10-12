@@ -34,7 +34,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Installing Chadwm on Ubuntu 24.04"
+echo "################### Installing Chadwm on Ubuntu"
 echo "################################################################"
 tput sgr0
 echo
