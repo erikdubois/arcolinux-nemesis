@@ -42,7 +42,9 @@ echo
 sudo apt update -y
 sudo apt upgrade -y
 
-./install-chadwm.sh
+if [ ! /usr/bin/exec-chadwm ]; then
+	./install-chadwm.sh
+fi
 ./install-apps-install.sh
 ./install-apps-local.sh
 ./install-apps-ppa.sh
