@@ -8,7 +8,7 @@
 
 # Vivaldi
 super + F1
-	vivaldi.vivaldi-stable
+	vivaldi-stable
 
 # code
 super + F2
@@ -64,7 +64,7 @@ super + e
 
 #Browser
 super + w
-    vivaldi.vivaldi-stable
+    vivaldi-stable
 
 #Conky-toggle
 super + c
@@ -223,7 +223,7 @@ ctrl + alt + t
 
 #Vivaldi
 ctrl + alt + v
-    vivaldi.vivaldi-stable
+    vivaldi-stable
 
 #Xfce4-appfinder
 ctrl + alt + a
