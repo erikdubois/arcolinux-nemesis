@@ -94,7 +94,6 @@ sudo apt install -y simplescreenrecorder
 sudo apt install -y speedtest-cli
 sudo apt install -y system-config-printer
 sudo apt install -y variety
-sudo apt install -y virtualbox
 sudo apt install -y vlc
 sudo apt install -y xfce4-screenshooter
 
@@ -109,6 +108,27 @@ cp -r /tmp/arcolinux-alacritty/etc/skel/.config ~
 # script to change wallpaper on Chadwm
 git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
+
+
+# when on real metal install a template
+result=$(systemd-detect-virt)
+if [ $result = "none" ];then
+
+	sudo apt install -y virtualbox
+
+else
+
+	echo
+	tput setaf 3
+	echo "#########################################################################"
+	echo "### You are on a virtual machine - skipping installation of VirtualBox"
+	echo "#########################################################################"
+	tput sgr0
+	echo
+
+	xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+
+fi
 
 echo
 tput setaf 6
