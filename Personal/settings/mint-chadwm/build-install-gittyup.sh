@@ -34,31 +34,53 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one"
+echo "################### Building from source"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt update -y
-sudo apt upgrade -y
+# getting dependencies
 
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./install-apps-snap.sh
-# personal stuff
-./install-ckb-next.sh
-./install-design.sh
-./personal-configs.sh
+sudo apt install -y cmake
+sudo apt install -y ninja-build
+sudo apt install -y qtbase5-dev
+sudo apt install -y qtdeclarative5-dev
+sudo apt install -y qttools5-dev
 
-sudo apt autoremove -y
+
+# building from source
+git clone https://github.com/Murmele/Gittyup.git  /tmp/gittyup
+cd /tmp/gittyup
+git submodule init
+git submodule update --depth 1
+
+# Start from root of gittyup repo.
+cd dep/openssl/openssl
+./config -fPIC
+make
+
+cd /tmp/gittyup
+
+# Start from root of gittyup repo.
+mkdir -p build/release
+cd build/release
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../..
+ninja
+sudo cp -v gittyup /usr/bin
+
+cd /tmp/gittyup
+sudo cp -v rsrc/linux/com.github.Murmele.Gittyup.desktop /usr/share/applications/
+sudo cp -v rsrc/linux/com.github.Murmele.Gittyup.appdata.xml.in /usr/share/metainfo/com.github.Murmele.Gittyup.appdata.xml
+sudo cp -v rsrc/Gittyup.iconset/gittyup_logo.svg /usr/share/icons/hicolor/scalable/apps/gittyup.svg
+for s in 16x16 32x32 64x64 128x128 256x256 512x512; do
+    sudo cp -v rsrc/Gittyup.iconset/icon_$s.png /usr/share/icons/hicolor/$s/apps/gittyup.png
+done
+
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
+echo "###### Build and installed"
 echo "################################################################"
 tput sgr0
 echo

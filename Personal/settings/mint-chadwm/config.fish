@@ -130,11 +130,8 @@ function backup --argument filename
 end
 
 # recently installed packages
-function ripp --argument length -d "List the last n (100) packages installed"
-    if test -z $length
-        set length 100
-    end
-    expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n $length | nl
+function rip
+   dpkg-query -Wf '${Installed-size}\t${Package}\n' | column -t | sort -n
 end
 
 function gl
@@ -207,6 +204,9 @@ alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 
+# fastfetch --short
+alias ff="fastfetch"
+
 #readable output
 alias df="df -h"
 
@@ -263,7 +263,8 @@ alias nb="$EDITOR ~/.bashrc"
 alias nz="$EDITOR ~/.zshrc"
 alias nf="$EDITOR ~/.config/fish/config.fish"
 alias nneofetch="$EDITOR ~/.config/neofetch/config.conf"
-alias nalacritty="nano /home/$USER/.config/alacritty/alacritty.toml"
+alias nalacritty="$EDITOR /home/$USER/.config/alacritty/alacritty.toml"
+alias ngdm="sudo $EDITOR /etc/gdm3/custom.conf"
 
 #shutdown or reboot
 alias ssn="sudo shutdown now"
@@ -274,7 +275,6 @@ alias xd="ls /usr/share/xsessions"
 alias xdw="ls /usr/share/wayland-sessions"
 
 alias clean="clear; seq 1 $(tput cols) | sort -R | spark | /usr/games/lolcat"
-
 
 set fish_color_autosuggestion "#969896"
 set fish_color_cancel -r
