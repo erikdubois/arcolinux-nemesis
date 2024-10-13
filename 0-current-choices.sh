@@ -62,6 +62,12 @@ if grep -q "ubuntu" /etc/os-release; then
     exit 1
 fi
 
+if grep -q "mint" /etc/os-release; then
+    cd Personal/settings/mint-chadwm/
+    sh ./1-all-in-one.sh
+    exit 1
+fi
+
 echo
 tput setaf 3
 echo "################################################################"
