@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-10-13
+## Generated on 2024-10-18
 ##
 
 ## Worldwide
@@ -445,8 +445,8 @@ Server = http://in-mirror.garudalinux.org/archlinux/$repo/os/$arch
 Server = https://in-mirror.garudalinux.org/archlinux/$repo/os/$arch
 Server = http://archlinux.mirror.net.in/archlinux/$repo/os/$arch
 Server = https://archlinux.mirror.net.in/archlinux/$repo/os/$arch
-Server = http://arch.niranjan.co/$repo/os/$arch
-Server = https://arch.niranjan.co/$repo/os/$arch
+Server = http://in.arch.niranjan.co/$repo/os/$arch
+Server = https://in.arch.niranjan.co/$repo/os/$arch
 Server = http://mirrors.nxtgen.com/archlinux-mirror/$repo/os/$arch
 Server = https://mirrors.nxtgen.com/archlinux-mirror/$repo/os/$arch
 Server = http://mirrors.piconets.webwerks.in/archlinux-mirror/$repo/os/$arch
@@ -683,6 +683,8 @@ Server = http://linuxromania.ro/archlinux/$repo/os/$arch
 Server = https://linuxromania.ro/archlinux/$repo/os/$arch
 Server = http://mirrors.m247.ro/archlinux/$repo/os/$arch
 Server = http://mirrors.nav.ro/archlinux/$repo/os/$arch
+Server = http://ro.arch.niranjan.co/$repo/os/$arch
+Server = https://ro.arch.niranjan.co/$repo/os/$arch
 Server = http://mirrors.nxthost.com/archlinux/$repo/os/$arch
 Server = https://mirrors.nxthost.com/archlinux/$repo/os/$arch
 Server = http://mirrors.pidginhost.com/arch/$repo/os/$arch
@@ -737,6 +739,8 @@ Server = http://mirror.guillaumea.fr/archlinux/$repo/os/$arch
 Server = https://mirror.guillaumea.fr/archlinux/$repo/os/$arch
 Server = http://mirror.jingk.ai/archlinux/$repo/os/$arch
 Server = https://mirror.jingk.ai/archlinux/$repo/os/$arch
+Server = http://sg.arch.niranjan.co/$repo/os/$arch
+Server = https://sg.arch.niranjan.co/$repo/os/$arch
 Server = http://ossmirror.mycloud.services/os/linux/archlinux/$repo/os/$arch
 Server = http://mirror.sg.gs/archlinux/$repo/os/$arch
 Server = https://mirror.sg.gs/archlinux/$repo/os/$arch
@@ -1044,6 +1048,7 @@ Server = https://mirrors.rutgers.edu/archlinux/$repo/os/$arch
 Server = http://mirror.siena.edu/archlinux/$repo/os/$arch
 Server = http://mirrors.sonic.net/archlinux/$repo/os/$arch
 Server = https://mirrors.sonic.net/archlinux/$repo/os/$arch
+Server = https://us-mnz.soulharsh007.dev/archlinux/$repo/os/$arch
 Server = http://mirror.phx1.us.spryservers.net/archlinux/$repo/os/$arch
 Server = https://mirror.phx1.us.spryservers.net/archlinux/$repo/os/$arch
 Server = http://arch.mirror.square-r00t.net/$repo/os/$arch

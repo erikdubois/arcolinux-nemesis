@@ -72,3 +72,9 @@ alias sc-m='systemctl list-unit-files --state=masked'
 alias sa='systemd-analyze'
 alias sab='systemd-analyze blame'
 alias sac='systemd-analyze critical-chain'
+alias cff='mkdir -p ~/.config/fastfetch && cp /etc/skel/.config/fastfetch/config.jsonc ~/.config/fastfetch/'
+
+alias is='insync show'
+alias gcsuckless='git clone https://git.suckless.org/dwm'
+
+alias record='gpu-screen-recorder -w HDMI-0 -f 60 -o /home/erik/Videos/recording-$(date +"%Y""-""%m""-""%d""-""%H""-""%M""-""%S").mp4 -a default_input -q ultra -ac aac'
