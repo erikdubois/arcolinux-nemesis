@@ -132,6 +132,8 @@ sudo pacman -S --noconfirm --needed gitfiend
 sudo pacman -S --noconfirm --needed gittyup-git
 sudo pacman -S --noconfirm --needed gnome-disk-utility
 sudo pacman -S --noconfirm --needed gparted
+sudo pacman -S --noconfirm --needed gpu-screen-recorder-git
+sudo pacman -S --noconfirm --needed gpu-screen-recorder-gtk-git
 sudo pacman -S --noconfirm --needed gvfs-smb
 sudo pacman -S --noconfirm --needed gvfs-dnssd
 sudo pacman -S --noconfirm --needed hardcode-fixer-git
