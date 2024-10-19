@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-10-18
+## Generated on 2024-10-19
 ##
 
 ## Worldwide
@@ -453,6 +453,7 @@ Server = http://mirrors.piconets.webwerks.in/archlinux-mirror/$repo/os/$arch
 Server = https://mirrors.piconets.webwerks.in/archlinux-mirror/$repo/os/$arch
 Server = http://mirror.sahil.world/archlinux/$repo/os/$arch
 Server = https://mirror.sahil.world/archlinux/$repo/os/$arch
+Server = https://mirrors.saswata.cc/archlinux/$repo/os/$arch
 
 ## Indonesia
 Server = http://mirror.citrahost.com/archlinux/$repo/os/$arch

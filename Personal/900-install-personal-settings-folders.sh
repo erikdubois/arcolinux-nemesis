@@ -203,6 +203,10 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	sh $installed_dir/settings/flameshot/adapt-flameshot.sh
 	echo
 
+	echo
+	echo "copy scripts to .bin"
+	cp  $installed_dir/settings/bin/* $HOME/.bin/
+
 fi
 
 echo
