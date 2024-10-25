@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-10-24
+## Generated on 2024-10-25
 ##
 
 ## Worldwide
@@ -266,6 +266,7 @@ Server = https://mirroir.labhouse.fr/arch/$repo/os/$arch
 Server = http://mirror.lastmikoi.net/archlinux/$repo/os/$arch
 Server = http://archlinux.mailtunnel.eu/$repo/os/$arch
 Server = https://archlinux.mailtunnel.eu/$repo/os/$arch
+Server = https://f.matthieul.dev/mirror/archlinux/$repo/os/$arch
 Server = http://mir.archlinux.fr/$repo/os/$arch
 Server = http://mirrors.celianvdb.fr/archlinux/$repo/os/$arch
 Server = https://mirrors.celianvdb.fr/archlinux/$repo/os/$arch
@@ -453,6 +454,7 @@ Server = http://mirrors.piconets.webwerks.in/archlinux-mirror/$repo/os/$arch
 Server = https://mirrors.piconets.webwerks.in/archlinux-mirror/$repo/os/$arch
 Server = http://mirror.sahil.world/archlinux/$repo/os/$arch
 Server = https://mirror.sahil.world/archlinux/$repo/os/$arch
+Server = http://mirrors.saswata.cc/archlinux/$repo/os/$arch
 Server = https://mirrors.saswata.cc/archlinux/$repo/os/$arch
 
 ## Indonesia
@@ -692,6 +694,8 @@ Server = http://mirrors.pidginhost.com/arch/$repo/os/$arch
 Server = https://mirrors.pidginhost.com/arch/$repo/os/$arch
 
 ## Russia
+Server = http://archlinux.gay/archlinux/$repo/os/$arch
+Server = https://archlinux.gay/archlinux/$repo/os/$arch
 Server = http://ru.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://ru.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = http://mirror.kamtv.ru/archlinux/$repo/os/$arch
@@ -882,6 +886,8 @@ Server = http://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch
 Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch
 Server = http://mirror.bytemark.co.uk/archlinux/$repo/os/$arch
 Server = https://mirror.bytemark.co.uk/archlinux/$repo/os/$arch
+Server = http://repo.c48.uk/arch/$repo/os/$arch
+Server = https://repo.c48.uk/arch/$repo/os/$arch
 Server = http://gb.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://gb.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://london.mirror.pkgbuild.com/$repo/os/$arch
