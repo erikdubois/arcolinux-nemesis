@@ -103,6 +103,7 @@ fi
 sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
 sudo pacman -S --noconfirm --needed aic94xx-firmware
 sudo pacman -S --noconfirm --needed archiso
+sudo pacman -S --noconfirm --needed archlinux-tools
 sudo pacman -S --noconfirm --needed avahi
 sudo pacman -S --noconfirm --needed baobab
 sudo pacman -S --noconfirm --needed bash-completion
@@ -113,6 +114,7 @@ sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed dconf-editor
+sudo pacman -S --noconfirm --needed devtools
 sudo pacman -S --noconfirm --needed discord
 sudo pacman -S --noconfirm --needed downgrade
 if [ ! -f /usr/bin/duf ]; then
@@ -154,6 +156,7 @@ sudo pacman -S --noconfirm --needed mlocate
 sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed mintstick-git
 sudo pacman -S --noconfirm --needed most
+sudo pacman -S --noconfirm --needed namcap
 sudo pacman -S --noconfirm --needed neofetch
 sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed ntp
