@@ -61,6 +61,11 @@ if grep -q "linuxmint" /etc/os-release; then
     exit 1
 fi
 
+if grep -q "AlmaLinux" /etc/os-release; then
+    cd Personal/settings/almalinux-chadwm/
+    sh ./1-all-in-one.sh
+    exit 1
+fi
 
 if grep -q "ubuntu" /etc/os-release; then
     cd Personal/settings/ubuntu-chadwm/
