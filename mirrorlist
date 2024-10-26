@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-10-25
+## Generated on 2024-10-26
 ##
 
 ## Worldwide
@@ -66,6 +66,7 @@ Server = http://mirror.datacenter.by/pub/archlinux/$repo/os/$arch
 Server = http://archlinux.cu.be/$repo/os/$arch
 Server = http://archlinux.mirror.kangaroot.net/$repo/os/$arch
 Server = http://mirror.tiguinet.net/arch/$repo/os/$arch
+Server = https://mirror.tiguinet.net/arch/$repo/os/$arch
 
 ## Bosnia and Herzegovina
 Server = http://archlinux.mirror.ba/$repo/os/$arch
