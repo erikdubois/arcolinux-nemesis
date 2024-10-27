@@ -34,7 +34,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one"
+echo "################### All in one for Mint"
 echo "################################################################"
 tput sgr0
 echo
