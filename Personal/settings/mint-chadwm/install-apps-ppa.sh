@@ -169,7 +169,7 @@ echo "###### Xanmod"
 echo "################################################################"
 echo
 wget -qO - https://dl.xanmod.org/archive.key | sudo gpg --dearmor -vo /usr/share/keyrings/xanmod-archive-keyring.gpg
-echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-release.list
+echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-release.list > /dev/null
 sudo apt update
 #sudo apt install -y linux-xanmod-x64v3
 
@@ -183,10 +183,6 @@ wget -qO- https://deb.opera.com/archive.key | gpg --dearmor | sudo dd of=/usr/sh
 echo "deb [signed-by=/usr/share/keyrings/opera-browser.gpg] https://deb.opera.com/opera-stable/ stable non-free" | sudo dd of=/etc/apt/sources.list.d/opera-archive.list
 sudo apt update
 sudo apt install opera-stable -y
-
-if [ -f /etc/apt/sources.list.d/opera-archive.list ]; then
-	sudo rm /etc/apt/sources.list.d/opera-archive.list
-fi
 
 echo
 tput setaf 6
