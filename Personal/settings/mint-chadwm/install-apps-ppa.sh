@@ -184,6 +184,10 @@ echo "deb [signed-by=/usr/share/keyrings/opera-browser.gpg] https://deb.opera.co
 sudo apt update
 sudo apt install opera-stable -y
 
+if [ -f /etc/apt/sources.list.d/opera-archive.list ]; then
+	sudo rm /etc/apt/sources.list.d/opera-archive.list
+fi
+
 echo
 tput setaf 6
 echo "################################################################"
