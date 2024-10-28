@@ -166,6 +166,12 @@ sudo sed -i "s/$FIND/$REPLACE/g" /etc/environment
 # installing sparklines/spark
 sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark"
 
+# installing hack font for alacritty
+wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip -O /tmp/hackfont.zip
+tar -xzf /tmp/hackfont.zip
+cp /tmp/hackfont/ttf/* ~/.fonts
+fc-cache -fv 
+
 tput setaf 6
 echo "################################################################"
 echo "###### Personal choices done - reboot for fish"
