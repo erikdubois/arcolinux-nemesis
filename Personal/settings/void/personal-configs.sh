@@ -102,12 +102,6 @@ REPLACE="\/usr\/bin\/fish"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
 echo
 
-echo
-echo "Removing all the messages virtualbox produces"
-echo
-
-VBoxManage setextradata global GUI/SuppressMessages "all"
-
 # when on real metal install a template
 result=$(sudo virt-what)
 if [ $result != "kvm" ];then
@@ -117,6 +111,10 @@ if [ $result != "kvm" ];then
 	cd ~/VirtualBox\ VMs/
 	tar -xzf template.tar.gz
 	rm -f template.tar.gz	
+	echo
+	echo "Removing all the messages virtualbox produces"
+	echo
+	VBoxManage setextradata global GUI/SuppressMessages "all"
 
 else
 
