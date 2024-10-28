@@ -53,6 +53,7 @@ sudo xbps-install --yes duf
 sudo xbps-install --yes feh
 sudo xbps-install --yes file-roller
 sudo xbps-install --yes filezilla
+sudo xbps-install --yes fish-shell
 sudo xbps-install --yes flameshot
 sudo xbps-install --yes flatpak
 #sudo xbps-install --yes font-manager
@@ -78,6 +79,7 @@ sudo xbps-install --yes lollypop
 sudo xbps-install --yes lxappearance
 sudo xbps-install --yes meld
 sudo xbps-install --yes most
+sudo xbps-install --yes nano
 sudo xbps-install --yes neofetch
 sudo xbps-install --yes nitrogen
 sudo xbps-install --yes nomacs
