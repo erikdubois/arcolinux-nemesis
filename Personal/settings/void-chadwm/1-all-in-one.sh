@@ -41,9 +41,9 @@ echo
 
 sudo xbps-install -Su --yes
 
-#./install-chadwm.sh
+./install-chadwm.sh
 ./install-apps-install.sh
-#./install-apps-local.sh
+./install-apps-local.sh
 #./install-apps-ppa.sh
 #./install-apps-snap.sh
 # personal stuff
