@@ -37,6 +37,8 @@ echo
 tput setaf 2
 echo "################################################################"
 echo "###### Installing packages local install - void packages"
+echo "###### https://github.com/void-linux/void-packages"
+echo "###### https://github.com/void-linux/void-packages/tree/master/srcpkgs"
 echo "################################################################"
 tput sgr0
 echo
@@ -53,6 +55,8 @@ cd void-packages
 ./xbps-src pkg vivaldi
 
 sudo xbps-install --repository hostdir/binpkgs/nonfree/ vivaldi --yes
+
+./xbps-src pkg sublime-text-4
 
 echo
 tput setaf 6
