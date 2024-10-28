@@ -41,7 +41,7 @@ echo
 
 sudo xbps-install --yes alacritty
 sudo xbps-install --yes arandr
-# on Ubuntu the command is batcat
+sudo xbps-install --yes base-devel
 sudo xbps-install --yes bat
 sudo xbps-install --yes btop
 sudo xbps-install --yes catfish
