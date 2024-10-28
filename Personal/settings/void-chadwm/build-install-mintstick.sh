@@ -40,7 +40,8 @@ tput sgr0
 echo
 
 # getting dependencies
-sudo xbps-install --yes xapps-devel
+#sudo xbps-install --yes xapps-devel
+sudo xbps-install --yes xapps
 sudo xbps-install --yes python3-Unidecode
 
 # building from source
