@@ -52,16 +52,26 @@ git clone https://github.com/void-linux/void-packages.git
 cd void-packages
 ./xbps-src binary-bootstrap
 
-./xbps-src pkg vivaldi
+PACKAGE_NAME="vivaldi"
+if ! xbps-query -R $PACKAGE_NAME > /dev/null 2>&1; then
+	./xbps-src pkg $PACKAGE_NAME
+	sudo xbps-install --repository hostdir/binpkgs/nonfree/ vivaldi --yes
+else
+    echo "$PACKAGE_NAME is already installed. Skipping build."
+fi
 
-sudo xbps-install --repository hostdir/binpkgs/nonfree/ vivaldi --yes
-
-./xbps-src pkg sublime-text4
+PACKAGE_NAME="sublime-text4"
+if ! xbps-query -R $PACKAGE_NAME > /dev/null 2>&1; then
+	./xbps-src pkg $PACKAGE_NAME
+	sudo xbps-install --repository hostdir/binpkgs/nonfree/ sublime-text4 --yes
+else
+    echo "$PACKAGE_NAME is already installed. Skipping build."
+fi
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### Packages local install done"
+echo "###### Packages local build done"
 echo "################################################################"
 tput sgr0
 echo
