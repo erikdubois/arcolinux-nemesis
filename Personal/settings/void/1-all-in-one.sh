@@ -39,7 +39,7 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo xbps-install --yes
+sudo xbps-install -Su --yes
 
 #./install-chadwm.sh
 ./install-apps-install.sh
