@@ -39,6 +39,7 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo xbps-install --yes alacritty
 sudo xbps-install --yes apt-file
 sudo xbps-install --yes arandr
 # on Ubuntu the command is batcat
