@@ -39,63 +39,63 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo apt install -y apt-file
-sudo apt install -y arandr
+sudo xbps-install --yes apt-file
+sudo xbps-install --yes arandr
 # on Ubuntu the command is batcat
-sudo apt install -y bat
-sudo apt install -y btop
-sudo apt install -y catfish
-#sudo apt install -y chromium-browser
-sudo apt install -y curl
-sudo apt install -y dex
-sudo apt install -y dconf-editor
-sudo apt install -y duf
-sudo apt install -y feh
-sudo apt install -y file-roller
-sudo apt install -y filezilla
-sudo apt install -y flameshot
-sudo apt install -y flatpak
-sudo apt install -y font-manager
-sudo apt install -y fonts-hack
-sudo apt install -y fonts-noto
-sudo apt install -y fonts-roboto
-sudo apt install -y galculator
-sudo apt install -y gdm-settings
-sudo apt install -y gimp
-sudo apt install -y gnome-bluetooth
-sudo apt install -y gnome-shell-extension-manager
-sudo apt install -y gnome-software
-sudo apt install -y gnome-software-plugin-flatpak
-sudo apt install -y gnome-software-plugin-snap
-sudo apt install -y gnome-tweaks
-sudo apt install -y gnome-weather
-sudo apt install -y hardinfo
-sudo apt install -y hw-probe
-sudo apt install -y i3lock-fancy
-sudo apt install -y inkscape
-sudo apt install -y lolcat
-sudo apt install -y lollypop
-sudo apt install -y lxappearance
-sudo apt install -y meld
-sudo apt install -y most
-sudo apt install -y neofetch
-sudo apt install -y nitrogen
-sudo apt install -y nomacs
-sudo apt install -y numlockx
-sudo apt install -y obs-studio
-sudo apt install -y pavucontrol
-sudo apt install -y pylint
-sudo apt install -y qbittorrent
-sudo apt install -y qt5-style-kvantum
-sudo apt install -y qt5-style-kvantum-themes
-sudo apt install -y ripgrep
-sudo apt install -y scrot
-sudo apt install -y simplescreenrecorder
-sudo apt install -y speedtest-cli
-sudo apt install -y system-config-printer
-sudo apt install -y variety
-sudo apt install -y vlc
-sudo apt install -y xfce4-screenshooter
+sudo xbps-install --yes bat
+sudo xbps-install --yes btop
+sudo xbps-install --yes catfish
+#sudo xbps-install --yes chromium-browser
+sudo xbps-install --yes curl
+sudo xbps-install --yes dex
+sudo xbps-install --yes dconf-editor
+sudo xbps-install --yes duf
+sudo xbps-install --yes feh
+sudo xbps-install --yes file-roller
+sudo xbps-install --yes filezilla
+sudo xbps-install --yes flameshot
+sudo xbps-install --yes flatpak
+sudo xbps-install --yes font-manager
+sudo xbps-install --yes fonts-hack
+sudo xbps-install --yes fonts-noto
+sudo xbps-install --yes fonts-roboto
+sudo xbps-install --yes galculator
+sudo xbps-install --yes gdm-settings
+sudo xbps-install --yes gimp
+sudo xbps-install --yes gnome-bluetooth
+sudo xbps-install --yes gnome-shell-extension-manager
+sudo xbps-install --yes gnome-software
+sudo xbps-install --yes gnome-software-plugin-flatpak
+sudo xbps-install --yes gnome-software-plugin-snap
+sudo xbps-install --yes gnome-tweaks
+sudo xbps-install --yes gnome-weather
+sudo xbps-install --yes hardinfo
+sudo xbps-install --yes hw-probe
+sudo xbps-install --yes i3lock-fancy
+sudo xbps-install --yes inkscape
+sudo xbps-install --yes lolcat
+sudo xbps-install --yes lollypop
+sudo xbps-install --yes lxappearance
+sudo xbps-install --yes meld
+sudo xbps-install --yes most
+sudo xbps-install --yes neofetch
+sudo xbps-install --yes nitrogen
+sudo xbps-install --yes nomacs
+sudo xbps-install --yes numlockx
+sudo xbps-install --yes obs-studio
+sudo xbps-install --yes pavucontrol
+sudo xbps-install --yes pylint
+sudo xbps-install --yes qbittorrent
+sudo xbps-install --yes qt5-style-kvantum
+sudo xbps-install --yes qt5-style-kvantum-themes
+sudo xbps-install --yes ripgrep
+sudo xbps-install --yes scrot
+sudo xbps-install --yes simplescreenrecorder
+sudo xbps-install --yes speedtest-cli
+sudo xbps-install --yes system-config-printer
+sudo xbps-install --yes variety
+sudo xbps-install --yes vlc
+sudo xbps-install --yes xfce4-screenshooter
 
 # getting design from ArcoLinux
 git clone https://github.com/arcolinux/arcolinux-btop /tmp/arcolinux-btop
@@ -114,7 +114,7 @@ cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 result=$(systemd-detect-virt)
 if [ $result = "none" ];then
 
-	sudo apt install -y virtualbox
+	sudo xbps-install --yes virtualbox
 
 else
 
@@ -130,7 +130,7 @@ else
 
 fi
 
-sudo apt install -y ubuntu-restricted-extras
+sudo xbps-install --yes ubuntu-restricted-extras
 
 echo
 tput setaf 6
