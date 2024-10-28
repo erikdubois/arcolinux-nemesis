@@ -133,6 +133,7 @@ else
 fi
 
 # getting archlinux-logout
+sudo xbps-install python3-distro
 cd $installed_dir
 git clone https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
 sudo cp -r /tmp/archlinux-logout/etc/* /etc
