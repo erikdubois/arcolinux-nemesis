@@ -71,6 +71,7 @@ build_and_install() {
 # Call the function for each package
 build_and_install "vivaldi"
 build_and_install "sublime-text4"
+build_and_install "telegram-desktop"
 
 echo
 tput setaf 6
