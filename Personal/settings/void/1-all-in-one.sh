@@ -34,25 +34,21 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Ubuntu"
+echo "################### All in one for Void"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt update -y
-sudo apt upgrade -y
+sudo xbps-install --yes
 
-./install-chadwm.sh
+#./install-chadwm.sh
 ./install-apps-install.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./install-apps-snap.sh
+#./install-apps-local.sh
+#./install-apps-ppa.sh
+#./install-apps-snap.sh
 # personal stuff
-./install-ckb-next.sh
 ./install-design.sh
 ./personal-configs.sh
-
-sudo apt autoremove -y
 
 echo
 tput setaf 6
