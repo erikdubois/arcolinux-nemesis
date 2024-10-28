@@ -72,8 +72,8 @@ build_and_install() {
 build_and_install "vivaldi"
 build_and_install "sublime-text4"
 build_and_install "telegram-desktop"
-build_and_install "opera"
-build_and_install "brave"
+build_and_install "opera-stable"
+build_and_install "brave-bin"
 
 echo
 tput setaf 6
