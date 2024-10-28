@@ -31,21 +31,25 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+# https://github.com/void-linux/void-packages
+
 echo
 tput setaf 2
 echo "################################################################"
-echo "###### Installing packages local install"
+echo "###### Installing packages local install - void packages"
 echo "################################################################"
 tput sgr0
 echo
 
-#if you want to build it you need debhelper and gettext
-#rest is on the github of mintstick or use our script or our package
-#sudo apt install -y ./packages/mintstick_1.6.2_all.deb
-sudo apt install -y mintstick
+mkdir ~/DATA
+cd ~/DATA
+git clone https://github.com/void-linux/void-packages.git
+cd void-packages
+./xbps-src binary-bootstrap
 
-#sudo apt install -y ./packages/bat_0.24.0_amd64.deb
-sudo apt install -y bat
+./xbps-src pkg vivaldi
+
+sudo xbps-install --repository hostdir/binpkgs/nonfree/ vivaldi --yes
 
 echo
 tput setaf 6
