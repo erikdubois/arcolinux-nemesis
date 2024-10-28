@@ -115,8 +115,8 @@ cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 
 
 # when on real metal install a template
-result=$(systemd-detect-virt)
-if [ $result = "none" ];then
+result=$(sudo virt-what)
+if [ $result != "kvm" ];then
 
 	sudo xbps-install --yes virtualbox
 
