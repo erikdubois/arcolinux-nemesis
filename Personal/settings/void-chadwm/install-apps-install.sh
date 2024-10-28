@@ -49,6 +49,7 @@ sudo xbps-install --yes catfish
 sudo xbps-install --yes curl
 sudo xbps-install --yes dex
 sudo xbps-install --yes dconf-editor
+sudo xbps-install --yes dmenu
 sudo xbps-install --yes duf
 sudo xbps-install --yes feh
 sudo xbps-install --yes file-roller
