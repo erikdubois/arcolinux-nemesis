@@ -69,6 +69,7 @@ sudo xbps-install --yes imlib2-devel
 sudo xbps-install --yes libX11-devel
 sudo xbps-install --yes libXft-devel
 sudo xbps-install --yes libXinerama-devel
+sudo xbps-install --yes xsetroot
 
 # applications to be used in Chadwm
 sudo xbps-install --yes alacritty
