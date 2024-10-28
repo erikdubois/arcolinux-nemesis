@@ -56,7 +56,7 @@ cd void-packages
 
 sudo xbps-install --repository hostdir/binpkgs/nonfree/ vivaldi --yes
 
-./xbps-src pkg sublime-text-4
+./xbps-src pkg sublime-text4
 
 echo
 tput setaf 6
