@@ -40,7 +40,6 @@ tput sgr0
 echo
 
 sudo xbps-install --yes alacritty
-sudo xbps-install --yes apt-file
 sudo xbps-install --yes arandr
 # on Ubuntu the command is batcat
 sudo xbps-install --yes bat
@@ -56,25 +55,25 @@ sudo xbps-install --yes file-roller
 sudo xbps-install --yes filezilla
 sudo xbps-install --yes flameshot
 sudo xbps-install --yes flatpak
-sudo xbps-install --yes font-manager
-sudo xbps-install --yes fonts-hack
-sudo xbps-install --yes fonts-noto
-sudo xbps-install --yes fonts-roboto
+#sudo xbps-install --yes font-manager
+#sudo xbps-install --yes fonts-hack
+#sudo xbps-install --yes fonts-noto
+#sudo xbps-install --yes fonts-roboto
 sudo xbps-install --yes galculator
 sudo xbps-install --yes gdm-settings
 sudo xbps-install --yes gimp
 sudo xbps-install --yes gnome-bluetooth
-sudo xbps-install --yes gnome-shell-extension-manager
+#sudo xbps-install --yes gnome-shell-extension-manager
 sudo xbps-install --yes gnome-software
 sudo xbps-install --yes gnome-software-plugin-flatpak
 sudo xbps-install --yes gnome-software-plugin-snap
 sudo xbps-install --yes gnome-tweaks
 sudo xbps-install --yes gnome-weather
 sudo xbps-install --yes hardinfo
-sudo xbps-install --yes hw-probe
+#sudo xbps-install --yes hw-probe
 sudo xbps-install --yes i3lock-fancy
 sudo xbps-install --yes inkscape
-sudo xbps-install --yes lolcat
+#sudo xbps-install --yes lolcat
 sudo xbps-install --yes lollypop
 sudo xbps-install --yes lxappearance
 sudo xbps-install --yes meld
@@ -83,7 +82,7 @@ sudo xbps-install --yes neofetch
 sudo xbps-install --yes nitrogen
 sudo xbps-install --yes nomacs
 sudo xbps-install --yes numlockx
-sudo xbps-install --yes obs-studio
+sudo xbps-install --yes obs
 sudo xbps-install --yes pavucontrol
 sudo xbps-install --yes pylint
 sudo xbps-install --yes qbittorrent
@@ -97,7 +96,7 @@ sudo xbps-install --yes system-config-printer
 sudo xbps-install --yes variety
 sudo xbps-install --yes vlc
 sudo xbps-install --yes xfce4-screenshooter
-sudo xbps-install --yes xfce4-whiskermenu-plugin --yes
+sudo xbps-install --yes xfce4-whiskermenu-plugin
 
 # getting design from ArcoLinux
 git clone https://github.com/arcolinux/arcolinux-btop /tmp/arcolinux-btop
@@ -131,8 +130,6 @@ else
 	xrandr --output Virtual1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 
 fi
-
-sudo xbps-install --yes ubuntu-restricted-extras
 
 echo
 tput setaf 6
