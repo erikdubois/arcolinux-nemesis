@@ -65,8 +65,8 @@ sudo xbps-install --yes gimp
 sudo xbps-install --yes gnome-bluetooth
 #sudo xbps-install --yes gnome-shell-extension-manager
 sudo xbps-install --yes gnome-software
-sudo xbps-install --yes gnome-software-plugin-flatpak
-sudo xbps-install --yes gnome-software-plugin-snap
+#sudo xbps-install --yes gnome-software-plugin-flatpak
+#sudo xbps-install --yes gnome-software-plugin-snap
 sudo xbps-install --yes gnome-tweaks
 sudo xbps-install --yes gnome-weather
 sudo xbps-install --yes hardinfo
@@ -86,8 +86,8 @@ sudo xbps-install --yes obs
 sudo xbps-install --yes pavucontrol
 sudo xbps-install --yes pylint
 sudo xbps-install --yes qbittorrent
-sudo xbps-install --yes qt5-style-kvantum
-sudo xbps-install --yes qt5-style-kvantum-themes
+#sudo xbps-install --yes qt5-style-kvantum
+#sudo xbps-install --yes qt5-style-kvantum-themes
 sudo xbps-install --yes ripgrep
 sudo xbps-install --yes scrot
 sudo xbps-install --yes simplescreenrecorder
