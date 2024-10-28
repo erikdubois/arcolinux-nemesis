@@ -168,7 +168,7 @@ sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o 
 
 # installing hack font for alacritty
 wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip -O /tmp/hackfont.zip
-unzip -xzf /tmp/hackfont.zip
+unzip /tmp/hackfont.zip
 cp /tmp/ttf/* ~/.fonts
 fc-cache -fv
 
