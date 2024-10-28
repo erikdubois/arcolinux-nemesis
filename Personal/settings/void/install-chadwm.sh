@@ -65,10 +65,10 @@ echo
 # getting dependencies to be able to build Chadwm
 sudo xbps-install --yes build-essential
 sudo xbps-install --yes fonts-font-awesome
-sudo xbps-install --yes libimlib2-dev
-sudo xbps-install --yes libx11-dev
-sudo xbps-install --yes libxft-dev
-sudo xbps-install --yes libxinerama-dev
+sudo xbps-install --yes imlib2-devel
+sudo xbps-install --yes libX11-devel
+sudo xbps-install --yes libXft-devel
+sudo xbps-install --yes libXinerama-devel
 
 # applications to be used in Chadwm
 sudo xbps-install --yes alacritty
@@ -111,12 +111,6 @@ if [ ! -f /usr/local/bin/chadwm ] ; then
 	cd ~/.config/arco-chadwm/chadwm
 	sudo make install
 fi
-
-# removing this package - it slows down terminals and thunar
-# this will remove the complete ubuntu desktop in 24.10 not in 24.04
-sudo apt remove -y xdg-desktop-portal-gnome
-
-sudo apt autoremove -y
 
 echo
 tput setaf 6
