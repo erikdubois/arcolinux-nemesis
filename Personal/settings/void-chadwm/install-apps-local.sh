@@ -60,7 +60,7 @@ fi
 # Function to build and install a package if not already installed
 build_and_install() {
     PACKAGE_NAME=$1
-    if ! xbps-query -R $PACKAGE_NAME > /dev/null 2>&1; then
+    if ! xbps-query $PACKAGE_NAME > /dev/null 2>&1; then
         ./xbps-src pkg $PACKAGE_NAME
         sudo xbps-install --repository hostdir/binpkgs/nonfree/ $PACKAGE_NAME --yes
     else
