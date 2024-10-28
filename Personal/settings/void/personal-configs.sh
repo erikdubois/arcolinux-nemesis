@@ -40,7 +40,7 @@ tput sgr0
 echo
 
 # installing extra shell
-sudo apt install -y fish
+sudo xbps-install --yes fish-shell
 
 # making sure simplescreenrecorder, virtualbox and other apps are dark
 sudo cp environment /etc/environment
@@ -87,7 +87,7 @@ export VISUAL='nano'
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER='most'
 
-alias update="sudo apt update && sudo apt upgrade"
+alias update="sudo xbps-install -Su --yes"
 alias probe="sudo -E hw-probe -all -upload"
 alias nenvironment="sudo $EDITOR /etc/environment"
 alias sr="reboot"' | tee -a ~/.bashrc
@@ -110,7 +110,7 @@ VBoxManage setextradata global GUI/SuppressMessages "all"
 
 # when on real metal install a template
 result=$(systemd-detect-virt)
-if [ $result = "none" ];then
+if [ $result != "kvm" ];then
 
 	[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
 	sudo cp -rf template.tar.gz ~/VirtualBox\ VMs/
@@ -130,7 +130,7 @@ else
 	tput sgr0
 	echo
 
-	xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+	xrandr --output Virtual1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 
 fi
 
