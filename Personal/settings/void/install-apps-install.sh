@@ -92,10 +92,11 @@ sudo xbps-install --yes qbittorrent
 #sudo xbps-install --yes qt5-style-kvantum-themes
 sudo xbps-install --yes ripgrep
 sudo xbps-install --yes scrot
-sudo xbps-install --yes simplescreenrecorder
+#sudo xbps-install --yes simplescreenrecorder
 sudo xbps-install --yes speedtest-cli
 sudo xbps-install --yes system-config-printer
 sudo xbps-install --yes variety
+sudo xbps-install --yes virt-what
 sudo xbps-install --yes vlc
 sudo xbps-install --yes xfce4-screenshooter
 sudo xbps-install --yes xfce4-whiskermenu-plugin
