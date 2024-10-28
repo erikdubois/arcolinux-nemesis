@@ -48,25 +48,28 @@ if [ ! -d ~/DATA ]; then
 fi
 
 cd ~/DATA
-git clone https://github.com/void-linux/void-packages.git
-cd void-packages
-./xbps-src binary-bootstrap
-
-PACKAGE_NAME="vivaldi"
-if ! xbps-query -R $PACKAGE_NAME > /dev/null 2>&1; then
-	./xbps-src pkg $PACKAGE_NAME
-	sudo xbps-install --repository hostdir/binpkgs/nonfree/ vivaldi --yes
+if [ ! -d "void-packages" ]; then
+    git clone https://github.com/void-linux/void-packages.git
+    cd void-packages
+    ./xbps-src binary-bootstrap
 else
-    echo "$PACKAGE_NAME is already installed. Skipping build."
+    git pull
 fi
 
-PACKAGE_NAME="sublime-text4"
-if ! xbps-query -R $PACKAGE_NAME > /dev/null 2>&1; then
-	./xbps-src pkg $PACKAGE_NAME
-	sudo xbps-install --repository hostdir/binpkgs/nonfree/ sublime-text4 --yes
-else
-    echo "$PACKAGE_NAME is already installed. Skipping build."
-fi
+# Function to build and install a package if not already installed
+build_and_install() {
+    PACKAGE_NAME=$1
+    if ! xbps-query -R $PACKAGE_NAME > /dev/null 2>&1; then
+        ./xbps-src pkg $PACKAGE_NAME
+        sudo xbps-install --repository hostdir/binpkgs/nonfree/ $PACKAGE_NAME --yes
+    else
+        echo "$PACKAGE_NAME is already installed. Skipping build."
+    fi
+}
+
+# Call the function for each package
+build_and_install "vivaldi"
+build_and_install "sublime-text4"
 
 echo
 tput setaf 6
