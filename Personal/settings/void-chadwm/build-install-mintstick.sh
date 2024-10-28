@@ -40,14 +40,13 @@ tput sgr0
 echo
 
 # getting dependencies
-sudo apt install -y debhelper
-sudo apt install -y gettext
+sudo xbps-install --yes xapps-devel
+sudo xbps-install --yes python3-Unidecode
 
 # building from source
 git clone https://github.com/linuxmint/mintstick.git  /tmp/mintstick
 cd /tmp/mintstick
-dpkg-buildpackage
-sudo apt install /tmp/mintstick*.deb
+sudo ./install.sh
 
 echo
 tput setaf 6
