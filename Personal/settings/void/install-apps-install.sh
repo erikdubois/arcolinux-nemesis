@@ -98,6 +98,7 @@ sudo xbps-install --yes system-config-printer
 sudo xbps-install --yes variety
 sudo xbps-install --yes virt-what
 sudo xbps-install --yes vlc
+sudo xbps-install --yes wget
 sudo xbps-install --yes xfce4-screenshooter
 sudo xbps-install --yes xfce4-whiskermenu-plugin
 
@@ -137,7 +138,7 @@ fi
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### Packages via apt install done"
+echo "###### Packages via xbps-install done"
 echo "################################################################"
 tput sgr0
 echo
