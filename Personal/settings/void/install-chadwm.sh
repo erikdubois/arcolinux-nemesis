@@ -63,26 +63,26 @@ tput sgr0
 echo
 
 # getting dependencies to be able to build Chadwm
-sudo apt install -y build-essential
-sudo apt install -y fonts-font-awesome
-sudo apt install -y libimlib2-dev
-sudo apt install -y libx11-dev
-sudo apt install -y libxft-dev
-sudo apt install -y libxinerama-dev
+sudo xbps-install --yes build-essential
+sudo xbps-install --yes fonts-font-awesome
+sudo xbps-install --yes libimlib2-dev
+sudo xbps-install --yes libx11-dev
+sudo xbps-install --yes libxft-dev
+sudo xbps-install --yes libxinerama-dev
 
 # applications to be used in Chadwm
-sudo apt install -y alacritty
-sudo apt install -y picom
-sudo apt install -y playerctl
-sudo apt install -y policykit-1-gnome
-sudo apt install -y pulsemixer
-sudo apt install -y rofi
-sudo apt install -y sxhkd
+sudo xbps-install --yes alacritty
+sudo xbps-install --yes picom
+sudo xbps-install --yes playerctl
+sudo xbps-install --yes policykit-1-gnome
+sudo xbps-install --yes pulsemixer
+sudo xbps-install --yes rofi
+sudo xbps-install --yes sxhkd
 # next item is dmenu
-sudo apt install -y suckless-tools
-sudo apt install -y thunar
-sudo apt install -y thunar-archive-plugin
-sudo apt install -y thunar-volman
+sudo xbps-install --yes suckless-tools
+sudo xbps-install --yes thunar
+sudo xbps-install --yes thunar-archive-plugin
+sudo xbps-install --yes thunar-volman
 
 # exit strategy - super + shift + x
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
