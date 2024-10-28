@@ -63,7 +63,12 @@ cp -r /tmp/a-candy-beauty-icon-theme/usr/share/icons/* ~/.icons/
 
 # installing theme and cursor
 sudo xbps-install --yes arc-theme
-sudo xbps-install --yes bibata-cursor-theme
+
+# bibata cursor
+wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.7/Bibata.tar.xz -O /tmp/bibata.tar.xz
+tar -xvf /tmp/bibata.tar.gz           # extract `Bibata.tar.gz`
+#mv /tmp/Bibata-* ~/.local/share/icons/     # Install to local users
+sudo mv Bibata-* /usr/share/icons/    # Install to all users
 
 echo
 tput setaf 6
