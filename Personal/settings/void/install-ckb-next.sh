@@ -30,25 +30,39 @@
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
-# https://linux.how2shout.com/how-to-install-kvm-qemu-on-ubuntu-24-04-lts-server-linux/
+
 echo
 tput setaf 2
 echo "################################################################"
-echo "###### Installing packages"
+echo "################### Checking if their is a Corsair K70 keyboard"
 echo "################################################################"
 tput sgr0
 echo
 
-	sudo apt install -y qemu-system
-	sudo apt install -y virt-manager
+# making sure hwinfo exists in the system
+if [ ! -f /usr/bin/hwinfo ]; then
+  sudo apt install -y hwinfo
+fi
 
-	sudo apt install -y virt-top
-	sudo apt install -y bridge-utils
+# do we have a CORSAIR K70?
+if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
+
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "################### Corsair keyboard to be installed"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+	sudo apt install -y ckb-next
 	
-echo
-tput setaf 6
-echo "######################################################"
-echo "###################  $(basename $0) done"
-echo "######################################################"
-tput sgr0
-echo
+	echo
+	tput setaf 6
+	echo "################################################################"
+	echo "################### Corsair keyboard installed"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+fi

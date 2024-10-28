@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -e
+# set -e
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -30,25 +30,35 @@
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
-# https://linux.how2shout.com/how-to-install-kvm-qemu-on-ubuntu-24-04-lts-server-linux/
+
 echo
 tput setaf 2
 echo "################################################################"
-echo "###### Installing packages"
+echo "################### All in one for Ubuntu"
 echo "################################################################"
 tput sgr0
 echo
 
-	sudo apt install -y qemu-system
-	sudo apt install -y virt-manager
+sudo apt update -y
+sudo apt upgrade -y
 
-	sudo apt install -y virt-top
-	sudo apt install -y bridge-utils
-	
+./install-chadwm.sh
+./install-apps-install.sh
+./install-apps-local.sh
+./install-apps-ppa.sh
+./install-apps-snap.sh
+# personal stuff
+./install-ckb-next.sh
+./install-design.sh
+./personal-configs.sh
+
+sudo apt autoremove -y
+
 echo
 tput setaf 6
-echo "######################################################"
-echo "###################  $(basename $0) done"
-echo "######################################################"
+echo "################################################################"
+echo "###### All in one done"
+echo "###### Insync download from HQ - sudo apt install ..."
+echo "################################################################"
 tput sgr0
 echo

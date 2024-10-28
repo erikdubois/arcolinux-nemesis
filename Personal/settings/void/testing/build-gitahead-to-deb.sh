@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -e
+# set -e
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -30,25 +30,37 @@
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
-# https://linux.how2shout.com/how-to-install-kvm-qemu-on-ubuntu-24-04-lts-server-linux/
+
 echo
 tput setaf 2
 echo "################################################################"
-echo "###### Installing packages"
+echo "################### Building from source"
 echo "################################################################"
 tput sgr0
 echo
 
-	sudo apt install -y qemu-system
-	sudo apt install -y virt-manager
+mkdir -p /tmp/deb/gitahead/DEBIAN
+mkdir -p /tmp/deb/gitahead/usr/bin
+mkdir -p /tmp/deb/gitahead/usr/share/applications
 
-	sudo apt install -y virt-top
-	sudo apt install -y bridge-utils
-	
+cp -v /tmp/gitahead/build/release/GitAhead /tmp/deb/gitahead/usr/bin
+cp -v /tmp/gitahead/gitahead.desktop /tmp/deb/gitahead/usr/share/applications
+
+echo "Package: Gitahead
+Version: 2.7.1
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Erik Dubois
+Description: app for git" | tee /tmp/deb/gitahead/DEBIAN/control
+
+cd /tmp/deb/
+dpkg-deb --root-owner-group --build /tmp/deb/gitahead
+
 echo
 tput setaf 6
-echo "######################################################"
-echo "###################  $(basename $0) done"
-echo "######################################################"
+echo "################################################################"
+echo "###### Build and installed"
+echo "################################################################"
 tput sgr0
 echo

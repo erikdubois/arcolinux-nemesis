@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -e
+# set -e
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -30,7 +30,15 @@
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
-# https://linux.how2shout.com/how-to-install-kvm-qemu-on-ubuntu-24-04-lts-server-linux/
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Installing design"
+echo "################################################################"
+tput sgr0
+echo
+
 echo
 tput setaf 2
 echo "################################################################"
@@ -39,16 +47,28 @@ echo "################################################################"
 tput sgr0
 echo
 
-	sudo apt install -y qemu-system
-	sudo apt install -y virt-manager
+# Creation of folders
+[ -d $HOME"/.bin" ] || mkdir -p $HOME"/.bin"
+[ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
+[ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
+[ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
 
-	sudo apt install -y virt-top
-	sudo apt install -y bridge-utils
-	
+# getting Surfn icons
+git clone https://github.com/erikdubois/Surfn  /tmp/surfn
+cp -r /tmp/surfn/surfn-icons/* ~/.icons/
+
+# getting candy beauty icons
+git clone https://github.com/arcolinux/a-candy-beauty-icon-theme  /tmp/a-candy-beauty-icon-theme
+cp -r /tmp/a-candy-beauty-icon-theme/usr/share/icons/* ~/.icons/
+
+# installing theme and cursor
+sudo apt install -y arc-theme
+sudo apt install -y bibata-cursor-theme
+
 echo
 tput setaf 6
-echo "######################################################"
-echo "###################  $(basename $0) done"
-echo "######################################################"
+echo "################################################################"
+echo "###### installing icons ... done"
+echo "################################################################"
 tput sgr0
 echo

@@ -73,6 +73,11 @@ if grep -q "ubuntu" /etc/os-release; then
     exit 1
 fi
 
+if grep -q "void" /etc/os-release; then
+    cd Personal/settings/void/
+    sh ./1-all-in-one.sh
+    exit 1
+fi
 
 
 echo

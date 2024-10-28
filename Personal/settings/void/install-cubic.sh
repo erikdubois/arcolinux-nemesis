@@ -30,25 +30,25 @@
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
-# https://linux.how2shout.com/how-to-install-kvm-qemu-on-ubuntu-24-04-lts-server-linux/
+
+
 echo
 tput setaf 2
 echo "################################################################"
-echo "###### Installing packages"
+echo "################### Installing cubic - ubuntu iso creation"
 echo "################################################################"
 tput sgr0
 echo
 
-	sudo apt install -y qemu-system
-	sudo apt install -y virt-manager
+#sudo apt-add-repository universe
+sudo apt-add-repository ppa:cubic-wizard/release
+sudo apt update
+sudo apt install --no-install-recommends cubic	
 
-	sudo apt install -y virt-top
-	sudo apt install -y bridge-utils
-	
 echo
 tput setaf 6
-echo "######################################################"
-echo "###################  $(basename $0) done"
-echo "######################################################"
+echo "################################################################"
+echo "################### Corsair keyboard installed"
+echo "################################################################"
 tput sgr0
 echo

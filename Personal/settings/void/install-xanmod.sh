@@ -30,25 +30,31 @@
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
-# https://linux.how2shout.com/how-to-install-kvm-qemu-on-ubuntu-24-04-lts-server-linux/
+
+
 echo
 tput setaf 2
 echo "################################################################"
-echo "###### Installing packages"
+echo "################### Installing Xanmod kernel"
 echo "################################################################"
 tput sgr0
 echo
 
-	sudo apt install -y qemu-system
-	sudo apt install -y virt-manager
+echo
+echo "################################################################"
+echo "###### Xanmod kernel via ppa"
+echo "################################################################"
+echo
 
-	sudo apt install -y virt-top
-	sudo apt install -y bridge-utils
-	
+wget -qO - https://dl.xanmod.org/archive.key | sudo gpg --dearmor -vo /usr/share/keyrings/xanmod-archive-keyring.gpg
+echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-release.list > /dev/null
+sudo apt update
+sudo apt install -y linux-xanmod-x64v3
+
 echo
 tput setaf 6
-echo "######################################################"
-echo "###################  $(basename $0) done"
-echo "######################################################"
+echo "################################################################"
+echo "################### Xanmod installed - there are more versions"
+echo "################################################################"
 tput sgr0
 echo
