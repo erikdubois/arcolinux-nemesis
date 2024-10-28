@@ -53,6 +53,7 @@ if [ ! -d "void-packages" ]; then
     cd void-packages
     ./xbps-src binary-bootstrap
 else
+	cd void-packages
     git pull
 fi
 
