@@ -96,6 +96,7 @@ sudo xbps-install --yes system-config-printer
 sudo xbps-install --yes variety
 sudo xbps-install --yes vlc
 sudo xbps-install --yes xfce4-screenshooter
+sudo xbps-install --yes xfce4-whiskermenu-plugin --yes
 
 # getting design from ArcoLinux
 git clone https://github.com/arcolinux/arcolinux-btop /tmp/arcolinux-btop
@@ -126,7 +127,7 @@ else
 	tput sgr0
 	echo
 
-	xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+	xrandr --output Virtual1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 
 fi
 
