@@ -109,7 +109,7 @@ echo
 VBoxManage setextradata global GUI/SuppressMessages "all"
 
 # when on real metal install a template
-result=$(systemd-detect-virt)
+result=$(sudo virt-what)
 if [ $result != "kvm" ];then
 
 	[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
