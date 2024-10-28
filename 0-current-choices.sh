@@ -74,7 +74,7 @@ if grep -q "ubuntu" /etc/os-release; then
 fi
 
 if grep -q "void" /etc/os-release; then
-    cd Personal/settings/void/
+    cd Personal/settings/void-chadwm/
     sh ./1-all-in-one.sh
     exit 1
 fi
