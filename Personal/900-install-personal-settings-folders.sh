@@ -137,7 +137,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	sudo cp -f $installed_dir/settings/shell-personal/.zshrc /etc/skel/.zshrc
 	cp $installed_dir/settings/shell-personal/.zshrc-personal ~/.zshrc-personal
 	cp $installed_dir/settings/fish/alias.fish ~/.config/fish/alias.fish
-	sudo cp -f $installed_dir/settings/environment/environment /etc/environment
+	sudo cp -vf $installed_dir/settings/environment/environment /etc/environment
 
 	echo
 
