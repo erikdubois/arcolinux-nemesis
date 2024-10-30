@@ -176,7 +176,7 @@ sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
 sudo pacman -S --noconfirm --needed simplescreenrecorder
 sudo pacman -S --noconfirm --needed sparklines-git
-sudo pacman -S --noconfirm --needed speedtest-cli-git
+sudo pacman -S --noconfirm --needed speedtest-cli
 sudo pacman -S --noconfirm --needed spotify
 sudo pacman -S --noconfirm --needed squashfs-tools
 sudo pacman -S --noconfirm --needed sublime-text-4
