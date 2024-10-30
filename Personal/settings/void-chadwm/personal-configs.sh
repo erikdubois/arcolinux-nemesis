@@ -161,6 +161,17 @@ fi
 sudo xbps-install python3-distro --yes
 cd $installed_dir
 git clone https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
+
+# changing for runinit
+FIND="systemctl reboot"
+REPLACE="sudo reboot"
+sed -i "s/$FIND/$REPLACE/g" /tmp/archlinux-logout/usr/share/archlinux-logout/archlinux-logout.py
+
+FIND="systemctl poweroff"
+REPLACE="sudo shutdown -r now"
+sed -i "s/$FIND/$REPLACE/g" /tmp/archlinux-logout/usr/share/archlinux-logout/archlinux-logout.py
+
+
 sudo cp -r /tmp/archlinux-logout/etc/* /etc
 sudo cp -r /tmp/archlinux-logout/usr/* /usr
 sudo rm -r /usr/share/archlinux-betterlockscreen
