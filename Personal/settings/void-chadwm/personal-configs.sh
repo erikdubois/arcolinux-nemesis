@@ -102,35 +102,60 @@ REPLACE="\/usr\/bin\/fish"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
 echo
 
-# when on real metal install a template
-result=$(sudo virt-what)
-if [ $result != "kvm" ] ;then
+# Check if virt-what is installed
+if ! command -v virt-what &>/dev/null; then
+  echo "Error: virt-what is not installed. Install it to proceed."
+  exit 1
+fi
 
-	[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
-	sudo cp -rf template.tar.gz ~/VirtualBox\ VMs/
-	cd ~/VirtualBox\ VMs/
-	tar -xzf template.tar.gz
-	rm -f template.tar.gz	
-	echo
-	echo "Removing all the messages virtualbox produces"
-	echo
-	VBoxManage setextradata global GUI/SuppressMessages "all"
+# Check the virtualization environment
+result=$(sudo virt-what)
+
+# Check if running on real metal (not kvm)
+if [[ $result != "kvm" ]]; then
+  # Define the VirtualBox directory path
+  vbox_dir="$HOME/VirtualBox VMs"
+  
+  # Create the VirtualBox VMs directory if it doesn't exist
+  [[ -d "$vbox_dir" ]] || mkdir -p "$vbox_dir"
+  
+  # Ensure template file exists before attempting to copy
+  if [[ -f "template.tar.gz" ]]; then
+    # Copy the template to the VirtualBox directory
+    sudo cp -rf template.tar.gz "$vbox_dir/"
+    
+    # Extract and clean up template in the VirtualBox directory
+    cd "$vbox_dir"
+    tar -xzf template.tar.gz && rm -f template.tar.gz
+    
+    echo -e "\nRemoving all VirtualBox messages"
+    
+    # Suppress VirtualBox messages
+    if command -v VBoxManage &>/dev/null; then
+      VBoxManage setextradata global GUI/SuppressMessages "all"
+    else
+      echo "Warning: VBoxManage command not found. Please ensure VirtualBox is installed."
+    fi
+  else
+    echo "Error: template.tar.gz not found. Please provide the template file."
+  fi
 
 else
+  # Output warning for virtual machine environments
+  echo
+  tput setaf 3
+  echo "################################################################"
+  echo "### Running on a virtual machine - skipping VirtualBox setup"
+  echo "### Template not copied over"
+  echo "### Setting screen resolution with xrandr"
+  echo "################################################################"
+  tput sgr0
+  echo
 
-	echo
-	tput setaf 3
-	echo "################################################################"
-	echo "### You are on a virtual machine - skipping VirtualBox"
-	echo "### Template not copied over"
-	echo "### We will set your screen resolution with xrandr"
-	echo "################################################################"
-	tput sgr0
-	echo
-
-	xrandr --output Virtual1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
-
+  # Set screen resolution
+  xrandr --output Virtual1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 fi
+
 
 # getting archlinux-logout
 sudo xbps-install python3-distro --yes
