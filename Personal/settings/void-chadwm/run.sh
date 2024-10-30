@@ -1,4 +1,6 @@
 #!/bin/sh
+# next line changes the keyboard to be-latin1
+setxkbmap be
 
 sxhkd -c ~/.config/arco-chadwm/sxhkd/sxhkdrc &
 

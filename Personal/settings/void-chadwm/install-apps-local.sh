@@ -49,7 +49,7 @@ fi
 
 cd ~/DATA
 if [ ! -d "void-packages" ]; then
-    git clone https://github.com/void-linux/void-packages.git
+    git clone --depth 1 https://github.com/void-linux/void-packages.git
     cd void-packages
     ./xbps-src binary-bootstrap
 else
