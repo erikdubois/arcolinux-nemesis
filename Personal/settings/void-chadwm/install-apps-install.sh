@@ -41,6 +41,7 @@ echo
 
 sudo xbps-install --yes alacritty
 sudo xbps-install --yes arandr
+sudo xbps-install --yes avahi
 sudo xbps-install --yes base-devel
 sudo xbps-install --yes bat
 sudo xbps-install --yes btop
