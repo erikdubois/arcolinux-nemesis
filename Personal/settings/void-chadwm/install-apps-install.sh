@@ -58,6 +58,7 @@ sudo xbps-install --yes filezilla
 sudo xbps-install --yes fish-shell
 sudo xbps-install --yes flameshot
 sudo xbps-install --yes flatpak
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo xbps-install --yes fontmanager
 sudo xbps-install --yes fonts-roboto-ttf
 sudo xbps-install --yes galculator
