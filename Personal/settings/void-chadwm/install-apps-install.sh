@@ -89,6 +89,7 @@ sudo xbps-install --yes nomacs
 sudo xbps-install --yes numlockx
 sudo xbps-install --yes obs
 sudo xbps-install --yes pavucontrol
+sudo xbps-install --yes polkit-gnome
 sudo xbps-install --yes pylint
 sudo xbps-install --yes qbittorrent
 #sudo xbps-install --yes qt5-style-kvantum
