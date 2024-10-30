@@ -191,11 +191,43 @@ sudo sed -i "s/$FIND/$REPLACE/g" /etc/environment
 # installing sparklines/spark
 sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark"
 
-# installing hack font for alacritty
-wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip -O /tmp/hackfont.zip
-unzip /tmp/hackfont.zip -d /tmp/hack
-cp /tmp/hack/ttf/* ~/.fonts
+#!/bin/bash
+
+# Check if wget and unzip are installed
+if ! command -v wget &>/dev/null || ! command -v unzip &>/dev/null; then
+  echo "Error: wget and unzip are required. Install them to proceed."
+  exit 1
+fi
+
+# Define temporary and fonts directories
+temp_dir="/tmp/hack"
+fonts_dir="$HOME/.fonts"
+
+# Download the Hack font zip file to the temporary directory
+echo "Downloading Hack font..."
+wget -q https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip -O /tmp/hackfont.zip
+
+# Unzip the downloaded file
+echo "Extracting Hack font..."
+mkdir -p "$temp_dir"
+unzip -o /tmp/hackfont.zip -d "$temp_dir" >/dev/null
+
+# Create fonts directory if it doesn't exist
+mkdir -p "$fonts_dir"
+
+# Copy and overwrite existing font files
+echo "Installing Hack font to $fonts_dir..."
+cp -f "$temp_dir/ttf/"* "$fonts_dir"
+
+# Update font cache
+echo "Updating font cache..."
 fc-cache -fv
+
+# Clean up temporary files
+rm -rf /tmp/hackfont.zip "$temp_dir"
+
+echo "Hack font installation complete."
+
 
 tput setaf 6
 echo "################################################################"
