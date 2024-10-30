@@ -60,7 +60,6 @@ sudo xbps-install --yes alacritty
 sudo xbps-install --yes dmenu
 sudo xbps-install --yes picom
 sudo xbps-install --yes playerctl
-sudo xbps-install --yes policykit-1-gnome
 sudo xbps-install --yes pulsemixer
 sudo xbps-install --yes rofi
 sudo xbps-install --yes sxhkd

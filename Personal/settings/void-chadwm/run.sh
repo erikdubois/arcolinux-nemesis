@@ -2,15 +2,8 @@
 # next line changes the keyboard to be-latin1
 setxkbmap be
 
-# Check the virtualization environment
-result=$(sudo virt-what)
-
-# Check if running on real metal (not kvm)
-if echo "$result" | grep -qE 'kvm|virtualbox'; then
-	xrandr --output Virtual1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
-else
-	xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
-fi
+xrandr --output Virtual1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
 
 sxhkd -c ~/.config/arco-chadwm/sxhkd/sxhkdrc &
 
