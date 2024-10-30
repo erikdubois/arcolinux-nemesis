@@ -51,7 +51,8 @@ cd ~/DATA
 if [ ! -d "void-packages" ]; then
     git clone --depth 1 https://github.com/void-linux/void-packages.git
     cd void-packages
-    echo "XBPS_ALLOW_RESTRICTED=yes" | tee ./etc/xbps.d/00-restricted.conf > /dev/null
+    #echo "XBPS_ALLOW_RESTRICTED=yes" | tee ./etc/xbps.d/00-restricted.conf > /dev/null
+    echo "XBPS_ALLOW_RESTRICTED=yes" | tee ./etc/conf > /dev/null
     ./xbps-src binary-bootstrap
 else
 	cd void-packages
