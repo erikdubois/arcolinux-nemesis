@@ -7,9 +7,9 @@ result=$(sudo virt-what)
 
 # Check if running on real metal (not kvm)
 if [[ $result = "kvm" ]]; then
-	run xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+	xrandr --output Virtual1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 else
-	run xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
+	xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
 fi
 
 sxhkd -c ~/.config/arco-chadwm/sxhkd/sxhkdrc &
