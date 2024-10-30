@@ -39,21 +39,6 @@ echo "################################################################"
 tput sgr0
 echo
 
-# https://sysadminsage.com/ubuntu-remove-a-package/
-
-echo
-tput setaf 1
-echo "################################################################"
-echo "################### This will remove the Ubuntu desktop"
-echo "################### The following packages will be removed:"
-echo "################### - ubuntu-desktop-minimal"
-echo "################### - ubuntu-session-xsession"
-echo "################### - ubuntu-session"
-echo "################### - xdg-desktop-portal-gnome"
-echo "################################################################"
-tput sgr0
-echo
-
 echo
 tput setaf 2
 echo "################################################################"
@@ -73,14 +58,13 @@ sudo xbps-install --yes xsetroot
 
 # applications to be used in Chadwm
 sudo xbps-install --yes alacritty
+sudo xbps-install --yes dmenu
 sudo xbps-install --yes picom
 sudo xbps-install --yes playerctl
 sudo xbps-install --yes policykit-1-gnome
 sudo xbps-install --yes pulsemixer
 sudo xbps-install --yes rofi
 sudo xbps-install --yes sxhkd
-# next item is dmenu
-sudo xbps-install --yes suckless-tools
 sudo xbps-install --yes thunar
 sudo xbps-install --yes thunar-archive-plugin
 sudo xbps-install --yes thunar-volman

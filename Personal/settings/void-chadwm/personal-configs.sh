@@ -104,7 +104,7 @@ echo
 
 # when on real metal install a template
 result=$(sudo virt-what)
-if [ $result != "kvm" ];then
+if [ $result != "kvm" ] ;then
 
 	[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
 	sudo cp -rf template.tar.gz ~/VirtualBox\ VMs/
