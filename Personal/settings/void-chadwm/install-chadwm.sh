@@ -48,7 +48,6 @@ tput sgr0
 echo
 
 # getting dependencies to be able to build Chadwm
-sudo xbps-install --yes build-essential
 sudo xbps-install --yes font-awesome
 sudo xbps-install --yes imlib2-devel
 sudo xbps-install --yes libX11-devel
