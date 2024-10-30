@@ -6,7 +6,7 @@ setxkbmap be
 result=$(sudo virt-what)
 
 # Check if running on real metal (not kvm)
-if [[ $result = "kvm" ]]; then
+if [[ $result == *"kvm"* || $result == *"virtualbox"* ]]; then
 	xrandr --output Virtual1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 else
 	xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
