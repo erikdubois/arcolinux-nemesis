@@ -131,7 +131,7 @@ end
 
 # recently installed packages
 function rip
-   dpkg-query -Wf '${Installed-size}\t${Package}\n' | column -t | sort -n
+   xbps-query -l | awk '{print $4, $5}' | column -t | sort -nk1
 end
 
 function gl
@@ -252,7 +252,7 @@ export VISUAL=nano
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER=most
 
-alias update="sudo apt update && sudo apt upgrade && sudo snap refresh"
+alias update="sudo xbps-install -Su"
 alias probe="sudo -E hw-probe -all -upload"
 alias nenvironment="sudo $EDITOR /etc/environment"
 alias nfstab="sudo $EDITOR /etc/fstab"
