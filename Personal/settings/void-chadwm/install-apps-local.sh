@@ -56,6 +56,7 @@ if [ ! -d "void-packages" ]; then
     ./xbps-src binary-bootstrap
 else
 	cd void-packages
+    echo "XBPS_ALLOW_RESTRICTED=yes" | tee ./etc/conf > /dev/null
     git pull
 fi
 
