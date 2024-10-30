@@ -41,6 +41,7 @@ echo
 
 # allow non-free repos
 echo "XBPS_ALLOW_RESTRICTED=yes" | sudo tee /etc/xbps.d/00-restricted.conf > /dev/null
+sudo xbps-install -S void-repo-nonfree --yes
 
 sudo xbps-install -Su --yes
 
