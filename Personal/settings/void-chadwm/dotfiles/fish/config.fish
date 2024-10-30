@@ -131,7 +131,7 @@ end
 
 # recently installed packages
 function rip
-   xbps-query -l | awk '{print $4, $5}' | column -t | sort -nk1
+   xbps-query -l | awk '{print $2, $3}' | column -t | sort -nk1
 end
 
 function gl
