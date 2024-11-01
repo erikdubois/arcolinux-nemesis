@@ -56,6 +56,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 		sudo rm -f /etc/skel/.config/variety/variety.conf
 	fi
 	sudo pacman -S --noconfirm --needed arconet-variety-config
+	sudo pacman -S --noconfirm --needed arcolinux-alacritty-git
 
 
   	echo
