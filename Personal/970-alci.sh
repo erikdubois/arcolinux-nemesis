@@ -53,11 +53,9 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	tput sgr0
 	echo
 
-	echo
-	echo "Installing Edu packages"
-	sudo pacman -S --noconfirm --needed edu-skel-git
-  	sudo pacman -S --noconfirm --needed edu-xfce-git
-  	sudo pacman -S --noconfirm --needed edu-system-git
+#	echo
+#	echo "Installing Edu packages"
+
 
   	echo
   	echo "Installing grub theme"

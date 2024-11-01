@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-10-30
+## Generated on 2024-11-01
 ##
 
 ## Worldwide
@@ -46,6 +46,7 @@ Server = http://mirror.easyname.at/archlinux/$repo/os/$arch
 Server = https://at.arch.mirror.kescher.at/$repo/os/$arch
 Server = http://mirror.reisenbauer.ee/archlinux/$repo/os/$arch
 Server = https://mirror.reisenbauer.ee/archlinux/$repo/os/$arch
+Server = https://at-vie.soulharsh007.dev/archlinux/$repo/os/$arch
 Server = http://arch.mirror.zachlge.org/$repo/os/$arch
 Server = https://arch.mirror.zachlge.org/$repo/os/$arch
 
@@ -561,6 +562,10 @@ Server = http://mirror.ihost.md/archlinux/$repo/os/$arch
 Server = https://mirror.ihost.md/archlinux/$repo/os/$arch
 Server = http://mirror.mangohost.net/archlinux/$repo/os/$arch
 Server = https://mirror.mangohost.net/archlinux/$repo/os/$arch
+
+## Nepal
+Server = http://mirrors.nepalicloud.com/archlinux/$repo/os/$arch
+Server = https://mirrors.nepalicloud.com/archlinux/$repo/os/$arch
 
 ## Netherlands
 Server = http://mirror.bouwhuis.network/archlinux/$repo/os/$arch
