@@ -52,7 +52,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	echo "################################################################"
 	tput sgr0
 	echo
-	if [ -f sudo rm -f /etc/skel/.config/variety/variety.conf ]; then
+	if [ -f /etc/skel/.config/variety/variety.conf ]; then
 		sudo rm -f /etc/skel/.config/variety/variety.conf
 	fi
 	sudo pacman -S --noconfirm --needed arconet-variety-config
