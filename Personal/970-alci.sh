@@ -59,6 +59,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	sudo pacman -S --noconfirm --needed arcolinux-alacritty-git
 	sudo pacman -S --noconfirm --needed arcolinux-root-git
 	sudo pacman -S --noconfirm --needed arcolinux-fish-git
+	sudo pacman -S --noconfirm --needed arcolinux-btop-git
 
 
   	echo
