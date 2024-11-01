@@ -64,6 +64,10 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	sudo pacman -S --noconfirm --needed arcolinux-kvantum-git
 	sudo pacman -S --noconfirm --needed pavucontrol
 
+	# setting my personal configuration for variety
+	echo "getting latest variety config from github"
+	sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
+	sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O /etc/skel/.config/variety/variety.conf
 
   	echo
   	echo "Installing grub theme"
