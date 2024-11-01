@@ -75,10 +75,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 
 	echo
 	echo "Adding environment variables"
-	if [ -f /etc/environment ]; then
-		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
-		echo "EDITOR=nano" | sudo tee -a /etc/environment
-	fi
+	sudo cp $installed_dir/settings/environment/environment /etc/environment
 
 	echo
 	echo "Adding nanorc"
