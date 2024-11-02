@@ -52,6 +52,20 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
 	echo "################################################################"
 	tput sgr0
 	echo
+
+	echo
+	echo "To /usr/bin/fish we go"
+	echo
+
+	sudo pacman -S --noconfirm --needed fish
+	sudo pacman -S --noconfirm --needed arcolinux-fish-git
+	
+	# Going for fish as the default shell
+	FIND="\/bin\/bash"
+	REPLACE="\/usr\/bin\/fish"
+	sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
+	echo
+
 	if [ -f /etc/skel/.config/variety/variety.conf ]; then
 		sudo rm -f /etc/skel/.config/variety/variety.conf
 	fi
