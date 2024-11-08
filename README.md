@@ -25,7 +25,7 @@ Over time this script to tweak ArcoLinux evolved and can now setup the following
 
 Arch Linux based distros
 
-- [https://archlinux.org/download/](Arch Linux)
+- [Arch Linux](https://archlinux.org/download/)
 
 
 Non Arch based distros
