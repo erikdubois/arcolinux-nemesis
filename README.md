@@ -61,7 +61,7 @@ Non Arch based distros
 - [Alma Linux](https://almalinux.org)
 - [Debian](https://www.debian.org)
 - [Fedora](https://fedoraproject.org)
-- [Linux Mint](https://www.linuxmint.com)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/erikdubois/mint-chadwm" target="_blank">Examples</a>
+- [Linux Mint](https://www.linuxmint.com)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Examples](https://github.com/erikdubois/mint-chadwm)
 - [Nobara](https://nobaraproject.org)
 - [Solus](https://getsol.us/download/)
 - [Ubuntu](https://ubuntu.com/download)
