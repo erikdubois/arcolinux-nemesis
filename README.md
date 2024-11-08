@@ -21,11 +21,11 @@
 
 What to do after the installation of the latest version of ArcoLinux?
 
-Over times this script to tweak ArcoLinux evolved and can now setup the following distributions:
+Over time this script to tweak ArcoLinux evolved and can now setup the following distributions and more:
 
 Arch Linux based distros
 
-- [https://archlinux.org/download/] (Arch Linux)
+- [https://archlinux.org/download/](Arch Linux)
 
 
 Non Arch based distros
