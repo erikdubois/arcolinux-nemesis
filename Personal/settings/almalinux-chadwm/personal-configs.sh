@@ -134,6 +134,17 @@ sudo rm /usr/share/applications/archlinux-betterlockscreen.desktop
 [ -d $HOME"/.config/archlinux-logout" ] || mkdir -p $HOME"/.config/archlinux-logout"
 cp -v archlinux-logout.conf ~/.config/archlinux-logout/
 
+# Arc Dawn
+git clone https://github.com/arcolinux/arcolinux-arc-dawn  /tmp/arcolinux-arc-dawn
+cd /tmp/arcolinux-arc-dawn/usr/share/themes
+
+cp -r * ~/.themes
+
+echo
+FIND="export GTK_THEME=Arc-Dark"
+REPLACE="export GTK_THEME=Arc-Dawn-Dark"
+sudo sed -i "s/$FIND/$REPLACE/g" /etc/environment
+
 # prevention ads - tracking - hblock
 # https://github.com/hectorm/hblock
 git clone https://github.com/hectorm/hblock  /tmp/hblock
