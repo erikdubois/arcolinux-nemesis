@@ -48,6 +48,7 @@ sudo dnf install -y chromium
 sudo dnf install -y curl
 sudo dnf install -y dconf-editor
 sudo dnf install -y duf
+sudo dnf install -y fastfetch
 sudo dnf install -y feh
 sudo dnf install -y file-roller
 sudo dnf install -y flameshot
@@ -64,7 +65,6 @@ sudo dnf install -y lollypop
 sudo dnf install -y lxappearance
 sudo dnf install -y meld
 sudo dnf install -y most
-sudo dnf install -y neofetch
 sudo dnf install -y nitrogen
 sudo dnf install -y numlockx
 sudo dnf install -y obs-studio
