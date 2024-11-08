@@ -23,13 +23,36 @@ What to do after the installation of the latest version of ArcoLinux?
 
 Over time this script to tweak ArcoLinux evolved and can now setup the following distributions and more:
 
+
 Arch Linux based distros
 
 - [Arch Linux](https://archlinux.org/download/)
+- [Alci](https://alci.online)
+- [Carli](https://www.arcolinuxiso.com)
+- [Ariser](https://ariser.eu)
+- [Sierra](https://ariser.eu)
+- [Area](https://ariser.eu)
+- [ArchBang](https://archbang.org)
+- [Archcraft](https://archcraft.io)
+- [Archman](https://archman.org)
+- [Big Linux](https://www.biglinux.com.br)
+- [EndeavourOS](https://endeavouros.com)
+- [Garuda](https://garudalinux.org)
+- [Manjaro](https://manjaro.org)
+- [RebornOS](https://rebornos.org)
+
 
 
 Non Arch based distros
 
+- [Alma Linux](https://almalinux.org)
+- [Debian](https://www.debian.org)
+- [Fedora](https://fedoraproject.org)
+- [Linux Mint](https://www.linuxmint.com)
+- [Nobara](https://nobaraproject.org)
+- [Solus](https://getsol.us/download/)
+- [Ubuntu](https://ubuntu.com/download)
+- [Void](https://voidlinux.org)
 
 
 Personally I will install these applications with the use of the scripts.
