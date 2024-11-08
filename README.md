@@ -63,7 +63,7 @@ Non Arch based distros
 | [Alma Linux](https://almalinux.org)    |  |  |
 | [Debian](https://www.debian.org)     |   | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS5KExtV-n0g_I6Ei0963scq)     |
 | [Fedora](https://fedoraproject.org)         |   | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_l5LFkHkbxLwttgd3m12D)        |
-| [Linux Mint](https://www.linuxmint.com)         | [Examples](https://github.com/erikdubois/mint-chadwm)       | [YouTube Playlist](https://www.youtube.com/)
+| [Linux Mint](https://www.linuxmint.com)         | [Examples](https://github.com/erikdubois/mint-chadwm)       | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4dMHsRIx6RAfbLNNMOEdCM)
 | [MX Linux](https://mxlinux.org)         |     | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4taYXROH0eMFV0olfWF8w0) 
 | [Nobara](https://nobaraproject.org)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7O1qeZj5D3E4vmqNz26zsq)
 | [Peppermint](https://peppermintos.com)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4ezKAHvmk51lQz1ooGnLID)
