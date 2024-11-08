@@ -69,8 +69,7 @@ Non Arch based distros
 | [Peppermint](https://peppermintos.com)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4ezKAHvmk51lQz1ooGnLID)
 | [PopOS](https://nobaraproject.org)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_pd0itZIIMNBUMd7aHLaI) 
 | [Solus](https://getsol.us/download/)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4bPmu45gzgKMYEfrcL5yeP) 
-| [Ubuntu](https://ubuntu.com/download)         |[Examples](https://github.com/erikdubois/ubuntu-chadwm)
--        | [YouTube Playlist](https://www.youtube.com/) 
+| [Ubuntu](https://ubuntu.com/download)         |[Examples](https://github.com/erikdubois/ubuntu-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS5OoJJI03yCinWaxpBg4Y_8) 
 | [Void](https://voidlinux.org)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4fX0vmGGk-kdi0NCDZsqXP) 
 
 
