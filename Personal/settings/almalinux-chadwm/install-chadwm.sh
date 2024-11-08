@@ -48,7 +48,7 @@ tput sgr0
 echo
 
 # Enable the EPEL Repository
-sudo dnf install epel-release
+sudo dnf install -y epel-release
 
 sudo dnf upgrade -y
 
