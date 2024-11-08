@@ -20,7 +20,7 @@
 # ArcoLinux Nemesis
 
 Renaming is not an option as these scripts have been mentioned thousands of times over the year but in essence
-these should just be called Linux Nemesis scripts as they apply to anything Linux based.
+these should just be called **Linux Nemesis scripts** as they apply to anything Linux based.
 
 ## What to Do After Installing the Latest Version of ArcoLinux?
 
