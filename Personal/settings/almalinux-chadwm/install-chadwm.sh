@@ -60,22 +60,6 @@ sudo dnf install -y libX11-devel
 sudo dnf install -y libXft-devel
 sudo dnf install -y libXinerama-devel
 
-# Building what we do not find
-# sudo yum install -y alacritty
-
-sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel python3 cargo
-if [ -d "/tmp/alacritty" ]; then
-    echo "Directory /tmp/alacritty exists. Removing it..."
-    rm -rf /tmp/alacritty
-else
-    mkdir -p /tmp/alacritty
-fi
-git clone https://github.com/alacritty/alacritty.git /tmp/alacritty
-cd /tmp/alacritty
-cargo build --release
-sudo cp /tmp/alacritty/target/release/alacritty /usr/local/bin/
-
-
 # applications to be used in Chadwm
 
 sudo yum install -y dash
@@ -84,7 +68,6 @@ sudo yum install -y picom
 sudo yum install -y playerctl
 sudo yum install -y polkit-gnome.x86_64
 sudo yum install -y rofi
-sudo yum install -y sxhkd
 sudo yum install -y thunar
 sudo yum install -y thunar-archive-plugin
 sudo yum install -y thunar-volman
@@ -116,6 +99,49 @@ cp uca.xml ~/.config/Thunar/
 # building Chadwm
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
+
+# Building what we do not find
+# sudo yum install -y alacritty
+
+sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel python3 cargo
+if [ -d "/tmp/alacritty" ]; then
+    echo "Directory /tmp/alacritty exists. Removing it..."
+    rm -rf /tmp/alacritty
+else
+    mkdir -p /tmp/alacritty
+fi
+git clone https://github.com/alacritty/alacritty.git /tmp/alacritty
+cd /tmp/alacritty
+cargo build --release
+sudo cp /tmp/alacritty/target/release/alacritty /usr/local/bin/
+
+# Building what we do not find
+# sudo yum install -y sxhkd
+
+# Install dependencies
+sudo dnf install -y gcc make xorg-x11-server-devel libX11-devel libxcb-devel xcb-util-keysyms-devel
+
+# Check if /tmp/sxhkd exists and remove if it does
+if [ -d "/tmp/sxhkd" ]; then
+    echo "Directory /tmp/sxhkd exists. Removing it..."
+    rm -rf /tmp/sxhkd
+else
+    mkdir -p /tmp/sxhkd
+fi
+
+# Clone the sxhkd repository
+git clone https://github.com/baskerville/sxhkd.git /tmp/sxhkd
+cd /tmp/sxhkd
+
+# Build sxhkd
+make
+
+# Install sxhkd
+sudo make install
+
+echo "sxhkd has been installed successfully."
+
+
 
 echo
 tput setaf 6
