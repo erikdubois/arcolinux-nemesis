@@ -47,6 +47,11 @@ echo "################################################################"
 tput sgr0
 echo
 
+# Enable the EPEL Repository
+sudo dnf install epel-release
+
+sudo dnf upgrade -y
+
 # getting dependencies to be able to build Chadwm
 sudo dnf group install -y "Development Tools"
 sudo dnf install -y fontawesome-fonts
