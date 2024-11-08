@@ -53,6 +53,9 @@ Arch Linux based distros
 - [RebornOS](https://rebornos.org)
 - [Sierra](https://ariser.eu)
 
+Many videos about these distros are available on our youtube channel
+
+https://www.youtube.com/erikdubois
 
 
 Non Arch based distros
