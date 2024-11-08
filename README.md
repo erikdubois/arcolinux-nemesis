@@ -48,9 +48,8 @@ Arch Linux based distros
 - [Ariser](https://ariser.eu)
 - [Big Linux](https://www.biglinux.com.br)
 - [Carli](https://www.arcolinuxiso.com)
-- [EndeavourOS](https://endeavouros.com)  https://www.youtube.com/playlist?list=PLlloYVGq5pS7JiVs3czVBdrnnJSEU_sY0
-- [Garuda](https://garudalinux.org)
-- [Manjaro](https://manjaro.org)  https://www.youtube.com/playlist?list=PLlloYVGq5pS6LVS1PyFLAMwGaIxrsSNcZ
+- [EndeavourOS](https://endeavouros.com)
+- [Manjaro](https://manjaro.org) 
 - [RebornOS](https://rebornos.org)
 - [Sierra](https://ariser.eu)
 
