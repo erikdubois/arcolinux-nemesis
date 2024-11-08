@@ -71,7 +71,8 @@ Non Arch based distros
 
 I run `0-current-choices.sh` to handle everything automatically — removing unwanted packages, installing the ones I need, and setting up all my personal preferences, including Chadwm as my tiling window manager.
 
-The bottom line: choose any Linux system you prefer and stay in control with these scripts.
+>The bottom line: 
+>choose any Linux system you prefer and stay in control with these scripts.
 
 Stay safe, learn, have fun, and enjoy the experience!
 
