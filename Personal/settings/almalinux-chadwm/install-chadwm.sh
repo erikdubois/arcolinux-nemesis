@@ -103,17 +103,20 @@ sudo make install
 # Building what we do not find
 # sudo yum install -y alacritty
 
-sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel python3 cargo
-if [ -d "/tmp/alacritty" ]; then
-    echo "Directory /tmp/alacritty exists. Removing it..."
-    rm -rf /tmp/alacritty
-else
-    mkdir -p /tmp/alacritty
+if [ ! -f /usr/local/bin/alacritty ];
+
+	sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel python3 cargo
+	if [ -d "/tmp/alacritty" ]; then
+	    echo "Directory /tmp/alacritty exists. Removing it..."
+	    rm -rf /tmp/alacritty
+	else
+	    mkdir -p /tmp/alacritty
+	fi
+	git clone https://github.com/alacritty/alacritty.git /tmp/alacritty
+	cd /tmp/alacritty
+	cargo build --release
+	sudo cp /tmp/alacritty/target/release/alacritty /usr/local/bin/
 fi
-git clone https://github.com/alacritty/alacritty.git /tmp/alacritty
-cd /tmp/alacritty
-cargo build --release
-sudo cp /tmp/alacritty/target/release/alacritty /usr/local/bin/
 
 # Building what we do not find
 # sudo yum install -y sxhkd
