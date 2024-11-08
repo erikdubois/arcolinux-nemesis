@@ -103,7 +103,7 @@ sudo make install
 # Building what we do not find
 # sudo yum install -y alacritty
 
-if [ ! -f /usr/local/bin/alacritty ];
+if [ ! -f /usr/local/bin/alacritty ]; then
 
 	sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel python3 cargo
 	if [ -d "/tmp/alacritty" ]; then
