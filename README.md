@@ -27,32 +27,32 @@ The goal of these scripts is to give you control over your operating system by a
 
 - Remove packages
 - Install packages
-- Build and use Chadwm (a fork of dwm, a tiling window manager) on any distribution
 - Use ArcoLinux configurations, applications and settings on any system
 - Apply your personal preferences and configurations on any setup
+- Build and use Chadwm (a fork of dwm, a tiling window manager) on any distribution
 
 
-## Distributions/ISOs supported by the arcolinux-nemesis scripts
+## Distributions/ISOs supported
 
 Over time this script to tweak ArcoLinux evolved and can now setup the following distributions and more:
 
 
 Arch Linux based distros
 
-- [Arch Linux](https://archlinux.org/download/)
 - [Alci](https://alci.online)
-- [Carli](https://www.arcolinuxiso.com)
-- [Ariser](https://ariser.eu)
-- [Sierra](https://ariser.eu)
-- [Area](https://ariser.eu)
+- [Arch Linux](https://archlinux.org/download/)
 - [ArchBang](https://archbang.org)
 - [Archcraft](https://archcraft.io)
 - [Archman](https://archman.org)
+- [Area](https://ariser.eu)
+- [Ariser](https://ariser.eu)
 - [Big Linux](https://www.biglinux.com.br)
+- [Carli](https://www.arcolinuxiso.com)
 - [EndeavourOS](https://endeavouros.com)
 - [Garuda](https://garudalinux.org)
 - [Manjaro](https://manjaro.org)
 - [RebornOS](https://rebornos.org)
+- [Sierra](https://ariser.eu)
 
 
 
@@ -69,56 +69,42 @@ Non Arch based distros
 
 ## Workflow
 
-I run `0-current-choices.sh` to handle everything automatically—removing unwanted packages, installing the ones I need, and setting up all my personal preferences, including Chadwm as my tiling window manager.
+I run `0-current-choices.sh` to handle everything automatically — removing unwanted packages, installing the ones I need, and setting up all my personal preferences, including Chadwm as my tiling window manager.
 
 The bottom line: choose any Linux system you prefer and stay in control with these scripts.
 
 Stay safe, learn, have fun, and enjoy the experience!
 
 
-# Websites
-
-Information : https://arcolinux.info
-
-Tutorials about ArcoLinux iso (Any linux topic) : https://arcolinux.com
-
-Tutorials about ArcoLinuxD iso (any desktop) : https://arcolinuxd.com
-
-Tutorials about ArcoLinuxB iso (Build your own iso) : https://arcolinuxb.com
-
-Tutorials about Carli project (Create your own distro) : https://arcolinuxiso.com
-
-Forum : https://arcolinuxforum.com
-
-
 # Arcolinux keys for anything Arch Linux based
 
 
-Get keys and mirrors from ArcoLinux
+Get the keys and mirrors from ArcoLinux so you can **install our packages via pacman**
 
-The ArcoLinux repos are added to your /etc/pacman.conf
+The ArcoLinux repos are added to your /etc/pacman.conf if you run below script.
 
 
 `wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys && sudo ./get-arcolinux-keys`
 
 
-Get keys and mirrors from ArcoLinux and install <b>archlinux-tweak-tool-git</b>
+If you got the keys and mirrors from ArcoLinux. You can install  any package. 
+For example the <b>Archlinux Tweak Tool or ATT</b>
 
-The ArcoLinux repos are added to your /etc/pacman.conf. Update your system and install the ATT if you want.
+Update your system and install the ATT or anything else via pacman.
 
-
+`sudo pacman -Syyu`
 `sudo pacman -Syu archlinux-tweak-tool-git`
 
 
-# ArchLinux Tweak Tool info
+# ArchLinux Tweak Tool
 
-Install the ATT from the AUR
+Or you can install the ATT from the **AUR**
 
-yay archlinux tweak
+`yay archlinux tweak`
 
-paru archlinux tweak
+`paru archlinux tweak`
 
-select the correct number and install it
+Select the correct number and install it
 
 You can get the keys and mirrors in via the ATT in the tab pacman
 
