@@ -65,19 +65,13 @@ Non Arch based distros
 - [Ubuntu](https://ubuntu.com/download)
 - [Void](https://voidlinux.org)
 
+## Workflow
 
-Personally I will install these applications with the use of the scripts.
-These are applications not everyone would want on an iso.
+I run `0-current-choices.sh` to handle everything automatically—removing unwanted packages, installing the ones I need, and setting up all my personal preferences, including Chadwm as my tiling window manager.
 
-But I will also remove applications from my system.
+The bottom line: choose any Linux system you prefer and stay in control with these scripts.
 
-What is more I will use these scripts to install my apps and configs on a variety of Arch Linux based systems.
-
-So choose whatever Arch based system you want and stay in control via scripts - that is the bottom-line message.
-
-Stay safe. 
-
-Learn, have fun and enjoy.
+Stay safe, learn, have fun, and enjoy the experience!
 
 
 # Websites
@@ -146,6 +140,10 @@ You can find all information about the ATT here
 https://github.com/arcolinux/archlinux-tweak-tool
 
 
-Watch the videos on ATT
+# Watch the videos on ATT
 
 https://www.youtube.com/playlist?list=PLlloYVGq5pS5nvFc_LYRE82Gh3XWA6rVH
+
+# Watch the videos on the Arcolinux Nemesis scripts
+
+https://www.youtube.com/playlist?list=PLlloYVGq5pS7JqJE1zGS6W2jNV_oBSJCk
