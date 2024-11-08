@@ -99,9 +99,6 @@ cp uca.xml ~/.config/Thunar/
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
 
-# removing this package - it slows down terminals and thunar
-sudo yum remove -y xdg-desktop-portal-gnome.x86_64
-
 echo
 tput setaf 6
 echo "################################################################"
