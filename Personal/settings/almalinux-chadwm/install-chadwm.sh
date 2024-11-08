@@ -48,7 +48,7 @@ tput sgr0
 echo
 
 # getting dependencies to be able to build Chadwm
-sudo dnf group install "Development Tools"
+sudo dnf group install -y "Development Tools"
 sudo dnf install -y fontawesome-fonts
 sudo dnf install -y imlib2-devel
 sudo dnf install -y libX11-devel
