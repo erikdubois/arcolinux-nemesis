@@ -48,7 +48,7 @@ tput sgr0
 echo
 
 # Enable the EPEL Repository
-sudo dnf config-manager --set-enabled powertools
+sudo dnf config-manager --set-enabled crb
 sudo dnf install -y epel-release
 
 sudo dnf upgrade -y
