@@ -58,13 +58,20 @@ Arch Linux based distros
 
 Non Arch based distros
 
+| Distribution   | Examples                                           | Videos                                         |
+|----------------|----------------------------------------------------|------------------------------------------------|
+| Linux Mint     | [GitHub Repo](https://github.com/erikdubois/mint-chadwm) | [YouTube Video](https://www.youtube.com/)      |
+| Arch Linux     | [GitHub Repo](https://github.com/erikdubois/arch-linux)   | [Tutorial Video](https://www.youtube.com/)     |
+| Ubuntu         | [GitHub Repo](https://github.com/erikdubois/ubuntu)       | [Guide Video](https://www.youtube.com/)        |
+
+
 - [Alma Linux](https://almalinux.org)
 - [Debian](https://www.debian.org)
 - [Fedora](https://fedoraproject.org)
 - [Linux Mint](https://www.linuxmint.com)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Examples](https://github.com/erikdubois/mint-chadwm)
 - [Nobara](https://nobaraproject.org)
 - [Solus](https://getsol.us/download/)
-- [Ubuntu](https://ubuntu.com/download)
+- [Ubuntu](https://ubuntu.com/download)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Examples](https://github.com/erikdubois/ubuntu-chadwm)
 - [Void](https://voidlinux.org)
 
 ## Workflow
