@@ -60,9 +60,24 @@ sudo dnf install -y libX11-devel
 sudo dnf install -y libXft-devel
 sudo dnf install -y libXinerama-devel
 
+# Building what we do not find
+# sudo yum install -y alacritty
+
+sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel python3 cargo
+if [ -d "/tmp/alacritty" ]; then
+    echo "Directory /tmp/alacritty exists. Removing it..."
+    rm -rf /tmp/alacritty
+else
+    mkdir -p /tmp/alacritty
+fi
+git clone https://github.com/alacritty/alacritty.git /tmp/alacritty
+cd /tmp/alacritty
+cargo build --release
+sudo cp /tmp/alacritty/target/release/alacritty /usr/local/bin/
+
 
 # applications to be used in Chadwm
-sudo yum install -y alacritty
+
 sudo yum install -y dash
 sudo yum install -y dmenu
 sudo yum install -y picom
