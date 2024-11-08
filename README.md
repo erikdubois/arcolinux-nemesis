@@ -55,7 +55,7 @@ Arch Linux based distros
 
 Many videos about these distros are available on our youtube channel
 
-https://www.youtube.com/erikdubois
+>https://www.youtube.com/erikdubois
 
 
 
