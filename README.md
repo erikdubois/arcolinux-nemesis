@@ -21,6 +21,17 @@
 
 What to do after the installation of the latest version of ArcoLinux?
 
+Over times this script to tweak ArcoLinux evolved and can now setup the following distributions:
+
+Arch Linux based distros
+
+- [https://archlinux.org/download/] (Arch Linux)
+
+
+Non Arch based distros
+
+
+
 Personally I will install these applications with the use of the scripts.
 These are applications not everyone would want on an iso.
 
