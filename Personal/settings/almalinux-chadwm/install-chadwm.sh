@@ -103,7 +103,10 @@ sudo make install
 # Building what we do not find
 # sudo yum install -y alacritty
 
+
 if [ ! -f /usr/local/bin/alacritty ]; then
+
+	echo "Building Alacritty"
 
 	sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel python3 cargo
 	if [ -d "/tmp/alacritty" ]; then
@@ -120,6 +123,8 @@ fi
 
 
 if [ ! -f /usr/local/bin/sxhkd ]; then
+
+	echo "Building sxhkd"
 	# Building what we do not find
 	# sudo yum install -y sxhkd
 
