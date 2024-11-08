@@ -50,7 +50,8 @@ echo
 # Enable the EPEL Repository
 sudo dnf config-manager --set-enabled crb
 sudo dnf install -y epel-release
-
+sudo dnf install -y epel-next-release
+sudo dnf clean all
 sudo dnf upgrade -y
 
 # getting dependencies to be able to build Chadwm
