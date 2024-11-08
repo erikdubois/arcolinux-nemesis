@@ -20,7 +20,8 @@
 # ArcoLinux Nemesis
 
 Renaming isn’t feasible, as these scripts have been referenced thousands of times over the years. However, they could ideally be called **Linux Nemesis scripts** since they apply to any Linux-based system.
-(What are these ArcoLinux scripts)[https://youtu.be/pk50vtZZSfI]
+[![What are these ArcoLinux scripts](https://img.youtube.com/vi/pk50vtZZSfI/0.jpg)](https://youtu.be/pk50vtZZSfI)
+
 
 ## What to Do After Installing the Latest Version of ArcoLinux?
 
