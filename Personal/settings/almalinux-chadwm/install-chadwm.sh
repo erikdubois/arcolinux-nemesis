@@ -118,31 +118,34 @@ if [ ! -f /usr/local/bin/alacritty ]; then
 	sudo cp /tmp/alacritty/target/release/alacritty /usr/local/bin/
 fi
 
-# Building what we do not find
-# sudo yum install -y sxhkd
 
-# Install dependencies
-sudo dnf install -y gcc make xorg-x11-server-devel libX11-devel libxcb-devel xcb-util-keysyms-devel
+if [ ! -f /usr/local/bin/sxhkd ]; then
+	# Building what we do not find
+	# sudo yum install -y sxhkd
 
-# Check if /tmp/sxhkd exists and remove if it does
-if [ -d "/tmp/sxhkd" ]; then
-    echo "Directory /tmp/sxhkd exists. Removing it..."
-    rm -rf /tmp/sxhkd
-else
-    mkdir -p /tmp/sxhkd
+	# Install dependencies
+	sudo dnf install -y gcc make xorg-x11-server-devel libX11-devel libxcb-devel xcb-util-keysyms-devel xcb-util-devel
+
+	# Check if /tmp/sxhkd exists and remove if it does
+	if [ -d "/tmp/sxhkd" ]; then
+	    echo "Directory /tmp/sxhkd exists. Removing it..."
+	    rm -rf /tmp/sxhkd
+	else
+	    mkdir -p /tmp/sxhkd
+	fi
+
+	# Clone the sxhkd repository
+	git clone https://github.com/baskerville/sxhkd.git /tmp/sxhkd
+	cd /tmp/sxhkd
+
+	# Build sxhkd
+	make
+
+	# Install sxhkd
+	sudo make install
+
+	echo "sxhkd has been installed successfully."
 fi
-
-# Clone the sxhkd repository
-git clone https://github.com/baskerville/sxhkd.git /tmp/sxhkd
-cd /tmp/sxhkd
-
-# Build sxhkd
-make
-
-# Install sxhkd
-sudo make install
-
-echo "sxhkd has been installed successfully."
 
 
 
