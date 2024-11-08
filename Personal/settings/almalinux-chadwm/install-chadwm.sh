@@ -37,7 +37,14 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 sudo dnf install -y gcc make automake pkgconfig libxcb-devel xcb-util-devel xcb-util-wm-devel xcb-util-cursor-devel pango-devel cairo-devel glib2-devel startup-notification-devel libxkbcommon-x11-devel
 
 # Clone the Rofi repository
+# Check if /tmp/rofi exists and remove if it does
+if [ -d "/tmp/rofi" ]; then
+    echo "Directory /tmp/rofi exists. Removing it..."
+    rm -rf /tmp/rofi
+fi
+
 git clone https://github.com/davatorium/rofi.git /tmp/rofi
+
 cd /tmp/rofi
 
 # Prepare the build environment
