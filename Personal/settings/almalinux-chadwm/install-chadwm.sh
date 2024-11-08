@@ -34,7 +34,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Installing Chadwm on Nobara"
+echo "################### Installing Chadwm"
 echo "################################################################"
 tput sgr0
 echo
@@ -48,12 +48,12 @@ tput sgr0
 echo
 
 # getting dependencies to be able to build Chadwm
-#sudo yum install build-essential
-sudo yum install -y python3-XStatic-Font-Awesome.noarch
-sudo yum install -y imlib2-devel.x86_64
-sudo yum install -y libX11-devel-1.8.9-1.fc40.x86_64
-sudo yum install -y libXft-devel.x86_64
-sudo yum install -y libXinerama-devel.x86_64
+sudo dnf group install -y "C Development Tools and Libraries"
+sudo dnf install -y fontawesome-fonts
+sudo dnf install -y imlib2-devel
+sudo dnf install -y libX11-devel
+sudo dnf install -y libXft-devel
+sudo dnf install -y libXinerama-devel
 
 # figure out what driver you need on your hardware - there are many choices
 sudo yum install -y xorg-x11-drv-intel-2.99.917-57.20210115.fc40.x86_64
