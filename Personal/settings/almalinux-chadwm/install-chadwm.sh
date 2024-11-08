@@ -131,12 +131,18 @@ if [ ! -f /usr/local/bin/sxhkd ]; then
 	# sudo yum install -y sxhkd
 
 	# Install dependencies
-    sudo dnf install -y gcc
-    sudo dnf install -y make
-    sudo dnf install -y xorg-x11-server-devel
-    sudo dnf install -y libX11-devel
-    sudo dnf install -y libxcb-devel
-    sudo dnf install -y xcb-util-keysyms-devel
+	sudo dnf install -y gcc
+	sudo dnf install -y libX11-devel
+	sudo dnf install -y libxcb-devel
+	sudo dnf install -y make
+	sudo dnf install -y pkgconfig
+	sudo dnf install -y xcb-util
+	sudo dnf install -y xcb-util-devel
+	sudo dnf install -y xcb-util-image-devel
+	sudo dnf install -y xcb-util-keysyms-devel
+	sudo dnf install -y xcb-util-renderutil-devel
+	sudo dnf install -y xcb-util-wm-devel
+	sudo dnf install -y xorg-x11-server-devel
 
 	# Check if /tmp/sxhkd exists and remove if it does
 	if [ -d "/tmp/sxhkd" ]; then
