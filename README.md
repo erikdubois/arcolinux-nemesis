@@ -19,7 +19,18 @@
 
 # ArcoLinux Nemesis
 
-What to do after the installation of the latest version of ArcoLinux?
+## What to Do After Installing the Latest Version of ArcoLinux?
+
+The goal of these scripts is to give you control over your operating system by allowing you to:
+
+- Remove packages
+- Install packages
+- Build and use Chadwm (a fork of dwm, a tiling window manager) on any distribution
+- Use ArcoLinux configurations, applications and settings on any system
+- Apply your personal preferences and configurations on any setup
+
+
+## Distributions/ISOs supported by the arcolinux-nemesis scripts
 
 Over time this script to tweak ArcoLinux evolved and can now setup the following distributions and more:
 
