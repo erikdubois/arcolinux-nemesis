@@ -89,21 +89,6 @@ Tutorials about Carli project (Create your own distro) : https://arcolinuxiso.co
 Forum : https://arcolinuxforum.com
 
 
-# Social Media
-
-Facebook : https://www.facebook.com/arcolinuxd/
-
-Facebook : https://www.facebook.com/groups/arcolinux/
-
-Twitter  : https://twitter.com/arcolinux
-
-Instagram: https://www.instagram.com/arcolinux/
-
-Linked in: https://www.linkedin.com/in/arcolinux
-
-Youtube  : https://www.youtube.com/erikdubois
-
-
 # Arcolinux keys for anything Arch Linux based
 
 
@@ -117,10 +102,10 @@ The ArcoLinux repos are added to your /etc/pacman.conf
 
 Get keys and mirrors from ArcoLinux and install <b>archlinux-tweak-tool-git</b>
 
-The ArcoLinux repos are added to your /etc/pacman.conf
+The ArcoLinux repos are added to your /etc/pacman.conf. Update your system and install the ATT if you want.
 
 
-`wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys  && sudo ./get-arcolinux-keys && sudo pacman -Syu archlinux-tweak-tool-git`
+`sudo pacman -Syu archlinux-tweak-tool-git`
 
 
 # ArchLinux Tweak Tool info
@@ -133,7 +118,7 @@ paru archlinux tweak
 
 select the correct number and install it
 
-You can get the keys and mirrors in via the ATT
+You can get the keys and mirrors in via the ATT in the tab pacman
 
 You can find all information about the ATT here
 
@@ -144,6 +129,24 @@ https://github.com/arcolinux/archlinux-tweak-tool
 
 https://www.youtube.com/playlist?list=PLlloYVGq5pS5nvFc_LYRE82Gh3XWA6rVH
 
+
+
 # Watch the videos on the Arcolinux Nemesis scripts
 
 https://www.youtube.com/playlist?list=PLlloYVGq5pS7JqJE1zGS6W2jNV_oBSJCk
+
+
+
+# Social Media
+
+Facebook : https://www.facebook.com/arcolinuxd/
+
+Facebook : https://www.facebook.com/groups/arcolinux/
+
+Twitter  : https://twitter.com/arcolinux
+
+Instagram: https://www.instagram.com/arcolinux/
+
+Linked in: https://www.linkedin.com/in/arcolinux
+
+Youtube  : https://www.youtube.com/erikdubois
