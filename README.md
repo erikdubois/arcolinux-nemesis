@@ -48,12 +48,20 @@ Arch Linux based distros
 - [Archman](https://archman.org)
 - [Area](https://ariser.eu)
 - [Ariser](https://ariser.eu)
+- [Artix](https://artixlinux.org/)
 - [Big Linux](https://www.biglinux.com.br)
+- [Bluestar Linux](https://sourceforge.net/projects/bluestarlinux/)
+- [Cachyos](https://cachyos.org/)
 - [Carli](https://www.arcolinuxiso.com)
+- [Crystal Linux](https://getcryst.al/)
 - [EndeavourOS](https://endeavouros.com)
-- [Manjaro](https://manjaro.org) 
+- [Liya](https://sourceforge.net/projects/liya-2024/)
+- [Mabox](https://maboxlinux.org/)
+- [Manjaro](https://manjaro.org)
+- [Parchlinux](https://parchlinux.com/)
 - [RebornOS](https://rebornos.org)
 - [Sierra](https://ariser.eu)
+- [StormOS](https://sourceforge.net/projects/hackman-linux/)
 
 Many videos about these distros are available on our youtube channel
 
