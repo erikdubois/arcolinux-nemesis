@@ -48,6 +48,7 @@ tput sgr0
 echo
 
 # Enable the EPEL Repository
+sudo dnf config-manager --set-enabled powertools
 sudo dnf install -y epel-release
 
 sudo dnf upgrade -y
@@ -130,8 +131,6 @@ if [ ! -f /usr/local/bin/sxhkd ]; then
 
 	# Install dependencies
     sudo dnf install -y gcc make libX11-devel libxcb-devel xcb-util-keysyms
-    echo "test"
-    sudo dnf install -y xcb-util xcb-util-devel xcb-util-image-devel xcb-util-renderutil-devel xcb-util-wm-devel xcb-util-keysyms-devel
 
 	# Check if /tmp/sxhkd exists and remove if it does
 	if [ -d "/tmp/sxhkd" ]; then
