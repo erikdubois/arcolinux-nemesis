@@ -31,6 +31,34 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+#!/bin/bash
+
+# Install required dependencies for building Rofi
+sudo dnf install -y gcc make automake pkgconfig libxcb-devel xcb-util-devel xcb-util-wm-devel xcb-util-cursor-devel pango-devel cairo-devel glib2-devel startup-notification-devel libXkbcommon-devel
+
+# Clone the Rofi repository
+git clone https://github.com/davatorium/rofi.git /tmp/rofi
+cd /tmp/rofi
+
+# Prepare the build environment
+autoreconf -i
+mkdir build
+cd build
+
+# Configure and build Rofi
+../configure
+make
+
+# Install Rofi
+sudo make install
+
+# Verify installation
+rofi -v
+
+# Display a message indicating successful installation
+echo "Rofi has been installed successfully."
+
+
 echo
 tput setaf 2
 echo "################################################################"
