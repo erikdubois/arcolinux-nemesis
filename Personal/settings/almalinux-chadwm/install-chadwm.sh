@@ -48,15 +48,13 @@ tput sgr0
 echo
 
 # getting dependencies to be able to build Chadwm
-sudo dnf group install -y "C Development Tools and Libraries"
+sudo dnf group install "Development Tools"
 sudo dnf install -y fontawesome-fonts
 sudo dnf install -y imlib2-devel
 sudo dnf install -y libX11-devel
 sudo dnf install -y libXft-devel
 sudo dnf install -y libXinerama-devel
 
-# figure out what driver you need on your hardware - there are many choices
-sudo yum install -y xorg-x11-drv-intel-2.99.917-57.20210115.fc40.x86_64
 
 # applications to be used in Chadwm
 sudo yum install -y alacritty
