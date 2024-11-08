@@ -48,9 +48,9 @@ Arch Linux based distros
 - [Ariser](https://ariser.eu)
 - [Big Linux](https://www.biglinux.com.br)
 - [Carli](https://www.arcolinuxiso.com)
-- [EndeavourOS](https://endeavouros.com)
+- [EndeavourOS](https://endeavouros.com)  https://www.youtube.com/playlist?list=PLlloYVGq5pS7JiVs3czVBdrnnJSEU_sY0
 - [Garuda](https://garudalinux.org)
-- [Manjaro](https://manjaro.org)
+- [Manjaro](https://manjaro.org)  https://www.youtube.com/playlist?list=PLlloYVGq5pS6LVS1PyFLAMwGaIxrsSNcZ
 - [RebornOS](https://rebornos.org)
 - [Sierra](https://ariser.eu)
 
@@ -60,15 +60,18 @@ Non Arch based distros
 
 | Distribution   | Examples                                           | Videos                                         |
 |----------------|----------------------------------------------------|------------------------------------------------|
-| [Alma Linux](https://almalinux.org)    |  | [YouTube Playlist](https://www.youtube.com/)      |
-| [Debian](https://www.debian.org)     |   | [YouTube Playlist](https://www.youtube.com/)     |
-| [Fedora](https://fedoraproject.org)         |   | [YouTube Playlist](https://www.youtube.com/)        |
-| [Linux Mint](https://www.linuxmint.com)         | [Examples](https://github.com/erikdubois/mint-chadwm)       | [YouTube Playlist](https://www.youtube.com/) 
-| [Nobara](https://nobaraproject.org)         |        | [YouTube Playlist](https://www.youtube.com/) 
-| [Solus](https://getsol.us/download/)         |        | [YouTube Playlist](https://www.youtube.com/) 
+| [Alma Linux](https://almalinux.org)    |  |  |
+| [Debian](https://www.debian.org)     |   | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS5KExtV-n0g_I6Ei0963scq/)     |
+| [Fedora](https://fedoraproject.org)         |   | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_l5LFkHkbxLwttgd3m12D)        |
+| [Linux Mint](https://www.linuxmint.com)         | [Examples](https://github.com/erikdubois/mint-chadwm)       | [YouTube Playlist](https://www.youtube.com/)
+| [MX Linux](https://mxlinux.org)         |     | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4taYXROH0eMFV0olfWF8w0) 
+| [Nobara](https://nobaraproject.org)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7O1qeZj5D3E4vmqNz26zsq)
+| [Peppermint](https://peppermintos.com)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4ezKAHvmk51lQz1ooGnLID)
+| [PopOS](https://nobaraproject.org)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_pd0itZIIMNBUMd7aHLaI) 
+| [Solus](https://getsol.us/download/)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4bPmu45gzgKMYEfrcL5yeP) 
 | [Ubuntu](https://ubuntu.com/download)         |[Examples](https://github.com/erikdubois/ubuntu-chadwm)
 -        | [YouTube Playlist](https://www.youtube.com/) 
-| [Void](https://voidlinux.org)         |        | [YouTube Playlist](https://www.youtube.com/) 
+| [Void](https://voidlinux.org)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4fX0vmGGk-kdi0NCDZsqXP) 
 
 
 ## Workflow
