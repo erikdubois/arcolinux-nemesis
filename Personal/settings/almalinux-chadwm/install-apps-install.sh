@@ -76,7 +76,6 @@ sudo dnf install -y simplescreenrecorder
 sudo dnf install -y speedtest-cli
 sudo dnf install -y system-config-printer
 sudo dnf install -y variety
-sudo dnf install -y VirtualGL
 sudo dnf install -y vlc
 sudo dnf install -y xfce4-screenshooter
 
@@ -98,6 +97,13 @@ echo
 sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
 sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
 sudo dnf install sublime-text -y
+
+echo
+echo "Installing Virtualbox"
+echo
+
+sudo dnf config-manager --add-repo=https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo
+sudo dnf install -y VirtualBox
 
 echo
 tput setaf 6
