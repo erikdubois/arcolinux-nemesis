@@ -68,7 +68,6 @@ sudo yum install -y dash
 sudo yum install -y dmenu
 sudo yum install -y playerctl
 sudo yum install -y polkit-gnome.x86_64
-sudo yum install -y rofi
 sudo yum install -y thunar
 sudo yum install -y thunar-archive-plugin
 sudo yum install -y thunar-volman
