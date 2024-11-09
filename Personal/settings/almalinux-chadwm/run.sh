@@ -27,6 +27,7 @@ sxhkd -c ~/.config/arco-chadwm/sxhkd/sxhkdrc &
 #picom -b  --config ~/.config/arco-chadwm/picom/picom.conf &
 picom &
 variety -n &
+feh --bg-fill /usr/share/backgrounds/Alma-light-2560x1600.jpg &
 numlockx on &
 pkill bar.sh &
 sh ~/.config/arco-chadwm/scripts/bar.sh &
