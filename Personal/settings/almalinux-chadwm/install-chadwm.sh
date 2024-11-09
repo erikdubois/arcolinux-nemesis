@@ -223,6 +223,17 @@ echo
 sudo dnf install -y $installed_dir/packages/picom-10.2-2.el9.x86_64.rpm
 
 echo
+tput setaf 2
+echo "################################################################"
+echo "###### Installing rofi and rofi-themes"
+echo "################################################################"
+tput sgr0
+echo
+
+sudo dnf install -y $installed_dir/rofi-themes-1.5.4-2.el8.noarch.rpm
+sudo dnf install -y $installed_dir/rofi-1.5.4-2.el8.x86_64.rpm
+
+echo
 tput setaf 6
 echo "################################################################"
 echo "###### Chadwm is installed - reboot"
