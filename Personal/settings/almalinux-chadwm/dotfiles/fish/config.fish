@@ -272,6 +272,7 @@ alias sr="reboot"
 #give the list of all installed desktops - xsessions desktops
 alias xd="ls /usr/share/xsessions"
 alias xdw="ls /usr/share/wayland-sessions"
+alias ff="fastfetch"
 
 
 set fish_color_autosuggestion "#969896"
