@@ -165,7 +165,24 @@ if [ ! -f /usr/local/bin/sxhkd ]; then
 	echo "sxhkd has been installed successfully."
 fi
 
+if [ ! -f /usr/local/bin/feh ]; then
 
+	echo "Building feh"
+
+	sudo dnf install -y libXt-devel libcurl-devel imlib2-devel libX11-devel libXinerama-devel libXrandr-devel libcurl-devel
+
+	if [ -d "/tmp/feh" ]; then
+	    echo "Directory /tmp/feh exists. Removing it..."
+	    rm -rf /tmp/feh
+	else
+	    mkdir -p /tmp/feh
+	fi
+	curl -o /tmp/feh-3.10.3.tar.bz2 https://feh.finalrewind.org/feh-3.10.3.tar.bz2
+	tar -xjf /tmp/feh-3.10.3.tar.bz2 -C /tmp/feh --strip-components=1
+	cd /tmp/feh
+	make
+	sudo make install
+fi
 
 echo
 tput setaf 6
