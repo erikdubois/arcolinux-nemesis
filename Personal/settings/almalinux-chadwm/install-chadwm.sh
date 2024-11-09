@@ -105,6 +105,13 @@ sudo make install
 # Building what we do not find
 # sudo yum install -y alacritty
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Building alacritty"
+echo "################################################################"
+tput sgr0
+echo
 
 if [ ! -f /usr/local/bin/alacritty ]; then
 
@@ -123,6 +130,14 @@ if [ ! -f /usr/local/bin/alacritty ]; then
 	sudo cp /tmp/alacritty/target/release/alacritty /usr/local/bin/
 fi
 
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Building sxhkd"
+echo "################################################################"
+tput sgr0
+echo
 
 if [ ! -f /usr/local/bin/sxhkd ]; then
 
@@ -164,6 +179,14 @@ if [ ! -f /usr/local/bin/sxhkd ]; then
 
 	echo "sxhkd has been installed successfully."
 fi
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Building feh"
+echo "################################################################"
+tput sgr0
+echo
 
 if [ ! -f /usr/local/bin/feh ]; then
 
