@@ -55,7 +55,7 @@ sudo dnf install -y flatpak
 sudo dnf install -y google-roboto-fonts
 sudo dnf install -y galculator
 sudo dnf install -y gimp
-sudo dnf install -y hardinfo
+sudo dnf install -y hardinfo2
 sudo dnf install -y hw-probe
 sudo dnf install -y i3lock
 sudo dnf install -y inkscape
