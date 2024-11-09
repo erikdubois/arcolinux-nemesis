@@ -252,7 +252,7 @@ export VISUAL=nano
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER=most
 
-alias update="sudo apt update && sudo apt upgrade"
+alias update="sudo dnf upgrade -y"
 alias probe="sudo -E hw-probe -all -upload"
 alias nenvironment="sudo $EDITOR /etc/environment"
 alias nfstab="sudo $EDITOR /etc/fstab"
@@ -262,7 +262,7 @@ alias nhosts="sudo $EDITOR /etc/hosts"
 alias nb="$EDITOR ~/.bashrc"
 alias nz="$EDITOR ~/.zshrc"
 alias nf="$EDITOR ~/.config/fish/config.fish"
-alias nneofetch="$EDITOR ~/.config/neofetch/config.conf"
+alias nfastfetch="$EDITOR ~/.config/fastfetch/config.jsonc"
 alias nalacritty="nano /home/$USER/.config/alacritty/alacritty.toml"
 
 #shutdown or reboot
