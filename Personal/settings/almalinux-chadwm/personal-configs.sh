@@ -75,6 +75,7 @@ export VISUAL='nano'
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER='most'
 
+alias ff="fastfetch"
 alias update="sudo apt update && sudo apt upgrade"
 alias probe="sudo -E hw-probe -all -upload"
 alias nenvironment="sudo $EDITOR /etc/environment"
@@ -147,7 +148,7 @@ sudo sed -i "s/$FIND/$REPLACE/g" /etc/environment
 
 # fastfetch
 
-fastfetch --gen-config
+fastfetch --gen-config-force
 sed -i '/"localip"/d' ~/.config/fastfetch/config.jsonc
 
 # prevention ads - tracking - hblock
