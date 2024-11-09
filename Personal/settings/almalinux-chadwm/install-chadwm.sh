@@ -66,7 +66,6 @@ sudo dnf install -y libXinerama-devel
 
 sudo yum install -y dash
 sudo yum install -y dmenu
-sudo yum install -y picom
 sudo yum install -y playerctl
 sudo yum install -y polkit-gnome.x86_64
 sudo yum install -y rofi
@@ -212,6 +211,16 @@ if [ ! -f /usr/local/bin/feh ]; then
 	make
 	sudo make install
 fi
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Installing picom"
+echo "################################################################"
+tput sgr0
+echo
+
+sudo dnf install -y packages/picom-10.2-2.el9.x86_64.rpm
 
 echo
 tput setaf 6
