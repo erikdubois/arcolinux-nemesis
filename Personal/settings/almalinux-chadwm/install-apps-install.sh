@@ -94,9 +94,16 @@ git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 
 echo
+echo "Installing sublime text"
+echo
+sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+sudo dnf install sublime-text -y
+
+echo
 tput setaf 6
 echo "################################################################"
-echo "###### Packages via apt install done"
+echo "###### Packages via dnf done"
 echo "################################################################"
 tput sgr0
 echo
