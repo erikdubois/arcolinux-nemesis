@@ -145,6 +145,11 @@ FIND="export GTK_THEME=Arc-Dark"
 REPLACE="export GTK_THEME=Arc-Dawn-Dark"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/environment
 
+# fastfetch
+
+fastfetch --gen-config
+sed -i '/"localip"/d' ~/.config/fastfetch/config.jsonc
+
 # prevention ads - tracking - hblock
 # https://github.com/hectorm/hblock
 git clone https://github.com/hectorm/hblock  /tmp/hblock
