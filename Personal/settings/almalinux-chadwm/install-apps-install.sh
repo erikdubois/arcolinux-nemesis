@@ -76,7 +76,7 @@ sudo dnf install -y simplescreenrecorder
 sudo dnf install -y speedtest-cli
 sudo dnf install -y system-config-printer
 sudo dnf install -y variety
-sudo dnf install -y VirtualBox
+sudo dnf install -y VirtualGL
 sudo dnf install -y vlc
 sudo dnf install -y xfce4-screenshooter
 
