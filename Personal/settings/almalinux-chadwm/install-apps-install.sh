@@ -103,7 +103,7 @@ echo "Installing Virtualbox"
 echo
 
 sudo dnf config-manager --add-repo=https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo
-sudo dnf install -y VirtualBox
+sudo dnf install -y VirtualBox-7.1
 
 echo
 tput setaf 6
