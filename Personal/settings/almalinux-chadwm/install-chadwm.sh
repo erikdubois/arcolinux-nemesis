@@ -220,7 +220,7 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo dnf install -y packages/picom-10.2-2.el9.x86_64.rpm
+sudo dnf install -y ./packages/picom-10.2-2.el9.x86_64.rpm
 
 echo
 tput setaf 6
