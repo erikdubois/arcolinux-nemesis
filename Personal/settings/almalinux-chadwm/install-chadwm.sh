@@ -230,8 +230,8 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo dnf install -y $installed_dir/rofi-themes-1.5.4-2.el8.noarch.rpm
-sudo dnf install -y $installed_dir/rofi-1.5.4-2.el8.x86_64.rpm
+sudo dnf install -y $installed_dir/packages/rofi-themes-1.5.4-2.el8.noarch.rpm
+sudo dnf install -y $installed_dir/packages/rofi-1.5.4-2.el8.x86_64.rpm
 
 echo
 tput setaf 6
