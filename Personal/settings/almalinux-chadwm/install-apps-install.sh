@@ -114,6 +114,11 @@ echo
 sudo dnf config-manager --add-repo=https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo
 sudo dnf install -y VirtualBox-7.1
 
+echo "###########################################################################"
+echo "##      Removing all the messages virtualbox produces         ##"
+echo "###########################################################################"
+VBoxManage setextradata global GUI/SuppressMessages "all"
+
 echo
 tput setaf 6
 echo "################################################################"
