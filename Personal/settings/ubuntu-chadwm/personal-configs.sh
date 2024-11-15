@@ -136,6 +136,10 @@ fi
 
 # getting archlinux-logout
 cd $installed_dir
+folder="/tmp/archlinux-logout"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
 git clone https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
 sudo cp -r /tmp/archlinux-logout/etc/* /etc
 sudo cp -r /tmp/archlinux-logout/usr/* /usr
@@ -148,12 +152,20 @@ cp -v archlinux-logout.conf ~/.config/archlinux-logout/
 
 # prevention ads - tracking - hblock
 # https://github.com/hectorm/hblock
+folder="/tmp/hblock"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
 git clone https://github.com/hectorm/hblock  /tmp/hblock
 cd /tmp/hblock
 sudo make install
 hblock
 
 # Arc Dawn
+folder="/tmp/arcolinux-arc-dawn"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
 git clone https://github.com/arcolinux/arcolinux-arc-dawn  /tmp/arcolinux-arc-dawn
 cd /tmp/arcolinux-arc-dawn/usr/share/themes
 
