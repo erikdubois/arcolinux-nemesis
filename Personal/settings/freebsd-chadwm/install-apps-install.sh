@@ -102,7 +102,6 @@ fi
 git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 
-
 # Check system hardware information
 hw_machine=$(sysctl -n hw.machine)
 hw_model=$(sysctl -n hw.model)

@@ -98,7 +98,7 @@ echo
 echo "To fish we go"
 echo
 FIND="\/bin\/bash"
-REPLACE="\/usr\/bin\/fish"
+REPLACE="\/usr\/local\/bin\/fish"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
 echo
 
@@ -109,33 +109,52 @@ echo
 VBoxManage setextradata global GUI/SuppressMessages "all"
 
 # when on real metal install a template
-result=$(systemd-detect-virt)
-if [ $result = "none" ];then
+# Check system hardware information
+hw_machine=$(sysctl -n hw.machine)
+hw_model=$(sysctl -n hw.model)
 
-	[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
+# Function to check for virtualization keywords
+is_virtual_machine() {
+    case "$hw_model" in
+        *"VirtualBox"*) return 0 ;;
+        *"QEMU"*) return 0 ;;
+        *"KVM"*) return 0 ;;
+        *"VMware"*) return 0 ;;
+        *"Hyper-V"*) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+# Perform actions based on whether it's a VM
+if is_virtual_machine; then
+	echo
+	tput setaf 3
+	echo "#########################################################################"
+	echo "### You are on a virtual machine - skipping"
+	echo "#########################################################################"
+	tput sgr0
+	echo
+
+else
+    echo
+	tput setaf 3
+	echo "#########################################################################"
+	echo "### NOT running in a virtual machine - installing template VirtualBox"
+	echo "#########################################################################"
+	tput sgr0
+	echo
+    	[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
 	sudo cp -rf template.tar.gz ~/VirtualBox\ VMs/
 	cd ~/VirtualBox\ VMs/
 	tar -xzf template.tar.gz
 	rm -f template.tar.gz	
-
-else
-
-	echo
-	tput setaf 3
-	echo "################################################################"
-	echo "### You are on a virtual machine - skipping VirtualBox"
-	echo "### Template not copied over"
-	echo "### We will set your screen resolution with xrandr"
-	echo "################################################################"
-	tput sgr0
-	echo
-
-	xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
-
 fi
 
 # getting archlinux-logout
 cd $installed_dir
+if [ -d /tmp/archlinux-logout ];then
+	sudo rm -r /tmp/archlinux-logout
+fi
 git clone https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
 sudo cp -r /tmp/archlinux-logout/etc/* /etc
 sudo cp -r /tmp/archlinux-logout/usr/* /usr
@@ -148,12 +167,18 @@ cp -v archlinux-logout.conf ~/.config/archlinux-logout/
 
 # prevention ads - tracking - hblock
 # https://github.com/hectorm/hblock
+if [ -d /tmp/hblock ];then
+	sudo rm -r /tmp/hblock
+fi
 git clone https://github.com/hectorm/hblock  /tmp/hblock
 cd /tmp/hblock
 sudo make install
 hblock
 
 # Arc Dawn
+if [ -d /tmp/arcolinux-arc-dawn ];then
+	sudo rm -r /tmp/arcolinux-arc-dawn
+fi
 git clone https://github.com/arcolinux/arcolinux-arc-dawn  /tmp/arcolinux-arc-dawn
 cd /tmp/arcolinux-arc-dawn/usr/share/themes
 
