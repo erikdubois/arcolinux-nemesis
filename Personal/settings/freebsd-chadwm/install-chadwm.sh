@@ -63,26 +63,26 @@ tput sgr0
 echo
 
 # getting dependencies to be able to build Chadwm
-sudo apt install -y build-essential
-sudo apt install -y fonts-font-awesome
-sudo apt install -y libimlib2-dev
-sudo apt install -y libx11-dev
-sudo apt install -y libxft-dev
-sudo apt install -y libxinerama-dev
+sudo pkg install -y build-essential
+sudo pkg install -y fonts-font-awesome
+sudo pkg install -y libimlib2-dev
+sudo pkg install -y libx11-dev
+sudo pkg install -y libxft-dev
+sudo pkg install -y libxinerama-dev
 
 # applications to be used in Chadwm
-sudo apt install -y alacritty
-sudo apt install -y picom
-sudo apt install -y playerctl
-sudo apt install -y policykit-1-gnome
-sudo apt install -y pulsemixer
-sudo apt install -y rofi
-sudo apt install -y sxhkd
+sudo pkg install -y alacritty
+sudo pkg install -y picom
+sudo pkg install -y playerctl
+sudo pkg install -y policykit-1-gnome
+sudo pkg install -y pulsemixer
+sudo pkg install -y rofi
+sudo pkg install -y sxhkd
 # next item is dmenu
-sudo apt install -y suckless-tools
-sudo apt install -y thunar
-sudo apt install -y thunar-archive-plugin
-sudo apt install -y thunar-volman
+sudo pkg install -y suckless-tools
+sudo pkg install -y thunar
+sudo pkg install -y thunar-archive-plugin
+sudo pkg install -y thunar-volman
 
 # exit strategy - super + shift + x
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
@@ -111,12 +111,6 @@ if [ ! -f /usr/local/bin/chadwm ] ; then
 	cd ~/.config/arco-chadwm/chadwm
 	sudo make install
 fi
-
-# removing this package - it slows down terminals and thunar
-# this will remove the complete ubuntu desktop in 24.10 not in 24.04
-sudo apt remove -y xdg-desktop-portal-gnome
-
-sudo apt autoremove -y
 
 echo
 tput setaf 6
