@@ -61,6 +61,12 @@ if grep -q "LMDE 6" /etc/os-release; then
     exit 1
 fi
 
+if grep -q "FreeBSD" /etc/os-release; then
+    cd Personal/settings/freebsd-chadwm/
+    sh ./1-all-in-one.sh
+    exit 1
+fi
+
 if grep -q "linuxmint" /etc/os-release; then
     cd Personal/settings/mint-chadwm/
     sh ./1-all-in-one.sh
