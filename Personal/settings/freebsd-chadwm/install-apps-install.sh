@@ -75,6 +75,7 @@ sudo pkg install -y obs-studio
 sudo pkg install -y pavucontrol
 sudo pkg install -y qbittorrent
 sudo pkg install -y ripgrep
+sudo pkg install -y telegram-desktop
 sudo pkg install -y scrot
 sudo pkg install -y simplescreenrecorder
 sudo pkg install -y system-config-printer
