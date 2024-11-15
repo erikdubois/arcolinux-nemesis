@@ -94,12 +94,7 @@ alias sr="reboot"' | tee -a ~/.bashrc
 fi
 
 # Going for fish as the default shell
-echo
-echo "To fish we go"
-echo
-FIND="\/bin\/bash"
-REPLACE="\/usr\/local\/bin\/fish"
-sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
+chsh -s /usr/local/bin/fish
 echo
 
 echo
