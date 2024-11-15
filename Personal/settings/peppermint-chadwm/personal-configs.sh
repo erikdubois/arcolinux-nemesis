@@ -130,6 +130,10 @@ fi
 
 # getting archlinux-logout
 cd $installed_dir
+folder="/tmp/archlinux-logout"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
 git clone https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
 sudo cp -r /tmp/archlinux-logout/etc/* /etc
 sudo cp -r /tmp/archlinux-logout/usr/* /usr
