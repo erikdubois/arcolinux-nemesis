@@ -83,21 +83,21 @@ sudo pkg install -y vlc
 
 # getting design from ArcoLinux
 if [ -d /tmp/arcolinux-btop ];then
-	sudo rm /tmp/arcolinux-btop
+	sudo rm -r /tmp/arcolinux-btop
 fi
 git clone https://github.com/arcolinux/arcolinux-btop /tmp/arcolinux-btop
 cp -r /tmp/arcolinux-btop/etc/skel/.config ~
 
 # getting config for Alacritty - transparency
 if [ -d /tmp/arcolinux-alacritty ];then
-	sudo rm /tmp/arcolinux-alacritty
+	sudo rm -r /tmp/arcolinux-alacritty
 fi
 git clone https://github.com/arcolinux/arcolinux-alacritty /tmp/arcolinux-alacritty
 cp -r /tmp/arcolinux-alacritty/etc/skel/.config ~
 
 # script to change wallpaper on Chadwm
 if [ -d /tmp/arcolinux-variety ];then
-	sudo rm /tmp/arcolinux-variety
+	sudo rm -r /tmp/arcolinux-variety
 fi
 git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
