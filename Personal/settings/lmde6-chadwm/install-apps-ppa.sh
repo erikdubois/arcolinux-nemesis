@@ -39,10 +39,6 @@ echo "################################################################"
 tput sgr0
 echo
 
-echo "###### Removing the following packages"
-
-sudo snap remove firefox
-
 echo
 echo "################################################################"
 echo "###### Sublime-text"

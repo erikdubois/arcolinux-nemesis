@@ -86,6 +86,7 @@ Non Arch based distros
 | [Ubuntu](https://ubuntu.com/download)         |[Examples](https://github.com/erikdubois/ubuntu-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS5OoJJI03yCinWaxpBg4Y_8) |
 | [Void](https://voidlinux.org)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4fX0vmGGk-kdi0NCDZsqXP) |
 
+The scripts for Nixos are on a seperate github - https://github.com/erikdubois/nixos-configurations
 
 ## Workflow
 

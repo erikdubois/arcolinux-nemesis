@@ -60,7 +60,6 @@ sudo apt install -y fonts-hack
 sudo apt install -y fonts-noto
 sudo apt install -y fonts-roboto
 sudo apt install -y galculator
-sudo apt install -y gdm-settings
 sudo apt install -y gimp
 sudo apt install -y gnome-bluetooth
 sudo apt install -y gnome-shell-extension-manager
@@ -80,7 +79,7 @@ sudo apt install -y meld
 sudo apt install -y most
 sudo apt install -y neofetch
 sudo apt install -y nitrogen
-sudo apt install -y nomacs
+#sudo apt install -y nomacs
 sudo apt install -y numlockx
 sudo apt install -y obs-studio
 sudo apt install -y pavucontrol
@@ -114,7 +113,7 @@ cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 result=$(systemd-detect-virt)
 if [ $result = "none" ];then
 
-	sudo apt install -y virtualbox
+	#sudo apt install -y virtualbox
 
 else
 
@@ -129,8 +128,6 @@ else
 	xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 
 fi
-
-sudo apt install -y ubuntu-restricted-extras
 
 echo
 tput setaf 6
