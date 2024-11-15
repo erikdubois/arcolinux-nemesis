@@ -39,11 +39,11 @@ echo "################################################################"
 tput sgr0
 echo
 
-	sudo apt install -y qemu-system
-	sudo apt install -y virt-manager
+	sudo pkg install -y qemu-system
+	sudo pkg install -y virt-manager
 
-	sudo apt install -y virt-top
-	sudo apt install -y bridge-utils
+	sudo pkg install -y virt-top
+	sudo pkg install -y bridge-utils
 	
 echo
 tput setaf 6

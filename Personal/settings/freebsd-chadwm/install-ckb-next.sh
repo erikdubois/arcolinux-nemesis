@@ -41,7 +41,7 @@ echo
 
 # making sure hwinfo exists in the system
 if [ ! -f /usr/bin/hwinfo ]; then
-  sudo apt install -y hwinfo
+  sudo pkg install -y hwinfo
 fi
 
 # do we have a CORSAIR K70?
@@ -55,7 +55,7 @@ if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 	tput sgr0
 	echo
 
-	sudo apt install -y ckb-next
+	sudo pkg install -y ckb-next
 	
 	echo
 	tput setaf 6

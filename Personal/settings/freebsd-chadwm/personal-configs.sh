@@ -40,7 +40,7 @@ tput sgr0
 echo
 
 # installing extra shell
-sudo apt install -y fish
+sudo pkg install -y fish
 
 # making sure simplescreenrecorder, virtualbox and other apps are dark
 sudo cp environment /etc/environment
@@ -87,7 +87,7 @@ export VISUAL='nano'
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER='most'
 
-alias update="sudo apt update && sudo apt upgrade"
+alias update="sudo pkg update && sudo pkg upgrade"
 alias probe="sudo -E hw-probe -all -upload"
 alias nenvironment="sudo $EDITOR /etc/environment"
 alias sr="reboot"' | tee -a ~/.bashrc
