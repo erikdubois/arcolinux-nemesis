@@ -142,6 +142,8 @@ else
 
 fi
 
+sudo apt install -y ubuntu-restricted-extras
+
 echo
 tput setaf 6
 echo "################################################################"

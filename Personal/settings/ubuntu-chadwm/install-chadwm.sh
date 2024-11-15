@@ -85,7 +85,7 @@ sudo apt install -y thunar-archive-plugin
 sudo apt install -y thunar-volman
 
 # exit strategy - super + shift + x
-folder="/tmp/arcolinux-chadwm"
+folder="/tmp/arcolinux-powermenu"
 if [ -d "$folder" ]; then
     sudo rm -r "$folder"
 fi
