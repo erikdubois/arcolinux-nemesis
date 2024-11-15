@@ -80,6 +80,7 @@ sudo pkg install -y simplescreenrecorder
 sudo pkg install -y system-config-printer
 sudo pkg install -y variety
 sudo pkg install -y vlc
+sudo pkg install -y wget
 
 # getting design from ArcoLinux
 if [ -d /tmp/arcolinux-btop ];then
