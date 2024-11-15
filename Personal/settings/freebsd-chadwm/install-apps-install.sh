@@ -81,6 +81,7 @@ sudo pkg install -y system-config-printer
 sudo pkg install -y variety
 sudo pkg install -y vlc
 sudo pkg install -y wget
+sudo pkg install -y xfce4-screenshooter-plugin
 
 # getting design from ArcoLinux
 if [ -d /tmp/arcolinux-btop ];then
