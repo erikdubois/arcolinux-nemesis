@@ -86,22 +86,25 @@ sudo pkg install -y wget
 sudo pkg install -y xfce4-screenshooter-plugin
 
 # getting design from ArcoLinux
-if [ -d /tmp/arcolinux-btop ];then
-	sudo rm -r /tmp/arcolinux-btop
+folder="/tmp/arcolinux-btop"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
 fi
 git clone https://github.com/arcolinux/arcolinux-btop /tmp/arcolinux-btop
 cp -r /tmp/arcolinux-btop/etc/skel/.config ~
 
 # getting config for Alacritty - transparency
-if [ -d /tmp/arcolinux-alacritty ];then
-	sudo rm -r /tmp/arcolinux-alacritty
+folder="/tmp/arcolinux-alacritty"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
 fi
 git clone https://github.com/arcolinux/arcolinux-alacritty /tmp/arcolinux-alacritty
 cp -r /tmp/arcolinux-alacritty/etc/skel/.config ~
 
 # script to change wallpaper on Chadwm
-if [ -d /tmp/arcolinux-variety ];then
-	sudo rm -r /tmp/arcolinux-variety
+folder="/tmp/arcolinux-variety"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
 fi
 git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
