@@ -1,8 +1,5 @@
 #!/bin/bash
 # set -e
-# More info can be found at 
-# https://github.com/bojanstrkovski-21/Arco-chadwm-debian
-# Credits to bojanstrkovski.21 on Discord
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -37,7 +34,22 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Installing Chadwm on Debian"
+echo "################### Installing Chadwm"
+echo "################################################################"
+tput sgr0
+echo
+
+# https://sysadminsage.com/ubuntu-remove-a-package/
+
+echo
+tput setaf 1
+echo "################################################################"
+echo "################### This will remove the Ubuntu desktop"
+echo "################### The following packages will be removed:"
+echo "################### - ubuntu-desktop-minimal"
+echo "################### - ubuntu-session-xsession"
+echo "################### - ubuntu-session"
+echo "################### - xdg-desktop-portal-gnome"
 echo "################################################################"
 tput sgr0
 echo
@@ -60,7 +72,6 @@ sudo apt install -y libxinerama-dev
 
 # applications to be used in Chadwm
 sudo apt install -y alacritty
-sudo apt install -y lxappearance
 sudo apt install -y picom
 sudo apt install -y playerctl
 sudo apt install -y policykit-1-gnome
@@ -96,11 +107,16 @@ cp bar.sh ~/.config/arco-chadwm/scripts
 cp uca.xml ~/.config/Thunar/
 
 # building Chadwm
-cd ~/.config/arco-chadwm/chadwm
-sudo make install
+if [ ! -f /usr/local/bin/chadwm ] ; then
+	cd ~/.config/arco-chadwm/chadwm
+	sudo make install
+fi
 
 # removing this package - it slows down terminals and thunar
+# this will remove the complete ubuntu desktop in 24.10 not in 24.04
 sudo apt remove -y xdg-desktop-portal-gnome
+
+sudo apt autoremove -y
 
 echo
 tput setaf 6

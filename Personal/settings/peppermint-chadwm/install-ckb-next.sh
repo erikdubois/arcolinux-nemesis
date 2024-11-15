@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -e
+#set -e
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -34,31 +34,35 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Ubuntu"
+echo "################### Checking if their is a Corsair K70 keyboard"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt update -y
-sudo apt upgrade -y
+# making sure hwinfo exists in the system
+if [ ! -f /usr/bin/hwinfo ]; then
+  sudo apt install -y hwinfo
+fi
 
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./install-apps-snap.sh
-# personal stuff
-./install-ckb-next.sh
-./install-design.sh
-./personal-configs.sh
+# do we have a CORSAIR K70?
+if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 
-sudo apt autoremove -y
+	echo
+	tput setaf 2
+	echo "################################################################"
+	echo "################### Corsair keyboard to be installed"
+	echo "################################################################"
+	tput sgr0
+	echo
 
-echo
-tput setaf 6
-echo "################################################################"
-echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
-echo "################################################################"
-tput sgr0
-echo
+	sudo apt install -y ckb-next
+	
+	echo
+	tput setaf 6
+	echo "################################################################"
+	echo "################### Corsair keyboard installed"
+	echo "################################################################"
+	tput sgr0
+	echo
+
+fi

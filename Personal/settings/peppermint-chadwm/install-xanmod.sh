@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -e
+#set -e
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -31,34 +31,30 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Ubuntu"
+echo "################### Installing Xanmod kernel"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt update -y
-sudo apt upgrade -y
+echo
+echo "################################################################"
+echo "###### Xanmod kernel via ppa"
+echo "################################################################"
+echo
 
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./install-apps-snap.sh
-# personal stuff
-./install-ckb-next.sh
-./install-design.sh
-./personal-configs.sh
-
-sudo apt autoremove -y
+wget -qO - https://dl.xanmod.org/archive.key | sudo gpg --dearmor -vo /usr/share/keyrings/xanmod-archive-keyring.gpg
+echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-release.list > /dev/null
+sudo apt update
+sudo apt install -y linux-xanmod-x64v3
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
+echo "################### Xanmod installed - there are more versions"
 echo "################################################################"
 tput sgr0
 echo

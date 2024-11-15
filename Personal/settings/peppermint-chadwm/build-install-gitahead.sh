@@ -34,31 +34,55 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Ubuntu"
+echo "################### Building from source"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt update -y
-sudo apt upgrade -y
+# getting dependencies
 
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./install-apps-snap.sh
-# personal stuff
-./install-ckb-next.sh
-./install-design.sh
-./personal-configs.sh
+sudo apt install -y cmake
+sudo apt install -y libssl-dev
+sudo apt install -y ninja-build
+sudo apt install -y qt6-5compat-dev
+sudo apt install -y qt6-base-dev
+sudo apt install -y qt6-tools-dev
+sudo apt install -y qtbase5-dev
+sudo apt install -y qtdeclarative5-dev
+sudo apt install -y qttools5-dev
+sudo apt install -y scite
 
-sudo apt autoremove -y
+# building from source
+git clone https://github.com/gitahead/gitahead/  /tmp/gitahead
+cp -v gitahead.desktop /tmp/gitahead/
+cd /tmp/gitahead
+git submodule init
+git submodule update --depth 1
+
+# Start from root of gitahead repo.
+cd dep/openssl/openssl
+./config -fPIC
+make
+
+cd /tmp/gitahead
+
+# Start from root of gitahead repo.
+mkdir -p build/release
+cd build/release
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../..
+ninja
+sudo cp -v GitAhead /usr/bin/gitahead
+sudo cp -v /tmp/gitahead/gitahead.desktop /usr/share/applications
+
+cd /tmp/gitahead
+for s in 16x16 32x32 64x64 128x128 256x256 512x512; do
+    sudo cp -v rsrc/GitAhead.iconset/icon_$s.png /usr/share/icons/hicolor/$s/apps/gitahead.png
+done
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
+echo "###### Build and installed"
 echo "################################################################"
 tput sgr0
 echo

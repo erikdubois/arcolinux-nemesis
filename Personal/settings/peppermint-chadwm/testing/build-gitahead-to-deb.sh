@@ -34,31 +34,33 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Ubuntu"
+echo "################### Building from source"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt update -y
-sudo apt upgrade -y
+mkdir -p /tmp/deb/gitahead/DEBIAN
+mkdir -p /tmp/deb/gitahead/usr/bin
+mkdir -p /tmp/deb/gitahead/usr/share/applications
 
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./install-apps-snap.sh
-# personal stuff
-./install-ckb-next.sh
-./install-design.sh
-./personal-configs.sh
+cp -v /tmp/gitahead/build/release/GitAhead /tmp/deb/gitahead/usr/bin
+cp -v /tmp/gitahead/gitahead.desktop /tmp/deb/gitahead/usr/share/applications
 
-sudo apt autoremove -y
+echo "Package: Gitahead
+Version: 2.7.1
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Erik Dubois
+Description: app for git" | tee /tmp/deb/gitahead/DEBIAN/control
+
+cd /tmp/deb/
+dpkg-deb --root-owner-group --build /tmp/deb/gitahead
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
+echo "###### Build and installed"
 echo "################################################################"
 tput sgr0
 echo

@@ -34,31 +34,16 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Ubuntu"
+echo "################### Installing fisher and tide"
 echo "################################################################"
 tput sgr0
 echo
-
-sudo apt update -y
-sudo apt upgrade -y
-
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./install-apps-snap.sh
-# personal stuff
-./install-ckb-next.sh
-./install-design.sh
-./personal-configs.sh
-
-sudo apt autoremove -y
-
+/usr/bin/fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
+/usr/bin/fish -c "fisher install IlanCosman/tide@v6"
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
+echo "###### installing done"
 echo "################################################################"
 tput sgr0
 echo

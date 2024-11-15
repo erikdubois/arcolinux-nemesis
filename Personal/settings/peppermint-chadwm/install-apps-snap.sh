@@ -34,31 +34,30 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Ubuntu"
+echo "################### Installing snap software"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt update -y
-sudo apt upgrade -y
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Installing packages"
+echo "################################################################"
+tput sgr0
+echo
 
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./install-apps-snap.sh
-# personal stuff
-./install-ckb-next.sh
-./install-design.sh
-./personal-configs.sh
+# installing software
+#sudo snap install gitkraken --classic
+sudo snap install skype --classic
+sudo snap install telegram-desktop --classic
+sudo snap install wps-office --classic
 
-sudo apt autoremove -y
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
+echo "###### Done installing snap software"
 echo "################################################################"
 tput sgr0
 echo
