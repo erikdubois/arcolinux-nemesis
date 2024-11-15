@@ -45,10 +45,7 @@ sudo apt upgrade -y
 ./install-chadwm.sh
 ./install-apps-install.sh
 ./install-apps-local.sh
-./install-apps-ppa.sh
-./install-apps-snap.sh
 # personal stuff
-./install-ckb-next.sh
 ./install-design.sh
 ./personal-configs.sh
 
