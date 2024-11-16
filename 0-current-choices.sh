@@ -68,12 +68,13 @@ if grep -q "LMDE 6" /etc/os-release; then run_script "lmde6"; fi
 if grep -q "FreeBSD" /etc/os-release; then run_script "freebsd"; fi
 if grep -q "linuxmint" /etc/os-release; then run_script "mint"; fi
 if grep -q "AlmaLinux" /etc/os-release; then run_script "almalinux"; fi
+if grep -q "AnduinOS" /etc/os-release; then run_script "anduin"; fi
 if grep -q "ubuntu" /etc/os-release; then run_script "ubuntu"; fi
 if grep -q "void" /etc/os-release; then run_script "void"; fi
 if grep -q "Nobara" /etc/os-release; then run_script "nobara"; fi
 if grep -q "Fedora" /etc/os-release; then run_script "fedora"; fi
 if grep -q "Solus" /etc/os-release; then run_script "solus"; fi
-if grep -q "AnduinOS" /etc/os-release; then run_script "anduin"; fi
+
 
 echo
 tput setaf 3
