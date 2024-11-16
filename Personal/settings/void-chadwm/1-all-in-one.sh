@@ -46,8 +46,8 @@ sudo xbps-install -S void-repo-nonfree --yes
 
 sudo xbps-install -Su --yes
 
-./install-apps-install.sh
 ./install-chadwm.sh
+./install-apps-install.sh
 ./install-apps-local.sh
 
 #./install-apps-ppa.sh
