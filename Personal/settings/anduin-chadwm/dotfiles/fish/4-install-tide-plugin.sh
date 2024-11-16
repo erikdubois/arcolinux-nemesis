@@ -39,7 +39,7 @@ echo "We assume you have installed these packages"
 echo "sudo pacman -S fish arcolinux-fish-git"
 echo
 
-sudo pacman -S --noconfirm fisher
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 fisher install IlanCosman/tide@v6
 
 echo
