@@ -60,8 +60,8 @@ run_script() {
     sh ./1-all-in-one.sh
     exit 1
 }
-if [ -f /etc/lsb-release ]; then
-    if grep -q "MX 23.4" /etc/lsb-release; then run_script "mxlinux"; fi
+if [ -f /etc/lsb-release ] && grep -q "MX 23.4" /etc/lsb-release; then
+    run_script "mxlinux"
 fi
 if grep -q "Debian" /etc/os-release; then run_script "debian"; fi
 if grep -q "Peppermint" /etc/os-release; then run_script "peppermint"; fi
