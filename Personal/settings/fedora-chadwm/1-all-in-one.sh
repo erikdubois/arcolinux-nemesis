@@ -41,7 +41,7 @@ echo
 
 sudo dnf upgrade -y
 
-dos2unix install-chadwm.sh
+dos2unix ./install-chadwm.sh
 ./install-chadwm.sh
 ./install-apps-install.sh
 ./install-design.sh
