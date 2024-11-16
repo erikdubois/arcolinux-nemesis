@@ -109,6 +109,12 @@ if grep -q "Nobara" /etc/os-release; then
     exit 1
 fi
 
+if grep -q "Fedora" /etc/os-release; then
+    cd Personal/settings/fedora-chadwm/
+    sh ./1-all-in-one.sh
+    exit 1
+fi
+
 echo
 tput setaf 3
 echo "################################################################"
