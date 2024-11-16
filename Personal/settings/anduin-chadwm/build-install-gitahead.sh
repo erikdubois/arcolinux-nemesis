@@ -51,6 +51,7 @@ sudo apt install -y qtbase5-dev
 sudo apt install -y qtdeclarative5-dev
 sudo apt install -y qttools5-dev
 sudo apt install -y scite
+sudo apt install -y qt6-tools-dev-tools
 
 # building from source
 git clone https://github.com/gitahead/gitahead/  /tmp/gitahead
