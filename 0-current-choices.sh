@@ -74,6 +74,7 @@ if grep -q "void" /etc/os-release; then run_script "void"; fi
 if grep -q "Nobara" /etc/os-release; then run_script "nobara"; fi
 if grep -q "Fedora" /etc/os-release; then run_script "fedora"; fi
 if grep -q "Solus" /etc/os-release; then run_script "solus"; fi
+if grep -q "MX 23.4" /etc/lsb-release; then run_script "mxlinux"; fi
 
 
 echo
