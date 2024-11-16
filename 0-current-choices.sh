@@ -72,6 +72,7 @@ if grep -q "ubuntu" /etc/os-release; then run_script "ubuntu"; fi
 if grep -q "void" /etc/os-release; then run_script "void"; fi
 if grep -q "Nobara" /etc/os-release; then run_script "nobara"; fi
 if grep -q "Fedora" /etc/os-release; then run_script "fedora"; fi
+if grep -q "Solus" /etc/os-release; then run_script "solus"; fi
 
 echo
 tput setaf 3

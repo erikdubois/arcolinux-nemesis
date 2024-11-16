@@ -47,6 +47,8 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo eopkg upgrade -y
+
 # getting dependencies to be able to build Chadwm
 sudo eopkg install -y -c system.devel
 sudo eopkg install -y font-awesome-ttf
