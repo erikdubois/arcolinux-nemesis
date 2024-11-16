@@ -55,71 +55,23 @@ fi
 
 ##################################################################################################################
 
-if grep -q "Debian" /etc/os-release; then
-    cd Personal/settings/debian-chadwm/
+run_script() {
+    cd "Personal/settings/$1-chadwm/" || exit 1
     sh ./1-all-in-one.sh
     exit 1
-fi
+}
 
-if grep -q "Peppermint" /etc/os-release; then
-    cd Personal/settings/peppermint-chadwm/
-    sh ./1-all-in-one.sh
-    exit 1
-fi
-
-if grep -q "Pop!" /etc/os-release; then
-    cd Personal/settings/popos-chadwm/
-    sh ./1-all-in-one.sh
-    exit 1
-fi
-
-if grep -q "LMDE 6" /etc/os-release; then
-    cd Personal/settings/lmde6-chadwm/
-    sh ./1-all-in-one.sh
-    exit 1
-fi
-
-if grep -q "FreeBSD" /etc/os-release; then
-    cd Personal/settings/freebsd-chadwm/
-    sh ./1-all-in-one.sh
-    exit 1
-fi
-
-if grep -q "linuxmint" /etc/os-release; then
-    cd Personal/settings/mint-chadwm/
-    sh ./1-all-in-one.sh
-    exit 1
-fi
-
-if grep -q "AlmaLinux" /etc/os-release; then
-    cd Personal/settings/almalinux-chadwm/
-    sh ./1-all-in-one.sh
-    exit 1
-fi
-
-if grep -q "ubuntu" /etc/os-release; then
-    cd Personal/settings/ubuntu-chadwm/
-    sh ./1-all-in-one.sh
-    exit 1
-fi
-
-if grep -q "void" /etc/os-release; then
-    cd Personal/settings/void-chadwm/
-    sh ./1-all-in-one.sh
-    exit 1
-fi
-
-if grep -q "Nobara" /etc/os-release; then
-    cd Personal/settings/nobara-chadwm/
-    sh ./1-all-in-one.sh
-    exit 1
-fi
-
-if grep -q "Fedora" /etc/os-release; then
-    cd Personal/settings/fedora-chadwm/
-    sh ./1-all-in-one.sh
-    exit 1
-fi
+if grep -q "Debian" /etc/os-release; then run_script "debian"; fi
+if grep -q "Peppermint" /etc/os-release; then run_script "peppermint"; fi
+if grep -q "Pop!" /etc/os-release; then run_script "popos"; fi
+if grep -q "LMDE 6" /etc/os-release; then run_script "lmde6"; fi
+if grep -q "FreeBSD" /etc/os-release; then run_script "freebsd"; fi
+if grep -q "linuxmint" /etc/os-release; then run_script "mint"; fi
+if grep -q "AlmaLinux" /etc/os-release; then run_script "almalinux"; fi
+if grep -q "ubuntu" /etc/os-release; then run_script "ubuntu"; fi
+if grep -q "void" /etc/os-release; then run_script "void"; fi
+if grep -q "Nobara" /etc/os-release; then run_script "nobara"; fi
+if grep -q "Fedora" /etc/os-release; then run_script "fedora"; fi
 
 echo
 tput setaf 3
