@@ -151,7 +151,7 @@ echo
 wget -qO-  https://palfrey.github.io/discord-apt/discord-apt.gpg.asc | sudo tee /etc/apt/trusted.gpg.d/discord-apt.gpg.asc > /dev/null
 echo "deb https://palfrey.github.io/discord-apt/debian/ ./" | sudo tee /etc/apt/sources.list.d/discord.list > /dev/null
 sudo apt update
-sudo apt install discord
+sudo apt install -y discord
 
 echo
 echo "################################################################"
