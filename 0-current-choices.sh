@@ -55,6 +55,12 @@ fi
 
 ##################################################################################################################
 
+if grep -q "Debian" /etc/os-release; then
+    cd Personal/settings/debian-chadwm/
+    sh ./1-all-in-one.sh
+    exit 1
+fi
+
 if grep -q "Peppermint" /etc/os-release; then
     cd Personal/settings/peppermint-chadwm/
     sh ./1-all-in-one.sh
