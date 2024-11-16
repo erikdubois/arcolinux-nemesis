@@ -8,5 +8,5 @@ sxhkd -c ~/.config/arco-chadwm/sxhkd/sxhkdrc &
 variety -n &
 numlockx on &
 pkill bar.sh &
-bash ~/.config/arco-chadwm/scripts/bar.sh &
+~/.config/arco-chadwm/scripts/bar.sh &
 while type chadwm >/dev/null; do chadwm && continue || break; done
