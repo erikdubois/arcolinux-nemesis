@@ -74,12 +74,20 @@ sudo apt install -y thunar-archive-plugin
 sudo apt install -y thunar-volman
 
 # exit strategy - super + shift + x
+folder="/tmp/arcolinux-powermenu"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
 sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
 cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
 cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
 
 # getting the official code from ArcoLinux
+folder="/tmp/arcolinux-chadwm"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
 git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
 sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
 sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
@@ -96,8 +104,10 @@ cp bar.sh ~/.config/arco-chadwm/scripts
 cp uca.xml ~/.config/Thunar/
 
 # building Chadwm
-cd ~/.config/arco-chadwm/chadwm
-sudo make install
+if [ ! -f /usr/local/bin/chadwm ] ; then
+	cd ~/.config/arco-chadwm/chadwm
+	sudo make install
+fi
 
 # removing this package - it slows down terminals and thunar
 sudo apt remove -y xdg-desktop-portal-gnome
