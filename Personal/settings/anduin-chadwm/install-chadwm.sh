@@ -130,6 +130,16 @@ sudo apt remove -y xdg-desktop-portal-gnome
 sudo apt autoremove -y
 
 echo
+echo "################################################################"
+echo "###### Alacritty"
+echo "################################################################"
+echo
+sudo add-apt-repository ppa:aslatter/ppa -y
+sudo apt update -y
+sudo apt install alacritty -y
+
+
+echo
 tput setaf 6
 echo "################################################################"
 echo "###### Chadwm is installed - reboot"
