@@ -160,6 +160,10 @@ fi
 # getting archlinux-logout
 sudo xbps-install python3-distro --yes
 cd $installed_dir
+folder="/tmp/archlinux-logout"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
 git clone https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
 
 # changing for runinit
@@ -183,6 +187,10 @@ cp -v archlinux-logout.conf ~/.config/archlinux-logout/
 
 # prevention ads - tracking - hblock
 # https://github.com/hectorm/hblock
+folder="/tmp/hblock"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
 git clone https://github.com/hectorm/hblock  /tmp/hblock
 cd /tmp/hblock
 sudo make install

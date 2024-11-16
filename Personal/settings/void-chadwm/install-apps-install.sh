@@ -107,14 +107,26 @@ sudo xbps-install --yes xfce4-screenshooter
 sudo xbps-install --yes xfce4-whiskermenu-plugin
 
 # getting design from ArcoLinux
+folder="/tmp/arcolinux-btop"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
 git clone https://github.com/arcolinux/arcolinux-btop /tmp/arcolinux-btop
 cp -r /tmp/arcolinux-btop/etc/skel/.config ~
 
 # getting config for Alacritty - transparency
+folder="/tmp/arcolinux-alacritty"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
 git clone https://github.com/arcolinux/arcolinux-alacritty /tmp/arcolinux-alacritty
 cp -r /tmp/arcolinux-alacritty/etc/skel/.config ~
 
 # script to change wallpaper on Chadwm
+folder="/tmp/arcolinux-variety"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
 git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 
