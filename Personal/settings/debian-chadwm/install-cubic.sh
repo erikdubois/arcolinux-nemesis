@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -e
+#set -e
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -31,33 +31,24 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
+
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Debian"
+echo "################### Installing cubic - ubuntu iso creation"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt update -y
-sudo apt upgrade -y
-
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./install-apps-snap.sh
-# personal stuff
-./install-ckb-next.sh
-./install-design.sh
-./personal-configs.sh
-
-sudo apt autoremove -y
+#sudo apt-add-repository universe
+sudo apt-add-repository ppa:cubic-wizard/release
+sudo apt update
+sudo apt install --no-install-recommends cubic	
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
+echo "################### Corsair keyboard installed"
 echo "################################################################"
 tput sgr0
 echo

@@ -1,0 +1,12 @@
+[Default Applications]
+x-scheme-handler/tonsite=telegram-desktop_telegram-desktop.desktop
+text/x-chdr=sublime-text_subl.desktop
+application/x-shellscript=sublime-text_subl.desktop
+application/octet-stream=sublime-text_subl.desktop
+
+[Added Associations]
+text/x-chdr=sublime-text_subl.desktop;
+application/x-shellscript=sublime-text_subl.desktop;
+application/x-fishscript=sublime-text_subl.desktop;
+text/plain=sublime-text_subl.desktop;
+application/octet-stream=sublime-text_subl.desktop;

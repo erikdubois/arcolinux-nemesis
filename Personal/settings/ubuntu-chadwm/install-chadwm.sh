@@ -72,7 +72,9 @@ sudo apt install -y libxinerama-dev
 
 # applications to be used in Chadwm
 sudo apt install -y alacritty
+sudo apt install -y arandr
 sudo apt install -y lxappearance
+sudo apt install -y neofetch
 sudo apt install -y picom
 sudo apt install -y playerctl
 sudo apt install -y policykit-1-gnome

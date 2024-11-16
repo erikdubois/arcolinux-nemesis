@@ -34,30 +34,23 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Debian"
+echo "###### Installing packages local install"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt update -y
-sudo apt upgrade -y
+#if you want to build it you need debhelper and gettext
+#rest is on the github of mintstick or use our script or our package
+#sudo apt install -y ./packages/mintstick_1.6.2_all.deb
+sudo apt install -y mintstick
 
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-local.sh
-./install-apps-ppa.sh
-./install-apps-snap.sh
-# personal stuff
-./install-ckb-next.sh
-./install-design.sh
-./personal-configs.sh
-
-sudo apt autoremove -y
+#sudo apt install -y ./packages/bat_0.24.0_amd64.deb
+sudo apt install -y bat
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
+echo "###### Packages local install done"
 echo "################################################################"
 tput sgr0
 echo
