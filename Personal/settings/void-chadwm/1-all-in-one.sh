@@ -56,6 +56,10 @@ sudo xbps-install -Su --yes
 ./install-design.sh
 ./personal-configs.sh
 
+# after installing everything rebuilding
+cd ~/.config/arco-chadwm/chadwm
+./rebuild.sh
+
 echo
 tput setaf 6
 echo "################################################################"
