@@ -34,7 +34,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Anduin"
+echo "################### All in one for AnduinOS"
 echo "################################################################"
 tput sgr0
 echo
