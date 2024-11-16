@@ -43,6 +43,8 @@ sudo apt update -y
 sudo apt upgrade -y
 
 ./install-chadwm.sh
+./install-apps-install.sh
+./personal-configs.sh
 
 sudo apt autoremove -y
 
