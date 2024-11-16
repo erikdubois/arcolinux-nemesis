@@ -274,7 +274,7 @@ alias sr="reboot"
 alias xd="ls /usr/share/xsessions"
 alias xdw="ls /usr/share/wayland-sessions"
 
-alias clean="clear; seq 1 $(tput cols) | sort -R | spark | /usr/games/lolcat"
+alias clean="clear; seq 1 (tput cols) | sort -R | spark | /usr/games/lolcat"
 
 set fish_color_autosuggestion "#969896"
 set fish_color_cancel -r
