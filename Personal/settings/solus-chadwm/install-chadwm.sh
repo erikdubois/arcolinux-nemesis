@@ -59,14 +59,17 @@ sudo eopkg install -y libxinerama-devel
 
 # applications to be used in Chadwm
 sudo eopkg install -y alacritty
+sudo eopkg install -y arandr
+sudo eopkg install -y dmenu
+sudo eopkg install -y fastfetch
 sudo eopkg install -y picom
 sudo eopkg install -y polkit-gnome
 sudo eopkg install -y rofi
 sudo eopkg install -y sxhkd
-sudo eopkg install -y dmenu
 sudo eopkg install -y thunar
 sudo eopkg install -y thunar-archive-plugin
 sudo eopkg install -y thunar-volman
+sudo eopkg install -y variety
 
 # exit strategy - super + shift + x
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
@@ -96,6 +99,14 @@ sudo make install
 
 # removing this package - it slows down terminals and thunar
 sudo eopkg remove -y xdg-desktop-portal-gnome
+
+# script to change wallpaper on Chadwm
+git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
+cp -r /tmp/arcolinux-variety/etc/skel/.config ~
+
+# setting my personal configuration for variety
+echo "getting latest variety config from github"
+sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
 echo
 tput setaf 6
