@@ -56,6 +56,16 @@ sudo apt install -y apt-transport-https ca-certificates curl software-properties
 sudo apt autoremove -y
 
 echo
+echo "################################################################"
+echo "###### Building Chadwm"
+echo "################################################################"
+echo
+
+# building Chadwm
+cd ~/.config/arco-chadwm/chadwm
+./rebuild.sh
+
+echo
 tput setaf 6
 echo "################################################################"
 echo "###### All in one done"
