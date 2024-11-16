@@ -46,6 +46,8 @@ sudo apt install -y ninja-build
 sudo apt install -y qtbase5-dev
 sudo apt install -y qtdeclarative5-dev
 sudo apt install -y qttools5-dev
+sudo apt install -y qt6-tools-dev-tools
+sudo apt install -y libqt6core5compat6-dev
 
 
 # building from source
