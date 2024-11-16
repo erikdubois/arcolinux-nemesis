@@ -103,10 +103,8 @@ cp bar.sh ~/.config/arco-chadwm/scripts
 cp uca.xml ~/.config/Thunar/
 
 # building Chadwm
-if [ ! -f /usr/local/bin/chadwm ] ; then
-	cd ~/.config/arco-chadwm/chadwm
-	sudo make install
-fi
+cd ~/.config/arco-chadwm/chadwm
+./rebuild.sh
 
 # removing this package - it slows down terminals and thunar
 # this will remove the complete ubuntu desktop in 24.10 not in 24.04
