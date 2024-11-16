@@ -41,7 +41,12 @@ echo
 
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common wget gnupg
+sudo apt install -y apt-transport-https 
+sudo apt install -y ca-certificates
+sudo apt install -y curl
+sudo apt install -y software-properties-common
+sudo apt install -y wget
+sudo apt install -y gnupg
 
 ./install-chadwm.sh
 ./install-apps-install.sh
