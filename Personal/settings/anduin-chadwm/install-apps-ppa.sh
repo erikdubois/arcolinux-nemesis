@@ -45,6 +45,17 @@ sudo snap remove firefox
 
 echo
 echo "################################################################"
+echo "###### Variety"
+echo "################################################################"
+echo
+
+sudo add-apt-repository ppa:variety/stable -y
+sudo apt update
+sudo apt install -y variety
+
+
+echo
+echo "################################################################"
 echo "###### Sublime-text"
 echo "################################################################"
 echo

@@ -135,6 +135,7 @@ else
 fi
 
 # getting archlinux-logout
+sudo apt install -y libwnck-3-dev
 cd $installed_dir
 folder="/tmp/archlinux-logout"
 if [ -d "$folder" ]; then
