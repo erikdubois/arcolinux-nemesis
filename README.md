@@ -80,7 +80,7 @@ Non Arch based distros
 | [Freebsd](https://fedoraproject.org)         |  [Examples](https://github.com/erikdubois/freebsd-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_l5LFkHkbxLwttgd3m12D)    |
 | [Linux Mint](https://www.linuxmint.com)         | [Examples](https://github.com/erikdubois/mint-chadwm)       | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4dMHsRIx6RAfbLNNMOEdCM) |
 | [LMDE 6](https://www.linuxmint.com)         |   [Examples](https://github.com/erikdubois/lmde-chadwm)    | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4dYYxaBFQpZsT5v0XbNfZw) |
-| [MX Linux](https://mxlinux.org)         |     | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4taYXROH0eMFV0olfWF8w0) |
+| [MX Linux](https://mxlinux.org)         |  [Examples](https://github.com/erikdubois/mxlinux-chadwm)  | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4taYXROH0eMFV0olfWF8w0) |
 | [Nobara](https://nobaraproject.org)         |  [Examples](https://github.com/erikdubois/nobara-chadwm)      | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7O1qeZj5D3E4vmqNz26zsq) |
 | [Peppermint](https://peppermintos.com)         |    [Examples](https://github.com/erikdubois/peppermint-chadwm)    | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4ezKAHvmk51lQz1ooGnLID) |
 | [PopOS](https://pop.system76.com)         |    [Examples](https://github.com/erikdubois/popos-chadwm)    | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_pd0itZIIMNBUMd7aHLaI) |
