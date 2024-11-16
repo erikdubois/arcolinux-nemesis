@@ -34,25 +34,49 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Debian"
+echo "################### Installing design"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt update -y
-sudo apt upgrade -y
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Installing packages"
+echo "################################################################"
+tput sgr0
+echo
 
-./install-chadwm.sh
-./install-apps-install.sh
-./install-design.sh
-./personal-configs.sh
+# Creation of folders
+[ -d $HOME"/.bin" ] || mkdir -p $HOME"/.bin"
+[ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
+[ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
+[ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
 
-sudo apt autoremove -y
+# getting Surfn icons
+folder="/tmp/surfn"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
+git clone https://github.com/erikdubois/Surfn  /tmp/surfn
+cp -r /tmp/surfn/surfn-icons/* ~/.icons/
+
+# getting candy beauty icons
+folder="/tmp/a-candy-beauty-icon-theme"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
+git clone https://github.com/arcolinux/a-candy-beauty-icon-theme  /tmp/a-candy-beauty-icon-theme
+cp -r /tmp/a-candy-beauty-icon-theme/usr/share/icons/* ~/.icons/
+
+# installing theme and cursor
+sudo apt install -y arc-theme
+sudo apt install -y bibata-cursor-theme
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
+echo "###### installing icons ... done"
 echo "################################################################"
 tput sgr0
 echo
