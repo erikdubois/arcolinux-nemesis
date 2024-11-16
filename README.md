@@ -77,6 +77,7 @@ Non Arch based distros
 | [AnduinOS](https://www.anduinos.com)    | [Examples](https://github.com/erikdubois/anduin-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4ynJaMtZgpmUZ35i0EvmJS) |
 | [Debian](https://www.debian.org)     | [Examples](https://github.com/erikdubois/debian-chadwm)  | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS5KExtV-n0g_I6Ei0963scq)     |
 | [Fedora](https://fedoraproject.org)         |  [Examples](https://github.com/erikdubois/fedora-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_l5LFkHkbxLwttgd3m12D)    |
+| [Freebsd](https://fedoraproject.org)         |  [Examples](https://github.com/erikdubois/freebsd-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_l5LFkHkbxLwttgd3m12D)    |
 | [Linux Mint](https://www.linuxmint.com)         | [Examples](https://github.com/erikdubois/mint-chadwm)       | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4dMHsRIx6RAfbLNNMOEdCM) |
 | [LMDE 6](https://www.linuxmint.com)         |   [Examples](https://github.com/erikdubois/lmde-chadwm)    | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4dYYxaBFQpZsT5v0XbNfZw) |
 | [MX Linux](https://mxlinux.org)         |     | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4taYXROH0eMFV0olfWF8w0) |
