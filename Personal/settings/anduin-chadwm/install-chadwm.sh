@@ -102,9 +102,6 @@ cp bar.sh ~/.config/arco-chadwm/scripts
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
 cp uca.xml ~/.config/Thunar/
 
-# building Chadwm
-cd ~/.config/arco-chadwm/chadwm
-./rebuild.sh
 
 # removing this package - it slows down terminals and thunar
 # this will remove the complete ubuntu desktop in 24.10 not in 24.04
@@ -120,6 +117,16 @@ echo
 sudo add-apt-repository ppa:aslatter/ppa -y
 sudo apt update -y
 sudo apt install alacritty -y
+
+echo
+echo "################################################################"
+echo "###### Building Chadwm"
+echo "################################################################"
+echo
+
+# building Chadwm
+cd ~/.config/arco-chadwm/chadwm
+./rebuild.sh
 
 echo
 tput setaf 6
