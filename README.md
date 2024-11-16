@@ -85,7 +85,7 @@ Non Arch based distros
 | [PopOS](https://pop.system76.com)         |    [Examples](https://github.com/erikdubois/popos-chadwm)    | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_pd0itZIIMNBUMd7aHLaI) |
 | [Solus](https://getsol.us/download/)         |   [Examples](https://github.com/erikdubois/solus-chadwm)     | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4bPmu45gzgKMYEfrcL5yeP) |
 | [Ubuntu](https://ubuntu.com/download)         |[Examples](https://github.com/erikdubois/ubuntu-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS5OoJJI03yCinWaxpBg4Y_8) |
-| [Void](https://voidlinux.org)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4fX0vmGGk-kdi0NCDZsqXP) |
+| [Void](https://voidlinux.org)         |   [Examples](https://github.com/erikdubois/void-chadwm)     | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4fX0vmGGk-kdi0NCDZsqXP) |
 
 The scripts for Nixos are on a seperate github - https://github.com/erikdubois/nixos-configurations
 
