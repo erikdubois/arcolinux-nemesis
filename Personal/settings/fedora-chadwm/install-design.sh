@@ -34,27 +34,40 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Fedora"
+echo "################### Installing design"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo dnf upgrade -y
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Installing packages"
+echo "################################################################"
+tput sgr0
+echo
 
-dos2unix install-chadwm.sh
-./install-chadwm.sh
-./install-apps-install.sh
-./install-design.sh
-./personal-configs.sh
+# Creation of folders
+[ -d $HOME"/.bin" ] || mkdir -p $HOME"/.bin"
+[ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
+[ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
+[ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
 
-sudo dnf update -y
-sudo dnf upgrade -y
-sudo dnf autoremove -y
+# getting Surfn icons
+git clone https://github.com/erikdubois/Surfn  /tmp/surfn
+cp -r /tmp/surfn/surfn-icons/* ~/.icons/
+
+# getting candy beauty icons
+git clone https://github.com/arcolinux/a-candy-beauty-icon-theme  /tmp/a-candy-beauty-icon-theme
+cp -r /tmp/a-candy-beauty-icon-theme/usr/share/icons/* ~/.icons/
+
+# installing theme and cursor
+sudo dnf install -y arc-theme
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
+echo "###### installing icons ... done"
 echo "################################################################"
 tput sgr0
 echo

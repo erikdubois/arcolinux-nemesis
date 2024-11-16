@@ -48,7 +48,6 @@ tput sgr0
 echo
 
 # getting dependencies to be able to build Chadwm
-#sudo yum install build-essential
 sudo yum install -y python3-XStatic-Font-Awesome.noarch
 sudo yum install -y imlib2-devel.x86_64
 sudo yum install -y libX11-devel-1.8.9-1.fc40.x86_64
@@ -97,11 +96,9 @@ cp uca.xml ~/.config/Thunar/
 
 # building Chadwm
 cd ~/.config/arco-chadwm/chadwm
-sudo make install
-
+./rebuild.sh
 # removing this package - it slows down terminals and thunar
 sudo yum remove -y xdg-desktop-portal-gnome.x86_64
-
 echo
 tput setaf 6
 echo "################################################################"
