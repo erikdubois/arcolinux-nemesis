@@ -175,6 +175,15 @@ sudo apt update
 sudo apt install opera-stable -y
 
 echo
+echo "################################################################"
+echo "###### Alacritty"
+echo "################################################################"
+echo
+sudo add-apt-repository ppa:aslatter/ppa -y
+sudo apt update -y
+sudo apt install alacritty -y
+
+echo
 tput setaf 6
 echo "################################################################"
 echo "###### Packages local install done"
