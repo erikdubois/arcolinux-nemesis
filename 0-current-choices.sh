@@ -103,7 +103,7 @@ if grep -q "void" /etc/os-release; then
     exit 1
 fi
 
-if grep -q "Npbara" /etc/os-release; then
+if grep -q "Nobara" /etc/os-release; then
     cd Personal/settings/nobara-chadwm/
     sh ./1-all-in-one.sh
     exit 1
