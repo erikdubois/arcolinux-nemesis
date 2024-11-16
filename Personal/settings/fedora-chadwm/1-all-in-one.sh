@@ -41,6 +41,7 @@ echo
 
 sudo dnf upgrade -y
 
+dos2unix install-chadwm.sh
 bash $installed_dir/install-chadwm.sh
 
 sudo dnf update -y

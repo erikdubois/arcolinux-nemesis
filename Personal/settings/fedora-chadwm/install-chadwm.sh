@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 # Credits to D3xter on Discord
-# please run 'dos2unix install-chadwm-fedora.sh'to remove the hidden \r
+# please run 'dos2unix install-chadwm.sh'to remove the hidden \r
 # getting dependencies to be able to build Chadwm
 sudo dnf group install -y "C Development Tools and Libraries"
 sudo dnf install -y fontawesome-fonts
