@@ -80,7 +80,7 @@ Non Arch based distros
 | [Linux Mint](https://www.linuxmint.com)         | [Examples](https://github.com/erikdubois/mint-chadwm)       | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4dMHsRIx6RAfbLNNMOEdCM) |
 | [LMDE 6](https://www.linuxmint.com)         |   [Examples](https://github.com/erikdubois/lmde-chadwm)    | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4dYYxaBFQpZsT5v0XbNfZw) |
 | [MX Linux](https://mxlinux.org)         |     | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4taYXROH0eMFV0olfWF8w0) |
-| [Nobara](https://nobaraproject.org)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7O1qeZj5D3E4vmqNz26zsq) |
+| [Nobara](https://nobaraproject.org)         |  [Examples](https://github.com/erikdubois/nobara-chadwm)      | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7O1qeZj5D3E4vmqNz26zsq) |
 | [Peppermint](https://peppermintos.com)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4ezKAHvmk51lQz1ooGnLID) |
 | [PopOS](https://pop.system76.com)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_pd0itZIIMNBUMd7aHLaI) |
 | [Solus](https://getsol.us/download/)         |        | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4bPmu45gzgKMYEfrcL5yeP) |
