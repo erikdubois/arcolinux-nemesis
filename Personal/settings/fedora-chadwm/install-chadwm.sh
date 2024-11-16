@@ -8,6 +8,8 @@ sudo dnf install -y imlib2-devel
 sudo dnf install -y libX11-devel
 sudo dnf install -y libXft-devel
 sudo dnf install -y libXinerama-devel
+sudo dnf install -y gcc
+sudo dnf install -y make
 # basic applications to be used in Chadwm
 sudo dnf install -y alacritty
 sudo dnf install -y arc-theme
