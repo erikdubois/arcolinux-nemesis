@@ -134,6 +134,35 @@ sudo rm /usr/share/applications/archlinux-betterlockscreen.desktop
 [ -d $HOME"/.config/archlinux-logout" ] || mkdir -p $HOME"/.config/archlinux-logout"
 cp -v archlinux-logout.conf ~/.config/archlinux-logout/
 
+# Define temporary and fonts directories
+temp_dir="/tmp/hack"
+fonts_dir="$HOME/.fonts"
+
+# Download the Hack font zip file to the temporary directory
+echo "Downloading Hack font..."
+wget -q https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip -O /tmp/hackfont.zip
+
+# Unzip the downloaded file
+echo "Extracting Hack font..."
+mkdir -p "$temp_dir"
+unzip -o /tmp/hackfont.zip -d "$temp_dir" >/dev/null
+
+# Create fonts directory if it doesn't exist
+mkdir -p "$fonts_dir"
+
+# Copy and overwrite existing font files
+echo "Installing Hack font to $fonts_dir..."
+cp -f "$temp_dir/ttf/"* "$fonts_dir"
+
+# Update font cache
+echo "Updating font cache..."
+fc-cache -fv
+
+# Clean up temporary files
+rm -rf /tmp/hackfont.zip "$temp_dir"
+
+echo "Hack font installation complete."
+
 # prevention ads - tracking - hblock
 # https://github.com/hectorm/hblock
 git clone https://github.com/hectorm/hblock  /tmp/hblock

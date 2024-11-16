@@ -48,6 +48,7 @@ sudo dnf install -y chromium
 sudo dnf install -y curl
 sudo dnf install -y dconf-editor
 sudo dnf install -y duf
+sudo dnf install -y fastfetch
 sudo dnf install -y feh
 sudo dnf install -y file-roller
 sudo dnf install -y flameshot

@@ -55,6 +55,8 @@ echo
 tput setaf 6
 echo "################################################################"
 echo "###### All in one done"
+echo "###### Figure out what driver you need"
+echo "###### xorg-x11...."
 echo "################################################################"
 tput sgr0
 echo
