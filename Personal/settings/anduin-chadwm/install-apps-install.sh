@@ -89,7 +89,6 @@ sudo apt install -y qt5-style-kvantum-themes
 sudo apt install -y ripgrep
 sudo apt install -y scrot
 sudo apt install -y simplescreenrecorder
-sudo apt install -y snap
 sudo apt install -y speedtest-cli
 sudo apt install -y system-config-printer
 sudo apt install -y vlc
