@@ -33,7 +33,7 @@ cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
 # getting the official code from ArcoLinux
 git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
 sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
-sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
+sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/wayland-sessions
 cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
 cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
 # overwriting the official code from ArcoLinux with my own
@@ -47,7 +47,7 @@ cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
 #cp uca.xml ~/.config/Thunar/
 # building Chadwm
 cd ~/.config/arco-chadwm/chadwm
-sudo make install
+./rebuild.sh
 # removing this package - it slows down terminals and thunar
 #sudo dnf remove -y xdg-desktop-portal-gnome
 echo
