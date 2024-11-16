@@ -5,6 +5,8 @@ xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDM
 
 sxhkd -c ~/.config/arco-chadwm/sxhkd/sxhkdrc &
 
+feh --bg-fill /usr/share/backgrounds/Fluent-building-light.png &
+
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 picom -b  --config ~/.config/arco-chadwm/picom/picom.conf &
 variety -n &
