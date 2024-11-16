@@ -34,7 +34,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Installing Chadwm on Nobara"
+echo "################### Installing Chadwm on Fedora"
 echo "################################################################"
 tput sgr0
 echo
