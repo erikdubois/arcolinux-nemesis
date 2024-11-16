@@ -61,6 +61,7 @@ run_script() {
     exit 1
 }
 
+if grep -q "MX 23.4" /etc/lsb-release; then run_script "mxlinux"; fi
 if grep -q "Debian" /etc/os-release; then run_script "debian"; fi
 if grep -q "Peppermint" /etc/os-release; then run_script "peppermint"; fi
 if grep -q "Pop!" /etc/os-release; then run_script "popos"; fi
@@ -74,8 +75,6 @@ if grep -q "void" /etc/os-release; then run_script "void"; fi
 if grep -q "Nobara" /etc/os-release; then run_script "nobara"; fi
 if grep -q "Fedora" /etc/os-release; then run_script "fedora"; fi
 if grep -q "Solus" /etc/os-release; then run_script "solus"; fi
-if grep -q "MX 23.4" /etc/lsb-release; then run_script "mxlinux"; fi
-
 
 echo
 tput setaf 3
