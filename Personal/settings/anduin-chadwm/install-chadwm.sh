@@ -138,7 +138,6 @@ sudo add-apt-repository ppa:aslatter/ppa -y
 sudo apt update -y
 sudo apt install alacritty -y
 
-
 echo
 tput setaf 6
 echo "################################################################"
