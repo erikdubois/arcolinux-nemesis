@@ -78,8 +78,6 @@ echo
 ./install-sound.sh
 ./personal-configs.sh
 
-sudo apt autoremove -y
-
 echo
 tput setaf 6
 echo "################################################################"
