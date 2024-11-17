@@ -34,29 +34,34 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### All in one for Freebsd"
+echo "################### Installing sound"
 echo "################################################################"
 tput sgr0
 echo
 
-sudo apt update -y
-sudo apt upgrade -y
+sudo pkg install -y pulseaudio
+sudo pkg install -y pavucontrol
 
-./install-chadwm.sh
-./install-apps-install.sh
-./install-apps-local.sh
-# personal stuff
-./install-design.sh
-./install-sound.sh
-./personal-configs.sh
+# Define the configuration line
+config_line='pulseaudio_enable="YES"'
 
-sudo apt autoremove -y
+# Check if the line is already present in /etc/rc.conf
+if ! grep -qF "$config_line" /etc/rc.conf; then
+  # If not present, append the line to /etc/rc.conf
+  echo "$config_line" | sudo tee -a /etc/rc.conf
+else
+  echo "Configuration already present in /etc/rc.conf"
+fi
+
+sudo pw groupmod pulse -m erik
+sudo pw groupmod pulse-access -m erik
+
+sudo service pulseaudio start
 
 echo
 tput setaf 6
 echo "################################################################"
-echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
+echo "###### Installing sound ... done"
 echo "################################################################"
 tput sgr0
 echo
