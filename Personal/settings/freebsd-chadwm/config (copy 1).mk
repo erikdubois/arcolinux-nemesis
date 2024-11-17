@@ -17,7 +17,8 @@ XINERAMAFLAGS = -DXINERAMA
 FREETYPELIBS = -lfontconfig -lXft
 FREETYPEINC = /usr/local/include/freetype2
 
-MANPREFIX = /usr/local/share/man
+# man page directory
+MANPREFIX = /usr/local/man
 
 # includes and libs
 INCS = -I${X11INC} -I${FREETYPEINC}
