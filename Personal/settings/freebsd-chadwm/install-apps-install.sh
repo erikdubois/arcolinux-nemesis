@@ -75,6 +75,7 @@ sudo pkg install -y nitrogen
 sudo pkg install -y nomacs
 sudo pkg install -y numlockx
 sudo pkg install -y obs-studio
+sudo pkg install -y pidof
 sudo pkg install -y qbittorrent
 sudo pkg install -y qt5ct
 sudo pkg install -y ripgrep
