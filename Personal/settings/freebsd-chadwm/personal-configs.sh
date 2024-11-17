@@ -64,8 +64,6 @@ cp -v uca.xml ~/.config/Thunar/
 echo "getting latest variety config from github"
 wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
-#!/bin/bash
-
 # Configuration
 CONFIG_FILE="~/.config/variety/variety.conf"
 KEY="src3"
