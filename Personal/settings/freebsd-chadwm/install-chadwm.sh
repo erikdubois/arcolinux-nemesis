@@ -56,17 +56,15 @@ sudo pkg install -y libXinerama
 
 # applications to be used in Chadwm
 sudo pkg install -y alacritty
+sudo pkg install -y dmenu
 sudo pkg install -y picom
 sudo pkg install -y playerctl
-sudo pkg install -y policykit-1-gnome
+#sudo pkg install -y policykit-1-gnome
 sudo pkg install -y pulsemixer
 sudo pkg install -y rofi
 sudo pkg install -y sxhkd
-# next item is dmenu
-sudo pkg install -y suckless-tools
 sudo pkg install -y thunar
 sudo pkg install -y thunar-archive-plugin
-sudo pkg install -y thunar-volman
 
 # exit strategy - super + shift + x
 folder="/tmp/arcolinux-powermenu"
