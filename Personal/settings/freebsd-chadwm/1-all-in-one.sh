@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 # set -e
 ##################################################################################################################
 # Author    : Erik Dubois
@@ -38,6 +38,15 @@ echo "################### All in one for Freebsd"
 echo "################################################################"
 tput sgr0
 echo
+
+# Check if /bin/bash exists
+if [ ! -e /bin/bash ]; then
+  # Create the symbolic link
+  sudo ln -s /usr/local/bin/bash /bin/bash
+  echo "Symbolic link created: /bin/bash -> /usr/local/bin/bash"
+else
+  echo "/bin/bash already exists. No action taken."
+fi
 
 sudo apt update -y
 sudo apt upgrade -y
