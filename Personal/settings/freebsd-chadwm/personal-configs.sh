@@ -156,27 +156,6 @@ cp -v $installed_dir/archlinux-logout.conf ~/.config/archlinux-logout/
 echo
 tput setaf 2
 echo "################################################################"
-echo "###### Getting hblock"
-echo "################################################################"
-tput sgr0
-echo
-
-sudo pkg install -y gmake
-
-# prevention ads - tracking - hblock
-# https://github.com/hectorm/hblock
-folder="/tmp/hblock"
-if [ -d "$folder" ]; then
-    sudo rm -r "$folder"
-fi
-git clone https://github.com/hectorm/hblock  /tmp/hblock
-cd /tmp/hblock
-sudo make install
-hblock
-
-echo
-tput setaf 2
-echo "################################################################"
 echo "###### Getting arc dawn"
 echo "################################################################"
 tput sgr0
@@ -198,6 +177,27 @@ sudo sed -i '' "s|${FIND}|${REPLACE}|g" /etc/environment
 
 # installing sparklines/spark
 sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark"
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Getting hblock"
+echo "################################################################"
+tput sgr0
+echo
+
+sudo pkg install -y gmake
+
+# prevention ads - tracking - hblock
+# https://github.com/hectorm/hblock
+folder="/tmp/hblock"
+if [ -d "$folder" ]; then
+    sudo rm -r "$folder"
+fi
+git clone https://github.com/hectorm/hblock  /tmp/hblock
+cd /tmp/hblock
+sudo make install
+hblock
 
 tput setaf 6
 echo "################################################################"
