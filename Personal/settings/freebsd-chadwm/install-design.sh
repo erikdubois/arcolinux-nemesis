@@ -76,7 +76,7 @@ sudo pkg install -y gtk-arc-themes
 wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.7/Bibata.tar.xz -O /tmp/bibata.tar.xz
 tar -xf /tmp/bibata.tar.xz           # extract `Bibata.tar.gz`
 sudo rm -rf /usr/share/icons/Bibata-*
-sudo mv Bibata-* /usr/share/icons/   # Install to all users
+sudo mv Bibata-* /usr/local/share/icons/   # Install to all users
 
 echo
 tput setaf 6

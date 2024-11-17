@@ -144,7 +144,7 @@ sudo rm /usr/share/applications/archlinux-betterlockscreen.desktop
 
 # personalisation of archlinux-logout
 [ -d $HOME"/.config/archlinux-logout" ] || mkdir -p $HOME"/.config/archlinux-logout"
-cp -v archlinux-logout.conf ~/.config/archlinux-logout/
+cp -v $installed_dir/archlinux-logout.conf ~/.config/archlinux-logout/
 
 # prevention ads - tracking - hblock
 # https://github.com/hectorm/hblock
