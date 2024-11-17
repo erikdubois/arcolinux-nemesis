@@ -161,6 +161,8 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo pkg install -y gmake
+
 # prevention ads - tracking - hblock
 # https://github.com/hectorm/hblock
 folder="/tmp/hblock"
