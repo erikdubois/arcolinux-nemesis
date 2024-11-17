@@ -60,7 +60,7 @@ sudo pkg install -y dmenu
 sudo pkg install -y picom
 sudo pkg install -y playerctl
 #sudo pkg install -y policykit-1-gnome
-sudo pkg install -y pulsemixer
+#sudo pkg install -y pulsemixer
 sudo pkg install -y rofi
 sudo pkg install -y sxhkd
 sudo pkg install -y thunar
@@ -91,6 +91,7 @@ cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
 cp run.sh  ~/.config/arco-chadwm/scripts
 cp picom.conf  ~/.config/arco-chadwm/picom
 cp config.def.h ~/.config/arco-chadwm/chadwm
+cp config.mk ~/.config/arco-chadwm/chadwm
 cp sxhkdrc  ~/.config/arco-chadwm/sxhkd
 cp bar.sh ~/.config/arco-chadwm/scripts
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
