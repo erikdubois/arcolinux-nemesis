@@ -101,8 +101,9 @@ cp bar.sh ~/.config/arco-chadwm/scripts
 cp uca.xml ~/.config/Thunar/
 
 cd ~/.config/arco-chadwm/chadwm
+make clean
+make
 sudo make install
-
 
 echo
 tput setaf 6
