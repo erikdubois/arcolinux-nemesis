@@ -92,7 +92,17 @@ sudo pkg install -y xdg-user-dirs
 
 xdg-user-dirs-update
 
-echo 'pulseaudio_enable="YES"' | sudo tee -a /etc/rc.conf
+# Define the configuration line
+config_line='pulseaudio_enable="YES"'
+
+# Check if the line is already present in /etc/rc.conf
+if ! grep -qF "$config_line" /etc/rc.conf; then
+  # If not present, append the line to /etc/rc.conf
+  echo "$config_line" | sudo tee -a /etc/rc.conf
+else
+  echo "Configuration already present in /etc/rc.conf"
+fi
+
 sudo service pulseaudio start
 
 sudo pw groupmod pulse -m erik
