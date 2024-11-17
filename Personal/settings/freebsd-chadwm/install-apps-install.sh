@@ -95,6 +95,10 @@ xdg-user-dirs-update
 echo 'pulseaudio_enable="YES"' | sudo tee -a /etc/rc.conf
 sudo service pulseaudio start
 
+sudo pw groupmod pulse -m erik
+sudo pw groupmod pulse-access -m erik
+
+
 # getting design from ArcoLinux
 folder="/tmp/arcolinux-btop"
 if [ -d "$folder" ]; then
