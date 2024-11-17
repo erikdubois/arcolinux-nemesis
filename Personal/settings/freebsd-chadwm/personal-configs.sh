@@ -190,10 +190,9 @@ cd /tmp/arcolinux-arc-dawn/usr/share/themes
 
 cp -r * ~/.themes
 
-echo
 FIND="export GTK_THEME=Arc-Dark"
 REPLACE="export GTK_THEME=Arc-Dawn-Dark"
-sudo sed -i "s/$FIND/$REPLACE/g" /etc/environment
+sudo sed -i '' "s|${FIND}|${REPLACE}|g" /etc/environment
 
 # installing sparklines/spark
 sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark"
