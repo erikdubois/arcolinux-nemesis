@@ -48,12 +48,11 @@ tput sgr0
 echo
 
 # getting dependencies to be able to build Chadwm
-sudo pkg install -y build-essential
-sudo pkg install -y fonts-font-awesome
-sudo pkg install -y libimlib2-dev
-sudo pkg install -y libx11-dev
-sudo pkg install -y libxft-dev
-sudo pkg install -y libxinerama-dev
+sudo pkg install -y font-awesome
+sudo pkg install -y imlib2
+sudo pkg install -y libX11
+sudo pkg install -y libXft
+sudo pkg install -y libXinerama
 
 # applications to be used in Chadwm
 sudo pkg install -y alacritty
