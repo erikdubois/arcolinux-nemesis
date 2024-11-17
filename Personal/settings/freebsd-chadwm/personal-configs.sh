@@ -61,25 +61,7 @@ cp -v uca.xml ~/.config/Thunar/
 [ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
 
 # setting my personal configuration for variety
-echo "getting latest variety config from github"
-wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
-
-# Configuration
-CONFIG_FILE="/home/$USER/.config/variety/variety.conf"
-KEY="src3"
-OLD_VALUE="True|folder|/usr/share/backgrounds"
-NEW_VALUE="True|folder|/usr/local/share/backgrounds"
-
-# Check if the configuration file exists
-if [[ ! -f "$CONFIG_FILE" ]]; then
-  echo "Error: Configuration file '$CONFIG_FILE' not found."
-  exit 1
-fi
-
-sed -i '' 's|^src3 = True|folder|/usr/share/backgrounds$|src3 = True|folder|/usr/local/share/backgrounds|' $CONFIG_FILE
-
-
-
+cp -v variety.conf ~/.config/variety/
 
 # minimal setup for bashrc
 if [ -f ~/.bashrc ]; then
