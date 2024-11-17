@@ -76,18 +76,8 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
   exit 1
 fi
 
-# Update the key with the new value
-sed -i.bak -E "s|^($KEY\s*=\s*)$OLD_VALUE|\1$NEW_VALUE|" "$CONFIG_FILE"
+sed -i '' 's|^src3 = True|folder|/usr/share/backgrounds$|src3 = True|folder|/usr/local/share/backgrounds|' $CONFIG_FILE
 
-# Verify the change
-if grep -q "^$KEY\s*=\s*$NEW_VALUE" "$CONFIG_FILE"; then
-  echo "Successfully updated '$KEY' in '$CONFIG_FILE'."
-else
-  echo "Error: Failed to update '$KEY' in '$CONFIG_FILE'."
-  # Restore the original file from the backup
-  mv "$CONFIG_FILE.bak" "$CONFIG_FILE"
-  exit 1
-fi
 
 
 
