@@ -65,7 +65,7 @@ echo "getting latest variety config from github"
 wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
 # Configuration
-CONFIG_FILE="~/.config/variety/variety.conf"
+CONFIG_FILE="/home/$USER/.config/variety/variety.conf"
 KEY="src3"
 OLD_VALUE="True|folder|/usr/share/backgrounds"
 NEW_VALUE="True|folder|/usr/local/share/backgrounds"
