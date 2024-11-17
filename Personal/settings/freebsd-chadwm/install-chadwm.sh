@@ -55,7 +55,6 @@ sudo pkg install -y libXft
 sudo pkg install -y libXinerama
 sudo pkg install -y pkgconf
 sudo pkg install -y llvm
-sudo pkg install -y font-config
 
 # applications to be used in Chadwm
 sudo pkg install -y alacritty
@@ -101,11 +100,9 @@ cp bar.sh ~/.config/arco-chadwm/scripts
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
 cp uca.xml ~/.config/Thunar/
 
-# building Chadwm
-if [ ! -f /usr/local/bin/chadwm ] ; then
-	cd ~/.config/arco-chadwm/chadwm
-	sudo make install
-fi
+cd ~/.config/arco-chadwm/chadwm
+sudo make install
+
 
 echo
 tput setaf 6
