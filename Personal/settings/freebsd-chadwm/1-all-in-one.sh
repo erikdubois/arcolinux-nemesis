@@ -56,6 +56,8 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo kldload linux64
+
 sudo pkg update
 sudo pkg upgrade
 
