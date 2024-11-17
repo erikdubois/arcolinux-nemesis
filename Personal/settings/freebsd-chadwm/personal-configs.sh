@@ -64,6 +64,35 @@ cp -v uca.xml ~/.config/Thunar/
 echo "getting latest variety config from github"
 wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
+#!/bin/bash
+
+# Configuration
+CONFIG_FILE="~/.config/variety/variety.conf"
+KEY="src3"
+OLD_VALUE="True|folder|/usr/share/backgrounds"
+NEW_VALUE="True|folder|/usr/local/share/backgrounds"
+
+# Check if the configuration file exists
+if [[ ! -f "$CONFIG_FILE" ]]; then
+  echo "Error: Configuration file '$CONFIG_FILE' not found."
+  exit 1
+fi
+
+# Update the key with the new value
+sed -i.bak -E "s|^($KEY\s*=\s*)$OLD_VALUE|\1$NEW_VALUE|" "$CONFIG_FILE"
+
+# Verify the change
+if grep -q "^$KEY\s*=\s*$NEW_VALUE" "$CONFIG_FILE"; then
+  echo "Successfully updated '$KEY' in '$CONFIG_FILE'."
+else
+  echo "Error: Failed to update '$KEY' in '$CONFIG_FILE'."
+  # Restore the original file from the backup
+  mv "$CONFIG_FILE.bak" "$CONFIG_FILE"
+  exit 1
+fi
+
+
+
 # minimal setup for bashrc
 if [ -f ~/.bashrc ]; then
 	echo '
