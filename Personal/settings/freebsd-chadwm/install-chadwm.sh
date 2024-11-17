@@ -68,6 +68,7 @@ sudo pkg install -y rofi
 sudo pkg install -y sxhkd
 sudo pkg install -y thunar
 sudo pkg install -y thunar-archive-plugin
+sudo pkg install -y xdg-desktop-portal-gtk
 
 # exit strategy - super + shift + x
 folder="/tmp/arcolinux-powermenu"
@@ -85,8 +86,8 @@ if [ -d "$folder" ]; then
     sudo rm -r "$folder"
 fi
 git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
-sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
-sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
+sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/local/bin
+sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/local/share/xsessions
 cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
 cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
 
