@@ -33,7 +33,8 @@ CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700L -DVERSION=\"${VE
 CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O3 -march=native ${INCS} ${CPPFLAGS} -Wno-unused-function
 
 # Linker flags
-LDFLAGS  = ${LIBS}
+#LDFLAGS  = ${LIBS}
+LDFLAGS = ${LIBS} -fuse-ld=lld
 
 # compiler and linker
 CC = cc
