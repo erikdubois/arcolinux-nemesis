@@ -62,6 +62,7 @@ sudo pkg install -y gnome-tweaks
 sudo pkg install -y gnome-weather
 sudo pkg install -y hw-probe
 sudo pkg install -y inkscape
+sudo pkg install -y kvantum
 sudo pkg install -y linux-discord
 sudo pkg install -y lolcat
 sudo pkg install -y lollypop
