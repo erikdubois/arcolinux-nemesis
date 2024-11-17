@@ -55,6 +55,7 @@ sudo pkg install -y libXft
 sudo pkg install -y libXinerama
 sudo pkg install -y pkgconf
 sudo pkg install -y llvm
+sudo pkg install -y font-config
 
 # applications to be used in Chadwm
 sudo pkg install -y alacritty
