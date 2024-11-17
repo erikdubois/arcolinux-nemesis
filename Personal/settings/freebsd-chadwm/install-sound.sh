@@ -53,6 +53,28 @@ else
   echo "Configuration already present in /etc/rc.conf"
 fi
 
+# Define the configuration line
+config_line='sound_load="YES"'
+
+# Check if the line is already present in /etc/rc.conf
+if ! grep -qF "$config_line" /etc/rc.conf; then
+  # If not present, append the line to /etc/rc.conf
+  echo "$config_line" | sudo tee -a /etc/rc.conf
+else
+  echo "Configuration already present in /etc/rc.conf"
+fi
+
+# Define the configuration line
+config_line='snd_hda_load="YES"'
+
+# Check if the line is already present in /etc/rc.conf
+if ! grep -qF "$config_line" /etc/rc.conf; then
+  # If not present, append the line to /etc/rc.conf
+  echo "$config_line" | sudo tee -a /etc/rc.conf
+else
+  echo "Configuration already present in /etc/rc.conf"
+fi
+
 sudo pw groupmod pulse -m erik
 sudo pw groupmod pulse-access -m erik
 
