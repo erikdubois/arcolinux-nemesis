@@ -51,6 +51,7 @@ sudo pkg install -y duf
 sudo pkg install -y feh
 sudo pkg install -y file-roller
 sudo pkg install -y filezilla
+sudo pkg install -y firefox
 sudo pkg install -y flameshot
 sudo pkg install -y font-manager
 sudo pkg install -y hack-font
