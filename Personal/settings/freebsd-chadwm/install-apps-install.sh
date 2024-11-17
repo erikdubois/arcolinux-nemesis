@@ -75,6 +75,7 @@ sudo pkg install -y nomacs
 sudo pkg install -y numlockx
 sudo pkg install -y obs-studio
 sudo pkg install -y pavucontrol
+sudo pkg install -y pulseaudio
 sudo pkg install -y qbittorrent
 sudo pkg install -y qt5ct
 sudo pkg install -y ripgrep
@@ -87,7 +88,12 @@ sudo pkg install -y vlc
 sudo pkg install -y wget
 sudo pkg install -y xfce4-screenshooter-plugin
 sudo pkg install -y xdg-user-dirs
+
+
 xdg-user-dirs-update
+
+echo 'pulseaudio_enable="YES"' | sudo tee -a /etc/rc.conf
+sudo service pulseaudio start
 
 # getting design from ArcoLinux
 folder="/tmp/arcolinux-btop"
