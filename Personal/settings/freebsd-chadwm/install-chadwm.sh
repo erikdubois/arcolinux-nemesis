@@ -53,6 +53,7 @@ sudo pkg install -y imlib2
 sudo pkg install -y libX11
 sudo pkg install -y libXft
 sudo pkg install -y libXinerama
+sudo pkg install -y pkgconf
 
 # applications to be used in Chadwm
 sudo pkg install -y alacritty
