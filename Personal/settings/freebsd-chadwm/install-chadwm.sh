@@ -61,6 +61,7 @@ sudo pkg install -y alacritty
 sudo pkg install -y dmenu
 sudo pkg install -y picom
 sudo pkg install -y playerctl
+sudo pkg install -y python3
 #sudo pkg install -y policykit-1-gnome
 #sudo pkg install -y pulsemixer
 sudo pkg install -y rofi
