@@ -43,7 +43,7 @@ sudo pkg install -y pulseaudio
 sudo pkg install -y pavucontrol
 
 # Define the configuration line
-config_line='pulseaudio_enable="YES"'
+config_line='snd_driver_load="YES"'
 
 # Check if the line is already present in /etc/rc.conf
 if ! grep -qF "$config_line" /etc/rc.conf; then
