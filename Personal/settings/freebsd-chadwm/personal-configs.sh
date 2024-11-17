@@ -79,7 +79,7 @@ alias sr="sudo reboot"' | tee -a ~/.bashrc
 fi
 
 # Going for fish as the default shell
-chsh -s /usr/local/bin/fish
+sudo chsh -s /usr/local/bin/fish
 echo
 
 echo
