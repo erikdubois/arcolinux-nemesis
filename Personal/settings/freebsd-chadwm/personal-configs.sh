@@ -64,9 +64,6 @@ cp -v uca.xml ~/.config/Thunar/
 echo "getting latest variety config from github"
 sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
-# kill my system and go to GDM - CTRL ALT BACKSPACE
-sudo cp 99-killX.conf  /etc/X11/xorg.conf.d/
-
 # minimal setup for bashrc
 if [ -f ~/.bashrc ]; then
 	echo '
@@ -77,9 +74,8 @@ export HISTCONTROL=ignoreboth:erasedups
 export PAGER='most'
 
 alias update="sudo pkg update && sudo pkg upgrade"
-alias probe="sudo -E hw-probe -all -upload"
-alias nenvironment="sudo $EDITOR /etc/environment"
-alias sr="reboot"' | tee -a ~/.bashrc
+aalias nenvironment="sudo $EDITOR /etc/environment"
+alias sr="sudo reboot"' | tee -a ~/.bashrc
 fi
 
 # Going for fish as the default shell
