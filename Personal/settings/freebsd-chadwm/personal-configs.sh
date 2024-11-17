@@ -42,6 +42,10 @@ echo
 # installing extra shell
 sudo pkg install -y fish
 
+# Going for fish as the default shell
+sudo chsh -s /usr/local/bin/fish erik
+echo
+
 # making sure simplescreenrecorder, virtualbox and other apps are dark
 sudo cp environment /etc/environment
 # .config I would like to have
@@ -76,10 +80,6 @@ alias update="sudo pkg update && sudo pkg upgrade"
 aalias nenvironment="sudo $EDITOR /etc/environment"
 alias sr="sudo reboot"' | tee -a ~/.bashrc
 fi
-
-# Going for fish as the default shell
-sudo chsh -s /usr/local/bin/fish erik
-echo
 
 echo
 echo "Removing all the messages virtualbox produces"
