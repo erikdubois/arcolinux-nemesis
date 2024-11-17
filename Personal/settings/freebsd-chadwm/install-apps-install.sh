@@ -27,7 +27,7 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+installed_dir=$(pwd)
 
 ##################################################################################################################
 
@@ -40,11 +40,10 @@ tput sgr0
 echo
 
 sudo pkg install -y arandr
-# on Ubuntu the command is batcat
 sudo pkg install -y bat
 sudo pkg install -y btop
 sudo pkg install -y catfish
-#sudo pkg install -y chromium-browser
+sudo pkg install -y chromium
 sudo pkg install -y curl
 sudo pkg install -y dconf-editor
 sudo pkg install -y duf
@@ -82,6 +81,7 @@ sudo pkg install -y ripgrep
 sudo pkg install -y telegram-desktop
 sudo pkg install -y scrot
 sudo pkg install -y simplescreenrecorder
+sudo pkg install -y linux-sublime-text4
 sudo pkg install -y system-config-printer
 sudo pkg install -y variety
 sudo pkg install -y vlc
@@ -91,6 +91,14 @@ sudo pkg install -y xdg-user-dirs
 
 xdg-user-dirs-update
 
+echo
+tput setaf 6
+echo "################################################################"
+echo "###### ArcoLinux settings for btop"
+echo "################################################################"
+tput sgr0
+echo
+
 # getting design from ArcoLinux
 folder="/tmp/arcolinux-btop"
 if [ -d "$folder" ]; then
@@ -98,6 +106,14 @@ if [ -d "$folder" ]; then
 fi
 git clone https://github.com/arcolinux/arcolinux-btop /tmp/arcolinux-btop
 cp -r /tmp/arcolinux-btop/etc/skel/.config ~
+
+echo
+tput setaf 6
+echo "################################################################"
+echo "###### ArcoLinux settings for alacritty"
+echo "################################################################"
+tput sgr0
+echo
 
 # getting config for Alacritty - transparency
 folder="/tmp/arcolinux-alacritty"
@@ -107,6 +123,14 @@ fi
 git clone https://github.com/arcolinux/arcolinux-alacritty /tmp/arcolinux-alacritty
 cp -r /tmp/arcolinux-alacritty/etc/skel/.config ~
 
+echo
+tput setaf 6
+echo "################################################################"
+echo "###### ArcoLinux settings for variety"
+echo "################################################################"
+tput sgr0
+echo
+
 # script to change wallpaper on Chadwm
 folder="/tmp/arcolinux-variety"
 if [ -d "$folder" ]; then
@@ -114,6 +138,14 @@ if [ -d "$folder" ]; then
 fi
 git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
 cp -r /tmp/arcolinux-variety/etc/skel/.config ~
+
+echo
+tput setaf 6
+echo "################################################################"
+echo "###### Install virtualbox or not"
+echo "################################################################"
+tput sgr0
+echo
 
 # Check system hardware information
 hw_machine=$(sysctl -n hw.machine)

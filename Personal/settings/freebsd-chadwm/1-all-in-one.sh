@@ -48,12 +48,29 @@ else
   echo "/bin/bash already exists. No action taken."
 fi
 
-sudo apt update -y
-sudo apt upgrade -y
+echo
+tput setaf 6
+echo "################################################################"
+echo "###### Updating"
+echo "################################################################"
+tput sgr0
+echo
+
+sudo pkg update -y
+sudo pkg upgrade -y
+
+echo
+tput setaf 6
+echo "################################################################"
+echo "###### Start scripts"
+echo "################################################################"
+tput sgr0
+echo
 
 ./install-chadwm.sh
 ./install-apps-install.sh
 ./install-apps-local.sh
+./install-apps-ppa.sh
 # personal stuff
 ./install-design.sh
 ./install-sound.sh
@@ -65,7 +82,6 @@ echo
 tput setaf 6
 echo "################################################################"
 echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
 echo "################################################################"
 tput sgr0
 echo

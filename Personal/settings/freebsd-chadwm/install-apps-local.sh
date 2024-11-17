@@ -27,7 +27,7 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+installed_dir=$(pwd)
 
 ##################################################################################################################
 
@@ -39,12 +39,7 @@ echo "################################################################"
 tput sgr0
 echo
 
-#if you want to build it you need debhelper and gettext
-#rest is on the github of mintstick or use our script or our package
-#sudo pkg install -y ./packages/mintstick_1.6.2_all.deb
 sudo pkg install -y mintstick
-
-#sudo pkg install -y ./packages/bat_0.24.0_amd64.deb
 sudo pkg install -y bat
 
 echo

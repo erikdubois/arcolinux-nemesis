@@ -27,7 +27,7 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+installed_dir=$(pwd)
 
 ##################################################################################################################
 
@@ -71,6 +71,14 @@ sudo pkg install -y thunar
 sudo pkg install -y thunar-archive-plugin
 sudo pkg install -y xdg-desktop-portal-gtk
 
+echo
+tput setaf 6
+echo "################################################################"
+echo "###### Powermenu"
+echo "################################################################"
+tput sgr0
+echo
+
 # exit strategy - super + shift + x
 folder="/tmp/arcolinux-powermenu"
 if [ -d "$folder" ]; then
@@ -80,6 +88,14 @@ git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-power
 sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
 cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
 cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
+
+echo
+tput setaf 6
+echo "################################################################"
+echo "###### ArcoLinux Chadwm"
+echo "################################################################"
+tput sgr0
+echo
 
 # getting the official code from ArcoLinux
 folder="/tmp/arcolinux-chadwm"
@@ -91,6 +107,14 @@ sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/local/bin
 sudo cp chadwm.desktop /usr/local/share/xsessions
 cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
 cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
+
+echo
+tput setaf 6
+echo "################################################################"
+echo "###### Chadwm - overwriting essential files"
+echo "################################################################"
+tput sgr0
+echo
 
 # overwriting the official code from ArcoLinux with my own
 cp run.sh  ~/.config/arco-chadwm/scripts

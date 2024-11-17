@@ -27,7 +27,7 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+installed_dir=$(pwd)
 
 ##################################################################################################################
 
@@ -42,7 +42,7 @@ echo
 echo
 tput setaf 2
 echo "################################################################"
-echo "###### Installing packages"
+echo "###### Creating folders"
 echo "################################################################"
 tput sgr0
 echo
@@ -53,6 +53,14 @@ echo
 [ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
 [ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Getting surfn icons"
+echo "################################################################"
+tput sgr0
+echo
+
 # getting Surfn icons
 folder="/tmp/surfn"
 if [ -d "$folder" ]; then
@@ -60,6 +68,14 @@ if [ -d "$folder" ]; then
 fi
 git clone https://github.com/erikdubois/Surfn  /tmp/surfn
 cp -r /tmp/surfn/surfn-icons/* ~/.icons/
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Getting candy beauty icons"
+echo "################################################################"
+tput sgr0
+echo
 
 # getting candy beauty icons
 folder="/tmp/a-candy-beauty-icon-theme"
@@ -69,8 +85,24 @@ fi
 git clone https://github.com/arcolinux/a-candy-beauty-icon-theme  /tmp/a-candy-beauty-icon-theme
 cp -r /tmp/a-candy-beauty-icon-theme/usr/share/icons/* ~/.icons/
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Getting arc theme"
+echo "################################################################"
+tput sgr0
+echo
+
 # installing theme and cursor
 sudo pkg install -y gtk-arc-themes
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Getting bibata cursor"
+echo "################################################################"
+tput sgr0
+echo
 
 # bibata cursor
 wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.7/Bibata.tar.xz -O /tmp/bibata.tar.xz

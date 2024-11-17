@@ -129,6 +129,14 @@ else
 	rm -f template.tar.gz	
 fi
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Getting Arch Linux Logout"
+echo "################################################################"
+tput sgr0
+echo
+
 # getting archlinux-logout
 cd $installed_dir
 folder="/tmp/archlinux-logout"
@@ -145,6 +153,14 @@ sudo rm /usr/share/applications/archlinux-betterlockscreen.desktop
 [ -d $HOME"/.config/archlinux-logout" ] || mkdir -p $HOME"/.config/archlinux-logout"
 cp -v $installed_dir/archlinux-logout.conf ~/.config/archlinux-logout/
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Getting hblock"
+echo "################################################################"
+tput sgr0
+echo
+
 # prevention ads - tracking - hblock
 # https://github.com/hectorm/hblock
 folder="/tmp/hblock"
@@ -155,6 +171,14 @@ git clone https://github.com/hectorm/hblock  /tmp/hblock
 cd /tmp/hblock
 sudo make install
 hblock
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "###### Getting arc dawn"
+echo "################################################################"
+tput sgr0
+echo
 
 # Arc Dawn
 folder="/tmp/arcolinux-arc-dawn"
