@@ -37,9 +37,10 @@ CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O3 -march=nati
 #LDFLAGS  = ${LIBS}
 #LDFLAGS = ${LIBS} -fuse-ld=lld
 
-LD = /usr/bin/ld.lld
+#LD = /usr/bin/ld.lld
 LDFLAGS = ${LIBS}
 
 
 # compiler and linker
-CC = cc
+CC = clang
+LD = clang
