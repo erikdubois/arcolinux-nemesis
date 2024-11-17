@@ -56,8 +56,8 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo pkg update -y
-sudo pkg upgrade -y
+sudo pkg update
+sudo pkg upgrade
 
 echo
 tput setaf 6
