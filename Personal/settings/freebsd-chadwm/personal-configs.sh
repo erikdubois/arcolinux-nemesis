@@ -62,7 +62,7 @@ cp -v uca.xml ~/.config/Thunar/
 
 # setting my personal configuration for variety
 echo "getting latest variety config from github"
-sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
+wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
 # minimal setup for bashrc
 if [ -f ~/.bashrc ]; then
