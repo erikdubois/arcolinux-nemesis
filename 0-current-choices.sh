@@ -69,7 +69,6 @@ if grep -q "Debian" /etc/os-release; then run_script "debian"; fi
 if grep -q "Peppermint" /etc/os-release; then run_script "peppermint"; fi
 if grep -q "Pop!" /etc/os-release; then run_script "popos"; fi
 if grep -q "LMDE 6" /etc/os-release; then run_script "lmde6"; fi
-if grep -q "FreeBSD" /etc/os-release; then run_script "freebsd"; fi
 if grep -q "linuxmint" /etc/os-release; then run_script "mint"; fi
 if grep -q "AlmaLinux" /etc/os-release; then run_script "almalinux"; fi
 if grep -q "AnduinOS" /etc/os-release; then run_script "anduin"; fi
