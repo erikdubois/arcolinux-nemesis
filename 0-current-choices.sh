@@ -64,6 +64,7 @@ if [ -f /etc/lsb-release ] && grep -q "MX 23.4" /etc/lsb-release; then
     run_script "mxlinux"
 fi
 if grep -q "FreeBSD" /etc/os-release; then run_script "freebsd"; fi
+if grep -q "GhostBSD" /etc/os-release; then run_script "ghostbsd"; fi
 if grep -q "Debian" /etc/os-release; then run_script "debian"; fi
 if grep -q "Peppermint" /etc/os-release; then run_script "peppermint"; fi
 if grep -q "Pop!" /etc/os-release; then run_script "popos"; fi

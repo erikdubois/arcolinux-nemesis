@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-11-17
+## Generated on 2024-11-18
 ##
 
 ## Worldwide
@@ -781,7 +781,6 @@ Server = https://kr.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = http://ftp.kaist.ac.kr/ArchLinux/$repo/os/$arch
 Server = http://mirror.funami.tech/arch/$repo/os/$arch
 Server = https://mirror.funami.tech/arch/$repo/os/$arch
-Server = https://seoul.mirror.pkgbuild.com/$repo/os/$arch
 Server = http://ftp.harukasan.org/archlinux/$repo/os/$arch
 Server = https://ftp.harukasan.org/archlinux/$repo/os/$arch
 Server = http://ftp.lanet.kr/pub/archlinux/$repo/os/$arch
