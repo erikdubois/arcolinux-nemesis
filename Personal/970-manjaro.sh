@@ -74,7 +74,7 @@ if grep -q "Manjaro" /etc/os-release; then
   	sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git 
   	sudo pacman -S --noconfirm --needed arcolinux-meta-plasma-design
   	sudo rm -f /etc/skel/.config/variety/variety.conf
-  	sudo pacman -S --noconfirm --needed arcolinux-variety-git
+  	sudo pacman -S --noconfirm --needed arconet-variety-config
   	sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
 	if [ -f /etc/environment ]; then
