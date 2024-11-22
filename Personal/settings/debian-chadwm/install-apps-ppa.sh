@@ -53,7 +53,7 @@ echo
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt update
-sudo apt install sublime-text
+sudo apt install sublime-text -y
 
 echo
 echo "################################################################"
@@ -75,7 +75,7 @@ echo
 curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 
-sudo apt-get update && sudo apt-get install spotify-client
+sudo apt-get update && sudo apt-get install spotify-client -y
 
 echo
 echo "################################################################"
@@ -151,7 +151,7 @@ echo
 wget -qO-  https://palfrey.github.io/discord-apt/discord-apt.gpg.asc | sudo tee /etc/apt/trusted.gpg.d/discord-apt.gpg.asc > /dev/null
 echo "deb https://palfrey.github.io/discord-apt/debian/ ./" | sudo tee /etc/apt/sources.list.d/discord.list > /dev/null
 sudo apt update
-sudo apt install discord
+sudo apt install discord -y
 
 echo
 echo "################################################################"
