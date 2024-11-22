@@ -43,7 +43,7 @@ fi
 
 ##################################################################################################################
 
-if ! grep -q "Manjaro" /etc/os-release; then
+if ! grep -q -e "Manjaro" -e "Artix" /etc/os-release; then
 
   echo "Deleting current /etc/pacman.d/mirrorlist and replacing with"
   echo
