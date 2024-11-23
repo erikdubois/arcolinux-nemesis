@@ -89,12 +89,14 @@ if grep -q "Manjaro" /etc/os-release; then
 	echo "################################################################"
 	tput sgr0
 	echo
-
-	if ! grep -q "wobblywindowsEnabled=true" $HOME/.config/kwinrc; then
+	if [ -f ~/.config/kwinrc ]; then
+		if ! grep -q "wobblywindowsEnabled=true" $HOME/.config/kwinrc; then
 echo '
 
 [Plugins]
-wobblywindowsEnabled=true' | sudo tee -a ~/.config/kwinrc
+wobblywindowsEnabled=true' | tee -a ~/.config/kwinrc
+  		fi
+
   	fi
 
 fi
