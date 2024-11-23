@@ -109,6 +109,7 @@ sudo pacman -S --noconfirm --needed arcolinux-variety-git
 echo "getting latest variety config from github"
 sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
+cp -r /etc/skel/.config/variety ~/.config/variety
 
 if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed archlinux-logout-git
