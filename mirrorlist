@@ -32,6 +32,7 @@ Server = https://gsl-syd.mm.fcix.net/archlinux/$repo/os/$arch
 Server = https://sydney.mirror.pkgbuild.com/$repo/os/$arch
 Server = http://ftp.iinet.net.au/pub/archlinux/$repo/os/$arch
 Server = http://mirror.internode.on.net/pub/archlinux/$repo/os/$arch
+Server = https://au.arch.niranjan.co/$repo/os/$arch
 Server = http://syd.mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://syd.mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = http://ftp.swin.edu.au/archlinux/$repo/os/$arch

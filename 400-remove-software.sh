@@ -73,6 +73,22 @@ sudo pacman -Rs --noconfirm adobe-source-han-sans-jp-fonts
 sudo pacman -Rs --noconfirm adobe-source-han-sans-kr-fonts
 sudo pacman -Rs --noconfirm vim vim-runtime
 
+echo
+tput setaf 3
+echo "######################################################"
+echo "################### Remove configs for all"
+echo "######################################################"
+tput sgr0
+echo
+
+if [ -d "/etc/skel/.config/variety/" ]; then
+    echo "Directory exists. Removing..."
+    sudo rm -r /etc/skel/.config/variety/
+    echo "Directory removed."
+else
+    echo "Directory does not exist."
+fi
+
 # always put the current .bashrc .zshrc away
 if [ -f /etc/skel/.bashrc ]; then
   sudo mv /etc/skel/.bashrc /etc/skel/.bashrc-old
@@ -435,7 +451,6 @@ if grep -q "BigLinux" /etc/os-release; then
   tput sgr0
   echo
 
-  sudo rm -r /etc/skel/.config/variety/variety.conf
   sudo pacman -R --noconfirm big-skel
 
   echo
@@ -458,7 +473,6 @@ if grep -q "RebornOS" /etc/os-release; then
   tput sgr0
   echo
 
-  sudo rm -r /etc/skel/.config/variety/variety.conf
   sudo pacman -Rs parole --noconfirm
 
   echo
