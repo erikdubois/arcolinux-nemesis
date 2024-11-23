@@ -103,7 +103,7 @@ else
     echo "Directory does not exist."
 fi
 
-sudo pacman -S --noconfirm --needed arcolinux-variety-git
+sudo pacman -S --noconfirm arcolinux-variety-git
 mkdir -p ~/.config/variety
 cp -r /etc/skel/.config/variety ~/.config/variety
 
