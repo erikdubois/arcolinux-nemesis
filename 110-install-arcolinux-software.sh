@@ -94,6 +94,12 @@ sudo pacman -S --noconfirm --needed arcolinux-app-glade-git
 sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
+sudo pacman -S --noconfirm --needed arcolinux-variety-git
+
+# setting my personal configuration for variety
+echo "getting latest variety config from github"
+sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
+
 
 if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed archlinux-logout-git
