@@ -81,14 +81,6 @@ echo "######################################################"
 tput sgr0
 echo
 
-if [ -d "/etc/skel/.config/variety/" ]; then
-    echo "Directory exists. Removing..."
-    sudo rm -r /etc/skel/.config/variety/
-    echo "Directory removed."
-else
-    echo "Directory does not exist."
-fi
-
 # always put the current .bashrc .zshrc away
 if [ -f /etc/skel/.bashrc ]; then
   sudo mv /etc/skel/.bashrc /etc/skel/.bashrc-old

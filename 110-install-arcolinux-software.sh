@@ -94,6 +94,15 @@ sudo pacman -S --noconfirm --needed arcolinux-app-glade-git
 sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
+
+if [ -d "/etc/skel/.config/variety/" ]; then
+    echo "Directory exists. Removing..."
+    sudo rm -r /etc/skel/.config/variety/
+    echo "Directory removed."
+else
+    echo "Directory does not exist."
+fi
+
 sudo pacman -S --noconfirm --needed arcolinux-variety-git
 
 # setting my personal configuration for variety
