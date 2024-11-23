@@ -105,7 +105,7 @@ fi
 
 sudo pacman -S --noconfirm arcolinux-variety-git
 mkdir -p ~/.config/variety
-cp -rv /etc/skel/.config/variety ~/.config/variety
+cp -rv /etc/skel/.config/variety ~/.config/
 
 # setting my personal configuration for variety
 echo "getting latest variety config from github"
