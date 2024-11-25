@@ -50,7 +50,3 @@ SigLevel = PackageRequired DatabaseNever
 Include = /etc/pacman.d/arcolinux-mirrorlist' | sudo tee --append /etc/pacman.conf
 
 fi
-
-sed -i '/# \[arcolinux_repo_xlarge\]/s/^# //' /etc/pacman.conf
-sed -i '/#SigLevel = PackageRequired DatabaseNever/s/^# //' /etc/pacman.conf
-sed -i '/#Include = \/etc\/pacman.d\/arcolinux-mirrorlist/s/^# //' /etc/pacman.conf

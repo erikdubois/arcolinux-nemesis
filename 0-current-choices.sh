@@ -105,6 +105,10 @@ if grep -q 'arcolinux_repo_xlarge' /etc/pacman.conf && \
   echo "################################################################"
   tput sgr0
   echo
+  sed -i '/# \[arcolinux_repo_xlarge\]/s/^# //' /etc/pacman.conf
+  sed -i '/#SigLevel = PackageRequired DatabaseNever/s/^# //' /etc/pacman.conf
+  sed -i '/#Include = \/etc\/pacman.d\/arcolinux-mirrorlist/s/^# //' /etc/pacman.conf
+
   else
   echo
   tput setaf 2
