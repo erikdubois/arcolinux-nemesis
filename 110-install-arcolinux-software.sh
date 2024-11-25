@@ -107,8 +107,7 @@ else
     echo "Package '$PACKAGE' is not installed. No action taken."
 fi
 
-PACKAGE="arcolinux-app-glade-git
-"
+PACKAGE="arcolinux-app-glade-git"
 
 # Main logic
 if is_installed "$PACKAGE"; then
