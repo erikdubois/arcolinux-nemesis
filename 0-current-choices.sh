@@ -117,6 +117,12 @@ if grep -q 'arcolinux_repo_xlarge' /etc/pacman.conf && \
   sudo pacman -Sy
 fi
 
+# only for arcoinstall
+if grep -q 'arcoinstall' /etc/pacman.conf ;then
+  sudo cp /etc/pacman.conf /etc/pacman.conf.backup
+  sudo wget https://raw.githubusercontent.com/arconetpro/arconet-iso/refs/heads/main/archiso/airootfs/etc/pacman.conf -O /etc/pacman.conf
+fi
+
 # only for ArchBang
 sh 410-intervention*
 
