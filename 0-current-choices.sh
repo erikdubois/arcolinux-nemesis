@@ -110,7 +110,7 @@ if grep -q 'arcolinux_repo_xlarge' /etc/pacman.conf && \
 file="/etc/pacman.conf"
 
 # Use sed to target only the lines under [arcolinux_repo_xlarge]
-sed -i '/^\s*#\s*\[arcolinux_repo_xlarge\]/{
+sudo sed -i '/^\s*#\s*\[arcolinux_repo_xlarge\]/{
     N
     /^\s*#\s*\[arcolinux_repo_xlarge\]\n\s*#\s*SigLevel = PackageRequired DatabaseNever/{
         s/^\s*#\s*//;
