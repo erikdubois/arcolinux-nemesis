@@ -133,7 +133,7 @@ if [ -f /etc/dev-rel ]; then
         echo
         tput setaf 3
         echo "################################################################"
-        echo "################### We are either on arconet, arcopro or arcoplasma"
+        echo "######## We are either on arconet, arcopro or arcoplasma"
         echo "################################################################"
         tput sgr0
         echo

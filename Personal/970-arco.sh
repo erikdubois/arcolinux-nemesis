@@ -60,11 +60,11 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
 	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf /etc/archlinux-logout.conf
 
-	echo
-	echo "Hyprland config for DUAL SCREEN"
-	echo
 
 	if [ -f /usr/bin/hyprctl ]; then
+		echo
+		echo "Hyprland config for DUAL SCREEN"
+		echo
 		cp -rv $installed_dir/settings/hypr/ ~/.config/
 		/usr/local/bin/var
 	fi

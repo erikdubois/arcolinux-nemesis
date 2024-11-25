@@ -122,7 +122,7 @@ if [ ! -f /usr/bin/duf ]; then
 fi
 sudo pacman -S --noconfirm --needed expac
 sudo pacman -S --noconfirm --needed feh
-sudo pacman -S --noconfirm --needed fastfetch
+sudo pacman -S --noconfirm --needed fastfetch-git
 sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
 sudo pacman -S --noconfirm --needed flameshot-git

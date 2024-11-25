@@ -51,6 +51,24 @@ echo "################################################################"
 tput sgr0
 echo
 
+# Function to check if a package is installed
+is_installed() {
+    pacman -Q "$1" &> /dev/null
+    return $?
+}
+
+# Function to remove a package
+remove_package() {
+    local package=$1
+    echo "Attempting to remove package: $package"
+    sudo pacman -R --noconfirm "$package"
+    if [ $? -eq 0 ]; then
+        echo "Package '$package' has been removed successfully."
+    else
+        echo "Failed to remove package '$package'."
+    fi
+}
+
 echo
 tput setaf 2
 echo "################################################################"
@@ -59,14 +77,51 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo pacman -R --noconfirm archlinux-kernel-manager
+PACKAGE="archlinux-kernel-manager"
+
+# Main logic
+if is_installed "$PACKAGE"; then
+    echo "Package '$PACKAGE' is installed."
+    remove_package "$PACKAGE"
+else
+    echo "Package '$PACKAGE' is not installed. No action taken."
+fi
+
+PACKAGE="archlinux-tweak-tool-git"
+
+# Main logic
+if is_installed "$PACKAGE"; then
+    echo "Package '$PACKAGE' is installed."
+    remove_package "$PACKAGE"
+else
+    echo "Package '$PACKAGE' is not installed. No action taken."
+fi
+
+PACKAGE="sofirem-git"
+
+# Main logic
+if is_installed "$PACKAGE"; then
+    echo "Package '$PACKAGE' is installed."
+    remove_package "$PACKAGE"
+else
+    echo "Package '$PACKAGE' is not installed. No action taken."
+fi
+
+PACKAGE="arcolinux-app-glade-git
+"
+
+# Main logic
+if is_installed "$PACKAGE"; then
+    echo "Package '$PACKAGE' is installed."
+    remove_package "$PACKAGE"
+else
+    echo "Package '$PACKAGE' is not installed. No action taken."
+fi
+
 sudo pacman -S --noconfirm --needed archlinux-kernel-manager-dev
-
-sudo pacman -R --noconfirm archlinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-dev-git
-
-sudo pacman -R --noconfirm sofirem-git
 sudo pacman -S --noconfirm --needed sofirem-dev-git
+sudo pacman -S --noconfirm --needed arcolinux-app-glade-dev-git
 
 if grep -q arcolinux_repo /etc/pacman.conf; then
 
@@ -90,7 +145,6 @@ if grep -q arcolinux_repo /etc/pacman.conf; then
 fi
 
 sudo pacman -S --noconfirm --needed a-candy-beauty-icon-theme-git
-sudo pacman -S --noconfirm --needed arcolinux-app-glade-git
 sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
@@ -103,7 +157,7 @@ else
     echo "Directory does not exist."
 fi
 
-sudo pacman -S --noconfirm arcolinux-variety-git
+sudo pacman -S --noconfirm arconet-variety-config
 mkdir -p ~/.config/variety
 cp -rv /etc/skel/.config/variety ~/.config/
 
