@@ -30,23 +30,6 @@ if grep -q 'arcolinux_repo_xlarge' /etc/pacman.conf && \
   echo
 
 else
-
-echo '
-
-#[arcolinux_repo_testing]
-#SigLevel = PackageRequired DatabaseNever
-#Include = /etc/pacman.d/arcolinux-mirrorlist
-
-[arcolinux_repo]
-SigLevel = PackageRequired DatabaseNever
-Include = /etc/pacman.d/arcolinux-mirrorlist
-
-[arcolinux_repo_3party]
-SigLevel = PackageRequired DatabaseNever
-Include = /etc/pacman.d/arcolinux-mirrorlist
-
-[arcolinux_repo_xlarge]
-SigLevel = PackageRequired DatabaseNever
-Include = /etc/pacman.d/arcolinux-mirrorlist' | sudo tee --append /etc/pacman.conf
-
+  sudo cp /etc/pacman.conf /etc/pacman.conf.nemesis
+  sudo wget https://raw.githubusercontent.com/arconetpro/arconet-iso/refs/heads/main/archiso/airootfs/etc/pacman.conf -O /etc/pacman.conf
 fi
