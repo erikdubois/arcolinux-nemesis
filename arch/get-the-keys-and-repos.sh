@@ -17,7 +17,9 @@ echo "Getting the latest arcolinux mirrors file"
 sudo wget "$(echo "$arco_repo_db" | jq -r '[.[] | select(.name | contains("arcolinux-mirrorlist-git-")) | .name] | .[0] | sub("arcolinux-mirrorlist-git-"; "https://github.com/arcolinux/arcolinux_repo/raw/main/x86_64/arcolinux-mirrorlist-git-")')" -O /tmp/arcolinux-mirrorlist-git-any.pkg.tar.zst
 sudo pacman -U --noconfirm --needed /tmp/arcolinux-mirrorlist-git-any.pkg.tar.zst
 
-if grep -q arcolinux_repo /etc/pacman.conf; then
+if grep -q 'arcolinux_repo_xlarge' /etc/pacman.conf && \
+   grep -q 'arcolinux_repo' /etc/pacman.conf && \
+   grep -q 'arcolinux_repo_3party' /etc/pacman.conf; then
 
   echo
   tput setaf 2
