@@ -44,13 +44,9 @@ fi
 ##################################################################################################################
 
 # https://www.youtube.com/watch?v=HMxHUvN6VGo
-# https://gitlab.com/stephan-raabe/
-echo "getting install script"
-wget https://gitlab.com/stephan-raabe/installer/-/raw/main/install.sh?ref_type=heads -O /tmp/install.sh
+# https://github.com/mylinuxforwork/dotfiles
 
-chmod +x /tmp/install.sh
-
-sh /tmp/install.sh
+yay -S ml4w-hyprland-git
 
 echo
 tput setaf 6
