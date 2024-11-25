@@ -56,18 +56,6 @@ if [ ! -f /etc/dev-rel ] ; then
 		echo
 
 		echo
-		echo "Installing edu packages"
-		sudo pacman -S --noconfirm --needed edu-skel-git
-	  	sudo pacman -S --noconfirm --needed edu-xfce-git
-	  	sudo pacman -S --noconfirm --needed edu-system-git
-
-		echo
-		echo "Pacman parallel downloads	"
-		FIND="#ParallelDownloads = 5"
-		REPLACE="ParallelDownloads = 5"
-		sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
-
-		echo
 		echo "Bootloader time to 1 second"
 		if [ -f /boot/loader/loader.conf ]; then
 			FIND="timeout 5"
