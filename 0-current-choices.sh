@@ -94,6 +94,27 @@ if [[ "$response" == [yY] ]]; then
     touch /tmp/install-chadwm
 fi
 
+if grep -Eq 'arcolinux_repo_xlarge|arcolinux_repo|arcolinux_repo_3party' /etc/pacman.conf; then
+
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################ ArcoLinux repos are already in /etc/pacman.conf "
+  echo "################################################################"
+  tput sgr0
+  echo
+  else
+  echo
+  tput setaf 2
+  echo "################################################################"
+  echo "################### Getting the keys and mirrors for ArcoLinux"
+  echo "################################################################"
+  tput sgr0
+  echo
+  sh arch/get-the-keys-and-repos.sh
+  sudo pacman -Sy
+fi
+
 # only for ArchBang
 sh 410-intervention*
 

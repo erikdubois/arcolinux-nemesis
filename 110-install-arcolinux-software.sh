@@ -122,27 +122,6 @@ sudo pacman -S --noconfirm --needed archlinux-tweak-tool-dev-git
 sudo pacman -S --noconfirm --needed sofirem-dev-git
 sudo pacman -S --noconfirm --needed arcolinux-app-glade-dev-git
 
-if grep -q arcolinux_repo /etc/pacman.conf; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################ ArcoLinux repos are already in /etc/pacman.conf "
-  echo "################################################################"
-  tput sgr0
-  echo
-  else
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Getting the keys and mirrors for ArcoLinux"
-  echo "################################################################"
-  tput sgr0
-  echo
-  sh arch/get-the-keys-and-repos.sh
-  sudo pacman -Sy
-fi
-
 sudo pacman -S --noconfirm --needed a-candy-beauty-icon-theme-git
 sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
