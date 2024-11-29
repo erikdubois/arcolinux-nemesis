@@ -171,8 +171,8 @@ cd /tmp/arcolinux-arc-dawn/usr/share/themes
 
 cp -r * ~/.themes
 
-FIND="export GTK_THEME=Arc-Dark"
-REPLACE="export GTK_THEME=Arc-Dawn-Dark"
+FIND="GTK_THEME=Arc-Dark"
+REPLACE="GTK_THEME=Arc-Dawn-Dark"
 sudo sed -i '' "s|${FIND}|${REPLACE}|g" /etc/environment
 
 # installing sparklines/spark
