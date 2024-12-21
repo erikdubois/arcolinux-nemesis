@@ -142,7 +142,7 @@
   "custom/menu": {
     "format": "  ",
     "tooltip": false,
-    "on-click": "$HOME/.config/hypr/scripts/fullmenu",
+    "on-click": "$HOME/.config/hypr/scripts/fullmenut",
   },
   "custom/power": {
     "format": "  ",

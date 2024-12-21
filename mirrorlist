@@ -9,7 +9,7 @@ Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
 
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2024-12-02
+## Generated on 2024-12-21
 ##
 
 ## Worldwide
@@ -65,6 +65,7 @@ Server = http://mirror.datacenter.by/pub/archlinux/$repo/os/$arch
 
 ## Belgium
 Server = http://archlinux.cu.be/$repo/os/$arch
+Server = http://mirror.jonas-prz.be/$repo/os/$arch
 Server = https://mirror.jonas-prz.be/$repo/os/$arch
 Server = http://archlinux.mirror.kangaroot.net/$repo/os/$arch
 Server = http://mirror.tiguinet.net/arch/$repo/os/$arch
@@ -279,6 +280,8 @@ Server = http://mirror.oldsql.cc/archlinux/$repo/os/$arch
 Server = https://mirror.oldsql.cc/archlinux/$repo/os/$arch
 Server = http://archlinux.mirrors.ovh.net/archlinux/$repo/os/$arch
 Server = https://archlinux.mirrors.ovh.net/archlinux/$repo/os/$arch
+Server = http://mirror.peeres-telecom.fr/archlinux/$repo/os/$arch
+Server = https://mirror.peeres-telecom.fr/archlinux/$repo/os/$arch
 Server = http://mirror.rznet.fr/archlinux/$repo/os/$arch
 Server = https://mirror.rznet.fr/archlinux/$repo/os/$arch
 Server = http://mirror.spaceint.fr/archlinux/$repo/os/$arch
@@ -543,8 +546,6 @@ Server = https://archlinux.koyanet.lv/archlinux/$repo/os/$arch
 ## Lithuania
 Server = http://mirrors.atviras.lt/archlinux/$repo/os/$arch
 Server = https://mirrors.atviras.lt/archlinux/$repo/os/$arch
-Server = http://mirrors.ims.nksc.lt/archlinux/$repo/os/$arch
-Server = https://mirrors.ims.nksc.lt/archlinux/$repo/os/$arch
 
 ## Luxembourg
 Server = http://archmirror.xyz/archlinux/$repo/os/$arch
@@ -766,6 +767,7 @@ Server = https://mirror.lnx.sk/pub/linux/archlinux/$repo/os/$arch
 Server = http://tux.rainside.sk/archlinux/$repo/os/$arch
 
 ## Slovenia
+Server = https://www.sooftware.com/mirrors/Arch-Linux/$repo/os/$arch
 Server = http://mirror.tux.si/arch/$repo/os/$arch
 Server = https://mirror.tux.si/arch/$repo/os/$arch
 
@@ -870,6 +872,7 @@ Server = http://mirror2.totbb.net/archlinux/$repo/os/$arch
 Server = http://ftp.linux.org.tr/archlinux/$repo/os/$arch
 Server = http://depo.turkiye.linux.web.tr/archlinux/$repo/os/$arch
 Server = https://depo.turkiye.linux.web.tr/archlinux/$repo/os/$arch
+Server = https://tr.arch.niranjan.co/$repo/os/$arch
 Server = http://mirror.timtal.com.tr/archlinux/$repo/os/$arch
 Server = https://mirror.timtal.com.tr/archlinux/$repo/os/$arch
 Server = http://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch
@@ -891,6 +894,9 @@ Server = http://mirrors.nix.org.ua/linux/archlinux/$repo/os/$arch
 Server = https://mirrors.nix.org.ua/linux/archlinux/$repo/os/$arch
 Server = http://mirrors.reitarovskyi.tech/archlinux/$repo/os/$arch
 Server = https://mirrors.reitarovskyi.tech/archlinux/$repo/os/$arch
+
+## United Arab Emirates
+Server = https://mirror.hafeezh.com/archlinux/$repo/os/$arch
 
 ## United Kingdom
 Server = http://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch
@@ -1064,6 +1070,8 @@ Server = http://mirrors.rit.edu/archlinux/$repo/os/$arch
 Server = https://mirrors.rit.edu/archlinux/$repo/os/$arch
 Server = http://mirrors.rutgers.edu/archlinux/$repo/os/$arch
 Server = https://mirrors.rutgers.edu/archlinux/$repo/os/$arch
+Server = http://us-1.arch-linux.mirror.shieldblaze.com/$repo/os/$arch
+Server = https://us-1.arch-linux.mirror.shieldblaze.com/$repo/os/$arch
 Server = http://mirror.siena.edu/archlinux/$repo/os/$arch
 Server = http://mirrors.sonic.net/archlinux/$repo/os/$arch
 Server = https://mirrors.sonic.net/archlinux/$repo/os/$arch
