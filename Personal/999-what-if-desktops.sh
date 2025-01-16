@@ -159,7 +159,7 @@ fi
 if [ -f /usr/share/xsessions/chadwm.desktop ]; then
     if grep -q '#run "variety"' "$HOME/.config/arco-chadwm/scripts/run.sh"; then
         sed -i '/#run "variety"/s/^#//' "$HOME/.config/arco-chadwm/scripts/run.sh"
-        echo "The '#' has been removed from the line."
+        echo "Adding variety to autostart in Chadwm config"
     else
         echo "The line 'run \"variety\"' was not found or is already uncommented."
     fi
