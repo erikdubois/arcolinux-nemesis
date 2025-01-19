@@ -47,12 +47,14 @@ if ! grep -q -e "Manjaro" -e "Artix" /etc/os-release; then
 
   echo "Deleting current /etc/pacman.d/mirrorlist and replacing with"
   echo
-  echo "Server = https://mirror.osbeck.com/archlinux/\$repo/os/\$arch
-Server = http://mirror.osbeck.com/archlinux/\$repo/os/\$arch
+echo "## Best Arch Linux servers worldwide from arcolinux-nemesis-120
+
 Server = https://geo.mirror.pkgbuild.com/\$repo/os/\$arch
+Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch
 Server = http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
-Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch" | sudo tee /etc/pacman.d/mirrorlist
+Server = https://mirror.osbeck.com/archlinux/\$repo/os/\$arch
+Server = http://mirror.osbeck.com/archlinux/\$repo/os/\$arch"  | sudo tee /etc/pacman.d/mirrorlist
   echo
 fi
 
