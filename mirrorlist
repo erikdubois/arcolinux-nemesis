@@ -8,7 +8,7 @@ Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
 Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2025-01-19
+## Generated on 2025-01-25
 ##
 
 ## Worldwide
@@ -52,6 +52,8 @@ Server = https://at-vie.soulharsh007.dev/archlinux/$repo/os/$arch
 ## Azerbaijan
 Server = http://mirror.hostart.az/archlinux/$repo/os/$arch
 Server = https://mirror.hostart.az/archlinux/$repo/os/$arch
+Server = http://mirror.ourhost.az/archlinux/$repo/os/$arch
+Server = https://mirror.ourhost.az/archlinux/$repo/os/$arch
 Server = http://mirror.yer.az/archlinux/$repo/os/$arch
 Server = https://mirror.yer.az/archlinux/$repo/os/$arch
 
@@ -86,6 +88,8 @@ Server = http://archlinux.pop-es.rnp.br/$repo/os/$arch
 Server = http://mirror.ufam.edu.br/archlinux/$repo/os/$arch
 Server = http://mirror.ufscar.br/archlinux/$repo/os/$arch
 Server = https://mirror.ufscar.br/archlinux/$repo/os/$arch
+Server = http://mirrors.ic.unicamp.br/archlinux/$repo/os/$arch
+Server = https://mirrors.ic.unicamp.br/archlinux/$repo/os/$arch
 
 ## Bulgaria
 Server = http://mirror.host.ag/archlinux/$repo/os/$arch
@@ -522,6 +526,8 @@ Server = https://mirrors.cat.net/archlinux/$repo/os/$arch
 Server = http://jp.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://jp.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = http://ftp.tsukuba.wide.ad.jp/Linux/archlinux/$repo/os/$arch
+Server = http://mirror.hashy0917.net/archlinux/$repo/os/$arch
+Server = https://mirror.hashy0917.net/archlinux/$repo/os/$arch
 Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
 Server = https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
 Server = http://repo.jing.rocks/archlinux/$repo/os/$arch
@@ -571,6 +577,10 @@ Server = http://mirror.ihost.md/archlinux/$repo/os/$arch
 Server = https://mirror.ihost.md/archlinux/$repo/os/$arch
 Server = http://mirror.mangohost.net/archlinux/$repo/os/$arch
 Server = https://mirror.mangohost.net/archlinux/$repo/os/$arch
+
+## Morocco
+Server = http://mirror.abderraziq.com/archlinux/$repo/os/$arch
+Server = https://mirror.abderraziq.com/archlinux/$repo/os/$arch
 
 ## Nepal
 Server = http://mirrors.nepalicloud.com/archlinux/$repo/os/$arch
@@ -750,6 +760,8 @@ Server = https://mirror.aktkn.sg/archlinux/$repo/os/$arch
 Server = http://sg.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://sg.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://download.nus.edu.sg/mirror/archlinux/$repo/os/$arch
+Server = http://mirror.freedif.org/archlinux/$repo/os/$arch
+Server = https://mirror.freedif.org/archlinux/$repo/os/$arch
 Server = http://mirror.guillaumea.fr/archlinux/$repo/os/$arch
 Server = https://mirror.guillaumea.fr/archlinux/$repo/os/$arch
 Server = http://mirror.jingk.ai/archlinux/$repo/os/$arch
