@@ -157,6 +157,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	echo "Personal emptty conf"
 	[ -d /etc/emptty ] || sudo mkdir -p /etc/emptty
 	sudo cp -arf $installed_dir/settings/emptty/conf /etc/emptty/conf
+	sudo usermod -aG nopasswdlogin erik
 
 	echo "To personal Kvantum setup"
 	echo
