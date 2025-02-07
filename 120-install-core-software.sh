@@ -100,6 +100,7 @@ if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed xorg-xkill
 fi
 
+# All the software below will be installed on all desktops
 sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
 sudo pacman -S --noconfirm --needed aic94xx-firmware
 sudo pacman -S --noconfirm --needed archiso
