@@ -47,6 +47,14 @@ echo "################################################################"
 tput sgr0
 echo
 
+# wayland
+
+sudo apt install -y wayland-protocols
+sudo apt install -y libwayland-server0
+sudo apt install -y libwayland-client0
+sudo apt install -y xwayland
+
+
 # getting dependencies to be able to build Niri
 
 sudo apt-get install -y gcc 

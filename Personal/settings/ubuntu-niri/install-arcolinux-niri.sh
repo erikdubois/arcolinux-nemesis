@@ -47,6 +47,13 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo apt install -y yad
+sudo apt install -y waybar
+sudo apt install -y wofi
+sudo apt install -y swaybg
+sudo apt install -y swayidle
+sudo apt install -y swaylock
+
 cd /tmp
 
 rm -rf /tmp/arcolinux-niri
