@@ -80,12 +80,12 @@ cargo build --release
 #cargo install --path .
 
 #https://github.com/YaLTeR/niri/wiki/Packaging-niri
-sudo cp target/release/niri /usr/bin/
-sudo cp resources/niri-session /usr/bin/
+sudo cp -v target/release/niri /usr/bin/
+sudo cp -v resources/niri-session /usr/bin/
 #resources/niri.desktop 	/usr/share/wayland-sessions/
-sudo cp resources/niri-portals.conf /usr/share/xdg-desktop-portal/
-sudo cp resources/niri.service /usr/lib/systemd/user/
-sudo cp resources/niri-shutdown.target /usr/lib/systemd/user/
+sudo cp -v resources/niri-portals.conf /usr/share/xdg-desktop-portal/
+sudo cp -v resources/niri.service /usr/lib/systemd/user/
+sudo cp -v resources/niri-shutdown.target /usr/lib/systemd/user/
 #sudo cp resources/dinit/niri (dinit) 	/usr/lib/dinit.d/user/
 #sudo cp resources/dinit/niri-shutdown (dinit) 	/usr/lib/dinit.d/user/
 
