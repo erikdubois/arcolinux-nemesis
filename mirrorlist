@@ -8,7 +8,7 @@ Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
 Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2025-02-07
+## Generated on 2025-02-09
 ##
 
 ## Worldwide
@@ -299,6 +299,8 @@ Server = https://arch.syxpi.fr/arch/$repo/os/$arch
 Server = https://mirror.thekinrar.fr/archlinux/$repo/os/$arch
 Server = http://mirror.theo546.fr/archlinux/$repo/os/$arch
 Server = https://mirror.theo546.fr/archlinux/$repo/os/$arch
+Server = http://mirror.trap.moe/archlinux/$repo/os/$arch
+Server = https://mirror.trap.moe/archlinux/$repo/os/$arch
 Server = http://ftp.u-strasbg.fr/linux/distributions/archlinux/$repo/os/$arch
 Server = https://mirror.wormhole.eu/archlinux/$repo/os/$arch
 Server = http://arch.yourlabs.org/$repo/os/$arch
@@ -1047,7 +1049,6 @@ Server = https://mirrors.lug.mtu.edu/archlinux/$repo/os/$arch
 Server = https://m.lqy.me/arch/$repo/os/$arch
 Server = http://archlinux.macarne.com/$repo/os/$arch
 Server = https://archlinux.macarne.com/$repo/os/$arch
-Server = http://arch-mirror.marcusspencer.xyz:8080/archlinux/$repo/os/$arch
 Server = https://arch-mirror.marcusspencer.xyz:4443/archlinux/$repo/os/$arch
 Server = http://mirror.math.princeton.edu/pub/archlinux/$repo/os/$arch
 Server = http://mirror.metrocast.net/archlinux/$repo/os/$arch
