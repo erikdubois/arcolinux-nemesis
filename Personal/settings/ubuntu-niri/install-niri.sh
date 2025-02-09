@@ -76,16 +76,18 @@ git clone https://github.com/YaLTeR/niri.git
 
 cd /tmp/niri
 
-#cargo build --release
-cargo install --path .
+cargo build --release
+#cargo install --path .
 
-sudo apt autoremove -y
-
-cd /tmp
-
-git clone https://github.com/arcolinux/arcolinux-niri
-
-cp tmp/arcolinux-niri/etc/skel/* ~
+#https://github.com/YaLTeR/niri/wiki/Packaging-niri
+sudo cp target/release/niri /usr/bin/
+sudo cp resources/niri-session /usr/bin/
+#resources/niri.desktop 	/usr/share/wayland-sessions/
+sudo cp resources/niri-portals.conf /usr/share/xdg-desktop-portal/
+sudo cp resources/niri.service /usr/lib/systemd/user/
+sudo cp resources/niri-shutdown.target /usr/lib/systemd/user/
+#sudo cp resources/dinit/niri (dinit) 	/usr/lib/dinit.d/user/
+#sudo cp resources/dinit/niri-shutdown (dinit) 	/usr/lib/dinit.d/user/
 
 echo
 tput setaf 6
