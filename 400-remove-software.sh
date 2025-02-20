@@ -49,6 +49,7 @@ echo
 
 sudo pacman -Rs --noconfirm memtest86+
 sudo pacman -Rs --noconfirm memtest86+-efi
+sudo pacman -Rs --noconfirm nomacs
 sudo pacman -Rs --noconfirm hardinfo-gtk3
 sudo pacman -Rs --noconfirm paru-bin
 sudo pacman -Rs --noconfirm yay-bin

@@ -144,7 +144,7 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo sed -i 's/^#*ParallelDownloads = .*/ParallelDownloads = 21/' /etc/pacman.conf
+sudo sed -i 's/^#*ParallelDownloads = .*/ParallelDownloads = 22/' /etc/pacman.conf
 
 echo
 tput setaf 3
