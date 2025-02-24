@@ -8,7 +8,7 @@ Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
 Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2025-02-20
+## Generated on 2025-02-24
 ##
 
 ## Worldwide
@@ -314,6 +314,8 @@ Server = http://mirror.23m.com/archlinux/$repo/os/$arch
 Server = https://mirror.23m.com/archlinux/$repo/os/$arch
 Server = http://ftp.agdsn.de/pub/mirrors/archlinux/$repo/os/$arch
 Server = https://ftp.agdsn.de/pub/mirrors/archlinux/$repo/os/$arch
+Server = http://mirrors.aminvakil.com/archlinux/$repo/os/$arch
+Server = https://mirrors.aminvakil.com/archlinux/$repo/os/$arch
 Server = https://appuals.com/archlinux/$repo/os/$arch
 Server = http://artfiles.org/archlinux.org/$repo/os/$arch
 Server = https://mirror.bethselamin.de/$repo/os/$arch
@@ -346,6 +348,10 @@ Server = http://mirror.hugo-betrugo.de/archlinux/$repo/os/$arch
 Server = https://mirror.hugo-betrugo.de/archlinux/$repo/os/$arch
 Server = http://mirror.informatik.tu-freiberg.de/arch/$repo/os/$arch
 Server = https://mirror.informatik.tu-freiberg.de/arch/$repo/os/$arch
+Server = http://mirror.as20647.net/archlinux/$repo/os/$arch
+Server = http://mirror.ipb.de/archlinux/$repo/os/$arch
+Server = https://mirror.as20647.net/archlinux/$repo/os/$arch
+Server = https://mirror.ipb.de/archlinux/$repo/os/$arch
 Server = http://archlinux.mirror.iphh.net/$repo/os/$arch
 Server = http://mirrors.janbruckner.de/archlinux/$repo/os/$arch
 Server = https://mirrors.janbruckner.de/archlinux/$repo/os/$arch
@@ -382,6 +388,8 @@ Server = https://mirror.pagenotfound.de/archlinux/$repo/os/$arch
 Server = http://arch.phinau.de/$repo/os/$arch
 Server = https://arch.phinau.de/$repo/os/$arch
 Server = https://mirror.pseudoform.org/$repo/os/$arch
+Server = http://mirrors.purring.online/arch/$repo/os/$arch
+Server = https://mirrors.purring.online/arch/$repo/os/$arch
 Server = https://archlinux.richard-neumann.de/$repo/os/$arch
 Server = http://ftp.halifax.rwth-aachen.de/archlinux/$repo/os/$arch
 Server = https://ftp.halifax.rwth-aachen.de/archlinux/$repo/os/$arch
@@ -522,6 +530,7 @@ Server = http://it.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://it.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = http://archlinux.mirror.garr.it/archlinux/$repo/os/$arch
 Server = https://arch.mirror.hyperbit.it/$repo/os/$arch
+Server = http://mala-arch-server.eu/$repo/os/$arch
 Server = https://mala-arch-server.eu/$repo/os/$arch
 Server = http://archlinux.mirror.server24.net/$repo/os/$arch
 Server = https://archlinux.mirror.server24.net/$repo/os/$arch

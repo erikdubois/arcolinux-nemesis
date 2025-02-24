@@ -3,6 +3,7 @@
 <action>
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
+	<submenu></submenu>
 	<unique-id>1488955845049151-1</unique-id>
 	<command>alacritty</command>
 	<description>Example for a custom action</description>
@@ -251,5 +252,16 @@
 	<directories/>
 	<other-files/>
 	<text-files/>
+</action>
+<action>
+	<icon>baobab</icon>
+	<name>Baobab</name>
+	<submenu></submenu>
+	<unique-id>1740377141583928-1</unique-id>
+	<command>baobab %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
 </action>
 </actions>
