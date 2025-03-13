@@ -54,7 +54,13 @@ if [ ! -f /etc/dev-rel ] ; then
 		echo "################################################################"
 		tput sgr0
 		echo
-
+		
+		echo
+		echo "Adding /etc/vconsole.conf"
+		echo
+		if [ ! -f /etc/vconsole.conf ]; then
+			sudo cp $installed_dir/settings/vconsole/vconsole.conf /etc/vconsole.conf
+		fi
 		# echo	
 		# echo "When on Xfce4"
 		# if [ -f /usr/share/xsessions/xfce.desktop ]; then
