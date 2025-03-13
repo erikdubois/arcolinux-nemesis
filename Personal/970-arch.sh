@@ -62,7 +62,7 @@ if [ ! -f /etc/dev-rel ] ; then
 		echo
 		if ! grep -q "FONT=gr737c-8x16" /etc/vconsole.conf; then
 		echo '
-		FONT=gr737c-8x16' | sudo tee --append /etc/vconsole.conf
+FONT=gr737c-8x16' | sudo tee --append /etc/vconsole.conf
 		fi
 		echo
 
