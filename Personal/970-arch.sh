@@ -56,11 +56,16 @@ if [ ! -f /etc/dev-rel ] ; then
 		echo
 		
 		echo
-		echo "Adding /etc/vconsole.conf"
+		echo "Adding font to /etc/vconsole.conf"
 		echo
-		if [ ! -f /etc/vconsole.conf ]; then
-			sudo cp $installed_dir/settings/vconsole/vconsole.conf /etc/vconsole.conf
+
+		echo
+		if ! grep -q "FONT=gr737c-8x16" /etc/vconsole.conf; then
+		echo '
+		FONT=gr737c-8x16' | sudo tee --append /etc/vconsole.conf
 		fi
+		echo
+
 		# echo	
 		# echo "When on Xfce4"
 		# if [ -f /usr/share/xsessions/xfce.desktop ]; then
