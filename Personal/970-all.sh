@@ -55,7 +55,7 @@ echo
 echo "Adding xorg xkill"
 echo
 [ -d /etc/X11/xorg.conf.d/ ] || mkdir -p /etc/X11/xorg.conf.d/
-sudo cp  $installed_dir/Personal/settings/xorg/* /etc/X11/xorg.conf.d/
+sudo cp  $installed_dir/settings/xorg/* /etc/X11/xorg.conf.d/
 
 echo
 echo "copying cursor file"
@@ -63,7 +63,7 @@ if [ -d /usr/share/icons/default/cursors ]; then
 	sudo rm /usr/share/icons/default/cursors
 fi
 [ -d /usr/share/icons/default ] || sudo mkdir -p /usr/share/icons/default
-sudo cp -f $installed_dir/Personal/settings/cursor/* /usr/share/icons/default
+sudo cp -f $installed_dir/settings/cursor/* /usr/share/icons/default
 echo
 
 echo
@@ -90,7 +90,7 @@ echo "Adding nanorc settings"
 echo
 
 if [ -f /etc/nanorc ]; then
-	sudo cp $installed_dir/Personal/settings/nano/nanorc /etc/nanorc
+	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
 fi
 
 echo
