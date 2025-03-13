@@ -55,7 +55,7 @@ echo
 echo "Adding xorg xkill"
 echo
 [ -d /etc/X11/xorg.conf.d/ ] || mkdir -p /etc/X11/xorg.conf.d/
-sudo cp  settings/xorg/* /etc/X11/xorg.conf.d/
+sudo cp  $installed_dir/Personal/settings/xorg/* /etc/X11/xorg.conf.d/
 
 echo
 echo "copying cursor file"
