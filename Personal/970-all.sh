@@ -103,6 +103,15 @@ fi
 echo
 
 echo
+echo "################################################################"
+echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
+echo "################################################################"
+echo
+sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
+sudo wget https://raw.githubusercontent.com/arconetpro/arconet-iso/refs/heads/main/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
+echo
+
+echo
 tput setaf 6
 echo "######################################################"
 echo "###################  $(basename $0) done"

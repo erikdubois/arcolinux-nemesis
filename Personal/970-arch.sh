@@ -55,30 +55,6 @@ if [ ! -f /etc/dev-rel ] ; then
 		tput sgr0
 		echo
 
-		# echo
-		# echo "Bootloader time to 1 second"
-		# if [ -f /boot/loader/loader.conf ]; then
-		# 	FIND="timeout 3"
-		# 	REPLACE="timeout 1"
-		# 	sudo sed -i "s/$FIND/$REPLACE/g" /boot/loader/loader.conf
-
-		# fi
-		# echo
-
-		echo
-		echo "Adding nanorc"
-		if [ -f /etc/nanorc ]; then
-	    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-		fi
-
-		echo
-		echo "################################################################"
-		echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
-		echo "################################################################"
-		echo
-		sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
-		sudo wget https://raw.githubusercontent.com/arconetpro/arconet-iso/refs/heads/main/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
-
 		# echo	
 		# echo "When on Xfce4"
 		# if [ -f /usr/share/xsessions/xfce.desktop ]; then
