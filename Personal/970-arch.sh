@@ -55,15 +55,15 @@ if [ ! -f /etc/dev-rel ] ; then
 		tput sgr0
 		echo
 
-		echo
-		echo "Bootloader time to 1 second"
-		if [ -f /boot/loader/loader.conf ]; then
-			FIND="timeout 5"
-			REPLACE="timeout 1"
-			sudo sed -i "s/$FIND/$REPLACE/g" /boot/loader/loader.conf
+		# echo
+		# echo "Bootloader time to 1 second"
+		# if [ -f /boot/loader/loader.conf ]; then
+		# 	FIND="timeout 5"
+		# 	REPLACE="timeout 1"
+		# 	sudo sed -i "s/$FIND/$REPLACE/g" /boot/loader/loader.conf
 
-		fi
-		echo
+		# fi
+		# echo
 
 		echo
 		echo "Adding nanorc"
