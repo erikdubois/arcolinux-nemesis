@@ -66,6 +66,13 @@ FONT=gr737c-8x16' | sudo tee --append /etc/vconsole.conf
 		fi
 		echo
 
+		echo
+		echo "Copying /etc/environment"
+		echo
+
+		sudo cp -vf $installed_dir/settings/environment/environment /etc/environment
+		echo
+
 		# echo	
 		# echo "When on Xfce4"
 		# if [ -f /usr/share/xsessions/xfce.desktop ]; then
