@@ -90,7 +90,7 @@ echo "Adding nanorc settings"
 echo
 
 if [ -f /etc/nanorc ]; then
-	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+	sudo cp $installed_dir/Personal/settings/nano/nanorc /etc/nanorc
 fi
 
 echo
