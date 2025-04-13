@@ -94,8 +94,7 @@ if [[ "$response" == [yY] ]]; then
     touch /tmp/install-chadwm
 fi
 
-if grep -q 'arcolinux_repo_xlarge' /etc/pacman.conf && \
-   grep -q 'arcolinux_repo' /etc/pacman.conf && \
+if grep -q 'arcolinux_repo' /etc/pacman.conf && \
    grep -q 'arcolinux_repo_3party' /etc/pacman.conf; then
 
   echo
