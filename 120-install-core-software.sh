@@ -116,6 +116,7 @@ sudo pacman -S --noconfirm --needed dconf-editor
 sudo pacman -S --noconfirm --needed devtools
 sudo pacman -S --noconfirm --needed discord
 sudo pacman -S --noconfirm --needed downgrade
+sudo pacman -S --noconfirm --needed dropbox
 if [ ! -f /usr/bin/duf ]; then
   sudo pacman -S --noconfirm --needed duf
 fi

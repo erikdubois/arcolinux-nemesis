@@ -81,17 +81,23 @@ else
 
 fi
 
-# echo
-# tput setaf 2
-# echo "################################################################"
-# echo "################### Fixing KDFONTOP"
-# echo "################################################################"
-# tput sgr0
-# echo
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Build from AUR"
+echo "################################################################"
+tput sgr0
+echo
 
-# sh AUR/add-setfont-binaries.sh
+yay -S opera --noconfirm
 
-# these come last always
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Changing icons - hardcode-fixer"
+echo "################################################################"
+tput sgr0
+echo
 echo "Checking if icons from applications have a hardcoded path"
 echo "and fixing them"
 echo "Wait for it ..."
