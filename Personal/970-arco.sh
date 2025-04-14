@@ -60,7 +60,12 @@ if grep -q "arco" /etc/dev-rel; then
 	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
 	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf /etc/archlinux-logout.conf
 
-	
+	echo
+	echo "Copying /etc/environment"
+	echo
+
+	sudo cp -vf $installed_dir/settings/environment/environment /etc/environment
+	echo
 
 	echo
 	tput setaf 6
