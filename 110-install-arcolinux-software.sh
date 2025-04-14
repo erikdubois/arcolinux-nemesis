@@ -69,63 +69,6 @@ remove_package() {
     fi
 }
 
-echo
-tput setaf 2
-echo "################################################################"
-echo "################### Getting dev versions"
-echo "################################################################"
-tput sgr0
-echo
-
-PACKAGE="archlinux-kernel-manager"
-
-# Main logic
-if is_installed "$PACKAGE"; then
-    echo "Package '$PACKAGE' is installed."
-    remove_package "$PACKAGE"
-else
-    echo "Package '$PACKAGE' is not installed. No action taken."
-fi
-
-PACKAGE="archlinux-tweak-tool-git"
-
-# Main logic
-if is_installed "$PACKAGE"; then
-    echo "Package '$PACKAGE' is installed."
-    remove_package "$PACKAGE"
-else
-    echo "Package '$PACKAGE' is not installed. No action taken."
-fi
-
-PACKAGE="sofirem-git"
-
-# Main logic
-if is_installed "$PACKAGE"; then
-    echo "Package '$PACKAGE' is installed."
-    remove_package "$PACKAGE"
-else
-    echo "Package '$PACKAGE' is not installed. No action taken."
-fi
-
-PACKAGE="arcolinux-app-glade-git"
-
-# Main logic
-if is_installed "$PACKAGE"; then
-    echo "Package '$PACKAGE' is installed."
-    remove_package "$PACKAGE"
-else
-    echo "Package '$PACKAGE' is not installed. No action taken."
-fi
-
-# sudo pacman -S --noconfirm --needed archlinux-kernel-manager-dev
-# sudo pacman -S --noconfirm --needed archlinux-tweak-tool-dev-git
-# sudo pacman -S --noconfirm --needed sofirem-dev-git
-# sudo pacman -S --noconfirm --needed arcolinux-app-glade-dev-git
-
-# sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
-# sudo pacman -S --noconfirm --needed arcolinux-hblock-git
-# sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
-
 if [ -d "/etc/skel/.config/variety/" ]; then
     echo "Directory exists. Removing..."
     sudo rm -r /etc/skel/.config/variety/

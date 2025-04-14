@@ -46,6 +46,8 @@ echo "################### Remove software for all"
 echo "######################################################"
 tput sgr0
 echo
+sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-arc-dark-git
+sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-nordic-git
 sudo pacman -R --noconfirm mintstick-git
 sudo pacman -R --noconfirm fastfetch
 sudo pacman -Rs --noconfirm memtest86+
