@@ -107,7 +107,6 @@ if grep -q "archlinux" /etc/os-release; then
   tput sgr0
   echo
 
-  echo "Nothing to remove"
 
   echo
   tput setaf 2
