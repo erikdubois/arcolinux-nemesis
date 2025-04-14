@@ -91,6 +91,8 @@ echo
 
 yay -S opera --noconfirm
 
+yay -S signal-in-tray --noconfirm
+
 echo
 tput setaf 2
 echo "################################################################"
