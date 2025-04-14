@@ -158,7 +158,7 @@ sudo pacman -S --noconfirm --needed mission-center
 sudo pacman -S --noconfirm --needed mkinitcpio-firmware
 sudo pacman -S --noconfirm --needed mlocate
 sudo pacman -S --noconfirm --needed meld
-sudo pacman -S --noconfirm --needed mintstick-git
+sudo pacman -S --noconfirm --needed mintstick
 sudo pacman -S --noconfirm --needed most
 sudo pacman -S --noconfirm --needed namcap
 sudo pacman -S --noconfirm --needed neofetch
