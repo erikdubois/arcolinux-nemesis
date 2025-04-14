@@ -58,6 +58,7 @@ sudo pacman -Rs broadcom-wl-dkms --noconfirm
 sudo pacman -Rs rtl8821cu-morrownr-dkms-git --noconfirm
 sudo pacman -Rs --noconfirm archinstall
 sudo pacman -Rs pragha --noconfirm
+sudo pacman -Rs rate-mirrors-bin --noconfirm
 sudo pacman -Rs lftp --noconfirm
 sudo pacman -Rs xf86-video-amdgpu --noconfirm
 sudo pacman -Rs xf86-video-fbdev --noconfirm
