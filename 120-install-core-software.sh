@@ -181,7 +181,6 @@ sudo pacman -S --noconfirm --needed squashfs-tools
 sudo pacman -S --noconfirm --needed sublime-text-4
 sudo pacman -S --noconfirm --needed system-config-printer
 sudo pacman -S --noconfirm --needed telegram-desktop
-sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
 sudo pacman -S --noconfirm --needed the_silver_searcher
 sudo pacman -S --noconfirm --needed time
 sudo pacman -S --noconfirm --needed thunar
