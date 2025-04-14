@@ -95,6 +95,8 @@ echo
 # sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-git
 # sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-grey-git
 
+sudo pacman -S --noconfirm --needed neo-candy-icons
+
 #sudo pacman -S --noconfirm --needed edu-vimix-dark-tela-git
 
 # edu-skel-git and edu-system-git are defined in the personal files
