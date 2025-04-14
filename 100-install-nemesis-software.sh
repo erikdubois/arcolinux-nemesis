@@ -95,7 +95,7 @@ echo
 # sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-git
 # sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-grey-git
 
-sudo pacman -R --noconfirm neo-candy-icons-git
+sudo pacman -R --noconfirm a-candy-beauty-icon-theme-git
 sudo pacman -S --noconfirm --needed neo-candy-icons
 
 #sudo pacman -S --noconfirm --needed edu-vimix-dark-tela-git
