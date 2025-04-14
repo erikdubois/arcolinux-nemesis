@@ -111,7 +111,6 @@ sudo pacman -S --noconfirm --needed bat
 sudo pacman -S --noconfirm --needed bibata-cursor-theme
 sudo pacman -S --noconfirm --needed btop
 sudo pacman -S --noconfirm --needed chromium
-sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed dconf-editor
 sudo pacman -S --noconfirm --needed devtools
@@ -130,12 +129,8 @@ sudo pacman -S --noconfirm --needed font-manager
 sudo pacman -S --noconfirm --needed gimp
 sudo pacman -S --noconfirm --needed git
 sudo pacman -S --noconfirm --needed gitahead-git
-sudo pacman -S --noconfirm --needed gitfiend
-sudo pacman -S --noconfirm --needed gittyup-git
 sudo pacman -S --noconfirm --needed gnome-disk-utility
 sudo pacman -S --noconfirm --needed gparted
-sudo pacman -S --noconfirm --needed gpu-screen-recorder-git
-sudo pacman -S --noconfirm --needed gpu-screen-recorder-gtk-git
 sudo pacman -S --noconfirm --needed gvfs-smb
 sudo pacman -S --noconfirm --needed gvfs-dnssd
 sudo pacman -S --noconfirm --needed hardcode-fixer-git

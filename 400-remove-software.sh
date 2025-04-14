@@ -248,6 +248,7 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
   sudo pacman -R --noconfirm lua53
   sudo pacman -R --noconfirm luit
   sudo pacman -R --noconfirm lynx
+  sudo pacman -R --noconfirm mintstick
   sudo pacman -R --noconfirm mousepad
   sudo pacman -R --noconfirm nmap
   sudo pacman -R --noconfirm parole
