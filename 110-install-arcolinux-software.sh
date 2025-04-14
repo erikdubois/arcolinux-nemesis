@@ -117,14 +117,14 @@ else
     echo "Package '$PACKAGE' is not installed. No action taken."
 fi
 
-sudo pacman -S --noconfirm --needed archlinux-kernel-manager-dev
-sudo pacman -S --noconfirm --needed archlinux-tweak-tool-dev-git
-sudo pacman -S --noconfirm --needed sofirem-dev-git
-sudo pacman -S --noconfirm --needed arcolinux-app-glade-dev-git
+# sudo pacman -S --noconfirm --needed archlinux-kernel-manager-dev
+# sudo pacman -S --noconfirm --needed archlinux-tweak-tool-dev-git
+# sudo pacman -S --noconfirm --needed sofirem-dev-git
+# sudo pacman -S --noconfirm --needed arcolinux-app-glade-dev-git
 
-sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
-sudo pacman -S --noconfirm --needed arcolinux-hblock-git
-sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
+# sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
+# sudo pacman -S --noconfirm --needed arcolinux-hblock-git
+# sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
 if [ -d "/etc/skel/.config/variety/" ]; then
     echo "Directory exists. Removing..."

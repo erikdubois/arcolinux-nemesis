@@ -46,7 +46,7 @@ echo "################### Remove software for all"
 echo "######################################################"
 tput sgr0
 echo
-
+sudo pacman -R --noconfirm mintstick-git
 sudo pacman -Rs --noconfirm memtest86+
 sudo pacman -Rs --noconfirm memtest86+-efi
 sudo pacman -Rs --noconfirm nomacs-qt6-git
