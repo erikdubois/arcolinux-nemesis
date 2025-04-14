@@ -53,22 +53,6 @@ if [ -f /usr/bin/startplasma-x11 ]; then
 	tput sgr0
 	echo
 
-	echo
-	tput setaf 2
-	echo "################################################################"
-	echo "################### Bookmarks plasma to be installed"
-	echo "################################################################"
-	tput sgr0
-	echo
-
-	cp $installed_dir/settings/plasma/bookmarks/user-places.xbel ~/.local/share/user-places.xbel
-	
-	echo
-	tput setaf 2
-	echo "################################################################"
-	echo "################### Bookmarks plasma installed"
-	echo "################################################################"
-	tput sgr0
 
 fi
 
