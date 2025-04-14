@@ -105,7 +105,7 @@ qogir-gtk-theme-git
 sweet-theme-git
 sweet-gtk-theme
 arc-icon-theme
-a-candy-beauty-icon-theme-git
+neo-candy-icons-git
 breeze
 dracula-icons-git
 faba-icon-theme-git
@@ -235,7 +235,7 @@ echo
 #   expanded: true
 #   packages:
 #     - arc-icon-theme
-#     - a-candy-beauty-icon-theme-git
+#     - neo-candy-icons-git
 #     - breeze
 #     - dracula-icons-git
 #     - faba-icon-theme-git

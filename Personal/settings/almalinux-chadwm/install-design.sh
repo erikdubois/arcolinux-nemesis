@@ -62,12 +62,12 @@ git clone https://github.com/erikdubois/Surfn  /tmp/surfn
 cp -r /tmp/surfn/surfn-icons/* ~/.icons/
 
 # getting candy beauty icons
-folder="/tmp/a-candy-beauty-icon-theme"
+folder="/tmp/neo-candy-icons"
 if [ -d "$folder" ]; then
     sudo rm -r "$folder"
 fi
-git clone https://github.com/arcolinux/a-candy-beauty-icon-theme  /tmp/a-candy-beauty-icon-theme
-cp -r /tmp/a-candy-beauty-icon-theme/usr/share/icons/* ~/.icons/
+git clone https://github.com/arcolinux/neo-candy-icons  /tmp/neo-candy-icons
+cp -r /tmp/neo-candy-icons/usr/share/icons/* ~/.icons/
 
 # installing theme and cursor
 sudo dnf install -y arc-theme

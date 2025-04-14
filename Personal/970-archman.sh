@@ -111,7 +111,7 @@ if grep -q "Archman" /etc/os-release; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
-		REPLACE="a-candy-beauty-icon-theme"
+		REPLACE="neo-candy-icons"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 

@@ -75,7 +75,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 	echo "Change gtk-3.0 config"
 	echo
 	FIND="Sardi-Arc"
-	REPLACE="a-candy-beauty-icon-theme"
+	REPLACE="neo-candy-icons"
 	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
 	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
 
@@ -173,7 +173,7 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 
 		FIND="Sardi-Arc"
-		REPLACE="a-candy-beauty-icon-theme"
+		REPLACE="neo-candy-icons"
 		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 		sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 

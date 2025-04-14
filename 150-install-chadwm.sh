@@ -73,7 +73,7 @@ func_install_chadwm() {
     echo
 
     list=(
-    a-candy-beauty-icon-theme-git
+    neo-candy-icons-git
     alacritty
     archlinux-logout-git
     arcolinux-chadwm-git
