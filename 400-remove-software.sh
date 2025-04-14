@@ -47,6 +47,7 @@ echo "######################################################"
 tput sgr0
 echo
 sudo pacman -R --noconfirm mintstick-git
+sudo pacman -R --noconfirm fastfetch
 sudo pacman -Rs --noconfirm memtest86+
 sudo pacman -Rs --noconfirm memtest86+-efi
 sudo pacman -Rs --noconfirm nomacs-qt6-git
