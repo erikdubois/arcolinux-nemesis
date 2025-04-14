@@ -75,6 +75,8 @@ sudo pacman -Rs --noconfirm adobe-source-han-sans-jp-fonts
 sudo pacman -Rs --noconfirm adobe-source-han-sans-kr-fonts
 sudo pacman -Rs --noconfirm vim vim-runtime
 
+sudo pacman -Rs --noconfirm a-candy-beauty-icon-theme-git
+
 echo
 tput setaf 3
 echo "######################################################"

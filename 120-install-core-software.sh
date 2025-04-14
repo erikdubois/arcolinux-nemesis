@@ -162,7 +162,7 @@ sudo pacman -S --noconfirm --needed mintstick
 sudo pacman -S --noconfirm --needed most
 sudo pacman -S --noconfirm --needed namcap
 sudo pacman -S --noconfirm --needed neofetch
-sudo pacman -S --noconfirm --needed nomacs-qt6-git
+sudo pacman -S --noconfirm --needed nomacs
 sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed ntp
 sudo pacman -S --noconfirm --needed nss-mdns
@@ -175,7 +175,7 @@ sudo pacman -S --noconfirm --needed python-pylint
 sudo pacman -S --noconfirm --needed python-pywal
 sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed qbittorrent
-sudo pacman -S --noconfirm --needed rate-mirrors-bin
+sudo pacman -S --noconfirm --needed rate-mirrors
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
