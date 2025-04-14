@@ -126,7 +126,7 @@ fi
 sudo cp /etc/pacman.conf /etc/pacman.conf.nemesis
 sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/refs/heads/master/pacman.conf -O /etc/pacman.conf
 
-sudo pacman -Syyu
+sudo pacman -Syyu --noconfirm
 
 # only for ArchBang
 sh 410-intervention*
