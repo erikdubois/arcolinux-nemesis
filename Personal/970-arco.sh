@@ -43,12 +43,12 @@ fi
 
 ##################################################################################################################
 
-if grep -q "ArcoLinux" /etc/os-release; then
+if grep -q "arco" /etc/dev-rel; then
 
 	echo
 	tput setaf 2
 	echo "################################################################"
-	echo "################### We are on ArcoLinux"
+	echo "################### We are on one of the ArcoLinux ISOs"
 	echo "################################################################"
 	tput sgr0
 	echo
@@ -60,14 +60,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
 	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf /etc/archlinux-logout.conf
 
-
-	if [ -f /usr/bin/hyprctl ]; then
-		echo
-		echo "Hyprland config for DUAL SCREEN"
-		echo
-		cp -rv $installed_dir/settings/hypr/ ~/.config/
-		/usr/local/bin/var
-	fi
+	
 
 	echo
 	tput setaf 6
