@@ -109,6 +109,7 @@ sudo pacman -S --noconfirm --needed baobab
 sudo pacman -S --noconfirm --needed bash-completion
 sudo pacman -S --noconfirm --needed bat
 sudo pacman -S --noconfirm --needed bibata-cursor-theme
+sudo pacman -S --noconfirm --needed brave-bin
 sudo pacman -S --noconfirm --needed btop
 sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed curl

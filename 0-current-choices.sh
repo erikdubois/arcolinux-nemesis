@@ -144,16 +144,6 @@ sudo pacman -S meld --noconfirm --needed
 echo
 tput setaf 3
 echo "################################################################"
-echo "################### Pacman parallel downloads to 21"
-echo "################################################################"
-tput sgr0
-echo
-
-sudo sed -i 's/^#*ParallelDownloads = .*/ParallelDownloads = 22/' /etc/pacman.conf
-
-echo
-tput setaf 3
-echo "################################################################"
 echo "################### Start current choices"
 echo "################################################################"
 tput sgr0
