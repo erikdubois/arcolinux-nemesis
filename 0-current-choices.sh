@@ -115,10 +115,12 @@ fi
 # Install all local packages using pacman
 find "$pkg_dir" -maxdepth 1 -name '*.pkg.tar.zst' -print0 | sudo xargs -0 pacman -U --noconfirm
 
+exit 1
+
 sudo pacman -Syyu --noconfirm
 
 
-exit 1
+
 
 # only for ArchBang
 sh 410-intervention*
