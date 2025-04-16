@@ -82,8 +82,9 @@ echo
 
 sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed archlinux-logout-git
-sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
-sudo pacman -S --noconfirm --needed arcolinux-arc-kde
+sudo pacman -S --noconfirm --needed edu-arc-dawn-git
+sudo pacman -S --noconfirm --needed edu-arc-kde
+sudo pacman -S --noconfirm --needed edu-hblock-git
 sudo pacman -S --noconfirm --needed edu-rofi-git
 sudo pacman -S --noconfirm --needed edu-rofi-themes-git
 sudo pacman -S --noconfirm --needed edu-sddm-simplicity-git
