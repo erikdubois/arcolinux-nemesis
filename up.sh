@@ -47,14 +47,6 @@ target=/home/erik/DATA/arcolinux-nemesis/packages
 cp "$pkgdir"/chaotic-keyring*-*-*.pkg.tar.zst "$target"/
 cp "$pkgdir"/chaotic-mirrorlist*-*-*.pkg.tar.zst "$target"/
 
-# getting the official code from ArcoLinux
-git clone https://github.com/arcolinux/arcolinux-fish  /tmp/arcolinux-fish
-cp -rv /tmp/arcolinux-fish/etc/skel/.config/fish Personal/settings/ubuntu-chadwm/dotfiles
-cp -rv /tmp/arcolinux-fish/etc/skel/.config/fish Personal/settings/mint-chadwm/dotfiles
-# overwriting with our config.fish without pacman and other Arch aliases
-cp -v Personal/settings/ubuntu-chadwm/config.fish Personal/settings/ubuntu-chadwm/dotfiles/fish/config.fish
-cp -v Personal/settings/mint-chadwm/config.fish Personal/settings/mint-chadwm/dotfiles/fish/config.fish
-
 rm $workdir/mirrorlist
 touch $workdir/mirrorlist
 echo "## Best Arch Linux servers worldwide from arcolinux-nemesis
@@ -69,8 +61,6 @@ echo
 echo "getting mirrorlist"
 wget "https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6" -O ->> $workdir/mirrorlist
 sed -i "s/#Server/Server/g" $workdir/mirrorlist
-
-cp -v /home/erik/ARCO/ARCOLINUX/arcolinux-system-config/usr/local/bin/get-me-started /home/erik/DATA/arcolinux-nemesis/get-me-started
 
 # Below command will backup everything inside the project folder
 git add --all .
