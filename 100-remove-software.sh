@@ -52,6 +52,8 @@ sudo pacman -R --noconfirm arcolinux-rofi-themes-git
 
 sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-arc-dark-git
 sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-nordic-git
+sudo pacman -R --noconfirm arcolinux-plasma-keybindings-git
+sudo pacman -R --noconfirm arcolinux-plasma-servicemenus-git
 sudo pacman -R --noconfirm arcolinux-sddm-simplicity-git
 sudo pacman -R --noconfirm arcolinux-fish-git
 sudo pacman -R --noconfirm arcolinux-root-git
