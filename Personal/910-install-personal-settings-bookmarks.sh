@@ -51,22 +51,7 @@ echo "################################################################"
 tput sgr0
 echo
 
-if [ -f /etc/dev-rel ]; then
-    if grep -q "arconet" /etc/dev-rel || grep -q "arcopro" /etc/dev-rel || grep -q "arcoplasma" /etc/dev-rel; then
-        [ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
-        cp $installed_dir/settings/bookmarks-arco/bookmarks* ~/.config/gtk-3.0/
-    fi
-fi
-
-if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
-    [ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
-    cp $installed_dir/settings/bookmarks-alci/bookmarks* ~/.config/gtk-3.0/
-fi
-
-if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
-    [ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
-    cp $installed_dir/settings/bookmarks-carli/bookmarks* ~/.config/gtk-3.0/
-fi
+cp $installed_dir/settings/bookmarks-arco/bookmarks* ~/.config/gtk-3.0/
 
 echo
 tput setaf 6

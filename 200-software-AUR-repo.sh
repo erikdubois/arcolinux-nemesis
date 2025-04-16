@@ -98,7 +98,7 @@ fi
 if ! pacman -Qi signal-in-tray &>/dev/null; then
     yay -S signal-in-tray --noconfirm
 else
-    echo "Opera is already installed."
+    echo "signal-in-tray is already installed."
 fi
 
 echo
