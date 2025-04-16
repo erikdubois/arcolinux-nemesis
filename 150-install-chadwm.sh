@@ -75,10 +75,7 @@ func_install_chadwm() {
     list=(
     alacritty
     archlinux-logout-git
-    arcolinux-chadwm-git
-    #arcolinux-nlogout-git
-    #arcolinux-powermenu-git
-    arconet-xfce
+    edu-chadwm-git
     autorandr
     dash
     dmenu

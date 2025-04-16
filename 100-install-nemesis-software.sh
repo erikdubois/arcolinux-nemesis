@@ -80,22 +80,12 @@ echo "################################################################"
 tput sgr0
 echo
 
-# sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-git
-# sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-grey-git
-# sudo pacman -S --noconfirm --needed edu-candy-beauty-arc-mint-red-git
-# sudo pacman -S --noconfirm --needed edu-candy-beauty-tela-git
-# sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-git
-# sudo pacman -S --noconfirm --needed edu-papirus-dark-tela-grey-git
-
-sudo pacman -S --noconfirm --needed neo-candy-icons-git
+sudo pacman -S --noconfirm --needed edu-rofi-git
+sudo pacman -S --noconfirm --needed edu-rofi-themes-git
 sudo pacman -S --noconfirm --needed edu-shells-git
 sudo pacman -S --noconfirm --needed edu-variety-config-git
-#sudo pacman -S --noconfirm --needed 
-#sudo pacman -S --noconfirm --needed 
-
-
-
-echo "Nothing to do "
+sudo pacman -S --noconfirm --needed edu-xfce-git
+sudo pacman -S --noconfirm --needed neo-candy-icons-git
 
 echo
 tput setaf 6

@@ -48,53 +48,16 @@ fi
 if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
 
   echo
-  tput setaf 3
-  echo "################################################################"
-  echo "################### Get my personal variety settings"
-  echo "################################################################"
-  tput sgr0
-  echo
-
-  sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
-
-  echo
   tput setaf 2
   echo "################################################################"
-  echo "################### Plasma 6 Software to remove"
-  echo "################################################################"
-  tput sgr0
-  echo
-
-  sudo pacman -Rs broadcom-wl-dkms --noconfirm
-  sudo pacman -Rs rtl8821cu-morrownr-dkms-git --noconfirm
-
-  sudo pacman -R --noconfirm adobe-source-han-sans-cn-fonts
-  sudo pacman -R --noconfirm adobe-source-han-sans-jp-fonts
-  sudo pacman -R --noconfirm adobe-source-han-sans-kr-fonts
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Plasma 6 Software to install"
+  echo "################### Plasma Software to install"
   echo "################################################################"
   tput sgr0
   echo
 
   sudo pacman -S --noconfirm --needed obs-studio
-  # design for Thunar
-  sudo pacman -S --noconfirm --needed arc-gtk-theme
-  sudo pacman -S --noconfirm --needed discord
-  sudo pacman -S --noconfirm --needed kio-admin
-  sudo pacman -S --noconfirm --needed kwin-polonium
-  sudo pacman -S --noconfirm --needed meld
-  sudo pacman -S --noconfirm --needed pavucontrol
-  sudo pacman -S --noconfirm --needed python-pywal
-  sudo pacman -S --noconfirm --needed ripgrep
-  sudo pacman -S --noconfirm --needed sublime-text-4
-  sudo pacman -S --noconfirm --needed telegram-desktop
-  sudo pacman -S --noconfirm --needed thunar
-  sudo pacman -S --noconfirm --needed thunar-archive-plugin
-  sudo pacman -S --noconfirm --needed thunar-volman
+  sudo pacman -S --noconfirm --needed edu-plasma-keybindings-git
+  sudo pacman -S --noconfirm --needed edu-plasma-servicemenus-git
 
 fi
 
