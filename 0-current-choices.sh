@@ -113,7 +113,7 @@ if [[ ! -d "$pkg_dir" ]]; then
 fi
 
 # Install all local packages using pacman
-sudo pacman -U --noconfirm --needed "$pkg_dir"/*.pkg.tar.zst
+find "$pkg_dir" -maxdepth 1 -name '*.pkg.tar.zst' -print0 | sudo xargs -0 pacman -U --noconfirm
 
 sudo pacman -Syyu --noconfirm
 
