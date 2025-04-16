@@ -53,27 +53,9 @@ if [[ -f /etc/dev-rel ]] && grep -q "arco" /etc/dev-rel; then
 	tput sgr0
 	echo
 
-	echo
-	echo "ArchLinux Logout - handy icons"
-	echo
-	[ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
-	cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
-	sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf /etc/archlinux-logout.conf
 
-	echo
-	echo "Copying /etc/environment"
-	echo
+	echo "nothing to do"
 
-	sudo cp -vf $installed_dir/settings/environment/environment /etc/environment
-	echo
-
-	echo
-	tput setaf 6
-	echo "################################################################"
-	echo "################### Done"
-	echo "################################################################"
-	tput sgr0
-	echo
 
 fi
 

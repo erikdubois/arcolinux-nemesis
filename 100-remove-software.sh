@@ -56,7 +56,8 @@ sudo pacman -R --noconfirm arcolinux-sddm-simplicity-git
 sudo pacman -R --noconfirm arcolinux-fish-git
 sudo pacman -R --noconfirm arcolinux-root-git
 sudo pacman -R --noconfirm arcolinux-zsh-git
-sudo pacman -R --noconfirm arconet-variety-git
+sudo pacman -R --noconfirm arconet-variety-config
+sudo pacman -R --noconfirm speedtest-cli-git
 sudo pacman -R --noconfirm arconet-xfce
 sudo pacman -R --noconfirm mintstick-git
 sudo pacman -R --noconfirm fastfetch
