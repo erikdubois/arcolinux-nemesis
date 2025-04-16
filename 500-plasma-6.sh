@@ -55,10 +55,11 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   tput sgr0
   echo
 
-  sudo pacman -S --noconfirm --needed obs-studio
   sudo pacman -S --noconfirm --needed edu-plasma-keybindings-git
   sudo pacman -S --noconfirm --needed edu-plasma-servicemenus-git
-
+  sudo pacman -S --noconfirm --needed obs-studio
+  sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
+  sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
 fi
 
 echo
