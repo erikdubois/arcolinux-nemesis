@@ -52,6 +52,37 @@ tput sgr0
 echo
 
 echo
+echo "Adding nanorc settings"
+echo
+
+if [ -f /etc/nanorc ]; then
+    sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+fi
+
+echo
+echo "Adding /etc/nsswitch settings"
+echo
+
+if [ -f /etc/nsswitch.conf ]; then
+    sudo cp $installed_dir/settings/nsswitch/nsswitch.conf /etc/nsswitch.conf
+fi
+
+echo
+echo "Adding /etc/environment settings"
+echo
+
+if [ -f /etc/environment ]; then
+    sudo cp $installed_dir/settings/environment/environment /etc/environment
+fi
+
+echo
+echo "Adding cursor - index.theme"
+echo
+if [ -f /usr/share/icons/default/index.theme ]; then
+    sudo cp $installed_dir/settings/cursor/index.theme /usr/share/icons/default/index.theme
+fi
+
+echo
 echo "Enable fstrim timer"
 sudo systemctl enable fstrim.timer
 

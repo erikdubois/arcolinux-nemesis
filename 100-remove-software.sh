@@ -57,7 +57,7 @@ sudo pacman -R --noconfirm arcolinux-plasma-keybindings-git
 sudo pacman -R --noconfirm arcolinux-plasma-servicemenus-git
 sudo pacman -R --noconfirm arcolinux-sddm-simplicity-git
 sudo pacman -R --noconfirm arcolinux-fish-git
-sudo pacman -S --noconfirm arcolinux-hblock-git
+sudo pacman -R --noconfirm arcolinux-hblock-git
 sudo pacman -R --noconfirm arcolinux-root-git
 sudo pacman -R --noconfirm arcolinux-zsh-git
 sudo pacman -R --noconfirm arconet-variety-config
