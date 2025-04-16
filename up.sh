@@ -37,11 +37,15 @@
 # https://www.baeldung.com/ops/git-remove-file-without-deleting-it
 # git rm --cached file.txt
 
-# checking if I have the latest files from github
-echo "Checking for newer files online first"
-git pull
-
 workdir=$(pwd)
+
+rm /home/erik/DATA/arcolinux-nemesis/packages/*
+
+pkgdir=/var/cache/pacman/pkg
+target=/home/erik/DATA/arcolinux-nemesis/packages
+
+cp "$pkgdir"/chaotic-keyring*-*-*.pkg.tar.zst "$target"/
+cp "$pkgdir"/chaotic-mirrorlist*-*-*.pkg.tar.zst "$target"/
 
 # getting the official code from ArcoLinux
 git clone https://github.com/arcolinux/arcolinux-fish  /tmp/arcolinux-fish
