@@ -95,7 +95,7 @@ if [[ "$response" == [yY] ]]; then
 fi
 
 
-# Installing chaotic-aur
+# Installing chaotic-aur keys and mirrors
 pkg_dir="packages"
 
 # Ensure directory exists
@@ -117,14 +117,7 @@ fi
 
 sudo cp pacman.conf /etc/pacman.conf
 
-
-
-exit 1
-
 sudo pacman -Syyu --noconfirm
-
-
-
 
 # only for ArchBang
 sh 410-intervention*
