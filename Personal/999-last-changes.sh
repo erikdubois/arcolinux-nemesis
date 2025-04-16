@@ -174,6 +174,18 @@ if [ -f /usr/share/xsessions/chadwm.desktop ]; then
 
 fi
 
+if [ -f /tmp/install-extradotfiles ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Copying extra dotfiles"
+    echo "################################################################"
+    tput sgr0
+    echo
+    sudo cp -av  $installed_dir/settings/dotfiles/. /
+
+fi
 
 echo
 tput setaf 6

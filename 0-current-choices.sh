@@ -225,9 +225,7 @@ sh 970-manjaro*
 #has to be last - they are all Arch
 sh 970-arch.sh
 
-sh 999-what*
-
-sh 190-install-extra-dotfiles.sh
+sh 999-last*
 
 tput setaf 3
 echo "################################################################"
