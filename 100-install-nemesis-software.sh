@@ -80,12 +80,26 @@ echo "################################################################"
 tput sgr0
 echo
 
+sudo pacman -S --noconfirm --needed arc-gtk-theme
+sudo pacman -S --noconfirm --needed archlinux-logout-git
+sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
+sudo pacman -S --noconfirm --needed arcolinux-arc-kde
 sudo pacman -S --noconfirm --needed edu-rofi-git
 sudo pacman -S --noconfirm --needed edu-rofi-themes-git
+sudo pacman -S --noconfirm --needed edu-sddm-simplicity-git
 sudo pacman -S --noconfirm --needed edu-shells-git
 sudo pacman -S --noconfirm --needed edu-variety-config-git
 sudo pacman -S --noconfirm --needed edu-xfce-git
+sudo pacman -S --noconfirm --needed flameshot-git
+sudo pacman -S --noconfirm --needed gitahead-git
+sudo pacman -S --noconfirm --needed hardcode-fixer-git
+sudo pacman -S --noconfirm --needed lastpass
 sudo pacman -S --noconfirm --needed neo-candy-icons-git
+sudo pacman -S --noconfirm --needed pamac-aur
+sudo pacman -S --noconfirm --needed rofi-lbonn-wayland-git
+sudo pacman -S --noconfirm --needed sparklines-git
+sudo pacman -S --noconfirm --needed surfn-icons-git
+sudo pacman -S --noconfirm --needed wttr
 
 echo
 tput setaf 6
