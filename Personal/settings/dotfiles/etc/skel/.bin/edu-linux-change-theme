@@ -34,8 +34,8 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 tput setaf 3
 echo "We will apply these settings"
 echo
-echo "THEME='Arc-Dark'"
-echo "ICONS='a-candy-beauty-icon-theme'"
+echo "THEME='Arc-Dawn-Dark'"
+echo "ICONS='neo-candy-icons'"
 echo "FONT='Noto Sans 11'"
 echo "CURSOR='Bibata-Modern-Ice'"
 echo "SCHEMA='gsettings set org.gnome.desktop.interface'"
@@ -49,8 +49,8 @@ then
 
 
 
-THEME='Arc-Dark'
-ICONS='a-candy-beauty-icon-theme'
+THEME='Arc-Dawn-Dark'
+ICONS='neo-candy-icons'
 FONT='Noto Sans 11'
 CURSOR='Bibata-Modern-Ice'
 
@@ -180,5 +180,5 @@ echo "################################################################"
 tput sgr0
 
 else
-    echo "No changes. Exiting..."
+    echo "No changes. sExiting..."
 fi
