@@ -94,35 +94,31 @@ if [[ "$response" == [yY] ]]; then
     touch /tmp/install-chadwm
 fi
 
-if grep -q 'arcolinux_repo' /etc/pacman.conf && \
-   grep -q 'arcolinux_repo_3party' /etc/pacman.conf; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################ ArcoLinux repos are already in /etc/pacman.conf "
-  echo "################################################################"
-  tput sgr0
-  echo
-  else
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Getting the keys and mirrors for ArcoLinux"
-  echo "################################################################"
-  tput sgr0
-  echo
-  sh arch/get-the-keys-and-repos.sh
-  sudo pacman -Sy
+# personal pacman.conf for Erik Dubois
+if [[ ! -f /etc/pacman.conf.nemesis ]]; then
+    sudo cp /etc/pacman.conf /etc/pacman.conf.nemesis
+else
+    echo "Backup already exists: /etc/pacman.conf.nemesis"
 fi
 
-# personal pacman.conf for Erik Dubois
-sudo cp /etc/pacman.conf /etc/pacman.conf.nemesis
 sudo cp pacman.conf /etc/pacman.conf
 
+# Installing chaotic-aur
+pkg_dir="packages"
 
+# Ensure directory exists
+if [[ ! -d "$pkg_dir" ]]; then
+    echo "Directory not found: $pkg_dir"
+    exit 1
+fi
+
+# Install all local packages using pacman
+sudo pacman -U --noconfirm --needed "$pkg_dir"/*.pkg.tar.zst
 
 sudo pacman -Syyu --noconfirm
+
+
+exit 1
 
 # only for ArchBang
 sh 410-intervention*
