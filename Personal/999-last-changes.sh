@@ -166,6 +166,13 @@ if [ -f /usr/share/xsessions/chadwm.desktop ]; then
   sudo cp  $installed_dir/settings/gtk3/settings.ini /etc/skel/.config/gtk-3.0
   echo
 
+echo
+  echo "ArchLinux Logout - handy icons"
+  echo
+  [ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
+  cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
+  sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf /etc/archlinux-logout.conf
+
 fi
 
 echo
