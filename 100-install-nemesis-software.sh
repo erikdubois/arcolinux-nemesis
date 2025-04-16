@@ -89,10 +89,11 @@ echo
 
 sudo pacman -S --noconfirm --needed neo-candy-icons
 sudo pacman -S --noconfirm --needed edu-shells-git
+sudo pacman -S --noconfirm --needed edu-variety-config-git
+#sudo pacman -S --noconfirm --needed 
+#sudo pacman -S --noconfirm --needed 
 
-#sudo pacman -S --noconfirm --needed edu-vimix-dark-tela-git
 
-# edu-skel-git and edu-system-git are defined in the personal files
 
 echo "Nothing to do "
 
