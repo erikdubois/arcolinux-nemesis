@@ -59,6 +59,7 @@ tput sgr0
 [ -d $HOME"/.local/share/themes" ] || mkdir -p $HOME"/.local/share/themes"
 [ -d $HOME"/.config" ] || mkdir -p $HOME"/.config"
 [ -d $HOME"/.config/xfce4" ] || mkdir -p $HOME"/.config/xfce4"
+[ -d $HOME"/.config/autostart" ] || mkdir -p $HOME"/.config/autostart"
 [ -d $HOME"/.config/xfce4/xfconf" ] || mkdir -p $HOME"/.config/xfce4/xfconf"
 [ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
 [ -d $HOME"/.config/gtk-4.0" ] || mkdir -p $HOME"/.config/gtk-4.0"
