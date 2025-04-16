@@ -74,11 +74,7 @@ if [[ -f $hyprland || -f $wayfire || -f $sway ]]; then
   echo "Adding gitahead settings"
   echo "Adding gtk3 settings"
   echo
-  sudo cp -arf $installed_dir/settings/wayland/thunar/uca.xml ~/.config/Thunar/
-  echo
-  echo
-  sudo cp -arf $installed_dir/settings/gtk3-wayland/settings.ini ~/.config/gtk-3.0/
-  echo
+
   # wayfire code
   
   config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
