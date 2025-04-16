@@ -79,6 +79,7 @@ echo "################### Installing software from nemesis_repo"
 echo "################################################################"
 tput sgr0
 echo
+sudo pacman -S --noconfirm --needed edu-dot-files-git
 
 sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed archlinux-logout-git
