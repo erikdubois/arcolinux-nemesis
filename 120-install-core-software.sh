@@ -188,6 +188,8 @@ sudo pacman -S --noconfirm --needed unace
 sudo pacman -S --noconfirm --needed unrar
 sudo pacman -S --noconfirm --needed unzip
 
+sudo pacman -S --noconfirm --needed kvantum-qt5
+
 if [ ! -f /usr/share/xsessions/plasmax11.desktop ]; then
   sudo pacman -S --noconfirm --needed qt5ct
 fi
