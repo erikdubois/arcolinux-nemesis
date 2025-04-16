@@ -48,6 +48,14 @@ tput sgr0
 echo
 sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-arc-dark-git
 sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-nordic-git
+sudo pacman -R --noconfirm arcolinux-rofi-git
+sudo pacman -R --noconfirm arcolinux-rofi-themes-git
+sudo pacman -R --noconfirm arcolinux-sddm-simplicity-git
+sudo pacman -R --noconfirm arcolinux-fish-git
+sudo pacman -R --noconfirm arcolinux-root-git
+sudo pacman -R --noconfirm arcolinux-zsh-git
+sudo pacman -R --noconfirm arconet-variety-git
+sudo pacman -R --noconfirm arconet-xfce
 sudo pacman -R --noconfirm mintstick-git
 sudo pacman -R --noconfirm fastfetch
 sudo pacman -Rs --noconfirm memtest86+
@@ -78,7 +86,6 @@ sudo rm -rf /usr/share/backgrounds/xfce
 sudo pacman -Rs --noconfirm adobe-source-han-sans-cn-fonts
 sudo pacman -Rs --noconfirm adobe-source-han-sans-jp-fonts
 sudo pacman -Rs --noconfirm adobe-source-han-sans-kr-fonts
-sudo pacman -Rs --noconfirm vim vim-runtime
 
 sudo pacman -Rs --noconfirm a-candy-beauty-icon-theme-git
 
