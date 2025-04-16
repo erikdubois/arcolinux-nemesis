@@ -98,7 +98,7 @@ echo
 tput setaf 3
 echo "################################################################"
 echo "Do you want to install extra dotfiles on your system?"
-echo "Mainly because we are not on ArcoLinux iso"
+echo "Mainly because we are not on an ArcoLinux iso"
 echo "Answer with Y/y or N/n"
 echo "################################################################"
 tput sgr0
