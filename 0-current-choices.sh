@@ -94,6 +94,21 @@ if [[ "$response" == [yY] ]]; then
     touch /tmp/install-chadwm
 fi
 
+echo
+tput setaf 3
+echo "################################################################"
+echo "Do you want to install extra dotfiles on your system?"
+echo "Answer with Y/y or N/n"
+echo "################################################################"
+tput sgr0
+echo
+
+read response
+
+if [[ "$response" == [yY] ]]; then
+    touch /tmp/install-extradotfiles
+fi
+
 
 # Installing chaotic-aur keys and mirrors
 pkg_dir="packages"
@@ -211,6 +226,8 @@ sh 970-manjaro*
 sh 970-arch.sh
 
 sh 999-what*
+
+sh 190-install-extra-dotfiles.sh
 
 tput setaf 3
 echo "################################################################"
