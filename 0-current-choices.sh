@@ -79,6 +79,9 @@ if grep -q "Nobara" /etc/os-release; then run_script "nobara"; fi
 if grep -q "Fedora" /etc/os-release; then run_script "fedora"; fi
 if grep -q "Solus" /etc/os-release; then run_script "solus"; fi
 
+echo "Use the script give-me-pacman.conf.sh to only get the new /etc/pacman.conf"
+echo "Stop this script with CTRL + C then and run it"
+
 echo
 tput setaf 3
 echo "################################################################"
