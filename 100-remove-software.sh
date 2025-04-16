@@ -113,6 +113,55 @@ if [ -f /etc/skel/.zshrc ]; then
   sudo mv /etc/skel/.zshrc /etc/skel/.zshrc-old
 fi
 
+# when on ARCOLINUX - remove conflicting files
+
+if grep -q "arco" /etc/dev-rel; then
+  echo
+  tput setaf 2
+  echo "######################################################"
+  echo "####### Removing software for ArcoLinux"
+  echo "######################################################"
+  tput sgr0
+  echo
+
+  # first depends on gone
+  sudo pacman -R --noconfirm arcolinux-pipemenus-git
+  sudo pacman -R --noconfirm archlinux-tweak-tool-git
+
+  sudo pacman -R --noconfirm arcolinux-app-glade-git
+  sudo pacman -R --noconfirm arcolinux-common-git
+  sudo pacman -R --noconfirm arcolinux-dconf-all-desktops-git
+  sudo pacman -R --noconfirm arcolinux-desktop-trasher-git
+  sudo pacman -R --noconfirm arcolinux-faces-git
+  sudo pacman -R --noconfirm arcolinux-fonts-git
+  sudo pacman -R --noconfirm arcolinux-keyring
+  sudo pacman -R --noconfirm arcolinux-kvantum-git
+  sudo pacman -R --noconfirm arcolinux-local-applications-all-hide-git
+  sudo pacman -R --noconfirm arcolinux-local-applications-git
+  sudo pacman -R --noconfirm arcolinux-local-xfce4-git
+  sudo pacman -R --noconfirm arcolinux-logo-git
+  sudo pacman -R --noconfirm arcolinux-meta-log
+  sudo pacman -R --noconfirm arcolinux-mirrorlist-git
+  sudo pacman -R --noconfirm arcolinux-systemd-services-git
+  sudo pacman -R --noconfirm arcolinux-wallpapers-git
+  sudo pacman -R --noconfirm arcolinux-welcome-app-git
+  sudo pacman -R --noconfirm arcolinux-xfce-panel-profiles-git
+
+  sudo pacman -R --noconfirm arconet-wallpapers
+
+  sudo pacman -R --noconfirm archlinux-kernel-manager
+  sudo pacman -R --noconfirm ufetch-arco-git
+  
+  echo
+  tput setaf 2
+  echo "######################################################"
+  echo "################### Software removed"
+  echo "######################################################"
+  tput sgr0
+  echo
+
+fi
+
 # when on Arch Linux - remove conflicting files
 if grep -q "archlinux" /etc/os-release; then
 
@@ -124,76 +173,6 @@ if grep -q "archlinux" /etc/os-release; then
   tput sgr0
   echo
 
-
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "################### Software removed"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-fi
-
-# when on CARLI - remove conflicting files
-
-if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
-
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "################### Removing software for Carli"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-  sudo pacman -R --noconfirm grml-zsh-config
-
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "################### Software removed"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-fi
-
-# when on ARISER - remove conflicting files 
-
-if [ -f /usr/local/bin/get-nemesis-on-ariser ]; then
-
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "################### Removing software for ARISER"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-  echo "Nothing to do"
-
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "################### Software removed"
-  echo "######################################################"
-  tput sgr0
-  echo 
-fi
-
-# when on ARCOLINUX - remove conflicting files
-
-if grep -q "ArcoLinux" /etc/os-release; then
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "####### Removing software for ArcoLinux"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-  echo "Nothing to do"
 
   echo
   tput setaf 2
@@ -234,59 +213,6 @@ if grep -q "EndeavourOS" /etc/os-release; then
   echo
 
 fi
-
-# when on ALCI - remove conflicting files
-
-if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
-
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "############### Removing software for ALCI"
-  echo "######################################################"
-  tput sgr0
-  echo
-  if [ -f /etc/skel/.Xresources ]; then
-    sudo rm /etc/skel/.Xresources
-  fi
-  sudo pacman -R --noconfirm amd-ucode
-  sudo pacman -R --noconfirm b43-fwcutter
-  sudo pacman -R --noconfirm broadcom-wl
-  sudo pacman -R --noconfirm broadcom-wl-dkms  
-  sudo pacman -Rs --noconfirm cloud-init
-  sudo pacman -R --noconfirm darkhttpd
-  sudo pacman -R --noconfirm dhcpcd
-  sudo pacman -R --noconfirm ell  
-  sudo pacman -R --noconfirm grml-zsh-config
-  sudo pacman -R --noconfirm iwd
-  sudo pacman -R --noconfirm kitty-terminfo
-  sudo pacman -R --noconfirm lftp
-  sudo pacman -R --noconfirm livecd-sounds
-  sudo pacman -R --noconfirm lua53
-  sudo pacman -R --noconfirm luit
-  sudo pacman -R --noconfirm lynx
-  sudo pacman -R --noconfirm mintstick-git
-  sudo pacman -R --noconfirm mousepad
-  sudo pacman -R --noconfirm nmap
-  sudo pacman -R --noconfirm parole
-  sudo pacman -R --noconfirm systemd-resolvconf
-  sudo pacman -R --noconfirm xbitmaps
-  sudo pacman -R --noconfirm xfburn
-  sudo pacman -R --noconfirm xterm
-  sudo pacman -Rs --noconfirm brltty
-  sudo pacman -Rs --noconfirm espeak-ng
-  sudo pacman -Rs --noconfirm espeakup
-
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "################### Software removed"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-fi
-
 
 # when on Garuda - remove conflicting files
 
@@ -331,57 +257,6 @@ if grep -q "Garuda" /etc/os-release; then
   echo
 
 fi
-
-
-# when on SIERRA - remove conflicting files
-
-if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
-
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "############### Removing software for Sierra"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-  sudo pacman -R --noconfirm amd-ucode
-  sudo pacman -R --noconfirm b43-fwcutter
-  sudo pacman -R --noconfirm broadcom-wl
-  sudo pacman -R --noconfirm broadcom-wl-dkms  
-  sudo pacman -Rs --noconfirm cloud-init
-  sudo pacman -R --noconfirm darkhttpd
-  sudo pacman -R --noconfirm dhcpcd
-  sudo pacman -R --noconfirm ell  
-  sudo pacman -R --noconfirm grml-zsh-config
-  sudo pacman -R --noconfirm iwd
-  sudo pacman -R --noconfirm kitty-terminfo
-  sudo pacman -R --noconfirm lftp
-  sudo pacman -R --noconfirm livecd-sounds
-  sudo pacman -R --noconfirm lua53
-  sudo pacman -R --noconfirm luit
-  sudo pacman -R --noconfirm lynx
-  sudo pacman -R --noconfirm mousepad
-  sudo pacman -R --noconfirm nmap
-  sudo pacman -R --noconfirm parole
-  sudo pacman -R --noconfirm systemd-resolvconf
-  sudo pacman -R --noconfirm xbitmaps
-  sudo pacman -R --noconfirm xfburn
-  sudo pacman -R --noconfirm xterm
-  sudo pacman -Rs --noconfirm brltty
-  sudo pacman -Rs --noconfirm espeak-ng
-  sudo pacman -Rs --noconfirm espeakup
-
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "################### Software removed"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-fi
-
 
 # when on Archman - remove conflicting files
 
@@ -478,7 +353,7 @@ if grep -q "BigLinux" /etc/os-release; then
 
 fi
 
-# when on BigLinux - remove conflicting files
+# when on RebornOS - remove conflicting files
 if grep -q "RebornOS" /etc/os-release; then
   echo
   tput setaf 2

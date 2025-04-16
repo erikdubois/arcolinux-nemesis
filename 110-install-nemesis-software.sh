@@ -80,7 +80,7 @@ echo "################################################################"
 tput sgr0
 echo
 
-# removing all conflicting packages with edu-dot-files-git
+# removing all conflicting packages with edu-dot-files-gits
 sudo pacman -R --noconfirm arcolinux-bin-git
 sudo pacman -R --noconfirm arcolinux-system-config-git
 sudo pacman -R --noconfirm arcolinux-bootloader-systemd-boot-git
