@@ -26,17 +26,20 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-#Automount shared folders for virtualbox
-user=$( who | cut -d ' ' -f1 | uniq)
-sudo gpasswd -a $user vboxsf
-sudo systemctl enable vboxservice.service
-sudo systemctl start vboxservice.service
-echo "##############################################"
-echo "Now log out and log back in"
-echo "If you have set virtualbox to share a folder"
-echo "with automount, it will appear in the"
-echo "filemanager at next login"
-echo "##############################################"
+# Check if rate-mirrors is installed
+if [ ! -x /usr/bin/rate-mirrors ]; then
+	echo "###############################################################################"
+    echo "Rate-mirrors is not installed. Please install the 'rate-mirrors' package."
+	echo "###############################################################################"
+
+    exit 1
+fi
+
+echo "###############################################################################"
+echo "###                           USING RATE-MIRRORS                           ####"
+echo "###############################################################################"
+
+sudo rate-mirrors --allow-root --disable-comments-in-file --save /etc/pacman.d/mirrorlist arch
 
 echo "###############################################################################"
 echo "###                DONE - YOU CAN CLOSE THIS WINDOW                        ####"
