@@ -89,9 +89,17 @@ echo "################################################################"
 tput sgr0
 echo
 
-yay -S opera --noconfirm
+if ! pacman -Qi opera &>/dev/null; then
+    yay -S opera --noconfirm
+else
+    echo "Opera is already installed."
+fi
 
-yay -S signal-in-tray --noconfirm
+if ! pacman -Qi signal-in-tray &>/dev/null; then
+    yay -S signal-in-tray --noconfirm
+else
+    echo "Opera is already installed."
+fi
 
 echo
 tput setaf 2
