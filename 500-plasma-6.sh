@@ -43,8 +43,6 @@ fi
 
 ##################################################################################################################
 
-sudo pacman -Syyu --noconfirm
-
 # when on Plasma
 
 if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then

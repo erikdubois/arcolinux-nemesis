@@ -43,7 +43,7 @@ fi
 
 ##################################################################################################################
 
-if grep -q "arco" /etc/dev-rel; then
+if [[ -f /etc/dev-rel ]] && grep -q "arco" /etc/dev-rel; then
 
 	echo
 	tput setaf 2

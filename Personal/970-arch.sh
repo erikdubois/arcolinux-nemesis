@@ -53,18 +53,15 @@ if [ ! -f /etc/dev-rel ] ; then
 		echo "################### We are on ARCH LINUX"
 		echo "################################################################"
 		tput sgr0
-		echo
 		
 		echo
 		echo "Adding font to /etc/vconsole.conf"
-		echo
 
 		echo
 		if ! grep -q "FONT=lat4-19" /etc/vconsole.conf; then
 		echo '
 FONT=lat4-19' | sudo tee --append /etc/vconsole.conf
 		fi
-		echo
 
 		echo
 		echo "Copying /etc/environment"
@@ -72,37 +69,6 @@ FONT=lat4-19' | sudo tee --append /etc/vconsole.conf
 
 		sudo cp -vf $installed_dir/settings/environment/environment /etc/environment
 		echo
-
-		# echo	
-		# echo "When on Xfce4"
-		# if [ -f /usr/share/xsessions/xfce.desktop ]; then
-		# 	echo
-		# 	tput setaf 2
-		# 	echo "################################################################"
-		# 	echo "################### We are on Xfce4"
-		# 	echo "################################################################"
-		# 	tput sgr0
-		# 	echo
-
-		# 	cp -arf /etc/skel/. ~
-
-			# echo
-			# echo "Changing the whiskermenu"
-			# echo
-			# cp $installed_dir/settings/archlinux/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
-			# sudo cp $installed_dir/settings/archlinux/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
-
-			# FIND="Arc-Dark"
-			# REPLACE="Arc-Dawn-Dark"
-			# sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-			# sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-			# FIND="Sardi-Arc"
-			# REPLACE="neo-candy-icons"
-			# sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-			# sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-		# fi
 
 		echo
 		tput setaf 6
