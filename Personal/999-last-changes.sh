@@ -183,7 +183,7 @@ if [ -f /tmp/install-extradotfiles ]; then
     echo "################################################################"
     tput sgr0
     echo
-    sudo cp -av  $installed_dir/settings/dotfiles/. /
+    sudo cp -a  $installed_dir/settings/dotfiles/. /
     cp -arf /etc/skel/. ~
 
 fi
