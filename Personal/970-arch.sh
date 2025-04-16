@@ -64,13 +64,6 @@ FONT=lat4-19' | sudo tee --append /etc/vconsole.conf
 		fi
 
 		echo
-		echo "Copying /etc/environment"
-		echo
-
-		sudo cp -vf $installed_dir/settings/environment/environment /etc/environment
-		echo
-
-		echo
 		tput setaf 6
 		echo "################################################################"
 		echo "################### Done"

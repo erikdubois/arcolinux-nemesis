@@ -51,6 +51,9 @@ sway="/usr/share/wayland-sessions/sway.desktop"
 
 if [[ -f $hyprland || -f $wayfire || -f $sway ]]; then
 
+  echo
+  echo "We found one or more of these three: sway, wayfire or hyprland"
+  echo
 
   echo "Adding thunar settings"
   echo "Adding gitahead settings"
@@ -75,18 +78,6 @@ if [[ -f $hyprland || -f $wayfire || -f $sway ]]; then
   gsettings set "$gnome_schema" icon-theme "$icon_theme"
   gsettings set "$gnome_schema" cursor-theme "$cursor_theme"
   gsettings set "$gnome_schema" font-name "$font_name"
-
-  echo
-  echo "We found one or more of these three: sway, wayfire or hyprland"
-  echo
-
-  echo
-  echo "Installing extra packages"
-  echo
-
-  #sudo pacman -S --noconfirm --needed arcolinux-wayland-app-hooks-git
-  sudo pacman -S --noconfirm --needed obs-studio
-  #sudo pacman -S --noconfirm --needed spotify-wayland
 
 fi
 
@@ -154,25 +145,6 @@ if grep -q "ArchBang" /etc/os-release; then
       fi
     fi
   fi
-fi
-
-if [ -f /usr/share/xsessions/chadwm.desktop ]; then
-
-  echo 
-  echo "neo-candy-icons on gtk-3.0 config"
-  [ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
-  cp  $installed_dir/settings/gtk3/settings.ini $HOME/.config/gtk-3.0
-  [ -d "/etc/skel/.config/gtk-3.0" ] || sudo mkdir -p "/etc/skel/.config/gtk-3.0"
-  sudo cp  $installed_dir/settings/gtk3/settings.ini /etc/skel/.config/gtk-3.0
-  echo
-
-echo
-  echo "ArchLinux Logout - handy icons"
-  echo
-  [ -d $HOME"/.config/archlinux-logout/" ] || mkdir -p $HOME"/.config/archlinux-logout"
-  cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf $HOME/.config/archlinux-logout/archlinux-logout.conf
-  sudo cp  $installed_dir/settings/archlinux-logout/archlinux-logout-handy.conf /etc/archlinux-logout.conf
-
 fi
 
 echo

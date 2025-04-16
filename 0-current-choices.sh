@@ -94,22 +94,6 @@ if [[ "$response" == [yY] ]]; then
     touch /tmp/install-chadwm
 fi
 
-echo
-tput setaf 3
-echo "################################################################"
-echo "Do you want to install extra dotfiles on your system?"
-echo "Mainly because we are not on an ArcoLinux iso"
-echo "Answer with Y/y or N/n"
-echo "################################################################"
-tput sgr0
-echo
-
-read response
-
-if [[ "$response" == [yY] ]]; then
-    touch /tmp/install-extradotfiles
-fi
-
 ##################################################################################################################
 
 if ! grep -q -e "Manjaro" -e "Artix" /etc/os-release; then
@@ -214,14 +198,11 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 cd $installed_dir/Personal
 
 sh 900-*
-sh 910-*
-sh 920-*
+
 sh 930-*
 sh 950-*
 
-sh 960-*
 
-sh 969-skel*
 
 sh 970-all*
 
@@ -241,6 +222,8 @@ sh 970-manjaro*
 
 #has to be last - they are all Arch
 sh 970-arch.sh
+
+sh 990-skel*
 
 sh 999-last*
 

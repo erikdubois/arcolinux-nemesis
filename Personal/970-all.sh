@@ -52,15 +52,6 @@ tput sgr0
 echo
 
 echo
-echo "copying cursor file"
-if [ -d /usr/share/icons/default/cursors ]; then
-	sudo rm /usr/share/icons/default/cursors
-fi
-[ -d /usr/share/icons/default ] || sudo mkdir -p /usr/share/icons/default
-sudo cp -f $installed_dir/settings/cursor/* /usr/share/icons/default
-echo
-
-echo
 echo "Enable fstrim timer"
 sudo systemctl enable fstrim.timer
 

@@ -43,15 +43,21 @@ fi
 
 ##################################################################################################################
 
+sudo cp -a  $installed_dir/settings/dotfiles/. /
+
 echo
-tput setaf 2
+tput setaf 3
 echo "################################################################"
-echo "################### Display manager"
+echo "FINAL SKEL"
+echo "Copying all files and folders from /etc/skel to ~"
+echo "First we make a backup of .config"
+echo "Wait for it ...."
 echo "################################################################"
 tput sgr0
 echo
 
-echo "nothing to do"
+cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
+cp -arf /etc/skel/. ~
 
 echo
 tput setaf 6
