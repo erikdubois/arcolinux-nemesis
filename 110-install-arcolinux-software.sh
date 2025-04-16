@@ -79,15 +79,11 @@ fi
 
 sudo pacman -S --noconfirm arconet-variety-config
 mkdir -p ~/.config/variety
-cp -rv /etc/skel/.config/variety ~/.config/
-
-# setting my personal configuration for variety
-echo "getting latest variety config from github"
-sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
+cp -r /etc/skel/.config/variety ~/.config/
 
 if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
-  sudo pacman -S --noconfirm --needed archlinux-logout-git
-  sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
+  #sudo pacman -S --noconfirm --needed archlinux-logout-git
+  #sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
 fi
 
 ###############################################################################
@@ -121,8 +117,8 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
   echo "################################################################"
   tput sgr0
   echo
-  sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
-  sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
+  #sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
+  #sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
 fi
 
 
@@ -136,28 +132,7 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
   tput sgr0
   echo
 
-  sudo pacman -S --noconfirm --needed arcolinux-arc-kde
-
-fi
-
-if [ -f /usr/share/xsessions/cinnamon.desktop ]; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Installing software for Cinnamon"
-  echo "################################################################"
-  tput sgr0
-  echo
-
-  sudo pacman -S --noconfirm --needed nemo-fileroller
-  sudo pacman -S --noconfirm --needed cinnamon-translations
-  sudo pacman -S --noconfirm --needed mintlocale
-  sudo pacman -S --noconfirm --needed iso-flag-png
-  sudo pacman -S --noconfirm --needed gnome-terminal
-  sudo pacman -S --noconfirm --needed gnome-system-monitor
-  sudo pacman -S --noconfirm --needed gnome-screenshot
-  sudo pacman -S --noconfirm --needed xed
+  #sudo pacman -S --noconfirm --needed arcolinux-arc-kde
 
 fi
 

@@ -45,14 +45,6 @@ fi
 
 #nemesis-repo added to /etc/pacman.conf
 
-echo
-tput setaf 3
-echo "################################################################"
-echo "################### nemesis"
-echo "################################################################"
-tput sgr0
-echo
-
 if grep -q nemesis_repo /etc/pacman.conf; then
 
   echo

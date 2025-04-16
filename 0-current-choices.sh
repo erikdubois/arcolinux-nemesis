@@ -193,7 +193,6 @@ fi
 sh 400-remove-software*
 
 sh 100-install-nemesis-software*
-sh 110-install-arcolinux-software*
 sh 120-install-core-software*
 sh 150-install-chadwm*
 sh 160-install-bluetooth*
