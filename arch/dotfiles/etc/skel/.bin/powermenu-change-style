@@ -1,0 +1,10 @@
+#!/bin/bash
+yad --title "Powermenu Style" --form --width=325 --height=400 --text="<b>Choose Powermenu style</b>" --columns=3 --image "dialog-question" --image-on-top \
+--field="<b>Powermenu style 1</b>":fbtn "./.config/powermenu/change/powermenu-style-1" \
+--field="<b>Powermenu style 2</b>":fbtn "./.config/powermenu/change/powermenu-style-2" \
+--field="<b>Powermenu style 3</b>":fbtn "./.config/powermenu/change/powermenu-style-3" \
+--field="<b>Powermenu style 4</b>":fbtn "./.config/powermenu/change/powermenu-style-4" \
+--field="<b>Powermenu style 5</b>":fbtn "./.config/powermenu/change/powermenu-style-5" \
+--field="<b>Powermenu style 6</b>":fbtn "./.config/powermenu/change/powermenu-style-6" \
+--field="<b>Powermenu style 7</b>":fbtn "./.config/powermenu/change/powermenu-style-7" \
+--button=Cancel!gtk-cancel:1

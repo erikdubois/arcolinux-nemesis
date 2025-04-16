@@ -1,0 +1,900 @@
+#!/usr/bin/env bash
+# Copyright (c) 2019 Erik Dubois
+# Copyright (c) 2019 Brad Heffernan
+# Copyright (c) 2016-2018 Dylan Araps
+# parts are coming from neofetch
+# e.g. terminal font code
+# and unknown sources
+
+# The MIT License (MIT)
+#
+# Copyright (c) 2016-2018 Dylan Araps, Erik Dubois, Brad Heffernan
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+
+get_packages(){
+    has() { type -p "$1" >/dev/null && manager="$_"; }
+    dir() { ((packages+=$#)); pac "$#"; }
+    pac() { (($1 > 0)) && { managers+=("$1 (${manager})"); manager_string+="${manager}, "; }; }
+    tot() { IFS=$'\n' read -d "" -ra pkgs < <("$@");((packages+="${#pkgs[@]}"));pac "${#pkgs[@]}"; }
+    # Package Manager Programs.
+    has "pacman-key" && tot pacman -Qq --color never
+    has "dpkg"       && tot dpkg-query -f '.\n' -W
+    has "rpm"        && tot rpm -qa
+    has "xbps-query" && tot xbps-query -l
+    has "apk"        && tot apk info
+    has "opkg"       && tot opkg list-installed
+    has "pacman-g2"  && tot pacman-g2 -Q
+    has "lvu"        && tot lvu installed
+    has "tce-status" && tot tce-status -i
+    has "pkg_info"   && tot pkg_info
+    has "tazpkg"     && tot tazpkg list && ((packages-=6))
+    has "sorcery"    && tot gaze installed
+    has "alps"       && tot alps showinstalled
+    has "butch"      && tot butch list
+
+    # Counting files/dirs.
+    has "emerge"     && dir /var/db/pkg/*/*/
+    has "nix-env"    && dir /nix/store/*/
+    has "guix"       && dir /gnu/store/*/
+    has "Compile"    && dir /Programs/*/
+    has "eopkg"      && dir /var/lib/eopkg/package/*
+    has "crew"       && dir /usr/local/etc/crew/meta/*.filelist
+    has "pkgtool"    && dir /var/log/packages/*
+    has "cave"       && dir /var/db/paludis/repositories/cross-installed/*/data/*/ \
+                            /var/db/paludis/repositories/installed/data/*/
+
+    # Other (Needs complex command)
+    has "kpm-pkg" && ((packages+="$(kpm  --get-selections | grep -cv deinstall$)"))
+
+    case "$kernel_name" in
+        "FreeBSD") has "pkg"     && tot pkg info ;;
+        "SunOS")   has "pkginfo" && tot pkginfo -i ;;
+        *)
+            has "pkg" && dir /var/db/pkg/*
+
+            ((packages == 0)) && \
+                has "pkg" && tot pkg list
+        ;;
+    esac
+
+    # List these last as they accompany regular package managers.
+    has "flatpak" && tot flatpak list
+
+    # Snap hangs if the command is run without the daemon running.
+    # Only run snap if the daemon is also running.
+    has "snap" && ps -e | grep -qFm 1 "snapd" >/dev/null && tot snap list && ((packages-=1))
+
+    if ((packages == 0)); then
+        unset packages
+    else
+        packages+=" (${manager_string%,*})"
+    fi
+
+    packages="${packages/pacman-key/pacman}"
+    packages="${packages/nix-env/nix}"
+
+    echo "$packages"
+}
+
+#{{{ MEMORY
+get_mem(){
+    while IFS=":" read -r a b; do
+        case "$a" in
+            "MemTotal") mem_used="$((mem_used+=${b/kB}))"; mem_total="${b/kB}" ;;
+            "Shmem") mem_used="$((mem_used+=${b/kB}))"  ;;
+            "MemFree" | "Buffers" | "Cached" | "SReclaimable")
+                mem_used="$((mem_used-=${b/kB}))"
+            ;;
+        esac
+    done < /proc/meminfo
+
+    mem_used="$((mem_used / 1024))"
+    mem_total="$((mem_total / 1024))"
+    memory="${mem_used}${mem_label:-MiB} / ${mem_total}${mem_label:-MiB}"
+    echo "$memory"
+}
+#}}}
+
+#{{{ UPTIME
+
+strip_date() {
+        case "$1" in
+            "0 "*) unset "${1/* }" ;;
+                "1 "*) printf "%s" "${1/s}" ;;
+                *)     printf "%s" "$1" ;;
+    esac
+}
+
+get_uptime(){
+    seconds=`< /proc/uptime`
+    seconds="${seconds/.*}"
+    days="$((seconds / 60 / 60 / 24)) days"
+    hours="$((seconds / 60 / 60 % 24)) hours"
+    mins="$((seconds / 60 % 60)) minutes"
+
+
+    # Remove plural if < 2.
+    ((${days/ *} == 1))  && days="${days/s}"
+    ((${hours/ *} == 1)) && hours="${hours/s}"
+    ((${mins/ *} == 1))  && mins="${mins/s}"
+
+    # Hide empty fields.
+    ((${days/ *} == 0))  && unset days
+    ((${hours/ *} == 0)) && unset hours
+    ((${mins/ *} == 0))  && unset mins
+
+    uptime="${days:+$days, }${hours:+$hours, }${mins}"
+    uptime="${uptime%', '}"
+    uptime="${uptime:-${seconds} seconds}"
+
+    uptime="${uptime/ days/d}"
+    uptime="${uptime/ day/d}"
+    uptime="${uptime/ hours/h}"
+    uptime="${uptime/ hour/h}"
+    uptime="${uptime/ minutes/m}"
+    uptime="${uptime/ minute/m}"
+    uptime="${uptime/ seconds/s}"
+    uptime="${uptime//,}"
+    echo "$uptime"
+}
+#}}}
+
+
+#{{{ DISKS
+
+get_disk() {
+    type -p df &>/dev/null ||\
+        { err "Disk requires 'df' to function. Install 'df' to get disk info."; return; }
+
+    df_version="$(df --version 2>&1)"
+
+    case "$df_version" in
+        *"IMitv"*)   df_flags=(-P -g) ;; # AIX
+        *"befhikm"*) df_flags=(-P -k) ;; # IRIX
+        *"hiklnP"*) df_flags=(-h) ;; # OpenBSD
+
+        *"Tracker"*) # Haiku
+            err "Your version of df cannot be used due to the non-standard flags"
+            return
+        ;;
+
+        *) df_flags=(-P -h -T) ;;
+    esac
+
+    # Create an array called 'disks' where each element is a separate line from
+    # df's output. We then unset the first element which removes the column titles.
+    IFS=$'\n' read -d "" -ra disks <<< "$(df "${df_flags[@]}" "${disk_show[@]:-/}")"
+    unset "disks[0]"
+
+    # Stop here if 'df' fails to print disk info.
+    [[ -z "${disks[*]}" ]] && {
+        err "Disk: df failed to print the disks, make sure the disk_show array is set properly."
+        return
+    }
+
+    for disk in "${disks[@]}"; do
+        # Create a second array and make each element split at whitespace this time.
+        IFS=" " read -ra disk_info <<< "$disk"
+        disk_perc="${disk_info[5]/\%}"
+
+        case "$df_version" in
+            *"befhikm"*)
+                disk="$((disk_info[2]/1024/1024))G / $((disk_info[1]/1024/1024))G (${disk_perc}%)"
+            ;;
+
+            *)
+                disk="${disk_info[3]/i} / ${disk_info[2]/i} (${disk_perc}%) (${disk_info[1]/i})"
+            ;;
+        esac
+
+        echo "$disk"
+        
+    done
+}
+#}}}
+
+#{{{ GPU
+get_gpu(){
+    gpu_cmd="$(lspci -mm | awk -F '\"|\" \"|\\(' \
+                                              '/"Display|"3D|"VGA/ {a[$0] = $3 " " $4} END {for(i in a)
+                                               {if(!seen[a[i]]++) print a[i]}}')"
+    IFS=$'\n' read -d "" -ra gpus <<< "$gpu_cmd"
+    [[ "${gpus[0]}" == *Intel* && "${gpus[1]}" == *Intel* ]] && unset -v "gpus[0]"
+
+    for gpu in "${gpus[@]}"; do
+        case "$gpu" in
+            *"AMD"*)
+                brand="${gpu/*AMD*ATI*/AMD ATI}"
+                brand="${brand:-${gpu/*AMD*/AMD}}"
+                brand="${brand:-${gpu/*ATI*/ATi}}"
+
+                gpu="${gpu/'[AMD/ATI]' }"
+                gpu="${gpu/'[AMD]' }"
+                gpu="${gpu/OEM }"
+                gpu="${gpu/Advanced Micro Devices, Inc.}"
+                gpu="${gpu/ \/ *}"
+                gpu="${gpu/*\[}"
+                gpu="${gpu/\]*}"
+                gpu="$brand $gpu"
+            ;;
+
+            *"nvidia"*)
+                gpu="${gpu/*\[}"
+                gpu="${gpu/\]*}"
+                gpu="NVIDIA $gpu"
+            ;;
+
+            *"intel"*)
+                gpu="${gpu/*Intel/Intel}"
+                gpu="${gpu/'(R)'}"
+                gpu="${gpu/'Corporation'}"
+                gpu="${gpu/ \(*}"
+                gpu="${gpu/Integrated Graphics Controller}"
+
+                [[ -z "$(trim "$gpu")" ]] && gpu="Intel Integrated Graphics"
+            ;;
+
+            *"virtualbox"*)
+                gpu="VirtualBox Graphics Adapter"
+            ;;
+        esac
+    done
+    gpu="${gpu/AMD }"
+    gpu="${gpu/NVIDIA }"
+    gpu="${gpu/Intel }"
+    echo "$gpu"
+}
+#gpu="$(glxinfo | grep -F 'OpenGL renderer string')"
+#gpu="${gpu/'OpenGL renderer string: '}"
+#gpu="${gpu/(*}"
+
+#}}}
+
+#{{{ SYSTEM
+
+get_shell(){
+    shell="${SHELL##*/} "
+    case "${shell_name:=${SHELL##*/}}" in
+        "bash") shell+="${BASH_VERSION/-*}" ;;
+        "sh" | "ash" | "dash") ;;
+
+        "mksh" | "ksh")
+            shell+="$("$SHELL" -c "printf %s \$KSH_VERSION")"
+            shell="${shell/ * KSH}"
+            shell="${shell/version}"
+        ;;
+
+        "tcsh")
+            shell+="$("$SHELL" -c "printf %s \$tcsh")"
+        ;;
+
+        *)
+            shell+="$("$SHELL" --version 2>&1)"
+            shell="${shell/ "${shell_name}"}"
+        ;;
+    esac
+
+    # Remove unwanted info.
+    shell="${shell/, version}"
+    shell="${shell/xonsh\//xonsh }"
+    shell="${shell/options*}"
+    shell="${shell/\(*\)}"
+
+    echo "$shell"
+}
+
+get_cpu(){
+    cpu_file="/proc/cpuinfo"
+    speed_type="bios_limit"
+    cpu_cores="physical"
+
+    case "$kernel_machine" in
+        "frv" | "hppa" | "m68k" | "openrisc" | "or"* | "powerpc" | "ppc"* | "sparc"*)
+            cpu="$(awk -F':' '/^cpu\t|^CPU/ {printf $2; exit}' "$cpu_file")"
+        ;;
+
+        "s390"*)
+            cpu="$(awk -F'=' '/machine/ {print $4; exit}' "$cpu_file")"
+        ;;
+
+        "ia64" | "m32r")
+            cpu="$(awk -F':' '/model/ {print $2; exit}' "$cpu_file")"
+            [[ -z "$cpu" ]] && cpu="$(awk -F':' '/family/ {printf $2; exit}' "$cpu_file")"
+        ;;
+
+        *)
+            cpu="$(awk -F ': | @' '/model name|Processor|^cpu model|chip type|^cpu type/ {
+                                       printf $2;
+                                       exit
+                                   }' "$cpu_file")"
+
+            [[ "$cpu" == *"processor rev"* ]] && \
+                cpu="$(awk -F':' '/Hardware/ {print $2; exit}' "$cpu_file")"
+        ;;
+    esac
+
+    speed_dir="/sys/devices/system/cpu/cpu0/cpufreq"
+
+        speed="$(awk -F ': |\\.' '/cpu MHz|^clock/ {printf $2; exit}' "$cpu_file")"
+        speed="${speed/MHz}"
+
+    # Get CPU cores.
+    cores="$(grep -c "^processor" "$cpu_file")"
+    #cores="$(awk '/^core id/&&!a[$0]++{++i} END {print i}' "$cpu_file")"
+
+
+    # Remove un-needed patterns from cpu output.
+
+    cpu="${cpu//(tm)}"
+    cpu="${cpu//(TM)}"
+    cpu="${cpu//(r)}"
+    cpu="${cpu//(R)}"
+    cpu="${cpu//CPU}"
+    cpu="${cpu//Processor}"
+    cpu="${cpu//Dual-Core}"
+    cpu="${cpu//Quad-Core}"
+    cpu="${cpu//Six-Core}"
+    cpu="${cpu//Eight-Core}"
+    cpu="${cpu//, * Compute Cores*}"
+    cpu="${cpu//, * COMPUTE CORES*}"
+    cpu="${cpu//Core / }"
+    cpu="${cpu//(\"AuthenticAMD\"*)}"
+    cpu="${cpu//with Radeon * Graphics}"
+    cpu="${cpu//, altivec supported}"
+    cpu="${cpu//FPU*}"
+    cpu="${cpu//Chip Revision*}"
+    cpu="${cpu//Technologies, Inc}"
+    cpu="${cpu//Core2/Core 2}"
+
+    # Trim spaces from core and speed output
+    cores="${cores//[[:space:]]}"
+    speed="${speed//[[:space:]]}"
+
+    # Remove CPU brand from the output.
+    #cpu="${cpu/AMD }"
+    #cpu="${cpu/Intel }"
+    #cpu="${cpu/Core? Duo }"
+    #cpu="${cpu/Qualcomm }"
+
+    cpu="${cpu} (${cores}C)"
+
+
+	for temp_dir in /sys/class/hwmon/*; do
+                [[ "$(< "${temp_dir}/name")" =~ (coretemp|fam15h_power|k10temp) ]] && \
+                    { temp_dir="${temp_dir}/temp1_input"; break; }
+            done
+    # Get CPU temp.
+    [[ -f "$temp_dir" ]] && deg="$(($(< "$temp_dir") * 100 / 10000))"
+    
+    deg="${deg//.}"
+
+    
+    # Format the output
+    deg="[${deg/${deg: -1}}.${deg: -1}°C]"
+    cpu="$cpu $deg"
+    echo "$cpu"
+}
+
+#}}}
+
+#{{{ ENVIROMENT
+
+get_res(){
+    if type -p xrandr >/dev/null; then
+
+        resolution="$(xrandr --nograb --current |\
+                      awk -F 'connected |\\+|\\(' \
+                             '/ connected/ && $2 {printf $2 ", "}')"
+        resolution="${resolution/primary }"
+        resolution="${resolution//\*}"
+
+    elif type -p xwininfo >/dev/null; then
+        read -r w h \
+            < <(xwininfo -root | awk -F':' '/Width|Height/ {printf $2}')
+        resolution="${w}x${h}"
+
+    elif type -p xdpyinfo >/dev/null; then
+        resolution="$(xdpyinfo | awk '/dimensions:/ {printf $2}')"
+    fi
+
+    resolution="${resolution%,*}"
+
+    echo "$resolution"
+}
+get_wm(){
+    ((wm_run == 1)) && return
+    if [[ "$DISPLAY" ]]; then
+        id="$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)"
+        id="${id##* }"
+        if [[ "$id" != "found." ]]; then
+            wm="$(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t)"
+            wm="${wm/*WM_NAME = }"
+            wm="${wm/\"}"
+            wm="${wm/\"*}"
+        fi
+
+        # Window Maker does not set _NET_WM_NAME
+        [[ "$wm" =~ "WINDOWMAKER" ]] && wm="wmaker"
+
+        # Fallback for non-EWMH WMs.
+        [[ -z "$wm" ]] && \
+            wm="$(ps -e | grep -m 1 -o -F \
+                               -e "catwm" \
+                               -e "dwm" \
+                               -e "2bwm" \
+                               -e "monsterwm" \
+                               -e "tinywm")"
+    fi
+    wm_run=1
+    echo "$wm"
+
+}
+trim() {
+    set -f
+    # shellcheck disable=2048,2086
+    set -- $*
+    printf '%s\n' "${*//[[:space:]]/ }"
+    set +f
+}
+trim_quotes() {
+    trim_output="${1//\'}"
+    trim_output="${trim_output//\"}"
+    printf "%s" "$trim_output"
+}
+get_ppid() {
+    # Get parent process ID of PID.
+    ppid="$(grep -i -F "PPid:" "/proc/${1:-$PPID}/status")"
+    ppid="$(trim "${ppid/PPid:}")"
+    printf "%s" "$ppid"
+}
+get_process_name() {
+    # Get PID name.
+    name="$(< "/proc/${1:-$PPID}/comm")"
+    printf "%s" "$name"
+}
+
+get_term(){
+    while [[ -z "$term" ]]; do
+        parent="$(get_ppid "$parent")"
+        [[ -z "$parent" ]] && break
+        name="$(get_process_name "$parent")"
+
+        case "${name// }" in
+            "${SHELL/*\/}"|*"sh"|"screen"|"su"*) ;;
+
+            "login"*|*"Login"*|"init"|"(init)")
+                term="$(tty)"
+            ;;
+
+            "ruby"|"1"|"systemd"|"sshd"*|"python"*|"USER"*"PID"*|"kdeinit"*|"launchd"*)
+                break
+            ;;
+
+            "gnome-terminal-") term="gnome-terminal" ;;
+            *"nvim")           term="Neovim Terminal" ;;
+            *"NeoVimServer"*)  term="VimR Terminal" ;;
+            *"tmux"*)          term="tmux" ;;
+            *)                 term="${name##*/}" ;;
+        esac
+    done
+
+    # Log that the function was run.
+    term_run=1
+    echo "$term"
+}
+
+get_termfn(){
+    xrdb="$(xrdb -query)"
+    term_font="$(grep -i "${term/d}"'\**\.*font' <<< "$xrdb")"
+    term_font="${term_font/*"*font:"}"
+    term_font="${term_font/*".font:"}"
+    term_font="${term_font/*"*.font:"}"
+    term_font="$(trim "$term_font")"
+
+    [[ -z "$term_font" && "$term" == "xterm" ]] && \
+        term_font="$(grep '^XTerm.vt100.faceName' <<< "$xrdb")"
+
+    term_font="$(trim "${term_font/*"faceName:"}")"
+
+    # xft: isn't required at the beginning so we prepend it if it's missing
+    [[ "${term_font:0:1}" != "-" && \
+       "${term_font:0:4}" != "xft:" ]] && \
+        term_font="xft:$term_font"
+
+    # Xresources has two different font formats, this checks which
+    # one is in use and formats it accordingly.
+    case "$term_font" in
+        *"xft:"*)
+            term_font="${term_font/xft:}"
+            term_font="${term_font/:*}"
+        ;;
+
+        "-"*)
+            IFS=- read -r _ _ term_font _ <<< "$term_font"
+        ;;
+    esac
+
+    echo "$term_font"
+}
+
+get_kernel(){
+    IFS=" " read -ra uname <<< "$(uname -srm)"
+    unset IFS
+    echo "${uname[1]}"
+}
+
+
+
+get_term_font() {
+    ((term_run != 1)) && get_term
+
+    case "$term" in
+        "alacritty"*)
+            shopt -s nullglob
+            confs=({$XDG_CONFIG_HOME,$HOME}/{alacritty,}/{.,}alacritty.ym?)
+            shopt -u nullglob
+
+            [[ -f "${confs[0]}" ]] || return
+
+            term_font="$(awk -F ':|#' '/normal:/ {getline; print}' "${confs[0]}")"
+            term_font="${term_font/*family:}"
+            term_font="${term_font/$'\n'*}"
+            term_font="${term_font/\#*}"
+        ;;
+
+        "Apple_Terminal")
+            term_font="$(osascript <<END
+                         tell application "Terminal" to font name of window frontmost
+END
+)"
+        ;;
+
+        "iTerm2")
+            # Unfortunately the profile name is not unique, but it seems to be the only thing
+            # that identifies an active profile. There is the "id of current session of current win-
+            # dow" though, but that does not match to a guid in the plist.
+            # So, be warned, collisions may occur!
+            # See: https://groups.google.com/forum/#!topic/iterm2-discuss/0tO3xZ4Zlwg
+            local current_profile_name profiles_count profile_name diff_font
+
+            current_profile_name="$(osascript <<END
+                                    tell application "iTerm2" to profile name \
+                                    of current session of current window
+END
+)"
+
+            # Warning: Dynamic profiles are not taken into account here!
+            # https://www.iterm2.com/documentation-dynamic-profiles.html
+            font_file="${HOME}/Library/Preferences/com.googlecode.iterm2.plist"
+
+            # Count Guids in "New Bookmarks"; they should be unique
+            profiles_count="$(PlistBuddy -c "Print ':New Bookmarks:'" "$font_file" | \
+                              grep -w -c "Guid")"
+
+            for ((i=0; i<profiles_count; i++)); do
+                profile_name="$(PlistBuddy -c "Print ':New Bookmarks:${i}:Name:'" "$font_file")"
+
+                if [[ "$profile_name" == "$current_profile_name" ]]; then
+                    # "Normal Font"
+                    term_font="$(PlistBuddy -c "Print ':New Bookmarks:${i}:Normal Font:'" \
+                                 "$font_file")"
+
+                    # Font for non-ascii characters
+                    # Only check for a different non-ascii font, if the user checked
+                    # the "use a different font for non-ascii text" switch.
+                    diff_font="$(PlistBuddy -c "Print ':New Bookmarks:${i}:Use Non-ASCII Font:'" \
+                                 "$font_file")"
+
+                    if [[ "$diff_font" == "true" ]]; then
+                        non_ascii="$(PlistBuddy -c "Print ':New Bookmarks:${i}:Non Ascii Font:'" \
+                                     "$font_file")"
+
+                        [[ "$term_font" != "$non_ascii" ]] && \
+                            term_font="$term_font (normal) / $non_ascii (non-ascii)"
+                    fi
+                fi
+            done
+        ;;
+
+        "deepin-terminal"*)
+            term_font="$(awk -F '=' '/font=/ {a=$2} /font_size/ {b=$2} END {print a,b}' \
+                         "${XDG_CONFIG_HOME}/deepin/deepin-terminal/config.conf")"
+        ;;
+
+        "GNUstep_Terminal")
+             term_font="$(awk -F '>|<' '/>TerminalFont</ {getline; f=$3}
+                          />TerminalFontSize</ {getline; s=$3} END {print f,s}' \
+                          "${HOME}/GNUstep/Defaults/Terminal.plist")"
+        ;;
+
+        "Hyper"*)
+            term_font="$(awk -F':|,' '/fontFamily/ {print $2; exit}' "${HOME}/.hyper.js")"
+            term_font="$(trim_quotes "$term_font")"
+        ;;
+
+        "kitty"*)
+            kitty_config="$(kitty --debug-config)"
+            [[ "$kitty_config" != *font_family* ]] && return
+
+            term_font="$(awk '/^font_family|^font_size/ {$1="";gsub("^ *","",$0);print $0}' \
+                         <<< "$kitty_config")"
+        ;;
+
+        "konsole" | "yakuake")
+            # Get Process ID of current konsole window / tab
+            child="$(get_ppid "$$")"
+
+            IFS=$'\n' read -d "" -ra konsole_instances \
+                <<< "$(qdbus | awk '/org.kde.konsole/ {print $1}')"
+
+            for i in "${konsole_instances[@]}"; do
+                IFS=$'\n' read -d "" -ra konsole_sessions <<< "$(qdbus "$i" | grep -F '/Sessions/')"
+
+                for session in "${konsole_sessions[@]}"; do
+                    if ((child == "$(qdbus "$i" "$session" processId)")); then
+                        profile="$(qdbus "$i" "$session" environment |\
+                                   awk -F '=' '/KONSOLE_PROFILE_NAME/ {print $2}')"
+                        break
+                    fi
+                done
+                [[ "$profile" ]] && break
+            done
+
+            # We could have two profile files for the same profile name, take first match
+            profile_filename="$(grep -l "Name=${profile}" "$HOME"/.local/share/konsole/*.profile)"
+            profile_filename="${profile_filename/$'\n'*}"
+
+            [[ "$profile_filename" ]] && \
+                term_font="$(awk -F '=|,' '/Font=/ {print $2,$3}' "$profile_filename")"
+        ;;
+
+        "lxterminal"*)
+            term_font="$(awk -F '=' '/fontname=/ {print $2; exit}' \
+                         "${XDG_CONFIG_HOME}/lxterminal/lxterminal.conf")"
+        ;;
+
+        "mate-terminal")
+            # To get the actual config we have to create a temporarily file with the
+            # --save-config option.
+            mateterm_config="/tmp/mateterm.cfg"
+
+            # Ensure /tmp exists and we do not overwrite anything.
+            if [[ -d "/tmp" && ! -f "$mateterm_config" ]]; then
+                mate-terminal --save-config="$mateterm_config"
+
+                role="$(xprop -id "${WINDOWID}" WM_WINDOW_ROLE)"
+                role="${role##* }"
+                role="${role//\"}"
+
+                profile="$(awk -F '=' -v r="$role" \
+                                  '$0~r {
+                                            getline;
+                                            if(/Maximized/) getline;
+                                            if(/Fullscreen/) getline;
+                                            id=$2"]"
+                                         } $0~id {if(id) {getline; print $2; exit}}' \
+                           "$mateterm_config")"
+
+                rm -f "$mateterm_config"
+
+                mate_get() {
+                   gsettings get org.mate.terminal.profile:/org/mate/terminal/profiles/"$1"/ "$2"
+                }
+
+                if [[ "$(mate_get "$profile" "use-system-font")" == "true" ]]; then
+                    term_font="$(gsettings get org.mate.interface monospace-font-name)"
+                else
+                    term_font="$(mate_get "$profile" "font")"
+                fi
+                term_font="$(trim_quotes "$term_font")"
+            fi
+        ;;
+
+        "mintty")
+            term_font="$(awk -F '=' '!/^($|#)/ && /Font/ {printf $2; exit}' "${HOME}/.minttyrc")"
+        ;;
+
+        "pantheon"*)
+            term_font="$(gsettings get org.pantheon.terminal.settings font)"
+
+            [[ -z "${term_font//\'}" ]] && \
+                term_font="$(gsettings get org.gnome.desktop.interface monospace-font-name)"
+
+            term_font="$(trim_quotes "$term_font")"
+        ;;
+
+        "qterminal")
+            term_font="$(awk -F '=' '/fontFamily=/ {a=$2} /fontSize=/ {b=$2} END {print a,b}' \
+                         "${XDG_CONFIG_HOME}/qterminal.org/qterminal.ini")"
+        ;;
+
+        "sakura"*)
+            term_font="$(awk -F '=' '/^font=/ {print $2; exit}' \
+                         "${XDG_CONFIG_HOME}/sakura/sakura.conf")"
+        ;;
+
+        "st")
+            term_font="$(ps -o command= -p "$parent" | grep -F -- "-f")"
+
+            if [[ "$term_font" ]]; then
+                term_font="${term_font/*-f/}"
+                term_font="${term_font/ -*/}"
+
+            else
+                # On Linux we can get the exact path to the running binary through the procfs
+                # (in case `st` is launched from outside of $PATH) on other systems we just
+                # have to guess and assume `st` is invoked from somewhere in the users $PATH
+                [[ -L "/proc/$parent/exe" ]] && binary="/proc/$parent/exe" || binary="$(type -p st)"
+
+                # Grep the output of strings on the `st` binary for anything that looks vaguely
+                # like a font definition. NOTE: There is a slight limitation in this approach.
+                # Technically "Font Name" is a valid font. As it doesn't specify any font options
+                # though it is hard to match it correctly amongst the rest of the noise.
+                [[ -n "$binary" ]] && \
+                    term_font="$(strings "$binary" | grep -F -m 1 \
+                                                          -e "pixelsize=" \
+                                                          -e "size=" \
+                                                          -e "antialias=" \
+                                                          -e "autohint=")"
+            fi
+
+            term_font="${term_font/xft:}"
+            term_font="${term_font/:*}"
+        ;;
+
+        "terminology")
+            term_font="$(strings "${XDG_CONFIG_HOME}/terminology/config/standard/base.cfg" |\
+                         awk '/^font\.name$/{print a}{a=$0}')"
+            term_font="${term_font/.pcf}"
+            term_font="${term_font/:*}"
+        ;;
+
+        "termite")
+            [[ -f "${XDG_CONFIG_HOME}/termite/config" ]] && \
+                termite_config="${XDG_CONFIG_HOME}/termite/config"
+
+            term_font="$(awk -F '= ' '/\[options\]/ {
+                                          opt=1
+                                      }
+                                      /^\s*font/ {
+                                          if(opt==1) a=$2;
+                                          opt=0
+                                      } END {print a}' "/etc/xdg/termite/config" \
+                         "$termite_config")"
+        ;;
+
+        "urxvt" | "urxvtd" | "rxvt-unicode" | "xterm")
+            xrdb="$(xrdb -query)"
+            term_font="$(grep -im 1 -e "^${term/d}"'\**\.*font' -e '^\*font' <<< "$xrdb")"
+            term_font="${term_font/*"*font:"}"
+            term_font="${term_font/*".font:"}"
+            term_font="${term_font/*"*.font:"}"
+            term_font="$(trim "$term_font")"
+
+            [[ -z "$term_font" && "$term" == "xterm" ]] && \
+                term_font="$(grep '^XTerm.vt100.faceName' <<< "$xrdb")"
+
+            term_font="$(trim "${term_font/*"faceName:"}")"
+
+            # xft: isn't required at the beginning so we prepend it if it's missing
+            [[ "${term_font:0:1}" != "-" && "${term_font:0:4}" != "xft:" ]] && \
+                term_font="xft:$term_font"
+
+            # Xresources has two different font formats, this checks which
+            # one is in use and formats it accordingly.
+            case "$term_font" in
+                *"xft:"*)
+                    term_font="${term_font/xft:}"
+                    term_font="${term_font/:*}"
+                ;;
+
+                "-"*)
+                    IFS=- read -r _ _ term_font _ <<< "$term_font"
+                ;;
+            esac
+        ;;
+
+        "xfce4-terminal")
+            term_font="$(awk -F '=' '/^FontName/{a=$2}/^FontUseSystem=TRUE/{a=$0} END {print a}' \
+                         "${XDG_CONFIG_HOME}/xfce4/terminal/terminalrc")"
+
+            [[ "$term_font" == "FontUseSystem=TRUE" ]] && \
+                term_font="$(gsettings get org.gnome.desktop.interface monospace-font-name)"
+
+            term_font="$(trim_quotes "$term_font")"
+
+            # Default fallback font hardcoded in terminal-preferences.c
+            [[ -z "$term_font" ]] && term_font="Monospace 12"
+        ;;
+    esac
+}
+
+
+
+get_term_font > /dev/null 2>&1
+
+if [ -n "$DISPLAY" ]; then
+    res=$(get_res)
+    wmname=$(get_wm)
+    term=$(get_term)
+    termfn=$term_font
+else
+    wmname="none"
+    res="none"
+    term="none"
+    termfn="none"
+fi
+
+#cpuspe="`sed -n '/model\ name/s/^.*:\ //p' /proc/cpuinfo | uniq` (x`nproc`)"
+
+system=`lsb_release -sir`
+system="${system/$'\n'/ }"
+birthd=`last | grep "begins" | sed 's/wtmp begins //g'`
+
+#}}}
+
+
+c00=$'\e[0;30m' #d black
+c01=$'\e[0;31m' #d red
+c02=$'\e[0;32m' #l green
+c03=$'\e[0;33m' #d tan
+c04=$'\e[0;34m' #d grey
+c05=$'\e[0;35m' #d pink
+c06=$'\e[0;36m' #d teal
+c07=$'\e[0;37m' #d white
+
+c08=$'\e[1;30m' #l black
+c09=$'\e[1;31m' #l red
+c10=$'\e[1;32m' #d brown
+c11=$'\e[1;33m' #l tan
+c12=$'\e[1;34m' #l blue
+c13=$'\e[1;35m' #l pink
+c14=$'\e[1;36m' #l teal
+c15=$'\e[1;37m' #l white
+
+f0=$'\e[0;32m'
+f1=$'\e[1;37m'
+f2=$'\e[0;37m'
+
+
+cat << EOF
+
+${c01}▉▉  | ${f1}System ${c08}....... $f1$system
+${c09}  ▉▉| ${f1}Packages ${c08}..... $f1$(get_packages)
+${c07}▉▉  | ${f1}Uptime  ${c08}...... $f1$(get_uptime)
+${c15}  ▉▉| ${f1}Resolution  ${c08}.. $f1$res
+${c02}▉▉  |
+${c10}  ▉▉| ${f1}WM ${c08}........... $f1$wmname
+${c03}▉▉  | ${f1}Shell ${c08}........ $f1$(get_shell)
+${c11}  ▉▉| ${f1}Terminal ${c08}..... $f1$term
+${c08}▉▉  | ${f1}Term Font ${c08}.... $f1$termfn
+${c12}  ▉▉|
+${c05}▉▉  | ${f1}Kernel ${c08}....... $f1$(get_kernel)
+${c13}  ▉▉| ${f1}Processor ${c08}.... $f1$(get_cpu)
+${c06}▉▉  | ${f1}Gpu ${c08}.......... $f1$(get_gpu)
+${c14}  ▉▉|
+${c01}▉▉  | ${f1}Disk ${c08}......... $f1$(get_disk)
+${c09}  ▉▉| 
+${c07}▉▉  | ${f1}Birthday ${c08}..... $f1$birthd
+${c15}  ▉▉| ${f1}Memory ${c08}....... $f1$(get_mem)
+
+EOF

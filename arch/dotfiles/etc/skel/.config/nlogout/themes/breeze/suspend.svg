@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="suspend.svg"
+   id="svg106"
+   version="1.1"
+   viewBox="0 0 32 32">
+  <metadata
+     id="metadata112">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs110" />
+  <sodipodi:namedview
+     inkscape:current-layer="svg106"
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="16"
+     inkscape:cx="16"
+     inkscape:zoom="26.28125"
+     showgrid="false"
+     id="namedview108"
+     inkscape:window-height="1021"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <style
+     id="current-color-scheme"
+     type="text/css">
+        .ColorScheme-Text {
+            color:#232629;
+        }
+    </style>
+  <g
+     style="fill:#ffffff;fill-opacity:1"
+     id="g104"
+     fill="currentColor"
+     class="ColorScheme-Text">
+    <path
+       style="fill:#ffffff;fill-opacity:1"
+       id="path100"
+       d="M9.762 5.762a12 12 0 0 0-.004.008A12 12 0 0 0 4 16a12 12 0 0 0 12 12 12 12 0 0 0 10.238-5.762l-.732-.732A11 11 0 0 1 20 23 11 11 0 0 1 9 12a11 11 0 0 1 1.486-5.502 11 11 0 0 1 .008-.004zM8.8 7.702A12 12 0 0 0 8 12a12 12 0 0 0 12 12 12 12 0 0 0 4.326-.82A11 11 0 0 1 16 27 11 11 0 0 1 5 16a11 11 0 0 1 3.8-8.299zM22 6v1h2.293l-2 2-.293.293V10h4V9h-2.293l2-2L26 6.707V6h-.707z" />
+    <path
+       style="fill:#ffffff;fill-opacity:1"
+       id="path102"
+       d="M20 13v1h2.293l-2 2-.293.293V17h4v-1h-2.293l2-2 .293-.293V13h-.707zm-6-5v1h2.293l-2 2-.293.293V12h4v-1h-2.293l2-2L18 8.707V8h-.707z" />
+  </g>
+</svg>

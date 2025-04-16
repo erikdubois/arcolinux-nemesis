@@ -1,0 +1,76 @@
+# Button order (optional)
+button_order = ["cancel", "logout", "reboot", "shutdown", "lock", "suspend", "hibernate"]
+
+# Programs to terminate before logout
+programs_to_terminate = ["example_program1", "example_program2"]
+
+# Custom lock screen application (optional)
+lock_screen_app = "i3lock -c 313244"
+
+# Window configuration
+[window]
+width = 782
+height = 118
+title = "nlogout"
+background_color = "#313244"
+
+# Font configuration
+[font]
+family = "Noto Sans Mono"
+size = 14
+bold = true
+
+# Global button configuration
+[button]
+show_text = true
+keybind_text = true
+width = 100
+height = 100
+padding = 3
+top_padding = 3
+corner_radius = 10 # Radius of 0 = square button
+icon_size = 40
+icon_theme = "default"
+
+# Individual button configurations
+[buttons.cancel]
+text = "Cancel"
+background_color = "#f5e0dc"
+text_color = "#363a4f"
+shortcut = "Escape"
+
+[buttons.logout]
+text = "Logout"
+background_color = "#cba6f7"
+text_color = "#363a4f"
+shortcut = "L"
+
+[buttons.reboot]
+text = "Reboot"
+background_color = "#f5c2e7"
+text_color = "#363a4f"
+shortcut = "R"
+
+[buttons.shutdown]
+text = "Shutdown"
+background_color = "#f5a97f"
+text_color = "#363a4f"
+shortcut = "S"
+
+[buttons.lock]
+text = "Lock"
+background_color = "#8aadf4"
+text_color = "#363a4f"
+shortcut = "K"
+
+[buttons.suspend]
+text = "Suspend"
+background_color = "#7dc4e4"
+text_color = "#363a4f"
+shortcut = "U"
+
+[buttons.hibernate]
+text = "Hibernate"
+background_color = "#a6da95"
+text_color = "#363a4f"
+shortcut = "H"

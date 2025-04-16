@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" fill="none" version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <g transform="matrix(1.1706 0 0 1.1706 -5.4625 -5.4625)" stroke-width="5">
+  <path d="m56 32c0-13.25-10.75-24-24-24s-24 10.75-24 24 10.75 24 24 24 24-10.75 24-24z" stroke="url(#paint0_linear)" stroke-miterlimit="10"/>
+  <path d="m40 40-16-16" stroke="url(#linearGradient841)" stroke-linecap="round" stroke-linejoin="round"/>
+ </g>
+ <path d="m22.538 41.462 18.924-18.924" stroke="url(#linearGradient842)" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.9138"/>
+ <defs>
+  <linearGradient id="paint0_linear" x1="55.858" x2="8.2375" y1="8.3043" y2="55.528" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#FE7970" offset="0"/>
+   <stop stop-color="#DC3282" offset="1"/>
+  </linearGradient>
+  <linearGradient id="paint1_linear" x1="39.953" x2="24.079" y1="24.101" y2="39.843" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#FE7970" offset="0"/>
+   <stop stop-color="#DC3282" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient841" x1="39.953" x2="24.079" y1="24.101" y2="39.843" gradientUnits="userSpaceOnUse" xlink:href="#paint1_linear"/>
+  <linearGradient id="linearGradient842" x1="39.953" x2="24.079" y1="24.101" y2="39.843" gradientTransform="matrix(1.1828 0 0 1.1828 -5.8484 -5.8484)" gradientUnits="userSpaceOnUse" xlink:href="#paint1_linear"/>
+ </defs>
+</svg>

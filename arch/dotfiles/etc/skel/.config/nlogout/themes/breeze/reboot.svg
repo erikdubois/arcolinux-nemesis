@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="restart.svg"
+   id="svg58"
+   viewBox="0 0 32 32"
+   version="1.1">
+  <metadata
+     id="metadata62">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="svg58"
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="16"
+     inkscape:cx="16"
+     inkscape:zoom="26.28125"
+     showgrid="false"
+     id="namedview60"
+     inkscape:window-height="1021"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <defs
+     id="defs54">
+    <style
+       id="current-color-scheme"
+       type="text/css">
+            .ColorScheme-Text {
+                color:#232629;
+            }
+        </style>
+  </defs>
+  <path
+     id="path56"
+     d="M 4,16 A 12,12 0 0 1 5.671875,9.916016 L 11.050781,15.292969 10.339844,16 5.935547,11.595703 A 11,11 0 0 0 5,16 11,11 0 0 0 16,27 11,11 0 0 0 21.351562,25.595703 l 0.728516,0.732422 A 12,12 0 0 1 16,28 12,12 0 0 1 4,16 Z M 9.916016,5.671875 A 12,12 0 0 1 16,4 12,12 0 0 1 28,16 12,12 0 0 1 26.328125,22.083984 L 20.949219,16.707031 21.65625,16 26.060547,20.40625 A 11,11 0 0 0 27,16 11,11 0 0 0 16,5 11,11 0 0 0 10.648438,6.404297 Z"
+     class="ColorScheme-Text"
+     style="fill:#ffffff;fill-opacity:1;stroke:none" />
+</svg>

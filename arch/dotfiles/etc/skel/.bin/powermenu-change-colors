@@ -1,0 +1,23 @@
+#!/bin/bash
+yad --title "Powermenu Colors" --form --width=325 --height=400 --text="<b>Choose Powermenu colors</b>" --columns=3 --image "dialog-question" --image-on-top \
+--field="<b>Powermenu colors 1 - adapta</b>":fbtn "./.config/powermenu/change/powermenu-colors-1" \
+--field="<b>Powermenu colors 2 - arc</b>":fbtn "./.config/powermenu/change/powermenu-colors-2" \
+--field="<b>Powermenu colors 3 - black</b>":fbtn "./.config/powermenu/change/powermenu-colors-3" \
+--field="<b>Powermenu colors 4 - catppuccin</b>":fbtn "./.config/powermenu/change/powermenu-colors-4" \
+--field="<b>Powermenu colors 5 - cyberpunk</b>":fbtn "./.config/powermenu/change/powermenu-colors-5" \
+--field="<b>Powermenu colors 6 - dracula</b>":fbtn "./.config/powermenu/change/powermenu-colors-6" \
+--field="<b>Powermenu colors 7 - everforest</b>":fbtn "./.config/powermenu/change/powermenu-colors-7" \
+--field="<b>Powermenu colors 8 - gruvbox</b>":fbtn "./.config/powermenu/change/powermenu-colors-8" \
+--field="<b>Powermenu colors 9 - lovelace</b>":fbtn "./.config/powermenu/change/powermenu-colors-9" \
+--field="<b>Powermenu colors 10 - navy</b>":fbtn "./.config/powermenu/change/powermenu-colors-10" \
+--field="<b>Powermenu colors 11 - nord</b>":fbtn "./.config/powermenu/change/powermenu-colors-11" \
+--field="<b>Powermenu colors 12 - onedark</b>":fbtn "./.config/powermenu/change/powermenu-colors-12" \
+--field="<b>Powermenu colors 13 - paper</b>":fbtn "./.config/powermenu/change/powermenu-colors-13" \
+--field="<b>Powermenu colors 14 - solarized</b>":fbtn "./.config/powermenu/change/powermenu-colors-14" \
+--field="<b>Powermenu colors 15 - tokyonight</b>":fbtn "./.config/powermenu/change/powermenu-colors-15" \
+--field="<b>Powermenu colors 16 - yousai</b>":fbtn "./.config/powermenu/change/powermenu-colors-16" \
+--field="<b>Powermenu colors 17 - purplenavy</b>":fbtn "./.config/powermenu/change/powermenu-colors-17" \
+--field="<b>Powermenu colors 18 - purple</b>":fbtn "./.config/powermenu/change/powermenu-colors-18" \
+--field="<b>Powermenu colors 19 - prime</b>":fbtn "./.config/powermenu/change/powermenu-colors-19" \
+--field="<b>Powermenu colors 20 - onedark</b>":fbtn "./.config/powermenu/change/powermenu-colors-20" \
+--button=Cancel!gtk-cancel:1

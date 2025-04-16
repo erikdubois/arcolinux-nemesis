@@ -1,0 +1,6 @@
+#!/bin/bash
+
+STYLE="style-7.rasi"
+CONFIG="$HOME/.config/powermenu"
+
+cp $CONFIG/$STYLE $CONFIG/style-default.rasi

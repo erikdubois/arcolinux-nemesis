@@ -1,0 +1,18 @@
+Arch Linux communication
+
+https://archlinux.org/news/git-migration-completed/
+
+Update your pacman.conf
+
+
+Three videos 
+
+https://youtu.be/pPzMSciXXT0
+
+https://youtu.be/qr7X2nxgrjg
+
+https://youtu.be/3yeXDSsN1mI
+
+
+Basically copy/paste the content of this pacman.conf in /etc/pacman.conf - change settings like parallel downloads
+and save

@@ -1,0 +1,16 @@
+/**
+ *
+ * Author : Erik Dubois
+ * Github : https://github.com/erikdubois
+ * 
+ * Colors
+ **/
+
+* {
+    background:     #1E2127FF;
+    background-alt: #282B31FF;
+    foreground:     #FFFFFFFF;
+    selected:       #848cabff;
+    active:         #613F8DFF;
+    urgent:         #4C3D8DFF;
+}
