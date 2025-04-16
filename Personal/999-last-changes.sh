@@ -43,6 +43,21 @@ fi
 
 ##################################################################################################################
 
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Changing icons - hardcode-fixer"
+echo "################################################################"
+tput sgr0
+echo
+echo "Checking if icons from applications have a hardcoded path"
+echo "and fixing them"
+echo "Wait for it ..."
+
+sudo hardcode-fixer
+
+##################################################################################################################
+
 hyprland="/usr/share/wayland-sessions/hyprland.desktop"
 wayfire="/usr/share/wayland-sessions/wayfire.desktop"
 sway="/usr/share/wayland-sessions/sway.desktop"

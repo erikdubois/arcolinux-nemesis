@@ -102,19 +102,6 @@ else
 fi
 
 echo
-tput setaf 2
-echo "################################################################"
-echo "################### Changing icons - hardcode-fixer"
-echo "################################################################"
-tput sgr0
-echo
-echo "Checking if icons from applications have a hardcoded path"
-echo "and fixing them"
-echo "Wait for it ..."
-
-sudo hardcode-fixer
-
-echo
 tput setaf 6
 echo "######################################################"
 echo "###################  $(basename $0) done"
