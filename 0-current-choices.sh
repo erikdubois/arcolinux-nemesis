@@ -138,12 +138,6 @@ sudo pacman -Syyu --noconfirm
 # only for ArchBang
 sh 410-intervention*
 
-# Check if arcolinux-repos etc are there
-if ! pacman -Qi arcolinux-keyring &> /dev/null; then
-    sh arch/get-the-keys-and-repos.sh
-    sudo pacman -Syyu
-fi
-
 sudo pacman -S sublime-text-4 --noconfirm --needed
 sudo pacman -S ripgrep --noconfirm --needed
 sudo pacman -S meld --noconfirm --needed

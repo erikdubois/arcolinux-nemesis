@@ -126,6 +126,7 @@ sudo pacman -S --noconfirm --needed feh
 sudo pacman -S --noconfirm --needed fastfetch-git
 sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
+sudo pacman -S --noconfirm --needed fish
 sudo pacman -S --noconfirm --needed flameshot-git
 sudo pacman -S --noconfirm --needed font-manager
 sudo pacman -S --noconfirm --needed gimp
