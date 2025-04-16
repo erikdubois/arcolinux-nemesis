@@ -157,12 +157,6 @@ if grep -q "ArchBang" /etc/os-release; then
 fi
 
 if [ -f /usr/share/xsessions/chadwm.desktop ]; then
-    if grep -q '#run "variety"' "$HOME/.config/arco-chadwm/scripts/run.sh"; then
-        sed -i '/#run "variety"/s/^#//' "$HOME/.config/arco-chadwm/scripts/run.sh"
-        echo "Adding variety to autostart in Chadwm config"
-    else
-        echo "The line 'run \"variety\"' was not found or is already uncommented."
-    fi
 
   echo 
   echo "neo-candy-icons on gtk-3.0 config"
@@ -171,20 +165,6 @@ if [ -f /usr/share/xsessions/chadwm.desktop ]; then
   [ -d "/etc/skel/.config/gtk-3.0" ] || sudo mkdir -p "/etc/skel/.config/gtk-3.0"
   sudo cp  $installed_dir/settings/gtk3/settings.ini /etc/skel/.config/gtk-3.0
   echo
-
-fi
-
-if [ -f /tmp/install-extradotfiles ]; then
-
-    echo
-    tput setaf 2
-    echo "################################################################"
-    echo "################### Copying extra dotfiles"
-    echo "################################################################"
-    tput sgr0
-    echo
-    sudo cp -a  $installed_dir/settings/dotfiles/. /
-    cp -arf /etc/skel/. ~
 
 fi
 

@@ -54,6 +54,19 @@ sudo cp $installed_dir/settings/variety/variety.conf /etc/skel/.config/variety/
 tput sgr0
 echo
 
+if [ -f /tmp/install-extradotfiles ]; then
+
+    echo
+    tput setaf 2
+    echo "################################################################"
+    echo "################### Copying extra dotfiles"
+    echo "################################################################"
+    tput sgr0
+    echo
+    sudo cp -a  $installed_dir/settings/dotfiles/. /
+
+fi
+
 echo
 tput setaf 3
 echo "################################################################"
