@@ -56,7 +56,7 @@ fi
 ##################################################################################################################
 
 run_script() {
-    cd "Personal/settings/$1-chadwm/" || exit 1
+    cd "Personal/settings/voyage-of-chadwm/$1-chadwm/" || exit 1
     sh ./1-all-in-one.sh
     exit 1
 }

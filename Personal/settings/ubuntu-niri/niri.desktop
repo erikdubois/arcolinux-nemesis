@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=Niri
-Comment=A scrollable-tiling Wayland compositor
-Exec=run-niri
-Type=Application
-DesktopNames=niri

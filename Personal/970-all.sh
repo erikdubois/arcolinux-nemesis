@@ -52,12 +52,6 @@ tput sgr0
 echo
 
 echo
-echo "Adding xorg xkill"
-echo
-[ -d /etc/X11/xorg.conf.d/ ] || mkdir -p /etc/X11/xorg.conf.d/
-sudo cp  $installed_dir/settings/xorg/* /etc/X11/xorg.conf.d/
-
-echo
 echo "copying cursor file"
 if [ -d /usr/share/icons/default/cursors ]; then
 	sudo rm /usr/share/icons/default/cursors
@@ -86,14 +80,6 @@ if [ $test == "enabled" ] && [ $result == "none" ] || [ $result == "oracle" ]; t
 fi
 
 echo
-echo "Adding nanorc settings"
-echo
-
-if [ -f /etc/nanorc ]; then
-	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-fi
-
-echo
 echo "Adding ubuntu keyserver"
 
 if ! grep -q "hkp://keyserver.ubuntu.com:80" /etc/pacman.d/gnupg/gpg.conf; then
@@ -102,14 +88,6 @@ keyserver hkp://keyserver.ubuntu.com:80' | sudo tee --append /etc/pacman.d/gnupg
 fi
 echo
 
-echo
-echo "################################################################"
-echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
-echo "################################################################"
-echo
-sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
-sudo wget https://raw.githubusercontent.com/arconetpro/arconet-iso/refs/heads/main/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
-echo
 
 echo
 tput setaf 6

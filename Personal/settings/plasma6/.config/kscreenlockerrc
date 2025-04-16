@@ -1,7 +1,0 @@
-[AC][Display]
-DimDisplayIdleTimeoutSec=900
-TurnOffDisplayIdleTimeoutSec=1800
-
-[Daemon]
-Autolock=false
-LockOnResume=false

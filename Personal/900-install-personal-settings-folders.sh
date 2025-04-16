@@ -123,7 +123,7 @@ else
 
 fi
 
-if [[ -f /etc/dev-rel ]] && grep -q "arco" /etc/dev-rel; then
+#if [[ -f /etc/dev-rel ]] && grep -q "arco" /etc/dev-rel; then
 
 	# echo
 	# tput setaf 2
@@ -153,7 +153,7 @@ if [[ -f /etc/dev-rel ]] && grep -q "arco" /etc/dev-rel; then
 	# sh $installed_dir/settings/flameshot/adapt-flameshot.sh
 	# echo
 
-fi
+#fi
 
 echo
 tput setaf 6
