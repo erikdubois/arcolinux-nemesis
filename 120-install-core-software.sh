@@ -53,7 +53,6 @@ echo
 if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed alacritty
   sudo pacman -S --noconfirm --needed arandr
-  sudo pacman -S --noconfirm --needed arc-gtk-theme
   sudo pacman -S --noconfirm --needed awesome-terminal-fonts
   sudo pacman -S --noconfirm --needed catfish
   sudo pacman -S --noconfirm --needed dmenu
@@ -100,11 +99,9 @@ sudo pacman -S --noconfirm --needed fastfetch-git
 sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
 sudo pacman -S --noconfirm --needed fish
-sudo pacman -S --noconfirm --needed flameshot-git
 sudo pacman -S --noconfirm --needed font-manager
 sudo pacman -S --noconfirm --needed gimp
 sudo pacman -S --noconfirm --needed git
-sudo pacman -S --noconfirm --needed gitahead-git
 sudo pacman -S --noconfirm --needed gnome-disk-utility
 sudo pacman -S --noconfirm --needed gparted
 sudo pacman -S --noconfirm --needed gvfs-smb
@@ -116,7 +113,6 @@ sudo pacman -S --noconfirm --needed hw-probe
 sudo pacman -S --noconfirm --needed inkscape
 sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
-sudo pacman -S --noconfirm --needed lastpass
 sudo pacman -S --noconfirm --needed logrotate
 sudo pacman -S --noconfirm --needed lolcat
 sudo pacman -S --noconfirm --needed lollypop
@@ -150,7 +146,6 @@ sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
 sudo pacman -S --noconfirm --needed simplescreenrecorder
-sudo pacman -S --noconfirm --needed sparklines-git
 sudo pacman -S --noconfirm --needed speedtest-cli
 sudo pacman -S --noconfirm --needed spotify
 sudo pacman -S --noconfirm --needed squashfs-tools
@@ -180,7 +175,6 @@ sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
 sudo pacman -S --noconfirm --needed vlc
 sudo pacman -S --noconfirm --needed wd719x-firmware
 sudo pacman -S --noconfirm --needed wget
-sudo pacman -S --noconfirm --needed wttr
 sudo pacman -S --noconfirm --needed xdg-user-dirs
 sudo pacman -S --noconfirm --needed yay-git
 sudo pacman -S --noconfirm --needed zsh
