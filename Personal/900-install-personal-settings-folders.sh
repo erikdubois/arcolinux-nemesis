@@ -70,6 +70,7 @@ tput sgr0
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
 [ -d $HOME"/Projects" ] || mkdir -p $HOME"/Projects"
+[ -d $HOME"/SHARED" ] || mkdir -p $HOME"/SHARED"
 
 echo
 tput setaf 2
