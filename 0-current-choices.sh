@@ -94,14 +94,6 @@ if [[ "$response" == [yY] ]]; then
     touch /tmp/install-chadwm
 fi
 
-# personal pacman.conf for Erik Dubois
-if [[ ! -f /etc/pacman.conf.nemesis ]]; then
-    sudo cp /etc/pacman.conf /etc/pacman.conf.nemesis
-else
-    echo "Backup already exists: /etc/pacman.conf.nemesis"
-fi
-
-sudo cp pacman.conf /etc/pacman.conf
 
 # Installing chaotic-aur
 pkg_dir="packages"
@@ -114,6 +106,18 @@ fi
 
 # Install all local packages using pacman
 find "$pkg_dir" -maxdepth 1 -name '*.pkg.tar.zst' -print0 | sudo xargs -0 pacman -U --noconfirm
+
+
+# personal pacman.conf for Erik Dubois
+if [[ ! -f /etc/pacman.conf.nemesis ]]; then
+    sudo cp /etc/pacman.conf /etc/pacman.conf.nemesis
+else
+    echo "Backup already exists: /etc/pacman.conf.nemesis"
+fi
+
+sudo cp pacman.conf /etc/pacman.conf
+
+
 
 exit 1
 
