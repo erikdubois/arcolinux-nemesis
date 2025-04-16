@@ -1,6 +1,0 @@
-#!/bin/bash
-
-COLORS="navy.rasi"
-CONFIG="$HOME/.config/powermenu/shared"
-
-cp $CONFIG/$COLORS $CONFIG/default.rasi
