@@ -52,7 +52,7 @@ function check_connectivity() {
 
 function check_file() {
 
-	file="/usr/local/share/arcolinux/pacman.conf"
+	file="/usr/local/share/edu/pacman.conf"
 	if [[ -f $file ]];then
     	echo $file " exists"
     	file_boolean=1
@@ -74,7 +74,7 @@ fi
 
 # pacman config + not online
 if [ $Online -eq 0 ] && [ $file_boolean -eq 1 ] ; then
-	sudo cp /usr/local/share/arcolinux/pacman.conf /etc/pacman.conf
+	sudo cp /usr/local/share/edu/pacman.conf /etc/pacman.conf
 	echo "/etc/pacman.conf saved from local system"
 fi
 

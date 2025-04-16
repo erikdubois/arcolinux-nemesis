@@ -40,6 +40,7 @@
 workdir=$(pwd)
 
 cp /home/erik/DATA/arcolinux-nemesis/pacman.conf /home/erik/DATA/arcolinux-nemesis/Personal/settings/dotfiles/usr/local/share/edu/pacman.conf
+cp /home/erik/DATA/arcolinux-nemesis/gpg.conf /home/erik/DATA/arcolinux-nemesis/Personal/settings/dotfiles/usr/local/share/edu/gpg.conf
 
 rm /home/erik/DATA/arcolinux-nemesis/packages/*
 
