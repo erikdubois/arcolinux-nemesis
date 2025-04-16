@@ -46,10 +46,12 @@ echo "################### Remove software for all"
 echo "######################################################"
 tput sgr0
 echo
-sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-arc-dark-git
-sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-nordic-git
+sudo pacman -R --noconfirm arcolinux-chadwm-git
 sudo pacman -R --noconfirm arcolinux-rofi-git
 sudo pacman -R --noconfirm arcolinux-rofi-themes-git
+
+sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-arc-dark-git
+sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-nordic-git
 sudo pacman -R --noconfirm arcolinux-sddm-simplicity-git
 sudo pacman -R --noconfirm arcolinux-fish-git
 sudo pacman -R --noconfirm arcolinux-root-git
