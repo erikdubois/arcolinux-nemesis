@@ -96,7 +96,7 @@ sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed lastpass
 sudo pacman -S --noconfirm --needed neo-candy-icons-git
 sudo pacman -S --noconfirm --needed pamac-aur
-sudo pacman -S --noconfirm --needed rofi-lbonn-wayland-git
+sudo pacman -S --noconfirm --needed rofi-lbonn-wayland
 sudo pacman -S --noconfirm --needed sparklines-git
 sudo pacman -S --noconfirm --needed surfn-icons-git
 sudo pacman -S --noconfirm --needed wttr
