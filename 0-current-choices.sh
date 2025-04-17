@@ -147,7 +147,7 @@ sudo cp pacman.conf /etc/pacman.conf
 sudo pacman -Syyu --noconfirm
 
 # only for ArchBang
-sh 410-intervention*
+sh 600-intervention*
 
 sudo pacman -S sublime-text-4 --noconfirm --needed
 sudo pacman -S ripgrep --noconfirm --needed

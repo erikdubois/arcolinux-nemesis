@@ -43,18 +43,60 @@ fi
 
 ##################################################################################################################
 
-# software from AUR (Arch User Repositories)
-# https://aur.archlinux.org/packages/
-
 echo
-tput setaf 2
+tput setaf 3
 echo "################################################################"
-echo "################### Sardi extra icons MINT to be installed"
+echo "################### Edu icon themes"
 echo "################################################################"
 tput sgr0
 echo
 
-sh $installed_dir/AUR/install-sardi-mint-y-icons.sh
+func_install() {
+    if pacman -Qi $1 &> /dev/null; then
+        tput setaf 2
+        echo "###############################################################################"
+        echo "################## The package "$1" is already installed"
+        echo "###############################################################################"
+        echo
+        tput sgr0
+    else
+        tput setaf 3
+        echo "###############################################################################"
+        echo "##################  Installing package "  $1
+        echo "###############################################################################"
+        echo
+        tput sgr0
+        sudo pacman -S --noconfirm --needed $1
+    fi
+}
+
+echo
+tput setaf 2
+echo "################################################################"
+echo "################### Install all icons from Nemesis repo"
+echo "################################################################"
+tput sgr0
+echo
+
+
+list=(
+edu-neo-candy-arc-git
+edu-neo-candy-arc-mint-grey-git
+edu-neo-candy-arc-mint-red-git
+edu-neo-candy-qogir-git
+edu-neo-candy-tela-git
+edu-papirus-dark-tela-git
+edu-papirus-dark-tela-grey-git
+surfn-plasma-flow-git
+)
+
+count=0
+
+for name in "${list[@]}" ; do
+    count=$[count+1]
+    tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+    func_install $name
+done
 
 echo
 tput setaf 6

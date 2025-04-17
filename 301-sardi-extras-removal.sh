@@ -43,17 +43,51 @@ fi
 
 ##################################################################################################################
 
-# software from AUR (Arch User Repositories)
-# https://aur.archlinux.org/packages/
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Sardi extra icons to be installed"
+echo "################### Removing software from nemesis_repo"
 echo "################################################################"
 tput sgr0
 echo
 
-sh $installed_dir/AUR/install-sardi-extra-icons.sh
+# Define your package list
+packages=(
+sardi-colora-variations-icons-git
+sardi-flat-colora-variations-icons-git
+sardi-flat-mint-y-icons-git
+sardi-flat-mixing-icons-git
+sardi-flexible-colora-variations-icons-git
+sardi-flexible-luv-colora-variations-icons-git
+sardi-flexible-mint-y-icons-git
+sardi-flexible-mixing-icons-git
+sardi-flexible-variations-icons-git
+sardi-ghost-flexible-colora-variations-icons-git
+sardi-ghost-flexible-mint-y-icons-git
+sardi-ghost-flexible-mixing-icons-git
+sardi-ghost-flexible-variations-icons-git
+sardi-mint-y-icons-git
+sardi-mixing-icons-git
+sardi-mono-colora-variations-icons-git
+sardi-mono-mint-y-icons-git
+sardi-mono-mixing-icons-git
+sardi-mono-numix-colora-variations-icons-git
+sardi-mono-papirus-colora-variations-icons-git
+sardi-orb-colora-mint-y-icons-git
+sardi-orb-colora-mixing-icons-git
+sardi-orb-colora-variations-icons-git
+sardi-icons
+)
+
+# Loop through and remove only if installed
+for pkg in "${packages[@]}"; do
+    if pacman -Qi "$pkg" &>/dev/null; then
+        echo "➤ Removing $pkg..."
+        sudo pacman -R --noconfirm "$pkg"
+    else
+        echo "✔ $pkg is already removed or not installed."
+    fi
+done
 
 echo
 tput setaf 6

@@ -43,18 +43,33 @@ fi
 
 ##################################################################################################################
 
-# software from AUR (Arch User Repositories)
-# https://aur.archlinux.org/packages/
-
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### Surfn extra icons MINT to be installed"
+echo "################### Removing software from nemesis_repo"
 echo "################################################################"
 tput sgr0
 echo
 
-sh $installed_dir/AUR/install-surfn-mint-y-icons-git.sh
+# Define your package list
+packages=(
+surfn-arc-breeze-icons-git
+surfn-mint-y-icons-git
+surfn-plasma-flow-git
+surfn-plasma-dark-icons-git
+surfn-plasma-light-icons-git
+surfn-icons-git
+)
+
+# Loop through and remove only if installed
+for pkg in "${packages[@]}"; do
+    if pacman -Qi "$pkg" &>/dev/null; then
+        echo "➤ Removing $pkg..."
+        sudo pacman -R --noconfirm "$pkg"
+    else
+        echo "✔ $pkg is already removed or not installed."
+    fi
+done
 
 echo
 tput setaf 6
