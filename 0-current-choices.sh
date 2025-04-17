@@ -186,7 +186,9 @@ sh 170-install-cups*
 #sh 180-install-test-software*
 
 sh 200-software-AUR-repo*
-sh 500-*
+#sh 300-sardi-extras*
+#sh 400-surfn-extras*
+sh 500-plasma*
 
 echo
 tput setaf 3
