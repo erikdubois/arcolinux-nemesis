@@ -150,8 +150,12 @@ if grep -q "arco" /etc/dev-rel; then
   sudo pacman -R --noconfirm arconet-wallpapers
 
   sudo pacman -R --noconfirm archlinux-kernel-manager
+  sudo pacman -R --noconfirm sofirem-git
   sudo pacman -R --noconfirm ufetch-arco-git
-  
+  sudo pacman -R --noconfirm endeavouros-keyring
+  sudo pacman -R --noconfirm endeavouros-mirrorlist
+  sudo pacman -R --noconfirm rebornos-keyring
+  sudo pacman -R --noconfirm rebornos-mirrorlist
   echo
   tput setaf 2
   echo "######################################################"
