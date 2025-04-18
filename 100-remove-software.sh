@@ -72,9 +72,12 @@ echo "########################################################################"
 tput sgr0
 echo
 
-if pacman -Qi xf86-video-vmware &> /dev/null; then
-  sudo pacman -Rs xf86-video-vmware --noconfirm
+if ! systemd-detect-virt | grep -q "oracle"; then
+  if pacman -Qi xf86-video-vmware &> /dev/null; then
+    sudo pacman -Rs xf86-video-vmware --noconfirm
+  fi
 fi
+
 
 # when on any ArcoLinux ISO
 
