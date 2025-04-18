@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -e
-##################################################################################################################
+##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
 # Website   : https://www.alci.online
@@ -11,11 +11,11 @@
 # Website   : https://www.arcolinuxb.com
 # Website   : https://www.arcolinuxiso.com
 # Website   : https://www.arcolinuxforum.com
-##################################################################################################################
+##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
-##################################################################################################################
+##################################################################################################################################
 #tput setaf 0 = black
 #tput setaf 1 = red
 #tput setaf 2 = green
@@ -28,7 +28,7 @@
 
 #end colors
 #tput sgr0
-##################################################################################################################
+##################################################################################################################################
 
 #networkmanager issue
 #nmcli connection modify Wired\ connection\ 1 ipv6.method "disabled"
@@ -36,12 +36,12 @@
 # what is the present working directory
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-##################################################################################################################
+##################################################################################################################################
 
 # set DEBUG to true to be able to analyze the scripts file per file
 export DEBUG=false
 
-##################################################################################################################
+##################################################################################################################################
 
 if [ "$DEBUG" = true ]; then
     echo
@@ -53,7 +53,7 @@ if [ "$DEBUG" = true ]; then
     echo
 fi
 
-##################################################################################################################
+##################################################################################################################################
 
 run_script() {
     cd "Personal/settings/voyage-of-chadwm/$1-chadwm/" || exit 1
@@ -80,14 +80,14 @@ if grep -q "Fedora" /etc/os-release; then run_script "fedora"; fi
 if grep -q "Solus" /etc/os-release; then run_script "solus"; fi
 
 echo "Use the script give-me-pacman.conf.sh to only get the new /etc/pacman.conf"
-echo "Stop this script with CTRL + C then and run it"
+echo "Stop this script with CTRL + C then and run give-me-pacman.conf.sh"
 
 echo
 tput setaf 3
-echo "################################################################"
+echo "########################################################################"
 echo "Do you want to install Chadwm on your system?"
 echo "Answer with Y/y or N/n"
-echo "################################################################"
+echo "########################################################################"
 tput sgr0
 echo
 
@@ -97,7 +97,7 @@ if [[ "$response" == [yY] ]]; then
     touch /tmp/install-chadwm
 fi
 
-##################################################################################################################
+##################################################################################################################################
 
 if ! grep -q -e "Manjaro" -e "Artix" /etc/os-release; then
 
@@ -115,10 +115,10 @@ Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch"  | sudo tee /etc
 fi
 
 tput setaf 2
-echo "########################################################################"
+echo "################################################################################"
 echo "Arch Linux Servers have been written to /etc/pacman.d/mirrorlist"
 echo "Use nmirrorlist to inspect"
-echo "########################################################################"
+echo "################################################################################"
 tput sgr0
 echo
 
@@ -149,33 +149,18 @@ sudo pacman -Syyu --noconfirm
 # only for ArchBang
 sh 600-intervention*
 
+#first get tools
 sudo pacman -S sublime-text-4 --noconfirm --needed
 sudo pacman -S ripgrep --noconfirm --needed
 sudo pacman -S meld --noconfirm --needed
 
 echo
 tput setaf 3
-echo "################################################################"
+echo "########################################################################"
 echo "################### Start current choices"
-echo "################################################################"
+echo "########################################################################"
 tput sgr0
 echo
-
-sudo pacman -Sy
-
-if [ -f /etc/dev-rel ]; then
-
-    if grep -q "arconet" /etc/dev-rel || grep -q "arcopro" /etc/dev-rel || grep -q "arcoplasma" /etc/dev-rel; then
-        echo
-        tput setaf 3
-        echo "################################################################"
-        echo "######## We are either on arconet, arcopro or arcoplasma"
-        echo "################################################################"
-        tput sgr0
-        echo
-        sh get-me-started
-    fi
-fi
 
 sh 100-remove-software*
 sh 110-install-nemesis-software*
@@ -192,9 +177,9 @@ sh 500-plasma*
 
 echo
 tput setaf 3
-echo "################################################################"
+echo "########################################################################"
 echo "################### Going to the Personal folder"
-echo "################################################################"
+echo "########################################################################"
 tput sgr0
 echo
 
@@ -232,7 +217,7 @@ sh 990-skel*
 sh 999-last*
 
 tput setaf 3
-echo "################################################################"
+echo "########################################################################"
 echo "End current choices"
-echo "################################################################"
+echo "########################################################################"
 tput sgr0

@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -e
-##################################################################################################################
+##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
 # Website   : https://www.alci.online
@@ -11,11 +11,11 @@
 # Website   : https://www.arcolinuxb.com
 # Website   : https://www.arcolinuxiso.com
 # Website   : https://www.arcolinuxforum.com
-##################################################################################################################
+##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
-##################################################################################################################
+##################################################################################################################################
 #tput setaf 0 = black
 #tput setaf 1 = red
 #tput setaf 2 = green
@@ -25,7 +25,7 @@
 #tput setaf 6 = cyan
 #tput setaf 7 = gray
 #tput setaf 8 = light blue
-##################################################################################################################
+##################################################################################################################################
 
 if [ "$DEBUG" = true ]; then
     echo
@@ -37,130 +37,126 @@ if [ "$DEBUG" = true ]; then
     echo
 fi
 
-##################################################################################################################
+##################################################################################################################################
 
 echo
 tput setaf 3
-echo "######################################################"
-echo "################### Remove software for all"
-echo "######################################################"
-tput sgr0
-echo
-sudo pacman -R --noconfirm arcolinux-chadwm-git
-sudo pacman -R --noconfirm arcolinux-rofi-git
-sudo pacman -R --noconfirm arcolinux-rofi-themes-git
-sudo pacman -R --noconfirm arcolinux-arc-dawn-git
-sudo pacman -R --noconfirm arcolinux-arc-kde
-sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-arc-dark-git
-sudo pacman -R --noconfirm arcolinux-plasma-theme-candy-beauty-nordic-git
-sudo pacman -R --noconfirm arcolinux-plasma-keybindings-git
-sudo pacman -R --noconfirm arcolinux-plasma-servicemenus-git
-sudo pacman -R --noconfirm arcolinux-sddm-simplicity-git
-sudo pacman -R --noconfirm arcolinux-fish-git
-sudo pacman -R --noconfirm arcolinux-hblock-git
-sudo pacman -R --noconfirm arcolinux-root-git
-sudo pacman -R --noconfirm arcolinux-zsh-git
-sudo pacman -R --noconfirm arconet-variety-config
-sudo pacman -R --noconfirm speedtest-cli-git
-sudo pacman -R --noconfirm arconet-xfce
-sudo pacman -R --noconfirm mintstick-git
-sudo pacman -R --noconfirm fastfetch
-sudo pacman -Rs --noconfirm memtest86+
-sudo pacman -Rs --noconfirm memtest86+-efi
-sudo pacman -Rs --noconfirm nomacs-qt6-git
-sudo pacman -Rs --noconfirm hardinfo-gtk3
-sudo pacman -Rs --noconfirm paru-bin
-sudo pacman -Rs --noconfirm yay-bin
-sudo pacman -Rs --noconfirm bibata-cursor-theme-bin
-sudo pacman -Rs broadcom-wl-dkms --noconfirm
-sudo pacman -Rs rtl8821cu-morrownr-dkms-git --noconfirm
-sudo pacman -Rs --noconfirm archinstall
-sudo pacman -Rs pragha --noconfirm
-sudo pacman -Rs rate-mirrors-bin --noconfirm
-sudo pacman -Rs lftp --noconfirm
-sudo pacman -Rs xf86-video-amdgpu --noconfirm
-sudo pacman -Rs xf86-video-fbdev --noconfirm
-sudo pacman -Rs xf86-video-openchrome --noconfirm
-if pacman -Qi xf86-video-vmware &> /dev/null; then
-  sudo pacman -Rs xf86-video-vmware --noconfirm
-fi
-sudo pacman -Rs xf86-video-ati --noconfirm
-sudo pacman -Rs xf86-video-nouveau --noconfirm
-sudo pacman -Rs xf86-video-vesa --noconfirm
-sudo pacman -Rs --noconfirm xfce4-artwork
-sudo rm -rf /usr/share/backgrounds/xfce
-
-sudo pacman -Rs --noconfirm adobe-source-han-sans-cn-fonts
-sudo pacman -Rs --noconfirm adobe-source-han-sans-jp-fonts
-sudo pacman -Rs --noconfirm adobe-source-han-sans-kr-fonts
-
-sudo pacman -Rs --noconfirm a-candy-beauty-icon-theme-git
-
-echo
-tput setaf 3
-echo "######################################################"
-echo "################### Remove configs for all"
-echo "######################################################"
+echo "##############################################################"
+echo "################### Move configs for all - backup"
+echo "##############################################################"
 tput sgr0
 echo
 
 # always put the current .bashrc .zshrc away
 if [ -f /etc/skel/.bashrc ]; then
-  sudo mv /etc/skel/.bashrc /etc/skel/.bashrc-old
+  sudo mv /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
 fi
 
 if [ -f /etc/skel/.zshrc ]; then
-  sudo mv /etc/skel/.zshrc /etc/skel/.zshrc-old
+  sudo mv /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
 fi
 
-# when on ARCOLINUX - remove conflicting files
+# when on any ArcoLinux ISO
 
 if grep -q "arco" /etc/dev-rel; then
   echo
   tput setaf 2
-  echo "######################################################"
-  echo "####### Removing software for ArcoLinux"
-  echo "######################################################"
+  echo "##############################################################"
+  echo "####### Removing software on ArcoLinux"
+  echo "##############################################################"
   tput sgr0
   echo
 
-  # first depends on gone
-  sudo pacman -R --noconfirm arcolinux-pipemenus-git
-  sudo pacman -R --noconfirm archlinux-tweak-tool-git
-
-  sudo pacman -R --noconfirm arcolinux-app-glade-git
-  sudo pacman -R --noconfirm arcolinux-common-git
-  sudo pacman -R --noconfirm arcolinux-dconf-all-desktops-git
-  sudo pacman -R --noconfirm arcolinux-desktop-trasher-git
-  sudo pacman -R --noconfirm arcolinux-faces-git
-  sudo pacman -R --noconfirm arcolinux-fonts-git
-  sudo pacman -R --noconfirm arcolinux-keyring
-  sudo pacman -R --noconfirm arcolinux-kvantum-git
-  sudo pacman -R --noconfirm arcolinux-local-applications-all-hide-git
-  sudo pacman -R --noconfirm arcolinux-local-applications-git
-  sudo pacman -R --noconfirm arcolinux-local-xfce4-git
-  sudo pacman -R --noconfirm arcolinux-logo-git
-  sudo pacman -R --noconfirm arcolinux-meta-log
-  sudo pacman -R --noconfirm arcolinux-mirrorlist-git
-  sudo pacman -R --noconfirm arcolinux-systemd-services-git
-  sudo pacman -R --noconfirm arcolinux-wallpapers-git
-  sudo pacman -R --noconfirm arcolinux-welcome-app-git
-  sudo pacman -R --noconfirm arcolinux-xfce-panel-profiles-git
-
-  sudo pacman -R --noconfirm arconet-wallpapers
-
-  sudo pacman -R --noconfirm archlinux-kernel-manager
-  sudo pacman -R --noconfirm sofirem-git
-  sudo pacman -R --noconfirm ufetch-arco-git
-  sudo pacman -R --noconfirm endeavouros-keyring
-  sudo pacman -R --noconfirm endeavouros-mirrorlist
-  sudo pacman -R --noconfirm rebornos-keyring
-  sudo pacman -R --noconfirm rebornos-mirrorlist
   echo
+  tput setaf 3
+  echo "########################################################################"
+  echo "######## Launch of get-me-started"
+  echo "########################################################################"
+  tput sgr0
+  echo
+  sh get-me-started
+
+  # order is important - dependencies
+  
+  if pacman -Qi xf86-video-vmware &> /dev/null; then
+    sudo pacman -Rs xf86-video-vmware --noconfirm
+  fi
+  
+  sudo pacman -Rs --noconfirm a-candy-beauty-icon-theme-git
+  sudo pacman -Rs --noconfirm adobe-source-han-sans-cn-fonts
+  sudo pacman -Rs --noconfirm adobe-source-han-sans-jp-fonts
+  sudo pacman -Rs --noconfirm adobe-source-han-sans-kr-fonts
+  sudo pacman -Rs --noconfirm archinstall
+  sudo pacman -Rs --noconfirm archlinux-kernel-manager
+  sudo pacman -Rs --noconfirm archlinux-tweak-tool-git
+  sudo pacman -Rs --noconfirm arcolinux-app-glade-git
+  sudo pacman -Rs --noconfirm arcolinux-arc-dawn-git
+  sudo pacman -Rs --noconfirm arcolinux-arc-kde
+  sudo pacman -Rs --noconfirm arcolinux-chadwm-git
+  sudo pacman -Rs --noconfirm arcolinux-common-git
+  sudo pacman -Rs --noconfirm arcolinux-dconf-all-desktops-git
+  sudo pacman -Rs --noconfirm arcolinux-desktop-trasher-git
+  sudo pacman -Rs --noconfirm arcolinux-faces-git
+  sudo pacman -Rs --noconfirm arcolinux-fish-git
+  sudo pacman -Rs --noconfirm arcolinux-fonts-git
+  sudo pacman -Rs --noconfirm arcolinux-hblock-git
+  sudo pacman -Rs --noconfirm arcolinux-keyring
+  sudo pacman -Rs --noconfirm arcolinux-kvantum-git
+  sudo pacman -Rs --noconfirm arcolinux-local-applications-all-hide-git
+  sudo pacman -Rs --noconfirm arcolinux-local-applications-git
+  sudo pacman -Rs --noconfirm arcolinux-local-xfce4-git
+  sudo pacman -Rs --noconfirm arcolinux-logo-git
+  sudo pacman -Rs --noconfirm arcolinux-meta-log
+  sudo pacman -Rs --noconfirm arcolinux-mirrorlist-git
+  sudo pacman -Rs --noconfirm arcolinux-pipemenus-git
+  sudo pacman -Rs --noconfirm arcolinux-plasma-keybindings-git
+  sudo pacman -Rs --noconfirm arcolinux-plasma-servicemenus-git
+  sudo pacman -Rs --noconfirm arcolinux-plasma-theme-candy-beauty-arc-dark-git
+  sudo pacman -Rs --noconfirm arcolinux-plasma-theme-candy-beauty-nordic-git
+  sudo pacman -Rs --noconfirm arcolinux-rofi-git
+  sudo pacman -Rs --noconfirm arcolinux-rofi-themes-git
+  sudo pacman -Rs --noconfirm arcolinux-root-git
+  sudo pacman -Rs --noconfirm arcolinux-sddm-simplicity-git
+  sudo pacman -Rs --noconfirm arcolinux-systemd-services-git
+  sudo pacman -Rs --noconfirm arcolinux-wallpapers-git
+  sudo pacman -Rs --noconfirm arcolinux-welcome-app-git
+  sudo pacman -Rs --noconfirm arcolinux-xfce-panel-profiles-git
+  sudo pacman -Rs --noconfirm arcolinux-zsh-git
+  sudo pacman -Rs --noconfirm arconet-variety-config
+  sudo pacman -Rs --noconfirm arconet-wallpapers
+  sudo pacman -Rs --noconfirm arconet-xfce
+  sudo pacman -Rs --noconfirm bibata-cursor-theme-bin
+  sudo pacman -Rs --noconfirm bibata-cursor-theme-bin
+  sudo pacman -Rs --noconfirm endeavouros-keyring
+  sudo pacman -Rs --noconfirm endeavouros-mirrorlist
+  sudo pacman -Rs --noconfirm fastfetch
+  sudo pacman -Rs --noconfirm hardinfo-gtk3
+  sudo pacman -Rs --noconfirm lftp --noconfirm
+  sudo pacman -Rs --noconfirm memtest86+
+  sudo pacman -Rs --noconfirm memtest86+-efi
+  sudo pacman -Rs --noconfirm mintstick-git
+  sudo pacman -Rs --noconfirm nomacs-qt6-git
+  sudo pacman -Rs --noconfirm paru-bin
+  sudo pacman -Rs --noconfirm pragha --noconfirm
+  sudo pacman -Rs --noconfirm rate-mirrors-bin --noconfirm
+  sudo pacman -Rs --noconfirm rebornos-keyring
+  sudo pacman -Rs --noconfirm rebornos-mirrorlist
+  sudo pacman -Rs --noconfirm sofirem-git
+  sudo pacman -Rs --noconfirm speedtest-cli-git
+  sudo pacman -Rs --noconfirm ufetch-arco-git
+  sudo pacman -Rs --noconfirm xf86-video-amdgpu --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-ati --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-fbdev --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-nouveau --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-openchrome --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-vesa --noconfirm
+  sudo pacman -Rs --noconfirm xfce4-artwork
+  sudo pacman -Rs --noconfirm yay-bin
+
   tput setaf 2
-  echo "######################################################"
-  echo "################### Software removed"
-  echo "######################################################"
+  echo "##############################################################"
+  echo "################### Software for ArcoLinux removed"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -171,18 +167,18 @@ if grep -q "archlinux" /etc/os-release; then
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "############### Removing software for Arch"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "################### Software removed"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -194,9 +190,9 @@ if grep -q "EndeavourOS" /etc/os-release; then
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "############### Removing software for EOS"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
   if [ -f /etc/skel/.config/rofi/config.rasi ]; then
@@ -210,9 +206,9 @@ if grep -q "EndeavourOS" /etc/os-release; then
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "################### Software removed"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -224,9 +220,9 @@ if grep -q "Garuda" /etc/os-release; then
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "############### Removing software for Garuda"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -254,9 +250,9 @@ if grep -q "Garuda" /etc/os-release; then
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "################### Software removed"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -268,9 +264,9 @@ if grep -q "Archman" /etc/os-release; then
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "############### Removing software for Archman"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
 
   sudo systemctl disable firewalld
@@ -292,9 +288,9 @@ if grep -q "Archman" /etc/os-release; then
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "################### Software removed"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -306,9 +302,9 @@ if grep -q "archcraft" /etc/os-release; then
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "############### Removing software for Archcraft"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -327,9 +323,9 @@ if grep -q "archcraft" /etc/os-release; then
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "################### Software removed"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -339,9 +335,9 @@ fi
 if grep -q "BigLinux" /etc/os-release; then
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "####### Removing software for BigLinux"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -349,9 +345,9 @@ if grep -q "BigLinux" /etc/os-release; then
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "################### Software removed"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -361,9 +357,9 @@ fi
 if grep -q "RebornOS" /etc/os-release; then
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "####### Removing software for RebornOS"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -371,9 +367,9 @@ if grep -q "RebornOS" /etc/os-release; then
 
   echo
   tput setaf 2
-  echo "######################################################"
+  echo "##############################################################"
   echo "################### Software removed"
-  echo "######################################################"
+  echo "##############################################################"
   tput sgr0
   echo
 
@@ -381,8 +377,8 @@ fi
 
 echo
 tput setaf 6
-echo "######################################################"
+echo "##############################################################"
 echo "###################  $(basename $0) done"
-echo "######################################################"
+echo "##############################################################"
 tput sgr0
 echo
