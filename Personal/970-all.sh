@@ -102,17 +102,17 @@ if [ $test == "enabled" ] && [ $result == "none" ] || [ $result == "oracle" ]; t
 fi
 
 # personal /etc/pacman.d/gnupg/gpg.conf for Erik Dubois
-if [[ ! -f /etc/pacman.d/gnupg/gpg.conf ]]; then
-    echo
-    tput setaf 2
-    echo "################################################################################"
-    echo "Copying gpg.conf to /etc/pacman.d/gnupg/gpg.conf"
-    echo "################################################################################"
-    tput sgr0
-    echo
-    sudo cp -v ../gpg.conf /etc/pacman.d/gnupg/gpg.conf
-    echo
-fi
+
+echo
+tput setaf 2
+echo "################################################################################"
+echo "Copying gpg.conf to /etc/pacman.d/gnupg/gpg.conf"
+echo "################################################################################"
+tput sgr0
+echo
+sudo cp -v ../gpg.conf /etc/pacman.d/gnupg/gpg.conf
+echo
+
 
 echo
 tput setaf 6
