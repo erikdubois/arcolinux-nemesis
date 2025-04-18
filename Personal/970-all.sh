@@ -46,7 +46,7 @@ fi
 echo
 tput setaf 3
 echo "########################################################################"
-echo "################### FOR ALL"
+echo "################### FOR ANY ARCH LINUX SYSTEM"
 echo "########################################################################"
 tput sgr0
 echo
@@ -101,14 +101,31 @@ if [ $test == "enabled" ] && [ $result == "none" ] || [ $result == "oracle" ]; t
 	echo
 fi
 
-# echo
-# echo "Adding ubuntu keyserver"
+echo
+echo "Adding Ubuntu keyserver..."
 
-# if ! grep -q "hkp://keyserver.ubuntu.com:80" /etc/pacman.d/gnupg/gpg.conf; then
-# echo '
-# keyserver hkp://keyserver.ubuntu.com:80' | sudo tee --append /etc/pacman.d/gnupg/gpg.conf
-# fi
-# echo
+KEYSERVER="hkp://keyserver.ubuntu.com:80"
+GPG_CONF="/etc/pacman.d/gnupg/gpg.conf"
+
+if ! grep -q "$KEYSERVER" "$GPG_CONF"; then
+    echo "Appending keyserver to $GPG_CONF"
+    sudo tee -a "$GPG_CONF" > /dev/null <<EOF
+
+keyserver $KEYSERVER
+
+#keyserver hkp://keys.openpgp.org
+#keyserver hkp://keys.openpgp.org:80
+#keyserver hkps://keys.openpgp.org
+#keyserver hkps://keys.openpgp.org:443
+#keyserver hkps://keyserver.ubuntu.com:443
+#keyserver hkp://pool.sks-keyservers.net:80
+#keyserver hkps://hkps.pool.sks-keyservers.net:443
+#keyserver hkp://ipv4.pool.sks-keyservers.net:11371
+EOF
+else
+    echo "Keyserver already present in $GPG_CONF"
+fi
+echo
 
 
 echo
