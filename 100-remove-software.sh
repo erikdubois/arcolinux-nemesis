@@ -66,7 +66,8 @@ fi
 
 # when on any ArcoLinux ISO
 
-if grep -q "arco" /etc/dev-rel && [ -f /etc/dev-rel ]; then
+
+if [[ -f /etc/dev-rel ]]; then
   echo
   tput setaf 3
   echo "##############################################################"
