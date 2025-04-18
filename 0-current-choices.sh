@@ -147,13 +147,27 @@ fi
 
 sudo cp pacman.conf /etc/pacman.conf
 echo "Use npacman when on ArcoLinux to inspect"
+
 echo
-echo "Getting the updates in"
+tput setaf 2
+echo "################################################################################"
+echo "Updating the system - sudo pacman -Syyu"
+echo "################################################################################"
+tput sgr0
 echo
+
 sudo pacman -Syyu --noconfirm
 
 # only for ArchBang
 sh 600-intervention*
+
+echo
+tput setaf 2
+echo "################################################################################"
+echo "Installing much needed software"
+echo "################################################################################"
+tput sgr0
+echo
 
 #first get tools for whatever distro
 sudo pacman -S sublime-text-4 --noconfirm --needed

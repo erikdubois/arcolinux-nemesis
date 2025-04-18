@@ -40,6 +40,14 @@ fi
 ##################################################################################################################################
 
 echo
+tput setaf 2
+echo "##############################################################"
+echo "################### Start of the removal process"
+echo "##############################################################"
+tput sgr0
+echo
+
+echo
 tput setaf 3
 echo "##############################################################"
 echo "################### Move configs for all - backup"
@@ -49,18 +57,18 @@ echo
 
 # always put the current .bashrc .zshrc away
 if [ -f /etc/skel/.bashrc ]; then
-  sudo mv /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
+  sudo mv -v /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
 fi
 
 if [ -f /etc/skel/.zshrc ]; then
-  sudo mv /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
+  sudo mv -v /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
 fi
 
 # when on any ArcoLinux ISO
 
 if grep -q "arco" /etc/dev-rel; then
   echo
-  tput setaf 2
+  tput setaf 3
   echo "##############################################################"
   echo "####### Removing software on ArcoLinux"
   echo "##############################################################"
@@ -86,12 +94,6 @@ if grep -q "arco" /etc/dev-rel; then
   tput sgr0
   echo
 
-  sudo pacman -Rs --noconfirm xf86-video-amdgpu --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-ati --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-fbdev --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-nouveau --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-openchrome --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-vesa --noconfirm
   if pacman -Qi xf86-video-vmware &> /dev/null; then
     sudo pacman -Rs xf86-video-vmware --noconfirm
   fi
@@ -100,11 +102,16 @@ if grep -q "arco" /etc/dev-rel; then
   tput setaf 3
   echo "########################################################################"
   echo "######## Removing the Arch Linux Tweak Tool"
+  echo "######## Removing arcolinux-keyring"
+  echo "######## Removing arcolinux-mirrorlist-git"
   echo "########################################################################"
   tput sgr0
   echo
 
   sudo pacman -Rns --noconfirm archlinux-tweak-tool-git
+
+  sudo pacman -Rs --noconfirm arcolinux-keyring
+  sudo pacman -Rs --noconfirm arcolinux-mirrorlist-git
 
   echo
   tput setaf 3
@@ -115,7 +122,6 @@ if grep -q "arco" /etc/dev-rel; then
   echo
 
   sudo pacman -Rs --noconfirm arcolinux-pipemenus-git
-  sudo pacman -Rs --noconfirm arcolinux-common-git
 
   sudo pacman -Rs --noconfirm a-candy-beauty-icon-theme-git
   sudo pacman -Rs --noconfirm adobe-source-han-sans-cn-fonts
@@ -172,7 +178,7 @@ if grep -q "arco" /etc/dev-rel; then
   sudo pacman -Rs --noconfirm rate-mirrors-bin
   sudo pacman -Rs --noconfirm xfce4-artwork
 
-  tput setaf 2
+  tput setaf 3
   echo "##############################################################"
   echo "################### Software removal for ArcoLinux done"
   echo "##############################################################"
@@ -185,12 +191,27 @@ fi
 if grep -q "Arch Linux" /etc/os-release; then
 
   echo
-  tput setaf 2
+  tput setaf 3
   echo "##############################################################"
   echo "############### Removing software for Arch"
   echo "##############################################################"
   tput sgr0
   echo
+
+  echo
+  tput setaf 3
+  echo "########################################################################"
+  echo "######## Removing the drivers"
+  echo "########################################################################"
+  tput sgr0
+  echo
+
+  sudo pacman -Rs --noconfirm xf86-video-amdgpu --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-ati --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-fbdev --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-nouveau --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-openchrome --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-vesa --noconfirm
 
   sudo pacman -Rs --noconfirm archinstall
   sudo pacman -Rs --noconfirm hardinfo-gtk3
@@ -201,7 +222,7 @@ if grep -q "Arch Linux" /etc/os-release; then
   echo
   tput setaf 2
   echo "##############################################################"
-  echo "################### Software removed"
+  echo "################### Software on Arch removed"
   echo "##############################################################"
   tput sgr0
   echo
@@ -213,7 +234,7 @@ fi
 if grep -q "EndeavourOS" /etc/os-release; then
 
   echo
-  tput setaf 2
+  tput setaf 3
   echo "##############################################################"
   echo "############### Removing software for EOS"
   echo "##############################################################"
@@ -229,7 +250,7 @@ if grep -q "EndeavourOS" /etc/os-release; then
   sudo pacman -R --noconfirm yay
 
   echo
-  tput setaf 2
+  tput setaf 3
   echo "##############################################################"
   echo "################### Software removed"
   echo "##############################################################"
@@ -243,7 +264,7 @@ fi
 if grep -q "Garuda" /etc/os-release; then
 
   echo
-  tput setaf 2
+  tput setaf 3
   echo "##############################################################"
   echo "############### Removing software for Garuda"
   echo "##############################################################"
@@ -275,7 +296,7 @@ if grep -q "Garuda" /etc/os-release; then
   echo
   tput setaf 2
   echo "##############################################################"
-  echo "################### Software removed"
+  echo "################### Software on Garuda removed"
   echo "##############################################################"
   tput sgr0
   echo
@@ -287,7 +308,7 @@ fi
 if grep -q "Archman" /etc/os-release; then
 
   echo
-  tput setaf 2
+  tput setaf 3
   echo "##############################################################"
   echo "############### Removing software for Archman"
   echo "##############################################################"
@@ -313,7 +334,7 @@ if grep -q "Archman" /etc/os-release; then
   echo
   tput setaf 2
   echo "##############################################################"
-  echo "################### Software removed"
+  echo "################### Software on Archman removed"
   echo "##############################################################"
   tput sgr0
   echo
@@ -325,7 +346,7 @@ fi
 if grep -q "archcraft" /etc/os-release; then
 
   echo
-  tput setaf 2
+  tput setaf 3
   echo "##############################################################"
   echo "############### Removing software for Archcraft"
   echo "##############################################################"
@@ -348,7 +369,7 @@ if grep -q "archcraft" /etc/os-release; then
   echo
   tput setaf 2
   echo "##############################################################"
-  echo "################### Software removed"
+  echo "################### Software on Archcraft removed"
   echo "##############################################################"
   tput sgr0
   echo
@@ -370,7 +391,7 @@ if grep -q "BigLinux" /etc/os-release; then
   echo
   tput setaf 2
   echo "##############################################################"
-  echo "################### Software removed"
+  echo "################### Software on Biglinux removed"
   echo "##############################################################"
   tput sgr0
   echo
@@ -392,7 +413,7 @@ if grep -q "RebornOS" /etc/os-release; then
   echo
   tput setaf 2
   echo "##############################################################"
-  echo "################### Software removed"
+  echo "################### Software on RebornOS removed"
   echo "##############################################################"
   tput sgr0
   echo
