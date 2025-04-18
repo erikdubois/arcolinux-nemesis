@@ -45,7 +45,7 @@ fi
 
 if [ ! -f /etc/dev-rel ] ; then 
 
-	if grep -q "archlinux" /etc/os-release; then
+	if grep -q "Arch Linux" /etc/os-release; then
 
 		echo
 		tput setaf 2
