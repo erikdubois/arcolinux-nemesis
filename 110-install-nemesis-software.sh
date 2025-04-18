@@ -86,7 +86,7 @@ sudo pacman -S --noconfirm menulibre
 sudo pacman -S --noconfirm mugshot
 sudo pacman -S --noconfirm upd72020x-fw
 
-# removing all conflicting packages with edu-dot-files-gits
+# removing all conflicting packages with edu-dot-files-git
 sudo pacman -R --noconfirm arcolinux-bin-git
 sudo pacman -R --noconfirm arcolinux-system-config-git
 sudo pacman -R --noconfirm arcolinux-bootloader-systemd-boot-git

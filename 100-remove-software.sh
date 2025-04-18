@@ -188,7 +188,7 @@ if grep -q "arco" /etc/dev-rel; then
 fi
 
 # when on Arch Linux - remove conflicting files
-if grep -q "Arch Linux" /etc/os-release; then
+if grep -q "Arch Linux" /etc/os-release && [ ! -e /bootloader ]; then
 
   echo
   tput setaf 2
