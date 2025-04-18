@@ -70,7 +70,7 @@ if grep -q "arco" /etc/dev-rel; then
   echo
   tput setaf 3
   echo "########################################################################"
-  echo "######## Launch of get-me-started"
+  echo "######## Launch of get-me-started - kernels - conkys - broadcom/realtek"
   echo "########################################################################"
   tput sgr0
   echo
@@ -78,17 +78,54 @@ if grep -q "arco" /etc/dev-rel; then
 
   # order is important - dependencies
   
+  echo
+  tput setaf 3
+  echo "########################################################################"
+  echo "######## Removing the drivers"
+  echo "########################################################################"
+  tput sgr0
+  echo
+
+  sudo pacman -Rs --noconfirm xf86-video-amdgpu --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-ati --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-fbdev --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-nouveau --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-openchrome --noconfirm
+  sudo pacman -Rs --noconfirm xf86-video-vesa --noconfirm
   if pacman -Qi xf86-video-vmware &> /dev/null; then
     sudo pacman -Rs xf86-video-vmware --noconfirm
   fi
-  
+
+  echo
+  tput setaf 3
+  echo "########################################################################"
+  echo "######## Removing the Arch Linux Tweak Tool"
+  echo "########################################################################"
+  tput sgr0
+  echo
+
+  sudo pacman -Rs --noconfirm arcolinux-keyring
+  sudo pacman -Rs --noconfirm arcolinux-mirrorlist-git
+  sudo pacman -Rs --noconfirm endeavouros-keyring
+  sudo pacman -Rs --noconfirm endeavouros-mirrorlist
+  sudo pacman -Rs --noconfirm rebornos-keyring
+  sudo pacman -Rs --noconfirm rebornos-mirrorlist
+  sudo pacman -Rns --noconfirm archlinux-tweak-tool-git
+
+  echo
+  tput setaf 3
+  echo "########################################################################"
+  echo "######## Removing ArcoLinux packages"
+  echo "########################################################################"
+  tput sgr0
+  echo
+
   sudo pacman -Rs --noconfirm a-candy-beauty-icon-theme-git
   sudo pacman -Rs --noconfirm adobe-source-han-sans-cn-fonts
   sudo pacman -Rs --noconfirm adobe-source-han-sans-jp-fonts
   sudo pacman -Rs --noconfirm adobe-source-han-sans-kr-fonts
   sudo pacman -Rs --noconfirm archinstall
   sudo pacman -Rs --noconfirm archlinux-kernel-manager
-  sudo pacman -Rs --noconfirm archlinux-tweak-tool-git
   sudo pacman -Rs --noconfirm arcolinux-app-glade-git
   sudo pacman -Rs --noconfirm arcolinux-arc-dawn-git
   sudo pacman -Rs --noconfirm arcolinux-arc-kde
@@ -100,14 +137,12 @@ if grep -q "arco" /etc/dev-rel; then
   sudo pacman -Rs --noconfirm arcolinux-fish-git
   sudo pacman -Rs --noconfirm arcolinux-fonts-git
   sudo pacman -Rs --noconfirm arcolinux-hblock-git
-  sudo pacman -Rs --noconfirm arcolinux-keyring
   sudo pacman -Rs --noconfirm arcolinux-kvantum-git
   sudo pacman -Rs --noconfirm arcolinux-local-applications-all-hide-git
   sudo pacman -Rs --noconfirm arcolinux-local-applications-git
   sudo pacman -Rs --noconfirm arcolinux-local-xfce4-git
   sudo pacman -Rs --noconfirm arcolinux-logo-git
   sudo pacman -Rs --noconfirm arcolinux-meta-log
-  sudo pacman -Rs --noconfirm arcolinux-mirrorlist-git
   sudo pacman -Rs --noconfirm arcolinux-pipemenus-git
   sudo pacman -Rs --noconfirm arcolinux-plasma-keybindings-git
   sudo pacman -Rs --noconfirm arcolinux-plasma-servicemenus-git
@@ -125,37 +160,35 @@ if grep -q "arco" /etc/dev-rel; then
   sudo pacman -Rs --noconfirm arconet-variety-config
   sudo pacman -Rs --noconfirm arconet-wallpapers
   sudo pacman -Rs --noconfirm arconet-xfce
+  sudo pacman -Rs --noconfirm sofirem-git
+  sudo pacman -Rs --noconfirm ufetch-arco-git
+
+  echo
+  tput setaf 3
+  echo "########################################################################"
+  echo "######## Removing 3th party packages on ArcoLinux"
+  echo "########################################################################"
+  tput sgr0
+  echo
+
   sudo pacman -Rs --noconfirm bibata-cursor-theme-bin
-  sudo pacman -Rs --noconfirm bibata-cursor-theme-bin
-  sudo pacman -Rs --noconfirm endeavouros-keyring
-  sudo pacman -Rs --noconfirm endeavouros-mirrorlist
   sudo pacman -Rs --noconfirm fastfetch
   sudo pacman -Rs --noconfirm hardinfo-gtk3
-  sudo pacman -Rs --noconfirm lftp --noconfirm
+  sudo pacman -Rs --noconfirm lftp
   sudo pacman -Rs --noconfirm memtest86+
   sudo pacman -Rs --noconfirm memtest86+-efi
   sudo pacman -Rs --noconfirm mintstick-git
   sudo pacman -Rs --noconfirm nomacs-qt6-git
   sudo pacman -Rs --noconfirm paru-bin
-  sudo pacman -Rs --noconfirm pragha --noconfirm
-  sudo pacman -Rs --noconfirm rate-mirrors-bin --noconfirm
-  sudo pacman -Rs --noconfirm rebornos-keyring
-  sudo pacman -Rs --noconfirm rebornos-mirrorlist
-  sudo pacman -Rs --noconfirm sofirem-git
+  sudo pacman -Rs --noconfirm pragha
+  sudo pacman -Rs --noconfirm rate-mirrors-bin
   sudo pacman -Rs --noconfirm speedtest-cli-git
-  sudo pacman -Rs --noconfirm ufetch-arco-git
-  sudo pacman -Rs --noconfirm xf86-video-amdgpu --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-ati --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-fbdev --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-nouveau --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-openchrome --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-vesa --noconfirm
   sudo pacman -Rs --noconfirm xfce4-artwork
   sudo pacman -Rs --noconfirm yay-bin
 
   tput setaf 2
   echo "##############################################################"
-  echo "################### Software for ArcoLinux removed"
+  echo "################### Software removal for ArcoLinux done"
   echo "##############################################################"
   tput sgr0
   echo
@@ -163,7 +196,7 @@ if grep -q "arco" /etc/dev-rel; then
 fi
 
 # when on Arch Linux - remove conflicting files
-if grep -q "archlinux" /etc/os-release; then
+if grep -q "Arch Linux" /etc/os-release; then
 
   echo
   tput setaf 2

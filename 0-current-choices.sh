@@ -39,7 +39,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 ##################################################################################################################################
 
 # set DEBUG to true to be able to analyze the scripts file per file
-export DEBUG=false
+export DEBUG=true
 
 ##################################################################################################################################
 
@@ -117,7 +117,7 @@ fi
 tput setaf 2
 echo "################################################################################"
 echo "Arch Linux Servers have been written to /etc/pacman.d/mirrorlist"
-echo "Use nmirrorlist to inspect"
+echo "Use nmirrorlist when on ArcoLinux to inspect"
 echo "################################################################################"
 tput sgr0
 echo
@@ -143,7 +143,10 @@ else
 fi
 
 sudo cp pacman.conf /etc/pacman.conf
-
+echo "Use npacman when on ArcoLinux to inspect"
+echo
+echo "Getting the updates in"
+echo
 sudo pacman -Syyu --noconfirm
 
 # only for ArchBang
