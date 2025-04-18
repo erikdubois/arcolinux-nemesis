@@ -64,6 +64,18 @@ if [ -f /etc/skel/.zshrc ]; then
   sudo mv -v /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
 fi
 
+echo
+tput setaf 3
+echo "########################################################################"
+echo "######## Removing the driver for xf86-video-vmware if possible"
+echo "########################################################################"
+tput sgr0
+echo
+
+if pacman -Qi xf86-video-vmware &> /dev/null; then
+  sudo pacman -Rs xf86-video-vmware --noconfirm
+fi
+
 # when on any ArcoLinux ISO
 
 
@@ -87,18 +99,6 @@ if [[ -f /etc/dev-rel ]]; then
 
   # order is important - dependencies
   
-  echo
-  tput setaf 3
-  echo "########################################################################"
-  echo "######## Removing the driver for xf86-video-vmware if possible"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  if pacman -Qi xf86-video-vmware &> /dev/null; then
-    sudo pacman -Rs xf86-video-vmware --noconfirm
-  fi
-
   echo
   tput setaf 3
   echo "########################################################################"
