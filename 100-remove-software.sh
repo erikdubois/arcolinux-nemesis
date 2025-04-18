@@ -66,7 +66,7 @@ fi
 
 # when on any ArcoLinux ISO
 
-if grep -q "arco" /etc/dev-rel; then
+if grep -q "arco" /etc/dev-rel && [ -f /etc/dev-rel ]; then
   echo
   tput setaf 3
   echo "##############################################################"
@@ -206,18 +206,18 @@ if grep -q "Arch Linux" /etc/os-release && [ ! -e /bootloader ]; then
   tput sgr0
   echo
 
-  sudo pacman -Rs --noconfirm xf86-video-amdgpu --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-ati --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-fbdev --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-nouveau --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-openchrome --noconfirm
-  sudo pacman -Rs --noconfirm xf86-video-vesa --noconfirm
+  # sudo pacman -Rs --noconfirm xf86-video-amdgpu --noconfirm
+  # sudo pacman -Rs --noconfirm xf86-video-ati --noconfirm
+  # sudo pacman -Rs --noconfirm xf86-video-fbdev --noconfirm
+  # sudo pacman -Rs --noconfirm xf86-video-nouveau --noconfirm
+  # sudo pacman -Rs --noconfirm xf86-video-openchrome --noconfirm
+  # sudo pacman -Rs --noconfirm xf86-video-vesa --noconfirm
 
-  sudo pacman -Rs --noconfirm archinstall
-  sudo pacman -Rs --noconfirm hardinfo-gtk3
-  sudo pacman -Rs --noconfirm lftp
-  sudo pacman -Rs --noconfirm memtest86+
-  sudo pacman -Rs --noconfirm memtest86+-efi
+  # sudo pacman -Rs --noconfirm archinstall
+  # sudo pacman -Rs --noconfirm hardinfo-gtk3
+  # sudo pacman -Rs --noconfirm lftp
+  # sudo pacman -Rs --noconfirm memtest86+
+  # sudo pacman -Rs --noconfirm memtest86+-efi
 
   echo
   tput setaf 2

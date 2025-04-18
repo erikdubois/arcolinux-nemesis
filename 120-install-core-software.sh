@@ -120,7 +120,6 @@ sudo pacman -S --noconfirm --needed lsb-release
 sudo pacman -S --noconfirm --needed lshw
 sudo pacman -S --noconfirm --needed man-db
 sudo pacman -S --noconfirm --needed man-pages
-#sudo pacman -S --noconfirm --needed mission-center
 sudo pacman -S --noconfirm --needed mkinitcpio-firmware
 sudo pacman -S --noconfirm --needed mlocate
 sudo pacman -S --noconfirm --needed meld
@@ -133,7 +132,6 @@ sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed ntp
 sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed oh-my-zsh-git
-#sudo pacman -S --noconfirm --needed pacman-log-orphans-hook
 sudo pacman -S --noconfirm --needed pacmanlogviewer
 sudo pacman -S --noconfirm --needed paru-git
 sudo pacman -S --noconfirm --needed polkit-gnome
@@ -194,26 +192,6 @@ if [ ! -f /usr/share/xsessions/plasmax11.desktop ]; then
   sudo pacman -S --noconfirm --needed kvantum-qt5
 fi
 
-#######################################################################################################
-
-# when on xfce
-
-if [ -f /usr/share/xsessions/xfce.desktop ]; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### Installing software for Xfce"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  sudo pacman -S --noconfirm --needed menulibre
-  sudo pacman -S --noconfirm --needed mugshot
-
-fi
-
-echo
 tput setaf 6
 echo "##############################################################"
 echo "###################  $(basename $0) done"
