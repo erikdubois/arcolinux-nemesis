@@ -121,41 +121,21 @@ else
 	tput sgr0
 	echo
 
-	xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+	# Find the connected VirtualBox display
+	OUTPUT=$(xrandr | grep " connected" | awk '{print $1}')
 
-fi
+	# Fallback check
+	if [ -z "$OUTPUT" ]; then
+	    echo "No connected display found."
+	    exit 1
+	fi
 
-#if [[ -f /etc/dev-rel ]] && grep -q "arco" /etc/dev-rel; then
+	# Apply desired resolution and position
+	xrandr --output "$OUTPUT" --primary --mode 1920x1080 --pos 0x0 --rotate normal
 
-	# echo
-	# tput setaf 2
-	# echo "########################################################################"
-	# echo "################### Personal settings to install - ArcoLinux"
-	# echo "########################################################################"
-	# tput sgr0
-	# echo
+	echo "Display settings applied to output: $OUTPUT"
 
-	#sudo cp -vf $installed_dir/settings/environment/environment /etc/environment
-
-	# echo "To personal Kvantum setup"
-	# echo
-	# [ -d $HOME"/.config/Kvantum" ] || mkdir -p $HOME"/.config/Kvantum"
-	# cp -r $installed_dir/settings/Kvantum/* $HOME/.config/Kvantum
-	# [ -d /etc/skel/.config/Kvantum ] || sudo mkdir -p /etc/skel/.config/Kvantum
-	# sudo cp -r $installed_dir/settings/Kvantum/* /etc/skel/.config/Kvantum
-
-
-	# echo
-	# echo "Changing icons for telegram"
-	# sh $installed_dir/settings/telegram/adapt-telegram.sh
-	# echo
-
-	# echo
-	# echo "Changing icons for flameshot"
-	# sh $installed_dir/settings/flameshot/adapt-flameshot.sh
-	# echo
-
-#fi
+	fi
 
 echo
 tput setaf 6
