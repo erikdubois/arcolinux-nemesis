@@ -70,7 +70,7 @@ if grep -q "arco" /etc/dev-rel; then
   echo
   tput setaf 3
   echo "##############################################################"
-  echo "####### Removing software on ArcoLinux"
+  echo "####### Removing software on ArcoLinux ISOs"
   echo "##############################################################"
   tput sgr0
   echo

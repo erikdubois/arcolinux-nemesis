@@ -189,7 +189,7 @@ sudo pacman -S meld --noconfirm --needed
 echo
 tput setaf 3
 echo "########################################################################"
-echo "################### Start current choices"
+echo "################### Start of the scripts - choices what to launch or not"
 echo "########################################################################"
 tput sgr0
 echo
