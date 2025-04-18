@@ -114,50 +114,6 @@ if [[ ! -f /etc/pacman.d/gnupg/gpg.conf ]]; then
     echo
 fi
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-echo
-echo "Adding Ubuntu keyserver..."
-
-KEYSERVER="hkp://keyserver.ubuntu.com:80"
-GPG_CONF="/etc/pacman.d/gnupg/gpg.conf"
-
-if ! grep -q "$KEYSERVER" "$GPG_CONF"; then
-    echo "Appending keyserver to $GPG_CONF"
-    sudo tee -a "$GPG_CONF" > /dev/null <<EOF
-
-keyserver $KEYSERVER
-
-#keyserver hkp://keys.openpgp.org
-#keyserver hkp://keys.openpgp.org:80
-#keyserver hkps://keys.openpgp.org
-#keyserver hkps://keys.openpgp.org:443
-#keyserver hkps://keyserver.ubuntu.com:443
-#keyserver hkp://pool.sks-keyservers.net:80
-#keyserver hkps://hkps.pool.sks-keyservers.net:443
-#keyserver hkp://ipv4.pool.sks-keyservers.net:11371
-EOF
-else
-    echo "Keyserver already present in $GPG_CONF"
-fi
-echo
-
-
 echo
 tput setaf 6
 echo "##############################################################"
