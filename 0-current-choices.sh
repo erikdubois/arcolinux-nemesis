@@ -137,7 +137,10 @@ find "$pkg_dir" -maxdepth 1 -name '*.pkg.tar.zst' -print0 | sudo xargs -0 pacman
 
 # personal pacman.conf for Erik Dubois
 if [[ ! -f /etc/pacman.conf.nemesis ]]; then
-    sudo cp /etc/pacman.conf /etc/pacman.conf.nemesis
+    echo
+    echo "Copying /etc/pacman.conf to /etc/pacman.conf.nemesis"
+    sudo cp -v /etc/pacman.conf /etc/pacman.conf.nemesis
+    echo
 else
     echo "Backup already exists: /etc/pacman.conf.nemesis"
 fi
@@ -152,7 +155,7 @@ sudo pacman -Syyu --noconfirm
 # only for ArchBang
 sh 600-intervention*
 
-#first get tools
+#first get tools for whatever distro
 sudo pacman -S sublime-text-4 --noconfirm --needed
 sudo pacman -S ripgrep --noconfirm --needed
 sudo pacman -S meld --noconfirm --needed

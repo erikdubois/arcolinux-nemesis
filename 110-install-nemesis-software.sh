@@ -88,13 +88,10 @@ sudo pacman -R --noconfirm arcolinux-config-all-desktops-git
 sudo pacman -R --noconfirm arcolinux-alacritty-git
 sudo pacman -R --noconfirm arcolinux-btop-git
 sudo pacman -R --noconfirm arcolinux-gtk-surfn-arc-git
-sudo pacman -R --noconfirm arcolinux-gtk-surfn-plasma-dark-git
-sudo pacman -R --noconfirm arcolinux-config-all-desktops-git
 sudo pacman -R --noconfirm arcolinux-paru-git
 sudo pacman -R --noconfirm arcolinux-qt5-git
 
 sudo pacman -S --noconfirm --needed edu-dot-files-git
-
 sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed archlinux-logout-git
 sudo pacman -S --noconfirm --needed edu-arc-dawn-git

@@ -104,12 +104,6 @@ if grep -q "arco" /etc/dev-rel; then
   tput sgr0
   echo
 
-  sudo pacman -Rs --noconfirm arcolinux-keyring
-  sudo pacman -Rs --noconfirm arcolinux-mirrorlist-git
-  sudo pacman -Rs --noconfirm endeavouros-keyring
-  sudo pacman -Rs --noconfirm endeavouros-mirrorlist
-  sudo pacman -Rs --noconfirm rebornos-keyring
-  sudo pacman -Rs --noconfirm rebornos-mirrorlist
   sudo pacman -Rns --noconfirm archlinux-tweak-tool-git
 
   echo
@@ -120,17 +114,17 @@ if grep -q "arco" /etc/dev-rel; then
   tput sgr0
   echo
 
+  sudo pacman -Rs --noconfirm arcolinux-pipemenus-git
+  sudo pacman -Rs --noconfirm arcolinux-common-git
+
   sudo pacman -Rs --noconfirm a-candy-beauty-icon-theme-git
   sudo pacman -Rs --noconfirm adobe-source-han-sans-cn-fonts
   sudo pacman -Rs --noconfirm adobe-source-han-sans-jp-fonts
   sudo pacman -Rs --noconfirm adobe-source-han-sans-kr-fonts
-  sudo pacman -Rs --noconfirm archinstall
   sudo pacman -Rs --noconfirm archlinux-kernel-manager
   sudo pacman -Rs --noconfirm arcolinux-app-glade-git
   sudo pacman -Rs --noconfirm arcolinux-arc-dawn-git
   sudo pacman -Rs --noconfirm arcolinux-arc-kde
-  sudo pacman -Rs --noconfirm arcolinux-chadwm-git
-  sudo pacman -Rs --noconfirm arcolinux-common-git
   sudo pacman -Rs --noconfirm arcolinux-dconf-all-desktops-git
   sudo pacman -Rs --noconfirm arcolinux-desktop-trasher-git
   sudo pacman -Rs --noconfirm arcolinux-faces-git
@@ -143,13 +137,6 @@ if grep -q "arco" /etc/dev-rel; then
   sudo pacman -Rs --noconfirm arcolinux-local-xfce4-git
   sudo pacman -Rs --noconfirm arcolinux-logo-git
   sudo pacman -Rs --noconfirm arcolinux-meta-log
-  sudo pacman -Rs --noconfirm arcolinux-pipemenus-git
-  sudo pacman -Rs --noconfirm arcolinux-plasma-keybindings-git
-  sudo pacman -Rs --noconfirm arcolinux-plasma-servicemenus-git
-  sudo pacman -Rs --noconfirm arcolinux-plasma-theme-candy-beauty-arc-dark-git
-  sudo pacman -Rs --noconfirm arcolinux-plasma-theme-candy-beauty-nordic-git
-  sudo pacman -Rs --noconfirm arcolinux-rofi-git
-  sudo pacman -Rs --noconfirm arcolinux-rofi-themes-git
   sudo pacman -Rs --noconfirm arcolinux-root-git
   sudo pacman -Rs --noconfirm arcolinux-sddm-simplicity-git
   sudo pacman -Rs --noconfirm arcolinux-systemd-services-git
@@ -161,7 +148,14 @@ if grep -q "arco" /etc/dev-rel; then
   sudo pacman -Rs --noconfirm arconet-wallpapers
   sudo pacman -Rs --noconfirm arconet-xfce
   sudo pacman -Rs --noconfirm sofirem-git
-  sudo pacman -Rs --noconfirm ufetch-arco-git
+
+  if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
+    sudo pacman -Rs --noconfirm arcolinux-plasma-keybindings-git
+    sudo pacman -Rs --noconfirm arcolinux-plasma-servicemenus-git
+    sudo pacman -Rs --noconfirm arcolinux-plasma-theme-candy-beauty-arc-dark-git
+    sudo pacman -Rs --noconfirm arcolinux-plasma-theme-candy-beauty-nordic-git
+    sudo pacman -Rs --noconfirm arcolinux-gtk-surfn-plasma-dark-git
+  fi
 
   echo
   tput setaf 3
@@ -173,18 +167,10 @@ if grep -q "arco" /etc/dev-rel; then
 
   sudo pacman -Rs --noconfirm bibata-cursor-theme-bin
   sudo pacman -Rs --noconfirm fastfetch
-  sudo pacman -Rs --noconfirm hardinfo-gtk3
-  sudo pacman -Rs --noconfirm lftp
-  sudo pacman -Rs --noconfirm memtest86+
-  sudo pacman -Rs --noconfirm memtest86+-efi
   sudo pacman -Rs --noconfirm mintstick-git
   sudo pacman -Rs --noconfirm nomacs-qt6-git
-  sudo pacman -Rs --noconfirm paru-bin
-  sudo pacman -Rs --noconfirm pragha
   sudo pacman -Rs --noconfirm rate-mirrors-bin
-  sudo pacman -Rs --noconfirm speedtest-cli-git
   sudo pacman -Rs --noconfirm xfce4-artwork
-  sudo pacman -Rs --noconfirm yay-bin
 
   tput setaf 2
   echo "##############################################################"
@@ -206,6 +192,11 @@ if grep -q "Arch Linux" /etc/os-release; then
   tput sgr0
   echo
 
+  sudo pacman -Rs --noconfirm archinstall
+  sudo pacman -Rs --noconfirm hardinfo-gtk3
+  sudo pacman -Rs --noconfirm lftp
+  sudo pacman -Rs --noconfirm memtest86+
+  sudo pacman -Rs --noconfirm memtest86+-efi
 
   echo
   tput setaf 2
