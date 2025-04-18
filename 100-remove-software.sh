@@ -89,7 +89,7 @@ if grep -q "arco" /etc/dev-rel; then
   echo
   tput setaf 3
   echo "########################################################################"
-  echo "######## Removing the drivers"
+  echo "######## Removing the driver for xf86-video-vmware if possible"
   echo "########################################################################"
   tput sgr0
   echo
@@ -191,7 +191,7 @@ fi
 if grep -q "Arch Linux" /etc/os-release; then
 
   echo
-  tput setaf 3
+  tput setaf 2
   echo "##############################################################"
   echo "############### Removing software for Arch"
   echo "##############################################################"

@@ -80,6 +80,12 @@ echo "########################################################################"
 tput sgr0
 echo
 
+# reinstall because of release difference between ArcoLinux and Chaotic-Aur
+
+sudo pacman -S --noconfirm menulibre
+sudo pacman -S --noconfirm mugshot
+sudo pacman -S --noconfirm upd72020x-fw
+
 # removing all conflicting packages with edu-dot-files-gits
 sudo pacman -R --noconfirm arcolinux-bin-git
 sudo pacman -R --noconfirm arcolinux-system-config-git

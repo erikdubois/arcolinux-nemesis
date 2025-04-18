@@ -138,15 +138,27 @@ find "$pkg_dir" -maxdepth 1 -name '*.pkg.tar.zst' -print0 | sudo xargs -0 pacman
 # personal pacman.conf for Erik Dubois
 if [[ ! -f /etc/pacman.conf.nemesis ]]; then
     echo
+    tput setaf 2
+    echo "################################################################################"
     echo "Copying /etc/pacman.conf to /etc/pacman.conf.nemesis"
+    echo "Use npacman when on ArcoLinux to inspect"
+    echo "################################################################################"
+    tput sgr0
+    echo
     sudo cp -v /etc/pacman.conf /etc/pacman.conf.nemesis
     echo
 else
+    echo
+    tput setaf 2
+    echo "################################################################################"
     echo "Backup already exists: /etc/pacman.conf.nemesis"
+    echo "Use npacman when on ArcoLinux to inspect"
+    echo "################################################################################"
+    tput sgr0
+    echo
 fi
 
-sudo cp pacman.conf /etc/pacman.conf
-echo "Use npacman when on ArcoLinux to inspect"
+sudo cp -v pacman.conf /etc/pacman.conf
 
 echo
 tput setaf 2
