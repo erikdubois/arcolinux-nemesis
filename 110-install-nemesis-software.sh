@@ -82,9 +82,21 @@ echo
 
 # reinstall because of release difference between ArcoLinux and Chaotic-Aur
 
-sudo pacman -S --noconfirm menulibre
-sudo pacman -S --noconfirm mugshot
+if [ -f /usr/share/xsessions/xfce.desktop ]; then
+  sudo pacman -S --noconfirm menulibre
+  sudo pacman -S --noconfirm mugshot
+fi
+
 sudo pacman -S --noconfirm upd72020x-fw
+
+# removing all plasma packages whenever possible
+if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
+  sudo pacman -Rs --noconfirm arcolinux-plasma-keybindings-git
+  sudo pacman -Rs --noconfirm arcolinux-plasma-servicemenus-git
+  sudo pacman -Rs --noconfirm arcolinux-plasma-theme-candy-beauty-arc-dark-git
+  sudo pacman -Rs --noconfirm arcolinux-plasma-theme-candy-beauty-nordic-git
+  sudo pacman -Rs --noconfirm arcolinux-gtk-surfn-plasma-dark-git
+fi
 
 # removing all conflicting packages with edu-dot-files-git
 sudo pacman -R --noconfirm arcolinux-bin-git
