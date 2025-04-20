@@ -127,6 +127,7 @@ tput sgr0
 echo
 
 cp -af /etc/skel/.config/leftwm ~/.config/
+cp -af /etc/skel/.bin ~/.bin/
 
 
 echo
