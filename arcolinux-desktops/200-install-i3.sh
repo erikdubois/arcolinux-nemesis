@@ -46,7 +46,7 @@ fi
 echo
 tput setaf 3
 echo "########################################################################"
-echo "################### Leftwm"
+echo "################### i3"
 echo "########################################################################"
 tput sgr0
 echo
@@ -73,27 +73,34 @@ func_install() {
 echo
 tput setaf 2
 echo "########################################################################"
-echo "################### Install leftwm"
+echo "################### Install i3"
 echo "########################################################################"
 tput sgr0
 echo
 
 
 list=(
-edu-leftwm-git
-leftwm-git
-leftwm-theme-git
+alacritty
+archlinux-logout-git
+autotiling
+dmenu
+edu-i3wm-git
+edu-xfce-git
+feh
+i3-wm
+i3status
 lxappearance
-picom
+nitrogen
+picom-git
+polkit-gnome
 polybar
-rofi-theme-fonts
-sxhkd
-ttf-fantasque-sans-mono
-ttf-iosevka-nerd
-ttf-material-design-iconic-font
-ttf-meslo-nerd-font-powerlevel10k
-ttf-sourcecodepro-nerd
+rofi-lbonn-wayland
+thunar
+thunar-archive-plugin
+thunar-volman
+ttf-hack
 volumeicon
+xfce4-terminal
 )
 
 count=0
@@ -104,19 +111,6 @@ for name in "${list[@]}" ; do
     func_install $name
 done
 
-# when on Leftwm
-
-# if [ -f /usr/share/xsessions/leftwm.desktop ]; then
-
-#     echo
-#     tput setaf 2
-#     echo "########################################################################"
-#     echo "################### Leftwm related applications"
-#     echo "########################################################################"
-#     tput sgr0
-#     echo
-
-# fi
 
 echo
 tput setaf 6
