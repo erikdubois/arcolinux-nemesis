@@ -47,6 +47,12 @@ fi
 
 if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
 
+  tput setaf 2
+  echo "This will not install Plasma"
+  echo "It detects whether Plasma is installed like when on ArcoPlasma"
+  tput sgr0
+  echo
+
   echo
   tput setaf 2
   echo "########################################################################"

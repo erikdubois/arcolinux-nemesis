@@ -171,7 +171,7 @@ echo
 sudo pacman -Syyu --noconfirm
 
 # only for ArchBang
-sh 600-intervention*
+sh 700-intervention*
 
 echo
 tput setaf 2
@@ -197,15 +197,20 @@ echo
 sh 100-remove-software*
 sh 110-install-nemesis-software*
 sh 120-install-core-software*
-sh 150-install-chadwm*
+
 sh 160-install-bluetooth*
 sh 170-install-cups*
-#sh 180-install-test-software*
 
+#packages we need to build
 sh 200-software-AUR-repo*
 #sh 300-sardi-extras*
 #sh 400-surfn-extras*
+
+# for arcoplasma
 sh 500-plasma*
+
+# installation of Chadwm
+sh 600-chadwm*
 
 echo
 tput setaf 3
