@@ -84,7 +84,7 @@ alacritty
 archlinux-logout-git
 autotiling
 dmenu
-edu-i3wm-git
+edu-i3-git
 edu-xfce-git
 feh
 i3-wm
