@@ -81,7 +81,7 @@ echo
 
 list=(
 edu-leftwm-git
-leftwm-dev-git
+leftwm-git
 leftwm-theme-git
 lxappearance
 picom
