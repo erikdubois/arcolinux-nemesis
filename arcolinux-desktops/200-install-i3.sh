@@ -111,6 +111,15 @@ for name in "${list[@]}" ; do
     func_install $name
 done
 
+echo
+tput setaf 3
+echo "########################################################################"
+echo "SKEL"
+echo "Copying all files and folders from /etc/skel/ to ~"
+echo "########################################################################"
+tput sgr0
+echo
+
 cp -af /etc/skel/.config/i3 ~/.config/
 
 echo

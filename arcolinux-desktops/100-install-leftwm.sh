@@ -119,6 +119,18 @@ done
 # fi
 
 echo
+tput setaf 3
+echo "########################################################################"
+echo "SKEL"
+echo "Copying all files and folders from /etc/skel/ to ~"
+echo "########################################################################"
+tput sgr0
+echo
+
+cp -af /etc/skel/.config/leftwm ~/.config/
+
+
+echo
 tput setaf 6
 echo "##############################################################"
 echo "###################  $(basename $0) done"
