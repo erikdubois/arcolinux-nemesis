@@ -111,6 +111,7 @@ for name in "${list[@]}" ; do
     func_install $name
 done
 
+cp -af /etc/skel/.config/i3 ~/.config/
 
 echo
 tput setaf 6
