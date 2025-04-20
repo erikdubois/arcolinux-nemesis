@@ -86,7 +86,6 @@ leftwm-theme-git
 lxappearance
 picom
 polybar
-rofi-theme-fonts
 sxhkd
 ttf-fantasque-sans-mono
 ttf-iosevka-nerd
