@@ -80,19 +80,33 @@ echo
 
 
 list=(
+alacritty
+archlinux-logout-git
+dmenu
 edu-leftwm-git
+edu-xfce-git
+feh
 leftwm-git
 leftwm-theme-git
 lxappearance
-picom
+nitrogen
+noto-fonts
+picom-git
+polkit-gnome
 polybar
+rofi-lbonn-wayland
 sxhkd
+thunar
+thunar-archive-plugin
+thunar-volman
+ttf-hack
 ttf-fantasque-sans-mono
 ttf-iosevka-nerd
 ttf-material-design-iconic-font
 ttf-meslo-nerd-font-powerlevel10k
 ttf-sourcecodepro-nerd
 volumeicon
+xfce4-terminal
 )
 
 count=0

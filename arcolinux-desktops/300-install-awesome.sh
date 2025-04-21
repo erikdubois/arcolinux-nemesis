@@ -46,7 +46,7 @@ fi
 echo
 tput setaf 3
 echo "########################################################################"
-echo "################### i3"
+echo "################### awesome"
 echo "########################################################################"
 tput sgr0
 echo
@@ -73,7 +73,7 @@ func_install() {
 echo
 tput setaf 2
 echo "########################################################################"
-echo "################### Install i3"
+echo "################### Install awesome"
 echo "########################################################################"
 tput sgr0
 echo
@@ -82,13 +82,11 @@ echo
 list=(
 alacritty
 archlinux-logout-git
-autotiling
+awesome
 dmenu
-edu-i3-git
+edu-awesome-git
 edu-xfce-git
 feh
-i3-wm
-i3status
 lxappearance
 nitrogen
 noto-fonts
@@ -99,6 +97,7 @@ thunar
 thunar-archive-plugin
 thunar-volman
 ttf-hack
+vicious
 volumeicon
 xfce4-terminal
 )
@@ -120,7 +119,7 @@ echo "########################################################################"
 tput sgr0
 echo
 
-cp -af /etc/skel/.config/i3 ~/.config/
+cp -af /etc/skel/.config/awesome ~/.config/
 
 echo
 tput setaf 6
