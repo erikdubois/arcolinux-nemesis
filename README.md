@@ -152,12 +152,25 @@ https://www.youtube.com/playlist?list=PLlloYVGq5pS7JqJE1zGS6W2jNV_oBSJCk
 These scripts can be used with various window managers and desktop environments.
 
 <p align="center">
-  <img src="Personal/settings/desktop-images/awesome.png" alt="AwesomeWM" width="150"/>
-  <img src="Personal/settings/desktop-images/i3.png" alt="i3WM" width="150"/>
-  <img src="Personal/settings/desktop-images/install.png" alt="Install Process" width="150"/>
-  <img src="Personal/settings/desktop-images/leftwm.png" alt="LeftWM" width="150"/>
-  <img src="Personal/settings/desktop-images/qtile.png" alt="Qtile" width="150"/>
+  <img src="Personal/settings/desktop-images/awesome.png" alt="AwesomeWM" width="300"/>
 </p>
+
+<p align="center">
+  <img src="Personal/settings/desktop-images/i3.png" alt="i3WM" width="300"/>
+</p>
+
+<p align="center">
+  <img src="Personal/settings/desktop-images/install.png" alt="Install Process" width="300"/>
+</p>
+
+<p align="center">
+  <img src="Personal/settings/desktop-images/leftwm.png" alt="LeftWM" width="300"/>
+</p>
+
+<p align="center">
+  <img src="Personal/settings/desktop-images/qtile.png" alt="Qtile" width="300"/>
+</p>
+
 
 # Social Media
 
