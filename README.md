@@ -147,18 +147,18 @@ https://www.youtube.com/playlist?list=PLlloYVGq5pS5nvFc_LYRE82Gh3XWA6rVH
 
 https://www.youtube.com/playlist?list=PLlloYVGq5pS7JqJE1zGS6W2jNV_oBSJCk
 
+# Desktop Environment Examples
 
+These scripts can be used with various window managers and desktop environments.
+
+<p align="center">
+  <img src="Personal/settings/desktop-images/awesome.png" alt="AwesomeWM" width="150"/>
+  <img src="Personal/settings/desktop-images/i3.png" alt="i3WM" width="150"/>
+  <img src="Personal/settings/desktop-images/install.png" alt="Install Process" width="150"/>
+  <img src="Personal/settings/desktop-images/leftwm.png" alt="LeftWM" width="150"/>
+  <img src="Personal/settings/desktop-images/qtile.png" alt="Qtile" width="150"/>
+</p>
 
 # Social Media
-
-Facebook : https://www.facebook.com/arcolinuxd/
-
-Facebook : https://www.facebook.com/groups/arcolinux/
-
-BlueSky : https://bsky.app/profile/arcolinux.bsky.social
-
-Instagram: https://www.instagram.com/arcolinux/
-
-Linked in: https://www.linkedin.com/in/arcolinux
 
 Youtube  : https://www.youtube.com/erikdubois
