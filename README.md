@@ -4,17 +4,11 @@
    ArcoLinux Nemesis
 </h1>
 
-![Maintenance](https://img.shields.io/maintenance/yes/2025?style=for-the-badge)
 ![Last-Commit](https://img.shields.io/github/last-commit/erikdubois/arcolinux-nemesis?style=for-the-badge)
-
-<a href="https://discord.gg/stBhS4taje" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/discord/1068192254365282405?logo=discord&label=discord" alt="discord"/></a>
-<a href="https://t.me/arcolinux_d_b" target="_blank" rel="noopener noreferrer"><img alt="Telegram" src="https://img.shields.io/badge/telegram-chat-blue?logo=telegram"></a>
 
 <img alt="GitHub followers" src="https://img.shields.io/github/followers/erikdubois?style=flat">&nbsp;&nbsp;<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/erikdubois/arcolinux-nemesis">&nbsp;&nbsp;<img alt="GitHub forks" src="https://img.shields.io/github/forks/erikdubois/arcolinux-nemesis">
 
 <img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCJdmdUp5BrsWsYVQUylCMLg">&nbsp;&nbsp;<img alt="YouTube Channel Views" src="https://img.shields.io/youtube/channel/views/UCJdmdUp5BrsWsYVQUylCMLg">
-
-<img alt="AUR Last Modified" src="https://img.shields.io/aur/last-modified/archlinux-tweak-tool-git?label=AUR%20-%20ArchLinux-Tweak-Tool%20or%20ATT">
 
 
 # ArcoLinux Nemesis
@@ -99,53 +93,10 @@ I run `0-current-choices.sh` to handle everything automatically — removing unw
 Stay safe, learn, have fun, and enjoy the experience!
 
 
-# Arcolinux keys for anything Arch Linux based
-
-
-Get the keys and mirrors from ArcoLinux so you can **install our packages via pacman**
-
-The ArcoLinux repos are added to your /etc/pacman.conf if you run below script.
-
-
-`wget bit.ly/get-arcolinux-keys && chmod +x ./get-arcolinux-keys && sudo ./get-arcolinux-keys`
-
-
-If you got the keys and mirrors from ArcoLinux. You can install  any package. 
-For example the <b>Archlinux Tweak Tool or ATT</b>
-
-Update your system and install the ATT or anything else via pacman.
-
-`sudo pacman -Syyu`
-
-`sudo pacman -Syu archlinux-tweak-tool-git`
-
-
-# ArchLinux Tweak Tool
-
-Or you can install the ATT from the **AUR**
-
-`yay archlinux tweak`
-
-`paru archlinux tweak`
-
-Select the correct number and install it
-
-You can get the keys and mirrors in via the ATT in the tab pacman
-
-You can find all information about the ATT here
-
-https://github.com/arcolinux/archlinux-tweak-tool
-
-
-# Watch the videos on ATT
-
-https://www.youtube.com/playlist?list=PLlloYVGq5pS5nvFc_LYRE82Gh3XWA6rVH
-
-
-
 # Watch the videos on the Arcolinux Nemesis scripts
 
 https://www.youtube.com/playlist?list=PLlloYVGq5pS7JqJE1zGS6W2jNV_oBSJCk
+
 
 # Desktop Environment Examples
 
