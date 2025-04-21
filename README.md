@@ -129,3 +129,5 @@ These scripts can be used with various window managers and desktop environments.
 Youtube  : https://www.youtube.com/erikdubois
 
 Github : https://github.com/erikdubois
+
+Website : https://erikdubois.be
