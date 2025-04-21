@@ -4,7 +4,7 @@
    ArcoLinux Nemesis
 </h1>
 
-![Maintenance](https://img.shields.io/maintenance/yes/2024?style=for-the-badge)
+![Maintenance](https://img.shields.io/maintenance/yes/2025?style=for-the-badge)
 ![Last-Commit](https://img.shields.io/github/last-commit/erikdubois/arcolinux-nemesis?style=for-the-badge)
 
 <a href="https://discord.gg/stBhS4taje" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/discord/1068192254365282405?logo=discord&label=discord" alt="discord"/></a>
