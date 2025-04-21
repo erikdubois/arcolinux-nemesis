@@ -424,6 +424,31 @@ if grep -q "RebornOS" /etc/os-release; then
 
 fi
 
+# when on CachyOS - remove conflicting files
+
+if grep -q "cachyOS" /etc/os-release; then
+
+  echo
+  tput setaf 3
+  echo "##############################################################"
+  echo "############### Removing software for CachyOS"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+  sudo pacman -R --noconfirm cachyos-fish-config
+
+  echo
+  tput setaf 3
+  echo "##############################################################"
+  echo "################### Software removed"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+fi
+
+
 echo
 tput setaf 6
 echo "##############################################################"

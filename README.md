@@ -102,16 +102,14 @@ https://www.youtube.com/playlist?list=PLlloYVGq5pS7JqJE1zGS6W2jNV_oBSJCk
 
 These scripts can be used with various window managers and desktop environments.
 
+E.g.: awesome, i3, leftwm, qtile, ...
+
 <p align="center">
   <img src="Personal/settings/desktop-images/awesome.png" alt="AwesomeWM" width="600"/>
 </p>
 
 <p align="center">
   <img src="Personal/settings/desktop-images/i3.png" alt="i3WM" width="600"/>
-</p>
-
-<p align="center">
-  <img src="Personal/settings/desktop-images/install.png" alt="Install Process" width="600"/>
 </p>
 
 <p align="center">
@@ -122,6 +120,9 @@ These scripts can be used with various window managers and desktop environments.
   <img src="Personal/settings/desktop-images/qtile.png" alt="Qtile" width="600"/>
 </p>
 
+<p align="center">
+  <img src="Personal/settings/desktop-images/install.png" alt="Install Process" width="600"/>
+</p>
 
 
 # Social Media
