@@ -438,7 +438,8 @@ if grep -q "cachyOS" /etc/os-release; then
 
   sudo pacman -R --noconfirm cachyos-fish-config
   sudo pacman -R --noconfirm fastfetch
-  
+  sudo pacman -R --noconfirm paru
+
   echo
   tput setaf 3
   echo "##############################################################"
