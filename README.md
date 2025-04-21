@@ -124,6 +124,9 @@ E.g.: awesome, i3, leftwm, qtile, ...
   <img src="Personal/settings/desktop-images/install.png" alt="Install Process" width="600"/>
 </p>
 
+<p align="center">
+  <img src="Personal/settings/desktop-images/desktops.png" alt="Desktops" width="600"/>
+</p>
 
 # Social Media
 
