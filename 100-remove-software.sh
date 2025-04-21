@@ -426,7 +426,7 @@ fi
 
 # when on CachyOS - remove conflicting files
 
-if grep -q "cachyOS" /etc/os-release; then
+if grep -q "cachyos" /etc/os-release; then
 
   echo
   tput setaf 3
