@@ -4,8 +4,11 @@
 DIALOG=$(command -v dialog || command -v whiptail)
 [ -z "$DIALOG" ] && { echo "dialog or whiptail required"; exit 1; }
 
-# Collect scripts matching pattern
-scripts=( *-install-*.sh )
+# Collect scripts excluding those starting with '1'
+scripts=()
+for file in *.sh; do
+    [[ -f $file && $(basename "$file") != 1* ]] && scripts+=( "$file" )
+done
 
 # Exit if no scripts found
 [ ${#scripts[@]} -eq 0 ] && { echo "No install scripts found."; exit 1; }
