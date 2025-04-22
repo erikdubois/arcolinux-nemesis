@@ -16,8 +16,22 @@
 Renaming isn’t feasible, as these scripts have been referenced thousands of times over the years. However, they could ideally be called **Linux Nemesis scripts** since they apply to any Linux-based system.
 [![What are these ArcoLinux scripts](https://img.youtube.com/vi/pk50vtZZSfI/0.jpg)](https://youtu.be/pk50vtZZSfI)
 
+Learn, have fun and enjoy.
 
-## What to Do After Installing the Latest Version of ArcoLinux?
+We will add the nemesis_repo to your /etc/pacman.conf and make a backup of the current config.
+
+```
+[nemesis_repo]
+SigLevel = Never
+Server = https://erikdubois.github.io/$repo/$arch
+```
+
+## Watch this video
+
+[![Watch the video](https://img.youtube.com/vi/guHmlOP0MQo/maxresdefault.jpg)](https://youtu.be/guHmlOP0MQo)
+
+
+## What to Do After Installing the Latest Version of ArcoLinux/Arch Linux?
 
 The goal of these scripts is to give you control over your operating system by allowing you to:
 
