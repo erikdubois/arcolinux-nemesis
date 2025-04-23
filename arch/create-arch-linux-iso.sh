@@ -25,7 +25,7 @@ if [[ "$answer" =~ ^[Yy][Ee]?[Ss]?$ ]]; then
 
     if [[ -f "$iso_file" ]]; then
         echo "Moving ISO to /home/$USER/..."
-        mv "$iso_file" "/home/$USER/"
+        cp "$iso_file" "/home/$USER/"
         echo "ISO has been moved to /home/$USER/."
     else
         echo "ISO not found in $out_dir."
