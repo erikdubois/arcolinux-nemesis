@@ -57,7 +57,7 @@ if grep -q "ArchBang" /etc/os-release; then
 	echo "Installing and setting sddm"
 	sudo pacman -S --noconfirm --needed sddm
 	sudo systemctl enable -f sddm
-
+	sudo pacman -S edu-sddm-simplicity-git --noconfirm --needed
 
 	echo
 	echo "Setting environment variables"
@@ -80,30 +80,6 @@ if grep -q "ArchBang" /etc/os-release; then
 		echo "EDITOR=nano" | sudo tee -a /etc/environment
 		echo "BROWSER=firefox" | sudo tee -a /etc/environment
 	fi
-
-	echo
-	echo "Change gtk-3.0 config"
-	echo
-	FIND="gtk-theme-name=Adwaita-dark"
-	REPLACE="gtk-theme-name=Arc-Dark"
-	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
-	#sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
-
-	echo
-	echo "Change gtk-3.0 config"
-	echo
-	FIND="gtk-icon-theme-name=Arc"
-	REPLACE="gtk-icon-theme-name=neo-candy-icons"
-	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
-	#sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
-
-	echo
-	echo "Change gtk-3.0 config"
-	echo
-	FIND="gtk-cursor-theme-name=Adwaita"
-	REPLACE="gtk-cursor-theme-name=Bibata-Modern-Ice"
-	sed -i "s/$FIND/$REPLACE/g" $HOME/.config/gtk-3.0/settings.ini
-	#sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/gtk-3.0/settings.ini
 	
 	echo	
 	echo "When on Openbox"
@@ -116,6 +92,7 @@ if grep -q "ArchBang" /etc/os-release; then
 		tput sgr0
 		echo
 
+		echo "Autostarting picom"
 		if ! grep -q "picom" $HOME/.config/openbox/autostart; then
 			echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/autostart;
 			echo "picom &" | sudo tee -a $HOME/.config/openbox/autostart;
