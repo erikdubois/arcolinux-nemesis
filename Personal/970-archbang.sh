@@ -66,15 +66,15 @@ if grep -q "ArchBang" /etc/os-release; then
 	file="/etc/vconsole.conf"
 
 	# Make a backup
-	cp "$file" "${file}.nemesis"
+	sudo cp "$file" "${file}.nemesis"
 
 	# Check if KEYMAP line exists
 	if grep -q '^KEYMAP=' "$file"; then
 	    # If exists, replace the line
-	    sed -i 's|^KEYMAP=.*|KEYMAP=be-latin1|' "$file"
+	    sudo sed -i 's|^KEYMAP=.*|KEYMAP=be-latin1|' "$file"
 	else
 	    # If not exists, append it
-	    echo 'KEYMAP=be-latin1' >> "$file"
+	    sudo echo 'KEYMAP=be-latin1' >> "$file"
 	fi
 
 	# Remove duplicate KEYMAP lines, keeping the first one
