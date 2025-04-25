@@ -53,28 +53,11 @@ if grep -q "ArchBang" /etc/os-release; then
 	tput sgr0
 	echo
 
-	echo "Removing conflicting files"
-	sudo rm -f /etc/skel/.config/variety/variety.conf
-
-	echo "Variety conf ArcoLinux"
-	sudo pacman -S --noconfirm --needed arconet-variety-config
-	sudo pacman -S --noconfirm --needed arcolinux-variety-autostart-git
-	
-	echo "Alacritty conf ArcoLinux"
-	sudo pacman -S --noconfirm --needed arcolinux-alacritty-git
-
-	echo "Adding picom"
-	sudo pacman -S --noconfirm --needed picom
 
 	echo "Installing and setting sddm"
-	sudo pacman -S --noconfirm --needed sddm arcolinux-sddm-simplicity-git
+	sudo pacman -S --noconfirm --needed sddm
 	sudo systemctl enable -f sddm
 
-	echo
-	echo "Adding nanorc"
-	if [ -f /etc/nanorc ]; then
-    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-	fi
 
 	echo
 	echo "Setting environment variables"
@@ -133,49 +116,12 @@ if grep -q "ArchBang" /etc/os-release; then
 		tput sgr0
 		echo
 
-		echo "Changing theme and icon theme"
-		sudo pacman -S --noconfirm --needed openbox-arc-git 
-		sudo pacman -S --noconfirm --needed arcolinux-openbox-themes-git
-
 		if ! grep -q "picom" $HOME/.config/openbox/autostart; then
 			echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/autostart;
 			echo "picom &" | sudo tee -a $HOME/.config/openbox/autostart;
 		fi
 
 	fi
-
-
-	echo	
-	echo "When Chadwm is installed - default to it"
-	if [ -f /usr/share/xsessions/chadwm.desktop ]; then
-		echo
-		tput setaf 2
-		echo "########################################################################"
-		echo "################### We choose to install chadwm"
-		echo "########################################################################"
-		tput sgr0
-		echo
-		
-		if ! grep -q "#exec openbox-session" $HOME/.xinitrc; then
-			FIND="exec openbox-session"
-			REPLACE="#exec openbox-session"
-			sed -i "s/$FIND/$REPLACE/g" $HOME/.xinitrc
-		fi
-
-
-		if ! grep -q "exec-chadwm" $HOME/.xinitrc; then
-			echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.xinitrc;
-			echo "exec exec-chadwm" | sudo tee -a $HOME/.xinitrc;
-		fi
-
-		if ! grep -q '#run "conky' $HOME/.config/arco-chadwm/scripts/run.sh; then
-			FIND='run "conky'
-			REPLACE='#run "conky'
-			sed -i "s/$FIND/$REPLACE/g" $HOME/.config/arco-chadwm/scripts/run.sh
-		fi
-
-	fi
-
 
   	echo
   	tput setaf 6

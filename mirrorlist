@@ -80,8 +80,6 @@ Server = http://archlinux.mirror.ba/$repo/os/$arch
 ## Brazil
 Server = http://archlinux.c3sl.ufpr.br/$repo/os/$arch
 Server = https://archlinux.c3sl.ufpr.br/$repo/os/$arch
-Server = http://www.caco.ic.unicamp.br/archlinux/$repo/os/$arch
-Server = https://www.caco.ic.unicamp.br/archlinux/$repo/os/$arch
 Server = http://br.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://br.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = http://linorg.usp.br/archlinux/$repo/os/$arch
