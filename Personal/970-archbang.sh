@@ -57,7 +57,29 @@ if grep -q "ArchBang" /etc/os-release; then
 	echo "Installing and setting sddm"
 	sudo pacman -S --noconfirm --needed sddm
 	sudo systemctl enable -f sddm
+	/usr/local/bin/fix-sddm-conf
 	sudo pacman -S edu-sddm-simplicity-git --noconfirm --needed
+
+
+	echo "Getting my azerty keyboard in"
+	# Define target file
+	file="/etc/vconsole.conf"
+
+	# Make a backup
+	cp "$file" "${file}.nemesis"
+
+	# Check if KEYMAP line exists
+	if grep -q '^KEYMAP=' "$file"; then
+	    # If exists, replace the line
+	    sed -i 's|^KEYMAP=.*|KEYMAP=be-latin1|' "$file"
+	else
+	    # If not exists, append it
+	    echo 'KEYMAP=be-latin1' >> "$file"
+	fi
+
+	# Remove duplicate KEYMAP lines, keeping the first one
+	#awk '!seen[$0]++' "$file" > "${file}.tmp" && mv "${file}.tmp" "$file"
+
 
 	echo
 	echo "Setting environment variables"
