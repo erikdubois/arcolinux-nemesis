@@ -67,18 +67,12 @@ if grep -q "ArchBang" /etc/os-release; then
 		echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/environment
 		echo "XDG_CURRENT_DESKTOP=openbox" | sudo tee -a $HOME/.config/openbox/environment
 		echo "XDG_SESSION_DESKTOP=openbox" | sudo tee -a $HOME/.config/openbox/environment
-		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a $HOME/.config/openbox/environment
-		echo "EDITOR=nano" | sudo tee -a $HOME/.config/openbox/environment
-		echo "BROWSER=firefox" | sudo tee -a $HOME/.config/openbox/environment
 	fi
 
 	if ! grep -q "XDG_CURRENT_DESKTOP" /etc/environment; then
 		echo -e ${NEWLINEVAR} | sudo tee -a /etc/environment
 		echo "XDG_CURRENT_DESKTOP=openbox" | sudo tee -a /etc/environment
 		echo "XDG_SESSION_DESKTOP=openbox" | sudo tee -a /etc/environment
-		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
-		echo "EDITOR=nano" | sudo tee -a /etc/environment
-		echo "BROWSER=firefox" | sudo tee -a /etc/environment
 	fi
 	
 	echo	
