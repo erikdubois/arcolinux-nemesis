@@ -78,7 +78,7 @@ if grep -q "ArchBang" /etc/os-release; then
 	fi
 
 if [ -f /etc/X11/xorg.conf.d/01-keyboard-layout.conf ]; then
-  cat << EOF > /etc/X11/xorg.conf.d/01-keyboard-layout.conf
+  sudo tee /etc/X11/xorg.conf.d/01-keyboard-layout.conf > /dev/null << 'EOF'
 Section "InputClass"
         Identifier "system-keyboard"
         MatchIsKeyboard "on"
@@ -87,6 +87,7 @@ Section "InputClass"
 EndSection
 EOF
 fi
+
 
 
 	# Remove duplicate KEYMAP lines, keeping the first one
