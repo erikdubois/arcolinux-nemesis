@@ -95,7 +95,7 @@ polkit-gnome
 python-psutil
 python-setuptools
 qtile
-rofi-lbonn-wayland
+rofi
 sxhkd
 thunar
 thunar-archive-plugin

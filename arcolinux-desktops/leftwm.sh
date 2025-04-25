@@ -94,7 +94,7 @@ noto-fonts
 picom-git
 polkit-gnome
 polybar
-rofi-lbonn-wayland
+rofi
 sxhkd
 thunar
 thunar-archive-plugin

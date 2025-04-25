@@ -92,7 +92,7 @@ nitrogen
 noto-fonts
 picom-git
 polkit-gnome
-rofi-lbonn-wayland
+rofi
 thunar
 thunar-archive-plugin
 thunar-volman
