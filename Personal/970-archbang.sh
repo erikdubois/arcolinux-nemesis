@@ -49,6 +49,7 @@ if grep -q "ArchBang" /etc/os-release; then
 	tput setaf 2
 	echo "########################################################################"
 	echo "################### We are on ArchBang"
+	echo "################### sudo pacman-key --init and --populate are still necessary to start"
 	echo "########################################################################"
 	tput sgr0
 	echo
