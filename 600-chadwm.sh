@@ -127,6 +127,7 @@ if [ -f /tmp/install-chadwm ]; then
     echo
 
     func_install_chadwm
+    fix-sddm-conf
 fi
 
 echo
