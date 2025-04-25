@@ -88,7 +88,7 @@ func_install_chadwm() {
     make
     picom
     polkit-gnome
-    rofi-lbonn-wayland
+    rofi
     sxhkd
     thunar
     thunar-archive-plugin
