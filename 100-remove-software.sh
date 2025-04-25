@@ -79,6 +79,9 @@ if ! systemd-detect-virt | grep -q "oracle"; then
 fi
 
 
+sudo pacman -R rofi-lbonn-wayland
+sudo pacman -R rofi-lbonn-wayland-git
+
 # when on any ArcoLinux ISO
 
 
