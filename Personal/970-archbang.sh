@@ -61,7 +61,7 @@ if grep -q "ArchBang" /etc/os-release; then
 	sudo pacman -S edu-sddm-simplicity-git --noconfirm --needed
 
 
-	echo "Getting my azerty keyboard in"
+	echo "Getting my azerty keyboard in - TTY"
 	# Define target file
 	file="/etc/vconsole.conf"
 
@@ -76,6 +76,18 @@ if grep -q "ArchBang" /etc/os-release; then
 	    # If not exists, append it
 	    sudo echo 'KEYMAP=be-latin1' >> "$file"
 	fi
+
+if [ -f /etc/X11/xorg.conf.d/01-keyboard-layout.conf ]; then
+  cat << EOF > /etc/X11/xorg.conf.d/01-keyboard-layout.conf
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "be"
+        Option "XkbVariant" ""
+EndSection
+EOF
+fi
+
 
 	# Remove duplicate KEYMAP lines, keeping the first one
 	#awk '!seen[$0]++' "$file" > "${file}.tmp" && mv "${file}.tmp" "$file"
