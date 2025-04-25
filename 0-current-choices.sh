@@ -202,7 +202,7 @@ sh 160-install-bluetooth*
 sh 170-install-cups*
 
 #packages we need to build
-sh 200-software-AUR-repo*
+sh 200-software-aur-repo*
 #sh 300-sardi-extras*
 #sh 400-surfn-extras*
 
