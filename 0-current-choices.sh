@@ -191,11 +191,12 @@ echo
 tput setaf 3
 echo "########################################################################"
 echo "################### By default we choose systemd-boot"
+echo "################### Possibility to change kernel"
 echo "########################################################################"
 tput sgr0
 echo
 
-#sudo pacman -S --noconfirm --needed pacman-hook-kernel-install
+sudo pacman -S --noconfirm --needed pacman-hook-kernel-install
 
 echo
 tput setaf 3
