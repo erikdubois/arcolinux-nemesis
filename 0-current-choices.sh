@@ -186,6 +186,18 @@ sudo pacman -S sublime-text-4 --noconfirm --needed
 sudo pacman -S ripgrep --noconfirm --needed
 sudo pacman -S meld --noconfirm --needed
 
+
+echo
+tput setaf 3
+echo "########################################################################"
+echo "################### By default we choose systemd-boot"
+echo "########################################################################"
+tput sgr0
+echo
+
+sudo systemctl enable --now systemd-boot-update.service
+sudo pacman -S --noconfirm --needed kernel-install-mkinitcpio
+
 echo
 tput setaf 3
 echo "########################################################################"
