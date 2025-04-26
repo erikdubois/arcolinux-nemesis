@@ -196,7 +196,7 @@ echo "########################################################################"
 tput sgr0
 echo
 
-sudo pacman -S --noconfirm --needed pacman-hook-kernel-install
+#sudo pacman -S --noconfirm --needed pacman-hook-kernel-install
 
 echo
 tput setaf 3
