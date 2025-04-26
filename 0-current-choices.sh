@@ -195,8 +195,8 @@ echo "########################################################################"
 tput sgr0
 echo
 
-sudo systemctl enable --now systemd-boot-update.service
-sudo pacman -S --noconfirm --needed kernel-install-mkinitcpio
+#sudo systemctl enable --now systemd-boot-update.service
+#sudo pacman -S --noconfirm --needed kernel-install-mkinitcpio
 
 echo
 tput setaf 3
