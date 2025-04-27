@@ -186,7 +186,7 @@ sudo pacman -S sublime-text-4 --noconfirm --needed
 sudo pacman -S ripgrep --noconfirm --needed
 sudo pacman -S meld --noconfirm --needed
 
-# if on Arco... and systemd-boot is chosen
+# if on Arco... and systemd-boot is chosen, then proceed with
 if [[ -f /etc/dev-rel ]]; then
 
     if [[ "$(sudo bootctl is-installed 2>/dev/null)" == "yes" ]]; then
