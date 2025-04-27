@@ -63,6 +63,9 @@ if [ ! -f /etc/dev-rel ] ; then
 FONT=lat4-19' | sudo tee --append /etc/vconsole.conf
 		fi
 
+		# have aliases when in arch-chroot
+		sudo cp -arf /etc/skel/. /root
+
 		echo
 		tput setaf 6
 		echo "########################################################################"
