@@ -138,6 +138,7 @@ if [[ -f /etc/dev-rel ]]; then
   sudo pacman -Rs --noconfirm arcolinux-app-glade-git
   sudo pacman -Rs --noconfirm arcolinux-arc-dawn-git
   sudo pacman -Rs --noconfirm arcolinux-arc-kde
+  sudo pacman -Rs --noconfirm arcolinux-bin-git
   sudo pacman -Rs --noconfirm arcolinux-dconf-all-desktops-git
   sudo pacman -Rs --noconfirm arcolinux-desktop-trasher-git
   sudo pacman -Rs --noconfirm arcolinux-faces-git
