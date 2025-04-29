@@ -50,7 +50,7 @@ if grep -q "kiro" /etc/dev-rel; then
     file="/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml"
 
     if [[ -f "$file" ]]; then
-        sed -i 's/ArcoLinux/Kiro/g' "$file"
+        sudo sed -i 's/ArcoLinux/Kiro/g' "$file"
         echo "Updated: $file"
     else
         echo "File not found: $file"
