@@ -83,11 +83,17 @@ if grep -q "ArchBang" /etc/os-release; then
   if [ ! -f $HOME/.xinitrc-nemesis ]; then
     cp -vf $HOME/.xinitrc $HOME/.xinitrc-nemesis
   fi
+  if [ ! -d "$HOME/.bin" ]; then
+    mkdir "$HOME/.bin"
+  fi
+  cp "/home/$USER/AB_Scripts/startpanel" "$HOME/.bin/startpanel"
 
+
+  echo "Getting our mirrorlist in"
   sudo cp mirrorlist /etc/pacman.d/mirrorlist
 
   echo
-  echo "Change to zstd in mkinitcpio"
+  echo "Change from xz to zstd in mkinitcpio"
   echo
   FIND="COMPRESSION=\"xz\""
   REPLACE="COMPRESSION=\"zstd\""
