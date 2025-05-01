@@ -128,6 +128,10 @@ if [ -f /tmp/install-chadwm ]; then
 
     func_install_chadwm
     fix-sddm-conf
+
+    if systemd-detect-virt | grep -q "oracle"; then
+        sudo add-virtualbox-guest-utils
+    fi
 fi
 
 echo
