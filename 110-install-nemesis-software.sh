@@ -99,16 +99,18 @@ if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
 fi
 
 # removing all conflicting packages with edu-dot-files-git
-if grep -q "arco" /etc/dev-rel && [ -f /etc/dev-rel ]; then
-  sudo pacman -R --noconfirm arcolinux-bin-git
-  sudo pacman -R --noconfirm arcolinux-system-config-git
-  sudo pacman -R --noconfirm arcolinux-bootloader-systemd-boot-git
-  sudo pacman -R --noconfirm arcolinux-config-all-desktops-git
-  sudo pacman -R --noconfirm arcolinux-alacritty-git
-  sudo pacman -R --noconfirm arcolinux-btop-git
-  sudo pacman -R --noconfirm arcolinux-gtk-surfn-arc-git
-  sudo pacman -R --noconfirm arcolinux-paru-git
-  sudo pacman -R --noconfirm arcolinux-qt5-git
+if [ -f /etc/dev-rel ]; then
+  if grep -q "arco" /etc/dev-rel; then
+    sudo pacman -R --noconfirm arcolinux-bin-git
+    sudo pacman -R --noconfirm arcolinux-system-config-git
+    sudo pacman -R --noconfirm arcolinux-bootloader-systemd-boot-git
+    sudo pacman -R --noconfirm arcolinux-config-all-desktops-git
+    sudo pacman -R --noconfirm arcolinux-alacritty-git
+    sudo pacman -R --noconfirm arcolinux-btop-git
+    sudo pacman -R --noconfirm arcolinux-gtk-surfn-arc-git
+    sudo pacman -R --noconfirm arcolinux-paru-git
+    sudo pacman -R --noconfirm arcolinux-qt5-git
+  fi
 fi
 
 sudo pacman -S --noconfirm --needed edu-dot-files-git
