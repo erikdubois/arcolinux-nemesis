@@ -57,6 +57,7 @@ tput sgr0
 [ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
 [ -d $HOME"/.local/share/icons" ] || mkdir -p $HOME"/.local/share/icons"
 [ -d $HOME"/.local/share/themes" ] || mkdir -p $HOME"/.local/share/themes"
+[ -d $HOME"/.local/share/applications" ] || mkdir -p $HOME"/.local/share/applications"
 [ -d $HOME"/.config" ] || mkdir -p $HOME"/.config"
 [ -d $HOME"/.config/xfce4" ] || mkdir -p $HOME"/.config/xfce4"
 [ -d $HOME"/.config/autostart" ] || mkdir -p $HOME"/.config/autostart"
@@ -78,6 +79,12 @@ echo "########################################################################"
 echo "################### Personal settings to install - any OS"
 echo "########################################################################"
 tput sgr0
+echo
+
+echo
+echo "Brave no gnome-keyring popup"
+echo
+cp  $installed_dir/settings/brave/brave-browser.desktop $HOME/.local/share/applications/brave-browser.desktop
 echo
 
 echo
