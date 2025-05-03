@@ -263,36 +263,6 @@ if grep -q "EndeavourOS" /etc/os-release; then
   tput sgr0
   echo
 
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "############### We will now install xfce4 and remove plasma"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
-  echo "Press Enter to proceed with the script..."
-  echo "Press Ctrl+C to halt the script."
-
-  read
-
-  echo "Continuing with the script..."
-
-  #sudo pacman -S --noconfirm --needed xfce4 xfce4-goodies
-
-  #sudo pacman -Rns $(pacman -Sg plasma | awk '{print $2}')
-
-  sudo pacman -Rns plasma kio-extras dolphin dolphin-plugins
-
-  sudo pacman -Rns --noconfirm eos-breeze-sddm
-  sudo pacman -Rns --noconfirm eos-settings-plasma
-  # sudo pacman -Rns --noconfirm okular
-  # sudo pacman -Rns --noconfirm gwenview
-  # sudo pacman -Rns --noconfirm dolphin
-  # sudo pacman -Rns --noconfirm plasma-workspace
-  # sudo pacman -Rns --noconfirm kio-extras
-  # sudo pacman -Rns --noconfirm plasma
-
 fi
 
 # when on Garuda - remove conflicting files
