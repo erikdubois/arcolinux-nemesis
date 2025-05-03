@@ -278,12 +278,14 @@ if grep -q "EndeavourOS" /etc/os-release; then
 
   echo "Continuing with the script..."
 
-  sudo pacman -S --noconfirm --needed xfce4 xfce4-goodies
+  #sudo pacman -S --noconfirm --needed xfce4 xfce4-goodies
 
-  sudo pacman -Rns $(pacman -Sg plasma | awk '{print $2}')
+  #sudo pacman -Rns $(pacman -Sg plasma | awk '{print $2}')
 
-  # sudo pacman -Rns --noconfirm eos-breeze-sddm
-  # sudo pacman -Rns --noconfirm eos-settings-plasma
+  sudo pacman -Rns plasma kio-extras dolphin dolphin-plugins
+
+  sudo pacman -Rns --noconfirm eos-breeze-sddm
+  sudo pacman -Rns --noconfirm eos-settings-plasma
   # sudo pacman -Rns --noconfirm okular
   # sudo pacman -Rns --noconfirm gwenview
   # sudo pacman -Rns --noconfirm dolphin
