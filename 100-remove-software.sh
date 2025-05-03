@@ -272,19 +272,18 @@ if grep -q "EndeavourOS" /etc/os-release; then
   echo
 
   echo "Press Enter to proceed with the script..."
-  read
+  echo "Press Ctrl+C to halt the script."
 
-  echo "Sleeping for 10 seconds. Press Ctrl+C to halt the script."
-  sleep 10
+  read
 
   echo "Continuing with the script..."
 
-  sudo pacman -Rns eos-breeze-sddm
-  sudo pacman -Rns eos-settings-plasma
-  sudo pacman -Rns okular
-  sudo pacman -Rns gwenview
-  sudo pacman -Rns kio-extras
-  sudo pacman -Rns plasma
+  sudo pacman -Rns --noconfirm eos-breeze-sddm
+  sudo pacman -Rns --noconfirm eos-settings-plasma
+  sudo pacman -Rns --noconfirm okular
+  sudo pacman -Rns --noconfirm gwenview
+  sudo pacman -Rns --noconfirm kio-extras
+  sudo pacman -Rns --noconfirm plasma
 
 fi
 
