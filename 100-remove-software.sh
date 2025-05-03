@@ -280,14 +280,16 @@ if grep -q "EndeavourOS" /etc/os-release; then
 
   sudo pacman -S --nonfirm --needed xfce4 xfce4-goodies
 
-  sudo pacman -Rns --noconfirm eos-breeze-sddm
-  sudo pacman -Rns --noconfirm eos-settings-plasma
-  sudo pacman -Rns --noconfirm okular
-  sudo pacman -Rns --noconfirm gwenview
-  sudo pacman -Rns --noconfirm dolphin
-  sudo pacman -Rns --noconfirm plasma-workspace
-  sudo pacman -Rns --noconfirm kio-extras
-  sudo pacman -Rns --noconfirm plasma
+  sudo pacman -Rns $(pacman -Qqe | grep -Ei 'plasma|kde')
+
+  # sudo pacman -Rns --noconfirm eos-breeze-sddm
+  # sudo pacman -Rns --noconfirm eos-settings-plasma
+  # sudo pacman -Rns --noconfirm okular
+  # sudo pacman -Rns --noconfirm gwenview
+  # sudo pacman -Rns --noconfirm dolphin
+  # sudo pacman -Rns --noconfirm plasma-workspace
+  # sudo pacman -Rns --noconfirm kio-extras
+  # sudo pacman -Rns --noconfirm plasma
 
 fi
 
