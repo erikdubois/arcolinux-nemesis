@@ -247,13 +247,12 @@ if grep -q "EndeavourOS" /etc/os-release; then
   echo "##############################################################"
   tput sgr0
   echo
-  if [ -f /etc/skel/.config/rofi/config.rasi ]; then
-    sudo rm -v /etc/skel/.config/rofi/config.rasi
-  fi   
 
+  # I do not want the firewall
   sudo systemctl disable firewalld
   sudo pacman -R --noconfirm firewalld
 
+  # we will get the -git version and also paru-git
   sudo pacman -R --noconfirm yay
 
   echo
@@ -263,6 +262,29 @@ if grep -q "EndeavourOS" /etc/os-release; then
   echo "##############################################################"
   tput sgr0
   echo
+
+  echo
+  tput setaf 3
+  echo "##############################################################"
+  echo "############### We will now remove Plasma and install xfce4"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+  echo "Press Enter to proceed with the script..."
+  read
+
+  echo "Sleeping for 10 seconds. Press Ctrl+C to halt the script."
+  sleep 10
+
+  echo "Continuing with the script..."
+
+  sudo pacman -Rns eos-breeze-sddm
+  sudo pacman -Rns eos-settings-plasma
+  sudo pacman -Rns okular
+  sudo pacman -Rns gwenview
+  sudo pacman -Rns kio-extras
+  sudo pacman -Rns plasma
 
 fi
 

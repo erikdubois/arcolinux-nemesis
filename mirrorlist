@@ -8,7 +8,7 @@ Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
 Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2025-05-02
+## Generated on 2025-05-03
 ##
 
 ## Worldwide
