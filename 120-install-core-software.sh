@@ -94,6 +94,7 @@ if [ ! -f /usr/bin/duf ]; then
   sudo pacman -S --noconfirm --needed duf
 fi
 sudo pacman -S --noconfirm --needed expac
+sudo pacman -S --noconfirm --needed fakeroot
 sudo pacman -S --noconfirm --needed feh
 sudo pacman -S --noconfirm --needed fastfetch-git
 sudo pacman -S --noconfirm --needed file-roller
