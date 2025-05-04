@@ -71,20 +71,7 @@ if grep -q "Manjaro" /etc/os-release; then
 	echo
 	tput sgr0
 
-	sudo pacman -R --noconfirm sardi-icons
-	sudo pacman -R --noconfirm qt5ct
-	sudo pacman -R --noconfirm qt6ct
-  	sudo pacman -R --noconfirm surfn-icons-git
-  	sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git 
-  	sudo pacman -S --noconfirm --needed arcolinux-meta-plasma-design
-  	sudo rm -f /etc/skel/.config/variety/variety.conf
-  	sudo pacman -S --noconfirm --needed arconet-variety-config
-  	sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
-
-	if [ -f /etc/environment ]; then
-		echo "EDITOR=nano" | sudo tee -a /etc/environment
-		echo "BROWSER=firefox" | sudo tee -a /etc/environment
-	fi
+	echo "Nothing to do"
 
 	echo
 	tput setaf 6
@@ -93,22 +80,12 @@ if grep -q "Manjaro" /etc/os-release; then
 	echo "########################################################################"
 	tput sgr0
 	echo
-	if [ -f ~/.config/kwinrc ]; then
-		if ! grep -q "wobblywindowsEnabled=true" $HOME/.config/kwinrc; then
-echo '
 
-[Plugins]
-wobblywindowsEnabled=true' | tee -a ~/.config/kwinrc
-  		fi
-
-  	fi
-
+	echo
+	tput setaf 6
+	echo "##############################################################"
+	echo "###################  $(basename $0) done"
+	echo "##############################################################"
+	tput sgr0
+	echo
 fi
-
-echo
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
-echo
