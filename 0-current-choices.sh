@@ -177,7 +177,7 @@ echo
 
 sudo pacman -Syyu --noconfirm
 
-# only for ArchBang
+# only for ArchBang/Manjaro
 sh 700-intervention*
 
 echo
