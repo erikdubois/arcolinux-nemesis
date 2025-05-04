@@ -57,6 +57,8 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 # when on Manjaro
 
+# when using Virtualbox - set display graphics controller on VBOXSVGA
+
 if grep -q "Manjaro" /etc/os-release; then
 
 	echo

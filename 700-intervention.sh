@@ -68,32 +68,12 @@ fi
 if grep -q "ArchBang" /etc/os-release; then
 
   echo
-  tput setaf 3
-  echo "########################################################################"
-  echo "################### Intervention first for ArchBang"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  echo
   tput setaf 2
   echo "########################################################################"
   echo "################### We are on ArchBang"
   echo "########################################################################"
   tput sgr0
   echo
-
-
-  if [ -f /usr/local/bin/fixkey ]; then
-    echo
-    tput setaf 2
-    echo "########################################################################"
-    echo "################### Running fixkey if it exists"
-    echo "########################################################################"
-    tput sgr0
-    echo
-    /usr/local/bin/fixkey
-  fi
 
   echo "Making backups of important files to start openbox"
 
