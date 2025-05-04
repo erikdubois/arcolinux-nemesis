@@ -421,6 +421,28 @@ if grep -q "cachyos" /etc/os-release; then
 
 fi
 
+# when on Manjaro - remove conflicting files
+if grep -q "Manjaro" /etc/os-release; then
+  echo
+  tput setaf 2
+  echo "##############################################################"
+  echo "####### Removing software for Manjaro"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+  sudo pacman -Rs manjaro-xfce-settings --noconfirm
+
+  echo
+  tput setaf 2
+  echo "##############################################################"
+  echo "################### Software on Manjaro removed"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+fi
+
 
 echo
 tput setaf 6
