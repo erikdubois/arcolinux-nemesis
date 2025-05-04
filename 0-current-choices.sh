@@ -167,6 +167,9 @@ fi
 
 sudo cp -v pacman.conf /etc/pacman.conf
 
+# only for ArchBang/Manjaro
+sh 700-intervention*
+
 echo
 tput setaf 2
 echo "################################################################################"
@@ -176,9 +179,6 @@ tput sgr0
 echo
 
 sudo pacman -Syyu --noconfirm
-
-# only for ArchBang/Manjaro
-sh 700-intervention*
 
 echo
 tput setaf 2

@@ -44,6 +44,15 @@ fi
 ##################################################################################################################################
 
 if grep -q "Manjaro" /etc/os-release; then
+
+  echo
+  tput setaf 2
+  echo "########################################################################"
+  echo "################### We are on Manjaro"
+  echo "########################################################################"
+  tput sgr0
+  echo
+
   # putting back the original pacman.conf
   sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
 
