@@ -432,7 +432,7 @@ if grep -q "Manjaro" /etc/os-release; then
   echo
 
   sudo pacman -Rs manjaro-xfce-settings --noconfirm
-  sudo pacman -Rs pamac-gtk3 manjaro-application-utility --noconfirm
+  sudo pacman -Rs pamac-gtk3 manjaro-application-utility libpamac --noconfirm
 
   echo
   tput setaf 2
