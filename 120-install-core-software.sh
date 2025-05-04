@@ -116,7 +116,7 @@ sudo pacman -S --noconfirm --needed inkscape
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed logrotate
 sudo pacman -S --noconfirm --needed lolcat
-sudo pacman -S --noconfirm --needed lollypop
+#sudo pacman -S --noconfirm --needed lollypop
 sudo pacman -S --noconfirm --needed lsb-release
 sudo pacman -S --noconfirm --needed lshw
 sudo pacman -S --noconfirm --needed man-db
