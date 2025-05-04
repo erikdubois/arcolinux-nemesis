@@ -44,19 +44,22 @@ fi
 ##################################################################################################################################
 
 # Check if /etc/dev-rel contains the word 'kiro'
-if grep -q "kiro" /etc/dev-rel; then
-    echo "'kiro' found in /etc/dev-rel. Proceeding with replacement..."
+if [ -f /etc/dev-rel ]; then
 
-    file="/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml"
+    if grep -q "kiro" /etc/dev-rel; then
+        echo "'kiro' found in /etc/dev-rel. Proceeding with replacement..."
 
-    if [[ -f "$file" ]]; then
-        sudo sed -i 's/ArcoLinux/Kiro/g' "$file"
-        echo "Updated: $file"
+        file="/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml"
+
+        if [[ -f "$file" ]]; then
+            sudo sed -i 's/ArcoLinux/Kiro/g' "$file"
+            echo "Updated: $file"
+        else
+            echo "File not found: $file"
+        fi
     else
-        echo "File not found: $file"
+        echo "'kiro' not found in /etc/dev-rel. No changes made."
     fi
-else
-    echo "'kiro' not found in /etc/dev-rel. No changes made."
 fi
 
 echo
