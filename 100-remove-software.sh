@@ -421,7 +421,7 @@ if grep -q "cachyos" /etc/os-release; then
 
 fi
 
-# when on Manjaro - remove conflicting files
+# when on Manjaro - remove conflicting files - xfce iso is default
 if grep -q "Manjaro" /etc/os-release; then
   echo
   tput setaf 2
@@ -432,6 +432,7 @@ if grep -q "Manjaro" /etc/os-release; then
   echo
 
   sudo pacman -Rs manjaro-xfce-settings --noconfirm
+  sudo pacman -Rs pamac-gtk3 --noconfirm
 
   echo
   tput setaf 2

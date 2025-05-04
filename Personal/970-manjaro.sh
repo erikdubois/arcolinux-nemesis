@@ -59,6 +59,8 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 # when using Virtualbox - set display graphics controller on VBOXSVGA
 
+# xfce ISO is the default
+
 if grep -q "Manjaro" /etc/os-release; then
 
 	echo
