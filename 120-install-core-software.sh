@@ -112,7 +112,7 @@ sudo pacman -S --noconfirm --needed hddtemp
 sudo pacman -S --noconfirm --needed hw-probe
 sudo pacman -S --noconfirm --needed hyfetch
 sudo pacman -S --noconfirm --needed inkscape
-sudo pacman -S --noconfirm --needed insync
+#sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed logrotate
 sudo pacman -S --noconfirm --needed lolcat
