@@ -69,21 +69,6 @@ if grep -q "EndeavourOS" /etc/os-release; then
 
 	sudo pacman -R --noconfirm eos-settings-xfce4
 
-	sudo pacman -S --noconfirm --needed arcolinux-root-git
-  	sudo pacman -S --noconfirm --needed arconet-xfce
-  	sudo pacman -S --noconfirm --needed fish
-  	sudo pacman -S --noconfirm --needed arcolinux-fish-git
-  	sudo pacman -S --noconfirm --needed kvantum-qt5
-  	sudo pacman -S --noconfirm --needed arcolinux-kvantum-git
-  	sudo pacman -S --noconfirm --needed fisher
-
-	echo "Variety conf ArcoLinux"
-	if [ -f /etc/skel/.config/variety/variety.conf ]; then
-		sudo rm /etc/skel/.config/variety/variety.conf
-	fi
-	sudo pacman -S --noconfirm --needed arconet-variety-config
-
-
 	if [ -f /etc/environment ]; then
 		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
 		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
@@ -93,44 +78,11 @@ if grep -q "EndeavourOS" /etc/os-release; then
 
 	echo
 	echo "########################################################################"
-	echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
+	echo "Getting latest /etc/nsswitch.conf from Nemesis"
 	echo "########################################################################"
 	echo
 	sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
-	sudo wget https://raw.githubusercontent.com/arconetpro/arconet-iso/refs/heads/main/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
-
-  	if [ -f /usr/share/xsessions/xfce.desktop ]; then
-		echo
-		tput setaf 2
-		echo "########################################################################"
-		echo "################### We are on Xfce4"
-		echo "########################################################################"
-		tput sgr0
-		echo
-
-    	cp -arf /etc/skel/. ~
-
-		echo
-		echo "Changing the whiskermenu"
-		echo
-		cp $installed_dir/settings/eos/whiskermenu-7.rc ~/.config/xfce4/panel/whiskermenu-7.rc
-		sudo cp $installed_dir/settings/eos/whiskermenu-7.rc /etc/skel/.config/xfce4/panel/whiskermenu-7.rc
-
-		echo
-		echo "Changing the icons and theme"
-		echo
-
-		FIND="Arc-Dark"
-		REPLACE="Arc-Dawn-Dark"
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-		FIND="Sardi-Arc"
-		REPLACE="neo-candy-icons"
-		sed -i "s/$FIND/$REPLACE/g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-    	sudo sed -i "s/$FIND/$REPLACE/g" /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-    fi
+	sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/refs/heads/master/Personal/settings/nsswitch/nsswitch.conf -O /etc/nsswitch.conf
 
 	echo
 	tput setaf 6
