@@ -111,16 +111,23 @@ Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 Server = https://mirror.osbeck.com/archlinux/\$repo/os/\$arch
 Server = http://mirror.osbeck.com/archlinux/\$repo/os/\$arch
 Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch"  | sudo tee /etc/pacman.d/mirrorlist
-  echo
+    echo
+    tput setaf 2
+    echo "################################################################################"
+    echo "Arch Linux Servers have been written to /etc/pacman.d/mirrorlist"
+    echo "Use nmirrorlist when on ArcoLinux to inspect"
+    echo "################################################################################"
+    tput sgr0
+    echo  
 fi
 
+echo
 tput setaf 2
 echo "################################################################################"
-echo "Arch Linux Servers have been written to /etc/pacman.d/mirrorlist"
-echo "Use nmirrorlist when on ArcoLinux to inspect"
+echo "Installing Chaotic keyring and Chaotic mirrorlist"
 echo "################################################################################"
 tput sgr0
-echo
+echo  
 
 # Installing chaotic-aur keys and mirrors
 pkg_dir="packages"
