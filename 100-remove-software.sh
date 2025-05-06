@@ -279,8 +279,8 @@ if grep -q "Garuda" /etc/os-release; then
   sudo pacman -Rs --noconfirm geary
   sudo pacman -Rs --noconfirm gestures
   sudo pacman -Rs --noconfirm gtkhash
-  sudo pacman -Rs --noconfirm linux-wifi-hotspot
-  sudo pacman -Rs --noconfirm modemmanager modem-manager-gui
+  sudo pacman -Rs --noconfirm linux-wifi-hotspot garuda-network-assistant
+  sudo pacman -Rs --noconfirm modemmanager modem-manager-gui networkmanager-support
   sudo pacman -Rs --noconfirm neofetch
   sudo pacman -Rs --noconfirm onboard
   sudo pacman -Rs --noconfirm paru
