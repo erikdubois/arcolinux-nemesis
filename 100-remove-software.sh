@@ -274,6 +274,7 @@ if grep -q "Garuda" /etc/os-release; then
   sudo pacman -Rs --noconfirm modemmanager modem-manager-gui
   sudo pacman -Rs --noconfirm neofetch
   sudo pacman -Rs --noconfirm onboard
+  sudo pacman -Rs --noconfirm paru-git
   sudo pacman -Rs --noconfirm pitivi
   sudo pacman -Rs --noconfirm redshift
   sudo pacman -Rs --noconfirm transmission-gtk
