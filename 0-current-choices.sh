@@ -167,7 +167,7 @@ fi
 
 sudo cp -v pacman.conf /etc/pacman.conf
 
-# only for ArchBang/Manjaro
+# only for ArchBang/Manjaro/Garuda
 sh 700-intervention*
 
 echo

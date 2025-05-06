@@ -74,6 +74,33 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 
 fi
 
+if grep -q "Garuda" /etc/os-release; then
+
+  echo
+  tput setaf 2
+  echo "########################################################################"
+  echo "################### We are on Garuda"
+  echo "########################################################################"
+  tput sgr0
+  echo
+
+  # putting back the original pacman.conf
+  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
+
+# Define the lines to append
+config_block="
+[nemesis_repo]
+SigLevel = Never
+Server = https://erikdubois.github.io/\$repo/\$arch
+"
+
+  # Append to /etc/pacman.conf
+  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
+
+  echo "Repository (nemesis) added to /etc/pacman.conf"
+
+fi
+
 if grep -q "ArchBang" /etc/os-release; then
 
   echo
