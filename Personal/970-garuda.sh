@@ -55,9 +55,6 @@ if grep -q "Garuda" /etc/os-release; then
 	echo
 	tput sgr0
 
-	sudo pacman -S linux linux-headers --needed -noconfirm
-	sudo pacman -R linux-lts linux-lts-headers --noconfirm
-
 	# for EXT4 
 	if 	lsblk -f | grep ext4 > /dev/null 2>&1 ; then
 		echo
