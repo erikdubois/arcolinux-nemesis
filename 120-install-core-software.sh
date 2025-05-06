@@ -126,7 +126,7 @@ sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed mintstick
 sudo pacman -S --noconfirm --needed most
 sudo pacman -S --noconfirm --needed namcap
-sudo pacman -S --noconfirm --needed neofetch
+sudo pacman -S --noconfirm --needed neofetch-git
 sudo pacman -S --noconfirm --needed nomacs
 sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed ntp
