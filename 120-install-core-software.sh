@@ -60,6 +60,7 @@ if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed galculator
   sudo pacman -S --noconfirm --needed network-manager-applet
   sudo pacman -S --noconfirm --needed networkmanager-openvpn
+  sudo pacman -S --noconfirm --needed networkmanager
   sudo pacman -S --noconfirm --needed nitrogen
   sudo pacman -S --noconfirm --needed numlockx
   sudo pacman -S --noconfirm --needed pavucontrol
