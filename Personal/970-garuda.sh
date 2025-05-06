@@ -108,6 +108,21 @@ if grep -q "Garuda" /etc/os-release; then
 
     fi
 
+	# for EXT4 
+	if 	lsblk -f | grep ext4 > /dev/null 2>&1 ; then
+		echo
+		tput setaf 3
+		echo "################################################################## "
+		echo "Lets remove package related to btrfs"
+		echo "################################################################## "
+	    tput sgr0
+	    echo
+	    sudo pacman -Rns garuda-system-maintenance
+	    sudo pacman -Rns snapper-support snapper-tools
+	    sudo pacman -Rns btrfsmaintenance garuda-common-systems
+	    sudo pacman -Rns btrfs-assistant btrfs-progs grub-btrfs
+	fi    
+
 	echo
 	tput setaf 6
 	echo "########################################################################"
