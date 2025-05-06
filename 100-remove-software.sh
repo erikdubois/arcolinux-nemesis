@@ -242,15 +242,27 @@ if grep -q "Garuda" /etc/os-release; then
   echo
   tput setaf 3
   echo "##############################################################"
+  echo "############### Removing btrfs pacman hooks"
+  echo "##############################################################"
+  tput sgr0
+  echo
+  sudo rm /etc/systemd/system/timers.target.wants/btrfs*
+
+  echo
+  tput setaf 3
+  echo "##############################################################"
   echo "############### Removing software for Garuda"
   echo "##############################################################"
   tput sgr0
   echo
-
   sudo pacman -R --noconfirm blueman
   sudo pacman -R --noconfirm garuda-xfce-settings
   sudo pacman -R --noconfirm garuda-common-settings
   sudo pacman -R --noconfirm garuda-bash-config
+  sudo pacman -R --noconfirm garuda-fish-config
+  sudo pacman -R --noconfirm garuda-icons
+  sudo pacman -R --noconfirm garuda-starship-prompt
+  sudo pacman -R --noconfirm garuda-wallpapers
   sudo pacman -R --noconfirm redshift
   sudo pacman -Rs --noconfirm transmission-gtk
   sudo pacman -Rs --noconfirm geary
@@ -264,8 +276,6 @@ if grep -q "Garuda" /etc/os-release; then
   sudo pacman -Rs --noconfirm onboard
   sudo pacman -Rs --noconfirm vim vim-runtime
   sudo pacman -Rs --noconfirm gestures
-  sudo pacman -Rs --noconfirm pinta
-  sudo pacman -Rdd --noconfirm hblock
   sudo pacman -Rdd --noconfirm modemmanager modem-manager-gui
   sudo pacman -Rdd --noconfirm linux-wifi-hotspot
 
