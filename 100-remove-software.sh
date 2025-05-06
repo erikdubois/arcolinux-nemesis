@@ -251,6 +251,15 @@ if grep -q "Garuda" /etc/os-release; then
   echo
   tput setaf 3
   echo "##############################################################"
+  echo "############### Removing touchpad"
+  echo "##############################################################"
+  tput sgr0
+  echo
+  sudo rm /etc/X11/xorg.cong.d/30-touchpad.conf
+
+  echo
+  tput setaf 3
+  echo "##############################################################"
   echo "############### Removing software for Garuda"
   echo "##############################################################"
   tput sgr0
