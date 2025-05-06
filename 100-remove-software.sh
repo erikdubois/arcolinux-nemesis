@@ -283,13 +283,14 @@ if grep -q "Garuda" /etc/os-release; then
   sudo pacman -Rs --noconfirm modemmanager modem-manager-gui
   sudo pacman -Rs --noconfirm neofetch
   sudo pacman -Rs --noconfirm onboard
-  sudo pacman -Rs --noconfirm paru-git
+  sudo pacman -Rs --noconfirm paru
   sudo pacman -Rs --noconfirm pitivi
   sudo pacman -Rs --noconfirm redshift
   sudo pacman -Rs --noconfirm transmission-gtk
   sudo pacman -Rs --noconfirm veracrypt
   sudo pacman -Rs --noconfirm vim vim-runtime
   sudo pacman -Rs --noconfirm xfburn
+  sudo pacman -Rs --noconfirm yay
 
   echo
   tput setaf 2
