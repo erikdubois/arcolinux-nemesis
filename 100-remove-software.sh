@@ -255,7 +255,7 @@ if grep -q "Garuda" /etc/os-release; then
   echo "##############################################################"
   tput sgr0
   echo
-  sudo rm /etc/X11/xorg.cong.d/30-touchpad.conf
+  sudo rm /etc/X11/xorg.conf.d/30-touchpad.conf
 
   echo
   tput setaf 3
