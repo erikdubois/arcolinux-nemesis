@@ -432,6 +432,9 @@ if grep -q "cachyos" /etc/os-release; then
 
   sudo pacman -Rs --noconfirm cachyos-fish-config
   sudo pacman -Rs --noconfirm cachy-browser
+  sudo pacman -Rs --noconfirm cachyos-wallpapers
+  sudo pacman -Rs --noconfirm cachyos-rate-mirrors
+  sudo pacman -Rs --noconfirm cachyos-zsh-config
   sudo pacman -Rs --noconfirm fastfetch
   sudo pacman -Rs --noconfirm octopi
   sudo pacman -Rs --noconfirm paru
