@@ -443,6 +443,7 @@ if grep -q "cachyos" /etc/os-release; then
   sudo pacman -Rs --noconfirm fastfetch
   sudo pacman -Rs --noconfirm octopi
   sudo pacman -Rs --noconfirm paru
+  sudo pacman -Rs --noconfirm ufw
 
   # for icons in chadwm
   sudo pacman -R --noconfirm noto-color-emoji-fontconfig
