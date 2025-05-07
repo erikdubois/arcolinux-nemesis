@@ -435,6 +435,7 @@ if grep -q "cachyos" /etc/os-release; then
   sudo pacman -Rs --noconfirm cachy-browser
   sudo pacman -Rs --noconfirm cachyos-fish-config
   sudo pacman -Rs --noconfirm cachyos-hello
+  sudo pacman -Rs --noconfirm cachyos-micro-settings 
   sudo pacman -Rs --noconfirm cachyos-packageinstaller
   sudo pacman -Rs --noconfirm cachyos-rate-mirrors
   sudo pacman -Rs --noconfirm cachyos-wallpapers

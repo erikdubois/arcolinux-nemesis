@@ -124,6 +124,7 @@ sudo pacman -S --noconfirm --needed man-pages
 sudo pacman -S --noconfirm --needed mkinitcpio-firmware
 sudo pacman -S --noconfirm --needed plocate
 sudo pacman -S --noconfirm --needed meld
+sudo pacman -S --noconfirm --needed micro
 sudo pacman -S --noconfirm --needed mintstick
 sudo pacman -S --noconfirm --needed most
 sudo pacman -S --noconfirm --needed namcap
