@@ -266,6 +266,7 @@ if grep -q "Garuda" /etc/os-release; then
   echo
 
   sudo pacman -Rs --noconfirm garuda-common-settings
+  
   sudo pacman -Rs --noconfirm abiword
   sudo pacman -Rs --noconfirm audacity
   sudo pacman -Rs --noconfirm blueman
@@ -275,7 +276,7 @@ if grep -q "Garuda" /etc/os-release; then
   sudo pacman -Rs --noconfirm garuda-fish-config
   sudo pacman -Rs --noconfirm garuda-icons
   sudo pacman -Rs --noconfirm garuda-wallpapers
-  sudo pacman -Rs --noconfirm garuda-xfce-settings garuda-bash-config garuda-starship-prompt
+  sudo pacman -Rs --noconfirm garuda-xfce-settings
   sudo pacman -Rs --noconfirm geary
   sudo pacman -Rs --noconfirm gestures
   sudo pacman -Rs --noconfirm gtkhash

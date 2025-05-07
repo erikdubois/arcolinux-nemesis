@@ -144,6 +144,7 @@ sudo pacman -S --noconfirm --needed rate-mirrors
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
+sudo pacman -S --noconfirm --needed sddm
 sudo pacman -S --noconfirm --needed simplescreenrecorder-qt6-git
 sudo pacman -S --noconfirm --needed speedtest-cli
 sudo pacman -S --noconfirm --needed spotify
