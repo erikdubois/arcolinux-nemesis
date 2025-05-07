@@ -444,6 +444,12 @@ if grep -q "cachyos" /etc/os-release; then
   sudo pacman -Rs --noconfirm octopi
   sudo pacman -Rs --noconfirm paru
 
+  # for icons in chadwm
+  sudo pacman -R --noconfirm noto-color-emoji-fontconfig
+  sudo pacman -R --noconfirm noto-fonts-cjk
+  sudo pacman -R --noconfirm ttf-meslo-nerd
+
+
   echo
   tput setaf 3
   echo "##############################################################"
