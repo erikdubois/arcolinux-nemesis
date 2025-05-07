@@ -430,10 +430,13 @@ if grep -q "cachyos" /etc/os-release; then
   tput sgr0
   echo
 
-  sudo pacman -Rs --noconfirm cachyos-fish-config
   sudo pacman -Rs --noconfirm cachy-browser
-  sudo pacman -Rs --noconfirm cachyos-wallpapers
+  sudo pacman -Rs --noconfirm cachyos-fish-config
+  sudo pacman -Rs --noconfirm cachyos-hello
+  sudo pacman -Rs --noconfirm cachyos-kernel-manager
+  sudo pacman -Rs --noconfirm cachyos-packageinstaller
   sudo pacman -Rs --noconfirm cachyos-rate-mirrors
+  sudo pacman -Rs --noconfirm cachyos-wallpapers
   sudo pacman -Rs --noconfirm cachyos-zsh-config
   sudo pacman -Rs --noconfirm fastfetch
   sudo pacman -Rs --noconfirm octopi
