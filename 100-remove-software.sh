@@ -432,6 +432,7 @@ if grep -q "cachyos" /etc/os-release; then
 
   sudo pacman -R --noconfirm cachyos-kernel-manager
 
+  sudo pacman -Rs --noconfirm btrfs-progs
   sudo pacman -Rs --noconfirm cachy-browser
   sudo pacman -Rs --noconfirm cachyos-fish-config
   sudo pacman -Rs --noconfirm cachyos-hello
