@@ -337,7 +337,6 @@ Server = https://dist-mirror.fem.tu-ilmenau.de/archlinux/$repo/os/$arch
 Server = http://mirror.fsrv.services/archlinux/$repo/os/$arch
 Server = https://mirror.fsrv.services/archlinux/$repo/os/$arch
 Server = https://berlin.mirror.pkgbuild.com/$repo/os/$arch
-Server = http://www.gutscheindrache.com/mirror/archlinux/$repo/os/$arch
 Server = http://ftp.gwdg.de/pub/linux/archlinux/$repo/os/$arch
 Server = https://files.hadiko.de/pub/dists/arch/$repo/os/$arch
 Server = https://archlinux.homeinfo.de/$repo/os/$arch
