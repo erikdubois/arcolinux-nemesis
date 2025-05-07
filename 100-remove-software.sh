@@ -269,13 +269,12 @@ if grep -q "Garuda" /etc/os-release; then
   sudo pacman -Rs --noconfirm blueman
   sudo pacman -Rs --noconfirm celluloid
   sudo pacman -Rs --noconfirm fastfetch
-  sudo pacman -Rs --noconfirm garuda-bash-config garuda-common-settings
   sudo pacman -Rs --noconfirm garuda-browser-settings 
   sudo pacman -Rs --noconfirm garuda-fish-config
   sudo pacman -Rs --noconfirm garuda-icons
   sudo pacman -Rs --noconfirm garuda-starship-prompt
   sudo pacman -Rs --noconfirm garuda-wallpapers
-  sudo pacman -Rs --noconfirm garuda-xfce-settings
+  sudo pacman -Rs --noconfirm garuda-xfce-settings garuda-bash-config garuda-common-settings
   sudo pacman -Rs --noconfirm geary
   sudo pacman -Rs --noconfirm gestures
   sudo pacman -Rs --noconfirm gtkhash
