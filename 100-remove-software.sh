@@ -289,7 +289,6 @@ if grep -q "Garuda" /etc/os-release; then
   sudo pacman -Rs --noconfirm veracrypt
   sudo pacman -Rs --noconfirm vim vim-runtime
   sudo pacman -Rs --noconfirm xfburn
-  sudo pacman -Rs --noconfirm yay
 
   echo
   tput setaf 2
