@@ -91,6 +91,7 @@ sudo pacman -S --noconfirm --needed btop
 sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed dconf-editor
+sudo pacman -S --noconfirm --needed debugedit
 sudo pacman -S --noconfirm --needed devtools
 sudo pacman -S --noconfirm --needed discord
 sudo pacman -S --noconfirm --needed downgrade
