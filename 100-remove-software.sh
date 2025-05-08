@@ -92,6 +92,8 @@ remove_if_installed rofi-lbonn-wayland
 remove_if_installed rofi-lbonn-wayland-git
 remove_if_installed neofetch
 remove_if_installed fastfetch
+remove_if_installed yay
+remove_if_installed paru
 
 # when on any ArcoLinux ISO
 if [[ -f /etc/dev-rel ]]; then
