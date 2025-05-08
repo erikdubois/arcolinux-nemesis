@@ -43,12 +43,43 @@ fi
 
 ##################################################################################################################################
 
+if grep -q "archcraft" /etc/os-release; then
+
+  echo
+  tput setaf 2
+  echo "########################################################################"
+  echo "################### We are on Archcraft"
+  echo "########################################################################"
+  tput sgr0
+  echo
+
+  # putting back the original pacman.conf
+  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
+
+# Define the lines to append
+config_block="
+[nemesis_repo]
+SigLevel = Never
+Server = https://erikdubois.github.io/\$repo/\$arch
+
+[chaotic-aur]
+SigLevel = Required DatabaseOptional
+Include = /etc/pacman.d/chaotic-mirrorlist
+"
+
+  # Append to /etc/pacman.conf
+  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
+
+  echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
+
+fi
+
 if grep -q "CachyOS" /etc/os-release; then
 
   echo
   tput setaf 2
   echo "########################################################################"
-  echo "################### We are on Manjaro"
+  echo "################### We are on Cachyos"
   echo "########################################################################"
   tput sgr0
   echo
