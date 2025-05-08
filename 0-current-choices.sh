@@ -166,6 +166,7 @@ else
 fi
 
 sudo cp -v pacman.conf /etc/pacman.conf
+sudo cp -v pacman.conf /etc/pacman.conf.edu
 
 # only for ArchBang/Manjaro/Garuda/Archcraft
 sh 700-intervention*
