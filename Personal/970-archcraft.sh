@@ -56,33 +56,11 @@ if grep -q "archcraft" /etc/os-release; then
 	echo
 	tput setaf 2
 	echo "########################################################################"
-	echo "################### Installing packages"
+	echo "################### Nothing to do"
 	echo "########################################################################"
 	tput sgr0
 	echo
-
-	echo
-	sudo pacman -S --noconfirm --needed edu-skel-git
-  	sudo pacman -S --noconfirm --needed edu-xfce-git
-  	sudo pacman -S --noconfirm --needed edu-system-git
-
-	echo
-	echo "########################################################################"
-	echo "Getting latest /etc/nsswitch.conf from ArcoLinux"
-	echo "########################################################################"
-	echo
-	sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
-	sudo wget https://raw.githubusercontent.com/arconetpro/arconet-iso/refs/heads/main/archiso/airootfs/etc/nsswitch.conf -O $workdir/etc/nsswitch.conf
-
-
-	echo
-	tput setaf 6
-	echo "########################################################################"
-	echo "################### Done"
-	echo "########################################################################"
-	tput sgr0
-	echo
-
+	
 fi
 
 echo
