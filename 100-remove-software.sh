@@ -378,6 +378,7 @@ if grep -q "archcraft" /etc/os-release; then
   sudo pacman -Rs --noconfirm archcraft-config-qt
   sudo pacman -Rs --noconfirm archcraft-neofetch
   sudo pacman -Rs --noconfirm archcraft-arandr
+  sudo pacman -Rs --noconfirm simplescreenrecorder
   echo
   tput setaf 2
   echo "##############################################################"
