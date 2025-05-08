@@ -39,6 +39,16 @@ fi
 
 ##################################################################################################################################
 
+remove_if_installed() {
+    local pkg="$1"
+    if pacman -Q "$pkg" &>/dev/null; then
+        echo "Removing $pkg..."
+        sudo pacman -Rns --noconfirm "$pkg"
+    fi
+}
+
+##################################################################################################################################
+
 echo
 tput setaf 2
 echo "##############################################################"
@@ -78,13 +88,12 @@ if ! systemd-detect-virt | grep -q "oracle"; then
   fi
 fi
 
-
-sudo pacman -R rofi-lbonn-wayland --noconfirm
-sudo pacman -R rofi-lbonn-wayland-git --noconfirm
+remove_if_installed rofi-lbonn-wayland
+remove_if_installed rofi-lbonn-wayland-git
+remove_if_installed neofetch
+remove_if_installed fastfetch
 
 # when on any ArcoLinux ISO
-
-
 if [[ -f /etc/dev-rel ]]; then
   echo
   tput setaf 3
