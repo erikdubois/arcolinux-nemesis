@@ -356,7 +356,8 @@ if grep -q "archcraft" /etc/os-release; then
   echo
   tput setaf 3
   echo "##############################################################"
-  echo "############### Removing software for Archcraft"
+  echo "############### Removing software for Archcraft - FREE ISO"
+  echo "############### Choosing only BSPWM during installation"
   echo "##############################################################"
   tput sgr0
   echo
