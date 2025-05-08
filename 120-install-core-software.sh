@@ -49,6 +49,11 @@ echo "########################################################################"
 tput sgr0
 echo
 
+# when on Archcraft - only openbox or bspwm are our choices there
+if grep -q "archcraft" /etc/os-release; then
+  sudo pacman -S xfce4 xfce4-goodies --noconfirm --needed
+fi
+
 # All the software below will be installed on all desktops except on Plasma
 if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed alacritty

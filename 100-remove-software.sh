@@ -371,6 +371,7 @@ if grep -q "archcraft" /etc/os-release; then
   sudo pacman -Rs --noconfirm archcraft-omz
   sudo pacman -Rs --noconfirm archcraft-skeleton
   sudo pacman -Rs --noconfirm archcraft-openbox
+  sudo pacman -Rs --noconfirm archcraft-bspwm
   sudo pacman -Rs --noconfirm archcraft-gtk-theme-arc
   sudo pacman -Rs --noconfirm archcraft-config-qt
 
