@@ -53,7 +53,14 @@ if grep -q "RebornOS" /etc/os-release; then
 	tput sgr0
 	echo
 
-	echo "Nothing to do"
+	echo
+	echo "Adding font to /etc/vconsole.conf"
+
+	echo
+	if ! grep -q "FONT=lat4-19" /etc/vconsole.conf; then
+	echo '
+	FONT=lat4-19' | sudo tee --append /etc/vconsole.conf
+	fi
 
 	echo
 	tput setaf 6
