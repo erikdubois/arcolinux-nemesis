@@ -53,36 +53,7 @@ if grep -q "RebornOS" /etc/os-release; then
 	tput sgr0
 	echo
 
-	echo
-	echo "Pacman parallel downloads	"
-	FIND="ParallelDownloads = 16"
-	REPLACE="ParallelDownloads = 20"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/pacman.conf
-
-	echo "Variety conf ArcoLinux"
-	sudo pacman -S --noconfirm --needed arconet-variety-config
-
-	echo
-	echo "Adding nanorc"
-	if [ -f /etc/nanorc ]; then
-    	sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
-	fi
-
-	echo	
-	echo "When on Xfce4"
-	if [ -f /usr/share/xsessions/xfce.desktop ]; then
-		echo
-		tput setaf 2
-		echo "########################################################################"
-		echo "################### We are on Xfce4"
-		echo "########################################################################"
-		tput sgr0
-		echo
-
-		echo "Changing theme and icon theme"
-		cp $installed_dir/settings/rebornos/xfce/xsettings.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-
-	fi
+	echo "Nothing to do"
 
 	echo
 	tput setaf 6
