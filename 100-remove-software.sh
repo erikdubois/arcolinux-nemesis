@@ -421,7 +421,7 @@ if grep -q "RebornOS" /etc/os-release; then
   tput sgr0
   echo
 
-  echo "Nothing to remove"
+  sudo pacman -R --noconfirm v4l-utils
 
   echo
   tput setaf 2
