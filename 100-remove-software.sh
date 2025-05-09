@@ -421,7 +421,7 @@ if grep -q "RebornOS" /etc/os-release; then
   tput sgr0
   echo
 
-  sudo pacman -Rs parole --noconfirm
+  echo "Nothing to remove"
 
   echo
   tput setaf 2
