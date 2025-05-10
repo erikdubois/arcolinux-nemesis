@@ -8,7 +8,7 @@ Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
 Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2025-05-09
+## Generated on 2025-05-10
 ##
 
 ## Worldwide
@@ -329,7 +329,6 @@ Server = https://mirror.cmt.de/archlinux/$repo/os/$arch
 Server = http://os.codefionn.eu/archlinux/$repo/os/$arch
 Server = https://os.codefionn.eu/archlinux/$repo/os/$arch
 Server = https://mirror.dogado.de/archlinux/$repo/os/$arch
-Server = https://mirror.eto.dev/arch/$repo/os/$arch
 Server = http://ftp.fau.de/archlinux/$repo/os/$arch
 Server = https://ftp.fau.de/archlinux/$repo/os/$arch
 Server = https://pkg.fef.moe/archlinux/$repo/os/$arch
@@ -1014,7 +1013,6 @@ Server = https://america.mirror.pkgbuild.com/$repo/os/$arch
 Server = https://losangeles.mirror.pkgbuild.com/$repo/os/$arch
 Server = http://mirrors.gigenet.com/archlinux/$repo/os/$arch
 Server = https://mirror.givebytes.net/archlinux/$repo/os/$arch
-Server = http://arch.goober.cloud/$repo/os/$arch
 Server = https://arch.goober.cloud/$repo/os/$arch
 Server = http://mirror.hasphetica.win/archlinux/$repo/os/$arch
 Server = https://mirror.hasphetica.win/archlinux/$repo/os/$arch
