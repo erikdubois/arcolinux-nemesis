@@ -52,6 +52,12 @@ tput sgr0
 echo
 
 echo
+if ! grep -q "FONT=" /etc/vconsole.conf; then
+echo '
+FONT=lat4-19' | sudo tee --append /etc/vconsole.conf
+fi
+
+echo
 echo "Adding nanorc settings"
 echo
 
