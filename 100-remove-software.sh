@@ -42,8 +42,10 @@ fi
 remove_if_installed() {
     local pkg="$1"
     if pacman -Q "$pkg" &>/dev/null; then
-        echo "Removing $pkg..."
-        sudo pacman -Rns --noconfirm "$pkg"
+        echo "Removing package: $pkg"
+        sudo pacman -Rs --noconfirm "$pkg"
+    else
+        echo "Package '$pkg' is already removed."
     fi
 }
 
