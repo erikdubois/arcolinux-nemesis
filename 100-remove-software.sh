@@ -40,15 +40,21 @@ fi
 ##################################################################################################################################
 
 remove_if_installed() {
-    for pkg in "$@"; do
-        if pacman -Q "$pkg" &>/dev/null; then
-            echo "Removing package: $pkg"
-            sudo pacman -Rs --noconfirm "$pkg"
+    for pattern in "$@"; do
+        # Find all installed packages that match the pattern (exact + variants)
+        matches=$(pacman -Qq | grep "^${pattern}$\|^${pattern}-")
+        
+        if [ -n "$matches" ]; then
+            for pkg in $matches; do
+                echo "Removing package: $pkg"
+                sudo pacman -Rs --noconfirm "$pkg"
+            done
         else
-            echo "Package '$pkg' is already removed."
+            echo "No packages matching '$pattern' are installed."
         fi
     done
 }
+
 
 ##################################################################################################################################
 
