@@ -40,13 +40,14 @@ fi
 ##################################################################################################################################
 
 remove_if_installed() {
-    local pkg="$1"
-    if pacman -Q "$pkg" &>/dev/null; then
-        echo "Removing package: $pkg"
-        sudo pacman -Rs --noconfirm "$pkg"
-    else
-        echo "Package '$pkg' is already removed."
-    fi
+    for pkg in "$@"; do
+        if pacman -Q "$pkg" &>/dev/null; then
+            echo "Removing package: $pkg"
+            sudo pacman -Rs --noconfirm "$pkg"
+        else
+            echo "Package '$pkg' is already removed."
+        fi
+    done
 }
 
 ##################################################################################################################################
