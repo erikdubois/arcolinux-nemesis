@@ -470,6 +470,7 @@ if grep -q "cachyos" /etc/os-release; then
   remove_if_installed paru
   remove_if_installed ufw
 
+  # for icons in chadwm
   remove_if_installed noto-color-emoji-fontconfig
   remove_if_installed noto-fonts-cjk
   remove_if_installed ttf-meslo-nerd
