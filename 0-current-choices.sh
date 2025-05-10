@@ -138,10 +138,13 @@ if [[ ! -d "$pkg_dir" ]]; then
     exit 1
 fi
 
-# Install all local packages using pacman
-find "$pkg_dir" -maxdepth 1 -name '*.pkg.tar.zst' -print0 | sudo xargs -0 pacman -U --noconfirm
+for pkg in "$pkg_dir"/*.pkg.tar.zst; do
+    if [[ -e "$pkg" ]]; then
+        sudo pacman -U --noconfirm "$pkg"
+    fi
+done
 
-
+exit 1
 # personal pacman.conf for Erik Dubois
 if [[ ! -f /etc/pacman.conf.nemesis ]]; then
     echo
