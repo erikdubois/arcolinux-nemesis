@@ -144,7 +144,6 @@ for pkg in "$pkg_dir"/*.pkg.tar.zst; do
     fi
 done
 
-exit 1
 # personal pacman.conf for Erik Dubois
 if [[ ! -f /etc/pacman.conf.nemesis ]]; then
     echo
