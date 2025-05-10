@@ -454,26 +454,25 @@ if grep -q "cachyos" /etc/os-release; then
   tput sgr0
   echo
 
-  sudo pacman -R --noconfirm cachyos-kernel-manager
+  remove_if_installed cachyos-kernel-manager
 
-  sudo pacman -Rs --noconfirm btrfs-progs
-  sudo pacman -Rs --noconfirm cachy-browser
-  sudo pacman -Rs --noconfirm cachyos-fish-config fastfetch
-  sudo pacman -Rs --noconfirm cachyos-hello
-  sudo pacman -Rs --noconfirm cachyos-micro-settings 
-  sudo pacman -Rs --noconfirm cachyos-packageinstaller
-  sudo pacman -Rs --noconfirm cachyos-rate-mirrors
-  sudo pacman -Rs --noconfirm cachyos-wallpapers
-  sudo pacman -Rs --noconfirm cachyos-zsh-config
-  sudo pacman -Rs --noconfirm fastfetch
-  sudo pacman -Rs --noconfirm octopi
-  sudo pacman -Rs --noconfirm paru
-  sudo pacman -Rs --noconfirm ufw
+  remove_if_installed btrfs-progs
+  remove_if_installed cachy-browser
+  remove_if_installed cachyos-fish-config fastfetch
+  remove_if_installed cachyos-hello
+  remove_if_installed cachyos-micro-settings 
+  remove_if_installed cachyos-packageinstaller
+  remove_if_installed cachyos-rate-mirrors
+  remove_if_installed cachyos-wallpapers
+  remove_if_installed cachyos-zsh-config
+  remove_if_installed fastfetch
+  remove_if_installed octopi
+  remove_if_installed paru
+  remove_if_installed ufw
 
-  # for icons in chadwm
-  sudo pacman -R --noconfirm noto-color-emoji-fontconfig
-  sudo pacman -R --noconfirm noto-fonts-cjk
-  sudo pacman -R --noconfirm ttf-meslo-nerd
+  remove_if_installed noto-color-emoji-fontconfig
+  remove_if_installed noto-fonts-cjk
+  remove_if_installed ttf-meslo-nerd
 
 
   echo
