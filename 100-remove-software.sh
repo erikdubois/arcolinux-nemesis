@@ -227,6 +227,31 @@ if grep -q "Arch Linux" /etc/os-release && [ ! -e /bootloader ]; then
 
 fi
 
+# when on Ezarcher - remove
+if grep -q "ezarch" /etc/os-release; then
+
+  echo
+  tput setaf 3
+  echo "##############################################################"
+  echo "############### Removing software for Ezarch"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+  # I do not want the firewall
+  sudo systemctl disable firewalld
+  remove_if_installed firewalld
+
+  echo
+  tput setaf 3
+  echo "##############################################################"
+  echo "################### Software removed"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+fi
+
 # when on EOS - remove
 if grep -q "EndeavourOS" /etc/os-release; then
 
