@@ -242,6 +242,8 @@ if grep -q "ezarch" /etc/os-release; then
   sudo systemctl disable firewalld
   remove_if_installed firewalld
 
+  remove_if_installed abiword
+
   echo
   tput setaf 3
   echo "##############################################################"
