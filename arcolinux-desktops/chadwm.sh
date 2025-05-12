@@ -46,7 +46,7 @@ fi
 echo
 tput setaf 3
 echo "########################################################################"
-echo "################### qtile"
+echo "################### chadwm"
 echo "########################################################################"
 tput sgr0
 echo
@@ -73,7 +73,7 @@ func_install() {
 echo
 tput setaf 2
 echo "########################################################################"
-echo "################### Install qtile"
+echo "################### Install Chadwm"
 echo "########################################################################"
 tput sgr0
 echo
@@ -82,34 +82,36 @@ echo
 list=(
 alacritty
 archlinux-logout-git
-edu-rofi-git
-edu-rofi-themes-git
-awesome-terminal-fonts
+edu-chadwm-git
+autorandr
+dash
 dmenu
-edu-qtile-git
-edu-xfce-git
+eww
 feh
-lxappearance
-nitrogen
-noto-fonts
-picom-git
+gcc
+gvfs
+lolcat
+lxappearance-gtk3
+make
+picom
 polkit-gnome
-python-psutil
-python-setuptools
-qtile
 rofi
 sxhkd
 thunar
 thunar-archive-plugin
 thunar-volman
 ttf-hack
+ttf-font-awesome
+ttf-jetbrains-mono-nerd
+ttf-meslo-nerd-font-powerlevel10k
 volumeicon
-xcb-util-cursor
 xfce4-notifyd
 xfce4-power-manager
 xfce4-screenshooter
+xfce4-settings
 xfce4-taskmanager
 xfce4-terminal
+xorg-xsetroot
 )
 
 count=0
@@ -129,7 +131,7 @@ echo "########################################################################"
 tput sgr0
 echo
 
-cp -af /etc/skel/.config/qtile ~/.config/
+cp -af /etc/skel/.config/arco-chadwm ~/.config/
 cp -af /etc/skel/.bin ~
 
 echo

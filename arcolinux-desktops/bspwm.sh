@@ -46,7 +46,7 @@ fi
 echo
 tput setaf 3
 echo "########################################################################"
-echo "################### qtile"
+echo "################### bspwm"
 echo "########################################################################"
 tput sgr0
 echo
@@ -73,7 +73,7 @@ func_install() {
 echo
 tput setaf 2
 echo "########################################################################"
-echo "################### Install qtile"
+echo "################### Install Bspwm"
 echo "########################################################################"
 tput sgr0
 echo
@@ -81,22 +81,22 @@ echo
 
 list=(
 alacritty
+edu-bspwm-git
+edu-polybar-git
 archlinux-logout-git
 edu-rofi-git
 edu-rofi-themes-git
 awesome-terminal-fonts
+bspwm
 dmenu
-edu-qtile-git
 edu-xfce-git
 feh
 lxappearance
 nitrogen
 noto-fonts
 picom-git
+polybar
 polkit-gnome
-python-psutil
-python-setuptools
-qtile
 rofi
 sxhkd
 thunar
@@ -129,7 +129,7 @@ echo "########################################################################"
 tput sgr0
 echo
 
-cp -af /etc/skel/.config/qtile ~/.config/
+cp -af /etc/skel/.config/bspwm ~/.config/
 cp -af /etc/skel/.bin ~
 
 echo

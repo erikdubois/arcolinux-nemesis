@@ -8,7 +8,7 @@ Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
 Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2025-05-11
+## Generated on 2025-05-12
 ##
 
 ## Worldwide
@@ -46,8 +46,6 @@ Server = http://mirror.digitalnova.at/archlinux/$repo/os/$arch
 Server = http://mirror.easyname.at/archlinux/$repo/os/$arch
 Server = https://at.arch.mirror.kescher.at/$repo/os/$arch
 Server = https://at.arch.niranjan.co/$repo/os/$arch
-Server = http://mirror.reisenbauer.ee/archlinux/$repo/os/$arch
-Server = https://mirror.reisenbauer.ee/archlinux/$repo/os/$arch
 Server = https://at-vie.soulharsh007.dev/archlinux/$repo/os/$arch
 
 ## Azerbaijan
@@ -59,6 +57,7 @@ Server = http://mirror.yer.az/archlinux/$repo/os/$arch
 Server = https://mirror.yer.az/archlinux/$repo/os/$arch
 
 ## Bangladesh
+Server = https://mirror.limda.net/archlinux/$repo/os/$arch
 Server = http://mirror.xeonbd.com/archlinux/$repo/os/$arch
 Server = https://mirror.xeonbd.com/archlinux/$repo/os/$arch
 
@@ -74,16 +73,12 @@ Server = http://archlinux.mirror.kangaroot.net/$repo/os/$arch
 Server = http://mirror.tiguinet.net/arch/$repo/os/$arch
 Server = https://mirror.tiguinet.net/arch/$repo/os/$arch
 
-## Bosnia and Herzegovina
-Server = http://archlinux.mirror.ba/$repo/os/$arch
-
 ## Brazil
 Server = http://archlinux.c3sl.ufpr.br/$repo/os/$arch
 Server = https://archlinux.c3sl.ufpr.br/$repo/os/$arch
 Server = http://br.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://br.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = http://linorg.usp.br/archlinux/$repo/os/$arch
-Server = http://archlinux.pop-es.rnp.br/$repo/os/$arch
 Server = http://mirror.ufam.edu.br/archlinux/$repo/os/$arch
 Server = http://mirror.ufscar.br/archlinux/$repo/os/$arch
 Server = https://mirror.ufscar.br/archlinux/$repo/os/$arch
@@ -124,8 +119,6 @@ Server = https://muug.ca/mirror/archlinux/$repo/os/$arch
 Server = http://mirrors.pablonara.com/archlinux/$repo/os/$arch
 Server = https://mirrors.pablonara.com/archlinux/$repo/os/$arch
 Server = https://upstream-1.pablonara.com/archlinux/$repo/os/$arch
-Server = http://mirror.powerfly.ca/archlinux/$repo/os/$arch
-Server = https://mirror.powerfly.ca/archlinux/$repo/os/$arch
 Server = http://archlinux.mirror.rafal.ca/$repo/os/$arch
 Server = http://mirror.scd31.com/arch/$repo/os/$arch
 Server = https://mirror.scd31.com/arch/$repo/os/$arch
@@ -171,8 +164,6 @@ Server = https://mirrors.njupt.edu.cn/archlinux/$repo/os/$arch
 Server = http://mirror.nyist.edu.cn/archlinux/$repo/os/$arch
 Server = https://mirror.nyist.edu.cn/archlinux/$repo/os/$arch
 Server = https://mirrors.qlu.edu.cn/archlinux/$repo/os/$arch
-Server = http://mirrors.qvq.net.cn/archlinux/$repo/os/$arch
-Server = https://mirrors.qvq.net.cn/archlinux/$repo/os/$arch
 Server = http://mirror.redrock.team/archlinux/$repo/os/$arch
 Server = https://mirror.redrock.team/archlinux/$repo/os/$arch
 Server = http://mirrors.shanghaitech.edu.cn/archlinux/$repo/os/$arch
@@ -262,8 +253,6 @@ Server = http://archlinux.datagr.am/$repo/os/$arch
 Server = https://mirrors.eric.ovh/arch/$repo/os/$arch
 Server = http://mirrors.gandi.net/archlinux/$repo/os/$arch
 Server = https://mirrors.gandi.net/archlinux/$repo/os/$arch
-Server = http://archmirror.hogwarts.fr/$repo/os/$arch
-Server = https://archmirror.hogwarts.fr/$repo/os/$arch
 Server = http://mirror.its-tps.fr/archlinux/$repo/os/$arch
 Server = https://mirror.its-tps.fr/archlinux/$repo/os/$arch
 Server = http://mirror.jordanrey.me/archlinux/$repo/os/$arch
@@ -279,8 +268,6 @@ Server = https://f.matthieul.dev/mirror/archlinux/$repo/os/$arch
 Server = http://mir.archlinux.fr/$repo/os/$arch
 Server = http://mirrors.celianvdb.fr/archlinux/$repo/os/$arch
 Server = https://mirrors.celianvdb.fr/archlinux/$repo/os/$arch
-Server = http://arch.nimukaito.net/$repo/os/$arch
-Server = https://arch.nimukaito.net/$repo/os/$arch
 Server = http://mirror.oldsql.cc/archlinux/$repo/os/$arch
 Server = https://mirror.oldsql.cc/archlinux/$repo/os/$arch
 Server = http://archlinux.mirrors.ovh.net/archlinux/$repo/os/$arch
@@ -290,10 +277,6 @@ Server = https://mirror.peeres-telecom.fr/archlinux/$repo/os/$arch
 Server = http://mirror.rznet.fr/archlinux/$repo/os/$arch
 Server = https://mirror.rznet.fr/archlinux/$repo/os/$arch
 Server = https://mirror.smayzy.ovh/archlinux/$repo/os/$arch
-Server = http://mirror.spaceint.fr/archlinux/$repo/os/$arch
-Server = https://mirror.spaceint.fr/archlinux/$repo/os/$arch
-Server = http://mirrors.standaloneinstaller.com/archlinux/$repo/os/$arch
-Server = https://mirror.sysa.tech/archlinux/$repo/os/$arch
 Server = http://arch.syxpi.fr/arch/$repo/os/$arch
 Server = https://arch.syxpi.fr/arch/$repo/os/$arch
 Server = https://mirror.thekinrar.fr/archlinux/$repo/os/$arch
@@ -376,8 +359,6 @@ Server = http://de.arch.niranjan.co/$repo/os/$arch
 Server = https://de.arch.niranjan.co/$repo/os/$arch
 Server = http://mirrors.niyawe.de/archlinux/$repo/os/$arch
 Server = https://mirrors.niyawe.de/archlinux/$repo/os/$arch
-Server = http://mirror.orbit-os.com/archlinux/$repo/os/$arch
-Server = https://mirror.orbit-os.com/archlinux/$repo/os/$arch
 Server = http://packages.oth-regensburg.de/archlinux/$repo/os/$arch
 Server = https://packages.oth-regensburg.de/archlinux/$repo/os/$arch
 Server = http://mirror.pagenotfound.de/archlinux/$repo/os/$arch
@@ -391,8 +372,6 @@ Server = https://archlinux.richard-neumann.de/$repo/os/$arch
 Server = http://ftp.halifax.rwth-aachen.de/archlinux/$repo/os/$arch
 Server = https://ftp.halifax.rwth-aachen.de/archlinux/$repo/os/$arch
 Server = http://linux.rz.rub.de/archlinux/$repo/os/$arch
-Server = http://mirror.satis-faction.de/archlinux/$repo/os/$arch
-Server = https://mirror.satis-faction.de/archlinux/$repo/os/$arch
 Server = http://mirror.selfnet.de/archlinux/$repo/os/$arch
 Server = https://mirror.selfnet.de/archlinux/$repo/os/$arch
 Server = https://de-nue.soulharsh007.dev/archlinux/$repo/os/$arch
@@ -489,7 +468,6 @@ Server = http://mirror.ditatompel.com/archlinux/$repo/os/$arch
 Server = https://mirror.ditatompel.com/archlinux/$repo/os/$arch
 Server = http://mirror.papua.go.id/archlinux/$repo/os/$arch
 Server = https://mirror.papua.go.id/archlinux/$repo/os/$arch
-Server = http://mirror.poliwangi.ac.id/archlinux/$repo/os/$arch
 Server = http://mirror.repository.id/archlinux/$repo/os/$arch
 Server = https://mirror.repository.id/archlinux/$repo/os/$arch
 Server = http://mirror.telkomuniversity.ac.id/archlinux/$repo/os/$arch
@@ -563,7 +541,6 @@ Server = http://mirrors.atviras.lt/archlinux/$repo/os/$arch
 Server = https://mirrors.atviras.lt/archlinux/$repo/os/$arch
 
 ## Luxembourg
-Server = http://archlinux.mirror.root.lu/$repo/os/$arch
 Server = http://arch-lux.spirex.me/$repo/os/$arch
 Server = https://arch-lux.spirex.me/$repo/os/$arch
 
@@ -663,8 +640,7 @@ Server = https://mirror.t-home.mk/archlinux/$repo/os/$arch
 Server = http://mirror.archlinux.no/$repo/os/$arch
 Server = https://mirror.archlinux.no/$repo/os/$arch
 Server = http://archlinux.uib.no/$repo/os/$arch
-Server = http://lysakermoen.com/Software/Linux/Mirrors/ArchLinux/$repo/os/$arch
-Server = https://lysakermoen.com/Software/Linux/Mirrors/ArchLinux/$repo/os/$arch
+Server = https://archlinux.lysakermoen.com/$repo/os/$arch
 Server = http://mirror.neuf.no/archlinux/$repo/os/$arch
 Server = https://mirror.neuf.no/archlinux/$repo/os/$arch
 Server = http://mirror.terrahost.no/linux/archlinux/$repo/os/$arch
@@ -715,7 +691,6 @@ Server = https://mirrors.hosterion.ro/archlinux/$repo/os/$arch
 Server = http://mirrors.hostico.ro/archlinux/$repo/os/$arch
 Server = https://mirrors.hostico.ro/archlinux/$repo/os/$arch
 Server = http://archlinux.mirrors.linux.ro/$repo/os/$arch
-Server = http://mirrors.m247.ro/archlinux/$repo/os/$arch
 Server = http://mirrors.nav.ro/archlinux/$repo/os/$arch
 Server = http://ro.arch.niranjan.co/$repo/os/$arch
 Server = https://ro.arch.niranjan.co/$repo/os/$arch
@@ -758,7 +733,6 @@ Server = http://sa.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://sa.mirrors.cicku.me/archlinux/$repo/os/$arch
 
 ## Serbia
-Server = http://arch.petarmaric.com/$repo/os/$arch
 Server = http://mirror.pmf.kg.ac.rs/archlinux/$repo/os/$arch
 Server = http://mirror1.sox.rs/archlinux/$repo/os/$arch
 Server = https://mirror1.sox.rs/archlinux/$repo/os/$arch
@@ -808,6 +782,7 @@ Server = https://kr.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = http://ftp.kaist.ac.kr/ArchLinux/$repo/os/$arch
 Server = http://mirror.funami.tech/arch/$repo/os/$arch
 Server = https://mirror.funami.tech/arch/$repo/os/$arch
+Server = http://mirror.keiminem.com/archlinux/$repo/os/$arch
 Server = https://mirror.keiminem.com/archlinux/$repo/os/$arch
 Server = http://ftp.lanet.kr/pub/archlinux/$repo/os/$arch
 Server = https://ftp.lanet.kr/pub/archlinux/$repo/os/$arch
@@ -926,7 +901,6 @@ Server = https://repo.c48.uk/arch/$repo/os/$arch
 Server = http://gb.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://gb.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://london.mirror.pkgbuild.com/$repo/os/$arch
-Server = http://mirrors.manchester.m247.com/arch-linux/$repo/os/$arch
 Server = http://mirrors.melbourne.co.uk/archlinux/$repo/os/$arch
 Server = https://mirrors.melbourne.co.uk/archlinux/$repo/os/$arch
 Server = http://mirror.infernocomms.net/archlinux/$repo/os/$arch
@@ -939,7 +913,6 @@ Server = http://lon.mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://lon.mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = http://mirror.server.net/archlinux/$repo/os/$arch
 Server = https://mirror.server.net/archlinux/$repo/os/$arch
-Server = http://arch.serverspace.co.uk/arch/$repo/os/$arch
 Server = https://repo.slithery.uk/$repo/os/$arch
 Server = https://mirror.st2projects.com/archlinux/$repo/os/$arch
 Server = http://mirrors.ukfast.co.uk/sites/archlinux.org/$repo/os/$arch
@@ -1032,20 +1005,17 @@ Server = http://mirror.wdc1.us.leaseweb.net/archlinux/$repo/os/$arch
 Server = https://mirror.sfo12.us.leaseweb.net/archlinux/$repo/os/$arch
 Server = https://mirror.wdc1.us.leaseweb.net/archlinux/$repo/os/$arch
 Server = http://mirrors.liquidweb.com/archlinux/$repo/os/$arch
-Server = http://mirror.lty.me/archlinux/$repo/os/$arch
-Server = https://mirror.lty.me/archlinux/$repo/os/$arch
 Server = http://mirrors.lug.mtu.edu/archlinux/$repo/os/$arch
 Server = https://mirrors.lug.mtu.edu/archlinux/$repo/os/$arch
 Server = https://m.lqy.me/arch/$repo/os/$arch
 Server = http://archlinux.macarne.com/$repo/os/$arch
 Server = https://archlinux.macarne.com/$repo/os/$arch
-Server = https://arch-mirror.marcusspencer.xyz:4443/archlinux/$repo/os/$arch
+Server = https://arch.mirror.marcusspencer.us:4443/archlinux/$repo/os/$arch
 Server = http://mirror.math.princeton.edu/pub/archlinux/$repo/os/$arch
 Server = http://mirror.metrocast.net/archlinux/$repo/os/$arch
 Server = http://arch.miningtcup.me/$repo/os/$arch
 Server = https://arch.miningtcup.me/$repo/os/$arch
-Server = http://mirror.kaminski.io/archlinux/$repo/os/$arch
-Server = https://mirror.kaminski.io/archlinux/$repo/os/$arch
+Server = https://mirrors.shr.cx/arch/$repo/os/$arch
 Server = http://iad.mirrors.misaka.one/archlinux/$repo/os/$arch
 Server = https://iad.mirrors.misaka.one/archlinux/$repo/os/$arch
 Server = http://repo.miserver.it.umich.edu/archlinux/$repo/os/$arch
@@ -1083,14 +1053,8 @@ Server = https://mirrors.smeal.xyz/arch-linux/$repo/os/$arch
 Server = http://mirrors.sonic.net/archlinux/$repo/os/$arch
 Server = https://mirrors.sonic.net/archlinux/$repo/os/$arch
 Server = https://us-mnz.soulharsh007.dev/archlinux/$repo/os/$arch
-Server = http://mirror.phx1.us.spryservers.net/archlinux/$repo/os/$arch
-Server = https://mirror.phx1.us.spryservers.net/archlinux/$repo/os/$arch
 Server = http://arch.mirror.square-r00t.net/$repo/os/$arch
 Server = https://arch.mirror.square-r00t.net/$repo/os/$arch
-Server = http://mirror.stjschools.org/arch/$repo/os/$arch
-Server = https://mirror.stjschools.org/arch/$repo/os/$arch
-Server = http://ftp.sudhip.com/archlinux/$repo/os/$arch
-Server = https://ftp.sudhip.com/archlinux/$repo/os/$arch
 Server = http://mirror.pit.teraswitch.com/archlinux/$repo/os/$arch
 Server = https://mirror.pit.teraswitch.com/archlinux/$repo/os/$arch
 Server = https://mirror.theash.xyz/arch/$repo/os/$arch
