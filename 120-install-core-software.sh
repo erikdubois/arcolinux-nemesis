@@ -77,6 +77,10 @@ if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
 fi
 
 # All the software below will be installed on all desktops
+
+sudo pacman -R --noconfirm sddm
+sudo pacman -S --noconfirm --needed sddm-git
+
 sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
 sudo pacman -S --noconfirm --needed aic94xx-firmware
 sudo pacman -S --noconfirm --needed archlinux-tools
@@ -151,7 +155,6 @@ sudo pacman -S --noconfirm --needed rate-mirrors
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
-sudo pacman -S --noconfirm --needed sddm-git
 sudo pacman -S --noconfirm --needed simplescreenrecorder-qt6-git
 sudo pacman -S --noconfirm --needed smartmontools
 sudo pacman -S --noconfirm --needed speedtest-cli
