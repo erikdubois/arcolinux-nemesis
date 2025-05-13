@@ -130,6 +130,7 @@ tput sgr0
 echo
 
 cp -af /etc/skel/.config/bspwm ~/.config/
+cp -af /etc/skel/.config/polybar ~/.config/
 cp -af /etc/skel/.bin ~
 
 echo
