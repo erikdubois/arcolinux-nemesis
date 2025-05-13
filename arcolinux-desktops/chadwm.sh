@@ -91,9 +91,8 @@ feh
 gcc
 gvfs
 lolcat
-lxappearance-gtk3
 make
-picom
+picom-git
 polkit-gnome
 rofi
 sxhkd

@@ -89,7 +89,6 @@ dmenu
 edu-qtile-git
 edu-xfce-git
 feh
-lxappearance
 nitrogen
 noto-fonts
 picom-git

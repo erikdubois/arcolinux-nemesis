@@ -88,7 +88,6 @@ edu-xfce-git
 feh
 leftwm-git
 leftwm-theme-git
-lxappearance
 nitrogen
 noto-fonts
 picom-git

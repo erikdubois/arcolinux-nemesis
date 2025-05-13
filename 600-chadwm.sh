@@ -86,7 +86,7 @@ func_install_chadwm() {
     lolcat
     lxappearance-gtk3
     make
-    picom
+    picom-git
     polkit-gnome
     rofi
     sxhkd
