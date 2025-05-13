@@ -136,7 +136,7 @@ if [[ -f /etc/dev-rel ]]; then
   tput sgr0
   echo
 
-  sudo pacman -Rns --noconfirm archlinux-tweak-tool-git
+  remove_if_installed archlinux-tweak-tool-git
 
   remove_if_installed arcolinux-keyring
   remove_if_installed arcolinux-mirrorlist-git
