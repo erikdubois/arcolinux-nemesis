@@ -171,6 +171,8 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-local-xfce4-git
   remove_if_installed arcolinux-logo-git
   remove_if_installed arcolinux-meta-log
+  remove_if_installed arcolinux-rofi-git
+  remove_if_installed arcolinux-rofi-themes-git
   remove_if_installed arcolinux-root-git
   remove_if_installed arcolinux-sddm-simplicity-git
   remove_if_installed arcolinux-systemd-services-git
