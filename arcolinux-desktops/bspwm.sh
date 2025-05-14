@@ -78,6 +78,7 @@ echo "########################################################################"
 tput sgr0
 echo
 
+sudo pacman -R --noconfirm arconet-xfce
 
 list=(
 alacritty
