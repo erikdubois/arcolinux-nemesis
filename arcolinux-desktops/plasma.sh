@@ -78,6 +78,8 @@ echo "########################################################################"
 tput sgr0
 echo
 
+# if you install the chaotic-aur repo and the nemesis repo you can install the two
+# packages that have now been hashtagged
 
 list=(
 plasma
@@ -97,12 +99,12 @@ kde-gtk-config
 kdeconnect
 kdenetwork-filesharing
 ktorrent
-ocs-url
+#ocs-url
 okular
 packagekit-qt6
 partitionmanager
 spectacle
-surfn-plasma-dark-icons-git
+#surfn-plasma-dark-icons-git
 yakuake
 )
 
