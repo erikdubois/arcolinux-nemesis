@@ -104,6 +104,7 @@ remove_if_installed fastfetch
 remove_if_installed yay
 remove_if_installed paru
 remove_if_installed picom
+remove_if_installed lxappearance
 
 # when on any ArcoLinux ISO
 if [[ -f /etc/dev-rel ]]; then
