@@ -1,5 +1,30 @@
 #!/bin/bash
 #set -e
+#
+set -uo pipefail  # Do not use -e, we want to continue on error
+
+# Trap all ERR conditions and call the handler
+trap 'on_error $LINENO "$BASH_COMMAND"' ERR
+
+on_error() {
+    local lineno="$1"
+    local cmd="$2"
+
+    # Set colors
+    RED=$(tput setaf 1)
+    YELLOW=$(tput setaf 3)
+    RESET=$(tput sgr0)
+
+    echo
+    echo "${RED}⚠️ ERROR DETECTED${RESET}"
+    echo "${YELLOW}✳️  Line: $lineno"
+    echo "📌  Command: '$cmd'"
+    echo "⏳  Waiting 10 seconds before continuing...${RESET}"
+    echo
+
+    sleep 10
+}
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be

@@ -57,8 +57,6 @@ if [ -f /etc/dev-rel ]; then
         else
             echo "File not found: $file"
         fi
-    else
-        echo "'kiro' not found in /etc/dev-rel. No changes made."
     fi
 fi
 
