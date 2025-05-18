@@ -54,6 +54,16 @@ if grep -q "archcraft" /etc/os-release; then
   sudo pacman -S xfce4 xfce4-goodies --noconfirm --needed
 fi
 
+if [ ! -f /usr/share/wayland-sessions/plasma.desktop ] && \
+   [ ! -f /usr/share/xsessions/plasma.desktop ]; then
+    echo "Not on Plasma. Replacing sddm with sddm-git..."
+    sudo pacman -R --noconfirm sddm || echo "sddm not installed"
+    sudo pacman -S --noconfirm --needed sddm-git
+else
+    echo "Plasma detected. Keeping sddm."
+fi
+
+
 # All the software below will be installed on all desktops except on Plasma
 if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed alacritty
@@ -77,9 +87,6 @@ if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
 fi
 
 # All the software below will be installed on all desktops
-
-sudo pacman -R --noconfirm sddm
-sudo pacman -S --noconfirm --needed sddm-git
 
 sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
 sudo pacman -S --noconfirm --needed aic94xx-firmware
