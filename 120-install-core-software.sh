@@ -122,6 +122,7 @@ sudo pacman -S --noconfirm --needed hardinfo2
 sudo pacman -S --noconfirm --needed hddtemp
 sudo pacman -S --noconfirm --needed hw-probe
 sudo pacman -S --noconfirm --needed hyfetch
+sudo pacman -S --noconfirm --needed inetutils
 sudo pacman -S --noconfirm --needed inkscape
 sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
