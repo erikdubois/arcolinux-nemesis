@@ -117,7 +117,7 @@ func_install_chadwm() {
 }
 
 
-if [ -f /tmp/install-chadwm ]; then
+if [ -f /tmp/install-chadwm ] || [[ "$(basename "$0")" == "600-chadwm.sh" ]]; then
 
     echo
     tput setaf 2
