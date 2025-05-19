@@ -181,11 +181,13 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-system-config-git
   remove_if_installed arcolinuxd-system-config-git
   remove_if_installed arcolinux-systemd-services-git
+  remove_if_installed arcolinux-volumeicon-git
   remove_if_installed arcolinux-wallpapers-git
   remove_if_installed arcolinux-welcome-app-git
   remove_if_installed arcolinux-xfce-panel-profiles-git
   remove_if_installed arcolinux-zsh-git
   remove_if_installed arconet-variety-config
+  remove_if_installed arcopro-wallpapers
   remove_if_installed arconet-wallpapers
   remove_if_installed arconet-xfce
   remove_if_installed sofirem-git
