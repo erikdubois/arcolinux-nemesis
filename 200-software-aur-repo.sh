@@ -53,32 +53,33 @@ echo "################### AUR from folder - Software to install"
 echo "########################################################################"
 tput sgr0
 echo
+if ! grep -q "artix" /etc/os-release; then
+	result=$(systemd-detect-virt)
 
-result=$(systemd-detect-virt)
+	if [ $result = "none" ];then
 
-if [ $result = "none" ];then
+		echo
+		tput setaf 2
+		echo "########################################################################"
+		echo "####### Installing VirtualBox"
+		echo "########################################################################"
+		tput sgr0
+		echo	
 
-	echo
-	tput setaf 2
-	echo "########################################################################"
-	echo "####### Installing VirtualBox"
-	echo "########################################################################"
-	tput sgr0
-	echo	
+		sh AUR/install-virtualbox-for-linux.sh	
 
-	sh AUR/install-virtualbox-for-linux.sh	
-
-else
+	else
 
 
-	echo
-	tput setaf 3
-	echo "########################################################################"
-	echo "### You are on a virtual machine - skipping VirtualBox"
-	echo "########################################################################"
-	tput sgr0
-	echo
+		echo
+		tput setaf 3
+		echo "########################################################################"
+		echo "### You are on a virtual machine - skipping VirtualBox"
+		echo "########################################################################"
+		tput sgr0
+		echo
 
+	fi
 fi
 
 echo
