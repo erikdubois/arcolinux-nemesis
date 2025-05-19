@@ -188,6 +188,7 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-volumeicon-git
   remove_if_installed arcolinux-wallpapers-git
   remove_if_installed arcolinux-welcome-app-git
+  remove_if_installed arcolinuxd-welcome-app-git
   remove_if_installed arcolinux-xfce-panel-profiles-git
   remove_if_installed arcolinux-zsh-git
   remove_if_installed arconet-variety-config
