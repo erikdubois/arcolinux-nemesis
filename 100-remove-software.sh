@@ -91,10 +91,14 @@ echo "########################################################################"
 tput sgr0
 echo
 
-if ! systemd-detect-virt | grep -q "oracle"; then
-  if pacman -Qi xf86-video-vmware &> /dev/null; then
-    sudo pacman -Rs xf86-video-vmware --noconfirm
+if command -v systemd-detect-virt &> /dev/null; then
+
+  if ! systemd-detect-virt | grep -q "oracle"; then
+    if pacman -Qi xf86-video-vmware &> /dev/null; then
+      sudo pacman -Rs xf86-video-vmware --noconfirm
+    fi
   fi
+
 fi
 
 remove_if_installed rofi-lbonn-wayland
@@ -559,7 +563,7 @@ if grep -q "artix" /etc/os-release; then
   remove_if_installed artix-qt-presets
   remove_if_installed artix-gtk-presets
   remove_if_installed artix-desktop-presets
-  
+
   echo
   tput setaf 2
   echo "##############################################################"
