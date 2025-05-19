@@ -92,23 +92,23 @@ echo
 echo "Enable fstrim timer"
 sudo systemctl enable fstrim.timer
 
-if ! grep -q "artix" /etc/os-release; then
-    echo
-    echo "Testing if qemu agent is still active"
-    result=$(systemd-detect-virt)
-    echo "Systemd-detect-virt = "
-    test=$(systemctl is-enabled qemu-guest-agent.service)
-    echo "Is qemu guest agent active = "
-    echo "If one of the parameters is empty you get unary parameter"
-    echo "Nothing is wrong however"
-    if [ $test == "enabled" ] && [ $result == "none" ] || [ $result == "oracle" ]; then
-    	echo
-    	echo "Disable qemu agent service"
-    	sudo systemctl disable qemu-guest-agent.service
-    	echo
-    fi
 
+echo
+echo "Testing if qemu agent is still active"
+result=$(systemd-detect-virt)
+echo "Systemd-detect-virt = "
+test=$(systemctl is-enabled qemu-guest-agent.service)
+echo "Is qemu guest agent active = "
+echo "If one of the parameters is empty you get unary parameter"
+echo "Nothing is wrong however"
+if [ $test == "enabled" ] && [ $result == "none" ] || [ $result == "oracle" ]; then
+	echo
+	echo "Disable qemu agent service"
+	sudo systemctl disable qemu-guest-agent.service
+	echo
 fi
+
+
 
 # personal /etc/pacman.d/gnupg/gpg.conf for Erik Dubois
 
