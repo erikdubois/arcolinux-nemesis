@@ -556,9 +556,10 @@ if grep -q "artix" /etc/os-release; then
   tput sgr0
   echo
 
-  remove_if_installed artix-desktop-presets
   remove_if_installed artix-qt-presets
-
+  remove_if_installed artix-gtk-presets
+  remove_if_installed artix-desktop-presets
+  
   echo
   tput setaf 2
   echo "##############################################################"
