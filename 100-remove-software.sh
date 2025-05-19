@@ -137,7 +137,8 @@ if [[ -f /etc/dev-rel ]]; then
   tput sgr0
   echo
 
-  remove_if_installed archlinux-tweak-tool-git
+  #keep the dependencies
+  sudo pacman -R --noconfirm archlinux-tweak-tool-git
 
   remove_if_installed arcolinux-keyring
   remove_if_installed arcolinux-mirrorlist-git
