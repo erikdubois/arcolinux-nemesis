@@ -64,6 +64,16 @@ else
 fi
 
 
+for pkg in simplescreenrecorder simplescreenrecorder-git; do
+    if pacman -Q "$pkg" &>/dev/null; then
+        echo "Removing $pkg..."
+        sudo pacman -Rns --noconfirm "$pkg"
+    fi
+done
+
+sudo pacman -S --noconfirm --needed simplescreenrecorder-qt6-git
+
+
 # All the software below will be installed on all desktops except on Plasma
 if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed alacritty
@@ -163,7 +173,6 @@ sudo pacman -S --noconfirm --needed rate-mirrors
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
-sudo pacman -S --noconfirm --needed simplescreenrecorder-qt6-git
 sudo pacman -S --noconfirm --needed smartmontools
 sudo pacman -S --noconfirm --needed speedtest-cli
 sudo pacman -S --noconfirm --needed spotify
