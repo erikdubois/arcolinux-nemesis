@@ -120,6 +120,8 @@ read response
 
 if [[ "$response" == [yY] ]]; then
     touch /tmp/install-chadwm
+    sudo pacman -R --noconfirm arcolinux-chadwm-pacman-hook-git
+    sudo pacman -R --noconfirm arcolinux-chadwm-git
 fi
 
 ##################################################################################################################################
