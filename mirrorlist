@@ -8,7 +8,7 @@ Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
 Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2025-05-18
+## Generated on 2025-05-19
 ##
 
 ## Worldwide
@@ -65,6 +65,8 @@ Server = http://ftp.byfly.by/pub/archlinux/$repo/os/$arch
 Server = http://mirror.datacenter.by/pub/archlinux/$repo/os/$arch
 
 ## Belgium
+Server = http://mirror.1ago.be/archlinux/$repo/os/$arch
+Server = https://mirror.1ago.be/archlinux/$repo/os/$arch
 Server = https://archlinux.cu.be/$repo/os/$arch
 Server = http://mirror.jonas-prz.be/$repo/os/$arch
 Server = https://mirror.jonas-prz.be/$repo/os/$arch
@@ -526,6 +528,7 @@ Server = http://mirror.ihost.md/archlinux/$repo/os/$arch
 Server = https://mirror.ihost.md/archlinux/$repo/os/$arch
 Server = http://mirror.mangohost.net/archlinux/$repo/os/$arch
 Server = https://mirror.mangohost.net/archlinux/$repo/os/$arch
+Server = https://md.arch.niranjan.co/$repo/os/$arch
 
 ## Morocco
 Server = http://mirror.abderraziq.com/archlinux/$repo/os/$arch
