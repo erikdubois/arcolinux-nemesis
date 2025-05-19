@@ -546,6 +546,29 @@ if grep -q "Manjaro" /etc/os-release; then
 fi
 
 
+# when on Artix xfce - remove conflicting files - xfce iso is default
+if grep -q "artix" /etc/os-release; then
+  echo
+  tput setaf 2
+  echo "##############################################################"
+  echo "####### Removing software for Artix"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+  remove_if_installed artix-desktop-presets
+  remove_if_installed artix-qt-presets
+
+  echo
+  tput setaf 2
+  echo "##############################################################"
+  echo "################### Software on Manjaro removed"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+fi
+
 echo
 tput setaf 6
 echo "##############################################################"
