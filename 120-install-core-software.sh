@@ -98,6 +98,7 @@ fi
 
 # All the software below will be installed on all desktops
 
+sudo pacman -S --noconfirm --needed fastfetch-git
 sudo pacman -S --noconfirm --needed neofetch-git
 sudo pacman -S --noconfirm --needed yay-git
 sudo pacman -S --noconfirm --needed paru-git
@@ -127,7 +128,6 @@ fi
 sudo pacman -S --noconfirm --needed expac
 sudo pacman -S --noconfirm --needed fakeroot
 sudo pacman -S --noconfirm --needed feh
-sudo pacman -S --noconfirm --needed fastfetch-git
 sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
 sudo pacman -S --noconfirm --needed fish
