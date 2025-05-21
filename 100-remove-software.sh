@@ -156,7 +156,7 @@ if [[ -f /etc/dev-rel ]]; then
   echo
 
   remove_if_installed arcolinux-pipemenus-git
-  remove_if_installed arcolinux-meta-sddm-themes-git
+  remove_if_installed arcolinux-meta-sddm-themes
 
   remove_if_installed a-candy-beauty-icon-theme-git
   remove_if_installed adobe-source-han-sans-cn-fonts
