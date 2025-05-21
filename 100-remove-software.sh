@@ -170,6 +170,7 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-bin-git
   remove_if_installed arcolinux-bootloader-systemd-boot-git
   remove_if_installed arcolinux-config-all-desktops-git
+  remove_if_installed arcolinux-cron-git
   remove_if_installed arcolinux-dconf-all-desktops-git
   remove_if_installed arcolinux-desktop-trasher-git
   remove_if_installed arcolinux-faces-git
@@ -185,11 +186,16 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-logo-git
   remove_if_installed arcolinux-meta-log
   remove_if_installed arcolinux-neofetch-git
+  remove_if_installed arcolinux-openbox-themes-git
+  remove_if_installed arcolinux-pacman-git
+  remove_if_installed arcolinux-paleofetch-git
   remove_if_installed arcolinux-paru-git
   remove_if_installed arcolinux-plank-git
   remove_if_installed arcolinux-plank-themes-git
+  remove_if_installed arcolinux-polybar-git
   remove_if_installed arcolinux-powermenu-git
   remove_if_installed arcolinux-qt5-git
+  remove_if_installed arcolinux-reflector-simple-git
   remove_if_installed arcolinux-rofi-git
   remove_if_installed arcolinux-rofi-themes-git
   remove_if_installed arcolinux-root-git
@@ -197,9 +203,12 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-system-config-git
   remove_if_installed arcolinuxd-system-config-git
   remove_if_installed arcolinux-systemd-services-git
+  remove_if_installed arcolinux-teamviewer
+  remove_if_installed arcolinux-termite-themes-git
   remove_if_installed arcolinux-variety-autostart-git
   remove_if_installed arcolinux-volumeicon-git
   remove_if_installed arcolinux-wallpapers-git
+  remove_if_installed arcolinux-wallpapers-candy-git
   remove_if_installed arcolinux-welcome-app-git
   remove_if_installed arcolinuxd-welcome-app-git
   remove_if_installed arcolinux-xfce-panel-profiles-git
