@@ -168,6 +168,7 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-arc-kde
   remove_if_installed arcolinux-bin-git
   remove_if_installed arcolinux-bootloader-systemd-boot-git
+  remove_if_installed arcolinux-config-all-desktops-git
   remove_if_installed arcolinux-dconf-all-desktops-git
   remove_if_installed arcolinux-desktop-trasher-git
   remove_if_installed arcolinux-faces-git
