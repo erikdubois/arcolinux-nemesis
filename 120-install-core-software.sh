@@ -98,6 +98,10 @@ fi
 
 # All the software below will be installed on all desktops
 
+sudo pacman -S --noconfirm --needed neofetch-git
+sudo pacman -S --noconfirm --needed yay-git
+sudo pacman -S --noconfirm --needed paru-git
+
 sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
 sudo pacman -S --noconfirm --needed aic94xx-firmware
 sudo pacman -S --noconfirm --needed archlinux-tools
@@ -156,14 +160,12 @@ sudo pacman -S --noconfirm --needed micro
 sudo pacman -S --noconfirm --needed mintstick
 sudo pacman -S --noconfirm --needed most
 sudo pacman -S --noconfirm --needed namcap
-sudo pacman -S --noconfirm --needed neofetch-git
 sudo pacman -S --noconfirm --needed nomacs
 sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed ntp
 sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed oh-my-zsh-git
 sudo pacman -S --noconfirm --needed pacmanlogviewer
-sudo pacman -S --noconfirm --needed paru-git
 sudo pacman -S --noconfirm --needed polkit-gnome
 sudo pacman -S --noconfirm --needed python-pylint
 sudo pacman -S --noconfirm --needed python-pywal
@@ -206,7 +208,6 @@ sudo pacman -S --noconfirm --needed wd719x-firmware
 sudo pacman -S --noconfirm --needed wget
 sudo pacman -S --noconfirm --needed xdg-user-dirs
 sudo pacman -S --noconfirm --needed yad
-sudo pacman -S --noconfirm --needed yay-git
 sudo pacman -S --noconfirm --needed zsh
 sudo pacman -S --noconfirm --needed zsh-completions
 sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
