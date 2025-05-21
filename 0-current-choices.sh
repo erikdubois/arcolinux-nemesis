@@ -170,7 +170,7 @@ fi
 
 for pkg in "$pkg_dir"/*.pkg.tar.zst; do
     if [[ -e "$pkg" ]]; then
-        sudo pacman -U --noconfirm "$pkg"
+        sudo pacman -U --noconfirm "$pkgdir/$pkg"
     fi
 done
 
