@@ -57,11 +57,18 @@ fi
 if [ ! -f /usr/share/wayland-sessions/plasma.desktop ] && \
    [ ! -f /usr/share/xsessions/plasma.desktop ]; then
     echo "Not on Plasma. Replacing sddm with sddm-git..."
-    sudo pacman -R --noconfirm sddm || echo "sddm not installed"
-    sudo pacman -S --noconfirm --needed sddm-git
+    
+    # Only remove if installed, suppress errors
+    if pacman -Q sddm &>/dev/null; then
+        sudo pacman -R --noconfirm sddm &>/dev/null
+    fi
+
+    # Install sddm-git if needed, suppress errors
+    sudo pacman -S --noconfirm --needed sddm-git &>/dev/null
 else
     echo "Plasma detected. Keeping sddm."
 fi
+
 
 
 for pkg in simplescreenrecorder simplescreenrecorder-git; do
