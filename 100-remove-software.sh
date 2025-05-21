@@ -183,6 +183,7 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-logo-git
   remove_if_installed arcolinux-meta-log
   remove_if_installed arcolinux-paru-git
+  remove_if_installed arcolinux-plank-themes-git
   remove_if_installed arcolinux-powermenu-git
   remove_if_installed arcolinux-qt5-git
   remove_if_installed arcolinux-rofi-git
