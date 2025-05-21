@@ -175,14 +175,18 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-faces-git
   remove_if_installed arcolinux-fish-git
   remove_if_installed arcolinux-fonts-git
+  remove_if_installed arcolinux-gtk-sardi-arc-git
   remove_if_installed arcolinux-hblock-git
+  remove_if_installed arcolinux-hyfetch-git
   remove_if_installed arcolinux-kvantum-git
   remove_if_installed arcolinux-local-applications-all-hide-git
   remove_if_installed arcolinux-local-applications-git
   remove_if_installed arcolinux-local-xfce4-git
   remove_if_installed arcolinux-logo-git
   remove_if_installed arcolinux-meta-log
+  remove_if_installed arcolinux-neofetch-git
   remove_if_installed arcolinux-paru-git
+  remove_if_installed arcolinux-plank-git
   remove_if_installed arcolinux-plank-themes-git
   remove_if_installed arcolinux-powermenu-git
   remove_if_installed arcolinux-qt5-git
@@ -193,6 +197,7 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-system-config-git
   remove_if_installed arcolinuxd-system-config-git
   remove_if_installed arcolinux-systemd-services-git
+  remove_if_installed arcolinux-variety-autostart-git
   remove_if_installed arcolinux-volumeicon-git
   remove_if_installed arcolinux-wallpapers-git
   remove_if_installed arcolinux-welcome-app-git
