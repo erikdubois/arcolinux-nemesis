@@ -8,7 +8,7 @@ Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
 Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2025-05-19
+## Generated on 2025-05-21
 ##
 
 ## Worldwide
@@ -246,6 +246,8 @@ Server = http://archlinux.datagr.am/$repo/os/$arch
 Server = https://mirrors.eric.ovh/arch/$repo/os/$arch
 Server = http://mirrors.gandi.net/archlinux/$repo/os/$arch
 Server = https://mirrors.gandi.net/archlinux/$repo/os/$arch
+Server = http://archmirror.hogwarts.fr/$repo/os/$arch
+Server = https://archmirror.hogwarts.fr/$repo/os/$arch
 Server = http://mirror.its-tps.fr/archlinux/$repo/os/$arch
 Server = https://mirror.its-tps.fr/archlinux/$repo/os/$arch
 Server = https://mirrors.jtremesay.org/archlinux/$repo/os/$arch
@@ -524,6 +526,8 @@ Server = https://arch.jsc.mx/$repo/os/$arch
 ## Moldova
 Server = http://md.mirrors.hacktegic.com/archlinux/$repo/os/$arch
 Server = https://md.mirrors.hacktegic.com/archlinux/$repo/os/$arch
+Server = http://mirror.hosthink.net/arch/$repo/os/$arch
+Server = https://mirror.hosthink.net/arch/$repo/os/$arch
 Server = http://mirror.ihost.md/archlinux/$repo/os/$arch
 Server = https://mirror.ihost.md/archlinux/$repo/os/$arch
 Server = http://mirror.mangohost.net/archlinux/$repo/os/$arch
