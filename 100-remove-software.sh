@@ -173,6 +173,7 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-dconf-all-desktops-git
   remove_if_installed arcolinux-desktop-trasher-git
   remove_if_installed arcolinux-faces-git
+  remove_if_installed arcolinux-fastfetch-git
   remove_if_installed arcolinux-fish-git
   remove_if_installed arcolinux-fonts-git
   remove_if_installed arcolinux-gtk-sardi-arc-git
