@@ -219,6 +219,8 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arconet-xfce
   remove_if_installed sofirem-git
 
+  remove_if_installed simplicity-sddm-theme-git
+
   if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
     remove_if_installed arcolinux-plasma-keybindings-git
     remove_if_installed arcolinux-plasma-servicemenus-git
