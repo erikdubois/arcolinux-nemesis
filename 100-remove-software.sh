@@ -163,6 +163,7 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed adobe-source-han-sans-jp-fonts
   remove_if_installed adobe-source-han-sans-kr-fonts
   remove_if_installed archlinux-kernel-manager
+  remove_if_installed arcolinux-alacritty-git
   remove_if_installed arcolinux-app-glade-git
   remove_if_installed arcolinux-arc-dawn-git
   remove_if_installed arcolinux-arc-kde
