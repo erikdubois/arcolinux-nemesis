@@ -145,7 +145,7 @@ if [[ -f /etc/dev-rel ]]; then
   sudo pacman -R --noconfirm archlinux-tweak-tool-git
 
   remove_if_installed arcolinux-keyring
-  remove_if_installed arcolinux-mirrorlist-git
+  sudo pacman -R --noconfirm arcolinux-mirrorlist-git
 
   echo
   tput setaf 3
