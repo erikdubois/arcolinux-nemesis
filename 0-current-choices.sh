@@ -168,9 +168,11 @@ if [[ ! -d "$pkg_dir" ]]; then
     exit 1
 fi
 
+# Install each package
 for pkg in "$pkg_dir"/*.pkg.tar.zst; do
-    if [[ -e "$pkg" ]]; then
-        sudo pacman -U --noconfirm "$pkgdir/$pkg"
+    if [[ -f "$pkg" ]]; then
+        echo "Installing: $pkg"
+        sudo pacman -U --noconfirm "$pkg"
     fi
 done
 
