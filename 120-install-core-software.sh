@@ -67,7 +67,7 @@ fi
 for pkg in simplescreenrecorder simplescreenrecorder-git; do
     if pacman -Q "$pkg" &>/dev/null; then
         echo "Removing $pkg..."
-        sudo pacman -Rns --noconfirm "$pkg"
+        sudo pacman -Rns --noconfirm "$pkg" &>/dev/null
     fi
 done
 
