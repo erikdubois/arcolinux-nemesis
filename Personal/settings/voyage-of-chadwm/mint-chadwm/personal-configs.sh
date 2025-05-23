@@ -63,7 +63,7 @@ sudo cp -rv default /usr/share/icons/
 
 # setting my personal configuration for variety
 echo "getting latest variety config from github"
-sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
+sudo wget https://raw.githubusercontent.com/erikdubois/edu-variety-config/refs/heads/main/etc/skel/.config/variety/variety.conf -O ~/.config/variety/variety.conf
 
 # kill my system and go to GDM - CTRL ALT BACKSPACE
 sudo cp 99-killX.conf  /etc/X11/xorg.conf.d/
