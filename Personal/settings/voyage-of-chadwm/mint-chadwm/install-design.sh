@@ -58,7 +58,7 @@ git clone https://github.com/erikdubois/Surfn  /tmp/surfn
 cp -r /tmp/surfn/surfn-icons/* ~/.icons/
 
 # getting candy beauty icons
-git clone https://github.com/arcolinux/neo-candy-icons  /tmp/neo-candy-icons
+git clone https://github.com/erikdubois/neo-candy-icons  /tmp/neo-candy-icons
 cp -r /tmp/neo-candy-icons/usr/share/icons/* ~/.icons/
 
 # installing theme and cursor
