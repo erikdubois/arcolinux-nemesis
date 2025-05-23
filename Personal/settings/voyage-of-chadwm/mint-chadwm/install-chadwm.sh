@@ -64,6 +64,7 @@ sudo apt install -y thunar-volman
 
 
 # getting the official code from ArcoLinux
+rm -rf /tmp/edu-chadwm
 git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
 sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
 sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
