@@ -93,16 +93,22 @@ static const char* firefox[] = { "firefox", NULL };
 static const char* vivaldi[] = { "vivaldi.vivaldi-stable", NULL };
 static const char* brave[] = { "brave", "--password-store=basic", "%U", NULL };
 static const char* opera[] = { "opera", NULL };
+static const char* discord[] = { "discord", "open" , "discord", NULL };
+static const char* telegram[] = { "telegram-desktop", "open" , "telegram-desktop", NULL };
 static const char* mintstick[] = { "mintstick", "-m", "iso", NULL};
 static const char* pavucontrol[] = { "pavucontrol", NULL };
 
 static const Launcher launchers[] = {
     /* command     name to display */
 
+    { discord,       "ﱲ" },
     { firefox,       "" },
-    { mintstick,     "" },
-    { pavucontrol,   "" },
-    { vivaldi,       "" },
+    { brave,         "" },
+    { opera,         "" },
+    { mintstick,     "虜" },
+    { pavucontrol,   "墳" },
+    { telegram,      "" },
+    { vivaldi,       "" },
 };
 
 static const int tagschemes[] = {
