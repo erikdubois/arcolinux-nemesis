@@ -72,8 +72,8 @@ cp -r /tmp/edu-chadwm/etc/skel/.config ~
 
 # overwriting the official code from Edu with my own
 cp run.sh  ~/.config/arco-chadwm/scripts
-cp picom.conf  ~/.config/arco-chadwm/picom
-cp config.def.h ~/.config/arco-chadwm/chadwm
+#cp picom.conf  ~/.config/arco-chadwm/picom
+#cp config.def.h ~/.config/arco-chadwm/chadwm
 cp sxhkdrc  ~/.config/arco-chadwm/sxhkd
 cp bar.sh ~/.config/arco-chadwm/scripts
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
