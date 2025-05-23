@@ -3,7 +3,14 @@
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Youtube   : https://youtube.com/erikdubois
+# Website   : https://www.alci.online
+# Website   : https://www.ariser.eu
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -45,13 +52,13 @@ sudo apt install -y snapd
 
 # installing software
 sudo snap install brave --classic
-#sudo snap install colorwall --classic
+sudo snap install colorwall --classic
 sudo snap install code --classic
-#sudo snap install discord --classic
-#sudo snap install gitkraken --classic
+sudo snap install discord --classic
+sudo snap install gitkraken --classic
 sudo snap install opera --classic
 sudo snap install spotify --classic
-#sudo snap install telegram-desktop --classic
+sudo snap install telegram-desktop --classic
 sudo snap install vivaldi --classic
 
 echo
