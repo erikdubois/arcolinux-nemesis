@@ -63,7 +63,7 @@ cp -r /tmp/neo-candy-icons/usr/share/icons/* ~/.icons/
 
 # installing theme and cursor
 sudo apt install -y arc-theme
-sudo apt install -y bibata-cursor-theme
+#sudo apt install -y bibata-cursor-theme
 
 echo
 tput setaf 6
