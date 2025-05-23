@@ -97,18 +97,9 @@ sudo apt install -y variety
 sudo apt install -y vlc
 sudo apt install -y xfce4-screenshooter
 
-# getting design from ArcoLinux
-git clone https://github.com/arcolinux/arcolinux-btop /tmp/arcolinux-btop
-cp -r /tmp/arcolinux-btop/etc/skel/.config ~
-
-# getting config for Alacritty - transparency
-git clone https://github.com/arcolinux/arcolinux-alacritty /tmp/arcolinux-alacritty
-cp -r /tmp/arcolinux-alacritty/etc/skel/.config ~
-
-# script to change wallpaper on Chadwm
-git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
-cp -r /tmp/arcolinux-variety/etc/skel/.config ~
-
+# getting design from Edu nemesis-repo
+git clone https://github.com/erikdubois/edu-dot-files /tmp/edu-dot-files
+cp -r /tmp/edu-dot-files/etc/skel/.config ~
 
 # when on real metal install a template
 result=$(systemd-detect-virt)
