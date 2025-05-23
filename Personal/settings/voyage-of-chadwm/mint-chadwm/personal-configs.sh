@@ -3,14 +3,7 @@
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -63,7 +56,7 @@ sudo cp -rv default /usr/share/icons/
 
 # setting my personal configuration for variety
 echo "getting latest variety config from github"
-sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
+sudo wget https://raw.githubusercontent.com/erikdubois/edu-variety-config/refs/heads/main/etc/skel/.config/variety/variety.conf -O ~/.config/variety/variety.conf
 
 # kill my system and go to GDM - CTRL ALT BACKSPACE
 sudo cp 99-killX.conf  /etc/X11/xorg.conf.d/
