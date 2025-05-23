@@ -3,14 +3,7 @@
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -69,20 +62,15 @@ sudo apt install -y thunar
 sudo apt install -y thunar-archive-plugin
 sudo apt install -y thunar-volman
 
-# exit strategy - super + shift + x
-git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
-sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
-cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
-cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
 
 # getting the official code from ArcoLinux
-git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
-sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
-sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
-cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
-cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
+git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
+sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
+sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
+cp -r /tmp/edu-chadwm/etc/skel/.bin ~
+cp -r /tmp/edu-chadwm/etc/skel/.config ~
 
-# overwriting the official code from ArcoLinux with my own
+# overwriting the official code from Edu with my own
 cp run.sh  ~/.config/arco-chadwm/scripts
 cp picom.conf  ~/.config/arco-chadwm/picom
 cp config.def.h ~/.config/arco-chadwm/chadwm
