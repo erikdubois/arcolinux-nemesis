@@ -43,7 +43,7 @@ rm /home/erik/DATA/arcolinux-nemesis/packages/*
 
 pkgdir=/var/cache/pacman/pkg
 target=/home/erik/DATA/arcolinux-nemesis/packages
-targerepo=/home/erik/DATA/EDU/nemesis_repo/x86_64/
+targetrepo=/home/erik/DATA/EDU/nemesis_repo/x86_64
 
 echo "## Copying chaotic packages"
 
