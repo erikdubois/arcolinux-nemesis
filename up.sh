@@ -43,9 +43,13 @@ rm /home/erik/DATA/arcolinux-nemesis/packages/*
 
 pkgdir=/var/cache/pacman/pkg
 target=/home/erik/DATA/arcolinux-nemesis/packages
+targerepo=/home/erik/DATA/EDU/nemesis_repo/x86_64/
 
 cp "$pkgdir"/chaotic-keyring*-*-*.pkg.tar.zst "$target"/
 cp "$pkgdir"/chaotic-mirrorlist*-*-*.pkg.tar.zst "$target"/
+
+cp "$pkgdir"/chaotic-keyring*-*-*.pkg.tar.zst "$targetrepo"/
+cp "$pkgdir"/chaotic-mirrorlist*-*-*.pkg.tar.zst "$targetrepo"/
 
 rm $workdir/mirrorlist
 touch $workdir/mirrorlist
