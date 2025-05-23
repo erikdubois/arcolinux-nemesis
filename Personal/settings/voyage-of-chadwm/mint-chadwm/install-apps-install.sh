@@ -100,6 +100,7 @@ sudo apt install -y xfce4-screenshooter
 # getting design from Edu nemesis-repo
 git clone https://github.com/erikdubois/edu-dot-files /tmp/edu-dot-files
 cp -r /tmp/edu-dot-files/etc/skel/.config ~
+cp -r /tmp/edu-dot-files/etc/skel/.local ~
 
 # when on real metal install a template
 result=$(systemd-detect-virt)
