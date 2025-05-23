@@ -91,11 +91,8 @@ cp bar.sh ~/.config/arco-chadwm/scripts
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
 cp uca.xml ~/.config/Thunar/
 
-# building Chadwm
-if [ ! -f /usr/local/bin/chadwm ] ; then
-	cd ~/.config/arco-chadwm/chadwm
-	sudo make install
-fi
+cd ~/.config/arco-chadwm/chadwm
+sudo make install
 
 # removing this package - it slows down terminals and thunar
 sudo apt remove -y xdg-desktop-portal-gnome
