@@ -48,7 +48,7 @@ echo
 sudo apt install -y fish
 
 # making sure simplescreenrecorder, virtualbox and other apps are dark
-sudo cp environment /etc/environment
+sudo cp -v environment /etc/environment
 # .config I would like to have
 cp -rv dotfiles/* ~/.config
 # theme, cursor, icons, ...
