@@ -72,4 +72,14 @@ if sudo hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 	tput sgr0
 	echo
 
+else
+
+	echo
+	tput setaf 6
+	echo "########################################################################"
+	echo "################### No Corsair keyboard present"
+	echo "########################################################################"
+	tput sgr0
+	echo
+
 fi
