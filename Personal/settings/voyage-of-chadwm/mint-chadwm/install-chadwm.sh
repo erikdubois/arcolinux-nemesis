@@ -121,6 +121,8 @@ cp -v sxhkdrc  ~/.config/arco-chadwm/sxhkd
 cp -v bar.sh ~/.config/arco-chadwm/scripts
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
 cp -v uca.xml ~/.config/Thunar/
+echo
+echo
 
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
