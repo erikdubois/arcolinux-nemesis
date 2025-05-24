@@ -4,7 +4,7 @@
 VIRTUAL_OUTPUT=$(xrandr | grep -oP '^Virtual-?1(?=\sconnected)')
 
 # If an output was found, apply xrandr settings
-if [[ -n $VIRTUAL_OUTPUT ]]; then
+if [ -n "$VIRTUAL_OUTPUT" ]; then
     xrandr --output "$VIRTUAL_OUTPUT" --primary --mode 1920x1080 --pos 0x0 --rotate normal
 fi
 
