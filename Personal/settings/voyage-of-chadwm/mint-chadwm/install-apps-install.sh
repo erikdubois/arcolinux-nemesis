@@ -104,6 +104,7 @@ sudo apt install -y vlc
 sudo apt install -y xfce4-screenshooter
 
 # getting design from Edu nemesis-repo
+sudo rm -rf /tmp/edu-dot-files
 git clone https://github.com/erikdubois/edu-dot-files /tmp/edu-dot-files
 cp -r /tmp/edu-dot-files/etc/skel/.config ~
 cp -r /tmp/edu-dot-files/etc/skel/.local ~
@@ -124,7 +125,23 @@ else
 	tput sgr0
 	echo
 
-	xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+	echo
+	tput setaf 2
+	echo "########################################################################"
+	echo "###### Set resolution on VirtualBox"
+	echo "########################################################################"
+	tput sgr0
+	echo
+
+	# Extract the correct Virtual output (either Virtual-1 or Virtual1)
+	VIRTUAL_OUTPUT=$(xrandr | grep -oP '^Virtual-?1(?=\sconnected)')
+
+	# If an output was found, apply xrandr settings
+	if [[ -n $VIRTUAL_OUTPUT ]]; then
+	    xrandr --output "$VIRTUAL_OUTPUT" --primary --mode 1920x1080 --pos 0x0 --rotate normal
+	else
+	    echo "No Virtual display found."
+	fi
 
 fi
 
