@@ -48,7 +48,7 @@ echo
 echo
 tput setaf 2
 echo "########################################################################"
-echo "###### Installing packages"
+echo "###### Creating essential missing directories"
 echo "########################################################################"
 tput sgr0
 echo
@@ -58,6 +58,14 @@ echo
 [ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
 [ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
 [ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
+
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### Installing icons"
+echo "########################################################################"
+tput sgr0
+echo
 
 # getting Surfn icons
 rm -rf /tmp/surfn
@@ -69,14 +77,21 @@ rm -rf /tmp/neo-candy-icons
 git clone https://github.com/erikdubois/neo-candy-icons  /tmp/neo-candy-icons
 cp -rf /tmp/neo-candy-icons/usr/share/icons/* ~/.icons/
 
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### Installing theme"
+echo "########################################################################"
+tput sgr0
+echo
+
 # installing theme and cursor
 sudo apt install -y arc-theme
-#sudo apt install -y bibata-cursor-theme
 
 echo
 tput setaf 6
 echo "########################################################################"
-echo "###### installing icons ... done"
+echo "###### installing design ... done"
 echo "########################################################################"
 tput sgr0
 echo
