@@ -53,7 +53,16 @@ echo "########################################################################"
 tput sgr0
 echo
 # https://snapcraft.io/docs/installing-snap-on-linux-mint
-sudo rm /etc/apt/preferences.d/nosnap.pref
+
+FILE=/etc/apt/preferences.d/nosnap.pref
+
+if [ -f "$FILE" ]; then
+    echo "Removing $FILE..."
+    sudo rm "$FILE"
+else
+    echo "$FILE does not exist. Skipping."
+fi
+
 sudo apt install -y snapd
 
 # installing software
