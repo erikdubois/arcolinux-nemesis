@@ -42,6 +42,7 @@ tput setaf 2
 echo "########################################################################"
 echo "################### Checking if their is a Corsair K70 keyboard"
 echo "########################################################################"
+echo "This may take a while - scanning ..."
 tput sgr0
 echo
 
