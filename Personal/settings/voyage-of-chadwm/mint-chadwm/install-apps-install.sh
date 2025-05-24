@@ -103,6 +103,8 @@ sudo apt install -y variety
 sudo apt install -y vlc
 sudo apt install -y xfce4-screenshooter
 
+sudo apt install -y ubuntu-restricted-extras
+
 # getting design from Edu nemesis-repo
 sudo rm -rf /tmp/edu-dot-files
 git clone https://github.com/erikdubois/edu-dot-files /tmp/edu-dot-files
@@ -144,8 +146,6 @@ else
 	fi
 
 fi
-
-sudo apt install -y ubuntu-restricted-extras
 
 echo
 tput setaf 6
