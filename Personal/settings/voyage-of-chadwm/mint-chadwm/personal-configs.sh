@@ -47,6 +47,15 @@ echo
 # installing extra shell
 sudo apt install -y fish
 
+# Going for fish as the default shell
+echo
+echo "To fish we go"
+echo
+FIND="\/bin\/bash"
+REPLACE="\/usr\/bin\/fish"
+sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
+echo
+
 # making sure simplescreenrecorder, virtualbox and other apps are dark
 sudo cp -v environment /etc/environment
 # .config I would like to have
@@ -87,15 +96,6 @@ alias probe="sudo -E hw-probe -all -upload"
 alias nenvironment="sudo $EDITOR /etc/environment"
 alias sr="reboot"' | tee -a ~/.bashrc
 fi
-
-# Going for fish as the default shell
-echo
-echo "To fish we go"
-echo
-FIND="\/bin\/bash"
-REPLACE="\/usr\/bin\/fish"
-sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
-echo
 
 # when on real metal install a template
 result=$(systemd-detect-virt)
@@ -148,6 +148,7 @@ sudo rm /usr/share/applications/archlinux-betterlockscreen.desktop
 # personalisation of archlinux-logout
 [ -d $HOME"/.config/archlinux-logout" ] || mkdir -p $HOME"/.config/archlinux-logout"
 cp -v archlinux-logout.conf ~/.config/archlinux-logout/
+echo
 
 # prevention ads - tracking - hblock
 # https://github.com/hectorm/hblock
@@ -156,6 +157,7 @@ git clone https://github.com/hectorm/hblock  /tmp/hblock
 cd /tmp/hblock
 sudo make install
 hblock
+echo
 
 # Arc Dawn
 sudo rm -rf /tmp/arcolinux-arc-dawn
@@ -163,11 +165,6 @@ git clone https://github.com/arcolinux/arcolinux-arc-dawn  /tmp/arcolinux-arc-da
 cd /tmp/arcolinux-arc-dawn/usr/share/themes
 
 cp -r * ~/.themes
-
-echo "Changing /etc/environment"
-FIND="GTK_THEME=Arc-Dark"
-REPLACE="GTK_THEME=Arc-Dawn-Dark"
-sudo sed -i "s/$FIND/$REPLACE/g" /etc/environment
 
 # installing sparklines/spark
 sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark"
