@@ -71,11 +71,13 @@ echo
 rm -rf /tmp/surfn
 git clone https://github.com/erikdubois/Surfn  /tmp/surfn
 cp -r /tmp/surfn/surfn-icons/* ~/.icons/
+echo
 
 # getting candy beauty icons
 rm -rf /tmp/neo-candy-icons
 git clone https://github.com/erikdubois/neo-candy-icons  /tmp/neo-candy-icons
 cp -rf /tmp/neo-candy-icons/usr/share/icons/* ~/.icons/
+echo
 
 echo
 tput setaf 2
