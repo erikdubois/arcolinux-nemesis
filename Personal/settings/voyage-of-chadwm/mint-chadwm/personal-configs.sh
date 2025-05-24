@@ -75,10 +75,6 @@ sudo cp -rv default /usr/share/icons/
 [ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
 [ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
 
-# setting my personal configuration for variety
-echo "getting latest variety config from github"
-sudo wget https://raw.githubusercontent.com/erikdubois/edu-variety-config/refs/heads/main/etc/skel/.config/variety/variety.conf -O ~/.config/variety/variety.conf
-
 # kill my system and go to GDM - CTRL ALT BACKSPACE
 sudo cp 99-killX.conf  /etc/X11/xorg.conf.d/
 
@@ -163,8 +159,14 @@ echo
 sudo rm -rf /tmp/arcolinux-arc-dawn
 git clone https://github.com/arcolinux/arcolinux-arc-dawn  /tmp/arcolinux-arc-dawn
 cd /tmp/arcolinux-arc-dawn/usr/share/themes
-
 cp -r * ~/.themes
+echo
+
+
+# getting edu-variety
+sudo rm -rf /tmp/edu-variety-config
+git clone https://github.com/erikdubois/edu-variety-config /tmp/edu-variety-config
+cp -r /tmp/edu-variety-config/etc/skel/.config/* ~/.config/
 
 # installing sparklines/spark
 sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark"
