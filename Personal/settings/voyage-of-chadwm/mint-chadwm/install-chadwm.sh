@@ -159,7 +159,7 @@ fi
 echo
 tput setaf 6
 echo "########################################################################"
-echo "###### Chadwm is installed - reboot"
+echo "###### Chadwm is installed"
 echo "########################################################################"
 tput sgr0
 echo
