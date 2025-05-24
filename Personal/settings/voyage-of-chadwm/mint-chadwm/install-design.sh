@@ -54,10 +54,10 @@ tput sgr0
 echo
 
 # Creation of folders
-[ -d $HOME"/.bin" ] || mkdir -vp $HOME"/.bin"
-[ -d $HOME"/.fonts" ] || mkdir -vp $HOME"/.fonts"
-[ -d $HOME"/.icons" ] || mkdir -vp $HOME"/.icons"
-[ -d $HOME"/.themes" ] || mkdir -vp $HOME"/.themes"
+[ -d $HOME"/.bin" ] || mkdir -pv $HOME"/.bin"
+[ -d $HOME"/.fonts" ] || mkdir -pv $HOME"/.fonts"
+[ -d $HOME"/.icons" ] || mkdir -pv $HOME"/.icons"
+[ -d $HOME"/.themes" ] || mkdir -pv $HOME"/.themes"
 
 echo
 tput setaf 2
