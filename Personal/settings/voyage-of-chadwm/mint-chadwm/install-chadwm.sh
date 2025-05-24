@@ -82,6 +82,14 @@ sudo apt install -y thunar
 sudo apt install -y thunar-archive-plugin
 sudo apt install -y thunar-volman
 
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### Git cloning"
+echo "########################################################################"
+tput sgr0
+echo
+
 # exit strategy - super + shift + x
 sudo rm -rf /tmp/arcolinux-powermenu
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
@@ -97,14 +105,22 @@ sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xses
 cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
 cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
 
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### Overwriting official code with personal code"
+echo "########################################################################"
+tput sgr0
+echo
+
 # overwriting the official code from ArcoLinux with my own
-cp run.sh  ~/.config/arco-chadwm/scripts
-cp picom.conf  ~/.config/arco-chadwm/picom
-cp config.def.h ~/.config/arco-chadwm/chadwm
-cp sxhkdrc  ~/.config/arco-chadwm/sxhkd
-cp bar.sh ~/.config/arco-chadwm/scripts
+cp -v run.sh  ~/.config/arco-chadwm/scripts
+cp -v picom.conf  ~/.config/arco-chadwm/picom
+cp -v config.def.h ~/.config/arco-chadwm/chadwm
+cp -v sxhkdrc  ~/.config/arco-chadwm/sxhkd
+cp -v bar.sh ~/.config/arco-chadwm/scripts
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
-cp uca.xml ~/.config/Thunar/
+cp -v uca.xml ~/.config/Thunar/
 
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
