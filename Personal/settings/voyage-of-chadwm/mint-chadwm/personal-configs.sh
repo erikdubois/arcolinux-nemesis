@@ -89,12 +89,11 @@ echo
 echo "Removing all the messages virtualbox produces"
 echo
 
-VBoxManage setextradata global GUI/SuppressMessages "all"
-
 # when on real metal install a template
 result=$(systemd-detect-virt)
 if [ $result = "none" ];then
 
+	VBoxManage setextradata global GUI/SuppressMessages "all"
 	[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
 	sudo cp -rf template.tar.gz ~/VirtualBox\ VMs/
 	cd ~/VirtualBox\ VMs/
