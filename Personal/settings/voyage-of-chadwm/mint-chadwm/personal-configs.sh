@@ -70,6 +70,7 @@ sudo cp -rv default /usr/share/icons/
 
 # personal folders I like to have
 [ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
+[ -d $HOME"/Dropbox" ] || mkdir -p $HOME"/Dropbox"
 [ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
 [ -d $HOME"/Projects" ] || mkdir -p $HOME"/Projects"
 [ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
