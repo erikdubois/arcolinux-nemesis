@@ -46,12 +46,12 @@ tput sgr0
 echo
 
 # making sure hwinfo exists in the system
-if [ ! -f /usr/bin/hwinfo ]; then
-  sudo apt install -y hwinfo
+if [ ! -f /usr/bin/hw-probe ]; then
+  sudo apt install -y hw-probe
 fi
 
 # do we have a CORSAIR K70?
-if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
+if sudo hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 
 	echo
 	tput setaf 2
