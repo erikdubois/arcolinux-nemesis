@@ -152,7 +152,7 @@ cd /tmp/arcolinux-arc-dawn/usr/share/themes
 
 cp -r * ~/.themes
 
-echo
+echo "Changing /etc/environment"
 FIND="GTK_THEME=Arc-Dark"
 REPLACE="GTK_THEME=Arc-Dawn-Dark"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/environment
