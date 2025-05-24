@@ -96,6 +96,7 @@ git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-power
 sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
 cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
 cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
+echo
 
 # getting the official code from ArcoLinux
 sudo rm -rf /tmp/arcolinux-chadwm
@@ -104,6 +105,7 @@ sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
 sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
 cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
 cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
+echo
 
 echo
 tput setaf 2
