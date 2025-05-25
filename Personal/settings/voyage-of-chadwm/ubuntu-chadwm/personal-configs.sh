@@ -168,15 +168,21 @@ echo
 sudo rm -rf /tmp/edu-variety-config
 git clone https://github.com/erikdubois/edu-variety-config /tmp/edu-variety-config
 cp -r /tmp/edu-variety-config/etc/skel/.config/* ~/.config/
+echo
 
 # installing sparklines/spark
 sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark"
+echo
 
 # changing the appearance of GDM - no bottom logo (ubuntu text)
+echo "Changing the appearance of GDM"
 sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text-dark.png
 sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text.png
 sudo cp -v empty.png /usr/share/plymouth/ubuntu-logo.png
 sudo cp -v empty.png /usr/share/plymouth/themes/spinner/watermark.png
+
+sudo apt update
+sudo apt upgrade
 
 tput setaf 6
 echo "########################################################################"
