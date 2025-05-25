@@ -3,14 +3,7 @@
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -31,6 +24,19 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################################
 
+if [ "$DEBUG" = true ]; then
+    echo
+    echo "------------------------------------------------------------"
+    echo "Running $(basename $0)"
+    echo "------------------------------------------------------------"
+    echo
+    echo "Debug mode is on. Press Enter to continue..."
+    read dummy
+    echo
+fi
+
+##################################################################################################################################
+
 echo
 tput setaf 2
 echo "########################################################################"
@@ -42,32 +48,44 @@ echo
 echo
 tput setaf 2
 echo "########################################################################"
-echo "###### Installing packages"
+echo "###### Creating essential missing directories"
 echo "########################################################################"
 tput sgr0
 echo
 
 # Creation of folders
-[ -d $HOME"/.bin" ] || mkdir -p $HOME"/.bin"
-[ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
-[ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
-[ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
+[ -d $HOME"/.bin" ] || mkdir -pv $HOME"/.bin"
+[ -d $HOME"/.fonts" ] || mkdir -pv $HOME"/.fonts"
+[ -d $HOME"/.icons" ] || mkdir -pv $HOME"/.icons"
+[ -d $HOME"/.themes" ] || mkdir -pv $HOME"/.themes"
+
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### Installing icons"
+echo "########################################################################"
+tput sgr0
+echo
 
 # getting Surfn icons
-folder="/tmp/surfn"
-if [ -d "$folder" ]; then
-    sudo rm -r "$folder"
-fi
+rm -rf /tmp/surfn
 git clone https://github.com/erikdubois/Surfn  /tmp/surfn
 cp -r /tmp/surfn/surfn-icons/* ~/.icons/
+echo
 
 # getting candy beauty icons
-folder="/tmp/neo-candy-icons"
-if [ -d "$folder" ]; then
-    sudo rm -r "$folder"
-fi
-git clone https://github.com/arcolinux/neo-candy-icons  /tmp/neo-candy-icons
-cp -r /tmp/neo-candy-icons/usr/share/icons/* ~/.icons/
+rm -rf /tmp/neo-candy-icons
+git clone https://github.com/erikdubois/neo-candy-icons  /tmp/neo-candy-icons
+cp -rf /tmp/neo-candy-icons/usr/share/icons/* ~/.icons/
+echo
+
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### Installing theme"
+echo "########################################################################"
+tput sgr0
+echo
 
 # installing theme and cursor
 sudo apt install -y arc-theme
@@ -76,7 +94,7 @@ sudo apt install -y bibata-cursor-theme
 echo
 tput setaf 6
 echo "########################################################################"
-echo "###### installing icons ... done"
+echo "###### installing design ... done"
 echo "########################################################################"
 tput sgr0
 echo

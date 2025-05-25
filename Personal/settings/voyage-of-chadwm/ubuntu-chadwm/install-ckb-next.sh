@@ -3,14 +3,7 @@
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -31,21 +24,35 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################################
 
+if [ "$DEBUG" = true ]; then
+    echo
+    echo "------------------------------------------------------------"
+    echo "Running $(basename $0)"
+    echo "------------------------------------------------------------"
+    echo
+    echo "Debug mode is on. Press Enter to continue..."
+    read dummy
+    echo
+fi
+
+##################################################################################################################################
+
 echo
 tput setaf 2
 echo "########################################################################"
 echo "################### Checking if their is a Corsair K70 keyboard"
 echo "########################################################################"
+echo "This may take a while - scanning ..."
 tput sgr0
 echo
 
 # making sure hwinfo exists in the system
-if [ ! -f /usr/bin/hwinfo ]; then
-  sudo apt install -y hwinfo
+if [ ! -f /usr/bin/hw-probe ]; then
+  sudo apt install -y hw-probe
 fi
 
 # do we have a CORSAIR K70?
-if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
+if sudo hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 
 	echo
 	tput setaf 2
@@ -61,6 +68,16 @@ if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
 	tput setaf 6
 	echo "########################################################################"
 	echo "################### Corsair keyboard installed"
+	echo "########################################################################"
+	tput sgr0
+	echo
+
+else
+
+	echo
+	tput setaf 6
+	echo "########################################################################"
+	echo "################### No Corsair keyboard present"
 	echo "########################################################################"
 	tput sgr0
 	echo

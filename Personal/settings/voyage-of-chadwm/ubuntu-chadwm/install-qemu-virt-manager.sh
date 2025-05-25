@@ -3,14 +3,7 @@
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -30,7 +23,7 @@
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################################
-# https://linux.how2shout.com/how-to-install-kvm-qemu-on-ubuntu-24-04-lts-server-linux/
+
 echo
 tput setaf 2
 echo "########################################################################"

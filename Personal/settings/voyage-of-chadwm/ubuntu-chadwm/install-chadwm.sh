@@ -31,6 +31,19 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################################
 
+if [ "$DEBUG" = true ]; then
+    echo
+    echo "------------------------------------------------------------"
+    echo "Running $(basename $0)"
+    echo "------------------------------------------------------------"
+    echo
+    echo "Debug mode is on. Press Enter to continue..."
+    read dummy
+    echo
+fi
+
+##################################################################################################################################
+
 echo
 tput setaf 2
 echo "########################################################################"
@@ -87,41 +100,60 @@ sudo apt install -y thunar
 sudo apt install -y thunar-archive-plugin
 sudo apt install -y thunar-volman
 
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### Git cloning"
+echo "########################################################################"
+tput sgr0
+echo
+
 # exit strategy - super + shift + x
-folder="/tmp/arcolinux-powermenu"
-if [ -d "$folder" ]; then
-    sudo rm -r "$folder"
-fi
+sudo rm -rf /tmp/arcolinux-powermenu
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
 sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
 cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
 cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
+echo
 
 # getting the official code from ArcoLinux
-folder="/tmp/arcolinux-chadwm"
-if [ -d "$folder" ]; then
-    sudo rm -r "$folder"
-fi
+sudo rm -rf /tmp/arcolinux-chadwm
 git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
 sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
 sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
 cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
 cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
+echo
+
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### Overwriting official code with personal code"
+echo "########################################################################"
+tput sgr0
+echo
 
 # overwriting the official code from ArcoLinux with my own
-cp run.sh  ~/.config/arco-chadwm/scripts
-cp picom.conf  ~/.config/arco-chadwm/picom
-cp config.def.h ~/.config/arco-chadwm/chadwm
-cp sxhkdrc  ~/.config/arco-chadwm/sxhkd
-cp bar.sh ~/.config/arco-chadwm/scripts
+cp -v run.sh  ~/.config/arco-chadwm/scripts
+cp -v picom.conf  ~/.config/arco-chadwm/picom
+cp -v config.def.h ~/.config/arco-chadwm/chadwm
+cp -v sxhkdrc  ~/.config/arco-chadwm/sxhkd
+cp -v bar.sh ~/.config/arco-chadwm/scripts
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
-cp uca.xml ~/.config/Thunar/
+cp -v uca.xml ~/.config/Thunar/
+echo
+echo
 
-# building Chadwm
-if [ ! -f /usr/local/bin/chadwm ] ; then
-	cd ~/.config/arco-chadwm/chadwm
-	sudo make install
-fi
+cd ~/.config/arco-chadwm/chadwm
+sudo make install
+
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### Cleanup"
+echo "########################################################################"
+tput sgr0
+echo
 
 # removing this package - it slows down terminals and thunar
 # this will remove the complete ubuntu desktop in 24.10 not in 24.04
@@ -130,9 +162,27 @@ sudo apt remove -y xdg-desktop-portal-gnome
 sudo apt autoremove -y
 
 echo
+tput setaf 2
+echo "########################################################################"
+echo "###### Set resolution on VirtualBox"
+echo "########################################################################"
+tput sgr0
+echo
+
+# Extract the correct Virtual output (either Virtual-1 or Virtual1)
+VIRTUAL_OUTPUT=$(xrandr | grep -oP '^Virtual-?1(?=\sconnected)')
+
+# If an output was found, apply xrandr settings
+if [[ -n $VIRTUAL_OUTPUT ]]; then
+    xrandr --output "$VIRTUAL_OUTPUT" --primary --mode 1920x1080 --pos 0x0 --rotate normal
+else
+    echo "No Virtual display found."
+fi
+
+echo
 tput setaf 6
 echo "########################################################################"
-echo "###### Chadwm is installed - reboot"
+echo "###### Chadwm is installed"
 echo "########################################################################"
 tput sgr0
 echo

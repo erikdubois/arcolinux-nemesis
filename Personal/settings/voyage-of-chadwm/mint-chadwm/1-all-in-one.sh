@@ -76,7 +76,6 @@ echo
 tput setaf 6
 echo "########################################################################"
 echo "###### All in one done"
-echo "###### Insync download from HQ - sudo apt install ..."
 echo "########################################################################"
 tput sgr0
 echo
