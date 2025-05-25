@@ -47,18 +47,18 @@ echo
 
 # https://sysadminsage.com/ubuntu-remove-a-package/
 
-echo
-tput setaf 1
-echo "########################################################################"
-echo "################### This will remove the Ubuntu desktop"
-echo "################### The following packages will be removed:"
-echo "################### - ubuntu-desktop-minimal"
-echo "################### - ubuntu-session-xsession"
-echo "################### - ubuntu-session"
-echo "################### - xdg-desktop-portal-gnome"
-echo "########################################################################"
-tput sgr0
-echo
+#echo
+#tput setaf 1
+#echo "########################################################################"
+#echo "################### This will remove the Ubuntu desktop"
+#echo "################### The following packages will be removed:"
+#echo "################### - ubuntu-desktop-minimal"
+#echo "################### - ubuntu-session-xsession"
+#echo "################### - ubuntu-session"
+#echo "################### - xdg-desktop-portal-gnome"
+#echo "########################################################################"
+#tput sgr0
+#echo
 
 echo
 tput setaf 2

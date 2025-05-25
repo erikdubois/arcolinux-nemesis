@@ -73,25 +73,13 @@ sudo apt install -y fastfetch
 
 echo
 echo "########################################################################"
-echo "###### Spotify"
-echo "########################################################################"
-echo
-
-#https://www.spotify.com/cw-nl/download/linux/
-curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
-echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-
-sudo apt-get update && sudo apt-get install spotify-client
-
-echo
-echo "########################################################################"
 echo "###### Vivaldi"
 echo "########################################################################"
 echo
 
 wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | gpg --dearmor | sudo dd of=/usr/share/keyrings/vivaldi-browser.gpg
 echo "deb [signed-by=/usr/share/keyrings/vivaldi-browser.gpg arch=$(dpkg --print-architecture)] https://repo.vivaldi.com/archive/deb/ stable main" | sudo dd of=/etc/apt/sources.list.d/vivaldi-archive.list
-sudo apt update && sudo apt install vivaldi-stable -y
+sudo apt update && sudo apt install vivaldi-stable
 
 echo
 echo "########################################################################"
