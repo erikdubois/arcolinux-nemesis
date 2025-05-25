@@ -128,6 +128,7 @@ echo
 
 # overwriting the official code from ArcoLinux with my own
 cp -v run.sh  ~/.config/arco-chadwm/scripts
+#specific picom for Ubuntu
 cp -v picom.conf  ~/.config/arco-chadwm/picom
 cp -v config.def.h ~/.config/arco-chadwm/chadwm
 cp -v sxhkdrc  ~/.config/arco-chadwm/sxhkd
