@@ -44,6 +44,13 @@ echo "########################################################################"
 tput sgr0
 echo
 
+# changing the appearance of GDM - no bottom logo (ubuntu text)
+echo "Changing the appearance of GDM"
+sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text-dark.png
+sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text.png
+sudo cp -v empty.png /usr/share/plymouth/ubuntu-logo.png
+sudo cp -v empty.png /usr/share/plymouth/themes/spinner/watermark.png
+
 # installing extra shell
 sudo apt install -y fish
 
@@ -173,13 +180,6 @@ echo
 # installing sparklines/spark
 sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark"
 echo
-
-# changing the appearance of GDM - no bottom logo (ubuntu text)
-echo "Changing the appearance of GDM"
-sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text-dark.png
-sudo cp -v empty.png /usr/share/pixmaps/ubuntu-logo-text.png
-sudo cp -v empty.png /usr/share/plymouth/ubuntu-logo.png
-sudo cp -v empty.png /usr/share/plymouth/themes/spinner/watermark.png
 
 sudo apt update
 sudo apt upgrade
