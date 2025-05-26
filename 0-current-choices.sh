@@ -77,11 +77,14 @@ run_bash_zsh_debug() {
     fi
 }
 
-# Function for Fish — pass DEBUG and script name via env
+# Function for Fish — safely bind DEBUG and SCRIPT_NAME
 run_fish_debug() {
-    SCRIPT_NAME="$1"
+    local script_name="$1"
 
-    DEBUG="$DEBUG" SCRIPT_NAME="$SCRIPT_NAME" fish -c '
+    fish -c '
+        set -lx DEBUG "'"$DEBUG"'"
+        set -lx SCRIPT_NAME "'"$script_name"'"
+
         if not set -q DEBUG
             set -gx DEBUG false
         end
@@ -107,14 +110,7 @@ elif [ -n "$ZSH_VERSION" ]; then
 elif [ -n "$BASH_VERSION" ]; then
     run_bash_zsh_debug "Bash"
 else
-    CURRENT_SHELL=$(ps -p $$ -o comm=)
-    if echo "$CURRENT_SHELL" | grep -qi "fish"; then
-        run_fish_debug "$0"
-    else
-        echo "Unsupported or undetectable shell ($CURRENT_SHELL)."
-        exit 1
-    fi
-fi
+    CURRENT_SHE_
 
 ##################################################################################################################################
 
