@@ -110,7 +110,15 @@ elif [ -n "$ZSH_VERSION" ]; then
 elif [ -n "$BASH_VERSION" ]; then
     run_bash_zsh_debug "Bash"
 else
-    CURRENT_SHE_
+    CURRENT_SHELL=$(ps -p $$ -o comm=)
+    if echo "$CURRENT_SHELL" | grep -qi "fish"; then
+        run_fish_debug "$0"
+    else
+        echo "Unsupported or undetectable shell ($CURRENT_SHELL)."
+        exit 1
+    fi
+fi
+
 
 ##################################################################################################################################
 
