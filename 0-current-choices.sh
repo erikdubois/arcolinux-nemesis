@@ -62,14 +62,31 @@ export DEBUG=false
 
 ##################################################################################################################################
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read "Debug mode is on. Press any key to continue..."
-    echo
+# Detect shell and re-exec if needed
+if [ -n "$FISH_VERSION" ]; then
+    echo "You are in Fish. Please run: fish $0"
+    exit
+elif [ -n "$ZSH_VERSION" ]; then
+    SHELL_TYPE="zsh"
+elif [ -n "$BASH_VERSION" ]; then
+    SHELL_TYPE="bash"
+else
+    SHELL_TYPE=$(ps -p $$ -o comm=)
+fi
+
+# Bash/Zsh code block
+if [ "$SHELL_TYPE" = "bash" ] || [ "$SHELL_TYPE" = "zsh" ]; then
+    export DEBUG=false
+
+    if [ "$DEBUG" = true ]; then
+        echo
+        echo "------------------------------------------------------------"
+        echo "Running $(basename "$0") in $SHELL_TYPE"
+        echo "------------------------------------------------------------"
+        echo
+        read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
+        echo
+    fi
 fi
 
 ##################################################################################################################################
