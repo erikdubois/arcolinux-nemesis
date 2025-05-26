@@ -58,8 +58,11 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 ##################################################################################################################################
 
 # set DEBUG to true to be able to analyze the scripts file per file
+#
 # works on Bash not Fish
-# chsh -s /usr/bin/bash erik
+# sudo chsh -s /usr/bin/bash erik
+# logout and login to change from zsh or fish to bash
+
 export DEBUG=false
 
 ##################################################################################################################################

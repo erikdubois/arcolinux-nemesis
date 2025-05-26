@@ -89,6 +89,8 @@ echo
 
 # installing theme and cursor
 sudo apt install -y arc-theme
+#already in mint-cursor-themes
+#sudo apt install -y bibata-cursor-theme
 
 echo
 tput setaf 6

@@ -168,9 +168,14 @@ echo
 sudo rm -rf /tmp/edu-variety-config
 git clone https://github.com/erikdubois/edu-variety-config /tmp/edu-variety-config
 cp -r /tmp/edu-variety-config/etc/skel/.config/* ~/.config/
+echo
 
 # installing sparklines/spark
 sudo sh -c "curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark"
+echo
+
+sudo apt update
+sudo apt upgrade
 
 tput setaf 6
 echo "########################################################################"
