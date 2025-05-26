@@ -82,7 +82,11 @@ run_fish_debug() {
     local script_name
     script_name="$(basename "$1")"
 
-    env DEBUG="$DEBUG" SCRIPT_NAME="$script_name" fish -c '
+    # Pass variables safely as env vars and declare inside fish shell
+    fish -c '
+        set -gx DEBUG (string trim -- "$DEBUG")
+        set -gx SCRIPT_NAME (string trim -- "$SCRIPT_NAME")
+
         if test "$DEBUG" = "true"
             echo
             echo "------------------------------------------------------------"
@@ -92,7 +96,7 @@ run_fish_debug() {
             read -P "Debug mode is on. Press any key to continue..."
             echo
         end
-    '
+    ' --DEBUG "$DEBUG" --SCRIPT_NAME "$script_name"
 }
 
 # Detect shell and dispatch
