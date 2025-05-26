@@ -68,7 +68,7 @@ if [ "$DEBUG" = true ]; then
     echo "Running $(basename $0)"
     echo "------------------------------------------------------------"
     echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
+    read "Debug mode is on. Press any key to continue..."
     echo
 fi
 
