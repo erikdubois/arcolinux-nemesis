@@ -77,9 +77,11 @@ run_bash_zsh_debug() {
     fi
 }
 
-# Function for Fish (pass script name as argument)
+# Function for Fish — pass DEBUG and script name via env
 run_fish_debug() {
-    fish -c '
+    SCRIPT_NAME="$1"
+
+    DEBUG="$DEBUG" SCRIPT_NAME="$SCRIPT_NAME" fish -c '
         if not set -q DEBUG
             set -gx DEBUG false
         end
@@ -87,7 +89,7 @@ run_fish_debug() {
         if test "$DEBUG" = "true"
             echo
             echo "------------------------------------------------------------"
-            echo "Running (basename "'$1'") in Fish"
+            echo "Running (basename $SCRIPT_NAME) in Fish"
             echo "------------------------------------------------------------"
             echo
             read -P "Debug mode is on. Press any key to continue..."
@@ -113,7 +115,6 @@ else
         exit 1
     fi
 fi
-
 
 ##################################################################################################################################
 
