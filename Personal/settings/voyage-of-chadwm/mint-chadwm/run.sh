@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# from nemesis
+
 # Extract the correct Virtual output (either Virtual-1 or Virtual1)
 VIRTUAL_OUTPUT=$(xrandr | grep -oP '^Virtual-?1(?=\sconnected)')
 
