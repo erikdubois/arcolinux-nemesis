@@ -57,64 +57,21 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################################
 
-# Set DEBUG to true to analyze the script file-by-file
-export DEBUG=${DEBUG:-false}
+# set DEBUG to true to be able to analyze the scripts file per file
+# works on Bash not Fish
+# chsh -s /usr/bin/bash erik
+export DEBUG=false
 
 ##################################################################################################################################
 
-# Function for Bash and Zsh
-run_bash_zsh_debug() {
-    local shell_name="$1"
-
-    if [ "$DEBUG" = true ]; then
-        echo
-        echo "------------------------------------------------------------"
-        echo "Running $(basename "$0") in $shell_name"
-        echo "------------------------------------------------------------"
-        echo
-        read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-        echo
-    fi
-}
-
-# Function for Fish — pass DEBUG and SCRIPT_NAME through `env`
-run_fish_debug() {
-    local script_name
-    script_name="$(basename "$1")"
-
-    # Pass variables safely as env vars and declare inside fish shell
-    fish -c '
-        set -gx DEBUG (string trim -- "$DEBUG")
-        set -gx SCRIPT_NAME (string trim -- "$SCRIPT_NAME")
-
-        if test "$DEBUG" = "true"
-            echo
-            echo "------------------------------------------------------------"
-            echo "Running $SCRIPT_NAME in Fish"
-            echo "------------------------------------------------------------"
-            echo
-            read -P "Debug mode is on. Press any key to continue..."
-            echo
-        end
-    ' --DEBUG "$DEBUG" --SCRIPT_NAME "$script_name"
-}
-
-# Detect shell and dispatch
-if [ -n "$FISH_VERSION" ]; then
-    echo "This script should be run using Bash or Zsh directly. Fish logic is handled internally."
-    exit 1
-elif [ -n "$ZSH_VERSION" ]; then
-    run_bash_zsh_debug "Zsh"
-elif [ -n "$BASH_VERSION" ]; then
-    run_bash_zsh_debug "Bash"
-else
-    CURRENT_SHELL=$(ps -p $$ -o comm=)
-    if echo "$CURRENT_SHELL" | grep -qi "fish"; then
-        run_fish_debug "$0"
-    else
-        echo "Unsupported or undetectable shell ($CURRENT_SHELL)."
-        exit 1
-    fi
+if [ "$DEBUG" = true ]; then
+    echo
+    echo "------------------------------------------------------------"
+    echo "Running $(basename $0)"
+    echo "------------------------------------------------------------"
+    echo
+    read "Debug mode is on. Press any key to continue..."
+    echo
 fi
 
 ##################################################################################################################################
