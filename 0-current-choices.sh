@@ -57,12 +57,12 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################################
 
-# Set DEBUG flag (default = false)
+# Set DEBUG to true to analyze the script file-by-file
 export DEBUG=${DEBUG:-false}
 
 ##################################################################################################################################
 
-# Bash and Zsh
+# Function for Bash and Zsh
 run_bash_zsh_debug() {
     local shell_name="$1"
 
@@ -77,15 +77,16 @@ run_bash_zsh_debug() {
     fi
 }
 
-# Fish (pass env vars; access via $env:DEBUG)
+# Function for Fish — pass DEBUG and SCRIPT_NAME through `env`
 run_fish_debug() {
-    SCRIPT_NAME="$(basename "$1")"
+    local script_name
+    script_name="$(basename "$1")"
 
-    DEBUG="$DEBUG" SCRIPT_NAME="$SCRIPT_NAME" fish -c '
-        if test "$env:DEBUG" = "true"
+    env DEBUG="$DEBUG" SCRIPT_NAME="$script_name" fish -c '
+        if test "$DEBUG" = "true"
             echo
             echo "------------------------------------------------------------"
-            echo "Running $env:SCRIPT_NAME in Fish"
+            echo "Running $SCRIPT_NAME in Fish"
             echo "------------------------------------------------------------"
             echo
             read -P "Debug mode is on. Press any key to continue..."
@@ -94,7 +95,7 @@ run_fish_debug() {
     '
 }
 
-# Dispatch by shell
+# Detect shell and dispatch
 if [ -n "$FISH_VERSION" ]; then
     echo "This script should be run using Bash or Zsh directly. Fish logic is handled internally."
     exit 1
