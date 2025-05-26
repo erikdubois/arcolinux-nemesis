@@ -31,7 +31,7 @@ echo "################### Installing fisher and tide"
 echo "########################################################################"
 tput sgr0
 echo
-/usr/bin/fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 /usr/bin/fish -c "fisher install IlanCosman/tide@v6"
 echo
 tput setaf 6
