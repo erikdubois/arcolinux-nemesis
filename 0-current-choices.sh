@@ -24,7 +24,7 @@
 #tput sgr0
 ##################################################################################################################################
 
-set -uo pipefail  # Do not use -e, we want to continue on error
+set -uo pipefail  # Do not use set -e, we want to continue on error
 
 # Trap all ERR conditions and call the handler
 trap 'on_error $LINENO "$BASH_COMMAND"' ERR
