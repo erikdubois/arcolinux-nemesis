@@ -222,6 +222,16 @@ for pkg in "$pkg_dir"/*.pkg.tar.zst; do
     fi
 done
 
+echo
+tput setaf 2
+echo "################################################################################"
+echo "Updating the system - sudo pacman -Syyu"
+echo "################################################################################"
+tput sgr0
+echo
+
+sudo pacman -Syyu --noconfirm
+
 # only for ArchBang/Manjaro/Garuda/Archcraft
 sh 700-intervention*
 
