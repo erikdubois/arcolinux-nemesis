@@ -149,19 +149,18 @@ Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch"  | sudo tee /etc
     echo  
 fi
 
-  # order is important - dependencies
-  
-  echo
-  tput setaf 3
-  echo "########################################################################"
-  echo "######## Removing the Arch Linux Tweak Tool"
-  echo "######## Removing arcolinux-keyring"
-  echo "######## Removing arcolinux-mirrorlist-git"
-  echo "########################################################################"
-  tput sgr0
-  echo
+# order is important - dependencies
 
-  #keep the dependencies
+echo
+tput setaf 3
+echo "########################################################################"
+echo "######## Removing the Arch Linux Tweak Tool"
+echo "######## Removing arcolinux-keyring"
+echo "######## Removing arcolinux-mirrorlist-git"
+echo "########################################################################"
+tput sgr0
+echo
+
 for pkg in \
   archlinux-tweak-tool-git \
   archlinux-tweak-tool-dev-git \
