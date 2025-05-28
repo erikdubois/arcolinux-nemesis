@@ -188,6 +188,7 @@ tput sgr0
 echo
 
 for pkg in \
+  archlinux-tweak-tool-git \
   archlinux-tweak-tool-dev-git \
   arcolinux-keyring \
   arcolinux-mirrorlist-git; do

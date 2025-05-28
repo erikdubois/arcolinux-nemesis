@@ -100,6 +100,7 @@ fi
 
 # removing all plasma packages whenever possible
 
+sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed edu-dot-files-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed archlinux-logout-git
