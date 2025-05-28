@@ -232,7 +232,7 @@ echo
 
 sudo pacman -Syyu --noconfirm
 
-# only for ArchBang/Manjaro/Garuda/Archcraft
+# only for ArchBang/Manjaro/Garuda/Archcraft/...
 sh 700-intervention*
 
 echo
