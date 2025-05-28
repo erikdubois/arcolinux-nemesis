@@ -151,6 +151,32 @@ fi
 
 # order is important - dependencies
 
+# personal pacman.conf for Erik Dubois
+if [[ ! -f /etc/pacman.conf.nemesis ]]; then
+    echo
+    tput setaf 2
+    echo "################################################################################"
+    echo "Copying /etc/pacman.conf to /etc/pacman.conf.nemesis"
+    echo "Use npacman when on ArcoLinux to inspect"
+    echo "################################################################################"
+    tput sgr0
+    echo
+    sudo cp -v /etc/pacman.conf /etc/pacman.conf.nemesis
+    echo
+else
+    echo
+    tput setaf 2
+    echo "################################################################################"
+    echo "Backup already exists: /etc/pacman.conf.nemesis"
+    echo "Use npacman when on ArcoLinux to inspect"
+    echo "################################################################################"
+    tput sgr0
+    echo
+fi
+
+sudo cp -v pacman.conf /etc/pacman.conf
+sudo cp -v pacman.conf /etc/pacman.conf.edu
+
 echo
 tput setaf 3
 echo "########################################################################"
@@ -195,32 +221,6 @@ for pkg in "$pkg_dir"/*.pkg.tar.zst; do
         sudo pacman -U --noconfirm "$pkg"
     fi
 done
-
-# personal pacman.conf for Erik Dubois
-if [[ ! -f /etc/pacman.conf.nemesis ]]; then
-    echo
-    tput setaf 2
-    echo "################################################################################"
-    echo "Copying /etc/pacman.conf to /etc/pacman.conf.nemesis"
-    echo "Use npacman when on ArcoLinux to inspect"
-    echo "################################################################################"
-    tput sgr0
-    echo
-    sudo cp -v /etc/pacman.conf /etc/pacman.conf.nemesis
-    echo
-else
-    echo
-    tput setaf 2
-    echo "################################################################################"
-    echo "Backup already exists: /etc/pacman.conf.nemesis"
-    echo "Use npacman when on ArcoLinux to inspect"
-    echo "################################################################################"
-    tput sgr0
-    echo
-fi
-
-sudo cp -v pacman.conf /etc/pacman.conf
-sudo cp -v pacman.conf /etc/pacman.conf.edu
 
 # only for ArchBang/Manjaro/Garuda/Archcraft
 sh 700-intervention*
