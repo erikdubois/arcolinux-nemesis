@@ -139,7 +139,7 @@ if [[ -f /etc/dev-rel ]]; then
   echo
 
   #keep the dependencies
-  sudo pacman -R --noconfirm archlinux-tweak-tool-git  &>/dev/null
+  #sudo pacman -R --noconfirm archlinux-tweak-tool-git  &>/dev/null
   sudo pacman -R --noconfirm archlinux-tweak-tool-dev-git  &>/dev/null
   sudo pacman -R --noconfirm arcolinux-keyring &>/dev/null
   sudo pacman -R --noconfirm arcolinux-mirrorlist-git  &>/dev/null
