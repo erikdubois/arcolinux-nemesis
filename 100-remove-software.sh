@@ -147,6 +147,7 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-arc-dawn-git
   remove_if_installed arcolinux-arc-kde
   remove_if_installed arcolinux-bin-git
+  remove_if_installed arcolinux-btop-git
   remove_if_installed arcolinux-bootloader-systemd-boot-git
   remove_if_installed arcolinux-config-all-desktops-git
   remove_if_installed arcolinux-cron-git
@@ -157,6 +158,7 @@ if [[ -f /etc/dev-rel ]]; then
   remove_if_installed arcolinux-fish-git
   remove_if_installed arcolinux-fonts-git
   remove_if_installed arcolinux-gtk-sardi-arc-git
+  remove_if_installed arcolinux-gtk-surfn-arc-git
   remove_if_installed arcolinux-hblock-git
   remove_if_installed arcolinux-hyfetch-git
   remove_if_installed arcolinux-kvantum-git
