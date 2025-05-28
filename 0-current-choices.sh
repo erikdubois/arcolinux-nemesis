@@ -225,7 +225,7 @@ done
 echo
 tput setaf 2
 echo "################################################################################"
-echo "Updating the system - sudo pacman -Syyu"
+echo "Updating the system - sudo pacman -Syyu - before 700-intervention"
 echo "################################################################################"
 tput sgr0
 echo
@@ -238,7 +238,7 @@ sh 700-intervention*
 echo
 tput setaf 2
 echo "################################################################################"
-echo "Updating the system - sudo pacman -Syyu"
+echo "Updating the system - sudo pacman -Syyu - after 700-intervention"
 echo "################################################################################"
 tput sgr0
 echo
