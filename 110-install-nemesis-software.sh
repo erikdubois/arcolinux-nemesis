@@ -82,14 +82,23 @@ fi
 
 sudo pacman -S --noconfirm upd72020x-fw
 
-# removing all plasma packages whenever possible
 if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
-  sudo pacman -Rs --noconfirm arcolinux-plasma-keybindings-git
-  sudo pacman -Rs --noconfirm arcolinux-plasma-servicemenus-git
-  sudo pacman -Rs --noconfirm arcolinux-plasma-theme-candy-beauty-arc-dark-git
-  sudo pacman -Rs --noconfirm arcolinux-plasma-theme-candy-beauty-nordic-git
-  sudo pacman -Rs --noconfirm arcolinux-gtk-surfn-plasma-dark-git
+  for pkg in \
+    arcolinux-plasma-keybindings-git \
+    arcolinux-plasma-servicemenus-git \
+    arcolinux-plasma-theme-candy-beauty-arc-dark-git \
+    arcolinux-plasma-theme-candy-beauty-nordic-git \
+    arcolinux-gtk-surfn-plasma-dark-git; do
+
+    if pacman -Q "$pkg" &>/dev/null; then
+      sudo pacman -R --noconfirm "$pkg"
+    fi
+
+  done
 fi
+
+
+# removing all plasma packages whenever possible
 
 sudo pacman -S --noconfirm --needed edu-dot-files-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
