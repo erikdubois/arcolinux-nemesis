@@ -126,24 +126,6 @@ if [[ -f /etc/dev-rel ]]; then
   echo
   sh get-me-started
 
-  # order is important - dependencies
-  
-  echo
-  tput setaf 3
-  echo "########################################################################"
-  echo "######## Removing the Arch Linux Tweak Tool"
-  echo "######## Removing arcolinux-keyring"
-  echo "######## Removing arcolinux-mirrorlist-git"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  #keep the dependencies
-  #sudo pacman -R --noconfirm archlinux-tweak-tool-git  &>/dev/null
-  sudo pacman -R --noconfirm archlinux-tweak-tool-dev-git  &>/dev/null
-  sudo pacman -R --noconfirm arcolinux-keyring &>/dev/null
-  sudo pacman -R --noconfirm arcolinux-mirrorlist-git  &>/dev/null
-
   echo
   tput setaf 3
   echo "########################################################################"

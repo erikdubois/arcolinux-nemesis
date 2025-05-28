@@ -149,6 +149,29 @@ Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch"  | sudo tee /etc
     echo  
 fi
 
+  # order is important - dependencies
+  
+  echo
+  tput setaf 3
+  echo "########################################################################"
+  echo "######## Removing the Arch Linux Tweak Tool"
+  echo "######## Removing arcolinux-keyring"
+  echo "######## Removing arcolinux-mirrorlist-git"
+  echo "########################################################################"
+  tput sgr0
+  echo
+
+  #keep the dependencies
+for pkg in \
+  archlinux-tweak-tool-git \
+  archlinux-tweak-tool-dev-git \
+  arcolinux-keyring \
+  arcolinux-mirrorlist-git; do
+  if pacman -Q "$pkg" &>/dev/null; then
+    sudo pacman -R --noconfirm "$pkg"
+  fi
+done
+
 echo
 tput setaf 2
 echo "################################################################################"
