@@ -78,7 +78,9 @@ echo "########################################################################"
 tput sgr0
 echo
 
-sudo pacman -R --noconfirm arconet-xfce
+if pacman -Q arconet-xfce &>/dev/null; then
+    sudo pacman -R --noconfirm arconet-xfce
+fi
 
 list=(
 alacritty
