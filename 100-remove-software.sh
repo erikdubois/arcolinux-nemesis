@@ -522,6 +522,11 @@ if grep -q "cachyos" /etc/os-release; then
   remove_if_installed paru
   remove_if_installed ufw
 
+  remove_if_installed cachyos-emerald-kde-theme-git
+  remove_if_installed cachyos-iridescent-kde
+  remove_if_installed cachyos-nord-kde-theme-git
+  remove_if_installed cachyos-themes-sddm
+
   # for icons in chadwm
   remove_if_installed noto-color-emoji-fontconfig
   remove_if_installed noto-fonts-cjk
