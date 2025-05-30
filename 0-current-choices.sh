@@ -151,6 +151,15 @@ fi
 
 # order is important - dependencies
 
+echo "################################################################################"
+echo "Installing Chaotic keyring and Chaotic mirrorlist"
+echo "################################################################################"
+echo
+
+for pkg in packages/*.pkg.tar.zst; do
+    [ -f "$pkg" ] && sudo pacman -U --noconfirm "$pkg"
+done
+
 # personal pacman.conf for Erik Dubois
 if [[ ! -f /etc/pacman.conf.nemesis ]]; then
     echo
@@ -195,15 +204,6 @@ for pkg in \
   if pacman -Q "$pkg" &>/dev/null; then
     sudo pacman -R --noconfirm "$pkg"
   fi
-done
-
-echo "################################################################################"
-echo "Installing Chaotic keyring and Chaotic mirrorlist"
-echo "################################################################################"
-echo
-
-for pkg in packages/*.pkg.tar.zst; do
-    [ -f "$pkg" ] && sudo pacman -U --noconfirm "$pkg"
 done
 
 echo
