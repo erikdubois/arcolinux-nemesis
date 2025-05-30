@@ -508,8 +508,10 @@ if grep -q "cachyos" /etc/os-release; then
   remove_if_installed btrfs-progs
   remove_if_installed cachy-browser
   remove_if_installed fastfetch
+  remove_if_installed cachyos-alacritty-config
   remove_if_installed cachyos-fish-config
   remove_if_installed cachyos-hello
+  remove_if_installed cachyos-kde-settings
   remove_if_installed cachyos-micro-settings 
   remove_if_installed cachyos-packageinstaller
   remove_if_installed cachyos-rate-mirrors
