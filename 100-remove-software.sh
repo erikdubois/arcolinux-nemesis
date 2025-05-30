@@ -510,7 +510,6 @@ if grep -q "cachyos" /etc/os-release; then
   remove_if_installed cachy-browser
   remove_if_installed fastfetch
   remove_if_installed cachyos-alacritty-config
-  remove_if_installed cachyos-ananicy-rules
   remove_if_installed cachyos-fish-config
   remove_if_installed cachyos-hello
   remove_if_installed cachyos-micro-settings 
