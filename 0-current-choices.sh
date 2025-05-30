@@ -197,7 +197,6 @@ for pkg in \
   fi
 done
 
-echo
 tput setaf 2
 echo "################################################################################"
 echo "Installing Chaotic keyring and Chaotic mirrorlist"
@@ -205,16 +204,13 @@ echo "##########################################################################
 tput sgr0
 echo  
 
-# Installing chaotic-aur keys and mirrors
 pkg_dir="packages"
 
-# Ensure directory exists
 if [[ ! -d "$pkg_dir" ]]; then
     echo "Directory not found: $pkg_dir"
     exit 1
 fi
 
-# Install each package
 for pkg in "$pkg_dir"/*.pkg.tar.zst; do
     if [[ -f "$pkg" ]]; then
         echo "Installing: $pkg"
