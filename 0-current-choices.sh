@@ -202,33 +202,9 @@ echo "Installing Chaotic keyring and Chaotic mirrorlist"
 echo "################################################################################"
 echo
 
-pkg_dir="packages"
-
-# Check if the directory exists
-if [[ ! -d "$pkg_dir" ]]; then
-    echo "Directory not found: $pkg_dir"
-    exit 1
-fi
-
-# Ensure glob doesn't fail if no match
-shopt -s nullglob
-found=0
-
-# Loop through package files
-for pkg in "$pkg_dir"/*.pkg.tar.zst; do
-    if [[ -f "$pkg" ]]; then
-        found=1
-        echo "Installing: $pkg"
-        sudo pacman -U --noconfirm "$pkg"
-    fi
+for pkg in packages/*.pkg.tar.zst; do
+    [ -f "$pkg" ] && sudo pacman -U --noconfirm "$pkg"
 done
-
-shopt -u nullglob
-
-# Report if no package was found
-if [[ $found -eq 0 ]]; then
-    echo "No .pkg.tar.zst files found in $pkg_dir"
-fi
 
 echo
 tput setaf 2
