@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Get current year and month
+year=$(date +%Y)
+month=$(date +%m)
+pattern="$year.$month"
+
+# URLs to check
+urls=(
+    "https://mirror.rackspace.com/archlinux/iso/"
+    "https://geo.mirror.pkgbuild.com/iso/"
+)
+
+echo "Monitoring mirrors for folder with pattern: $pattern"
+
+while true; do
+    for url in "${urls[@]}"; do
+        if curl -s "$url" | grep -q "$pattern"; then
+            echo "✅ Folder with $pattern found on $url"
+        else
+            echo "⏳ No folder with $pattern yet on $url"
+        fi
+    done
+    echo "Sleeping for 300 seconds..."
+    sleep 300
+done
+
