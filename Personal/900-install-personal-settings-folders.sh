@@ -42,7 +42,6 @@ echo "########################################################################"
 tput sgr0
 
 [ -d /etc/skel/.config ] || sudo mkdir -p /etc/skel/.config
-[ -d /personal ] || sudo mkdir -p /personal
 
 [ -d $HOME"/.bin" ] || mkdir -p $HOME"/.bin"
 [ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
