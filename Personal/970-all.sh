@@ -95,7 +95,7 @@ if [ -f /usr/share/icons/default/index.theme ]; then
 fi
 
 echo
-echo "Enable fstrim timer"
+echo "Enable fstrim timer for SSD"
 sudo systemctl enable fstrim.timer
 
 
@@ -113,8 +113,6 @@ if [ $test == "enabled" ] && [ $result == "none" ] || [ $result == "oracle" ]; t
 	sudo systemctl disable qemu-guest-agent.service
 	echo
 fi
-
-
 
 # personal /etc/pacman.d/gnupg/gpg.conf for Erik Dubois
 
