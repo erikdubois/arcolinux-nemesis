@@ -54,24 +54,36 @@ echo
 echo "Adding nanorc settings"
 echo
 
-if [ -f /etc/nanorc ]; then
-    sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+if [ -f /etc/nanorc-nemesis ]; then
+  # Do nothing because backup already exists
+  :
+elif [ -f /etc/nanorc ]; then
+  sudo mv -v /etc/nanorc /etc/nanorc-nemesis
+  sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
 fi
 
 echo
 echo "Adding /etc/nsswitch settings"
 echo
 
-if [ -f /etc/nsswitch.conf ]; then
-    sudo cp $installed_dir/settings/nsswitch/nsswitch.conf /etc/nsswitch.conf
+if [ -f /etc/nsswitch.conf-nemesis ]; then
+  # Do nothing because backup already exists
+  :
+elif [ -f /etc/nsswitch.conf ]; then
+  sudo mv -v /etc/nsswitch.conf /etc/nsswitch.conf-nemesis
+  sudo cp $installed_dir/settings/nsswitch/nsswitch.conf /etc/nsswitch.conf
 fi
 
 echo
 echo "Adding /etc/environment settings"
 echo
 
-if [ -f /etc/environment ]; then
-    sudo cp $installed_dir/settings/environment/environment /etc/environment
+if [ -f /etc/environment-nemesis ]; then
+  # Do nothing because backup already exists
+  :
+elif [ -f /etc/environment ]; then
+  sudo mv -v /etc/environment /etc/environment-nemesis
+  sudo cp $installed_dir/settings/environment/environment /etc/environment
 fi
 
 echo
@@ -112,9 +124,14 @@ echo "Copying gpg.conf to /etc/pacman.d/gnupg/gpg.conf"
 echo "################################################################################"
 tput sgr0
 echo
-sudo cp -v ../gpg.conf /etc/pacman.d/gnupg/gpg.conf
-echo
 
+if [ -f /etc/pacman.d/gnupg/gpg.conf-nemesis ]; then
+  # Do nothing because backup already exists
+  :
+elif [ -f /etc/pacman.d/gnupg/gpg.conf ]; then
+  sudo mv -v /etc/pacman.d/gnupg/gpg.conf /etc/pacman.d/gnupg/gpg.conf-nemesis
+  sudo cp $installed_dir/settings/environment/environment /etc/environment
+fi
 
 echo
 tput setaf 6
