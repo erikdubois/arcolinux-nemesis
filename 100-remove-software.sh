@@ -249,7 +249,7 @@ if grep -q "Arch Linux" /etc/os-release && [ ! -e /bootloader ]; then
   echo
   tput setaf 3
   echo "########################################################################"
-  echo "######## Nothing to do"
+  echo "######## Nothing to do - we are on Arch Linux"
   echo "########################################################################"
   tput sgr0
   echo
