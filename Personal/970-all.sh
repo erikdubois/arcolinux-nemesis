@@ -44,14 +44,14 @@ echo "########################################################################"
 tput sgr0
 echo
 
-echo "#### Adding font to /etc/vconsole.conf"
+echo "Adding font to /etc/vconsole.conf"
 if ! grep -q "FONT=" /etc/vconsole.conf; then
 echo '
 FONT=lat4-19' | sudo tee --append /etc/vconsole.conf
 fi
 
 echo
-echo "Adding nanorc settings"
+echo "Overwriting /etc/nanorc settings"
 echo
 
 if [ -f /etc/nanorc-nemesis ]; then
@@ -59,11 +59,11 @@ if [ -f /etc/nanorc-nemesis ]; then
   :
 elif [ -f /etc/nanorc ]; then
   sudo mv -v /etc/nanorc /etc/nanorc-nemesis
-  sudo cp $installed_dir/settings/nano/nanorc /etc/nanorc
+  sudo cp -v $installed_dir/settings/nano/nanorc /etc/nanorc
 fi
 
 echo
-echo "Adding /etc/nsswitch settings"
+echo "Overwriting /etc/nsswitch settings"
 echo
 
 if [ -f /etc/nsswitch.conf-nemesis ]; then
@@ -75,7 +75,7 @@ elif [ -f /etc/nsswitch.conf ]; then
 fi
 
 echo
-echo "Adding /etc/environment settings"
+echo "Overwriting /etc/environment settings"
 echo
 
 if [ -f /etc/environment-nemesis ]; then
@@ -87,7 +87,7 @@ elif [ -f /etc/environment ]; then
 fi
 
 echo
-echo "Adding cursor - index.theme"
+echo "Overwriting cursor - index.theme"
 echo
 if [ -f /usr/share/icons/default/index.theme ]; then
     sudo cp $installed_dir/settings/cursor/index.theme /usr/share/icons/default/index.theme
