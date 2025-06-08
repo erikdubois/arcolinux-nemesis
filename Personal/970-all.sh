@@ -87,7 +87,8 @@ elif [ -f /etc/environment ]; then
 fi
 
 echo
-echo "Overwriting cursor - index.theme"
+echo "Overwriting cursor - index.theme - bibata cursor"
+echo "/usr/share/icons/default/index.theme"
 echo
 if [ -f /usr/share/icons/default/index.theme ]; then
     sudo cp $installed_dir/settings/cursor/index.theme /usr/share/icons/default/index.theme
