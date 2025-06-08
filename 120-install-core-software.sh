@@ -148,14 +148,12 @@ sudo pacman -S --noconfirm --needed hyfetch
 sudo pacman -S --noconfirm --needed inetutils
 sudo pacman -S --noconfirm --needed inkscape
 sudo pacman -S --noconfirm --needed insync
-sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed logrotate
 sudo pacman -S --noconfirm --needed lolcat
 sudo pacman -S --noconfirm --needed lsb-release
 sudo pacman -S --noconfirm --needed lshw
 sudo pacman -S --noconfirm --needed man-db
 sudo pacman -S --noconfirm --needed man-pages
-sudo pacman -S --noconfirm --needed mkinitcpio-firmware
 sudo pacman -S --noconfirm --needed plocate
 sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed micro

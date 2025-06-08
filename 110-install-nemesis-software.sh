@@ -79,7 +79,7 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
   sudo pacman -S --noconfirm menulibre
   sudo pacman -S --noconfirm mugshot
 fi
-
+sudo pacman -S --noconfirm --needed mkinitcpio-firmware
 sudo pacman -S --noconfirm upd72020x-fw
 
 if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
