@@ -130,7 +130,7 @@ if [ -f /etc/pacman.d/gnupg/gpg.conf-nemesis ]; then
   :
 elif [ -f /etc/pacman.d/gnupg/gpg.conf ]; then
   sudo mv -v /etc/pacman.d/gnupg/gpg.conf /etc/pacman.d/gnupg/gpg.conf-nemesis
-  sudo cp $installed_dir/settings/environment/environment /etc/environment
+  sudo cp $installed_dir/settings/gnupg/gpg.conf /etc/pacman.d/gnupg/gpg.conf
 fi
 
 echo
