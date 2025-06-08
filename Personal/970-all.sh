@@ -44,7 +44,7 @@ echo "########################################################################"
 tput sgr0
 echo
 
-echo
+echo "#### Adding font to /etc/vconsole.conf"
 if ! grep -q "FONT=" /etc/vconsole.conf; then
 echo '
 FONT=lat4-19' | sudo tee --append /etc/vconsole.conf
