@@ -129,6 +129,28 @@ fi
 
 if ! grep -q -e "Manjaro" -e "Artix" /etc/os-release; then
 
+    # backup original mirrorlist
+    if [[ ! -f /etc/pacman.d/mirrorlist.nemesis ]]; then
+        echo
+        tput setaf 2
+        echo "################################################################################"
+        echo "Copying /etc/pacman.d/mirrorlist to /etc/pacman.d/mirrorlist-nemesis"
+        echo "################################################################################"
+        tput sgr0
+        echo
+        sudo cp -v /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-nemesis
+        echo
+    else
+        echo
+        tput setaf 2
+        echo "################################################################################"
+        echo "Backup already exists: /etc/pacman.d/mirrorlist-nemesis"
+        echo "################################################################################"
+        tput sgr0
+        echo
+    fi
+
+    # personal mirrorlist for Erik Dubois
   echo "Deleting current /etc/pacman.d/mirrorlist and replacing with"
   echo
 echo "## Best Arch Linux servers worldwide from arcolinux-nemesis
