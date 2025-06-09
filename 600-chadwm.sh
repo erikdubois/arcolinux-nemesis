@@ -160,10 +160,24 @@ if [ -f /tmp/install-chadwm ] || [[ "$(basename "$0")" == "600-chadwm.sh" ]]; th
         # Move the modified file to the target location
         sudo mv "$TMP_FILE" "$TARGET_FILE"
 
-        echo "SDDM configuration installed and set User=$USER at $TARGET_FILE"
+        echo
+        tput setaf 2
+        echo "########################################################################"
+        echo "######SDDM configuration installed and set User=$USER at $TARGET_FILE"
+        echo "########################################################################"
+        tput sgr0
+        echo
 
     else
         fix-sddm-conf
+
+        echo
+        tput setaf 2
+        echo "########################################################################"
+        echo "######SDDM configuration installed and set User=$USER at $TARGET_FILE"
+        echo "########################################################################"
+        tput sgr0
+        echo
     fi
 fi
 
