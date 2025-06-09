@@ -163,9 +163,9 @@ if [ -f /tmp/install-chadwm ] || [[ "$(basename "$0")" == "600-chadwm.sh" ]]; th
         echo
         tput setaf 2
         echo "########################################################################"
-        echo "######SDDM configuration installed and set User=$USER at"
-        echo "/etc/sddm.conf.d/kde_settings.conf"
-        echo "######Check with 'nsddmk' in a terminal and change the variables when necessary"
+        echo "###### SDDM configuration changed and set User=$USER at"
+        echo "###### /etc/sddm.conf.d/kde_settings.conf"
+        echo "###### Check with 'nsddmk' in a terminal and change the variables when necessary"
         echo "########################################################################"
         tput sgr0
         echo
@@ -176,9 +176,9 @@ if [ -f /tmp/install-chadwm ] || [[ "$(basename "$0")" == "600-chadwm.sh" ]]; th
         echo
         tput setaf 2
         echo "########################################################################"
-        echo "######SDDM configuration installed and set User=$USER at"
-        echo "/etc/sddm.conf.d/kde_settings.conf"
-        echo "######Check with 'nsddmk' in a terminal and change the variables when necessary"
+        echo "###### SDDM configuration changed and set User=$USER at"
+        echo "###### /etc/sddm.conf.d/kde_settings.conf"
+        echo "###### Check with 'nsddmk' in a terminal and change the variables when necessary"
         echo "########################################################################"
         tput sgr0
         echo
