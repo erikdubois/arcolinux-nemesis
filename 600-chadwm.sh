@@ -121,10 +121,49 @@ if [ -f /tmp/install-chadwm ] || [[ "$(basename "$0")" == "600-chadwm.sh" ]]; th
     echo
 
     func_install_chadwm
-    fix-sddm-conf
-
+    
     if systemd-detect-virt | grep -q "oracle"; then
         sudo add-virtualbox-guest-utils
+    fi
+
+    if [ ! -f /usr/local/bin/fix-sddm-conf ]; then
+
+        # fix-sddm-conf - run this if script is not available
+
+        # URL of the file to download
+        URL="https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/refs/heads/master/Personal/settings/sddm/kde_settings.conf"
+
+        # Target directory and filename
+        TARGET_DIR="/etc/sddm.conf.d"
+        TARGET_FILE="$TARGET_DIR/kde_settings.conf"
+
+        # Create the directory if it doesn't exist
+        sudo mkdir -p "$TARGET_DIR"
+
+        # Download the file to a temporary location
+        TMP_FILE=$(mktemp)
+        curl -fsSL "$URL" -o "$TMP_FILE"
+
+        # Check if download succeeded
+        if [[ $? -ne 0 ]]; then
+          echo "Error: Failed to download file from $URL"
+          exit 1
+        fi
+
+        # Replace or insert the User field
+        if grep -q "^User=" "$TMP_FILE"; then
+          sed -i "s/^User=.*/User=$USER/" "$TMP_FILE"
+        else
+          echo -e "\nUser=$USER" >> "$TMP_FILE"
+        fi
+
+        # Move the modified file to the target location
+        sudo mv "$TMP_FILE" "$TARGET_FILE"
+
+        echo "SDDM configuration installed and set User=$USER at $TARGET_FILE"
+
+    else
+        fix-sddm-conf
     fi
 fi
 
