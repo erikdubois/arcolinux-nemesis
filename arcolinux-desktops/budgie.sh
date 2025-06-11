@@ -93,7 +93,6 @@ echo
 remove_if_installed arcolinux-rofi-git
 remove_if_installed arcolinux-rofi-themes-git
 remove_if_installed arconet-xfce
-remove_if_installed lxappearance
 
 echo
 tput setaf 2

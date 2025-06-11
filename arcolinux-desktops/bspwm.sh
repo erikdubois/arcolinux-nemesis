@@ -119,6 +119,7 @@ bspwm
 dmenu
 edu-xfce-git
 feh
+lxappearance-gtk3
 nitrogen
 noto-fonts
 picom-git
