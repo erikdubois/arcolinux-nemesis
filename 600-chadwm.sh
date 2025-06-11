@@ -36,6 +36,22 @@ fi
 
 ##################################################################################################################################
 
+remove_if_installed() {
+    for pattern in "$@"; do
+        # Find all installed packages that match the pattern (exact + variants)
+        matches=$(pacman -Qq | grep "^${pattern}$\|^${pattern}-")
+        
+        if [ -n "$matches" ]; then
+            for pkg in $matches; do
+                echo "Removing package: $pkg"
+                sudo pacman -R --noconfirm "$pkg"
+            done
+        else
+            echo "No packages matching '$pattern' are installed."
+        fi
+    done
+}
+
 func_install() {
     if pacman -Qi $1 &> /dev/null; then
         tput setaf 2
@@ -69,6 +85,7 @@ func_install_chadwm() {
     alacritty
     archlinux-logout-git
     edu-chadwm-git
+    edu-xfce-git
     autorandr
     dash
     dmenu
@@ -109,6 +126,26 @@ func_install_chadwm() {
     done
 }
 
+if [[ -f /etc/dev-rel ]]; then
+    echo
+    tput setaf 2
+    echo "########################################################################"
+    echo "############## You are running this nemesis script on an ArcoLinux system"
+    echo "############## In order to avoid package conflicts you should first run"
+    echo "############## 100-remove-software.sh to remove ArcoLinux packages."
+    echo "############## The ArcoLinux packages need to be replaced with the edu-packages"
+    echo "############## from the nemesis_repo that should already be declared in"
+    echo "############## your /etc/pacman.conf"
+    echo "########################################################################"
+    sleep 2
+    tput sgr0
+    echo
+fi
+
+remove_if_installed arcolinux-rofi-git
+remove_if_installed arcolinux-rofi-themes-git
+remove_if_installed arcolinux-chadwm-git
+remove_if_installed arconet-xfce
 
 if [ -f /tmp/install-chadwm ] || [[ "$(basename "$0")" == "600-chadwm.sh" ]]; then
 
