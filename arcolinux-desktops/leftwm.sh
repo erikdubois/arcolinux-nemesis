@@ -124,8 +124,8 @@ sxhkd
 thunar
 thunar-archive-plugin
 thunar-volman
-ttf-hack
 ttf-fantasque-sans-mono
+ttf-hack
 ttf-iosevka-nerd
 ttf-material-design-iconic-font
 ttf-meslo-nerd-font-powerlevel10k
