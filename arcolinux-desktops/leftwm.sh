@@ -113,7 +113,7 @@ edu-xfce-git
 feh
 leftwm-git
 leftwm-theme-git
-lxappearance-git
+lxappearance-gtk3
 nitrogen
 noto-fonts
 picom-git
