@@ -62,7 +62,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 # sudo chsh -s /usr/bin/bash erik
 # logout and login to change from zsh or fish to bash
 
-export DEBUG=false
+export DEBUG=true
 
 ##################################################################################################################################
 
