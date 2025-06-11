@@ -146,6 +146,7 @@ remove_if_installed arcolinux-rofi-git
 remove_if_installed arcolinux-rofi-themes-git
 remove_if_installed arcolinux-chadwm-git
 remove_if_installed arconet-xfce
+remove_if_installed lxappearance
 
 if [ -f /tmp/install-chadwm ] || [[ "$(basename "$0")" == "600-chadwm.sh" ]]; then
 
