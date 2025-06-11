@@ -118,7 +118,6 @@ else
     echo "qemu-guest-agent.service not installed – nothing to disable."
 fi
 
-
 # personal /etc/pacman.d/gnupg/gpg.conf for Erik Dubois
 
 echo
