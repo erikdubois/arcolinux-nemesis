@@ -90,6 +90,7 @@ echo "########################################################################"
 tput sgr0
 echo
 
+remove_if_installed arcolinux-i3wm-git
 remove_if_installed arcolinux-rofi-git
 remove_if_installed arcolinux-rofi-themes-git
 remove_if_installed arconet-xfce
