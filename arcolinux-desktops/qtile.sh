@@ -90,9 +90,9 @@ echo "########################################################################"
 tput sgr0
 echo
 
+remove_if_installed arcolinux-qtile-git
 remove_if_installed arcolinux-rofi-git
 remove_if_installed arcolinux-rofi-themes-git
-remove_if_installed arcolinux-qtile-git
 remove_if_installed arconet-xfce
 remove_if_installed lxappearance
 
@@ -109,11 +109,11 @@ echo
 list=(
 alacritty
 archlinux-logout-git
-edu-rofi-git
-edu-rofi-themes-git
 awesome-terminal-fonts
 dmenu
 edu-qtile-git
+edu-rofi-git
+edu-rofi-themes-git
 edu-xfce-git
 feh
 lxappearance-gtk3
