@@ -61,14 +61,6 @@ remove_if_installed() {
 
 ##################################################################################################################################
 
-echo
-tput setaf 3
-echo "########################################################################"
-echo "################### awesome"
-echo "########################################################################"
-tput sgr0
-echo
-
 func_install() {
     if pacman -Qi $1 &> /dev/null; then
         tput setaf 2
@@ -88,6 +80,21 @@ func_install() {
     fi
 }
 
+##################################################################################################################################
+
+echo
+tput setaf 2
+echo "########################################################################"
+echo "################### Remove possible conflicting packages for Chadwm"
+echo "########################################################################"
+tput sgr0
+echo
+
+remove_if_installed arcolinux-rofi-git
+remove_if_installed arcolinux-rofi-themes-git
+remove_if_installed arconet-xfce
+remove_if_installed lxappearance
+
 echo
 tput setaf 2
 echo "########################################################################"
@@ -105,6 +112,7 @@ dmenu
 edu-awesome-git
 edu-xfce-git
 feh
+lxappearance-gtk3
 nitrogen
 noto-fonts
 picom-git

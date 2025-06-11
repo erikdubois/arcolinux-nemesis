@@ -61,14 +61,6 @@ remove_if_installed() {
 
 ##################################################################################################################################
 
-echo
-tput setaf 3
-echo "########################################################################"
-echo "################### bspwm"
-echo "########################################################################"
-tput sgr0
-echo
-
 func_install() {
     if pacman -Qi $1 &> /dev/null; then
         tput setaf 2
@@ -87,6 +79,21 @@ func_install() {
         sudo pacman -S --noconfirm --needed $1
     fi
 }
+
+##################################################################################################################################
+
+echo
+tput setaf 2
+echo "########################################################################"
+echo "################### Remove possible conflicting packages"
+echo "########################################################################"
+tput sgr0
+echo
+
+remove_if_installed arcolinux-rofi-git
+remove_if_installed arcolinux-rofi-themes-git
+remove_if_installed arconet-xfce
+remove_if_installed lxappearance
 
 echo
 tput setaf 2
