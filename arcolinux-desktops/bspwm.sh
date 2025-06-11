@@ -105,28 +105,24 @@ echo "########################################################################"
 tput sgr0
 echo
 
-if pacman -Q arconet-xfce &>/dev/null; then
-    sudo pacman -R --noconfirm arconet-xfce
-fi
-
 list=(
 alacritty
-edu-bspwm-git
-edu-polybar-git
 archlinux-logout-git
-edu-rofi-git
-edu-rofi-themes-git
 awesome-terminal-fonts
 bspwm
 dmenu
+edu-bspwm-git
+edu-polybar-git
+edu-rofi-git
+edu-rofi-themes-git
 edu-xfce-git
 feh
 lxappearance-gtk3
 nitrogen
 noto-fonts
 picom-git
-polybar
 polkit-gnome
+polybar
 rofi
 sxhkd
 thunar
