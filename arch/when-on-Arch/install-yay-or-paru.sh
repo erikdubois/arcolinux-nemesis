@@ -30,9 +30,9 @@ install_from_aur() {
 
 # Menu
 echo "Choose a package to build:"
-echo "1) yay"
-echo "2) paru"
-echo "3) both yay and paru"
+echo "1) yay-git"
+echo "2) paru-git"
+echo "3) both yay-git and paru-git"
 echo "*) exit"
 read -rp "Enter your choice: " choice
 
