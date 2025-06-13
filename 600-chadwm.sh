@@ -89,7 +89,6 @@ func_install_chadwm() {
     autorandr
     dash
     dmenu
-    eww
     feh
     gcc
     gvfs

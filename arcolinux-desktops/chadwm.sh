@@ -113,7 +113,6 @@ edu-xfce-git
 autorandr
 dash
 dmenu
-eww
 feh
 gcc
 gvfs
