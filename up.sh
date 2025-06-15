@@ -32,19 +32,7 @@
 
 workdir=$(pwd)
 
-rm /home/erik/DATA/arcolinux-nemesis/packages/*
-
-pkgdir=/var/cache/pacman/pkg
-target=/home/erik/DATA/arcolinux-nemesis/packages
-targetrepo=/home/erik/DATA/EDU/nemesis_repo/x86_64
-
-echo "## Copying chaotic packages"
-
-cp -v "$pkgdir"/chaotic-keyring*-*-*.pkg.tar.zst "$target"/
-cp -v "$pkgdir"/chaotic-mirrorlist*-*-*.pkg.tar.zst "$target"/
-
-cp -v "$pkgdir"/chaotic-keyring*-*-*.pkg.tar.zst "$targetrepo"/
-cp -v "$pkgdir"/chaotic-mirrorlist*-*-*.pkg.tar.zst "$targetrepo"/
+./chaotic
 
 rm $workdir/mirrorlist
 touch $workdir/mirrorlist
