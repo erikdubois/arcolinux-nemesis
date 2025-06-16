@@ -114,16 +114,8 @@ remove_if_installed paru
 remove_if_installed picom
 remove_if_installed lxappearance
 
-# when on any ArcoLinux ISO
-if [[ -f /etc/dev-rel ]]; then
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "####### Removing software on ArcoLinux ISOs"
-  echo "##############################################################"
-  tput sgr0
-  echo
 
+# when on ArcoLinux or Arch Linux based with arcolinux packages
   echo
   tput setaf 3
   echo "########################################################################"
@@ -241,7 +233,6 @@ if [[ -f /etc/dev-rel ]]; then
   tput sgr0
   echo
 
-fi
 
 # when on Arch Linux - remove conflicting files
 if grep -q "Arch Linux" /etc/os-release && [ ! -e /bootloader ]; then
