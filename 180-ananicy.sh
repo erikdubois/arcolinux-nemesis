@@ -67,7 +67,7 @@ func_install() {
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 sudo pacman -S --noconfirm --needed ananicy-cpp
-yay -S cachyos-ananicy-rules --noconfirm --needed
+sudo pacman -S --noconfirm --needed cachyos-ananicy-rules 
 
 sudo systemctl enable --now ananicy-cpp.service
 
