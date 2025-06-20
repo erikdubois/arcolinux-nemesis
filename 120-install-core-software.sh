@@ -80,7 +80,7 @@ sudo pacman -S --noconfirm --needed simplescreenrecorder-qt6-git
 if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
   sudo pacman -S --noconfirm --needed alacritty
   sudo pacman -S --noconfirm --needed arandr
-  sudo pacman -S --noconfirm --needed awesome-terminal-fonts
+  #sudo pacman -S --noconfirm --needed awesome-terminal-fonts
   sudo pacman -S --noconfirm --needed catfish
   sudo pacman -S --noconfirm --needed dmenu
   sudo pacman -S --noconfirm --needed evince
@@ -114,7 +114,7 @@ sudo pacman -S --noconfirm --needed bash-completion
 sudo pacman -S --noconfirm --needed bat
 sudo pacman -S --noconfirm --needed bibata-cursor-theme
 sudo pacman -S --noconfirm --needed brave-bin
-sudo pacman -S --noconfirm --needed breeze-icons
+#sudo pacman -S --noconfirm --needed breeze-icons
 sudo pacman -S --noconfirm --needed btop
 sudo pacman -S --noconfirm --needed chromium
 sudo pacman -S --noconfirm --needed curl
@@ -142,9 +142,9 @@ sudo pacman -S --noconfirm --needed gvfs-smb
 sudo pacman -S --noconfirm --needed gvfs-dnssd
 sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hardinfo2
-sudo pacman -S --noconfirm --needed hddtemp
+#sudo pacman -S --noconfirm --needed hddtemp
 sudo pacman -S --noconfirm --needed hw-probe
-sudo pacman -S --noconfirm --needed hyfetch
+#sudo pacman -S --noconfirm --needed hyfetch
 sudo pacman -S --noconfirm --needed inetutils
 sudo pacman -S --noconfirm --needed inkscape
 sudo pacman -S --noconfirm --needed insync
@@ -156,7 +156,7 @@ sudo pacman -S --noconfirm --needed man-db
 sudo pacman -S --noconfirm --needed man-pages
 sudo pacman -S --noconfirm --needed plocate
 sudo pacman -S --noconfirm --needed meld
-sudo pacman -S --noconfirm --needed micro
+#sudo pacman -S --noconfirm --needed micro
 sudo pacman -S --noconfirm --needed mintstick
 sudo pacman -S --noconfirm --needed most
 sudo pacman -S --noconfirm --needed namcap
@@ -189,11 +189,11 @@ sudo pacman -S --noconfirm --needed thunar
 sudo pacman -S --noconfirm --needed thunar-archive-plugin
 sudo pacman -S --noconfirm --needed thunar-volman
 sudo pacman -S --noconfirm --needed tree
-sudo pacman -S --noconfirm --needed ttf-bitstream-vera
+#sudo pacman -S --noconfirm --needed ttf-bitstream-vera
 sudo pacman -S --noconfirm --needed ttf-dejavu
 sudo pacman -S --noconfirm --needed ttf-droid
 sudo pacman -S --noconfirm --needed ttf-hack
-sudo pacman -S --noconfirm --needed ttf-inconsolata
+#sudo pacman -S --noconfirm --needed ttf-inconsolata
 sudo pacman -S --noconfirm --needed ttf-liberation
 sudo pacman -S --noconfirm --needed ttf-ms-fonts
 sudo pacman -S --noconfirm --needed ttf-roboto
