@@ -233,15 +233,36 @@ echo "########################################################################"
 tput sgr0
 echo
 
-for pkg in \
-  archlinux-tweak-tool-git \
-  archlinux-tweak-tool-dev-git \
-  arcolinux-keyring \
-  arcolinux-mirrorlist-git; do
-  if pacman -Q "$pkg" &>/dev/null; then
-    sudo pacman -R --noconfirm "$pkg"
-  fi
-done
+# when NOT on KIRO - remove
+if ! grep -q "kiro" /etc/os-release; then
+
+  echo
+  tput setaf 3
+  echo "##############################################################"
+  echo "############### Removing software"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+    for pkg in \
+      archlinux-tweak-tool-git \
+      archlinux-tweak-tool-dev-git \
+      arcolinux-keyring \
+      arcolinux-mirrorlist-git; do
+      if pacman -Q "$pkg" &>/dev/null; then
+        sudo pacman -R --noconfirm "$pkg"
+      fi
+    done
+
+  echo
+  tput setaf 3
+  echo "##############################################################"
+  echo "################### Software removed"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+fi
 
 echo
 tput setaf 2

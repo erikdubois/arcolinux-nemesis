@@ -105,15 +105,35 @@ if command -v systemd-detect-virt &> /dev/null; then
 
 fi
 
-remove_if_installed rofi-lbonn-wayland
-remove_if_installed rofi-lbonn-wayland-git
-remove_if_installed neofetch
-remove_if_installed fastfetch
-remove_if_installed yay
-remove_if_installed paru
-remove_if_installed picom
-remove_if_installed lxappearance
+# when NOT on KIRO - remove
+if ! grep -q "kiro" /etc/os-release; then
 
+  echo
+  tput setaf 3
+  echo "##############################################################"
+  echo "############### Removing software"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+  remove_if_installed rofi-lbonn-wayland
+  remove_if_installed rofi-lbonn-wayland-git
+  remove_if_installed neofetch
+  remove_if_installed fastfetch
+  remove_if_installed yay
+  remove_if_installed paru
+  remove_if_installed picom
+  remove_if_installed lxappearance
+
+  echo
+  tput setaf 3
+  echo "##############################################################"
+  echo "################### Software removed"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+fi
 
 # when on ArcoLinux or Arch Linux based with arcolinux packages
   echo

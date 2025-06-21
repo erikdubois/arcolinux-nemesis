@@ -36,6 +36,24 @@ fi
 
 ##################################################################################################################################
 
+remove_if_installed() {
+    for pattern in "$@"; do
+        # Find all installed packages that match the pattern (exact + variants)
+        matches=$(pacman -Qq | grep "^${pattern}$\|^${pattern}-")
+        
+        if [ -n "$matches" ]; then
+            for pkg in $matches; do
+                echo "Removing package: $pkg"
+                sudo pacman -R --noconfirm "$pkg"
+            done
+        else
+            echo "No packages matching '$pattern' are installed."
+        fi
+    done
+}
+
+##################################################################################################################################
+
 echo
 tput setaf 2
 echo "########################################################################"
@@ -121,9 +139,7 @@ sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed dconf-editor
 sudo pacman -S --noconfirm --needed debugedit
 sudo pacman -S --noconfirm --needed devtools
-sudo pacman -S --noconfirm --needed discord
 sudo pacman -S --noconfirm --needed downgrade
-sudo pacman -S --noconfirm --needed dropbox
 if [ ! -f /usr/bin/duf ]; then
   sudo pacman -S --noconfirm --needed duf
 fi
@@ -143,11 +159,9 @@ sudo pacman -S --noconfirm --needed gvfs-dnssd
 sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hardinfo2
 #sudo pacman -S --noconfirm --needed hddtemp
-sudo pacman -S --noconfirm --needed hw-probe
 #sudo pacman -S --noconfirm --needed hyfetch
 sudo pacman -S --noconfirm --needed inetutils
 sudo pacman -S --noconfirm --needed inkscape
-sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed logrotate
 sudo pacman -S --noconfirm --needed lolcat
 sudo pacman -S --noconfirm --needed lsb-release
@@ -175,14 +189,11 @@ sudo pacman -S --noconfirm --needed rate-mirrors
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
-sudo pacman -S --noconfirm --needed signal-in-tray
 sudo pacman -S --noconfirm --needed smartmontools
 sudo pacman -S --noconfirm --needed speedtest-cli
-sudo pacman -S --noconfirm --needed spotify
 sudo pacman -S --noconfirm --needed squashfs-tools
 sudo pacman -S --noconfirm --needed sublime-text-4
 sudo pacman -S --noconfirm --needed system-config-printer
-sudo pacman -S --noconfirm --needed telegram-desktop
 sudo pacman -S --noconfirm --needed the_silver_searcher
 sudo pacman -S --noconfirm --needed time
 sudo pacman -S --noconfirm --needed thunar
@@ -225,6 +236,19 @@ if [ ! -f /usr/share/xsessions/plasmax11.desktop ]; then
   sudo pacman -S --noconfirm --needed qt5ct
   sudo pacman -S --noconfirm --needed kvantum-qt5
 fi
+
+if [ -f /usr/share/xsessions/plasmax11.desktop ]; then
+  remove_if_installed qt5ct
+  remove_if_installed kvantum-qt5
+fi
+
+sudo pacman -S --noconfirm --needed discord
+sudo pacman -S --noconfirm --needed dropbox
+sudo pacman -S --noconfirm --needed hw-probe
+sudo pacman -S --noconfirm --needed insync
+sudo pacman -S --noconfirm --needed signal-in-tray
+sudo pacman -S --noconfirm --needed spotify
+sudo pacman -S --noconfirm --needed telegram-desktop
 
 tput setaf 6
 echo "##############################################################"
