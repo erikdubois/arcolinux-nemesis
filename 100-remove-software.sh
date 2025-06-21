@@ -248,7 +248,7 @@ fi
   remove_if_installed 
 
   if pacman -Q fastfetch &>/dev/null; then
-    sudo pacman -R --noconfirm fastfetch
+    sudo pacman -R --noconfirm fastfetch &>/dev/null
   fi
 
   tput setaf 3
