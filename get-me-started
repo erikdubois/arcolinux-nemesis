@@ -32,7 +32,19 @@ tput sgr0
 
 #######broadcom and realtek
 
-sudo pacman -Rs broadcom-wl-dkms rtl8821cu-morrownr-dkms-git --noconfirm
+remove_drivers() {
+    for package in "$@"; do
+        if pacman -Q "$package" &>/dev/null; then
+            echo "$package is installed. Removing..."
+            sudo pacman -Rns --noconfirm "$package"
+        else
+            echo "$package is not installed."
+        fi
+    done
+}
+
+# Usage
+remove_drivers broadcom-wl-dkms rtl8821cu-morrownr-dkms-git
 
 # Ensure at least one kernel remains
 if pacman -Qi linux &> /dev/null && pacman -Qi linux-headers &> /dev/null; then
