@@ -240,11 +240,16 @@ fi
   echo
 
   remove_if_installed bibata-cursor-theme-bin
-  remove_if_installed fastfetch-git
   remove_if_installed mintstick-git
   remove_if_installed nomacs-qt6-git
   remove_if_installed rate-mirrors-bin
   remove_if_installed xfce4-artwork
+
+  remove_if_installed 
+
+  if pacman -Q fastfetch &>/dev/null; then
+    sudo pacman -R --noconfirm fastfetch
+  fi
 
   tput setaf 3
   echo "##############################################################"
