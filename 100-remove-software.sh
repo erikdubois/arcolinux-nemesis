@@ -240,7 +240,7 @@ fi
   echo
 
   remove_if_installed bibata-cursor-theme-bin
-  remove_if_installed fastfetch
+  remove_if_installed fastfetch-git
   remove_if_installed mintstick-git
   remove_if_installed nomacs-qt6-git
   remove_if_installed rate-mirrors-bin
