@@ -228,7 +228,7 @@ if ! grep -q "kiro" /etc/os-release; then
   echo
   tput setaf 3
   echo "##############################################################"
-  echo "############### Removing software"
+  echo "############### Removing ArcoLinux software"
   echo "##############################################################"
   tput sgr0
   echo
