@@ -222,17 +222,6 @@ echo
 echo "/etc/pacman.conf.edu is there to have a backup"
 echo
 
-echo
-tput setaf 3
-echo "########################################################################"
-echo "######## Removing the Arch Linux Tweak Tool"
-echo "######## Removing arcolinux-keyring"
-echo "######## Removing arcolinux-mirrorlist-git"
-echo "######## if present"
-echo "########################################################################"
-tput sgr0
-echo
-
 # when NOT on KIRO - remove
 if ! grep -q "kiro" /etc/os-release; then
 
