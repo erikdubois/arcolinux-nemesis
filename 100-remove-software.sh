@@ -125,6 +125,12 @@ if ! grep -q "kiro" /etc/os-release; then
   remove_if_installed picom
   remove_if_installed lxappearance
 
+  remove_if_installed xfsprogs
+  remove_if_installed btrfs-progs
+  remove_if_installed jfsutils
+  remove_if_installed mkinitcpio-nfs-utils
+  remove_if_installed xfburn
+
   echo
   tput setaf 3
   echo "##############################################################"
