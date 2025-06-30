@@ -82,10 +82,10 @@ Non Arch based distros
 | Distribution   | Examples                                           | Videos                                         |
 |----------------|----------------------------------------------------|------------------------------------------------|
 | [Alma Linux](https://almalinux.org)    | [Examples](https://github.com/erikdubois/almalinux-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4ynJaMtZgpmUZ35i0EvmJS) |
-| [AnduinOS](https://www.anduinos.com)    | [Examples](https://github.com/erikdubois/anduin-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4ynJaMtZgpmUZ35i0EvmJS) |
+| [AnduinOS](https://www.anduinos.com)    | [Examples](https://github.com/erikdubois/anduin-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS5AHcaaGldp0m9qid6Qx0Fz) |
 | [Debian](https://www.debian.org)     | [Examples](https://github.com/erikdubois/debian-chadwm)  | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS5KExtV-n0g_I6Ei0963scq)     |
 | [Fedora](https://fedoraproject.org)         |  [Examples](https://github.com/erikdubois/fedora-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_l5LFkHkbxLwttgd3m12D)    |
-| [Freebsd](https://fedoraproject.org)         |  [Examples](https://github.com/erikdubois/freebsd-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7_l5LFkHkbxLwttgd3m12D)    |
+| [Freebsd](https://www.freebsd.org)         |  [Examples](https://github.com/erikdubois/freebsd-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7B6yd9tj3d_XLgWCg4phwZ)    |
 | [Linux Mint](https://www.linuxmint.com)         | [Examples](https://github.com/erikdubois/mint-chadwm)       | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4dMHsRIx6RAfbLNNMOEdCM) |
 | [LMDE 6](https://www.linuxmint.com)         |   [Examples](https://github.com/erikdubois/lmde-chadwm)    | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4dYYxaBFQpZsT5v0XbNfZw) |
 | [MX Linux](https://mxlinux.org)         |  [Examples](https://github.com/erikdubois/mxlinux-chadwm)  | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4taYXROH0eMFV0olfWF8w0) |
