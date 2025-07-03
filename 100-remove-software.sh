@@ -130,6 +130,7 @@ if ! grep -q "kiro" /etc/os-release; then
   remove_if_installed jfsutils
   remove_if_installed mkinitcpio-nfs-utils
   remove_if_installed xfburn
+  remove_if_installed parole
 
   echo
   tput setaf 3

@@ -57,7 +57,7 @@ echo "####################################"
 echo "Write your commit comment!"
 echo "####################################"
 
-read input
+input="update"
 
 # Committing to the local repository with a message containing the time details and commit text
 
@@ -65,18 +65,8 @@ git commit -m "$input"
 
 # Push the local files to github
 
-if grep -q main .git/config; then
-	echo "Using main"
-		git push -u origin main
-fi
-
-if grep -q master .git/config; then
-	echo "Using master"
-		git push -u origin master
-fi
-
-# force the matter
-# git push -u origin master --force
+branch=$(git rev-parse --abbrev-ref HEAD)
+git push -u origin "$branch"
 
 echo
 tput setaf 6
