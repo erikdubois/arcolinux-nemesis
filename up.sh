@@ -1,10 +1,14 @@
 #!/bin/bash
-#set -e
-##################################################################################################################################
+set -uo pipefail  # Do not use set -e, we want to continue on error
+##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
 # Youtube   : https://youtube.com/erikdubois
-##################################################################################################################################
+# Github    : https://github.com/erikdubois
+# Github    : https://github.com/kirodubes
+# Github    : https://github.com/buildra
+# SF        : https://sourceforge.net/projects/kiro/files/
+##################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
@@ -18,6 +22,9 @@
 #tput setaf 6 = cyan
 #tput setaf 7 = gray
 #tput setaf 8 = light blue
+
+#end colors
+#tput sgr0
 ##################################################################################################################################
 
 # reset - commit your changes or stash them before you merge

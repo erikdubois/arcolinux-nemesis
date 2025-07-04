@@ -1,10 +1,14 @@
 #!/bin/bash
-#set -e
-##################################################################################################################################
+set -uo pipefail  # Do not use set -e, we want to continue on error
+##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
 # Youtube   : https://youtube.com/erikdubois
-##################################################################################################################################
+# Github    : https://github.com/erikdubois
+# Github    : https://github.com/kirodubes
+# Github    : https://github.com/buildra
+# SF        : https://sourceforge.net/projects/kiro/files/
+##################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
@@ -22,8 +26,6 @@
 #end colors
 #tput sgr0
 ##################################################################################################################################
-
-set -uo pipefail  # Do not use set -e, we want to continue on error
 
 # Trap all ERR conditions and call the handler
 trap 'on_error $LINENO "$BASH_COMMAND"' ERR
