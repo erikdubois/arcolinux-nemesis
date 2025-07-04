@@ -36,13 +36,10 @@ fi
 
 ##################################################################################################################################
 
-# software from AUR (Arch User Repositories)
-# https://aur.archlinux.org/packages/
-
 echo
 tput setaf 2
 echo "########################################################################"
-echo "################### AUR from folder - Software to install"
+echo "################### install folder - Software to install"
 echo "########################################################################"
 tput sgr0
 echo
@@ -59,7 +56,7 @@ if ! grep -q "artix" /etc/os-release; then
 		tput sgr0
 		echo	
 
-		sh AUR/install-virtualbox-for-linux.sh	
+		sh install/install-virtualbox-for-linux.sh	
 
 	else
 
@@ -78,7 +75,7 @@ fi
 echo
 tput setaf 2
 echo "########################################################################"
-echo "################### Build from AUR"
+echo "################### Build from install folder"
 echo "########################################################################"
 tput sgr0
 echo
