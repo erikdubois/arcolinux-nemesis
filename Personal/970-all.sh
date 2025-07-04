@@ -98,26 +98,6 @@ echo
 echo "Enable fstrim timer for SSD"
 sudo systemctl enable fstrim.timer
 
-
-echo
-echo "Testing if qemu agent is still active"
-result=$(systemd-detect-virt)
-echo "Systemd-detect-virt = $result"
-
-if systemctl list-unit-files | grep -q '^qemu-guest-agent.service'; then
-    test=$(systemctl is-enabled qemu-guest-agent.service 2>/dev/null)
-    echo "Is qemu guest agent active = $test"
-
-    if { [ "$test" = "enabled" ] && [ "$result" = "none" ]; } || [ "$result" = "oracle" ]; then
-        echo
-        echo "Disable qemu agent service"
-        sudo systemctl disable qemu-guest-agent.service
-        echo
-    fi
-else
-    echo "qemu-guest-agent.service not installed – nothing to disable."
-fi
-
 # personal /etc/pacman.d/gnupg/gpg.conf for Erik Dubois
 
 echo
