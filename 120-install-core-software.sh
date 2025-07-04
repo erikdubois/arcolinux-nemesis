@@ -242,8 +242,8 @@ if [ -f /usr/share/xsessions/plasmax11.desktop ]; then
   remove_if_installed kvantum-qt5
 fi
 
-sudo pacman -S --noconfirm --needed discord
-sudo pacman -S --noconfirm --needed dropbox
+#sudo pacman -S --noconfirm --needed discord
+#sudo pacman -S --noconfirm --needed dropbox
 sudo pacman -S --noconfirm --needed hw-probe
 sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed signal-in-tray
