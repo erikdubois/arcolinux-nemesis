@@ -96,47 +96,6 @@ echo
 sudo chsh $USER -s /bin/fish
 
 echo
-echo "VirtualBox check - copy/paste template or not"
-echo
-
-result=$(systemd-detect-virt)
-if [ $result = "none" ];then
-
-	[ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
-	sudo cp -rf settings/virtualbox-template/* ~/VirtualBox\ VMs/
-	cd ~/VirtualBox\ VMs/
-	tar -xzf template.tar.gz
-	rm -f template.tar.gz	
-
-else
-
-	echo
-	tput setaf 3
-	echo "########################################################################"
-	echo "### You are on a virtual machine - skipping VirtualBox"
-	echo "### Template not copied over"
-	echo "### We will set your screen resolution with xrandr"
-	echo "########################################################################"
-	tput sgr0
-	echo
-
-	# Find the connected VirtualBox display
-	OUTPUT=$(xrandr | grep " connected" | awk '{print $1}')
-
-	# Fallback check
-	if [ -z "$OUTPUT" ]; then
-	    echo "No connected display found."
-	    exit 1
-	fi
-
-	# Apply desired resolution and position
-	xrandr --output "$OUTPUT" --primary --mode 1920x1080 --pos 0x0 --rotate normal
-
-	echo "Display settings applied to output: $OUTPUT"
-
-	fi
-
-echo
 tput setaf 6
 echo "##############################################################"
 echo "###################  $(basename $0) done"

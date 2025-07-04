@@ -349,6 +349,7 @@ cd $installed_dir/Personal
 sh 900-*
 sh 910-*
 sh 920-*
+sh 930-*
 
 
 
