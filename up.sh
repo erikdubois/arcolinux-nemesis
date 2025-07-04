@@ -43,6 +43,8 @@ workdir=$(pwd)
 
 rm $workdir/mirrorlist
 touch $workdir/mirrorlist
+
+echo
 echo "## Best Arch Linux servers worldwide from arcolinux-nemesis
 
 Server = https://mirror.osbeck.com/archlinux/\$repo/os/\$arch
