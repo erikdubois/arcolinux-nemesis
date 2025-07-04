@@ -62,9 +62,11 @@ sed -i "s/#Server/Server/g" $workdir/mirrorlist
 git add --all .
 
 # Give a comment to the commit if you want
+echo
 echo "####################################"
 echo "Write your commit comment!"
 echo "####################################"
+echo
 
 input="update"
 
