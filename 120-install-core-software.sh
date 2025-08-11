@@ -216,6 +216,7 @@ sudo pacman -S --noconfirm --needed visual-studio-code-bin
 sudo pacman -S --noconfirm --needed vivaldi
 sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
 sudo pacman -S --noconfirm --needed vlc
+sudo pacman -S --noconfirm --needed vlc-plugins-all
 sudo pacman -S --noconfirm --needed wd719x-firmware
 sudo pacman -S --noconfirm --needed wget
 sudo pacman -S --noconfirm --needed xdg-user-dirs
