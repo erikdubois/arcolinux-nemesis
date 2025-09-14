@@ -368,6 +368,7 @@ sh 970-biglinux*
 sh 970-rebornos*
 sh 970-archbang*
 sh 970-manjaro*
+sh 970-omarchy*
 
 #has to be last - they are all Arch
 sh 970-arch.sh
