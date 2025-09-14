@@ -644,6 +644,12 @@ if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
   remove_if_installed docker
   remove_if_installed lazydocker
   
+  # webapps removed from .local/share/applications
+
+  rm $HOME/.local/share/applications/X.desktop
+  rm $HOME/.local/share/applications/WhatsApp.desktop
+  rm $HOME/.local/share/applications/Zoom.desktop
+  rm $HOME/.local/share/applications/HEY.desktop
 
   echo
   tput setaf 2
