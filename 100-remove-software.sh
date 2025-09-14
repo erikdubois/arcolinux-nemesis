@@ -630,9 +630,11 @@ if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
   tput sgr0
   echo
 
-  remove_if_installed artix-qt-presets
-  remove_if_installed artix-gtk-presets
-  remove_if_installed artix-desktop-presets
+  remove_if_installed omarchy-chromium
+  remove_if_installed 1password-beta
+  remove_if_installed 1password-cli
+  remove_if_installed typora
+  remove_if_installed 
 
   echo
   tput setaf 2
