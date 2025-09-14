@@ -646,20 +646,26 @@ if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
   
   # webapps removed from .local/share/applications
 
-  rm $HOME/.local/share/applications/X.desktop
-  rm $HOME/.local/share/applications/WhatsApp.desktop
-  rm $HOME/.local/share/applications/Zoom.desktop
-  rm $HOME/.local/share/applications/HEY.desktop
-  rm $HOME/.local/share/applications/typora.desktop
-  rm $HOME/.local/share/applications/'Google Contacts.desktop'
-  rm $HOME/.local/share/applications/'Google Messages.desktop'
-  rm $HOME/.local/share/applications/'Google Photos.desktop'
-  rm $HOME/.local/share/applications/Figma.desktop
-  rm $HOME/.local/share/applications/Docker.desktop
-  rm $HOME/.local/share/applications/Discord.desktop
-  rm $HOME/.local/share/applications/ChatGPT.desktop
-  rm $HOME/.local/share/applications/Basecamp.desktop
-  rm $HOME/.local/share/applications/brave-browser.desktop 
+remove_if_exists() {
+    [ -f "$1" ] && rm "$1"
+}
+
+remove_if_exists "$HOME/.local/share/applications/X.desktop"
+remove_if_exists "$HOME/.local/share/applications/WhatsApp.desktop"
+remove_if_exists "$HOME/.local/share/applications/Zoom.desktop"
+remove_if_exists "$HOME/.local/share/applications/HEY.desktop"
+remove_if_exists "$HOME/.local/share/applications/typora.desktop"
+remove_if_exists "$HOME/.local/share/applications/Google Contacts.desktop"
+remove_if_exists "$HOME/.local/share/applications/Google Messages.desktop"
+remove_if_exists "$HOME/.local/share/applications/Google Photos.desktop"
+remove_if_exists "$HOME/.local/share/applications/Figma.desktop"
+remove_if_exists "$HOME/.local/share/applications/Docker.desktop"
+remove_if_exists "$HOME/.local/share/applications/Discord.desktop"
+remove_if_exists "$HOME/.local/share/applications/ChatGPT.desktop"
+remove_if_exists "$HOME/.local/share/applications/Basecamp.desktop"
+remove_if_exists "$HOME/.local/share/applications/brave-browser.desktop"
+remove_if_exists "$HOME/.local/share/applications/YouTube.desktop"
+
 
   echo
   tput setaf 2
