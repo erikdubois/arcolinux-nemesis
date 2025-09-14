@@ -56,6 +56,7 @@ if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
 	git clone https://github.com/erikdubois/omarchy /tmp/omarchy
 	cp -v /tmp/omarchy/config/hypr/bindings.conf ~/.config/hypr/bindings.conf
 	cp -v /tmp/omarchy/config/hypr/input.conf ~/.config/hypr/input.conf
+	cp -v /tmp/omarchy/config/hypr/looknfeel.conf ~/.config/hypr/looknfeel.conf
 	fi
 
 echo
