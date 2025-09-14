@@ -54,7 +54,7 @@ if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
 	    sudo rm -r "$folder"
 	fi
 	git clone https://github.com/erikdubois/omarchy /tmp/omarchy
-	cp -r /tmp/omarchy/config/hypr/bindings.conf ~/.config/hypr/bindings.conf
+	cp -v /tmp/omarchy/config/hypr/bindings.conf ~/.config/hypr/bindings.conf
 	fi
 
 echo
