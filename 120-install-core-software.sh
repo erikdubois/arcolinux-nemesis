@@ -168,6 +168,7 @@ sudo pacman -S --noconfirm --needed lsb-release
 sudo pacman -S --noconfirm --needed lshw
 sudo pacman -S --noconfirm --needed man-db
 sudo pacman -S --noconfirm --needed man-pages
+sudo pacman -S --noconfirm --needed nano
 sudo pacman -S --noconfirm --needed plocate
 sudo pacman -S --noconfirm --needed meld
 #sudo pacman -S --noconfirm --needed micro
