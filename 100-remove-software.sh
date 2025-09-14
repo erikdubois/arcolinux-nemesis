@@ -634,7 +634,15 @@ if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
   remove_if_installed 1password-beta
   remove_if_installed 1password-cli
   remove_if_installed typora
-  remove_if_installed 
+  remove_if_installed kdenlive
+  remove_if_installed libreoffice-fresh
+  remove_if_installed xournalpp
+  remove_if_installed localsend-bin
+  remove_if_installed mpv
+  remove_if_installed docker-buildx
+  remove_if_installed docker-compose
+  remove_if_installed docker
+  
 
   echo
   tput setaf 2
