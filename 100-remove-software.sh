@@ -642,6 +642,7 @@ if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
   remove_if_installed docker-buildx
   remove_if_installed docker-compose
   remove_if_installed docker
+  remove_if_installed lazydocker
   
 
   echo
