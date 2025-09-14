@@ -630,20 +630,21 @@ if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
   tput sgr0
   echo
 
-  remove_if_installed omarchy-chromium
   remove_if_installed 1password-beta
   remove_if_installed 1password-cli
-  remove_if_installed typora
-  remove_if_installed kdenlive
-  remove_if_installed libreoffice-fresh
-  remove_if_installed xournalpp
-  remove_if_installed localsend-bin
-  remove_if_installed mpv
+  remove_if_installed docker
   remove_if_installed docker-buildx
   remove_if_installed docker-compose
-  remove_if_installed docker
+  remove_if_installed gnome-calculator
+  remove_if_installed kdenlive
   remove_if_installed lazydocker
+  remove_if_installed libreoffice-fresh
+  remove_if_installed localsend-bin
+  remove_if_installed mpv
+  remove_if_installed omarchy-chromium
   remove_if_installed pinta
+  remove_if_installed typora
+  remove_if_installed xournalpp
   
   # webapps removed from .local/share/applications
 
