@@ -643,11 +643,17 @@ if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
   remove_if_installed docker-compose
   remove_if_installed docker
   remove_if_installed lazydocker
+  remove_if_installed pinta
   
   # webapps removed from .local/share/applications
 
 remove_if_exists() {
-    [ -f "$1" ] && rm "$1"
+    if [ -f "$1" ]; then
+        rm "$1"
+        echo "Removed: $1"
+    else
+        echo "Already removed: $1"
+    fi
 }
 
 remove_if_exists "$HOME/.local/share/applications/X.desktop"
@@ -665,6 +671,8 @@ remove_if_exists "$HOME/.local/share/applications/ChatGPT.desktop"
 remove_if_exists "$HOME/.local/share/applications/Basecamp.desktop"
 remove_if_exists "$HOME/.local/share/applications/brave-browser.desktop"
 remove_if_exists "$HOME/.local/share/applications/YouTube.desktop"
+remove_if_exists "$HOME/.local/share/applications/GitHub.desktop"
+remove_if_exists "$HOME/.local/share/applications/Disk Usage.desktop"
 
 
   echo
