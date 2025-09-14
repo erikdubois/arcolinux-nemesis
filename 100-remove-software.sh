@@ -650,6 +650,16 @@ if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
   rm $HOME/.local/share/applications/WhatsApp.desktop
   rm $HOME/.local/share/applications/Zoom.desktop
   rm $HOME/.local/share/applications/HEY.desktop
+  rm $HOME/.local/share/applications/typora.desktop
+  rm $HOME/.local/share/applications/'Google Contacts.desktop'
+  rm $HOME/.local/share/applications/'Google Messages.desktop'
+  rm $HOME/.local/share/applications/'Google Photos.desktop'
+  rm $HOME/.local/share/applications/Figma.desktop
+  rm $HOME/.local/share/applications/Docker.desktop
+  rm $HOME/.local/share/applications/Discord.desktop
+  rm $HOME/.local/share/applications/ChatGPT.desktop
+  rm $HOME/.local/share/applications/Basecamp.desktop
+  rm $HOME/.local/share/applications/brave-browser.desktop 
 
   echo
   tput setaf 2
