@@ -613,12 +613,37 @@ if grep -q "artix" /etc/os-release; then
   echo
   tput setaf 2
   echo "##############################################################"
-  echo "################### Software on Manjaro removed"
+  echo "################### Software on Artix removed"
   echo "##############################################################"
   tput sgr0
   echo
 
 fi
+
+# when on Omarchy - remove packages and files
+if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
+  echo
+  tput setaf 2
+  echo "##############################################################"
+  echo "####### Removing software for Omarchy"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+  remove_if_installed artix-qt-presets
+  remove_if_installed artix-gtk-presets
+  remove_if_installed artix-desktop-presets
+
+  echo
+  tput setaf 2
+  echo "##############################################################"
+  echo "################### Software on Omarchy removed"
+  echo "##############################################################"
+  tput sgr0
+  echo
+
+fi
+
 
 echo
 tput setaf 6
