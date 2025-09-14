@@ -48,9 +48,14 @@ if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
 	echo
 	tput sgr0
 
-   
-
-fi
+	# getting config
+	folder="/tmp/omarchy"
+	if [ -d "$folder" ]; then
+	    sudo rm -r "$folder"
+	fi
+	git clone https://github.com/erikdubois/omarchy /tmp/omarchy
+	cp -r /tmp/omarchy/config/hypr/bindings.conf ~/.config/hypr/bindings.conf
+	fi
 
 echo
 tput setaf 6
