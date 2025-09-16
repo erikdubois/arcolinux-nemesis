@@ -86,6 +86,12 @@ else
     echo "Opera is already installed."
 fi
 
+if ! pacman -Qi opera-ffmpeg-codecs-bin &>/dev/null; then
+    yay -S opera-ffmpeg-codecs-bin --noconfirm
+else
+    echo "opera-ffmpeg-codecs-bin is already installed."
+fi
+
 echo
 tput setaf 6
 echo "##############################################################"

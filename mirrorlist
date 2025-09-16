@@ -8,7 +8,7 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2025-09-14
+## Generated on 2025-09-16
 ##
 
 ## Worldwide
@@ -70,7 +70,6 @@ Server = http://mirror.datacenter.by/pub/archlinux/$repo/os/$arch
 ## Belgium
 Server = http://mirror.1ago.be/archlinux/$repo/os/$arch
 Server = https://mirror.1ago.be/archlinux/$repo/os/$arch
-Server = https://archlinux.cu.be/$repo/os/$arch
 Server = http://mirror.jonas-prz.be/$repo/os/$arch
 Server = https://mirror.jonas-prz.be/$repo/os/$arch
 Server = http://mirror.tiguinet.net/arch/$repo/os/$arch
@@ -417,7 +416,6 @@ Server = https://is.mirror.flokinet.net/archlinux/$repo/os/$arch
 
 ## India
 Server = https://mirrors.abhy.me/archlinux/$repo/os/$arch
-Server = https://mirror.albony.in/archlinux/$repo/os/$arch
 Server = https://mirror.del2.albony.in/archlinux/$repo/os/$arch
 Server = https://mirror.maa.albony.in/archlinux/$repo/os/$arch
 Server = http://in.mirrors.cicku.me/archlinux/$repo/os/$arch
