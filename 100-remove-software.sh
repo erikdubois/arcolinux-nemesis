@@ -687,6 +687,12 @@ remove_if_exists "$HOME/.local/share/applications/Disk Usage.desktop"
 fi
 
 
+# when on Arcris - remove packages and files
+if grep -q "Arcris" /etc/os-release; then
+  remove_if_installed mpv
+  remove_if_installed clapper
+fi
+
 echo
 tput setaf 6
 echo "##############################################################"

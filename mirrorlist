@@ -8,7 +8,7 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2025-09-16
+## Generated on 2025-09-21
 ##
 
 ## Worldwide
@@ -266,8 +266,6 @@ Server = https://mirror.peeres-telecom.fr/archlinux/$repo/os/$arch
 Server = http://mirror.rznet.fr/archlinux/$repo/os/$arch
 Server = https://mirror.rznet.fr/archlinux/$repo/os/$arch
 Server = https://mirror.smayzy.ovh/archlinux/$repo/os/$arch
-Server = http://arch.sukuna.ovh/archlinux/$repo/os/$arch
-Server = https://arch.sukuna.ovh/archlinux/$repo/os/$arch
 Server = http://arch.syxpi.fr/arch/$repo/os/$arch
 Server = https://arch.syxpi.fr/arch/$repo/os/$arch
 Server = https://mirror.thekinrar.fr/archlinux/$repo/os/$arch
@@ -531,6 +529,8 @@ Server = https://mirror.mangohost.net/archlinux/$repo/os/$arch
 ## Morocco
 Server = http://mirror.abderraziq.com/archlinux/$repo/os/$arch
 Server = https://mirror.abderraziq.com/archlinux/$repo/os/$arch
+Server = http://mirror.xenedium.com/archlinux/$repo/os/$arch
+Server = https://mirror.xenedium.com/archlinux/$repo/os/$arch
 
 ## Nepal
 Server = http://mirrors.nepalicloud.com/archlinux/$repo/os/$arch
@@ -777,6 +777,8 @@ Server = https://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch
 Server = http://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch
 Server = https://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch
 Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = http://mirror.retropc.se/archlinux/$repo/os/$arch
+Server = https://mirror.retropc.se/archlinux/$repo/os/$arch
 Server = http://mirror.tedwall.se/archlinux/$repo/os/$arch
 Server = https://mirror.tedwall.se/archlinux/$repo/os/$arch
 
