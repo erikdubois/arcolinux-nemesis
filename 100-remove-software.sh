@@ -621,7 +621,7 @@ if grep -q "artix" /etc/os-release; then
 fi
 
 # when on Omarchy - remove packages and files
-if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
+if [ -f /etc/plymouth/plymouthd.conf ] && grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
   echo
   tput setaf 2
   echo "##############################################################"
