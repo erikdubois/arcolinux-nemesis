@@ -688,10 +688,8 @@ fi
 
 
 # when on Arcris - remove packages and files
-if grep -q "Arcris" /etc/os-release; then
-  remove_if_installed mpv
-  remove_if_installed clapper
-fi
+remove_if_installed mpv
+remove_if_installed clapper
 
 echo
 tput setaf 6
