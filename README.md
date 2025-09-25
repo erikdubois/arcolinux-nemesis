@@ -41,11 +41,9 @@ The goal of these scripts is to give you control over your operating system by a
 - Apply your personal preferences and configurations on any setup
 - Build and use Chadwm (a fork of dwm, a tiling window manager) on any distribution
 
-
 ## Distributions/ISOs supported
 
 Over time this script to tweak ArcoLinux evolved and can now setup the following distributions and more:
-
 
 Arch Linux based distros
 
