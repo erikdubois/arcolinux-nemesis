@@ -64,7 +64,6 @@ if [[ -f $hyprland || -f $wayfire || -f $sway ]]; then
   echo
 
   echo "Adding thunar settings"
-  echo "Adding gitahead settings"
   echo "Adding gtk3 settings"
   echo
 
