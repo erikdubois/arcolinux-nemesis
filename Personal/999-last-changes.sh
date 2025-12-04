@@ -153,7 +153,7 @@ fi
 # Remove picom-git if running in a virtual machine
 result=$(systemd-detect-virt)
 if [ $(systemd-detect-virt) != "none" ]; then 
-    pacman -R picom-git 
+    sudo pacman -R picom-git 
 fi
 
 echo
