@@ -150,6 +150,12 @@ if grep -q "ArchBang" /etc/os-release; then
   fi
 fi
 
+# Remove picom-git if running in a virtual machine
+result=$(systemd-detect-virt)
+if [ $(systemd-detect-virt) != "none" ]; then 
+    pacman -R picom-git 
+fi
+
 echo
 tput setaf 6
 echo "##############################################################"
