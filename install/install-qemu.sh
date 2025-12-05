@@ -49,6 +49,7 @@ echo
 
 # 108 packages nov 2025
 sudo pacman -S --noconfirm --needed qemu-full
+# alternative for virt-manager is gnome-boxes (that is less complex - so also less flexible)
 sudo pacman -S --noconfirm --needed virt-manager
 
 #starting service
