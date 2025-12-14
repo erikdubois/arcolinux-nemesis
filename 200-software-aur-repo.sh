@@ -100,6 +100,12 @@ echo "########################################################################"
 tput sgr0
 echo
 
+if ! pacman -Qi libpamac-aur &>/dev/null; then
+    yay -S libpamac-aur --noconfirm
+else
+    echo "libpamac-aur is already installed."
+fi
+
 if ! pacman -Qi pamac-aur &>/dev/null; then
     yay -S pamac-aur --noconfirm
 else
