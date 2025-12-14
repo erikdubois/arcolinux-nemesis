@@ -93,6 +93,20 @@ fi
 # fi
 
 echo
+tput setaf 2
+echo "########################################################################"
+echo "################### Build from install folder"
+echo "########################################################################"
+tput sgr0
+echo
+
+if ! pacman -Qi pamac-aur &>/dev/null; then
+    yay -S pamac-aur --noconfirm
+else
+    echo "pamac-aur is already installed."
+fi
+
+echo
 tput setaf 6
 echo "##############################################################"
 echo "###################  $(basename $0) done"

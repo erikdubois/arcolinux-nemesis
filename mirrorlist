@@ -8,7 +8,7 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2025-12-10
+## Generated on 2025-12-14
 ##
 
 ## Worldwide
@@ -241,6 +241,7 @@ Server = http://mirror.bakertelekom.fr/Arch/$repo/os/$arch
 Server = https://mirror.bakertelekom.fr/Arch/$repo/os/$arch
 Server = http://fr.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://fr.mirrors.cicku.me/archlinux/$repo/os/$arch
+Server = https://mirror.cosmiclinux.com/archlinux/$repo/os/$arch
 Server = http://mirror.cyberbits.eu/archlinux/$repo/os/$arch
 Server = https://mirror.cyberbits.eu/archlinux/$repo/os/$arch
 Server = http://archlinux.datagr.am/$repo/os/$arch
@@ -367,6 +368,7 @@ Server = http://linux.rz.rub.de/archlinux/$repo/os/$arch
 Server = http://mirror.selfnet.de/archlinux/$repo/os/$arch
 Server = https://mirror.selfnet.de/archlinux/$repo/os/$arch
 Server = http://de.mirror.shibe.party/archlinux/$repo/os/$arch
+Server = https://de.mirror.shibe.party/archlinux/$repo/os/$arch
 Server = https://de-nue.soulharsh007.dev/archlinux/$repo/os/$arch
 Server = http://ftp.spline.inf.fu-berlin.de/mirrors/archlinux/$repo/os/$arch
 Server = https://ftp.spline.inf.fu-berlin.de/mirrors/archlinux/$repo/os/$arch
@@ -407,12 +409,6 @@ Server = https://mirror.xtom.com.hk/archlinux/$repo/os/$arch
 ## Hungary
 Server = https://ftp.ek-cer.hu/pub/mirrors/ftp.archlinux.org/$repo/os/$arch
 Server = http://archmirror.hbit.sztaki.hu/archlinux/$repo/os/$arch
-Server = http://nova.quantum-mirror.hu/mirrors/pub/archlinux/$repo/os/$arch
-Server = http://quantum-mirror.hu/mirrors/pub/archlinux/$repo/os/$arch
-Server = http://super.quantum-mirror.hu/mirrors/pub/archlinux/$repo/os/$arch
-Server = https://nova.quantum-mirror.hu/mirrors/pub/archlinux/$repo/os/$arch
-Server = https://quantum-mirror.hu/mirrors/pub/archlinux/$repo/os/$arch
-Server = https://super.quantum-mirror.hu/mirrors/pub/archlinux/$repo/os/$arch
 
 ## Iceland
 Server = http://is.mirror.flokinet.net/archlinux/$repo/os/$arch
@@ -568,6 +564,7 @@ Server = http://mirror.lyrahosting.com/archlinux/$repo/os/$arch
 Server = https://mirror.lyrahosting.com/archlinux/$repo/os/$arch
 Server = http://mirror.mijn.host/archlinux/$repo/os/$arch
 Server = https://mirror.mijn.host/archlinux/$repo/os/$arch
+Server = https://nl.arch.niranjan.co/$repo/os/$arch
 Server = http://ftp.nluug.nl/os/Linux/distr/archlinux/$repo/os/$arch
 Server = http://mirror.nyaa.vc/archlinux/$repo/os/$arch
 Server = https://mirror.nyaa.vc/archlinux/$repo/os/$arch
@@ -909,6 +906,8 @@ Server = http://mirrors.bloomu.edu/archlinux/$repo/os/$arch
 Server = https://mirrors.bloomu.edu/archlinux/$repo/os/$arch
 Server = https://arch-mirror.brightlight.today/$repo/os/$arch
 Server = http://mirrors.cat.pdx.edu/archlinux/$repo/os/$arch
+Server = http://mirror.us.cdn-perfprod.com/archlinux/$repo/os/$arch
+Server = https://mirror.us.cdn-perfprod.com/archlinux/$repo/os/$arch
 Server = http://us.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://us.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = http://mirror.clarkson.edu/archlinux/$repo/os/$arch
