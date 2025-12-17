@@ -93,7 +93,7 @@ func_install_chadwm() {
     gcc
     gvfs
     lolcat
-    lxappearance-gtk3
+    lxappearance
     make
     picom-git
     polkit-gnome
