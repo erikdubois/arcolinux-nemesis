@@ -117,7 +117,7 @@ feh
 gcc
 gvfs
 lolcat
-lxappearance-gtk3
+lxappearance
 make
 picom-git
 polkit-gnome

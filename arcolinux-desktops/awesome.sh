@@ -112,7 +112,7 @@ dmenu
 edu-awesome-git
 edu-xfce-git
 feh
-lxappearance-gtk3
+lxappearance
 nitrogen
 noto-fonts
 picom-git

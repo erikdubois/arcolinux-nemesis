@@ -109,7 +109,7 @@ alacritty
 catfish
 dmenu
 edu-xfce-git
-lxappearance-gtk3
+lxappearance
 mugshot
 polkit-gnome
 ttf-hack

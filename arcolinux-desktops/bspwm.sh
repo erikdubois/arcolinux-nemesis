@@ -117,7 +117,7 @@ edu-rofi-git
 edu-rofi-themes-git
 edu-xfce-git
 feh
-lxappearance-gtk3
+lxappearance
 nitrogen
 noto-fonts
 picom-git
