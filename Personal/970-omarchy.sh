@@ -37,28 +37,29 @@ fi
 ##################################################################################################################################
 
 # when on omarchy
+if [[ -f /etc/plymouth/plymouthd.conf ]]; then
+	if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
 
-if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
+		echo
+		tput setaf 2
+		echo "########################################################################"
+		echo "############### We are on an OMARCHY iso"
+		echo "########################################################################"
+		echo
+		tput sgr0
 
-	echo
-	tput setaf 2
-	echo "########################################################################"
-	echo "############### We are on an OMARCHY iso"
-	echo "########################################################################"
-	echo
-	tput sgr0
-
-	# getting config
-	folder="/tmp/omarchy"
-	if [ -d "$folder" ]; then
-	    sudo rm -r "$folder"
+		# getting config
+		folder="/tmp/omarchy"
+		if [ -d "$folder" ]; then
+		    sudo rm -r "$folder"
+		fi
+		git clone https://github.com/erikdubois/omarchy /tmp/omarchy
+		cp -v /tmp/omarchy/config/hypr/bindings.conf ~/.config/hypr/bindings.conf
+		cp -v /tmp/omarchy/config/hypr/input.conf ~/.config/hypr/input.conf
+		cp -v /tmp/omarchy/config/hypr/looknfeel.conf ~/.config/hypr/looknfeel.conf
+		cp -v /tmp/omarchy/config/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
 	fi
-	git clone https://github.com/erikdubois/omarchy /tmp/omarchy
-	cp -v /tmp/omarchy/config/hypr/bindings.conf ~/.config/hypr/bindings.conf
-	cp -v /tmp/omarchy/config/hypr/input.conf ~/.config/hypr/input.conf
-	cp -v /tmp/omarchy/config/hypr/looknfeel.conf ~/.config/hypr/looknfeel.conf
-	cp -v /tmp/omarchy/config/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
-	fi
+fi
 
 echo
 tput setaf 6
