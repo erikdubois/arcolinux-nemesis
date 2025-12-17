@@ -118,7 +118,7 @@ fi
 # All the software below will be installed on all desktops
 
 sudo pacman -S --noconfirm --needed fastfetch-git
-sudo pacman -S --noconfirm --needed neofetch-git
+sudo pacman -S --noconfirm --needed chaotic-neofetch-git
 sudo pacman -S --noconfirm --needed yay-git
 sudo pacman -S --noconfirm --needed paru-git
 
