@@ -257,37 +257,38 @@ if grep -q "ArchBang" /etc/os-release; then
 
 fi
 
-if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
+if [[ -f /etc/plymouth/plymouthd.conf ]]; then
+  if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
 
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on OMARCHY"
-  echo "########################################################################"
-  tput sgr0
-  echo
+    echo
+    tput setaf 2
+    echo "########################################################################"
+    echo "################### We are on OMARCHY"
+    echo "########################################################################"
+    tput sgr0
+    echo
 
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
+    # putting back the original pacman.conf
+    sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
 
-# Define the lines to append
-config_block="
-[nemesis_repo]
-SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
+  # Define the lines to append
+  config_block="
+  [nemesis_repo]
+  SigLevel = Never
+  Server = https://erikdubois.github.io/\$repo/\$arch
 
-[chaotic-aur]
-SigLevel = Required DatabaseOptional
-Include = /etc/pacman.d/chaotic-mirrorlist
-"
+  [chaotic-aur]
+  SigLevel = Required DatabaseOptional
+  Include = /etc/pacman.d/chaotic-mirrorlist
+  "
 
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
+    # Append to /etc/pacman.conf
+    echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
 
-  echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
+    echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
 
+  fi
 fi
-
 
   echo
   tput setaf 6
