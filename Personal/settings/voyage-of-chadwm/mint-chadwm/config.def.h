@@ -277,7 +277,7 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,                 XK_w,       setborderpx,    {.i = default_border } },
 
     // kill dwm
-    { ControlMask|Mod1Mask,             XK_Delete, quit,            {0} },
+    //{ ControlMask|Mod1Mask,             XK_Delete, quit,            {0} },
 
     // kill window
     { MODKEY,                           XK_q,       killclient,     {0} },
