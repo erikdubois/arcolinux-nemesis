@@ -91,13 +91,13 @@ cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
 cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
 echo
 
-# getting the official code from ArcoLinux
-sudo rm -rf /tmp/arcolinux-chadwm
-git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
-sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
-sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
-cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
-cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
+# getting the official code from Edu-chadwm
+sudo rm -rf /tmp/edu-chadwm
+git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
+sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
+sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
+cp -r /tmp/edu-chadwm/etc/skel/.bin ~
+cp -r /tmp/edu-chadwm/etc/skel/.config ~
 echo
 
 echo
