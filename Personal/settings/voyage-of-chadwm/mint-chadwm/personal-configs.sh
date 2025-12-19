@@ -157,9 +157,9 @@ hblock
 echo
 
 # Arc Dawn
-sudo rm -rf /tmp/arcolinux-arc-dawn
-git clone https://github.com/arcolinux/arcolinux-arc-dawn  /tmp/arcolinux-arc-dawn
-cd /tmp/arcolinux-arc-dawn/usr/share/themes
+sudo rm -rf /tmp/edu-arc-dawn
+git clone https://github.com/erikdubois/edu-arc-dawn  /tmp/edu-arc-dawn
+cd /tmp/edu-arc-dawn/usr/share/themes
 cp -r * ~/.themes
 echo
 
