@@ -84,11 +84,11 @@ tput sgr0
 echo
 
 # exit strategy - super + shift + x
-sudo rm -rf /tmp/arcolinux-powermenu
-git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
-sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
-cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
-cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
+sudo rm -rf /tmp/edu-powermenu
+git clone https://github.com/erikdubois/edu-powermenu  /tmp/edu-powermenu
+sudo cp /tmp/edu-powermenu/usr/local/bin/edu-powermenu /usr/local/bin
+cp -r /tmp/edu-powermenu/etc/skel/.bin ~
+cp -r /tmp/edu-powermenu/etc/skel/.config ~
 echo
 
 # getting the official code from Edu-chadwm

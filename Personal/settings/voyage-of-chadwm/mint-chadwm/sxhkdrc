@@ -76,7 +76,7 @@ super + x
 
 #powermenu
 super + shift + x
-    arcolinux-powermenu
+    edu-powermenu
 
 #nlogout
 alt + shift + x
