@@ -145,14 +145,6 @@ super + shift + s
 # CONTROL + ALT KEYS
 #################################################################
 
-#arcolinux-application-glade
-ctrl + alt + h
-     arcolinux-app-glade
-
-#arcolinux-welcome-app
-ctrl + alt + w
-     arcolinux-welcome-app
-
 #archlinux-tweak-tool
 ctrl + alt + e
     archlinux-tweak-tool
