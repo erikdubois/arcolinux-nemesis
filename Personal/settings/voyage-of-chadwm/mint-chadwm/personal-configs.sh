@@ -136,7 +136,7 @@ fi
 # getting archlinux-logout
 cd $installed_dir
 sudo rm -rf /tmp/archlinux-logout
-git clone https://github.com/arcolinux/archlinux-logout /tmp/archlinux-logout
+git clone https://github.com/erikdubois/archlinux-logout /tmp/archlinux-logout
 sudo cp -r /tmp/archlinux-logout/etc/* /etc
 sudo cp -r /tmp/archlinux-logout/usr/* /usr
 sudo rm -r /usr/share/archlinux-betterlockscreen
