@@ -13,6 +13,7 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayiconsize = 24; /* systray icon size in px */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails,display systray on the 1st monitor,False: display systray on last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -40,13 +41,15 @@ static const int new_window_attach_on_end = 0; /*  1 means the new window will a
 static const char *fonts[]          = {"JetBrainsMono Nerd Font Mono:style:bold:size=13"};
 
 // theme
-#include "themes/onedark.h"
-//#include "themes/prime.h"
 //#include "themes/catppuccin.h"
 //#include "themes/dracula.h"
+//#include "themes/everforest.h"
 //#include "themes/gruvchad.h"
 //#include "themes/nord.h"
+#include "themes/onedark.h"
+//#include "themes/prime.h"
 //#include "themes/tokyonight.h"
+//#include "themes/tundra.h"
 
 
 static const char *colors[][3]      = {
@@ -78,6 +81,7 @@ static const char *colors[][3]      = {
     [SchemeLayoutMS]   = { pinky,   black,  black },
     [SchemeLayoutPC]   = { orange,  black,  black },
     [SchemeLayoutVV]   = { blue,    black,  black },
+    [SchemeLayoutOP]   = { red,    black,  black },
 };
 
 /* tagging */
@@ -89,10 +93,11 @@ static char *tags[] = { "", "", "", "", "", "", "", "", 
 //static char *tags[] = {"一", "二", "三", "四", "五", "六", "七", "八", "九", "十"};
 
 static const char* firefox[] = { "firefox", NULL };
-static const char* vivaldi[] = { "vivaldi.vivaldi-stable", NULL };
-static const char* eww[] = { "eww", "open" , "eww", NULL };
+static const char* vivaldi[] = { "vivaldi", NULL };
+static const char* brave[] = { "brave", "--password-store=basic", "%U", NULL };
+static const char* opera[] = { "opera", NULL };
 static const char* discord[] = { "discord", "open" , "discord", NULL };
-static const char* telegram[] = { "telegram-desktop", NULL };
+static const char* telegram[] = { "Telegram", "open" , "Telegram", NULL };
 static const char* mintstick[] = { "mintstick", "-m", "iso", NULL};
 static const char* pavucontrol[] = { "pavucontrol", NULL };
 
@@ -124,7 +129,6 @@ static const Rule rules[] = {
     /* class      instance    title       tags mask     iscentered   isfloating   monitor */
     { "Gimp",     NULL,       NULL,       0,            0,           0,           -1 },
     { "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
-    { "eww",      NULL,       NULL,       0,            0,           1,           -1 },
     { "mintstick", NULL,      NULL,       0,            0,           0,           -1 },
     { "Nlogout",  NULL,       NULL,       0,            1,           1,           -1 },
 };
@@ -273,7 +277,7 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,                 XK_w,       setborderpx,    {.i = default_border } },
 
     // kill dwm
-    //{ MODKEY|ControlMask,               XK_q,       spawn,        SHCMD("killall bar.sh chadwm") },
+    { ControlMask|Mod1Mask,             XK_Delete, quit,            {0} },
 
     // kill window
     { MODKEY,                           XK_q,       killclient,     {0} },
@@ -336,9 +340,9 @@ static const Button buttons[] = {
     */
     { ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 0} },
     { ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-    { ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-    //{ ClkClientWin,         ControlMask,    Button1,        dragmfact,      {0} },
-    //{ ClkClientWin,         ControlMask,    Button3,        dragcfact,      {0} },
+    //{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+    { ClkClientWin,         MODKEY,			Button3,        dragmfact,      {0} },
+    //{ ClkClientWin,         MODKEY,    	Button3,        dragcfact,      {0} },
     { ClkTagBar,            0,              Button1,        view,           {0} },
     { ClkTagBar,            0,              Button3,        toggleview,     {0} },
     { ClkTagBar,            MODKEY,         Button1,        tag,            {0} },

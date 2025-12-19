@@ -58,9 +58,9 @@ super + F12
 # SUPER + ... KEYS
 #################################################################
 
-#Atom
+#Code
 super + e
-    atom
+    code
 
 #Browser
 super + w
