@@ -52,6 +52,22 @@ remove_if_installed() {
     done
 }
 
+remove_if_installed_deps() {
+    for pattern in "$@"; do
+        # Find all installed packages that match the pattern (exact + variants)
+        matches=$(pacman -Qq | grep "^${pattern}$\|^${pattern}-")
+        
+        if [ -n "$matches" ]; then
+            for pkg in $matches; do
+                echo "Removing package: $pkg"
+                sudo pacman -Rns --noconfirm "$pkg"
+            done
+        else
+            echo "No packages matching '$pattern' are installed."
+        fi
+    done
+}
+
 
 ##################################################################################################################################
 
@@ -690,6 +706,22 @@ fi
 # when on Arcris - remove packages and files
 remove_if_installed mpv
 remove_if_installed clapper
+
+
+# when on liya
+if grep -q "Liya" /etc/os-release ; then 
+  echo
+  tput setaf 2
+  echo "########################################################################"
+  echo "############### We are on an Liya iso"
+  echo "########################################################################"
+  echo
+  tput sgr0
+
+  remove_if_installed_deps timeshift timeshift-autosnap
+  remove_if_installed_deps pica-backup
+
+fi
 
 echo
 tput setaf 6
