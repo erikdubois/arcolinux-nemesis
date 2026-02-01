@@ -718,7 +718,8 @@ if grep -q "Liya" /etc/os-release ; then
   echo
   tput sgr0
 
-  remove_if_installed_deps timeshift timeshift-autosnap
+  remove_if_installed_deps timeshift-autosnap
+  remove_if_installed_deps timeshift
   remove_if_installed_deps pica-backup
 
 fi
