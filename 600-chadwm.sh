@@ -82,6 +82,7 @@ func_install_chadwm() {
     echo
 
     list=(
+    make
     alacritty
     archlinux-logout-git
     edu-chadwm-git
