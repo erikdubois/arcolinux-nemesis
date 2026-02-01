@@ -726,6 +726,7 @@ if grep -q "Liya" /etc/os-release ; then
   remove_if_installed_deps geary
   remove_if_installed_deps onlyoffice-bin
   remove_if_installed_deps exaile
+  remove_if_installed_deps pamac
 
   sudo rm /etc/skel/.config/mimeapps.list
   sudo rm /etc/X11/xorg.conf.d/30-touchpad.conf
