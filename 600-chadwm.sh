@@ -95,7 +95,6 @@ func_install_chadwm() {
     gvfs
     lolcat
     lxappearance
-    make
     picom-git
     polkit-gnome
     rofi
