@@ -725,6 +725,7 @@ if grep -q "Liya" /etc/os-release ; then
   remove_if_installed_deps celluloid
   remove_if_installed_deps geary
   remove_if_installed_deps onlyoffice-bin
+  remove_if_installed_deps exaile
 
 fi
 
