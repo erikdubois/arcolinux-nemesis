@@ -721,8 +721,9 @@ if grep -q "Liya" /etc/os-release ; then
   remove_if_installed_deps timeshift-autosnap
   remove_if_installed_deps timeshift
   remove_if_installed_deps pika-backup
-  remove_if_installed_deps mpv
+  remove_if_installed_deps deluge-gtk
   remove_if_installed_deps celluloid
+  remove_if_installed_deps geary
 
 fi
 
