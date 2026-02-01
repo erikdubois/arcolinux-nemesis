@@ -727,6 +727,11 @@ if grep -q "Liya" /etc/os-release ; then
   remove_if_installed_deps onlyoffice-bin
   remove_if_installed_deps exaile
 
+  sudo rm /etc/skel/.config/mimeapps.list
+  sudo rm /etc/X11/xorg.conf.d/30-touchpad.conf
+  sudo mv /etc/skel/.config/fish/config.fish /etc/skel/.config/fish/config.fish.liya
+  sudo rm /etc/skel/.config/autostart/xfce4-clipman-plugin-autostart.desktop
+
 fi
 
 echo
