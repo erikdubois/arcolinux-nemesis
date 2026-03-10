@@ -187,6 +187,7 @@ sudo pacman -S --noconfirm --needed python-pywal
 sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed qbittorrent
 sudo pacman -S --noconfirm --needed rate-mirrors
+sudo pacman -S --noconfirm --needed resources
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
@@ -214,7 +215,6 @@ sudo pacman -S --noconfirm --needed ttf-roboto-mono
 sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
 sudo pacman -S --noconfirm --needed upd72020x-fw
 sudo pacman -S --noconfirm --needed variety
-sudo pacman -S --noconfirm --needed visual-studio-code-bin
 sudo pacman -S --noconfirm --needed vivaldi
 sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
 sudo pacman -S --noconfirm --needed vlc
@@ -252,6 +252,17 @@ sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed signal-in-tray
 sudo pacman -S --noconfirm --needed spotify
 sudo pacman -S --noconfirm --needed telegram-desktop
+
+if pacman -Qi code &>/dev/null; then
+    echo "Code is already installed. Removing it..."
+    sudo pacman -Rns --noconfirm code
+    echo "Opensource Code has been removed."
+else
+    echo "VS Code is not installed. Installing it..."
+    sudo pacman -S --noconfirm --needed visual-studio-code-bin
+    echo "VS Code has been installed."
+fi
+
 
 tput setaf 6
 echo "##############################################################"
