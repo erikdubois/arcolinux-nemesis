@@ -370,6 +370,7 @@ sh 970-archbang*
 sh 970-manjaro*
 sh 970-omarchy*
 sh 970-liya*
+sh 970-nyarch*
 
 #has to be last - they are all Arch
 sh 970-arch.sh
