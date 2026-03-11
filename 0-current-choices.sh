@@ -372,6 +372,7 @@ sh 970-omarchy*
 sh 970-liya*
 sh 970-nyarch*
 sh 970-berserk*
+sh 970-prism*
 
 #has to be last - they are all Arch
 sh 970-arch.sh
