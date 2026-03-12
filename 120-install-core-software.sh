@@ -257,12 +257,8 @@ if pacman -Qi code &>/dev/null; then
     echo "Code is already installed. Removing it..."
     sudo pacman -Rns --noconfirm code
     echo "Opensource Code has been removed."
-else
-    echo "VS Code is not installed. Installing it..."
-    sudo pacman -S --noconfirm --needed visual-studio-code-bin
-    echo "VS Code has been installed."
 fi
-
+sudo pacman -S --noconfirm --needed visual-studio-code-bin
 
 tput setaf 6
 echo "##############################################################"
