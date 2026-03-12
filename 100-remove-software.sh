@@ -166,6 +166,7 @@ if ! grep -q "kiro" /etc/os-release; then
   remove_if_installed xfburn
   remove_if_installed parole
 
+  remove_if_installed_deps pamac-git
   echo
   tput setaf 3
   echo "##############################################################"
