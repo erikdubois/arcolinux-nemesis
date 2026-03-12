@@ -64,6 +64,7 @@ Arch Linux based distros
 - [Crystal Linux](https://getcryst.al/)
 - [EndeavourOS](https://endeavouros.com)
 - [Liya](https://sourceforge.net/projects/liya-2024/)
+- [LinuxHub Prime](https://linuxhub.link/)
 - [Mabox](https://maboxlinux.org/)
 - [Manjaro](https://manjaro.org)
 - [Nyarch](https://nyarchlinux.moe/)

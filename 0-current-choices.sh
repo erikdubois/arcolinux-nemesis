@@ -373,6 +373,7 @@ sh 970-liya*
 sh 970-nyarch*
 sh 970-berserk*
 sh 970-prism*
+sh 970-linuxhub*
 
 #has to be last - they are all Arch
 sh 970-arch.sh
