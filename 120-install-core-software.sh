@@ -252,12 +252,6 @@ sudo pacman -S --noconfirm --needed insync
 sudo pacman -S --noconfirm --needed signal-in-tray
 sudo pacman -S --noconfirm --needed spotify
 sudo pacman -S --noconfirm --needed telegram-desktop
-
-if pacman -Qi code &>/dev/null; then
-    echo "Code is already installed. Removing it..."
-    sudo pacman -Rns --noconfirm code
-    echo "Opensource Code has been removed."
-fi
 sudo pacman -S --noconfirm --needed visual-studio-code-bin
 
 tput setaf 6
