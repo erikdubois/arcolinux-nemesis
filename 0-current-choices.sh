@@ -125,7 +125,12 @@ if [[ "$response" == [yY] ]]; then
             sudo pacman -R --noconfirm "$pkg"
         fi
     done
+elif [[ "$response" == [nN] ]]; then
+    if [[ -f /tmp/install-chadwm ]]; then
+        rm /tmp/install-chadwm
+    fi
 fi
+
 
 ##################################################################################################################################
 
