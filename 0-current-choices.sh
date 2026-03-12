@@ -338,8 +338,7 @@ sh 200-software-aur-repo*
 sh 500-plasma*
 
 # installation of Chadwm
-# this is a yes or no
-#sh 600-chadwm*
+sh 600-chadwm*
 
 echo
 tput setaf 3
