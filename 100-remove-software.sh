@@ -756,6 +756,22 @@ if grep -q "Liya" /etc/os-release ; then
 
 fi
 
+
+# when on LinuxHub Prime
+if grep -q "LinuxHub" /etc/os-release ; then 
+  echo
+  tput setaf 2
+  echo "########################################################################"
+  echo "############### We are on an LinuxHub Prime iso"
+  echo "########################################################################"
+  echo
+  tput sgr0
+
+  remove_if_installed_deps waybar
+  remove_if_installed_deps gpsd
+  remove_if_installed_deps pika-backup
+
+fi
 echo
 tput setaf 6
 echo "##############################################################"
