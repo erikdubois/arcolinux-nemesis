@@ -58,6 +58,7 @@ Arch Linux based distros
 - [Artix](https://artixlinux.org/)
 - [BerserkerOS](https://berserkarch.xyz/)
 - [Big Linux](https://www.biglinux.com.br)
+- [BlendOS](https://blendos.co)
 - [Bluestar Linux](https://sourceforge.net/projects/bluestarlinux/)
 - [Cachyos](https://cachyos.org/)
 - [Carli](https://www.arcolinuxiso.com)
