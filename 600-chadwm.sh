@@ -69,19 +69,6 @@ install_chadwm_packages() {
     done
 }
 
-# Warn ArcoLinux users before package replacement starts.
-show_arcolinux_warning_if_needed() {
-    if [[ -f /etc/dev-rel ]]; then
-        log_warn "You are running this nemesis script on an ArcoLinux system
-In order to avoid package conflicts you should first run
-100-remove-software.sh to remove ArcoLinux packages.
-The ArcoLinux packages need to be replaced with the edu-packages
-from the nemesis_repo that should already be declared in
-your /etc/pacman.conf"
-        sleep 2
-    fi
-}
-
 # Create or refresh the SDDM drop-in file used for autologin.
 configure_sddm_autologin() {
     local target_dir="/etc/sddm.conf.d"
@@ -120,15 +107,6 @@ install_virtualbox_guest_utils_if_needed() {
         fi
     fi
 }
-
-show_arcolinux_warning_if_needed
-
-# Remove overlapping Arco packages before installing the edu/Nemesis stack.
-remove_matching_packages arcolinux-rofi-git
-remove_matching_packages arcolinux-rofi-themes-git
-remove_matching_packages arcolinux-chadwm-git
-remove_matching_packages arconet-xfce
-remove_matching_packages lxappearance
 
 # Install Chadwm either when the marker file exists or when this script is
 # launched directly by name.

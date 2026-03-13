@@ -32,7 +32,7 @@ log_section "Running $(script_name)"
 #
 ##################################################################################################################
 
-export DEBUG=true
+export DEBUG=false
 
 readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 readonly PERSONAL_DIR="${SCRIPT_DIR}/Personal"
