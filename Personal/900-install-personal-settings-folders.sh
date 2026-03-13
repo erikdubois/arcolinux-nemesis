@@ -36,6 +36,7 @@ create_personal_directories() {
         "${HOME}/.config/fish"
         "${HOME}/.config/obs-studio"
         "${HOME}/.config/neofetch"
+        "${HOME}/.config/flameshot"
         "${HOME}/DATA"
         "${HOME}/Insync"
         "${HOME}/Projects"
@@ -61,6 +62,11 @@ install_personal_settings() {
     cp -v \
         "${PROJECT_DIR}/Personal/settings/sublimetext/Preferences.sublime-settings" \
         "${HOME}/.config/sublime-text/Packages/User/Preferences.sublime-settings"
+
+    log_subsection "Flameshot settings"
+    cp -v \
+        "${PROJECT_DIR}/Personal/settings/flameshot/flameshot.ini" \
+        "${HOME}/.config/flameshot/flameshot.ini"
 }
 
 configure_desktop_preferences() {
