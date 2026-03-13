@@ -201,7 +201,7 @@ run_remove_anywhere_software
 
 run_glob "${SCRIPT_DIR}/100-*"
 run_glob "${SCRIPT_DIR}/110-*"
-run_glob "${SCRIPT_DIR}/120-*"
+#run_glob "${SCRIPT_DIR}/120-*"
 run_glob "${SCRIPT_DIR}/130-*"
 run_glob "${SCRIPT_DIR}/140-*"
 run_glob "${SCRIPT_DIR}/150-*"

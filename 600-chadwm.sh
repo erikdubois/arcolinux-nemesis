@@ -63,18 +63,6 @@ install_chadwm_packages() {
     done
 }
 
-show_arcolinux_warning_if_needed() {
-    if [[ -f /etc/dev-rel ]]; then
-        log_warn "You are running this nemesis script on an ArcoLinux system
-In order to avoid package conflicts you should first run
-100-remove-software.sh to remove ArcoLinux packages.
-The ArcoLinux packages need to be replaced with the edu-packages
-from the nemesis_repo that should already be declared in
-your /etc/pacman.conf"
-        sleep 2
-    fi
-}
-
 configure_sddm_autologin() {
     local target_dir="/etc/sddm.conf.d"
     local target_file="${target_dir}/kde_settings.conf"
@@ -111,14 +99,6 @@ install_virtualbox_guest_utils_if_needed() {
         fi
     fi
 }
-
-show_arcolinux_warning_if_needed
-
-remove_matching_packages arcolinux-rofi-git
-remove_matching_packages arcolinux-rofi-themes-git
-remove_matching_packages arcolinux-chadwm-git
-remove_matching_packages arconet-xfce
-remove_matching_packages lxappearance
 
 if [[ -f /tmp/install-chadwm || "$(basename "$0")" == "600-chadwm.sh" ]]; then
     log_section "Let us install Chadwm"
