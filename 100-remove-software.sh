@@ -360,6 +360,8 @@ if grep -q "EndeavourOS" /etc/os-release; then
   remove_if_installed arc-gtk-theme-eos
   remove_if_installed eos-settings-xfce4
 
+  sudo rm /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
+
   # we will get the -git version and also paru-git
   remove_if_installed yay
 
