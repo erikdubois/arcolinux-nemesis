@@ -60,8 +60,6 @@ if grep -q "EndeavourOS" /etc/os-release; then
 	echo
 	tput sgr0
 
-	sudo pacman -R --noconfirm eos-settings-xfce4
-
 	if [ -f /etc/environment ]; then
 		echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee /etc/environment
 		echo "QT_STYLE_OVERRIDE=kvantum" | sudo tee -a /etc/environment
