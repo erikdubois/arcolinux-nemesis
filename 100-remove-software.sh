@@ -357,6 +357,7 @@ if grep -q "EndeavourOS" /etc/os-release; then
   remove_if_installed firewall-applet
   remove_if_installed firewall-config
   remove_if_installed firewalld
+  remove_if_installed arc-gtk-theme-eos
   remove_if_installed eos-settings-xfce4
 
   # we will get the -git version and also paru-git
