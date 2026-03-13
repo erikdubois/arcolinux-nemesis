@@ -1,5 +1,8 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
+
+log_section "Running $(script_name)"
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -9,96 +12,80 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
-##################################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+create_personal_directories() {
+    log_section "Personal directories to create"
 
-##################################################################################################################################
+    sudo mkdir -p /etc/skel/.config
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
+    local dirs=(
+        "${HOME}/.bin"
+        "${HOME}/.fonts"
+        "${HOME}/.icons"
+        "${HOME}/.themes"
+        "${HOME}/.local/share/icons"
+        "${HOME}/.local/share/themes"
+        "${HOME}/.local/share/applications"
+        "${HOME}/.config"
+        "${HOME}/.config/xfce4"
+        "${HOME}/.config/autostart"
+        "${HOME}/.config/xfce4/xfconf"
+        "${HOME}/.config/gtk-3.0"
+        "${HOME}/.config/gtk-4.0"
+        "${HOME}/.config/variety"
+        "${HOME}/.config/fish"
+        "${HOME}/.config/obs-studio"
+        "${HOME}/.config/neofetch"
+        "${HOME}/DATA"
+        "${HOME}/Insync"
+        "${HOME}/Projects"
+        "${HOME}/SHARED"
+        "${HOME}/.config/sublime-text/Packages/User"
+    )
 
-##################################################################################################################################
+    local dir
+    for dir in "${dirs[@]}"; do
+        mkdir -p "${dir}"
+    done
+}
 
-echo "########################################################################"
-echo "################### Personal directories to create"
-echo "########################################################################"
-tput sgr0
+install_personal_settings() {
+    log_section "Personal settings to install - any OS"
 
-[ -d /etc/skel/.config ] || sudo mkdir -p /etc/skel/.config
+    log_subsection "Brave no gnome-keyring popup"
+    cp -v \
+        "${PROJECT_DIR}/Personal/settings/brave/brave-browser.desktop" \
+        "${HOME}/.local/share/applications/brave-browser.desktop"
 
-[ -d $HOME"/.bin" ] || mkdir -p $HOME"/.bin"
-[ -d $HOME"/.fonts" ] || mkdir -p $HOME"/.fonts"
-[ -d $HOME"/.icons" ] || mkdir -p $HOME"/.icons"
-[ -d $HOME"/.themes" ] || mkdir -p $HOME"/.themes"
-[ -d $HOME"/.local/share/icons" ] || mkdir -p $HOME"/.local/share/icons"
-[ -d $HOME"/.local/share/themes" ] || mkdir -p $HOME"/.local/share/themes"
-[ -d $HOME"/.local/share/applications" ] || mkdir -p $HOME"/.local/share/applications"
-[ -d $HOME"/.config" ] || mkdir -p $HOME"/.config"
-[ -d $HOME"/.config/xfce4" ] || mkdir -p $HOME"/.config/xfce4"
-[ -d $HOME"/.config/autostart" ] || mkdir -p $HOME"/.config/autostart"
-[ -d $HOME"/.config/xfce4/xfconf" ] || mkdir -p $HOME"/.config/xfce4/xfconf"
-[ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
-[ -d $HOME"/.config/gtk-4.0" ] || mkdir -p $HOME"/.config/gtk-4.0"
-[ -d $HOME"/.config/variety" ] || mkdir -p $HOME"/.config/variety"
-[ -d $HOME"/.config/fish" ] || mkdir -p $HOME"/.config/fish"
-[ -d $HOME"/.config/obs-studio" ] || mkdir -p $HOME"/.config/obs-studio"
-[ -d $HOME"/.config/neofetch" ] || mkdir -p $HOME"/.config/neofetch"
-[ -d $HOME"/DATA" ] || mkdir -p $HOME"/DATA"
-[ -d $HOME"/Insync" ] || mkdir -p $HOME"/Insync"
-[ -d $HOME"/Projects" ] || mkdir -p $HOME"/Projects"
-[ -d $HOME"/SHARED" ] || mkdir -p $HOME"/SHARED"
+    log_subsection "Sublime Text settings"
+    cp -v \
+        "${PROJECT_DIR}/Personal/settings/sublimetext/Preferences.sublime-settings" \
+        "${HOME}/.config/sublime-text/Packages/User/Preferences.sublime-settings"
+}
 
-echo
-tput setaf 2
-echo "########################################################################"
-echo "################### Personal settings to install - any OS"
-echo "########################################################################"
-tput sgr0
-echo
+configure_desktop_preferences() {
+    log_subsection "Blueberry symbolic icon setting"
 
-echo
-echo "Brave no gnome-keyring popup"
-echo
-cp  $installed_dir/settings/brave/brave-browser.desktop $HOME/.local/share/applications/brave-browser.desktop
-echo
+    if command -v gsettings >/dev/null 2>&1; then
+        gsettings set org.blueberry use-symbolic-icons false
+    else
+        log_warn "gsettings not found - skipping Blueberry symbolic icon setting"
+    fi
+}
 
-echo
-echo "Sublime text settings"
-echo
-[ -d $HOME"/.config/sublime-text/Packages/User" ] || mkdir -p $HOME"/.config/sublime-text/Packages/User"
-cp  $installed_dir/settings/sublimetext/Preferences.sublime-settings $HOME/.config/sublime-text/Packages/User/Preferences.sublime-settings
-echo
+change_shell_to_fish() {
+    log_subsection "Changing shell to fish"
 
-echo "Blueberry symbolic link"
-echo
-#uncommenting so that we see the bluetooth icon in our toolbars
-gsettings set org.blueberry use-symbolic-icons false
+    if command -v fish >/dev/null 2>&1; then
+        sudo chsh "${USER}" -s /bin/fish
+    else
+        log_warn "fish is not installed - skipping shell change"
+    fi
+}
 
-echo "Tofish we go"
-echo
-sudo chsh $USER -s /bin/fish
+create_personal_directories
+install_personal_settings
+configure_desktop_preferences
+change_shell_to_fish
 
-echo
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
-echo
+log_subsection "$(script_name) done"

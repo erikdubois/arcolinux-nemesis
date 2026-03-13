@@ -1,5 +1,8 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
+
+log_section "Running $(script_name)"
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -9,50 +12,15 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
-##################################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+apply_plasma_specific_settings() {
+    if [[ ! -f /usr/bin/startplasma-x11 ]]; then
+        return 0
+    fi
 
-##################################################################################################################################
+    log_section "Plasma specific"
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
+    log_subsection "$(script_name) done"
+}
 
-##################################################################################################################################
-
-if [ -f /usr/bin/startplasma-x11 ]; then
-
-	echo
-	tput setaf 2
-	echo "########################################################################"
-	echo "################### Plasma specific"
-	echo "########################################################################"
-	tput sgr0
-	echo
-
-	echo
-	tput setaf 6
-	echo "##############################################################"
-	echo "###################  $(basename $0) done"
-	echo "##############################################################"
-	tput sgr0
-	echo
-
-fi
-
+apply_plasma_specific_settings

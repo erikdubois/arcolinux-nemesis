@@ -1,5 +1,8 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
+
+log_section "Running $(script_name)"
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -9,779 +12,408 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
-##################################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
-##################################################################################################################################
+log_section "Start of the removal process"
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
+log_warn "Move configs for all - backup"
 
-##################################################################################################################################
+[[ -f /etc/skel/.bashrc-nemesis ]] || [[ ! -f /etc/skel/.bashrc ]] || sudo mv -v /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
+[[ -f /etc/skel/.zshrc-nemesis ]] || [[ ! -f /etc/skel/.zshrc ]] || sudo mv -v /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
 
-remove_if_installed() {
-    for pattern in "$@"; do
-        # Find all installed packages that match the pattern (exact + variants)
-        matches=$(pacman -Qq | grep "^${pattern}$\|^${pattern}-")
-        
-        if [ -n "$matches" ]; then
-            for pkg in $matches; do
-                echo "Removing package: $pkg"
-                sudo pacman -R --noconfirm "$pkg"
-            done
-        else
-            echo "No packages matching '$pattern' are installed."
+log_warn "Removing the driver for xf86-video-vmware if possible"
+
+if command -v systemd-detect-virt >/dev/null 2>&1; then
+    if ! systemd-detect-virt | grep -q "oracle"; then
+        if pacman -Qi xf86-video-vmware >/dev/null 2>&1; then
+            sudo pacman -Rs --noconfirm xf86-video-vmware
         fi
-    done
-}
-
-remove_if_installed_deps() {
-    for pattern in "$@"; do
-        # Find all installed packages that match the pattern (exact + variants)
-        matches=$(pacman -Qq | grep "^${pattern}$\|^${pattern}-")
-        
-        if [ -n "$matches" ]; then
-            for pkg in $matches; do
-                echo "Removing package: $pkg"
-                sudo pacman -Rns --noconfirm "$pkg"
-            done
-        else
-            echo "No packages matching '$pattern' are installed."
-        fi
-    done
-}
-
-
-##################################################################################################################################
-
-echo
-tput setaf 2
-echo "##############################################################"
-echo "################### Start of the removal process"
-echo "##############################################################"
-tput sgr0
-echo
-
-echo
-tput setaf 3
-echo "##############################################################"
-echo "################### Move configs for all - backup"
-echo "##############################################################"
-tput sgr0
-echo
-
-# always put the current .bashrc away
-if [ -f /etc/skel/.bashrc-nemesis ]; then
-  # Do nothing because backup already exists
-  :
-elif [ -f /etc/skel/.bashrc ]; then
-  sudo mv -v /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
-fi
-
-# always put the current .zshrc away
-if [ -f /etc/skel/.zshrc-nemesis ]; then
-  # Do nothing because backup already exists
-  :
-elif [ -f /etc/skel/.zshrc ]; then
-  sudo mv -v /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
-fi
-
-echo
-tput setaf 3
-echo "########################################################################"
-echo "######## Removing the driver for xf86-video-vmware if possible"
-echo "########################################################################"
-tput sgr0
-echo
-
-if command -v systemd-detect-virt &> /dev/null; then
-
-  if ! systemd-detect-virt | grep -q "oracle"; then
-    if pacman -Qi xf86-video-vmware &> /dev/null; then
-      sudo pacman -Rs xf86-video-vmware --noconfirm
     fi
-  fi
-
 fi
 
-# when NOT on KIRO - remove
 if ! grep -q "kiro" /etc/os-release; then
+    log_warn "Removing software"
 
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "############### Removing software"
-  echo "##############################################################"
-  tput sgr0
-  echo
+    remove_matching_packages rofi-lbonn-wayland
+    remove_matching_packages rofi-lbonn-wayland-git
+    remove_matching_packages neofetch
+    remove_matching_packages fastfetch
+    remove_matching_packages yay
+    remove_matching_packages paru
+    remove_matching_packages picom
+    remove_matching_packages lxappearance
 
-  remove_if_installed rofi-lbonn-wayland
-  remove_if_installed rofi-lbonn-wayland-git
-  remove_if_installed neofetch
-  remove_if_installed fastfetch
-  remove_if_installed yay
-  remove_if_installed paru
-  remove_if_installed picom
-  remove_if_installed lxappearance
+    root_fs="$(findmnt -no FSTYPE /)"
 
-  root_fs=$(findmnt -no FSTYPE /)
+    case "${root_fs}" in
+        xfs)
+            remove_matching_packages btrfs-progs
+            remove_matching_packages jfsutils
+            ;;
+        btrfs)
+            remove_matching_packages xfsprogs
+            remove_matching_packages jfsutils
+            ;;
+        jfs)
+            remove_matching_packages xfsprogs
+            remove_matching_packages btrfs-progs
+            ;;
+        *)
+            remove_matching_packages xfsprogs
+            remove_matching_packages btrfs-progs
+            remove_matching_packages jfsutils
+            ;;
+    esac
 
-  case "$root_fs" in
-    xfs)
-      remove_if_installed btrfs-progs
-      remove_if_installed jfsutils
-      ;;
-    btrfs)
-      remove_if_installed xfsprogs
-      remove_if_installed jfsutils
-      ;;
-    jfs)
-      remove_if_installed xfsprogs
-      remove_if_installed btrfs-progs
-      ;;
-    *)
-      remove_if_installed xfsprogs
-      remove_if_installed btrfs-progs
-      remove_if_installed jfsutils
-      ;;
-  esac
-  remove_if_installed mkinitcpio-nfs-utils
-  remove_if_installed xfburn
-  remove_if_installed parole
+    remove_matching_packages mkinitcpio-nfs-utils
+    remove_matching_packages xfburn
+    remove_matching_packages parole
+    remove_matching_packages_deps pamac-git
 
-  remove_if_installed_deps pamac-git
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "################### Software removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_warn "Software removed"
 fi
 
-# when on ArcoLinux or Arch Linux based with arcolinux packages
-  echo
-  tput setaf 3
-  echo "########################################################################"
-  echo "######## Launch of get-me-started - kernels - conkys - broadcom/realtek"
-  echo "########################################################################"
-  tput sgr0
-  echo
-  sh get-me-started
+log_warn "Launch of get-me-started - kernels - conkys - broadcom/realtek"
+[[ -f "${SCRIPT_DIR}/get-me-started" ]] && bash "${SCRIPT_DIR}/get-me-started"
 
-  echo
-  tput setaf 3
-  echo "########################################################################"
-  echo "######## Removing ArcoLinux packages"
-  echo "########################################################################"
-  tput sgr0
-  echo
+log_warn "Removing ArcoLinux packages"
 
-  remove_if_installed arcolinux-pipemenus-git
-  remove_if_installed arcolinux-meta-sddm-themes
+remove_matching_packages arcolinux-pipemenus-git
+remove_matching_packages arcolinux-meta-sddm-themes
 
-  remove_if_installed a-candy-beauty-icon-theme-git
-  remove_if_installed adobe-source-han-sans-cn-fonts
-  remove_if_installed adobe-source-han-sans-jp-fonts
-  remove_if_installed adobe-source-han-sans-kr-fonts
-  remove_if_installed archlinux-kernel-manager
-  remove_if_installed arcolinux-alacritty-git
-  remove_if_installed arcolinux-app-glade-git
-  remove_if_installed arcolinux-arc-dawn-git
-  remove_if_installed arcolinux-arc-kde
-  remove_if_installed arcolinux-bin-git
-  remove_if_installed arcolinux-btop-git
-  remove_if_installed arcolinux-bootloader-systemd-boot-git
-  remove_if_installed arcolinux-common-git
-  remove_if_installed arcolinux-config-all-desktops-git
-  remove_if_installed arcolinux-cron-git
-  remove_if_installed arcolinux-dconf-all-desktops-git
-  remove_if_installed arcolinux-desktop-trasher-git
-  remove_if_installed arcolinux-faces-git
-  remove_if_installed arcolinux-fastfetch-git
-  remove_if_installed arcolinux-fish-git
-  remove_if_installed arcolinux-fonts-git
-  remove_if_installed arcolinux-gtk-sardi-arc-git
-  remove_if_installed arcolinux-gtk-surfn-arc-git
-  remove_if_installed arcolinux-hblock-git
-  remove_if_installed arcolinux-hyfetch-git
-  remove_if_installed arcolinux-kvantum-git
-  remove_if_installed arcolinux-local-applications-all-hide-git
-  remove_if_installed arcolinux-local-applications-git
-  remove_if_installed arcolinux-local-xfce4-git
-  remove_if_installed arcolinux-logo-git
-  remove_if_installed arcolinux-meta-log
-  remove_if_installed arcolinux-neofetch-git
-  remove_if_installed arcolinux-openbox-themes-git
-  remove_if_installed arcolinux-pacman-git
-  remove_if_installed arcolinux-paleofetch-git
-  remove_if_installed arcolinux-paru-git
-  remove_if_installed arcolinux-plank-git
-  remove_if_installed arcolinux-plank-themes-git
-  remove_if_installed arcolinux-polybar-git
-  remove_if_installed arcolinux-powermenu-git
-  remove_if_installed arcolinux-qt5-git
-  remove_if_installed arcolinux-reflector-simple-git
-  remove_if_installed arcolinux-rofi-git
-  remove_if_installed arcolinux-rofi-themes-git
-  remove_if_installed arcolinux-root-git
-  remove_if_installed arcolinux-sddm-simplicity-git
-  remove_if_installed arcolinux-system-config-git
-  remove_if_installed arcolinuxd-system-config-git
-  remove_if_installed arcolinux-systemd-services-git
-  remove_if_installed arcolinux-teamviewer
-  remove_if_installed arcolinux-termite-themes-git
-  remove_if_installed arcolinux-variety-autostart-git
-  remove_if_installed arcolinux-volumeicon-git
-  remove_if_installed arcolinux-wallpapers-git
-  remove_if_installed arcolinux-wallpapers-candy-git
-  remove_if_installed arcolinux-welcome-app-git
-  remove_if_installed arcolinuxd-welcome-app-git
-  remove_if_installed arcolinux-xfce-panel-profiles-git
-  remove_if_installed arcolinux-zsh-git
-  remove_if_installed arconet-variety-config
-  remove_if_installed arcopro-wallpapers
-  remove_if_installed arconet-wallpapers
-  remove_if_installed arconet-xfce
-  remove_if_installed sofirem-git
+remove_matching_packages a-candy-beauty-icon-theme-git
+remove_matching_packages adobe-source-han-sans-cn-fonts
+remove_matching_packages adobe-source-han-sans-jp-fonts
+remove_matching_packages adobe-source-han-sans-kr-fonts
+remove_matching_packages archlinux-kernel-manager
+remove_matching_packages arcolinux-alacritty-git
+remove_matching_packages arcolinux-app-glade-git
+remove_matching_packages arcolinux-arc-dawn-git
+remove_matching_packages arcolinux-arc-kde
+remove_matching_packages arcolinux-bin-git
+remove_matching_packages arcolinux-btop-git
+remove_matching_packages arcolinux-bootloader-systemd-boot-git
+remove_matching_packages arcolinux-common-git
+remove_matching_packages arcolinux-config-all-desktops-git
+remove_matching_packages arcolinux-cron-git
+remove_matching_packages arcolinux-dconf-all-desktops-git
+remove_matching_packages arcolinux-desktop-trasher-git
+remove_matching_packages arcolinux-faces-git
+remove_matching_packages arcolinux-fastfetch-git
+remove_matching_packages arcolinux-fish-git
+remove_matching_packages arcolinux-fonts-git
+remove_matching_packages arcolinux-gtk-sardi-arc-git
+remove_matching_packages arcolinux-gtk-surfn-arc-git
+remove_matching_packages arcolinux-hblock-git
+remove_matching_packages arcolinux-hyfetch-git
+remove_matching_packages arcolinux-kvantum-git
+remove_matching_packages arcolinux-local-applications-all-hide-git
+remove_matching_packages arcolinux-local-applications-git
+remove_matching_packages arcolinux-local-xfce4-git
+remove_matching_packages arcolinux-logo-git
+remove_matching_packages arcolinux-meta-log
+remove_matching_packages arcolinux-neofetch-git
+remove_matching_packages arcolinux-openbox-themes-git
+remove_matching_packages arcolinux-pacman-git
+remove_matching_packages arcolinux-paleofetch-git
+remove_matching_packages arcolinux-paru-git
+remove_matching_packages arcolinux-plank-git
+remove_matching_packages arcolinux-plank-themes-git
+remove_matching_packages arcolinux-polybar-git
+remove_matching_packages arcolinux-powermenu-git
+remove_matching_packages arcolinux-qt5-git
+remove_matching_packages arcolinux-reflector-simple-git
+remove_matching_packages arcolinux-rofi-git
+remove_matching_packages arcolinux-rofi-themes-git
+remove_matching_packages arcolinux-root-git
+remove_matching_packages arcolinux-sddm-simplicity-git
+remove_matching_packages arcolinux-system-config-git
+remove_matching_packages arcolinuxd-system-config-git
+remove_matching_packages arcolinux-systemd-services-git
+remove_matching_packages arcolinux-teamviewer
+remove_matching_packages arcolinux-termite-themes-git
+remove_matching_packages arcolinux-variety-autostart-git
+remove_matching_packages arcolinux-volumeicon-git
+remove_matching_packages arcolinux-wallpapers-git
+remove_matching_packages arcolinux-wallpapers-candy-git
+remove_matching_packages arcolinux-welcome-app-git
+remove_matching_packages arcolinuxd-welcome-app-git
+remove_matching_packages arcolinux-xfce-panel-profiles-git
+remove_matching_packages arcolinux-zsh-git
+remove_matching_packages arconet-variety-config
+remove_matching_packages arcopro-wallpapers
+remove_matching_packages arconet-wallpapers
+remove_matching_packages arconet-xfce
+remove_matching_packages sofirem-git
 
-  remove_if_installed simplicity-sddm-theme-git
+remove_matching_packages simplicity-sddm-theme-git
 
-  if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
-    remove_if_installed arcolinux-plasma-keybindings-git
-    remove_if_installed arcolinux-plasma-servicemenus-git
-    remove_if_installed arcolinux-plasma-theme-candy-beauty-arc-dark-git
-    remove_if_installed arcolinux-plasma-theme-candy-beauty-nordic-git
-    remove_if_installed arcolinux-gtk-surfn-plasma-dark-git
-  fi
-
-  echo
-  tput setaf 3
-  echo "########################################################################"
-  echo "######## Removing 3th party packages on ArcoLinux"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  remove_if_installed bibata-cursor-theme-bin
-  remove_if_installed mintstick-git
-  remove_if_installed nomacs-qt6-git
-  remove_if_installed rate-mirrors-bin
-  remove_if_installed xfce4-artwork
-
-  remove_if_installed 
-
-  if pacman -Q fastfetch &>/dev/null; then
-    sudo pacman -R --noconfirm fastfetch &>/dev/null
-  fi
-
-  tput setaf 3
-  echo "##############################################################"
-  echo "################### Software removal for ArcoLinux done"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
-
-# when on Arch Linux - remove conflicting files
-if grep -q "Arch Linux" /etc/os-release && [ ! -e /bootloader ]; then
-
-  echo
-  tput setaf 3
-  echo "########################################################################"
-  echo "######## Nothing to do - we are on Arch Linux"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
+if [[ -f /usr/share/wayland-sessions/plasma.desktop ]]; then
+    remove_matching_packages arcolinux-plasma-keybindings-git
+    remove_matching_packages arcolinux-plasma-servicemenus-git
+    remove_matching_packages arcolinux-plasma-theme-candy-beauty-arc-dark-git
+    remove_matching_packages arcolinux-plasma-theme-candy-beauty-nordic-git
+    remove_matching_packages arcolinux-gtk-surfn-plasma-dark-git
 fi
 
-# when on Ezarcher - remove
+log_warn "Removing 3rd party packages on ArcoLinux"
+
+remove_matching_packages bibata-cursor-theme-bin
+remove_matching_packages mintstick-git
+remove_matching_packages nomacs-qt6-git
+remove_matching_packages rate-mirrors-bin
+remove_matching_packages xfce4-artwork
+
+if pacman -Qq fastfetch 2>/dev/null | grep -qx "fastfetch"; then
+    sudo pacman -R --noconfirm fastfetch >/dev/null 2>&1
+fi
+
+log_warn "Software removal for ArcoLinux done"
+
+if grep -q "Arch Linux" /etc/os-release && [[ ! -e /bootloader ]]; then
+    log_warn "Nothing to do - we are on Arch Linux"
+fi
+
 if grep -q "ezarch" /etc/os-release; then
-
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "############### Removing software for Ezarch"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
-  # I do not want the firewall
-  sudo systemctl disable firewalld
-  remove_if_installed firewalld
-
-  remove_if_installed abiword
-
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "################### Software removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_warn "Removing software for Ezarch"
+    sudo systemctl disable firewalld || true
+    remove_matching_packages firewalld
+    remove_matching_packages abiword
+    log_warn "Software removed"
 fi
 
-# when on EOS - remove
 if grep -q "EndeavourOS" /etc/os-release; then
+    log_warn "Removing software for EOS"
 
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "############### Removing software for EOS"
-  echo "##############################################################"
-  tput sgr0
-  echo
+    sudo systemctl disable firewalld || true
+    remove_matching_packages firewall-applet
+    remove_matching_packages firewall-config
+    remove_matching_packages firewalld
+    remove_matching_packages arc-gtk-theme-eos
+    remove_matching_packages eos-settings-xfce4
 
-  # I do not want the firewall
-  sudo systemctl disable firewalld
-  remove_if_installed firewall-applet
-  remove_if_installed firewall-config
-  remove_if_installed firewalld
-  remove_if_installed arc-gtk-theme-eos
-  remove_if_installed eos-settings-xfce4
+    sudo rm -f /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
+    remove_matching_packages yay
 
-  sudo rm /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
-
-  # we will get the -git version and also paru-git
-  remove_if_installed yay
-
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "################### Software removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_warn "Software removed"
 fi
-
-# when on Garuda - remove conflicting files
 
 if grep -q "Garuda" /etc/os-release; then
+    log_warn "Removing btrfs pacman hooks"
+    sudo rm -f /etc/systemd/system/timers.target.wants/btrfs*
 
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "############### Removing btrfs pacman hooks"
-  echo "##############################################################"
-  tput sgr0
-  echo
-  sudo rm /etc/systemd/system/timers.target.wants/btrfs*
+    log_warn "Removing touchpad"
+    sudo rm -f /etc/X11/xorg.conf.d/30-touchpad.conf
 
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "############### Removing touchpad"
-  echo "##############################################################"
-  tput sgr0
-  echo
-  sudo rm /etc/X11/xorg.conf.d/30-touchpad.conf
+    log_warn "Removing software for Garuda"
 
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "############### Removing software for Garuda"
-  echo "##############################################################"
-  tput sgr0
-  echo
+    remove_matching_packages garuda-common-settings
+    remove_matching_packages abiword
+    remove_matching_packages audacity
+    remove_matching_packages blueman
+    remove_matching_packages celluloid
+    remove_matching_packages fastfetch
+    remove_matching_packages garuda-browser-settings
+    remove_matching_packages garuda-fish-config
+    remove_matching_packages garuda-icons
+    remove_matching_packages garuda-wallpapers
+    remove_matching_packages garuda-xfce-settings
+    remove_matching_packages geary
+    remove_matching_packages gestures
+    remove_matching_packages gtkhash
+    remove_matching_packages linux-wifi-hotspot
+    remove_matching_packages garuda-network-assistant
+    remove_matching_packages modemmanager
+    remove_matching_packages modem-manager-gui
+    remove_matching_packages networkmanager-support
+    remove_matching_packages neofetch
+    remove_matching_packages onboard
+    remove_matching_packages paru
+    remove_matching_packages pitivi
+    remove_matching_packages redshift
+    remove_matching_packages transmission-gtk
+    remove_matching_packages veracrypt
+    remove_matching_packages vim
+    remove_matching_packages vim-runtime
+    remove_matching_packages xfburn
 
-  remove_if_installed garuda-common-settings
-  
-  remove_if_installed abiword
-  remove_if_installed audacity
-  remove_if_installed blueman
-  remove_if_installed celluloid
-  remove_if_installed fastfetch
-  remove_if_installed garuda-browser-settings 
-  remove_if_installed garuda-fish-config
-  remove_if_installed garuda-icons
-  remove_if_installed garuda-wallpapers
-  remove_if_installed garuda-xfce-settings
-  remove_if_installed geary
-  remove_if_installed gestures
-  remove_if_installed gtkhash
-  remove_if_installed linux-wifi-hotspot garuda-network-assistant
-  remove_if_installed modemmanager modem-manager-gui networkmanager-support
-  remove_if_installed neofetch
-  remove_if_installed onboard
-  remove_if_installed paru
-  remove_if_installed pitivi
-  remove_if_installed redshift
-  remove_if_installed transmission-gtk
-  remove_if_installed veracrypt
-  remove_if_installed vim vim-runtime
-  remove_if_installed xfburn
-
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "################### Software on Garuda removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_section "Software on Garuda removed"
 fi
-
-# when on Archman - remove conflicting files
 
 if grep -q "Archman" /etc/os-release; then
+    log_warn "Removing software for Archman"
 
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "############### Removing software for Archman"
-  echo "##############################################################"
-  tput sgr0
+    sudo systemctl disable firewalld || true
+    remove_matching_packages firewalld
+    remove_matching_packages imagewriter
+    remove_matching_packages surfn-icons
+    remove_matching_packages grml-zsh-config
 
-  sudo systemctl disable firewalld
-  remove_if_installed firewalld
-  remove_if_installed imagewriter
-  remove_if_installed surfn-icons
-  remove_if_installed grml-zsh-config
+    sudo rm -rf /etc/skel/.config/Thunar
+    sudo rm -rf /etc/skel/.config/xfce4
 
-  sudo rm -r /etc/skel/.config/Thunar
-  sudo rm -r /etc/skel/.config/xfce4
+    sudo rm -f /etc/skel/.config/mimeapps.list
+    sudo rm -f /etc/skel/.face
+    sudo rm -f /etc/skel/.xinitrc
 
-  sudo rm /etc/skel/.config/mimeapps.list
-  sudo rm /etc/skel/.face
-  sudo rm /etc/skel/.xinitrc
+    sudo rm -f /etc/X11/xorg.conf.d/99-killX.conf
+    sudo rm -f /etc/modprobe.d/disable-evbug.conf
+    sudo rm -f /etc/modprobe.d/nobeep.conf
 
-  sudo rm /etc/X11/xorg.conf.d/99-killX.conf
-  sudo rm /etc/modprobe.d/disable-evbug.conf
-  sudo rm /etc/modprobe.d/nobeep.conf
-
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "################### Software on Archman removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_section "Software on Archman removed"
 fi
 
-
-# when on Archcraft - remove conflicting files
 if grep -q "archcraft" /etc/os-release; then
+    log_warn "Removing software for Archcraft - FREE ISO
+Choosing only BSPWM during installation"
 
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "############### Removing software for Archcraft - FREE ISO"
-  echo "############### Choosing only BSPWM during installation"
-  echo "##############################################################"
-  tput sgr0
-  echo
+    sudo rm -rf /etc/skel/.config/*
+    sudo rm -f /etc/skel/.dmrc
+    sudo rm -f /etc/skel/.face
+    sudo rm -f /etc/skel/.gtkrc-2.0
 
-  sudo rm -r /etc/skel/.config/*
-  sudo rm /etc/skel/.dmrc
-  sudo rm /etc/skel/.face
-  sudo rm /etc/skel/.gtkrc-2.0
+    remove_matching_packages archcraft-skeleton
+    remove_matching_packages archcraft-omz
+    remove_matching_packages archcraft-openbox
+    remove_matching_packages archcraft-bspwm
+    remove_matching_packages archcraft-gtk-theme-arc
+    remove_matching_packages archcraft-config-qt
+    remove_matching_packages archcraft-neofetch
+    remove_matching_packages archcraft-arandr
+    remove_matching_packages simplescreenrecorder
 
-  remove_if_installed archcraft-skeleton
-  remove_if_installed archcraft-omz
-  remove_if_installed archcraft-skeleton
-  remove_if_installed archcraft-openbox
-  remove_if_installed archcraft-bspwm
-  remove_if_installed archcraft-gtk-theme-arc
-  remove_if_installed archcraft-config-qt
-  remove_if_installed archcraft-neofetch
-  remove_if_installed archcraft-arandr
-  remove_if_installed simplescreenrecorder
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "################### Software on Archcraft removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_section "Software on Archcraft removed"
 fi
 
-# when on BigLinux - remove conflicting files
 if grep -q "BigLinux" /etc/os-release; then
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "####### Removing software for BigLinux"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
-  remove_if_installed big-skel
-
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "################### Software on Biglinux removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_warn "Removing software for BigLinux"
+    remove_matching_packages big-skel
+    log_section "Software on BigLinux removed"
 fi
 
-# when on RebornOS - remove conflicting files
 if grep -q "RebornOS" /etc/os-release; then
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "####### Removing software for RebornOS"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
-  sudo pacman -Rdd --noconfirm v4l-utils
-
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "################### Software on RebornOS removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_warn "Removing software for RebornOS"
+    sudo pacman -Rdd --noconfirm v4l-utils || true
+    log_section "Software on RebornOS removed"
 fi
-
-# when on CachyOS - remove conflicting files
 
 if grep -q "cachyos" /etc/os-release; then
+    log_warn "Removing software for CachyOS"
 
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "############### Removing software for CachyOS"
-  echo "##############################################################"
-  tput sgr0
-  echo
+    remove_matching_packages cachyos-kernel-manager
+    remove_matching_packages cachyos-kde-settings
+    remove_matching_packages cachyos-fish-config
+    remove_matching_packages btrfs-progs
+    remove_matching_packages cachy-browser
+    remove_matching_packages fastfetch
+    remove_matching_packages cachyos-alacritty-config
+    remove_matching_packages cachyos-hello
+    remove_matching_packages cachyos-micro-settings
+    remove_matching_packages cachyos-packageinstaller
+    remove_matching_packages cachyos-rate-mirrors
+    remove_matching_packages cachyos-wallpapers
+    remove_matching_packages cachyos-zsh-config
+    remove_matching_packages octopi
+    remove_matching_packages paru
+    remove_matching_packages ufw
 
-  remove_if_installed cachyos-kernel-manager
-  remove_if_installed cachyos-kde-settings
-  remove_if_installed cachyos-fish-config
-  
-  remove_if_installed btrfs-progs
-  remove_if_installed cachy-browser
-  remove_if_installed fastfetch
-  remove_if_installed cachyos-alacritty-config
-  remove_if_installed cachyos-hello
-  remove_if_installed cachyos-micro-settings 
-  remove_if_installed cachyos-packageinstaller
-  remove_if_installed cachyos-rate-mirrors
-  remove_if_installed cachyos-wallpapers
-  remove_if_installed cachyos-zsh-config
-  remove_if_installed fastfetch
-  remove_if_installed octopi
-  remove_if_installed paru
-  remove_if_installed ufw
+    remove_matching_packages cachyos-emerald-kde-theme-git
+    remove_matching_packages cachyos-iridescent-kde
+    remove_matching_packages cachyos-nord-kde-theme-git
+    remove_matching_packages cachyos-themes-sddm
 
-  remove_if_installed cachyos-emerald-kde-theme-git
-  remove_if_installed cachyos-iridescent-kde
-  remove_if_installed cachyos-nord-kde-theme-git
-  remove_if_installed cachyos-themes-sddm
+    remove_matching_packages noto-color-emoji-fontconfig
+    remove_matching_packages noto-fonts-cjk
+    remove_matching_packages ttf-meslo-nerd
 
-  # for icons in chadwm
-  remove_if_installed noto-color-emoji-fontconfig
-  remove_if_installed noto-fonts-cjk
-  remove_if_installed ttf-meslo-nerd
-
-
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "################### Software removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_warn "Software removed"
 fi
 
-# when on Manjaro - remove conflicting files - xfce iso is default
 if grep -q "Manjaro" /etc/os-release; then
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "####### Removing software for Manjaro"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
-  remove_if_installed manjaro-xfce-settings
-
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "################### Software on Manjaro removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_warn "Removing software for Manjaro"
+    remove_matching_packages manjaro-xfce-settings
+    log_section "Software on Manjaro removed"
 fi
 
-
-# when on Artix xfce - remove conflicting files - xfce iso is default
 if grep -q "artix" /etc/os-release; then
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "####### Removing software for Artix"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
-  remove_if_installed artix-qt-presets
-  remove_if_installed artix-gtk-presets
-  remove_if_installed artix-desktop-presets
-
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "################### Software on Artix removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_warn "Removing software for Artix"
+    remove_matching_packages artix-qt-presets
+    remove_matching_packages artix-gtk-presets
+    remove_matching_packages artix-desktop-presets
+    log_section "Software on Artix removed"
 fi
 
-# when on Omarchy - remove packages and files
-if [ -f /etc/plymouth/plymouthd.conf ] && grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "####### Removing software for Omarchy"
-  echo "##############################################################"
-  tput sgr0
-  echo
+if [[ -f /etc/plymouth/plymouthd.conf ]] && grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
+    log_warn "Removing software for Omarchy"
 
-  remove_if_installed 1password-beta
-  remove_if_installed 1password-cli
-  remove_if_installed docker
-  remove_if_installed docker-buildx
-  remove_if_installed docker-compose
-  remove_if_installed gnome-calculator
-  remove_if_installed kdenlive
-  remove_if_installed lazydocker
-  remove_if_installed libreoffice-fresh
-  remove_if_installed localsend-bin
-  remove_if_installed mpv
-  remove_if_installed omarchy-chromium
-  remove_if_installed pinta
-  remove_if_installed typora
-  remove_if_installed xournalpp
-  
-  # webapps removed from .local/share/applications
+    remove_matching_packages 1password-beta
+    remove_matching_packages 1password-cli
+    remove_matching_packages docker
+    remove_matching_packages docker-buildx
+    remove_matching_packages docker-compose
+    remove_matching_packages gnome-calculator
+    remove_matching_packages kdenlive
+    remove_matching_packages lazydocker
+    remove_matching_packages libreoffice-fresh
+    remove_matching_packages localsend-bin
+    remove_matching_packages mpv
+    remove_matching_packages omarchy-chromium
+    remove_matching_packages pinta
+    remove_matching_packages typora
+    remove_matching_packages xournalpp
 
-remove_if_exists() {
-    if [ -f "$1" ]; then
-        rm "$1"
-        echo "Removed: $1"
-    else
-        echo "Already removed: $1"
-    fi
-}
+    remove_file_if_exists "$HOME/.local/share/applications/X.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/WhatsApp.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/Zoom.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/HEY.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/typora.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/Google Contacts.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/Google Messages.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/Google Photos.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/Figma.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/Docker.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/Discord.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/ChatGPT.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/Basecamp.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/brave-browser.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/YouTube.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/GitHub.desktop"
+    remove_file_if_exists "$HOME/.local/share/applications/Disk Usage.desktop"
 
-remove_if_exists "$HOME/.local/share/applications/X.desktop"
-remove_if_exists "$HOME/.local/share/applications/WhatsApp.desktop"
-remove_if_exists "$HOME/.local/share/applications/Zoom.desktop"
-remove_if_exists "$HOME/.local/share/applications/HEY.desktop"
-remove_if_exists "$HOME/.local/share/applications/typora.desktop"
-remove_if_exists "$HOME/.local/share/applications/Google Contacts.desktop"
-remove_if_exists "$HOME/.local/share/applications/Google Messages.desktop"
-remove_if_exists "$HOME/.local/share/applications/Google Photos.desktop"
-remove_if_exists "$HOME/.local/share/applications/Figma.desktop"
-remove_if_exists "$HOME/.local/share/applications/Docker.desktop"
-remove_if_exists "$HOME/.local/share/applications/Discord.desktop"
-remove_if_exists "$HOME/.local/share/applications/ChatGPT.desktop"
-remove_if_exists "$HOME/.local/share/applications/Basecamp.desktop"
-remove_if_exists "$HOME/.local/share/applications/brave-browser.desktop"
-remove_if_exists "$HOME/.local/share/applications/YouTube.desktop"
-remove_if_exists "$HOME/.local/share/applications/GitHub.desktop"
-remove_if_exists "$HOME/.local/share/applications/Disk Usage.desktop"
-
-
-  echo
-  tput setaf 2
-  echo "##############################################################"
-  echo "################### Software on Omarchy removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_section "Software on Omarchy removed"
 fi
 
+remove_matching_packages mpv
+remove_matching_packages clapper
 
-# when on Arcris - remove packages and files
-remove_if_installed mpv
-remove_if_installed clapper
+if grep -q "Liya" /etc/os-release; then
+    log_warn "We are on a Liya iso"
 
+    remove_matching_packages_deps timeshift-autosnap
+    remove_matching_packages_deps timeshift
+    remove_matching_packages_deps pika-backup
+    remove_matching_packages_deps deluge-gtk
+    remove_matching_packages_deps celluloid
+    remove_matching_packages_deps geary
+    remove_matching_packages_deps onlyoffice-bin
+    remove_matching_packages_deps exaile
+    remove_matching_packages_deps pamac
+    remove_matching_packages_deps newelle
+    remove_matching_packages_deps gufw
 
-# when on liya
-if grep -q "Liya" /etc/os-release ; then 
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "############### We are on an Liya iso"
-  echo "########################################################################"
-  echo
-  tput sgr0
-
-  remove_if_installed_deps timeshift-autosnap
-  remove_if_installed_deps timeshift
-  remove_if_installed_deps pika-backup
-  remove_if_installed_deps deluge-gtk
-  remove_if_installed_deps celluloid
-  remove_if_installed_deps geary
-  remove_if_installed_deps onlyoffice-bin
-  remove_if_installed_deps exaile
-  remove_if_installed_deps pamac
-  remove_if_installed_deps newelle
-  remove_if_installed_deps gufw
-
-  sudo rm /etc/skel/.config/mimeapps.list
-  sudo rm /etc/X11/xorg.conf.d/30-touchpad.conf
-  sudo mv /etc/skel/.config/fish/config.fish /etc/skel/.config/fish/config.fish.liya
-  sudo rm /etc/skel/.config/autostart/xfce4-clipman-plugin-autostart.desktop
-
+    sudo rm -f /etc/skel/.config/mimeapps.list
+    sudo rm -f /etc/X11/xorg.conf.d/30-touchpad.conf
+    sudo mv /etc/skel/.config/fish/config.fish /etc/skel/.config/fish/config.fish.liya
+    sudo rm -f /etc/skel/.config/autostart/xfce4-clipman-plugin-autostart.desktop
 fi
 
+if grep -q "LinuxHub" /etc/os-release; then
+    log_warn "We are on a LinuxHub Prime iso"
 
-# when on LinuxHub Prime
-if grep -q "LinuxHub" /etc/os-release ; then 
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "############### We are on an LinuxHub Prime iso"
-  echo "########################################################################"
-  echo
-  tput sgr0
-
-  remove_if_installed_deps waybar
-  remove_if_installed_deps gpsd
-  remove_if_installed_deps pika-backup
-
+    remove_matching_packages_deps waybar
+    remove_matching_packages_deps gpsd
+    remove_matching_packages_deps pika-backup
 fi
-echo
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
-echo
+
+log_subsection "$(script_name) done"

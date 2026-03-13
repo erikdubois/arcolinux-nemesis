@@ -1,5 +1,8 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
+
+log_section "Running $(script_name)"
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -9,441 +12,138 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
-##################################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
-##################################################################################################################################
+restore_pacman_conf() {
+    if [[ -f /etc/pacman.conf.nemesis ]]; then
+        copy_file /etc/pacman.conf.nemesis /etc/pacman.conf
+    else
+        log_warn "/etc/pacman.conf.nemesis not found - cannot restore pacman.conf"
+    fi
+}
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
+append_nemesis_repo() {
+    sudo tee -a /etc/pacman.conf >/dev/null <<'EOF'
 
-##################################################################################################################################
-
-if grep -q "artix" /etc/os-release; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on Artix"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-# Define the lines to append
-config_block="
 [nemesis_repo]
 SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
+Server = https://erikdubois.github.io/$repo/$arch
+EOF
+}
+
+append_chaotic_repo() {
+    sudo tee -a /etc/pacman.conf >/dev/null <<'EOF'
 
 [chaotic-aur]
 SigLevel = Required DatabaseOptional
 Include = /etc/pacman.d/chaotic-mirrorlist
-"
+EOF
+}
 
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
+configure_repos() {
+    local distro_name="$1"
+    local include_chaotic="$2"
 
-  echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
+    log_section "We are on ${distro_name}"
 
+    restore_pacman_conf
+    append_nemesis_repo
+
+    if [[ "${include_chaotic}" == "true" ]]; then
+        append_chaotic_repo
+        echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
+    else
+        echo "Repository (nemesis) added to /etc/pacman.conf"
+    fi
+}
+
+handle_archbang() {
+    log_section "We are on ArchBang"
+    echo "Making backups of important files to start openbox"
+
+    if [[ -f "${HOME}/.bash_profile" && ! -f "${HOME}/.bash_profile_nemesis" ]]; then
+        cp -vf "${HOME}/.bash_profile" "${HOME}/.bash_profile_nemesis"
+    fi
+
+    if [[ -f "${HOME}/.xinitrc" && ! -f "${HOME}/.xinitrc-nemesis" ]]; then
+        cp -vf "${HOME}/.xinitrc" "${HOME}/.xinitrc-nemesis"
+    fi
+
+    mkdir -p "${HOME}/.bin"
+
+    if [[ -f "/home/${USER}/AB_Scripts/startpanel" ]]; then
+        cp "/home/${USER}/AB_Scripts/startpanel" "${HOME}/.bin/startpanel"
+    else
+        log_warn "File not found: /home/${USER}/AB_Scripts/startpanel"
+    fi
+
+    echo "Getting our mirrorlist in"
+    copy_file "${SCRIPT_DIR}/mirrorlist" /etc/pacman.d/mirrorlist
+
+    echo
+    echo "Change from xz to zstd in mkinitcpio"
+    echo
+
+    sudo sed -i 's/COMPRESSION="xz"/COMPRESSION="zstd"/g' /etc/mkinitcpio.conf
+    sudo mkinitcpio -P
+}
+
+handle_omarchy() {
+    if [[ -f /etc/plymouth/plymouthd.conf ]] && grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
+        configure_repos "OMARCHY" "true"
+    fi
+}
+
+
+if grep -q "artix" /etc/os-release; then
+    configure_repos "Artix" "true"
 fi
 
 if grep -q "rebornos" /etc/os-release; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on RebornOS"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-# Define the lines to append
-config_block="
-[nemesis_repo]
-SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
-
-[chaotic-aur]
-SigLevel = Required DatabaseOptional
-Include = /etc/pacman.d/chaotic-mirrorlist
-"
-
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
-
-  echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
-
+    configure_repos "RebornOS" "true"
 fi
 
 if grep -q "archcraft" /etc/os-release; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on Archcraft"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-# Define the lines to append
-config_block="
-[nemesis_repo]
-SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
-
-[chaotic-aur]
-SigLevel = Required DatabaseOptional
-Include = /etc/pacman.d/chaotic-mirrorlist
-"
-
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
-
-  echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
-
+    configure_repos "Archcraft" "true"
 fi
 
 if grep -q "CachyOS" /etc/os-release; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on Cachyos"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-# Define the lines to append
-config_block="
-[nemesis_repo]
-SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
-
-[chaotic-aur]
-SigLevel = Required DatabaseOptional
-Include = /etc/pacman.d/chaotic-mirrorlist
-"
-
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
-
-  echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
-
+    configure_repos "CachyOS" "true"
 fi
 
-
 if grep -q "Manjaro" /etc/os-release; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on Manjaro"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-# Define the lines to append
-config_block="
-[nemesis_repo]
-SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
-
-[chaotic-aur]
-SigLevel = Required DatabaseOptional
-Include = /etc/pacman.d/chaotic-mirrorlist
-"
-
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
-
-  echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
-
+    configure_repos "Manjaro" "true"
 fi
 
 if grep -q "Garuda" /etc/os-release; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on Garuda"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-# Define the lines to append
-config_block="
-[nemesis_repo]
-SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
-"
-
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
-
-  echo "Repository (nemesis) added to /etc/pacman.conf"
-
+    configure_repos "Garuda" "false"
 fi
 
 if grep -q "ArchBang" /etc/os-release; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on ArchBang"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  echo "Making backups of important files to start openbox"
-
-  if [ ! -f $HOME/.bash_profile_nemesis ]; then
-    cp -vf $HOME/.bash_profile $HOME/.bash_profile_nemesis
-  fi
-
-  if [ ! -f $HOME/.xinitrc-nemesis ]; then
-    cp -vf $HOME/.xinitrc $HOME/.xinitrc-nemesis
-  fi
-  if [ ! -d "$HOME/.bin" ]; then
-    mkdir "$HOME/.bin"
-  fi
-  cp "/home/$USER/AB_Scripts/startpanel" "$HOME/.bin/startpanel"
-
-
-  echo "Getting our mirrorlist in"
-  sudo cp mirrorlist /etc/pacman.d/mirrorlist
-
-  echo
-  echo "Change from xz to zstd in mkinitcpio"
-  echo
-  FIND="COMPRESSION=\"xz\""
-  REPLACE="COMPRESSION=\"zstd\""
-  sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
-  sudo mkinitcpio -P
-
-fi
-
-if [[ -f /etc/plymouth/plymouthd.conf ]]; then
-  if grep -q "omarchy" /etc/plymouth/plymouthd.conf; then
-
-    echo
-    tput setaf 2
-    echo "########################################################################"
-    echo "################### We are on OMARCHY"
-    echo "########################################################################"
-    tput sgr0
-    echo
-
-    # putting back the original pacman.conf
-    sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-  # Define the lines to append
-  config_block="
-  [nemesis_repo]
-  SigLevel = Never
-  Server = https://erikdubois.github.io/\$repo/\$arch
-
-  [chaotic-aur]
-  SigLevel = Required DatabaseOptional
-  Include = /etc/pacman.d/chaotic-mirrorlist
-  "
-
-    # Append to /etc/pacman.conf
-    echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
-
-    echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
-
-  fi
+    handle_archbang
 fi
 
 if grep -q "Liya" /etc/os-release; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on Liya"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-# Define the lines to append
-config_block="
-[nemesis_repo]
-SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
-"
-
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
-
-  echo "Repository (nemesis) added to /etc/pacman.conf"
-
+    configure_repos "Liya" "false"
 fi
-
 
 if grep -q "Berserk" /etc/os-release; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on Berserk"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-# Define the lines to append
-config_block="
-[nemesis_repo]
-SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
-"
-
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
-
-  echo "Repository (nemesis) added to /etc/pacman.conf"
-
+    configure_repos "Berserk" "false"
 fi
-
 
 if grep -q "Prism" /etc/os-release; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on PrismLinux"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-# Define the lines to append
-config_block="
-[nemesis_repo]
-SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
-"
-
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
-
-  echo "Repository (nemesis) added to /etc/pacman.conf"
-
+    configure_repos "PrismLinux" "false"
 fi
 
-
 if grep -q "blend" /etc/os-release; then
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on BlendOS"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-# Define the lines to append
-config_block="
-[nemesis_repo]
-SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
-
-[chaotic-aur]
-SigLevel = Required DatabaseOptional
-Include = /etc/pacman.d/chaotic-mirrorlist
-"
-
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
-
-  echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
-
+    configure_repos "BlendOS" "true"
 fi
 
 if grep -q "EndeavourOS" /etc/os-release; then
-
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### We are on EndeavourOS"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  # putting back the original pacman.conf
-  sudo cp -v /etc/pacman.conf.nemesis /etc/pacman.conf
-
-# Define the lines to append
-config_block="
-[nemesis_repo]
-SigLevel = Never
-Server = https://erikdubois.github.io/\$repo/\$arch
-
-[chaotic-aur]
-SigLevel = Required DatabaseOptional
-Include = /etc/pacman.d/chaotic-mirrorlist
-"
-
-  # Append to /etc/pacman.conf
-  echo "$config_block" | sudo tee -a /etc/pacman.conf > /dev/null
-
-  echo "Repositories (chaotic/nemesis) added to /etc/pacman.conf"
-
+    configure_repos "EndeavourOS" "true"
 fi
 
-  echo
-  tput setaf 6
-  echo "##############################################################"
-  echo "###################  $(basename $0) done"
-  echo "##############################################################"
-  tput sgr0
-  echo
+handle_omarchy
 
-
-
+log_subsection "$(script_name) done"

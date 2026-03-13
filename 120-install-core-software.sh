@@ -1,5 +1,8 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
+
+log_section "Running $(script_name)"
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -9,254 +12,218 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
-##################################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
-
-##################################################################################################################################
-
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
-
-##################################################################################################################################
-
-remove_if_installed() {
-    for pattern in "$@"; do
-        # Find all installed packages that match the pattern (exact + variants)
-        matches=$(pacman -Qq | grep "^${pattern}$\|^${pattern}-")
-        
-        if [ -n "$matches" ]; then
-            for pkg in $matches; do
-                echo "Removing package: $pkg"
-                sudo pacman -R --noconfirm "$pkg"
-            done
-        else
-            echo "No packages matching '$pattern' are installed."
-        fi
-    done
+is_plasma_installed() {
+    [[ -f /usr/share/wayland-sessions/plasma.desktop || -f /usr/share/xsessions/plasma.desktop ]]
 }
 
-##################################################################################################################################
+is_plasma_x11_installed() {
+    [[ -f /usr/share/xsessions/plasmax11.desktop ]]
+}
 
-echo
-tput setaf 2
-echo "########################################################################"
-echo "################### Core software"
-echo "########################################################################"
-tput sgr0
-echo
-
-# when on Archcraft - only openbox or bspwm are our choices there
-if grep -q "archcraft" /etc/os-release; then
-  sudo pacman -S xfce4 xfce4-goodies --noconfirm --needed
-fi
-
-if [ ! -f /usr/share/wayland-sessions/plasma.desktop ] && \
-   [ ! -f /usr/share/xsessions/plasma.desktop ]; then
-    echo "Not on Plasma. Replacing sddm with sddm-git..."
-    
-    # Only remove if installed, suppress errors
-    if pacman -Q sddm &>/dev/null; then
-        sudo pacman -R --noconfirm sddm &>/dev/null
+install_archcraft_xfce_if_needed() {
+    if grep -q "archcraft" /etc/os-release; then
+        log_warn "Archcraft detected - installing XFCE packages"
+        install_packages xfce4 xfce4-goodies
     fi
+}
 
-    # Install sddm-git if needed, suppress errors
-    sudo pacman -S --noconfirm --needed sddm-git &>/dev/null
-else
-    echo "Plasma detected. Keeping sddm."
-fi
+replace_sddm_with_sddm_git_if_needed() {
+    if ! is_plasma_installed; then
+        log_warn "Not on Plasma. Replacing sddm with sddm-git"
 
+        if pacman -Qq sddm 2>/dev/null | grep -qx "sddm"; then
+            sudo pacman -R --noconfirm sddm &>/dev/null
+        fi
 
-
-for pkg in simplescreenrecorder simplescreenrecorder-git; do
-    if pacman -Q "$pkg" &>/dev/null; then
-        echo "Removing $pkg..."
-        sudo pacman -Rns --noconfirm "$pkg" &>/dev/null
+        install_packages sddm-git
+    else
+        log_section "Plasma detected. Keeping sddm."
     fi
-done
+}
 
-sudo pacman -S --noconfirm --needed simplescreenrecorder-git
+reinstall_simplescreenrecorder_git() {
+    log_section "Ensuring simplescreenrecorder-git is installed"
 
+    for pkg in simplescreenrecorder simplescreenrecorder-git; do
+        if pacman -Qq simplescreenrecorder 2>/dev/null | grep -qx "simplescreenrecorder"; then
+            echo "Removing ${pkg}..."
+            sudo pacman -Rns --noconfirm "${pkg}" &>/dev/null
+        fi
+    done
 
-# All the software below will be installed on all desktops except on Plasma
-if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
-  sudo pacman -S --noconfirm --needed alacritty
-  sudo pacman -S --noconfirm --needed arandr
-  #sudo pacman -S --noconfirm --needed awesome-terminal-fonts
-  sudo pacman -S --noconfirm --needed catfish
-  sudo pacman -S --noconfirm --needed dmenu
-  sudo pacman -S --noconfirm --needed evince
-  sudo pacman -S --noconfirm --needed galculator
-  sudo pacman -S --noconfirm --needed network-manager-applet
-  sudo pacman -S --noconfirm --needed networkmanager-openvpn
-  sudo pacman -S --noconfirm --needed networkmanager
-  sudo pacman -S --noconfirm --needed numlockx
-  sudo pacman -S --noconfirm --needed pavucontrol
-  sudo pacman -S --noconfirm --needed playerctl
-  sudo pacman -S --noconfirm --needed sardi-icons
-  sudo pacman -S --noconfirm --needed surfn-icons-git
-  sudo pacman -S --noconfirm --needed xcolor
-  sudo pacman -S --noconfirm --needed xorg-xkill
-fi
+    install_packages simplescreenrecorder-git
+}
 
-# All the software below will be installed on all desktops
+install_non_plasma_packages() {
+    if ! [[ -f /usr/share/wayland-sessions/plasma.desktop ]]; then
+        log_section "Installing software for non-Plasma desktops"
 
-sudo pacman -S --noconfirm --needed fastfetch-git
-sudo pacman -S --noconfirm --needed chaotic-neofetch-git
-sudo pacman -S --noconfirm --needed yay-git
-sudo pacman -S --noconfirm --needed paru-git
+        local pkgs=(
+            alacritty
+            arandr
+            catfish
+            dmenu
+            evince
+            galculator
+            network-manager-applet
+            networkmanager-openvpn
+            networkmanager
+            numlockx
+            pavucontrol
+            playerctl
+            sardi-icons
+            surfn-icons-git
+            xcolor
+            xorg-xkill
+        )
 
-sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
-sudo pacman -S --noconfirm --needed aic94xx-firmware
-sudo pacman -S --noconfirm --needed archlinux-tools
-sudo pacman -S --noconfirm --needed avahi
-sudo pacman -S --noconfirm --needed baobab
-sudo pacman -S --noconfirm --needed bash-completion
-sudo pacman -S --noconfirm --needed bat
-sudo pacman -S --noconfirm --needed bibata-cursor-theme
-sudo pacman -S --noconfirm --needed brave-bin
-#sudo pacman -S --noconfirm --needed breeze-icons
-sudo pacman -S --noconfirm --needed btop
-sudo pacman -S --noconfirm --needed chromium
-sudo pacman -S --noconfirm --needed curl
-sudo pacman -S --noconfirm --needed dconf-editor
-sudo pacman -S --noconfirm --needed debugedit
-sudo pacman -S --noconfirm --needed devtools
-sudo pacman -S --noconfirm --needed downgrade
-if [ ! -f /usr/bin/duf ]; then
-  sudo pacman -S --noconfirm --needed duf
-fi
-sudo pacman -S --noconfirm --needed expac
-sudo pacman -S --noconfirm --needed fakeroot
-sudo pacman -S --noconfirm --needed feh
-sudo pacman -S --noconfirm --needed file-roller
-sudo pacman -S --noconfirm --needed firefox
-sudo pacman -S --noconfirm --needed fish
-sudo pacman -S --noconfirm --needed font-manager
-sudo pacman -S --noconfirm --needed gcolor3
-sudo pacman -S --noconfirm --needed gimp
-sudo pacman -S --noconfirm --needed git
-sudo pacman -S --noconfirm --needed gnome-disk-utility
-sudo pacman -S --noconfirm --needed gparted
-sudo pacman -S --noconfirm --needed gvfs-smb
-sudo pacman -S --noconfirm --needed gvfs-dnssd
-sudo pacman -S --noconfirm --needed hardcode-fixer-git
-sudo pacman -S --noconfirm --needed hardinfo2
-#sudo pacman -S --noconfirm --needed hddtemp
-#sudo pacman -S --noconfirm --needed hyfetch
-sudo pacman -S --noconfirm --needed inetutils
-sudo pacman -S --noconfirm --needed inkscape
-sudo pacman -S --noconfirm --needed logrotate
-sudo pacman -S --noconfirm --needed lolcat
-sudo pacman -S --noconfirm --needed lsb-release
-sudo pacman -S --noconfirm --needed lshw
-sudo pacman -S --noconfirm --needed man-db
-sudo pacman -S --noconfirm --needed man-pages
-sudo pacman -S --noconfirm --needed nano
-sudo pacman -S --noconfirm --needed plocate
-sudo pacman -S --noconfirm --needed meld
-#sudo pacman -S --noconfirm --needed micro
-sudo pacman -S --noconfirm --needed mintstick
-sudo pacman -S --noconfirm --needed most
-sudo pacman -S --noconfirm --needed namcap
-sudo pacman -S --noconfirm --needed nomacs
-sudo pacman -S --noconfirm --needed noto-fonts
-sudo pacman -S --noconfirm --needed ntp
-sudo pacman -S --noconfirm --needed nss-mdns
-sudo pacman -S --noconfirm --needed oh-my-zsh-git
-sudo pacman -S --noconfirm --needed pacmanlogviewer
-sudo pacman -S --noconfirm --needed polkit-gnome
-sudo pacman -S --noconfirm --needed python-pylint
-sudo pacman -S --noconfirm --needed python-pywal
-sudo pacman -S --noconfirm --needed pv
-sudo pacman -S --noconfirm --needed qbittorrent
-sudo pacman -S --noconfirm --needed rate-mirrors
-sudo pacman -S --noconfirm --needed resources
-sudo pacman -S --noconfirm --needed ripgrep
-sudo pacman -S --noconfirm --needed rsync
-sudo pacman -S --noconfirm --needed scrot
-sudo pacman -S --noconfirm --needed shortwave
-sudo pacman -S --noconfirm --needed smartmontools
-sudo pacman -S --noconfirm --needed speedtest-cli
-sudo pacman -S --noconfirm --needed squashfs-tools
-sudo pacman -S --noconfirm --needed sublime-text-4
-sudo pacman -S --noconfirm --needed system-config-printer
-sudo pacman -S --noconfirm --needed the_silver_searcher
-sudo pacman -S --noconfirm --needed time
-sudo pacman -S --noconfirm --needed thunar
-sudo pacman -S --noconfirm --needed thunar-archive-plugin
-sudo pacman -S --noconfirm --needed thunar-volman
-sudo pacman -S --noconfirm --needed tree
-#sudo pacman -S --noconfirm --needed ttf-bitstream-vera
-sudo pacman -S --noconfirm --needed ttf-dejavu
-sudo pacman -S --noconfirm --needed ttf-droid
-sudo pacman -S --noconfirm --needed ttf-hack
-#sudo pacman -S --noconfirm --needed ttf-inconsolata
-sudo pacman -S --noconfirm --needed ttf-liberation
-sudo pacman -S --noconfirm --needed ttf-ms-fonts
-sudo pacman -S --noconfirm --needed ttf-roboto
-sudo pacman -S --noconfirm --needed ttf-roboto-mono
-sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
-sudo pacman -S --noconfirm --needed upd72020x-fw
-sudo pacman -S --noconfirm --needed variety
-sudo pacman -S --noconfirm --needed vivaldi
-sudo pacman -S --noconfirm --needed vivaldi-ffmpeg-codecs
-sudo pacman -S --noconfirm --needed vlc
-sudo pacman -S --noconfirm --needed vlc-plugins-all
-sudo pacman -S --noconfirm --needed wd719x-firmware
-sudo pacman -S --noconfirm --needed wget
-sudo pacman -S --noconfirm --needed xdg-user-dirs
-sudo pacman -S --noconfirm --needed yad
-sudo pacman -S --noconfirm --needed zsh
-sudo pacman -S --noconfirm --needed zsh-completions
-sudo pacman -S --noconfirm --needed zsh-syntax-highlighting
-sudo systemctl enable avahi-daemon.service
-sudo systemctl enable ntpd.service
+        install_packages "${pkgs[@]}"
+    fi
+}
 
-sudo pacman -S --noconfirm --needed gzip
-sudo pacman -S --noconfirm --needed p7zip
-sudo pacman -S --noconfirm --needed unace
-sudo pacman -S --noconfirm --needed unrar
-sudo pacman -S --noconfirm --needed unzip
+install_core_packages() {
+    log_section "Installing core software"
 
-if [ ! -f /usr/share/xsessions/plasmax11.desktop ]; then
-  sudo pacman -S --noconfirm --needed qt5ct
-  sudo pacman -S --noconfirm --needed kvantum-qt5
-fi
+    local pkgs=(
+        fastfetch-git
+        chaotic-neofetch-git
+        yay-git
+        paru-git
+        adobe-source-sans-fonts
+        aic94xx-firmware
+        archlinux-tools
+        avahi
+        baobab
+        bash-completion
+        bat
+        bibata-cursor-theme
+        brave-bin
+        btop
+        chromium
+        curl
+        dconf-editor
+        debugedit
+        devtools
+        downgrade
+        duf
+        expac
+        fakeroot
+        feh
+        file-roller
+        firefox
+        fish
+        font-manager
+        gcolor3
+        gimp
+        git
+        gnome-disk-utility
+        gparted
+        gvfs-smb
+        gvfs-dnssd
+        hardcode-fixer-git
+        hardinfo2
+        inetutils
+        inkscape
+        logrotate
+        lolcat
+        lsb-release
+        lshw
+        man-db
+        man-pages
+        nano
+        plocate
+        meld
+        mintstick
+        most
+        namcap
+        nomacs
+        noto-fonts
+        ntp
+        nss-mdns
+        oh-my-zsh-git
+        pacmanlogviewer
+        polkit-gnome
+        python-pylint
+        python-pywal
+        pv
+        qbittorrent
+        rate-mirrors
+        resources
+        ripgrep
+        rsync
+        scrot
+        shortwave
+        smartmontools
+        speedtest-cli
+        squashfs-tools
+        sublime-text-4
+        system-config-printer
+        the_silver_searcher
+        time
+        thunar
+        thunar-archive-plugin
+        thunar-volman
+        tree
+        ttf-dejavu
+        ttf-droid
+        ttf-hack
+        ttf-liberation
+        ttf-ms-fonts
+        ttf-roboto
+        ttf-roboto-mono
+        ttf-ubuntu-font-family
+        upd72020x-fw
+        variety
+        vivaldi
+        vivaldi-ffmpeg-codecs
+        vlc
+        vlc-plugins-all
+        wd719x-firmware
+        wget
+        xdg-user-dirs
+        yad
+        zsh
+        zsh-completions
+        zsh-syntax-highlighting
+        gzip
+        p7zip
+        unace
+        unrar
+        unzip
+        hw-probe
+        insync
+        signal-in-tray
+        spotify
+        telegram-desktop
+        visual-studio-code-bin
+    )
 
-if [ -f /usr/share/xsessions/plasmax11.desktop ]; then
-  remove_if_installed qt5ct
-  remove_if_installed kvantum-qt5
-fi
+    install_packages "${pkgs[@]}"
+}
 
-#sudo pacman -S --noconfirm --needed discord
-#sudo pacman -S --noconfirm --needed dropbox
-sudo pacman -S --noconfirm --needed hw-probe
-sudo pacman -S --noconfirm --needed insync
-sudo pacman -S --noconfirm --needed signal-in-tray
-sudo pacman -S --noconfirm --needed spotify
-sudo pacman -S --noconfirm --needed telegram-desktop
-sudo pacman -S --noconfirm --needed visual-studio-code-bin
+enable_core_services() {
+    log_section "Enabling core services"
+    enable_service avahi-daemon.service
+    enable_service ntpd.service
+}
 
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
-echo
+handle_qt5ct_and_kvantum() {
+    if ! is_plasma_x11_installed; then
+        log_section "Plasma X11 not detected - installing qt5ct and kvantum-qt5"
+        install_packages qt5ct kvantum-qt5
+    else
+        log_section "Plasma X11 detected - removing qt5ct and kvantum-qt5"
+        remove_packages qt5ct kvantum-qt5
+    fi
+}
+
+install_archcraft_xfce_if_needed
+replace_sddm_with_sddm_git_if_needed
+reinstall_simplescreenrecorder_git
+install_non_plasma_packages
+install_core_packages
+enable_core_services
+handle_qt5ct_and_kvantum
+
+log_subsection "$(script_name) done"

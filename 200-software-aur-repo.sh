@@ -1,5 +1,8 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
+
+log_section "Running $(script_name)"
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -9,113 +12,24 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
-##################################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+install_aur_package_if_needed() {
+    local pkg="$1"
 
-##################################################################################################################################
+    if pacman -Qi "${pkg}" &>/dev/null; then
+        echo "${pkg} is already installed."
+    else
+        log_subsection "Installing ${pkg} from AUR"
+		if ! command -v yay >/dev/null; then
+			log_error "$LINENO" "yay not installed"
+			return 1
+		fi
+        yay -S --noconfirm "${pkg}"
+    fi
+}
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
+log_section "Build Opera from AUR"
 
-##################################################################################################################################
+install_aur_package_if_needed opera
 
-echo
-tput setaf 2
-echo "########################################################################"
-echo "################### install folder - Software to install"
-echo "########################################################################"
-tput sgr0
-echo
-if ! grep -q "artix" /etc/os-release; then
-	result=$(systemd-detect-virt)
-
-	if [ $result = "none" ];then
-
-		echo
-		tput setaf 2
-		echo "########################################################################"
-		echo "####### Installing VirtualBox"
-		echo "########################################################################"
-		tput sgr0
-		echo	
-
-		sh install/install-virtualbox-for-linux.sh	
-
-	else
-
-
-		echo
-		tput setaf 3
-		echo "########################################################################"
-		echo "### You are on a virtual machine - skipping VirtualBox"
-		echo "########################################################################"
-		tput sgr0
-		echo
-
-	fi
-fi
-
-echo
-tput setaf 2
-echo "########################################################################"
-echo "################### Build from install folder"
-echo "########################################################################"
-tput sgr0
-echo
-
-if ! pacman -Qi opera &>/dev/null; then
-    yay -S opera --noconfirm
-else
-    echo "Opera is already installed."
-fi
-
-# if ! pacman -Qi opera-ffmpeg-codecs-bin &>/dev/null; then
-#     yay -S opera-ffmpeg-codecs-bin --noconfirm
-# else
-#     echo "opera-ffmpeg-codecs-bin is already installed."
-# fi
-
-echo
-tput setaf 2
-echo "########################################################################"
-echo "################### Building pamac-aur"
-echo "########################################################################"
-tput sgr0
-echo
-
-if ! pacman -Qi libpamac-aur &>/dev/null; then
-    yay -S libpamac-aur --noconfirm
-else
-    echo "libpamac-aur is already installed."
-fi
-
-if ! pacman -Qi pamac-aur &>/dev/null; then
-    yay -S pamac-aur --noconfirm
-else
-    echo "pamac-aur is already installed."
-fi
-
-echo
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
-echo
+log_subsection "$(script_name) done"

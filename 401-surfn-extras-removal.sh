@@ -1,5 +1,8 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
+
+log_section "Running $(script_name)"
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -9,65 +12,30 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
-##################################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+remove_surfn_extras() {
 
-##################################################################################################################################
+    log_section "Removing software from nemesis_repo"
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
+    local packages=(
+        surfn-arc-breeze-icons-git
+        surfn-mint-y-icons-git
+        surfn-plasma-flow-git
+        surfn-plasma-dark-icons-git
+        surfn-plasma-light-icons-git
+        surfn-icons-git
+    )
 
-##################################################################################################################################
+    local count=0
+    local pkg
 
-echo
-tput setaf 2
-echo "########################################################################"
-echo "################### Removing software from nemesis_repo"
-echo "########################################################################"
-tput sgr0
-echo
+    for pkg in "${packages[@]}"; do
+        ((++count))
+        log_subsection "Removing package nr. ${count} ${pkg}"
+        remove_packages "${pkg}"
+    done
+}
 
-# Define your package list
-packages=(
-surfn-arc-breeze-icons-git
-surfn-mint-y-icons-git
-surfn-plasma-flow-git
-surfn-plasma-dark-icons-git
-surfn-plasma-light-icons-git
-surfn-icons-git
-)
+remove_surfn_extras
 
-# Loop through and remove only if installed
-for pkg in "${packages[@]}"; do
-    if pacman -Qi "$pkg" &>/dev/null; then
-        echo "➤ Removing $pkg..."
-        sudo pacman -R --noconfirm "$pkg"
-    else
-        echo "✔ $pkg is already removed or not installed."
-    fi
-done
-
-echo
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
-echo
+log_subsection "$(script_name) done"

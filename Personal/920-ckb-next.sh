@@ -1,5 +1,8 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
+
+log_section "Running $(script_name)"
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -9,71 +12,42 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
-##################################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+install_hwinfo_if_needed() {
+    if ! command -v hwinfo >/dev/null 2>&1; then
+        log_subsection "Installing hwinfo"
+        install_packages hwinfo
+    fi
+}
 
-##################################################################################################################################
+install_ckb_next_if_keyboard_detected() {
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
+    if hwinfo | grep -q "CORSAIR K70"; then
 
-##################################################################################################################################
+        log_section "Corsair keyboard detected - installing ckb-next"
 
-if [ ! -f /usr/bin/hwinfo ]; then
-  sudo pacman -S --noconfirm --needed hwinfo
-fi
+        install_packages ckb-next-git
 
-if hwinfo | grep "CORSAIR K70" > /dev/null 2>&1 ; then
+        mkdir -p "${HOME}/.config/ckb-next"
+        mkdir -p "${HOME}/.config/autostart"
 
-	echo
-	tput setaf 2
-	echo "########################################################################"
-	echo "################### Corsair keyboard to be installed"
-	echo "########################################################################"
-	tput sgr0
-	echo
+        copy_file \
+            "${PROJECT_DIR}/Personal/settings/ckb-next/ckb-next.conf" \
+            "${HOME}/.config/ckb-next/ckb-next.conf"
 
-	sudo pacman -S --noconfirm --needed ckb-next-git
-	installed_dir=$(pwd)
-	[ -d $HOME"/.config/ckb-next" ] || mkdir -p $HOME"/.config/ckb-next"
+        copy_file \
+            "${PROJECT_DIR}/Personal/settings/ckb-next/ckb-next.autostart.desktop" \
+            "${HOME}/.config/autostart/ckb-next.autostart.desktop"
 
-	cp -r $installed_dir/settings/ckb-next/ckb-next.conf ~/.config/ckb-next.conf
-	cp -f $installed_dir/settings/ckb-next/ckb-next.autostart.desktop ~/.config/autostart/ckb-next.autostart.desktop
-	
-	sudo systemctl enable ckb-next-daemon
-	sudo systemctl start ckb-next-daemon
+        enable_service ckb-next-daemon.service
+        start_service ckb-next-daemon.service
 
-	echo
-	tput setaf 6
-	echo "########################################################################"
-	echo "################### Corsair keyboard installed"
-	echo "########################################################################"
-	tput sgr0
-	echo
+        log_section "Corsair keyboard configured"
 
-fi
+    fi
+}
 
-echo
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
-echo
+install_hwinfo_if_needed
+install_ckb_next_if_keyboard_detected
+
+log_subsection "$(script_name) done"

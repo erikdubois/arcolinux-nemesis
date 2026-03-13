@@ -1,5 +1,8 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
+
+log_section "Running $(script_name)"
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -9,62 +12,30 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
-##################################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+install_plasma_extras() {
 
-##################################################################################################################################
+    if [[ ! -f /usr/share/wayland-sessions/plasma.desktop && \
+      ! -f /usr/share/xsessions/plasma.desktop ]]; then
+        log_warn "Plasma is not installed - skipping Plasma extras"
+        return 0
+    fi
 
-if [ "$DEBUG" = true ]; then
+    log_section "Plasma detected"
+    echo "This will not install Plasma"
+    echo "It detects whether Plasma is installed like when on ArcoPlasma"
     echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
 
-##################################################################################################################################
+    log_section "Plasma software to install"
 
-# when on Plasma
+    install_packages \
+        edu-plasma-keybindings-git \
+        edu-plasma-servicemenus-git \
+        obs-studio \
+        surfn-plasma-dark-icons-git \
+        surfn-plasma-light-icons-git
+}
 
-if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
+install_plasma_extras
 
-  tput setaf 2
-  echo "This will not install Plasma"
-  echo "It detects whether Plasma is installed like when on ArcoPlasma"
-  tput sgr0
-  echo
-
-  echo
-  tput setaf 2
-  echo "########################################################################"
-  echo "################### Plasma Software to install"
-  echo "########################################################################"
-  tput sgr0
-  echo
-
-  sudo pacman -S --noconfirm --needed edu-plasma-keybindings-git
-  sudo pacman -S --noconfirm --needed edu-plasma-servicemenus-git
-  sudo pacman -S --noconfirm --needed obs-studio
-  sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
-  sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
-fi
-
-echo
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
-echo
+log_subsection "$(script_name) done"

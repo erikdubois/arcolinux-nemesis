@@ -111,22 +111,16 @@ cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 
 # when on real metal install a template
 result=$(systemd-detect-virt)
-if [ $result = "none" ];then
+if [ "$result" != "none" ]; then
+    echo
+    tput setaf 3
+    echo "#################################################################################"
+    echo "### You are on a virtual machine - skipping installation of VirtualBox"
+    echo "#################################################################################"
+    tput sgr0
+    echo
 
-	#sudo apt install -y virtualbox
-
-else
-
-	echo
-	tput setaf 3
-	echo "#################################################################################"
-	echo "### You are on a virtual machine - skipping installation of VirtualBox"
-	echo "#################################################################################"
-	tput sgr0
-	echo
-
-	xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
-
+    xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 fi
 
 echo

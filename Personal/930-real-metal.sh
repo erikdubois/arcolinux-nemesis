@@ -1,5 +1,8 @@
-#!/bin/bash
-set -uo pipefail  # Do not use set -e, we want to continue on error
+#!/usr/bin/env bash
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
+
+log_section "Running $(script_name)"
+
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -12,160 +15,78 @@ set -uo pipefail  # Do not use set -e, we want to continue on error
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
-##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
+##################################################################################################################
 
-#end colors
-#tput sgr0
-##################################################################################################################################
-
-# Get current directory of the script
-installed_dir="$(dirname "$(readlink -f "$0")")"
-
-##################################################################################################################################
-
-# Debug mode switch
-export DEBUG=false
-
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename "$0")"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
-
-##############################################################################################################
-
-install_packages() {
-    if [ "$#" -eq 0 ]; then
-        echo "No packages provided to install."
-        return 1
-    fi
-
-    for pkg in "$@"; do
-        echo
-        echo "Installing package: $pkg"
-        sudo pacman -S --noconfirm --needed "$pkg"
-    done
+get_virtualization_type() {
+    systemd-detect-virt 2>/dev/null || echo none
 }
 
-##################################################################################################################################
+handle_virtualbox_template() {
+    local result
+    result="$(get_virtualization_type)"
 
-remove_if_installed() {
-    for pattern in "$@"; do
-        # Find all installed packages that match the pattern (exact + variants)
-        matches=$(pacman -Qq | grep "^${pattern}$\|^${pattern}-")
-        
-        if [ -n "$matches" ]; then
-            for pkg in $matches; do
-                echo "Removing package: $pkg"
-                sudo pacman -R --noconfirm "$pkg"
-            done
-        else
-            echo "No packages matching '$pattern' are installed."
+    log_section "Virtualization detection"
+    echo "result = ${result}"
+    echo
+
+    if [[ "${result}" == "none" ]]; then
+        log_section "Real hardware detected - installing VirtualBox template"
+
+        mkdir -p "${HOME}/VirtualBox VMs"
+
+        cp -rf \
+            "${PROJECT_DIR}/Personal/settings/virtualbox-template/"* \
+            "${HOME}/VirtualBox VMs/"
+
+        cd "${HOME}/VirtualBox VMs/" || return 1
+
+        tar -xzf template.tar.gz
+        rm -f template.tar.gz
+    else
+        log_warn "Virtual machine detected - skipping VirtualBox template
+Template not copied over
+We will set your screen resolution with xrandr"
+
+        local output
+        output="$(xrandr | grep " connected" | awk '{print $1}' || true)"
+
+        if [[ -z "${output}" ]]; then
+            log_warn "No connected display found."
+            return 0
         fi
-    done
+
+        xrandr --output "${output}" --primary --mode 1920x1080 --pos 0x0 --rotate normal
+        echo "Display settings applied to output: ${output}"
+    fi
 }
 
-##############################################################################################################
+remove_vm_software_if_real_hardware() {
+    local result
+    result="$(get_virtualization_type)"
 
-result=$(systemd-detect-virt)
+    log_section "Removal of virtual machine software"
 
-echo
-echo "result = "$result
-echo
-tput setaf 3
-echo "########################################################################"
-echo "################### VirtualBox check - Copy/paste VB template or not"
-echo "########################################################################"
-tput sgr0
-echo
+    if [[ "${result}" == "none" ]]; then
+        echo "Running on real hardware. Proceeding with cleanup..."
 
-if [ $result = "none" ];then
+        if systemctl list-units --full --all | grep -q 'qemu-guest-agent.service'; then
+            sudo systemctl stop qemu-guest-agent.service
+            sudo systemctl disable qemu-guest-agent.service
+        fi
 
-    [ -d $HOME"/VirtualBox VMs" ] || mkdir -p $HOME"/VirtualBox VMs"
-    sudo cp -rf settings/virtualbox-template/* ~/VirtualBox\ VMs/
-    cd ~/VirtualBox\ VMs/
-    tar -xzf template.tar.gz
-    rm -f template.tar.gz   
+        if systemctl list-units --full --all | grep -q 'vboxservice.service'; then
+            sudo systemctl stop vboxservice.service
+            sudo systemctl disable vboxservice.service
+        fi
 
-else
-
-    echo
-    tput setaf 3
-    echo "########################################################################"
-    echo "### You are on a virtual machine - skipping VirtualBox"
-    echo "### Template not copied over"
-    echo "### We will set your screen resolution with xrandr"
-    echo "########################################################################"
-    tput sgr0
-    echo
-
-    # Find the connected VirtualBox display
-    OUTPUT=$(xrandr | grep " connected" | awk '{print $1}')
-
-    # Fallback check
-    if [ -z "$OUTPUT" ]; then
-        echo "No connected display found."
-        exit 1
+        remove_matching_packages qemu-guest-agent
+        remove_matching_packages virtualbox-guest-utils
+    else
+        echo "Virtual machine detected (${result}). No action taken."
     fi
+}
 
-    # Apply desired resolution and position
-    xrandr --output "$OUTPUT" --primary --mode 1920x1080 --pos 0x0 --rotate normal
+handle_virtualbox_template
+remove_vm_software_if_real_hardware
 
-    echo "Display settings applied to output: $OUTPUT"
-
-    fi
-
-tput setaf 3
-echo "########################################################################"
-echo "################### Removal of virtual machine software"
-echo "########################################################################"
-tput sgr0
-echo
-
-# Proceed only if running on real hardware
-if [[ "$result" == "none" ]]; then
-    echo "Running on real hardware. Proceeding with cleanup..."
-
-    # Disable and stop qemu-guest-agent.service if present
-    if systemctl list-units --full --all | grep -q 'qemu-guest-agent.service'; then
-        echo "Disabling qemu-guest-agent.service..."
-        sudo systemctl stop qemu-guest-agent.service
-        sudo systemctl disable qemu-guest-agent.service
-    fi
-
-    # Disable and stop vboxservice.service if present
-    if systemctl list-units --full --all | grep -q 'vboxservice.service'; then
-        echo "Disabling vboxservice.service..."
-        sudo systemctl stop vboxservice.service
-        sudo systemctl disable vboxservice.service
-    fi
-
-    # Remove QEMU packages
-    remove_if_installed qemu-guest-agent
-    # Remove VirtualBox packages
-    remove_if_installed virtualbox-guest-utils
-
-else
-    echo "Virtual machine detected ($result). No action taken."
-fi
-
-echo
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
-echo
+log_subsection "$(script_name) done"

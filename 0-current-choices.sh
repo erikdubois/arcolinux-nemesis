@@ -1,5 +1,8 @@
-#!/bin/bash
-set -uo pipefail  # Do not use set -e, we want to continue on error
+#!/usr/bin/env bash
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
+
+log_section "Running $(script_name)"
+
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -12,384 +15,198 @@ set -uo pipefail  # Do not use set -e, we want to continue on error
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
-##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
+##################################################################################################################
 
-#end colors
-#tput sgr0
-##################################################################################################################################
+export DEBUG=true
 
-# Trap all ERR conditions and call the handler
-trap 'on_error $LINENO "$BASH_COMMAND"' ERR
+readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+readonly PERSONAL_DIR="${SCRIPT_DIR}/Personal"
 
-on_error() {
-    local lineno="$1"
-    local cmd="$2"
+OS_RELEASE="/etc/os-release"
+LSB_RELEASE="/etc/lsb-release"
 
-    # Set colors
-    RED=$(tput setaf 1)
-    YELLOW=$(tput setaf 3)
-    RESET=$(tput sgr0)
+OS_ID=""
+OS_ID_LIKE=""
+OS_NAME=""
+OS_PRETTY_NAME=""
 
-    echo
-    echo "${RED}⚠️ ERROR DETECTED${RESET}"
-    echo "${YELLOW}✳️  Line: $lineno"
-    echo "📌  Command: '$cmd'"
-    echo "⏳  Waiting 10 seconds before continuing...${RESET}"
-    echo
-
-    sleep 10
-}
-
-
-#networkmanager issue
-#nmcli connection modify Wired\ connection\ 1 ipv6.method "disabled"
-
-# what is the present working directory
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
-
-##################################################################################################################################
-
-# set DEBUG to true to be able to analyze the scripts file per file
-#
-# works on Bash not Fish
-# sudo chsh -s /usr/bin/bash erik
-# logout and login to change from zsh or fish to bash
-
-export DEBUG=false
-
-##################################################################################################################################
-
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
+if [[ -f "${OS_RELEASE}" ]]; then
+    # shellcheck disable=SC1091
+    source "${OS_RELEASE}"
+    OS_ID="${ID:-}"
+    OS_ID_LIKE="${ID_LIKE:-}"
+    OS_NAME="${NAME:-}"
+    OS_PRETTY_NAME="${PRETTY_NAME:-}"
 fi
 
-##################################################################################################################################
+run_distro_script() {
+    local distro_key="$1"
+    local target_dir="${PERSONAL_DIR}/settings/voyage-of-chadwm/${distro_key}-chadwm"
+    local target_script="${target_dir}/1-all-in-one.sh"
 
-run_script() {
-    cd "Personal/settings/voyage-of-chadwm/$1-chadwm/" || exit 1
-    sh ./1-all-in-one.sh
-    exit 1
+    if [[ -d "${target_dir}" && -f "${target_script}" ]]; then
+        log_section "Detected ${distro_key}. Launching distro-specific Chadwm script."
+        (
+            cd "${target_dir}" || exit 1
+            bash "./1-all-in-one.sh"
+        )
+        exit 0
+    fi
 }
-if [ -f /etc/lsb-release ] && grep -q "MX 23.4" /etc/lsb-release; then
-    run_script "mxlinux"
+
+write_arch_mirrorlist() {
+    log_section "Replacing content of current /etc/pacman.d/mirrorlist
+Backup exists here: /etc/pacman.d/mirrorlist-nemesis"
+
+    sudo tee /etc/pacman.d/mirrorlist >/dev/null <<'EOF'
+## Best Arch Linux servers worldwide from arcolinux-nemesis
+
+Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
+Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
+Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
+EOF
+
+    log_section "Arch Linux servers have been written to /etc/pacman.d/mirrorlist
+Use nmirrorlist when on ArcoLinux to inspect
+Use nano /etc/pacman.d/mirrorlist to inspect on others"
+}
+
+install_local_packages() {
+    local packages=( "${SCRIPT_DIR}"/packages/*.pkg.tar.zst )
+
+    if (( ${#packages[@]} == 0 )); then
+        log_warn "No local packages found in ${SCRIPT_DIR}/packages"
+        return 0
+    fi
+
+    local pkg
+    for pkg in "${packages[@]}"; do
+        sudo pacman -U --noconfirm "${pkg}"
+    done
+}
+
+if [[ -f "${LSB_RELEASE}" ]] && grep -q "MX 23.4" "${LSB_RELEASE}"; then
+    run_distro_script "mxlinux"
 fi
-if grep -q "bunsenlabs" /etc/os-release; then run_script "bunsenlabs"; fi
-if grep -q "FreeBSD" /etc/os-release; then run_script "freebsd"; fi
-if grep -q "GhostBSD" /etc/os-release; then run_script "ghostbsd"; fi
-if grep -q "Debian" /etc/os-release; then run_script "debian"; fi
-if grep -q "Peppermint" /etc/os-release; then run_script "peppermint"; fi
-if grep -q "Pop!" /etc/os-release; then run_script "popos"; fi
-if grep -q "LMDE 6" /etc/os-release; then run_script "lmde6"; fi
-if grep -q "linuxmint" /etc/os-release; then run_script "mint"; fi
-if grep -q "AlmaLinux" /etc/os-release; then run_script "almalinux"; fi
-if grep -q "AnduinOS" /etc/os-release; then run_script "anduin"; fi
-if grep -q "ubuntu" /etc/os-release; then run_script "ubuntu"; fi
-if grep -q "void" /etc/os-release; then run_script "void"; fi
-if grep -q "Nobara" /etc/os-release; then run_script "nobara"; fi
-if grep -q "Fedora" /etc/os-release; then run_script "fedora"; fi
-if grep -q "Solus" /etc/os-release; then run_script "solus"; fi
+
+case "${OS_ID,,}:${OS_NAME,,}:${OS_PRETTY_NAME,,}" in
+    *bunsenlabs* ) run_distro_script "bunsenlabs" ;;
+    *freebsd* )    run_distro_script "freebsd" ;;
+    *ghostbsd* )   run_distro_script "ghostbsd" ;;
+    *debian* )     run_distro_script "debian" ;;
+    *peppermint* ) run_distro_script "peppermint" ;;
+    *pop* )        run_distro_script "popos" ;;
+    *lmde* )       run_distro_script "lmde6" ;;
+    *linuxmint* )  run_distro_script "mint" ;;
+    *almalinux* )  run_distro_script "almalinux" ;;
+    *anduinos* )   run_distro_script "anduin" ;;
+    *ubuntu* )     run_distro_script "ubuntu" ;;
+    *void* )       run_distro_script "void" ;;
+    *nobara* )     run_distro_script "nobara" ;;
+    *fedora* )     run_distro_script "fedora" ;;
+    *solus* )      run_distro_script "solus" ;;
+esac
 
 echo "Use the script give-me-pacman.conf.sh to only get the new /etc/pacman.conf"
 echo "Stop this script with CTRL + C then and run give-me-pacman.conf.sh"
 
-echo
-tput setaf 3
-echo "########################################################################"
-echo "Do you want to install Chadwm on your system?"
-echo "Answer with Y/y or N/n"
-echo "########################################################################"
-tput sgr0
-echo
-
-read response
-
-if [[ "$response" == [yY] ]]; then
+if confirm_yes_no "Do you want to install Chadwm on your system?"; then
     touch /tmp/install-chadwm
-    for pkg in arcolinux-chadwm-pacman-hook-git arcolinux-chadwm-git; do
-        if pacman -Q "$pkg" &>/dev/null; then
-            sudo pacman -R --noconfirm "$pkg"
-        fi
-    done
-elif [[ "$response" == [nN] ]]; then
-    if [[ -f /tmp/install-chadwm ]]; then
-        rm /tmp/install-chadwm
-    fi
-fi
-
-
-##################################################################################################################################
-
-if ! grep -q -e "Manjaro" -e "Artix" /etc/os-release; then
-
-    # backup original mirrorlist
-    if [[ ! -f /etc/pacman.d/mirrorlist.nemesis ]]; then
-        echo
-        tput setaf 2
-        echo "################################################################################"
-        echo "Copying /etc/pacman.d/mirrorlist to /etc/pacman.d/mirrorlist-nemesis"
-        echo "Making a backup that ends with -nemesis"
-        echo "################################################################################"
-        tput sgr0
-        echo
-        sudo cp -v /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-nemesis
-        echo
-    else
-        echo
-        tput setaf 2
-        echo "################################################################################"
-        echo "Backup already exists: /etc/pacman.d/mirrorlist-nemesis"
-        echo "################################################################################"
-        tput sgr0
-        echo
-    fi
-
-    # personal mirrorlist for Erik Dubois
-    tput setaf 2
-    echo "################################################################################"    
-    echo "Replacing content of current /etc/pacman.d/mirrorlist"
-    echo "Backup exists here: /etc/pacman.d/mirrorlist-nemesis"
-    echo "################################################################################"
-    tput sgr0
-
-echo "## Best Arch Linux servers worldwide from arcolinux-nemesis
-
-Server = https://mirror.osbeck.com/archlinux/\$repo/os/\$arch
-Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
-Server = https://geo.mirror.pkgbuild.com/\$repo/os/\$arch
-Server = http://mirror.osbeck.com/archlinux/\$repo/os/\$arch
-Server = http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
-Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch"  | sudo tee /etc/pacman.d/mirrorlist
-    echo
-    tput setaf 2
-    echo "################################################################################"
-    echo "Arch Linux Servers have been written to /etc/pacman.d/mirrorlist"
-    echo "Use nmirrorlist when on ArcoLinux to inspect"
-    echo "Use nano /etc/pacman.d/mirrorlist to inspect on others"
-    echo "################################################################################"
-    tput sgr0
-    echo  
-fi
-
-# order is important - dependencies
-echo
-tput setaf 2
-echo "################################################################################"
-echo "Installing Chaotic keyring and Chaotic mirrorlist"
-echo "################################################################################"
-tput sgr0
-echo
-
-for pkg in packages/*.pkg.tar.zst; do
-    [ -f "$pkg" ] && sudo pacman -U --noconfirm "$pkg"
-done
-
-# personal pacman.conf for Erik Dubois
-if [[ ! -f /etc/pacman.conf.nemesis ]]; then
-    echo
-    tput setaf 2
-    echo "################################################################################"
-    echo "Copying /etc/pacman.conf to /etc/pacman.conf.nemesis"
-    echo "Use npacman when on ArcoLinux to inspect"
-    echo "Use nano /etc/pacman.conf to inspect"
-    echo "################################################################################"
-    tput sgr0
-    echo
-    sudo cp -v /etc/pacman.conf /etc/pacman.conf.nemesis
-    echo
+    remove_packages \
+        arcolinux-chadwm-pacman-hook-git \
+        arcolinux-chadwm-git
 else
-    echo
-    tput setaf 2
-    echo "################################################################################"
-    echo "Backup already exists: /etc/pacman.conf.nemesis"
-    echo "Use npacman when on ArcoLinux to inspect"
-    echo "Use nano /etc/pacman.conf to inspect"
-    echo "################################################################################"
-    tput sgr0
-    echo
+    [[ -f /tmp/install-chadwm ]] && rm -f /tmp/install-chadwm
 fi
 
-sudo cp -v pacman.conf /etc/pacman.conf
-sudo cp -v pacman.conf /etc/pacman.conf.edu
+if ! grep -q -e "Manjaro" -e "Artix" "${OS_RELEASE}" 2>/dev/null; then
+    backup_file_once \
+        /etc/pacman.d/mirrorlist \
+        /etc/pacman.d/mirrorlist-nemesis
+
+    write_arch_mirrorlist
+fi
+
+log_section "Installing Chaotic keyring and Chaotic mirrorlist"
+install_local_packages
+
+backup_file_once \
+    /etc/pacman.conf \
+    /etc/pacman.conf.nemesis
+
+copy_file "${SCRIPT_DIR}/pacman.conf" /etc/pacman.conf
+copy_file "${SCRIPT_DIR}/pacman.conf" /etc/pacman.conf.edu
+
 echo
 echo "/etc/pacman.conf.edu is there to have a backup"
 echo
 
-# when NOT on KIRO - remove
-if ! grep -q "kiro" /etc/os-release; then
+if ! grep -qi "kiro" "${OS_RELEASE}" 2>/dev/null; then
+    log_warn "Removing ArcoLinux software"
 
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "############### Removing ArcoLinux software"
-  echo "##############################################################"
-  tput sgr0
-  echo
+    remove_packages \
+        archlinux-tweak-tool-git \
+        archlinux-tweak-tool-dev-git \
+        arcolinux-keyring \
+        arcolinux-mirrorlist-git
 
-    for pkg in \
-      archlinux-tweak-tool-git \
-      archlinux-tweak-tool-dev-git \
-      arcolinux-keyring \
-      arcolinux-mirrorlist-git; do
-      if pacman -Q "$pkg" &>/dev/null; then
-        sudo pacman -R --noconfirm "$pkg"
-      fi
-    done
-
-  echo
-  tput setaf 3
-  echo "##############################################################"
-  echo "################### Software removed"
-  echo "##############################################################"
-  tput sgr0
-  echo
-
+    log_warn "Software removed"
 fi
 
-echo
-tput setaf 2
-echo "################################################################################"
-echo "Updating the system - sudo pacman -Syyu - before 700-intervention"
-echo "################################################################################"
-tput sgr0
-echo
-
+log_section "Updating the system - sudo pacman -Syyu - before 700-intervention"
 sudo pacman -Syyu --noconfirm
 
-# only for ArchBang/Manjaro/Garuda/Archcraft/...
-sh 700-intervention*
+run_glob "${SCRIPT_DIR}/700-intervention*"
 
-echo
-tput setaf 2
-echo "################################################################################"
-echo "Updating the system - sudo pacman -Syyu - after 700-intervention"
-echo "################################################################################"
-tput sgr0
-echo
-
+log_section "Updating the system - sudo pacman -Syyu - after 700-intervention"
 sudo pacman -Syyu --noconfirm
 
-echo
-tput setaf 2
-echo "################################################################################"
-echo "Installing much needed software"
-echo "################################################################################"
-tput sgr0
-echo
+log_section "Installing much needed software"
+install_packages \
+    sublime-text-4 \
+    ripgrep \
+    meld
 
-#first get tools for whatever distro
-sudo pacman -S sublime-text-4 --noconfirm --needed
-sudo pacman -S ripgrep --noconfirm --needed
-sudo pacman -S meld --noconfirm --needed
-
-# if on Arco... and systemd-boot is chosen, then proceed with
 if [[ -f /etc/dev-rel ]]; then
+    if [[ "$(sudo bootctl is-installed 2>/dev/null || true)" == "yes" ]]; then
+        log_warn "By default we choose systemd-boot
+This is to be able to change the kernel"
 
-    if [[ "$(sudo bootctl is-installed 2>/dev/null)" == "yes" ]]; then
-        echo
-        tput setaf 3
-        echo "########################################################################"
-        echo "################### By default we choose systemd-boot"
-        echo "################### This is to be able to change the kernel"
-        echo "########################################################################"
-        tput sgr0
-        echo
-
-        sudo pacman -S --noconfirm --needed pacman-hook-kernel-install
+        install_packages pacman-hook-kernel-install
     fi
 fi
 
-echo
-tput setaf 3
-echo "########################################################################"
-echo "################### Start of the scripts - choices what to launch or not"
-echo "########################################################################"
-tput sgr0
-echo
+log_warn "Start of the scripts - choices what to launch or not"
 
-sh 100-remove-software*
-sh 110-install-nemesis-software*
-sh 120-install-core-software*
+run_glob "${SCRIPT_DIR}/100-remove-software*"
+run_glob "${SCRIPT_DIR}/110-install-nemesis-software*"
+run_glob "${SCRIPT_DIR}/120-install-core-software*"
 
-sh 160-install-bluetooth*
-sh 170-install-cups*
-sh 180-ananicy*
+run_glob "${SCRIPT_DIR}/160-install-bluetooth*"
+run_glob "${SCRIPT_DIR}/170-install-cups*"
+run_glob "${SCRIPT_DIR}/180-ananicy*"
 
-#packages we need to build
-sh 200-software-aur-repo*
-#sh 300-sardi-extras*
-#sh 400-surfn-extras*
+run_glob "${SCRIPT_DIR}/200-software-aur-repo*"
+# run_glob "${SCRIPT_DIR}/300-sardi-extras*"
+# run_glob "${SCRIPT_DIR}/400-surfn-extras*"
 
-# for arcoplasma
-sh 500-plasma*
+run_glob "${SCRIPT_DIR}/500-plasma*"
+run_glob "${SCRIPT_DIR}/600-chadwm*"
 
-# installation of Chadwm
-sh 600-chadwm*
+log_warn "Going to the Personal folder"
+cd "${PERSONAL_DIR}" || exit 1
 
-echo
-tput setaf 3
-echo "########################################################################"
-echo "################### Going to the Personal folder"
-echo "########################################################################"
-tput sgr0
-echo
+run_glob "${PERSONAL_DIR}/900-*"
+run_glob "${PERSONAL_DIR}/910-*"
+run_glob "${PERSONAL_DIR}/920-*"
+run_glob "${PERSONAL_DIR}/930-*"
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
-cd $installed_dir/Personal
+run_glob "${PERSONAL_DIR}/970-distro*"
 
-sh 900-*
-sh 910-*
-sh 920-*
-sh 930-*
+run_glob "${PERSONAL_DIR}/990-skel*"
+run_glob "${PERSONAL_DIR}/999-last*"
 
-
-
-sh 970-all*
-
-sh 970-alci*
-sh 970-archman*
-sh 970-archcraft*
-sh 970-arco*
-sh 970-ariser*
-sh 970-carli*
-sh 970-eos*
-sh 970-garuda*
-sh 970-sierra*
-sh 970-biglinux*
-sh 970-rebornos*
-sh 970-archbang*
-sh 970-manjaro*
-sh 970-omarchy*
-sh 970-liya*
-sh 970-nyarch*
-sh 970-berserk*
-sh 970-prism*
-sh 970-linuxhub*
-sh 970-blend*
-
-#has to be last - they are all Arch
-sh 970-arch.sh
-
-sh 990-skel*
-
-sh 999-last*
-
-tput setaf 3
-echo "########################################################################"
-echo "End current choices"
-echo "########################################################################"
-tput sgr0
+log_warn "End current choices"
