@@ -214,24 +214,22 @@ confirm_yes_no() {
 }
 
 remove_matching_packages() {
-    local pattern
-    local matches=()
     local pkg
+    local installed=()
 
-    for pattern in "$@"; do
-        matches=()
-        while IFS= read -r pkg; do
-            [[ -n "${pkg}" ]] && matches+=("${pkg}")
-        done < <(pacman -Qq | grep -E "^${pattern}$|^${pattern}-" || true)
+    for pkg in "$@"; do
+        installed=()
 
-        if (( ${#matches[@]} > 0 )); then
-            log_subsection "Removing packages matching: ${pattern}"
-            for pkg in "${matches[@]}"; do
-                echo "Removing package: ${pkg}"
-                sudo pacman -R --noconfirm "${pkg}"
-            done
+        if pacman -Qq | grep -Fxq "${pkg}"; then
+            installed+=("${pkg}")
+        fi
+
+        if (( ${#installed[@]} > 0 )); then
+            log_subsection "Removing package: ${pkg}"
+            echo "Removing package: ${pkg}"
+            sudo pacman -R --noconfirm "${pkg}"
         else
-            echo "No packages matching '${pattern}' are installed."
+            echo "Package '${pkg}' is not installed."
         fi
     done
 }
@@ -245,16 +243,16 @@ remove_matching_packages_deps() {
         matches=()
         while IFS= read -r pkg; do
             [[ -n "${pkg}" ]] && matches+=("${pkg}")
-        done < <(pacman -Qq | grep -E "^${pattern}$|^${pattern}-" || true)
+        done < <(pacman -Qq | grep -Fx -- "${pattern}" || true)
 
         if (( ${#matches[@]} > 0 )); then
-            log_subsection "Removing packages with dependencies matching: ${pattern}"
+            log_subsection "Removing package with dependencies: ${pattern}"
             for pkg in "${matches[@]}"; do
                 echo "Removing package: ${pkg}"
                 sudo pacman -Rns --noconfirm "${pkg}"
             done
         else
-            echo "No packages matching '${pattern}' are installed."
+            echo "No package named '${pattern}' is installed."
         fi
     done
 }
@@ -268,3 +266,120 @@ remove_file_if_exists() {
         echo "Already removed: ${target}"
     fi
 }
+
+pause_if_debug() {
+    if [[ "${DEBUG:-false}" == true ]]; then
+        echo
+        echo "------------------------------------------------------------"
+        echo "Waiting for user input to continue. Debug mode is on."
+        echo "------------------------------------------------------------"
+        echo
+        read -r -n 1 -s -p "Debug mode is on. Press any key to continue..."
+        echo
+    fi
+}
+
+write_arch_mirrorlist() {
+    log_section "Replacing content of current /etc/pacman.d/mirrorlist
+Backup exists here: /etc/pacman.d/mirrorlist-nemesis"
+
+    sudo tee /etc/pacman.d/mirrorlist >/dev/null <<'EOF'
+## Best Arch Linux servers worldwide from arcolinux-nemesis
+
+Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
+Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
+Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
+EOF
+
+    log_section "Arch Linux servers have been written to /etc/pacman.d/mirrorlist
+Use nmirrorlist when on ArcoLinux to inspect
+Use nano /etc/pacman.d/mirrorlist to inspect on others"
+}
+
+install_local_packages() {
+    local packages=( "${SCRIPT_DIR}"/packages/*.pkg.tar.zst )
+
+    if (( ${#packages[@]} == 0 )); then
+        log_warn "No local packages found in ${SCRIPT_DIR}/packages"
+        return 0
+    fi
+
+    local pkg
+    for pkg in "${packages[@]}"; do
+        sudo pacman -U --noconfirm "${pkg}"
+    done
+}
+
+restore_pacman_conf() {
+    if [[ -f /etc/pacman.conf.nemesis ]]; then
+        copy_file /etc/pacman.conf.nemesis /etc/pacman.conf
+    else
+        log_warn "/etc/pacman.conf.nemesis not found - cannot restore pacman.conf"
+    fi
+}
+
+append_nemesis_repo() {
+    if ! grep -q "^\[nemesis_repo\]" /etc/pacman.conf; then
+        log_warn "Adding nemesis_repo to /etc/pacman.conf"
+
+        sudo tee -a /etc/pacman.conf >/dev/null <<'EOF_NEMESIS'
+
+[nemesis_repo]
+SigLevel = Never
+Server = https://erikdubois.github.io/$repo/$arch
+EOF_NEMESIS
+    else
+        log_warn "nemesis_repo already present in /etc/pacman.conf"
+    fi
+}
+
+append_chaotic_repo() {
+    if ! grep -q "^\[chaotic-aur\]" /etc/pacman.conf; then
+        log_warn "Adding chaotic-aur repo to /etc/pacman.conf"
+
+        sudo tee -a /etc/pacman.conf >/dev/null <<'EOF_CHAOTIC'
+
+[chaotic-aur]
+SigLevel = Required DatabaseOptional
+Include = /etc/pacman.d/chaotic-mirrorlist
+EOF_CHAOTIC
+    else
+        log_warn "chaotic-aur already present in /etc/pacman.conf"
+    fi
+}
+
+run_non_arch_distro_script() {
+    local distro_key="$1"
+    local target_dir="${PERSONAL_DIR}/settings/voyage-of-chadwm/${distro_key}-chadwm"
+    local target_script="${target_dir}/1-all-in-one.sh"
+
+    if [[ -d "${target_dir}" && -f "${target_script}" ]]; then
+        log_section "Detected ${distro_key}. Launching distro-specific Chadwm script."
+        (
+            cd "${target_dir}" || exit 1
+            bash "./1-all-in-one.sh"
+        )
+        exit 0
+    fi
+}
+
+run_chadwm_choice() {
+    pause_if_debug
+    log_section "Chadwm installation choice - installation will follow later on"
+   
+    if confirm_yes_no "Do you want to install Chadwm on your system?"; then
+        log_warn "User chose to install Chadwm"
+
+        touch /tmp/install-chadwm
+    else
+        log_warn "User chose not to install Chadwm"
+
+        if [[ -f /tmp/install-chadwm ]]; then
+            rm -f /tmp/install-chadwm
+        fi
+    fi
+}
+

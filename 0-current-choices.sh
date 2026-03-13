@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/handle.sh"
 
 log_section "Running $(script_name)"
 
@@ -33,136 +34,154 @@ OS_PRETTY_NAME=""
 if [[ -f "${OS_RELEASE}" ]]; then
     # shellcheck disable=SC1091
     source "${OS_RELEASE}"
+
     OS_ID="${ID:-}"
     OS_ID_LIKE="${ID_LIKE:-}"
     OS_NAME="${NAME:-}"
     OS_PRETTY_NAME="${PRETTY_NAME:-}"
 fi
 
-run_distro_script() {
-    local distro_key="$1"
-    local target_dir="${PERSONAL_DIR}/settings/voyage-of-chadwm/${distro_key}-chadwm"
-    local target_script="${target_dir}/1-all-in-one.sh"
+printf "\n"
+printf "========================================\n"
+printf "        Operating System Details        \n"
+printf "========================================\n"
+printf "%-20s : %s\n" "OS_ID"          "${OS_ID}"
+printf "%-20s : %s\n" "OS_ID_LIKE"     "${OS_ID_LIKE}"
+printf "%-20s : %s\n" "OS_NAME"        "${OS_NAME}"
+printf "%-20s : %s\n" "OS_PRETTY_NAME" "${OS_PRETTY_NAME}"
+printf "========================================\n"
+printf "\n"
+printf "Use the script give-me-pacman.conf.sh to only get the new /etc/pacman.conf"
+printf "Stop this script with CTRL + C then and run give-me-pacman.conf.sh"
+printf "\n"
 
-    if [[ -d "${target_dir}" && -f "${target_script}" ]]; then
-        log_section "Detected ${distro_key}. Launching distro-specific Chadwm script."
-        (
-            cd "${target_dir}" || exit 1
-            bash "./1-all-in-one.sh"
-        )
-        exit 0
-    fi
-}
-
-write_arch_mirrorlist() {
-    log_section "Replacing content of current /etc/pacman.d/mirrorlist
-Backup exists here: /etc/pacman.d/mirrorlist-nemesis"
-
-    sudo tee /etc/pacman.d/mirrorlist >/dev/null <<'EOF'
-## Best Arch Linux servers worldwide from arcolinux-nemesis
-
-Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
-Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
-Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
-Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
-Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
-Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
-EOF
-
-    log_section "Arch Linux servers have been written to /etc/pacman.d/mirrorlist
-Use nmirrorlist when on ArcoLinux to inspect
-Use nano /etc/pacman.d/mirrorlist to inspect on others"
-}
-
-install_local_packages() {
-    local packages=( "${SCRIPT_DIR}"/packages/*.pkg.tar.zst )
-
-    if (( ${#packages[@]} == 0 )); then
-        log_warn "No local packages found in ${SCRIPT_DIR}/packages"
-        return 0
-    fi
-
-    local pkg
-    for pkg in "${packages[@]}"; do
-        sudo pacman -U --noconfirm "${pkg}"
-    done
-}
-
+# First check if we are on something else than Arch based, then we run the script for that distro
 if [[ -f "${LSB_RELEASE}" ]] && grep -q "MX 23.4" "${LSB_RELEASE}"; then
-    run_distro_script "mxlinux"
+    run_non_arch_distro_script "mxlinux"
 fi
 
 case "${OS_ID,,}:${OS_NAME,,}:${OS_PRETTY_NAME,,}" in
-    *bunsenlabs* ) run_distro_script "bunsenlabs" ;;
-    *freebsd* )    run_distro_script "freebsd" ;;
-    *ghostbsd* )   run_distro_script "ghostbsd" ;;
-    *debian* )     run_distro_script "debian" ;;
-    *peppermint* ) run_distro_script "peppermint" ;;
-    *pop* )        run_distro_script "popos" ;;
-    *lmde* )       run_distro_script "lmde6" ;;
-    *linuxmint* )  run_distro_script "mint" ;;
-    *almalinux* )  run_distro_script "almalinux" ;;
-    *anduinos* )   run_distro_script "anduin" ;;
-    *ubuntu* )     run_distro_script "ubuntu" ;;
-    *void* )       run_distro_script "void" ;;
-    *nobara* )     run_distro_script "nobara" ;;
-    *fedora* )     run_distro_script "fedora" ;;
-    *solus* )      run_distro_script "solus" ;;
+    *bunsenlabs* ) run_non_arch_distro_script "bunsenlabs" ;;
+    *freebsd* )    run_non_arch_distro_script "freebsd" ;;
+    *ghostbsd* )   run_non_arch_distro_script "ghostbsd" ;;
+    *debian* )     run_non_arch_distro_script "debian" ;;
+    *peppermint* ) run_non_arch_distro_script "peppermint" ;;
+    *pop* )        run_non_arch_distro_script "popos" ;;
+    *lmde* )       run_non_arch_distro_script "lmde6" ;;
+    *linuxmint* )  run_non_arch_distro_script "mint" ;;
+    *almalinux* )  run_non_arch_distro_script "almalinux" ;;
+    *anduinos* )   run_non_arch_distro_script "anduin" ;;
+    *ubuntu* )     run_non_arch_distro_script "ubuntu" ;;
+    *void* )       run_non_arch_distro_script "void" ;;
+    *nobara* )     run_non_arch_distro_script "nobara" ;;
+    *fedora* )     run_non_arch_distro_script "fedora" ;;
+    *solus* )      run_non_arch_distro_script "solus" ;;
 esac
 
-echo "Use the script give-me-pacman.conf.sh to only get the new /etc/pacman.conf"
-echo "Stop this script with CTRL + C then and run give-me-pacman.conf.sh"
+run_backup_operations() {
+    pause_if_debug
+    log_section "Running backup operations"
 
-if confirm_yes_no "Do you want to install Chadwm on your system?"; then
-    touch /tmp/install-chadwm
-    remove_packages \
-        arcolinux-chadwm-pacman-hook-git \
-        arcolinux-chadwm-git
-else
-    [[ -f /tmp/install-chadwm ]] && rm -f /tmp/install-chadwm
-fi
+    log_warn "Creating backups of important configuration files"
 
-if ! grep -q -e "Manjaro" -e "Artix" "${OS_RELEASE}" 2>/dev/null; then
+    # skel configs
+    if [[ -f /etc/skel/.bashrc && ! -f /etc/skel/.bashrc-nemesis ]]; then
+        sudo mv -v /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
+    fi
+
+    if [[ -f /etc/skel/.zshrc && ! -f /etc/skel/.zshrc-nemesis ]]; then
+        sudo mv -v /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
+    fi
+
+    # pacman mirrorlist
     backup_file_once \
         /etc/pacman.d/mirrorlist \
         /etc/pacman.d/mirrorlist-nemesis
 
-    write_arch_mirrorlist
-fi
+    # pacman.conf.nemesis
+    backup_file_once \
+        /etc/pacman.conf \
+        /etc/pacman.conf.nemesis
+
+    # pacman.conf.edu
+    backup_file_once \
+        /etc/pacman.conf \
+        /etc/pacman.conf.edu
+
+    log_warn "Backup operations completed"
+}
+
+run_remove_anywhere_software() {
+    pause_if_debug
+    log_section "Running removal of software on any Arch based distro"
+
+    log_warn "Move configs for all - backup"
+
+    [[ -f /etc/skel/.bashrc-nemesis ]] || [[ ! -f /etc/skel/.bashrc ]] || sudo mv -v /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
+    [[ -f /etc/skel/.zshrc-nemesis ]] || [[ ! -f /etc/skel/.zshrc ]] || sudo mv -v /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
+
+    log_warn "Removing the driver for xf86-video-vmware if possible"
+
+    if command -v systemd-detect-virt >/dev/null 2>&1; then
+        if ! systemd-detect-virt | grep -q "oracle"; then
+            if pacman -Qi xf86-video-vmware >/dev/null 2>&1; then
+                sudo pacman -Rs --noconfirm xf86-video-vmware
+            fi
+        fi
+    fi
+
+    # we go for the -git variants
+    remove_matching_packages neofetch
+    remove_matching_packages fastfetch
+    remove_matching_packages yay
+    remove_matching_packages paru
+    remove_matching_packages picom
+    remove_matching_packages mkinitcpio-nfs-utils
+    remove_matching_packages xfburn
+    remove_matching_packages parole
+    remove_matching_packages_deps pamac
+    remove_matching_packages_deps pamac-git
+    remove_matching_packages mpv
+    remove_matching_packages clapper   
+
+    log_warn "Partition formatting software - we check the root filesystem and remove the software for the filesystems that are not used on the system"
+
+    root_fs="$(findmnt -no FSTYPE /)"
+
+    case "${root_fs}" in
+        xfs)
+            remove_matching_packages btrfs-progs
+            remove_matching_packages jfsutils
+            ;;
+        btrfs)
+            remove_matching_packages xfsprogs
+            remove_matching_packages jfsutils
+            ;;
+        jfs)
+            remove_matching_packages xfsprogs
+            remove_matching_packages btrfs-progs
+            ;;
+        *)
+            remove_matching_packages xfsprogs
+            remove_matching_packages btrfs-progs
+            remove_matching_packages jfsutils
+            ;;
+    esac
+
+}
+
+run_backup_operations
 
 log_section "Installing Chaotic keyring and Chaotic mirrorlist"
 install_local_packages
 
-backup_file_once \
-    /etc/pacman.conf \
-    /etc/pacman.conf.nemesis
+append_chaotic_repo
+append_nemesis_repo
 
-copy_file "${SCRIPT_DIR}/pacman.conf" /etc/pacman.conf
-copy_file "${SCRIPT_DIR}/pacman.conf" /etc/pacman.conf.edu
-
-echo
-echo "/etc/pacman.conf.edu is there to have a backup"
-echo
-
-if ! grep -qi "kiro" "${OS_RELEASE}" 2>/dev/null; then
-    log_warn "Removing ArcoLinux software"
-
-    remove_packages \
-        archlinux-tweak-tool-git \
-        archlinux-tweak-tool-dev-git \
-        arcolinux-keyring \
-        arcolinux-mirrorlist-git
-
-    log_warn "Software removed"
-fi
-
-log_section "Updating the system - sudo pacman -Syyu - before 700-intervention"
+log_section "Updating the system - sudo pacman -Syyu - after configure_repos"
 sudo pacman -Syyu --noconfirm
 
-run_glob "${SCRIPT_DIR}/700-intervention*"
-
-log_section "Updating the system - sudo pacman -Syyu - after 700-intervention"
-sudo pacman -Syyu --noconfirm
+run_all_distro_handlers
 
 log_section "Installing much needed software"
 install_packages \
@@ -170,24 +189,22 @@ install_packages \
     ripgrep \
     meld
 
-if [[ -f /etc/dev-rel ]]; then
-    if [[ "$(sudo bootctl is-installed 2>/dev/null || true)" == "yes" ]]; then
-        log_warn "By default we choose systemd-boot
-This is to be able to change the kernel"
+run_chadwm_choice
 
-        install_packages pacman-hook-kernel-install
-    fi
-fi
-
+###################################################################################
+###################################################################################
+###################################################################################
+###################################################################################
 log_warn "Start of the scripts - choices what to launch or not"
 
-run_glob "${SCRIPT_DIR}/100-remove-software*"
-run_glob "${SCRIPT_DIR}/110-install-nemesis-software*"
-run_glob "${SCRIPT_DIR}/120-install-core-software*"
+run_remove_anywhere_software
 
-run_glob "${SCRIPT_DIR}/160-install-bluetooth*"
-run_glob "${SCRIPT_DIR}/170-install-cups*"
-run_glob "${SCRIPT_DIR}/180-ananicy*"
+run_glob "${SCRIPT_DIR}/100-*"
+run_glob "${SCRIPT_DIR}/110-*"
+run_glob "${SCRIPT_DIR}/120-*"
+run_glob "${SCRIPT_DIR}/130-*"
+run_glob "${SCRIPT_DIR}/140-*"
+run_glob "${SCRIPT_DIR}/150-*"
 
 run_glob "${SCRIPT_DIR}/200-software-aur-repo*"
 # run_glob "${SCRIPT_DIR}/300-sardi-extras*"

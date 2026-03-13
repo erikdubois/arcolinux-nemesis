@@ -2,6 +2,7 @@
 source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
 
 log_section "Running $(script_name)"
+pause_if_debug
 
 ##################################################################################################################################
 # Author    : Erik Dubois
