@@ -355,6 +355,7 @@ if grep -q "EndeavourOS" /etc/os-release; then
   # I do not want the firewall
   sudo systemctl disable firewalld
   remove_if_installed firewalld
+  remove_if_installed eos-settings-xfce4
 
   # we will get the -git version and also paru-git
   remove_if_installed yay
