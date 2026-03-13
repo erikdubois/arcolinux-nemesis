@@ -13,16 +13,25 @@ pause_if_debug
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
+#   Purpose:
+#   - Install the broad desktop/tooling baseline used by Nemesis.
+#   - Apply desktop-manager logic depending on whether Plasma is present.
+#   - Enable a few services that should be active on most systems.
+#
 ##################################################################################################################################
 
+# Detect any Plasma session, regardless of X11 or Wayland.
 is_plasma_installed() {
     [[ -f /usr/share/wayland-sessions/plasma.desktop || -f /usr/share/xsessions/plasma.desktop ]]
 }
 
+# Detect Plasma X11 specifically. This matters for qt5ct/kvantum handling.
 is_plasma_x11_installed() {
     [[ -f /usr/share/xsessions/plasmax11.desktop ]]
 }
 
+# Archcraft may ship without XFCE by default in the scenario targeted here,
+# so install it explicitly when that distro is detected.
 install_archcraft_xfce_if_needed() {
     if grep -q "archcraft" /etc/os-release; then
         log_warn "Archcraft detected - installing XFCE packages"
@@ -30,6 +39,8 @@ install_archcraft_xfce_if_needed() {
     fi
 }
 
+# Non-Plasma systems use sddm-git here. Plasma keeps the regular sddm
+# package because that is the expected display-manager combination.
 replace_sddm_with_sddm_git_if_needed() {
     if ! is_plasma_installed; then
         log_warn "Not on Plasma. Replacing sddm with sddm-git"
@@ -44,6 +55,10 @@ replace_sddm_with_sddm_git_if_needed() {
     fi
 }
 
+# Ensure the git build is the installed variant.
+# Note: the current logic checks for the plain package name before removal.
+# That is consistent with the earlier cleanup direction you took today, but
+# this is also one of the first places I would revisit later for refinement.
 reinstall_simplescreenrecorder_git() {
     log_section "Ensuring simplescreenrecorder-git is installed"
 
@@ -57,6 +72,7 @@ reinstall_simplescreenrecorder_git() {
     install_packages simplescreenrecorder-git
 }
 
+# Extra tools used on non-Plasma desktops.
 install_non_plasma_packages() {
     if ! [[ -f /usr/share/wayland-sessions/plasma.desktop ]]; then
         log_section "Installing software for non-Plasma desktops"
@@ -84,6 +100,9 @@ install_non_plasma_packages() {
     fi
 }
 
+# Main cross-desktop package set.
+# This list is intentionally broad: shells, fonts, browsers, utilities,
+# archive tools, firmware, and desktop helpers all live here.
 install_core_packages() {
     log_section "Installing core software"
 
@@ -204,12 +223,15 @@ install_core_packages() {
     install_packages "${pkgs[@]}"
 }
 
+# These services are part of the baseline experience expected by this setup.
 enable_core_services() {
     log_section "Enabling core services"
     enable_service avahi-daemon.service
     enable_service ntpd.service
 }
 
+# qt5ct/kvantum are useful outside Plasma X11, but redundant or undesired
+# on Plasma X11 itself.
 handle_qt5ct_and_kvantum() {
     if ! is_plasma_x11_installed; then
         log_section "Plasma X11 not detected - installing qt5ct and kvantum-qt5"
@@ -220,6 +242,8 @@ handle_qt5ct_and_kvantum() {
     fi
 }
 
+# Execution order matters here: distro-specific desktop fixes first,
+# then display-manager handling, then packages, then services.
 install_archcraft_xfce_if_needed
 replace_sddm_with_sddm_git_if_needed
 reinstall_simplescreenrecorder_git

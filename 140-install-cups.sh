@@ -13,22 +13,18 @@ pause_if_debug
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
+#   Purpose:
+#   - Install printing and scanning support.
+#   - Enable the CUPS service immediately after installation.
+#
 ##################################################################################################################################
 
 install_cups_packages() {
     log_section "Installing cups and scanner packages"
 
-    install_packages \
-        cups \
-        cups-pdf \
-        ghostscript \
-        gsfonts \
-        gutenprint \
-        gtk3-print-backends \
-        libcups \
-        system-config-printer \
-        sane \
-        simple-scan
+    # Keep printing and scanning together because both are part of the same
+    # workstation setup phase for most users.
+    install_packages         cups         cups-pdf         ghostscript         gsfonts         gutenprint         gtk3-print-backends         libcups         system-config-printer         sane         simple-scan
 }
 
 enable_cups_service() {

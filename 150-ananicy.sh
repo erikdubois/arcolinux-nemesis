@@ -13,14 +13,16 @@ pause_if_debug
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
+#   Purpose:
+#   - Install Ananicy and its rule set.
+#   - Enable the service so process priority tuning starts immediately.
+#
 ##################################################################################################################################
 
 install_ananicy_packages() {
     log_section "Installing Ananicy packages"
 
-    install_packages \
-        ananicy-cpp \
-        cachyos-ananicy-rules
+    install_packages         ananicy-cpp         cachyos-ananicy-rules
 }
 
 enable_ananicy_service() {

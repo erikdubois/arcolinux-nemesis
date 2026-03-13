@@ -13,8 +13,14 @@ pause_if_debug
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
+#   Purpose:
+#   - Install selected software from the AUR.
+#   - Keep the AUR logic separate from repo-based package installs.
+#
 ##################################################################################################################################
 
+# Install a single AUR package only when it is not already present.
+# The helper explicitly depends on yay being available.
 install_aur_package_if_needed() {
     local pkg="$1"
 
@@ -22,10 +28,10 @@ install_aur_package_if_needed() {
         echo "${pkg} is already installed."
     else
         log_subsection "Installing ${pkg} from AUR"
-		if ! command -v yay >/dev/null; then
-			log_error "$LINENO" "yay not installed"
-			return 1
-		fi
+        if ! command -v yay >/dev/null; then
+            log_error "$LINENO" "yay not installed"
+            return 1
+        fi
         yay -S --noconfirm "${pkg}"
     fi
 }
