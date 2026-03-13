@@ -354,6 +354,8 @@ if grep -q "EndeavourOS" /etc/os-release; then
 
   # I do not want the firewall
   sudo systemctl disable firewalld
+  remove_if_installed firewall-applet
+  remove_if_installed firewall-config
   remove_if_installed firewalld
   remove_if_installed eos-settings-xfce4
 
