@@ -217,7 +217,6 @@ install_core_packages() {
         insync
         signal-in-tray
         spotify
-        telegram-desktop
         visual-studio-code-bin
     )
 
