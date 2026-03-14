@@ -156,8 +156,18 @@ enable_service() {
 
 disable_service() {
     local service="$1"
-    log_subsection "Disabling service: ${service}"
-    sudo systemctl disable --now "${service}"
+
+    if systemctl list-unit-files | grep -q "^${service}\.service"; then
+        log_subsection "Disabling service: ${service}"
+
+        if systemctl is-enabled --quiet "${service}" || systemctl is-active --quiet "${service}"; then
+            sudo systemctl disable --now "${service}"
+        else
+            log_warn "Service ${service} already disabled"
+        fi
+    else
+        log_warn "Service ${service} not installed"
+    fi
 }
 
 start_service() {
