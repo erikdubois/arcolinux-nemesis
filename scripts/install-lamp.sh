@@ -23,85 +23,83 @@ source "${COMMON_DIR}/common.sh"
 # Purpose
 # - Install LAMP stack (Apache, MariaDB, PHP)
 # - Configure Apache for PHP
-# - Install phpMyAdmin and WordPress test setup
+# - Install phpMyAdmin
+# - Optionally expose Arch's wordpress package under /wordpress
+#
+# Notes
+# - No destructive package removals
+# - No wiping /srv/http or /var/lib/mysql
+# - Reuses helpers from common.sh where already available
 ##################################################################################################################################
 
-main() {
+PHPMYADMIN_CONF="/etc/httpd/conf/extra/phpmyadmin.conf"
+WORDPRESS_CONF="/etc/httpd/conf/extra/httpd-wordpress.conf"
+HTTPD_CONF="/etc/httpd/conf/httpd.conf"
+PHP_INI="/etc/php/php.ini"
+DOCROOT="/srv/http"
 
-    log_section "Installing LAMP stack"
+append_if_missing() {
+    local line="$1"
+    local file="$2"
 
-    ############################################################################################################
-    # Clean previous installation
-    ############################################################################################################
+    if ! grep -Fqx "$line" "$file"; then
+        echo "$line" | sudo tee -a "$file" >/dev/null
+    fi
+}
 
-    remove_matching_packages_deps php apache php-apache phpmyadmin mariadb
-    disable_service httpd || true
-    disable_service mariadb || true
+replace_or_append() {
+    local pattern="$1"
+    local replacement="$2"
+    local file="$3"
 
-    sudo rm -rf /srv/http/*
-    sudo rm -rf /var/lib/mysql
-    sudo rm -f /etc/httpd/conf/httpd.conf
-    sudo rm -f /etc/php/php.ini
-    sudo rm -f /etc/httpd/conf/extra/phpmyadmin.conf
-    sudo rm -f /etc/httpd/conf/extra/httpd-wordpress.conf
+    if grep -Eq "$pattern" "$file"; then
+        sudo sed -i -E "s|$pattern|$replacement|" "$file"
+    else
+        echo "$replacement" | sudo tee -a "$file" >/dev/null
+    fi
+}
 
-    ############################################################################################################
-    # Install packages
-    ############################################################################################################
+uncomment_ini_extension() {
+    local extension="$1"
+    local file="$2"
 
-    install_packages apache php php-apache mariadb phpmyadmin
+    sudo sed -i -E "s|^[;[:space:]]*extension[[:space:]]*=[[:space:]]*${extension}$|extension=${extension}|" "$file"
+}
 
-    enable_now_service httpd
-    enable_now_service mariadb
-
-    ############################################################################################################
-    # Initialize MariaDB
-    ############################################################################################################
-
-    log_subsection "Initializing MariaDB"
-
-    sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-    sudo systemctl restart mariadb
-
-    echo
-    log_warn "Run the MariaDB secure setup now"
-    sudo mariadb-secure-installation
-
-    ############################################################################################################
-    # Apache configuration
-    ############################################################################################################
-
+configure_apache_for_php() {
     log_subsection "Configuring Apache for PHP"
 
-    sudo sed -i 's|LoadModule mpm_event_module|#LoadModule mpm_event_module|' /etc/httpd/conf/httpd.conf
-    sudo sed -i 's|#LoadModule mpm_prefork_module|LoadModule mpm_prefork_module|' /etc/httpd/conf/httpd.conf
+    replace_or_append '^#?LoadModule mpm_event_module modules/mod_mpm_event\.so$' \
+        '#LoadModule mpm_event_module modules/mod_mpm_event.so' \
+        "$HTTPD_CONF"
 
-    if ! grep -q "php_module" /etc/httpd/conf/httpd.conf; then
-        echo "LoadModule php_module modules/libphp.so
-AddHandler php-script php
-Include conf/extra/php_module.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
-    fi
+    replace_or_append '^#?LoadModule mpm_prefork_module modules/mod_mpm_prefork\.so$' \
+        'LoadModule mpm_prefork_module modules/mod_mpm_prefork.so' \
+        "$HTTPD_CONF"
 
-    sudo sed -i 's|#LoadModule rewrite_module|LoadModule rewrite_module|' /etc/httpd/conf/httpd.conf
-    sudo sed -i 's|DirectoryIndex index.html|DirectoryIndex index.php index.html|' /etc/httpd/conf/httpd.conf
+    replace_or_append '^#?LoadModule rewrite_module modules/mod_rewrite\.so$' \
+        'LoadModule rewrite_module modules/mod_rewrite.so' \
+        "$HTTPD_CONF"
 
-    ############################################################################################################
-    # PHP configuration
-    ############################################################################################################
+    replace_or_append '^DirectoryIndex[[:space:]].*$' \
+        'DirectoryIndex index.php index.html' \
+        "$HTTPD_CONF"
 
+    append_if_missing 'Include conf/extra/php_module.conf' "$HTTPD_CONF"
+}
+
+configure_php() {
     log_subsection "Enabling PHP modules"
 
-    sudo sed -i 's|;extension=mysqli|extension=mysqli|' /etc/php/php.ini
-    sudo sed -i 's|;extension=pdo_mysql|extension=pdo_mysql|' /etc/php/php.ini
-    sudo sed -i 's|;extension=iconv|extension=iconv|' /etc/php/php.ini
+    uncomment_ini_extension 'mysqli' "$PHP_INI"
+    uncomment_ini_extension 'pdo_mysql' "$PHP_INI"
+    uncomment_ini_extension 'iconv' "$PHP_INI"
+}
 
-    ############################################################################################################
-    # phpMyAdmin
-    ############################################################################################################
-
+configure_phpmyadmin() {
     log_subsection "Configuring phpMyAdmin"
 
-    sudo tee /etc/httpd/conf/extra/phpmyadmin.conf >/dev/null <<EOF
+    sudo tee "$PHPMYADMIN_CONF" >/dev/null <<'EOF'
 Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
 <Directory "/usr/share/webapps/phpMyAdmin">
     DirectoryIndex index.php
@@ -111,45 +109,101 @@ Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
 </Directory>
 EOF
 
-    grep -q "phpmyadmin.conf" /etc/httpd/conf/httpd.conf || \
-        echo "Include conf/extra/phpmyadmin.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
+    append_if_missing 'Include conf/extra/phpmyadmin.conf' "$HTTPD_CONF"
+}
 
-    ############################################################################################################
-    # WordPress test
-    ############################################################################################################
+configure_wordpress_alias() {
+    log_subsection "Configuring WordPress alias"
 
-    log_subsection "Creating WordPress test environment"
-
-    sudo mkdir -p /srv/http/wordpress
-
-    sudo tee /etc/httpd/conf/extra/httpd-wordpress.conf >/dev/null <<EOF
+    sudo tee "$WORDPRESS_CONF" >/dev/null <<'EOF'
 Alias /wordpress "/usr/share/webapps/wordpress"
 <Directory "/usr/share/webapps/wordpress">
-  AllowOverride All
-  Options FollowSymlinks
-  Require all granted
+    DirectoryIndex index.php
+    AllowOverride All
+    Options FollowSymlinks
+    Require all granted
 </Directory>
 EOF
 
-    grep -q "httpd-wordpress.conf" /etc/httpd/conf/httpd.conf || \
-        echo "Include conf/extra/httpd-wordpress.conf" | sudo tee -a /etc/httpd/conf/httpd.conf
+    append_if_missing 'Include conf/extra/httpd-wordpress.conf' "$HTTPD_CONF"
+}
 
-    ############################################################################################################
-    # Test pages
-    ############################################################################################################
-
+create_test_pages() {
     log_subsection "Creating test pages"
 
-    echo "<?php phpinfo(); ?>" | sudo tee /srv/http/index.php >/dev/null
-    echo "<?php phpinfo(); ?>" | sudo tee /srv/http/wordpress/index.php >/dev/null
+    sudo mkdir -p "$DOCROOT"
+
+    if [[ ! -f "${DOCROOT}/index.php" ]]; then
+        echo "<?php phpinfo(); ?>" | sudo tee "${DOCROOT}/index.php" >/dev/null
+    fi
+}
+
+initialize_mariadb_if_needed() {
+    log_subsection "Initializing MariaDB"
+
+    if [[ ! -d /var/lib/mysql/mysql ]]; then
+        sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+        log_success "MariaDB data directory initialized"
+    else
+        log_warn "MariaDB data directory already exists - skipping initialization"
+    fi
+}
+
+validate_apache_config() {
+    log_subsection "Validating Apache configuration"
+
+    sudo httpd -t
+}
+
+main() {
+    log_section "Installing LAMP stack"
 
     ############################################################################################################
+    # Stop services first to avoid partial reload issues during package/config changes
+    ############################################################################################################
 
-    sudo systemctl restart httpd
+    disable_service httpd || true
+    disable_service mariadb || true
+
+    ############################################################################################################
+    # Install packages
+    ############################################################################################################
+
+    install_packages apache php php-apache mariadb phpmyadmin wordpress
+
+    ############################################################################################################
+    # Configure services and software
+    ############################################################################################################
+
+    initialize_mariadb_if_needed
+    configure_apache_for_php
+    configure_php
+    configure_phpmyadmin
+    configure_wordpress_alias
+    create_test_pages
+    validate_apache_config
+
+    ############################################################################################################
+    # Enable and start services
+    ############################################################################################################
+
+    enable_now_service mariadb
+    enable_now_service httpd
+
     sudo systemctl restart mariadb
+    sudo systemctl restart httpd
+
+    echo
+    log_warn "Run the MariaDB secure setup now:"
+    echo "sudo mariadb-secure-installation"
+    echo
 
     log_success "LAMP stack installed"
-
+    echo
+    echo "Test URLs:"
+    echo "  http://localhost/"
+    echo "  http://localhost/phpmyadmin"
+    echo "  http://localhost/wordpress"
 }
 
 main "$@"
