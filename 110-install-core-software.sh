@@ -109,6 +109,7 @@ install_core_packages() {
     local pkgs=(
         fastfetch-git
         chaotic-neofetch-git
+        unifetch
         yay-git
         paru-git
         adobe-source-sans-fonts
