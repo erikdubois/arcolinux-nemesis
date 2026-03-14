@@ -436,7 +436,7 @@ remove_gpsd() {
 
     if pacman -Qi gpsd &>/dev/null; then
         echo "Removing gpsd..."
-        sudo pacman -Rns --noconfirm gpsd
+        remove_matching_packages_deps gpsd waybar
     else
         echo "gpsd is not installed"
     fi
