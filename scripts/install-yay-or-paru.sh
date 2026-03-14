@@ -8,7 +8,6 @@
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
-# Purpose
 ##################################################################################################################################
 
 set -Euo pipefail
@@ -37,7 +36,7 @@ install_from_aur() {
     log_subsection "Building ${pkg}"
 
     cd "$tmp"
-    curl -LO "$url"
+    download_file "$url" "${tmp}/${pkg}.tar.gz"
     tar -xf "${pkg}.tar.gz"
     cd "$pkg"
 

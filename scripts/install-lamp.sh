@@ -38,15 +38,6 @@ HTTPD_CONF="/etc/httpd/conf/httpd.conf"
 PHP_INI="/etc/php/php.ini"
 DOCROOT="/srv/http"
 
-append_if_missing() {
-    local line="$1"
-    local file="$2"
-
-    if ! grep -Fqx "$line" "$file"; then
-        echo "$line" | sudo tee -a "$file" >/dev/null
-    fi
-}
-
 replace_or_append() {
     local pattern="$1"
     local replacement="$2"
@@ -55,7 +46,7 @@ replace_or_append() {
     if grep -Eq "$pattern" "$file"; then
         sudo sed -i -E "s|$pattern|$replacement|" "$file"
     else
-        echo "$replacement" | sudo tee -a "$file" >/dev/null
+        echo "$replacement" | append_text_as_root "$file"
     fi
 }
 
@@ -120,7 +111,7 @@ Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
 </Directory>
 EOF
 
-    append_if_missing 'Include conf/extra/phpmyadmin.conf' "$HTTPD_CONF"
+    append_line_if_missing 'Include conf/extra/phpmyadmin.conf' "$HTTPD_CONF"
 }
 
 configure_wordpress_alias() {
@@ -136,7 +127,7 @@ Alias /wordpress "/usr/share/webapps/wordpress"
 </Directory>
 EOF
 
-    append_if_missing 'Include conf/extra/httpd-wordpress.conf' "$HTTPD_CONF"
+    append_line_if_missing 'Include conf/extra/httpd-wordpress.conf' "$HTTPD_CONF"
 }
 
 create_test_pages() {
@@ -173,8 +164,8 @@ main() {
     # Stop services first to avoid partial reload issues during package/config changes
     ############################################################################################################
 
-    disable_service httpd || true
-    disable_service mariadb || true
+    disable_service httpd
+    disable_service mariadb
 
     ############################################################################################################
     # Install packages
@@ -201,8 +192,8 @@ main() {
     enable_now_service mariadb
     enable_now_service httpd
 
-    sudo systemctl restart mariadb
-    sudo systemctl restart httpd
+    restart_service mariadb
+    restart_service httpd
 
     echo
     log_warn "Run the MariaDB secure setup now:"

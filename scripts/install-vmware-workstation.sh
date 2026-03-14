@@ -42,12 +42,7 @@ main() {
     # VMware Workstation (AUR)
     ############################################################################################################
 
-    if pkg_installed vmware-workstation; then
-        log_info "vmware-workstation already installed"
-    else
-        log_subsection "Installing vmware-workstation (AUR)"
-        yay -S --noconfirm vmware-workstation
-    fi
+    install_aur_package vmware-workstation
 
     ############################################################################################################
     # VMware networking

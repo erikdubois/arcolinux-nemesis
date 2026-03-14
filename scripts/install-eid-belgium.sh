@@ -34,12 +34,7 @@ main() {
     log_subsection "Importing GPG key"
     gpg --recv-key 824A5E0010A04D46
 
-    if pkg_installed eid-mw; then
-        log_info "eid-mw is already installed"
-    else
-        log_subsection "Installing eid-mw with yay"
-        yay -S --noconfirm eid-mw
-    fi
+    install_aur_package eid-mw
 
     log_success "Belgian eID setup completed"
 }

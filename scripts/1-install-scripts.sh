@@ -17,6 +17,16 @@ SCRIPTS_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 COMMON_DIR="$(cd -- "${SCRIPTS_DIR}/../common" && pwd)"
 source "${COMMON_DIR}/common.sh"
 
+##################################################################################################################################
+# Purpose
+# - Provide an interactive menu to run installation scripts from the scripts directory
+# - Automatically discover all .sh scripts in the current directory except the launcher itself
+# - Display a checklist using dialog or whiptail
+# - Allow the user to select one or more scripts to execute
+# - Run the selected scripts sequentially
+# - Use shared logging and helper functions from common/common.sh
+##################################################################################################################################
+
 get_dialog_bin() {
     command -v dialog || command -v whiptail
 }

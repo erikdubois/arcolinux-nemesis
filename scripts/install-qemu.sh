@@ -19,18 +19,28 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 source "${COMMON_DIR}/common.sh"
 
+##################################################################################################################################
+# Purpose
+# - Install QEMU/KVM virtualization stack on Arch Linux
+# - Install required components: qemu, virt-manager, libvirt, dnsmasq, OVMF, and swtpm
+# - Enable and start the libvirtd service
+# - Add the current user to the kvm and libvirt groups for non-root VM management
+# - Ensure the default libvirt NAT network exists, is started, and autostarts at boot
+# - Provide optional support for enabling nested virtualization (Intel or AMD)
+##################################################################################################################################
+
 enable_nested_kvm() {
     log_subsection "Enabling nested KVM"
 
     echo "kvm" | sudo tee /etc/modules-load.d/kvm.conf >/dev/null
 
     if grep -qi "GenuineIntel" /proc/cpuinfo; then
-        append_if_missing "kvm_intel" /etc/modules-load.d/kvm.conf
+        append_line_if_missing "kvm_intel" /etc/modules-load.d/kvm.conf
         echo "options kvm_intel nested=1" | sudo tee /etc/modprobe.d/kvm_intel.conf >/dev/null
         sudo modprobe kvm || true
         sudo modprobe kvm_intel || true
     elif grep -qi "AuthenticAMD" /proc/cpuinfo; then
-        append_if_missing "kvm_amd" /etc/modules-load.d/kvm.conf
+        append_line_if_missing "kvm_amd" /etc/modules-load.d/kvm.conf
         echo "options kvm_amd nested=1" | sudo tee /etc/modprobe.d/kvm_amd.conf >/dev/null
         sudo modprobe kvm || true
         sudo modprobe kvm_amd || true
@@ -39,19 +49,6 @@ enable_nested_kvm() {
     fi
 }
 
-append_if_missing() {
-    local line="$1"
-    local file="$2"
-
-    if [[ ! -f "$file" ]]; then
-        echo "$line" | sudo tee "$file" >/dev/null
-        return
-    fi
-
-    if ! grep -Fqx "$line" "$file"; then
-        echo "$line" | sudo tee -a "$file" >/dev/null
-    fi
-}
 
 ensure_default_network() {
     log_subsection "Ensuring default libvirt network"
@@ -83,8 +80,8 @@ main() {
     enable_now_service libvirtd.service
 
     log_subsection "Adding user to virtualization groups"
-    sudo gpasswd -a "$USER_NAME" kvm || true
-    sudo gpasswd -a "$USER_NAME" libvirt || true
+    add_user_to_group "$USER_NAME" kvm
+    add_user_to_group "$USER_NAME" libvirt
 
     ensure_default_network
 

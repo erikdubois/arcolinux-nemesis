@@ -8,14 +8,30 @@ set -Euo pipefail
 shopt -s nullglob
 
 #--------------------------------------------------------------------------------------------------
-# Paths
+# Index
 #--------------------------------------------------------------------------------------------------
+# 1. Paths
+# 2. Colors
+# 3. Logging
+# 4. Error handling
+# 5. Generic helpers
+# 6. Package helpers
+# 7. Service helpers
+# 8. File helpers
+# 9. User and group helpers
+# 10. Download and AUR helpers
+# 11. Repo and pacman helpers
+# 12. Project-specific helpers
+
+##################################################################################################################################
+# Paths
+##################################################################################################################################
 readonly COMMON_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 readonly PROJECT_DIR="$(cd -- "${COMMON_DIR}/.." && pwd)"
 
-#--------------------------------------------------------------------------------------------------
+##################################################################################################################################
 # Colors
-#--------------------------------------------------------------------------------------------------
+##################################################################################################################################
 if command -v tput >/dev/null 2>&1 && [[ -t 1 ]]; then
     RED="$(tput setaf 1)"
     GREEN="$(tput setaf 2)"
@@ -34,9 +50,9 @@ else
     RESET=""
 fi
 
-#--------------------------------------------------------------------------------------------------
+##################################################################################################################################
 # Logging
-#--------------------------------------------------------------------------------------------------
+##################################################################################################################################
 log_section() {
     echo
     echo "${GREEN}################################################################################${RESET}"
@@ -89,9 +105,9 @@ log_success() {
     echo
 }
 
-#--------------------------------------------------------------------------------------------------
-# Error handler
-#--------------------------------------------------------------------------------------------------
+##################################################################################################################################
+# Error handling
+##################################################################################################################################
 on_error() {
     local lineno="$1"
     local cmd="$2"
@@ -101,9 +117,9 @@ on_error() {
 
 trap 'on_error "$LINENO" "$BASH_COMMAND"' ERR
 
-#--------------------------------------------------------------------------------------------------
-# Helpers
-#--------------------------------------------------------------------------------------------------
+##################################################################################################################################
+# Generic helpers
+##################################################################################################################################
 script_name() {
     basename "${BASH_SOURCE[1]}"
 }
@@ -118,6 +134,21 @@ require_root_tools() {
     done
 }
 
+pause_if_debug() {
+    if [[ "${DEBUG:-false}" == true ]]; then
+        echo
+        echo "------------------------------------------------------------"
+        echo "Waiting for user input to continue. Debug mode is on."
+        echo "------------------------------------------------------------"
+        echo
+        read -r -n 1 -s -p "Debug mode is on. Press any key to continue..."
+        echo
+    fi
+}
+
+##################################################################################################################################
+# Package helpers
+##################################################################################################################################
 pkg_installed() {
     pacman -Q "$1" &>/dev/null
 }
@@ -148,6 +179,89 @@ remove_packages() {
     fi
 }
 
+remove_matching_packages() {
+    local pkg
+
+    for pkg in "$@"; do
+        if pacman -Qq | grep -Fxq "${pkg}"; then
+            log_subsection "Removing package: ${pkg}"
+            sudo pacman -R --noconfirm "${pkg}"
+        else
+            log_info "Package '${pkg}' is not installed"
+        fi
+    done
+}
+
+remove_matching_packages_deps() {
+    local pkg
+
+    for pkg in "$@"; do
+        if pacman -Qq | grep -Fxq -- "${pkg}"; then
+            log_subsection "Removing package with dependencies: ${pkg}"
+            sudo pacman -Rns --noconfirm "${pkg}"
+        else
+            log_info "No package named '${pkg}' is installed"
+        fi
+    done
+}
+
+remove_matching_packages_deps_dd() {
+    local pkg
+
+    for pkg in "$@"; do
+        if pacman -Qq | grep -Fxq -- "${pkg}"; then
+            log_subsection "Force removing package: ${pkg}"
+            sudo pacman -Rdd --noconfirm "${pkg}"
+        else
+            log_info "No package named '${pkg}' is installed"
+        fi
+    done
+}
+
+##################################################################################################################################
+# Install local packages from directory
+##################################################################################################################################
+install_local_packages_from_dir() {
+    local dir="$1"
+    local -a pkgs=()
+
+    if [[ -z "${dir}" ]]; then
+        log_warn "No package directory provided"
+        return 1
+    fi
+
+    if [[ ! -d "${dir}" ]]; then
+        log_warn "Directory not found: ${dir}"
+        return 1
+    fi
+
+    if ! command -v pacman >/dev/null 2>&1; then
+        log_warn "pacman not found"
+        return 1
+    fi
+
+    pkgs=( "${dir}"/*.pkg.tar.* )
+
+    if (( ${#pkgs[@]} == 0 )); then
+        log_warn "No local packages found in ${dir}"
+        return 1
+    fi
+
+    log_subsection "Installing local packages from ${dir}"
+    sudo pacman -U --noconfirm "${pkgs[@]}"
+}
+
+##################################################################################################################################
+# Install local packages from default project packages directory
+##################################################################################################################################
+install_local_packages() {
+    local dir="${1:-${PROJECT_DIR}/packages}"
+    install_local_packages_from_dir "${dir}"
+}
+
+##################################################################################################################################
+# Service helpers
+##################################################################################################################################
 enable_service() {
     local service="$1"
     log_subsection "Enabling service: ${service}"
@@ -158,12 +272,11 @@ disable_service() {
     local service="$1"
 
     if systemctl list-unit-files | grep -q "^${service}\.service"; then
-        log_subsection "Disabling service: ${service}"
-
         if systemctl is-enabled --quiet "${service}" || systemctl is-active --quiet "${service}"; then
+            log_subsection "Disabling service: ${service}"
             sudo systemctl disable --now "${service}"
         else
-            log_warn "Service ${service} already disabled"
+            log_info "Service ${service} already disabled"
         fi
     else
         log_warn "Service ${service} not installed"
@@ -182,6 +295,20 @@ enable_now_service() {
     sudo systemctl enable --now "${service}"
 }
 
+restart_service() {
+    local service="$1"
+
+    if systemctl list-unit-files | grep -q "^${service}\.service"; then
+        log_subsection "Restarting service: ${service}"
+        sudo systemctl restart "${service}"
+    else
+        log_warn "Service ${service} not found"
+    fi
+}
+
+##################################################################################################################################
+# File helpers
+##################################################################################################################################
 backup_file_once() {
     local src="$1"
     local dst="$2"
@@ -192,7 +319,7 @@ backup_file_once() {
     fi
 
     if [[ -f "${dst}" ]]; then
-        log_subsection "Backup already exists: ${dst}"
+        log_info "Backup already exists: ${dst}"
     else
         log_subsection "Creating backup: ${dst}"
         sudo cp -v "${src}" "${dst}"
@@ -212,16 +339,67 @@ copy_file() {
     sudo cp -v "${src}" "${dst}"
 }
 
-run_glob() {
-    local pattern="$1"
-    local files=( ${pattern} )
-    local file
+write_file_as_root() {
+    local target="$1"
 
-    (( ${#files[@]} == 0 )) && return 0
+    log_subsection "Writing ${target}"
+    sudo tee "${target}" >/dev/null
+}
 
-    for file in "${files[@]}"; do
-        [[ -f "${file}" ]] && bash "${file}"
-    done
+append_line_if_missing() {
+    local line="$1"
+    local file="$2"
+
+    if [[ ! -f "${file}" ]]; then
+        echo "${line}" | sudo tee "${file}" >/dev/null
+        return 0
+    fi
+
+    if ! grep -Fqx "${line}" "${file}"; then
+        echo "${line}" | sudo tee -a "${file}" >/dev/null
+    fi
+}
+
+remove_file_if_exists() {
+    local target="$1"
+
+    if [[ -f "${target}" ]]; then
+        sudo rm -f "${target}"
+        log_info "Removed: ${target}"
+    else
+        log_info "Already removed: ${target}"
+    fi
+}
+
+remove_folder_if_exists() {
+    local target="$1"
+
+    if [[ -d "${target}" ]]; then
+        sudo rm -rf "${target}"
+        log_info "Removed folder: ${target}"
+    else
+        log_info "Folder already removed: ${target}"
+    fi
+}
+
+append_text_as_root() {
+    local target="$1"
+    sudo tee -a "$target" >/dev/null
+}
+
+##################################################################################################################################
+# User and group helpers
+##################################################################################################################################
+add_user_to_group() {
+    local user="$1"
+    local group="$2"
+
+    if id -nG "${user}" | grep -qw "${group}"; then
+        log_info "User ${user} already in group ${group}"
+    else
+        log_subsection "Adding ${user} to group ${group}"
+        sudo gpasswd -a "${user}" "${group}"
+    fi
 }
 
 confirm_yes_no() {
@@ -245,105 +423,43 @@ confirm_yes_no() {
     done
 }
 
-remove_matching_packages() {
-    local pkg
-    local installed=()
+##################################################################################################################################
+# Download and AUR helpers
+##################################################################################################################################
+install_aur_package() {
+    local pkg="$1"
 
-    for pkg in "$@"; do
-        installed=()
+    if pkg_installed "${pkg}"; then
+        log_info "AUR package ${pkg} already installed"
+        return 0
+    fi
 
-        if pacman -Qq | grep -Fxq "${pkg}"; then
-            installed+=("${pkg}")
-        fi
-
-        if (( ${#installed[@]} > 0 )); then
-            log_subsection "Removing package: ${pkg}"
-            echo "Removing package: ${pkg}"
-            sudo pacman -R --noconfirm "${pkg}"
-        else
-            echo "Package '${pkg}' is not installed."
-        fi
-    done
-}
-
-remove_matching_packages_deps() {
-    local pattern
-    local matches=()
-    local pkg
-
-    for pattern in "$@"; do
-        matches=()
-        while IFS= read -r pkg; do
-            [[ -n "${pkg}" ]] && matches+=("${pkg}")
-        done < <(pacman -Qq | grep -Fx -- "${pattern}" || true)
-
-        if (( ${#matches[@]} > 0 )); then
-            log_subsection "Removing package with dependencies: ${pattern}"
-            for pkg in "${matches[@]}"; do
-                echo "Removing package: ${pkg}"
-                sudo pacman -Rns --noconfirm "${pkg}"
-            done
-        else
-            echo "No package named '${pattern}' is installed."
-        fi
-    done
-}
-
-remove_matching_packages_deps_dd() {
-    local pattern
-    local matches=()
-    local pkg
-
-    for pattern in "$@"; do
-        matches=()
-        while IFS= read -r pkg; do
-            [[ -n "${pkg}" ]] && matches+=("${pkg}")
-        done < <(pacman -Qq | grep -Fx -- "${pattern}" || true)
-
-        if (( ${#matches[@]} > 0 )); then
-            log_subsection "Removing package with dependencies: ${pattern}"
-            for pkg in "${matches[@]}"; do
-                echo "Removing package: ${pkg}"
-                sudo pacman -Rdd --noconfirm "${pkg}"
-            done
-        else
-            echo "No package named '${pattern}' is installed."
-        fi
-    done
-}
-
-remove_file_if_exists() {
-    local target="$1"
-    if [[ -f "${target}" ]]; then
-        sudo rm -f "${target}"
-        echo "Removed: ${target}"
+    if command -v yay >/dev/null 2>&1; then
+        log_subsection "Installing AUR package ${pkg} with yay"
+        yay -S --noconfirm "${pkg}"
+    elif command -v paru >/dev/null 2>&1; then
+        log_subsection "Installing AUR package ${pkg} with paru"
+        paru -S --noconfirm "${pkg}"
     else
-        echo "Already removed: ${target}"
+        log_warn "No AUR helper found (yay/paru)"
+        return 1
     fi
 }
 
-remove_folder_if_exists() {
-    local target="$1"
-    if [[ -d "${target}" ]]; then
-        sudo rm -rf "${target}"
-        echo "Removed folder: ${target}"
-    else
-        echo "Folder already removed: ${target}"
-    fi
+##################################################################################################################################
+# Download file
+##################################################################################################################################
+download_file() {
+    local url="$1"
+    local dest="$2"
+
+    log_subsection "Downloading $(basename "${dest}")"
+    curl -L --fail --output "${dest}" "${url}"
 }
 
-pause_if_debug() {
-    if [[ "${DEBUG:-false}" == true ]]; then
-        echo
-        echo "------------------------------------------------------------"
-        echo "Waiting for user input to continue. Debug mode is on."
-        echo "------------------------------------------------------------"
-        echo
-        read -r -n 1 -s -p "Debug mode is on. Press any key to continue..."
-        echo
-    fi
-}
-
+##################################################################################################################################
+# Repo and pacman helpers
+##################################################################################################################################
 write_arch_mirrorlist() {
     log_section "Replacing content of current /etc/pacman.d/mirrorlist
 Backup exists here: /etc/pacman.d/mirrorlist-nemesis"
@@ -362,20 +478,6 @@ EOF
     log_section "Arch Linux servers have been written to /etc/pacman.d/mirrorlist
 Use nmirrorlist when on ArcoLinux to inspect
 Use nano /etc/pacman.d/mirrorlist to inspect on others"
-}
-
-install_local_packages() {
-    local packages=( "${SCRIPT_DIR}"/packages/*.pkg.tar.zst )
-
-    if (( ${#packages[@]} == 0 )); then
-        log_warn "No local packages found in ${SCRIPT_DIR}/packages"
-        return 0
-    fi
-
-    local pkg
-    for pkg in "${packages[@]}"; do
-        sudo pacman -U --noconfirm "${pkg}"
-    done
 }
 
 restore_pacman_conf() {
@@ -397,7 +499,7 @@ SigLevel = Never
 Server = https://erikdubois.github.io/$repo/$arch
 EOF_NEMESIS
     else
-        log_warn "nemesis_repo already present in /etc/pacman.conf"
+        log_info "nemesis_repo already present in /etc/pacman.conf"
     fi
 }
 
@@ -412,8 +514,23 @@ SigLevel = Required DatabaseOptional
 Include = /etc/pacman.d/chaotic-mirrorlist
 EOF_CHAOTIC
     else
-        log_warn "chaotic-aur already present in /etc/pacman.conf"
+        log_info "chaotic-aur already present in /etc/pacman.conf"
     fi
+}
+
+##################################################################################################################################
+# Project-specific helpers
+##################################################################################################################################
+run_glob() {
+    local pattern="$1"
+    local files=( ${pattern} )
+    local file
+
+    (( ${#files[@]} == 0 )) && return 0
+
+    for file in "${files[@]}"; do
+        [[ -f "${file}" ]] && bash "${file}"
+    done
 }
 
 run_non_arch_distro_script() {
@@ -434,17 +551,13 @@ run_non_arch_distro_script() {
 run_chadwm_choice() {
     pause_if_debug
     log_section "Chadwm installation choice - installation will follow later on"
-   
+
     if confirm_yes_no "Do you want to install Chadwm on your system?"; then
         log_warn "User chose to install Chadwm"
-
         touch /tmp/install-chadwm
     else
         log_warn "User chose not to install Chadwm"
-
-        if [[ -f /tmp/install-chadwm ]]; then
-            rm -f /tmp/install-chadwm
-        fi
+        [[ -f /tmp/install-chadwm ]] && rm -f /tmp/install-chadwm
     fi
 }
 
@@ -452,28 +565,13 @@ disable_firewalld_stack() {
     log_subsection "Removing firewalld stack"
 
     disable_service firewalld
-
-    remove_matching_packages \
-        firewall-applet \
-        firewall-config \
-        firewalld
+    remove_matching_packages firewall-applet firewall-config firewalld
 }
 
 install_sddm_git() {
-
-    echo "Installing sddm-git..."
-
-    if command -v paru >/dev/null 2>&1; then
-        paru -S --noconfirm sddm-git
-    elif command -v yay >/dev/null 2>&1; then
-        yay -S --noconfirm sddm-git
-    else
-        echo "No AUR helper found (paru or yay required)."
-        return 1
-    fi
-
-    echo "Enabling SDDM service..."
-    sudo systemctl enable sddm.service
+    log_subsection "Installing sddm-git"
+    install_aur_package sddm-git
+    enable_service sddm.service
 
     echo
     echo "SDDM has been installed and enabled."
@@ -482,12 +580,10 @@ install_sddm_git() {
 }
 
 remove_gpsd() {
-
     if pacman -Qi gpsd &>/dev/null; then
-        echo "Removing gpsd..."
+        log_subsection "Removing gpsd"
         remove_matching_packages_deps waybar gpsd
     else
-        echo "gpsd is not installed"
+        log_info "gpsd is not installed"
     fi
-
 }

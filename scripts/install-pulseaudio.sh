@@ -21,28 +21,30 @@ source "${COMMON_DIR}/common.sh"
 
 ##################################################################################################################################
 # Purpose
-# - Replace PipeWire audio stack with PulseAudio
-# - Restore Bluetooth audio support
+# - Install PulseAudio audio stack
+# - Replace PipeWire audio packages
+# - Keep Bluetooth audio support enabled
 ##################################################################################################################################
 
 main() {
 
-    log_section "Installing PulseAudio stack"
+    log_section "Installing PulseAudio audio stack"
 
     ############################################################################################################
-    # Remove PipeWire stack
+    # Remove conflicting audio packages
     ############################################################################################################
+
+    remove_matching_packages pipewire-media-session
 
     remove_matching_packages_deps_dd \
-        pulse-native-provider \
-        gnome-bluetooth \
-        blueberry \
         pipewire \
-        pipewire-jack \
-        pipewire-pulse \
+        lib32-pipewire \
+        wireplumber \
         pipewire-alsa \
-        pipewire-media-session \
-        pipewire-zeroconf
+        pipewire-jack \
+        lib32-pipewire-jack \
+        pipewire-zeroconf \
+        pipewire-pulse
 
     ############################################################################################################
     # Install PulseAudio stack
@@ -55,10 +57,9 @@ main() {
         jack2
 
     ############################################################################################################
-    # Restore bluetooth tools
+    # Enable Bluetooth service
     ############################################################################################################
 
-    install_packages gnome-bluetooth blueberry
     enable_service bluetooth.service
 
     log_success "PulseAudio installation completed"

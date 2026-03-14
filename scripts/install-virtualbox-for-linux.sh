@@ -8,7 +8,6 @@
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
-# Purpose
 ##################################################################################################################################
 
 set -Euo pipefail

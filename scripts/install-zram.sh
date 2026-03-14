@@ -43,7 +43,7 @@ EOF
     log_subsection "Reloading systemd and starting zram"
 
     sudo systemctl daemon-reload
-    sudo systemctl start /dev/zram0 || true
+    sudo systemctl start /dev/zram0
 
     log_success "ZRAM enabled"
     log_info "Check with: swapon --show or zramctl"

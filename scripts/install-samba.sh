@@ -33,7 +33,7 @@ main() {
 
     install_packages samba gvfs-smb gvfs-dnssd
 
-    copy_file /etc/samba/smb.conf.nemesis /etc/samba/smb.conf
+    copy_file "${PROJECT_DIR}/smb.conf.nemesis" /etc/samba/smb.conf
 
     echo
     read -r -p "What is your login? It will be used for Samba: " username

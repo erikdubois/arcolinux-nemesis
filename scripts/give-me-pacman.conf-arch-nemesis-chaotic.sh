@@ -43,8 +43,8 @@ main() {
 
     log_subsection "Installing local packages from ${pkg_dir}"
 
-    find "${pkg_dir}" -maxdepth 1 -name '*.pkg.tar.zst' -print0 | sudo xargs -0 pacman -U --noconfirm
-
+    install_local_packages_from_dir "${pkg_dir}"
+    
     ############################################################################################################
     # Backup pacman.conf
     ############################################################################################################

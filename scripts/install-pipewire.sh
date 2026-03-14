@@ -23,7 +23,7 @@ source "${COMMON_DIR}/common.sh"
 # Purpose
 # - Install PipeWire audio stack
 # - Replace PulseAudio
-# - Enable Bluetooth audio support
+# - Keep Bluetooth audio support enabled
 ##################################################################################################################################
 
 main() {
@@ -31,15 +31,16 @@ main() {
     log_section "Installing PipeWire audio stack"
 
     ############################################################################################################
-    # Remove conflicting packages
+    # Remove conflicting audio packages
     ############################################################################################################
 
-    remove_matching_packages \
-        gnome-bluetooth \
-        blueberry \
-        pipewire-media-session
+    remove_matching_packages pipewire-media-session
 
-    sudo pacman -Rdd --noconfirm jack2 pulseaudio pulseaudio-alsa pulseaudio-bluetooth || true
+    remove_matching_packages_deps_dd \
+        jack2 \
+        pulseaudio \
+        pulseaudio-alsa \
+        pulseaudio-bluetooth
 
     ############################################################################################################
     # Install PipeWire stack
@@ -56,10 +57,9 @@ main() {
         pipewire-pulse
 
     ############################################################################################################
-    # Restore bluetooth tools
+    # Enable Bluetooth service
     ############################################################################################################
 
-    install_packages gnome-bluetooth blueberry
     enable_service bluetooth.service
 
     log_success "PipeWire installation completed"
