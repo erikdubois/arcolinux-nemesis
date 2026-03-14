@@ -23,9 +23,12 @@ source "${COMMON_DIR}/common.sh"
 # - Automatically discover all .sh scripts in the current directory except the launcher itself
 # - Display a checklist using dialog or whiptail
 # - Allow the user to select one or more scripts to execute
+# - Provide an option to install all scripts at once
 # - Run the selected scripts sequentially
 # - Use shared logging and helper functions from common/common.sh
 ##################################################################################################################################
+
+ALL_OPTION="__ALL__"
 
 get_dialog_bin() {
     command -v dialog || command -v whiptail
@@ -47,6 +50,8 @@ collect_scripts() {
 build_menu_items() {
     local script
     local items=()
+
+    items+=( "${ALL_OPTION}" "Install all scripts" "OFF" )
 
     for script in "$@"; do
         items+=( "${script}" "" "OFF" )
@@ -78,8 +83,46 @@ show_checklist() {
     fi
 }
 
+parse_selected_items() {
+    local dialog_bin="$1"
+    local selected_raw="$2"
+    local item
+
+    local -a parsed=()
+
+    if [[ "$(basename "${dialog_bin}")" == "dialog" ]]; then
+        eval "parsed=( ${selected_raw} )"
+        printf '%s\n' "${parsed[@]}"
+    else
+        while IFS= read -r item; do
+            [[ -n "${item}" ]] && printf '%s\n' "${item}"
+        done <<< "${selected_raw}"
+    fi
+}
+
+expand_all_selection() {
+    local item
+    local -a scripts=( "$@" )
+    local -a expanded=()
+    local all_selected=false
+
+    for item in "${scripts[@]}"; do
+        if [[ "${item}" == "${ALL_OPTION}" ]]; then
+            all_selected=true
+            break
+        fi
+    done
+
+    if [[ "${all_selected}" == true ]]; then
+        collect_scripts
+    else
+        printf '%s\n' "${scripts[@]}"
+    fi
+}
+
 run_selected_scripts() {
     local script
+
     for script in "$@"; do
         log_subsection "Running ${script}"
         bash "${SCRIPTS_DIR}/${script}"
@@ -87,14 +130,13 @@ run_selected_scripts() {
 }
 
 main() {
-
     local dialog_bin
     local selected_raw
-    local script
 
     local -a scripts=()
     local -a menu_items=()
     local -a selected=()
+    local -a expanded_selected=()
 
     mapfile -t scripts < <(collect_scripts)
 
@@ -110,20 +152,21 @@ main() {
 
     selected_raw="$(show_checklist "${dialog_bin}" "${menu_items[@]}")" || exit 0
 
-    if [[ "$(basename "${dialog_bin}")" == "dialog" ]]; then
-        eval "selected=( ${selected_raw} )"
-    else
-        while IFS= read -r script; do
-            [[ -n "${script}" ]] && selected+=( "${script}" )
-        done <<< "${selected_raw}"
-    fi
+    mapfile -t selected < <(parse_selected_items "${dialog_bin}" "${selected_raw}")
 
     (( ${#selected[@]} > 0 )) || {
         log_warn "No scripts selected"
         exit 0
     }
 
-    run_selected_scripts "${selected[@]}"
+    mapfile -t expanded_selected < <(expand_all_selection "${selected[@]}")
+
+    (( ${#expanded_selected[@]} > 0 )) || {
+        log_warn "No scripts selected"
+        exit 0
+    }
+
+    run_selected_scripts "${expanded_selected[@]}"
 }
 
 main "$@"
