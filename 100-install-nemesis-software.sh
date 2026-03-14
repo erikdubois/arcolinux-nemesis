@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
+
+# Load shared helper functions
 source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
 
+# Log current script
 log_section "Running $(script_name)"
 
+# Pause when debug mode is enabled
 pause_if_debug
 
 ##################################################################################################################################
@@ -15,39 +19,17 @@ pause_if_debug
 #
 ##################################################################################################################################
 
-add_nemesis_repo() {
-    if grep -q "nemesis_repo" /etc/pacman.conf; then
-        log_section "nemesis_repo is already in /etc/pacman.conf"
-    else
-        log_section "nemesis_repo added to /etc/pacman.conf"
-
-        sudo tee -a /etc/pacman.conf >/dev/null <<'EOF'
-
-[nemesis_repo]
-SigLevel = Optional TrustedOnly
-Server = https://erikdubois.github.io/$repo/$arch
-EOF
-    fi
-}
-
+# Ensure a readable console font exists
 ensure_vconsole_font() {
     echo "Adding font to /etc/vconsole.conf"
+
+    # Add font only if not already defined
     if ! grep -q "^FONT=" /etc/vconsole.conf 2>/dev/null; then
         echo "FONT=lat4-19" | sudo tee --append /etc/vconsole.conf >/dev/null
     fi
 }
 
-remove_plasma_arco_packages_if_needed() {
-    if [[ -f /usr/share/wayland-sessions/plasma.desktop ]]; then
-        remove_packages \
-            arcolinux-plasma-keybindings-git \
-            arcolinux-plasma-servicemenus-git \
-            arcolinux-plasma-theme-candy-beauty-arc-dark-git \
-            arcolinux-plasma-theme-candy-beauty-nordic-git \
-            arcolinux-gtk-surfn-plasma-dark-git
-    fi
-}
-
+# Install XFCE tools if XFCE session exists
 install_xfce_extras_if_needed() {
     if [[ -f /usr/share/xsessions/xfce.desktop ]]; then
         install_packages \
@@ -56,6 +38,7 @@ install_xfce_extras_if_needed() {
     fi
 }
 
+# Install main Nemesis software set
 install_nemesis_software() {
     install_packages \
         mkinitcpio-firmware \
@@ -83,20 +66,18 @@ install_nemesis_software() {
         surfn-icons-git \
         wttr
 
+    # Avoid pamac conflict on Manjaro
     if ! grep -q "Manjaro" /etc/os-release; then
         install_packages pamac-aur
     fi
 }
 
-add_nemesis_repo
-
-sudo pacman -Sy
-
+# Main execution
 log_section "Installing software from nemesis_repo"
 
 install_xfce_extras_if_needed
 ensure_vconsole_font
-remove_plasma_arco_packages_if_needed
 install_nemesis_software
 
+# Finished
 log_subsection "$(script_name) done"

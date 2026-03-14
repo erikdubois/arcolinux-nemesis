@@ -138,6 +138,12 @@ enable_service() {
     sudo systemctl enable "${service}"
 }
 
+disable_service() {
+    local service="$1"
+    log_subsection "Disabling service: ${service}"
+    sudo systemctl disable --now "${service}"
+}
+
 start_service() {
     local service="$1"
     log_subsection "Starting service: ${service}"
@@ -260,10 +266,20 @@ remove_matching_packages_deps() {
 remove_file_if_exists() {
     local target="$1"
     if [[ -f "${target}" ]]; then
-        rm -f "${target}"
+        sudo rm -f "${target}"
         echo "Removed: ${target}"
     else
         echo "Already removed: ${target}"
+    fi
+}
+
+remove_folder_if_exists() {
+    local target="$1"
+    if [[ -d "${target}" ]]; then
+        sudo rm -rf "${target}"
+        echo "Removed folder: ${target}"
+    else
+        echo "Folder already removed: ${target}"
     fi
 }
 
@@ -383,3 +399,13 @@ run_chadwm_choice() {
     fi
 }
 
+disable_firewalld_stack() {
+    log_subsection "Removing firewalld stack"
+
+    disable_service firewalld
+
+    remove_matching_packages \
+        firewall-applet \
+        firewall-config \
+        firewalld
+}

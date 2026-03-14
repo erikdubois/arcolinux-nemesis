@@ -16,44 +16,35 @@ is_omarchy() {
 }
 
 handle_archbang() {
-    log_section "We are on ArchBang"
-    echo "Making backups of important files to start openbox"
+    if is_os_release_match "archbang"; then
 
-    if [[ -f "${HOME}/.bash_profile" && ! -f "${HOME}/.bash_profile_nemesis" ]]; then
-        cp -vf "${HOME}/.bash_profile" "${HOME}/.bash_profile_nemesis"
+        log_section "We are on ArchBang"
+        echo "Making backups of important files to start openbox"
+
+        backup_file_once "${HOME}/.bash_profile" "${HOME}/.bash_profile_nemesis"
+
+        backup_file_once "${HOME}/.xinitrc"  "${HOME}/.xinitrc-nemesis"
+        
+        mkdir -p "${HOME}/.bin"
+
+        log_warn "Change from xz to zstd in mkinitcpio"
+        sudo sed -i \
+            -e 's/^#COMPRESSION="zstd"/COMPRESSION="zstd"/' \
+            -e 's/^COMPRESSION="xz"/COMPRESSION="zstd"/' \
+            /etc/mkinitcpio.conf
+
+        sudo mkinitcpio -P
     fi
-
-    if [[ -f "${HOME}/.xinitrc" && ! -f "${HOME}/.xinitrc-nemesis" ]]; then
-        cp -vf "${HOME}/.xinitrc" "${HOME}/.xinitrc-nemesis"
-    fi
-
-    mkdir -p "${HOME}/.bin"
-
-    if [[ -f "/home/${USER}/AB_Scripts/startpanel" ]]; then
-        cp "/home/${USER}/AB_Scripts/startpanel" "${HOME}/.bin/startpanel"
-    else
-        log_warn "File not found: /home/${USER}/AB_Scripts/startpanel"
-    fi
-
-    echo "Getting our mirrorlist in"
-    copy_file "${SCRIPT_DIR}/mirrorlist" /etc/pacman.d/mirrorlist
-
-    echo
-    echo "Change from xz to zstd in mkinitcpio"
-    echo
-
-    sudo sed -i 's/COMPRESSION="xz"/COMPRESSION="zstd"/g' /etc/mkinitcpio.conf
-    sudo mkinitcpio -P
 }
 
 handle_archcraft() {
     if is_os_release_match "archcraft"; then
         log_section "We are on Archcraft"
 
-        sudo rm -rf /etc/skel/.config/*
-        sudo rm -f /etc/skel/.dmrc
-        sudo rm -f /etc/skel/.face
-        sudo rm -f /etc/skel/.gtkrc-2.0
+        remove_folder_if_exists /etc/skel/.config
+        remove_file_if_exists /etc/skel/.dmrc
+        remove_file_if_exists /etc/skel/.face
+        remove_file_if_exists /etc/skel/.gtkrc-2.0
 
         remove_matching_packages archcraft-skeleton
         remove_matching_packages archcraft-omz
@@ -72,20 +63,20 @@ handle_archcraft() {
 handle_archman() {
     if is_os_release_match "Archman"; then
         log_section "We are on Archman"
-        sudo systemctl disable firewalld || true
+        disable_service firewalld
         remove_matching_packages firewalld
         remove_matching_packages imagewriter
         remove_matching_packages surfn-icons
         remove_matching_packages grml-zsh-config
 
-        sudo rm -rf /etc/skel/.config/Thunar
-        sudo rm -rf /etc/skel/.config/xfce4
-        sudo rm -f /etc/skel/.config/mimeapps.list
-        sudo rm -f /etc/skel/.face
-        sudo rm -f /etc/skel/.xinitrc
-        sudo rm -f /etc/X11/xorg.conf.d/99-killX.conf
-        sudo rm -f /etc/modprobe.d/disable-evbug.conf
-        sudo rm -f /etc/modprobe.d/nobeep.conf
+        remove_folder_if_exists /etc/skel/.config/Thunar
+        remove_folder_if_exists /etc/skel/.config/xfce4
+        remove_file_if_exists /etc/skel/.config/mimeapps.list
+        remove_file_if_exists /etc/skel/.face
+        remove_file_if_exists /etc/skel/.xinitrc
+        remove_file_if_exists /etc/X11/xorg.conf.d/99-killX.conf
+        remove_file_if_exists /etc/modprobe.d/disable-evbug.conf
+        remove_file_if_exists /etc/modprobe.d/nobeep.conf
 
         log_warn "Software removed for Archman"
     fi
@@ -94,9 +85,7 @@ handle_archman() {
 handle_artix() {
     if is_os_release_match "artix"; then
         log_section "We are on Artix"
-        remove_matching_packages artix-qt-presets
-        remove_matching_packages artix-gtk-presets
-        remove_matching_packages artix-desktop-presets
+        remove_matching_packages artix-qt-presets artix-gtk-presets artix-desktop-presets
         log_warn "Software removed for Artix"
     fi
 }
@@ -157,15 +146,10 @@ handle_endeavouros() {
     if is_os_release_match "EndeavourOS"; then
         log_section "We are on EndeavourOS"
 
-        sudo systemctl disable firewalld || true
-        remove_matching_packages firewall-applet
-        remove_matching_packages firewall-config
-        remove_matching_packages firewalld
-        remove_matching_packages arc-gtk-theme-eos
-        remove_matching_packages eos-settings-xfce4
-        remove_matching_packages yay
+        disable_firewalld_stack
+        remove_matching_packages arc-gtk-theme-eos eos-settings-xfce4 yay
 
-        sudo rm -f /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
+        remove_file_if_exists /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 
         log_warn "Software removed for EndeavourOS"
     fi
@@ -174,8 +158,7 @@ handle_endeavouros() {
 handle_ezarch() {
     if is_os_release_match "ezarch"; then
         log_section "We are on Ezarch"
-        sudo systemctl disable firewalld || true
-        remove_matching_packages firewalld
+        disable_firewalld_stack
         remove_matching_packages abiword
         log_warn "Software removed for Ezarch"
     fi
@@ -228,7 +211,6 @@ handle_prism() {
 handle_rebornos() {
     if is_os_release_match "rebornos"; then
         log_section "We are on RebornOS"
-        configure_repos "RebornOS" "true"
         sudo pacman -Rdd --noconfirm v4l-utils || true
         log_warn "Software removed for RebornOS"
     fi
