@@ -36,7 +36,6 @@ edu-awesome-git
 edu-xfce-git
 feh
 lxappearance
-nitrogen
 noto-fonts
 picom-git
 polkit-gnome

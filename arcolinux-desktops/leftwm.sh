@@ -37,7 +37,6 @@ feh
 leftwm-git
 leftwm-theme-git
 lxappearance
-nitrogen
 noto-fonts
 picom-git
 polkit-gnome

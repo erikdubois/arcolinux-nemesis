@@ -38,7 +38,6 @@ feh
 i3-wm
 i3status
 lxappearance
-nitrogen
 noto-fonts
 picom-git
 polkit-gnome
