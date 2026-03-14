@@ -81,6 +81,8 @@ printf "========================================
 printf "
 "
 printf "Use the script give-me-pacman.conf.sh to only get the new /etc/pacman.conf"
+printf "
+"
 printf "Stop this script with CTRL + C then and run give-me-pacman.conf.sh"
 printf "
 "
