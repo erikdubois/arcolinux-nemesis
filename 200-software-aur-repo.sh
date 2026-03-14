@@ -21,6 +21,6 @@ pause_if_debug
 
 log_section "Build Opera from AUR"
 
-install_aur_package_if_needed opera
+install_aur_package opera
 
 log_subsection "$(script_name) done"
