@@ -1,35 +1,114 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Check for dialog or whiptail
-DIALOG=$(command -v dialog || command -v whiptail)
-[ -z "$DIALOG" ] && { echo "dialog or whiptail required"; exit 1; }
+##################################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Youtube   : https://youtube.com/erikdubois
+##################################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################################
 
-# Collect scripts excluding those starting with '1'
-scripts=()
-for file in *.sh; do
-    [[ -f $file && $(basename "$file") != 1* ]] && scripts+=( "$file" )
-done
+set -Euo pipefail
+shopt -s nullglob
 
-# Exit if no scripts found
-[ ${#scripts[@]} -eq 0 ] && { echo "No install scripts found."; exit 1; }
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
 
-# Build menu options
-menu_items=()
-for script in "${scripts[@]}"; do
-    menu_items+=( "$script" "" off )
-done
+source "${COMMON_DIR}/common.sh"
 
-# Show checklist
-choices=$(
-    $DIALOG --separate-output --checklist "Select desktop(s) to install:" 20 70 15 \
-    "${menu_items[@]}" 3>&1 1>&2 2>&3
-)
+get_dialog_bin() {
+    command -v dialog || command -v whiptail
+}
 
-# Handle cancel
-[ $? -ne 0 ] && echo "Installation canceled." && exit 1
+collect_scripts() {
+    local file
+    local scripts=()
 
-# Execute selected scripts
-for choice in $choices; do
-    echo "Executing $choice..."
-    bash "$choice"
-done
+    for file in "${SCRIPT_DIR}"/*.sh; do
+        [[ -f "${file}" ]] || continue
+        [[ "$(basename "${file}")" == 1* ]] && continue
+        scripts+=( "$(basename "${file}")" )
+    done
+
+    printf '%s\n' "${scripts[@]}"
+}
+
+build_menu_items() {
+    local script
+    local items=()
+
+    for script in "$@"; do
+        items+=( "${script}" "" "OFF" )
+    done
+
+    printf '%s\n' "${items[@]}"
+}
+
+show_checklist() {
+    local dialog_bin="$1"
+    shift
+
+    local height=20
+    local width=70
+    local list_height=12
+
+    if [[ "$(basename "${dialog_bin}")" == "dialog" ]]; then
+        "${dialog_bin}" \
+            --stdout \
+            --checklist "Select desktop scripts to run:" \
+            "${height}" "${width}" "${list_height}" \
+            "$@"
+    else
+        "${dialog_bin}" \
+            --separate-output \
+            --checklist "Select desktop scripts to run:" \
+            "${height}" "${width}" "${list_height}" \
+            "$@" 3>&1 1>&2 2>&3
+    fi
+}
+
+run_selected_scripts() {
+    local choice
+    for choice in "$@"; do
+        log_subsection "Executing ${choice}"
+        bash "${SCRIPT_DIR}/${choice}"
+    done
+}
+
+main() {
+    local dialog_bin
+    local selected_raw
+    local script
+    local -a scripts=()
+    local -a menu_items=()
+    local -a selected=()
+
+    mapfile -t scripts < <(collect_scripts)
+
+    dialog_bin="$(get_dialog_bin)"
+    [[ -n "${dialog_bin}" ]] || { log_warn "dialog or whiptail required"; exit 1; }
+    (( ${#scripts[@]} > 0 )) || { log_warn "No install scripts found"; exit 1; }
+
+    mapfile -t menu_items < <(build_menu_items "${scripts[@]}")
+
+    selected_raw="$(show_checklist "${dialog_bin}" "${menu_items[@]}")" || exit 0
+
+    if [[ "$(basename "${dialog_bin}")" == "dialog" ]]; then
+        eval "selected=( ${selected_raw} )"
+    else
+        while IFS= read -r script; do
+            [[ -n "${script}" ]] && selected+=( "${script}" )
+        done <<< "${selected_raw}"
+    fi
+
+    (( ${#selected[@]} > 0 )) || {
+        log_warn "No scripts selected."
+        exit 0
+    }
+
+    run_selected_scripts "${selected[@]}"
+}
+
+main "$@"

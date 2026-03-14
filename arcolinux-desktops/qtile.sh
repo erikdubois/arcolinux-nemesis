@@ -1,101 +1,22 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
-##################################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+set -Euo pipefail
+shopt -s nullglob
 
-##################################################################################################################################
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
-
-##################################################################################################################################
-
-remove_if_installed() {
-    for pattern in "$@"; do
-        # Find all installed packages that match the pattern (exact + variants)
-        matches=$(pacman -Qq | grep "^${pattern}$\|^${pattern}-")
-        
-        if [ -n "$matches" ]; then
-            for pkg in $matches; do
-                echo "Removing package: $pkg"
-                sudo pacman -R --noconfirm "$pkg"
-            done
-        else
-            echo "No packages matching '$pattern' are installed."
-        fi
-    done
-}
-
-##################################################################################################################################
-
-func_install() {
-    if pacman -Qi $1 &> /dev/null; then
-        tput setaf 2
-        echo "#######################################################################################"
-        echo "################## The package "$1" is already installed"
-        echo "#######################################################################################"
-        echo
-        tput sgr0
-    else
-        tput setaf 3
-        echo "#######################################################################################"
-        echo "##################  Installing package "  $1
-        echo "#######################################################################################"
-        echo
-        tput sgr0
-        sudo pacman -S --noconfirm --needed $1
-    fi
-}
-
-##################################################################################################################################
-
-echo
-tput setaf 2
-echo "########################################################################"
-echo "################### Remove possible conflicting packages"
-echo "########################################################################"
-tput sgr0
-echo
-
-remove_if_installed arcolinux-qtile-git
-remove_if_installed arcolinux-rofi-git
-remove_if_installed arcolinux-rofi-themes-git
-remove_if_installed arconet-xfce
-remove_if_installed lxappearance
-
+source "${COMMON_DIR}/common.sh"
 
 echo
 tput setaf 2
@@ -144,7 +65,7 @@ count=0
 for name in "${list[@]}" ; do
     count=$[count+1]
     tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-    func_install $name
+    install_packages $name
 done
 
 echo
