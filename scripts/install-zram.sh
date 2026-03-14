@@ -1,46 +1,51 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
+
+set -Euo pipefail
+shopt -s nullglob
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+
+source "${COMMON_DIR}/common.sh"
+
+##################################################################################################################################
+# Purpose
+# - Install and configure zram swap using systemd-zram-generator
 ##################################################################################################################################
 
-#https://github.com/systemd/zram-generator
+main() {
 
-sudo pacman -S zram-generator --noconfirm --needed
+    log_section "Installing ZRAM"
 
-#----------------------------------------------------------------------------------
+    install_packages zram-generator
 
-echo '[zram0]
-zram-size = ram / 2' | sudo tee /etc/systemd/zram-generator.conf
+    log_subsection "Creating zram configuration"
 
-#create new devices
-sudo systemctl daemon-reload
+    sudo tee /etc/systemd/zram-generator.conf >/dev/null <<EOF
+[zram0]
+zram-size = ram / 2
+compression-algorithm = lz4
+swap-priority = 100
+fs-type = swap
+EOF
 
-sudo systemctl start /dev/zram0
+    log_subsection "Reloading systemd and starting zram"
 
-echo "check with"
-echo "swapon or zramctl or"
-echo "with systemdsystemctl status systemd-zram-setup@zram0.service"
+    sudo systemctl daemon-reload
+    sudo systemctl start /dev/zram0 || true
+
+    log_success "ZRAM enabled"
+    log_info "Check with: swapon --show or zramctl"
+}
+
+main "$@"

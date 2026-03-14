@@ -1,99 +1,46 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
+
+set -Euo pipefail
+shopt -s nullglob
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+
+source "${COMMON_DIR}/common.sh"
+
+##################################################################################################################################
+# Purpose
+# - Install Belgian eID middleware
+# - Enable smartcard support
 ##################################################################################################################################
 
-sudo pacman -S pcsclite ccid opensc --noconfirm --needed
+main() {
+    log_section "Installing Belgian eID middleware"
 
-sudo systemctl enable	pcscd
-sudo systemctl start	pcscd
+    install_packages pcsclite ccid opensc
+    enable_now_service pcscd
 
+    log_subsection "Importing GPG key"
+    gpg --recv-key 824A5E0010A04D46
 
+    if pkg_installed eid-mw; then
+        log_info "eid-mw is already installed"
+    else
+        log_subsection "Installing eid-mw with yay"
+        yay -S --noconfirm eid-mw
+    fi
 
-#run script to be able to receive the key - problem with Belgian ISP
-gpg --recv-key 824A5E0010A04D46
+    log_success "Belgian eID setup completed"
+}
 
-package="eid-mw"
-
-#----------------------------------------------------------------------------------
-
-#checking if application is already installed or else install with aur helpers
-if pacman -Qi $package &> /dev/null; then
-
-		tput setaf 2
-		echo "########################################################################"
-		echo "################## "$package" is already installed"
-		echo "########################################################################"
-		tput sgr0
-
-else
-
-	#checking which helper is installed
-	if pacman -Qi yay &> /dev/null; then
-
-		tput setaf 3
-		echo "########################################################################"
-		echo "######### Installing with yay"
-		echo "########################################################################"
-		tput sgr0
-
-		yay -S --noconfirm $package
-
-	elif pacman -Qi trizen &> /dev/null; then
-
-		tput setaf 3
-		echo "########################################################################"
-		echo "######### Installing with trizen"
-		echo "########################################################################"
-		tput sgr0
-		trizen -S --noconfirm --needed --noedit $package
-
-	fi
-
-fi
-
-
-# Just checking if installation was successful
-if pacman -Qi $package &> /dev/null; then
-
-	tput setaf 2
-	echo "########################################################################"
-	echo "#########  Checking ..."$package" has been installed"
-	echo "########################################################################"
-	tput sgr0
-
-else
-
-	tput setaf 1
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	echo "!!!!!!!!!  "$package" has NOT been installed"
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	tput sgr0
-
-fi
-
-#----------------------------------------------------------------------------------
+main "$@"

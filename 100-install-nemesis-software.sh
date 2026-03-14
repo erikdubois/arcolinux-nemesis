@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 
-# Load shared helper functions
-source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
-
-# Log current script
-log_section "Running $(script_name)"
-
-# Pause when debug mode is enabled
-pause_if_debug
-
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -18,6 +9,15 @@ pause_if_debug
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
+
+# Load shared helper functions
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
+
+# Log current script
+log_section "Running $(script_name)"
+
+# Pause when debug mode is enabled
+pause_if_debug
 
 # Ensure a readable console font exists
 ensure_vconsole_font() {

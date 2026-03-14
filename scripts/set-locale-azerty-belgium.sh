@@ -1,5 +1,5 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -9,44 +9,32 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
+
+set -Euo pipefail
+shopt -s nullglob
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+
+source "${COMMON_DIR}/common.sh"
+
+##################################################################################################################################
+# Purpose
+# - Set Belgian AZERTY keyboard for console
+# - Set Belgian keyboard as the system default XKB layout
+# - Set system locale to en_US.UTF-8
 ##################################################################################################################################
 
-sudo localectl set-keymap be-latin1
-sudo localectl set-locale LANG=en_US.UTF-8
-echo
-tput setaf 2
-echo "########################################################################"
-echo "################### Done"
-echo "########################################################################"
-tput sgr0
-echo
+main() {
+    log_section "Setting Belgian AZERTY keyboard and locale"
 
-echo
-tput setaf 2
-echo "########################################################################"
-echo "################### rebooting now after 5 seconds"
-echo "Press CTRL +C to stop script"
-echo "########################################################################"
-tput sgr0
-echo
+    sudo localectl set-keymap be-latin1
+    sudo localectl set-x11-keymap be
+    sudo localectl set-locale LANG=en_US.UTF-8
 
-echo
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
-echo
+    log_success "Belgian AZERTY keyboard configured"
+    log_warn "Wayland compositors may still override this with their own keyboard settings"
+    log_warn "Reboot or log out and back in to apply everywhere possible"
+}
 
-sleep 5
-
-sudo reboot
+main "$@"

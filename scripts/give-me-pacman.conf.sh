@@ -1,5 +1,5 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -9,44 +9,38 @@
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
 
-#end colors
-#tput sgr0
-##################################################################################################################################
+set -Euo pipefail
+shopt -s nullglob
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+
+source "${COMMON_DIR}/common.sh"
 
 ##################################################################################################################################
+# Purpose
+# - Backup current /etc/pacman.conf if needed
+# - Install custom pacman.conf from this script directory
+##################################################################################################################################
 
-# personal pacman.conf for Erik Dubois
-if [[ ! -f /etc/pacman.conf.nemesis ]]; then
-    sudo cp /etc/pacman.conf /etc/pacman.conf.nemesis
-else
-    echo "Backup already exists: /etc/pacman.conf.nemesis"
-fi
+main() {
 
-sudo cp pacman.conf /etc/pacman.conf
+    log_section "Installing custom pacman.conf"
 
+    ############################################################################################################
+    # Backup pacman.conf if needed
+    ############################################################################################################
 
-tput setaf 3
-echo "########################################################################"
-echo "Done"
-echo "########################################################################"
-tput sgr0
+    backup_file_once /etc/pacman.conf /etc/pacman.conf.nemesis
+
+    ############################################################################################################
+    # Copy new pacman.conf
+    ############################################################################################################
+
+    copy_file "${SCRIPT_DIR}/pacman.conf" /etc/pacman.conf
+
+    log_success "pacman.conf updated"
+}
+
+main "$@"

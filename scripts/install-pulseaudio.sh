@@ -1,59 +1,66 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
+
+set -Euo pipefail
+shopt -s nullglob
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+
+source "${COMMON_DIR}/common.sh"
+
+##################################################################################################################################
+# Purpose
+# - Replace PipeWire audio stack with PulseAudio
+# - Restore Bluetooth audio support
 ##################################################################################################################################
 
-#https://wiki.archlinux.org/title/PipeWire
-#starting on an ArcoLinuxL iso
-#https://wiki.archlinux.org/title/PipeWire#Bluetooth_devices
+main() {
 
-#compare
+    log_section "Installing PulseAudio stack"
 
-sudo pacman -R --noconfirm gnome-bluetooth blueberry
-sudo pacman -R --noconfirm pipewire-pulse
-sudo pacman -R --noconfirm pipewire-alsa
-sudo pacman -Rdd --noconfirm pipewire-jack
-sudo pacman -R --noconfirm pipewire-media-session
-sudo pacman -R --noconfirm pipewire-zeroconf
-sudo pacman -Rdd --noconfirm pipewire
+    ############################################################################################################
+    # Remove PipeWire stack
+    ############################################################################################################
 
-#sudo pacman -S --noconfirm --needed pipewire
-#sudo pacman -S --noconfirm --needed pipewire-media-session
-#sudo pacman -S --noconfirm --needed pipewire-alsa
-#sudo pacman -Rdd --noconfirm jack2
-#do pacman -S --noconfirm --needed pipewire-jack
-#udo pacman -S --noconfirm --needed pipewire-zeroconf
+    remove_matching_packages \
+        gnome-bluetooth \
+        blueberry \
+        pipewire-pulse \
+        pipewire-alsa \
+        pipewire-media-session \
+        pipewire-zeroconf
 
-sudo pacman -S --noconfirm --needed pulseaudio-alsa
-sudo pacman -S --noconfirm --needed pulseaudio-bluetooth
-sudo pacman -S --noconfirm --needed pulseaudio
-sudo pacman -S --noconfirm --needed jack2
+    sudo pacman -Rdd --noconfirm pipewire pipewire-jack || true
 
-sudo pacman -S --noconfirm --needed gnome-bluetooth blueberry
-sudo systemctl enable bluetooth.service
+    ############################################################################################################
+    # Install PulseAudio stack
+    ############################################################################################################
 
-echo "Reboot now"
+    install_packages \
+        pulseaudio \
+        pulseaudio-alsa \
+        pulseaudio-bluetooth \
+        jack2
+
+    ############################################################################################################
+    # Restore bluetooth tools
+    ############################################################################################################
+
+    install_packages gnome-bluetooth blueberry
+    enable_service bluetooth.service
+
+    log_success "PulseAudio installation completed"
+    log_warn "Reboot recommended"
+}
+
+main "$@"

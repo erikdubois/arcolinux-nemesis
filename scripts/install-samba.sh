@@ -1,87 +1,48 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
 # Youtube   : https://youtube.com/erikdubois
-#######################################################################################
+##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
-#######################################################################################
+##################################################################################################################################
 
+set -Euo pipefail
+shopt -s nullglob
 
-#######################################################################################
-#
-#   DECLARATION OF FUNCTIONS
-#
-#######################################################################################
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
 
+source "${COMMON_DIR}/common.sh"
 
-func_install() {
-	if pacman -Qi $1 &> /dev/null; then
-		tput setaf 2
-  		echo "#######################################################################################"
-  		echo "################## The package "$1" is already installed"
-      	echo "#######################################################################################"
-      	echo
-		tput sgr0
-	else
-    	tput setaf 3
-    	echo "#######################################################################################"
-    	echo "##################  Installing package "  $1
-    	echo "#######################################################################################"
-    	echo
-    	tput sgr0
-    	sudo pacman -S --noconfirm --needed $1 
-    fi
+##################################################################################################################################
+# Purpose
+# - Install Samba packages
+# - Copy Samba configuration
+# - Enable Samba services
+##################################################################################################################################
+
+main() {
+    local username=""
+
+    log_section "Installing Samba"
+
+    install_packages samba gvfs-smb gvfs-dnssd
+
+    copy_file /etc/samba/smb.conf.nemesis /etc/samba/smb.conf
+
+    echo
+    read -r -p "What is your login? It will be used for Samba: " username
+
+    sudo smbpasswd -a "${username}"
+
+    enable_service smb.service
+    enable_service nmb.service
+
+    log_success "Samba installation completed"
 }
 
-#######################################################################################
-echo "Installation of samba software"
-#######################################################################################
-
-list=(
-samba
-gvfs-smb
-gvfs-dnssd
-)
-
-count=0
-
-for name in "${list[@]}" ; do
-	count=$[count+1]
-	tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-	func_install $name
-done
-
-#######################################################################################
-
-tput setaf 5;echo "########################################################################"
-echo "Getting the ArcoLinux Samba config"
-echo "########################################################################"
-echo;tput sgr0
-
-sudo cp /etc/samba/smb.conf.nemesis /etc/samba/smb.conf
-
-tput setaf 5;echo "########################################################################"
-echo "Give your username for samba"
-echo "########################################################################"
-echo;tput sgr0
-
-read -p "What is your login? It will be used to add this user to smb : " choice
-sudo smbpasswd -a $choice
-
-tput setaf 5;echo "########################################################################"
-echo "Enabling services"
-echo "########################################################################"
-echo;tput sgr0
-
-sudo systemctl enable smb.service
-sudo systemctl enable nmb.service
-
-tput setaf 11;
-echo "########################################################################"
-echo "Software has been installed"
-echo "########################################################################"
-echo;tput sgr0
+main "$@"

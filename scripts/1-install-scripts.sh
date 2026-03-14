@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
 
+##################################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Youtube   : https://youtube.com/erikdubois
+##################################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################################
+
 set -Euo pipefail
 shopt -s nullglob
 
 SCRIPTS_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 COMMON_DIR="$(cd -- "${SCRIPTS_DIR}/../common" && pwd)"
-echo $COMMON_DIR
 source "${COMMON_DIR}/common.sh"
 
 get_dialog_bin() {

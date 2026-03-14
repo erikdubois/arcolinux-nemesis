@@ -1,30 +1,38 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
+
+set -Euo pipefail
+shopt -s nullglob
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+
+source "${COMMON_DIR}/common.sh"
+
+##################################################################################################################################
+# Purpose
+# - Install Qt 6 development environment
 ##################################################################################################################################
 
-sudo pacman -S qt5-base qt5-doc qt5-tools qtcreator --noconfirm --needed
+main() {
+    log_section "Installing Qt 6 development environment"
+
+    install_packages \
+        qt6-base \
+        qt6-doc \
+        qt6-tools \
+        qtcreator
+
+    log_success "Qt 6 development environment installed"
+}
+
+main "$@"

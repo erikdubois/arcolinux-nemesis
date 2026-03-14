@@ -1,74 +1,59 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
-##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
+# Purpose
 ##################################################################################################################################
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
+set -Euo pipefail
+shopt -s nullglob
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+
+source "${COMMON_DIR}/common.sh"
 
 ##################################################################################################################################
+# Purpose
+# - Install VirtualBox virtualization
+# - Install kernel headers when linux kernel is used
+##################################################################################################################################
 
-echo "###################################################################################"
-echo "##      This script assumes you have the linux kernel running        ##"
-echo "###################################################################################"
+main() {
 
+    log_section "Installing VirtualBox"
 
-if pacman -Qi linux &> /dev/null; then
+    ############################################################################################################
+    # Kernel headers
+    ############################################################################################################
 
-	tput setaf 2
-	echo "########################################################################"
-	echo "#########  Installing linux-headers"
-	echo "########################################################################"
-	tput sgr0
+    if pkg_installed linux; then
+        log_subsection "Installing linux headers"
+        install_packages linux-headers
+    fi
 
-	sudo pacman -S --noconfirm --needed linux-headers
-fi
+    ############################################################################################################
+    # VirtualBox
+    ############################################################################################################
 
-sudo pacman -S --noconfirm --needed virtualbox
-sudo pacman -S --needed --noconfirm virtualbox-host-dkms
+    install_packages \
+        virtualbox \
+        virtualbox-host-dkms
 
-echo "###################################################################################"
-echo "##      Removing all the messages virtualbox produces         ##"
-echo "###################################################################################"
-VBoxManage setextradata global GUI/SuppressMessages "all"
+    ############################################################################################################
+    # Remove VirtualBox GUI warnings
+    ############################################################################################################
 
-# resolution issues Jan/2023
-# VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal2/EfiGraphicsResolution" "2560x1440"
-# VBoxManage setextradata "Your Virtual Machine Name" "VBoxInternal2/EfiGraphicsResolution" "1920x1080"
-# graphical driver - VMSVGA !
-# see : https://wiki.archlinux.org/title/VirtualBox#Set_guest_starting_resolution
+    VBoxManage setextradata global GUI/SuppressMessages "all" || true
 
-echo "###################################################################################"
-echo "#########               You have to reboot.                       #########"
-echo "###################################################################################"
+    log_success "VirtualBox installed"
+    log_warn "Reboot recommended"
+}
+
+main "$@"

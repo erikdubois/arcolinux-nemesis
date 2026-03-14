@@ -1,234 +1,61 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
-##################################################################################################################################
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
+set -Euo pipefail
+shopt -s nullglob
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+
+source "${COMMON_DIR}/common.sh"
 
 ##################################################################################################################################
+# Purpose
+# - Install VMware Workstation
+# - Install linux headers if needed
+# - Enable VMware networking service
+##################################################################################################################################
 
-#gpg --keyserver hkps://pgp.mit.edu:443 --recv-keys C52048C0C0748FEE227D47A2702353E0F7E48EDB
+main() {
 
-# package="ncurses5-compat-libs"
-#
-# #----------------------------------------------------------------------------------
-#
-# #checking if application is already installed or else install with aur helpers
-# if pacman -Qi $package &> /dev/null; then
-#
-# 		tput setaf 2
-# 		echo "########################################################################"
-# 		echo "################## "$package" is already installed"
-# 		echo "########################################################################"
-# 		tput sgr0
-#
-# else
-#
-# 	#checking which helper is installed
-# 	if pacman -Qi yay &> /dev/null; then
-#
-# 		tput setaf 3
-# 		echo "########################################################################"
-# 		echo "######### Installing with yay"
-# 		echo "########################################################################"
-# 		tput sgr0
-#
-# 		yay -S --noconfirm $package
-#
-# 	elif pacman -Qi trizen &> /dev/null; then
-#
-# 		tput setaf 3
-# 		echo "########################################################################"
-# 		echo "######### Installing with trizen"
-# 		echo "########################################################################"
-# 		tput sgr0
-# 		trizen -S --noconfirm --needed --noedit $package
-#
-# 	fi
-#
-# fi
-#
-#
-# # Just checking if installation was successful
-# if pacman -Qi $package &> /dev/null; then
-#
-# 	tput setaf 2
-# 	echo "########################################################################"
-# 	echo "#########  Checking ..."$package" has been installed"
-# 	echo "########################################################################"
-# 	tput sgr0
-#
-# else
-#
-# 	tput setaf 1
-# 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-# 	echo "!!!!!!!!!  "$package" has NOT been installed"
-# 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-# 	tput sgr0
-#
-# fi
+    log_section "Installing VMware Workstation"
 
-#----------------------------------------------------------------------------------
+    ############################################################################################################
+    # Kernel headers
+    ############################################################################################################
 
+    if pkg_installed linux; then
+        install_packages linux-headers
+    fi
 
+    ############################################################################################################
+    # VMware Workstation (AUR)
+    ############################################################################################################
 
-package="linux-headers"
+    if pkg_installed vmware-workstation; then
+        log_info "vmware-workstation already installed"
+    else
+        log_subsection "Installing vmware-workstation (AUR)"
+        yay -S --noconfirm vmware-workstation
+    fi
 
-#----------------------------------------------------------------------------------
+    ############################################################################################################
+    # VMware networking
+    ############################################################################################################
 
-#checking if application is already installed or else install with aur helpers
-if pacman -Qi $package &> /dev/null; then
+    enable_now_service vmware-networks.service
 
-		tput setaf 2
-		echo "########################################################################"
-		echo "################## "$package" is already installed"
-		echo "########################################################################"
-		tput sgr0
+    log_success "VMware Workstation installed"
+    log_warn "Reboot recommended"
+}
 
-else
-
-	#checking which helper is installed
-	if pacman -Qi yay &> /dev/null; then
-
-		tput setaf 3
-		echo "########################################################################"
-		echo "######### Installing with yay"
-		echo "########################################################################"
-		tput sgr0
-
-		yay -S --noconfirm $package
-
-	elif pacman -Qi trizen &> /dev/null; then
-
-		tput setaf 3
-		echo "########################################################################"
-		echo "######### Installing with trizen"
-		echo "########################################################################"
-		tput sgr0
-		trizen -S --noconfirm --needed --noedit $package
-
-	fi
-
-fi
-
-
-# Just checking if installation was successful
-if pacman -Qi $package &> /dev/null; then
-
-	tput setaf 2
-	echo "########################################################################"
-	echo "#########  Checking ..."$package" has been installed"
-	echo "########################################################################"
-	tput sgr0
-
-else
-
-	tput setaf 1
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	echo "!!!!!!!!!  "$package" has NOT been installed"
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	tput sgr0
-
-fi
-
-#----------------------------------------------------------------------------------
-
-package="vmware-workstation"
-
-#----------------------------------------------------------------------------------
-
-#checking if application is already installed or else install with aur helpers
-if pacman -Qi $package &> /dev/null; then
-
-		tput setaf 2
-		echo "########################################################################"
-		echo "################## "$package" is already installed"
-		echo "########################################################################"
-		tput sgr0
-
-else
-
-	#checking which helper is installed
-	if pacman -Qi yay &> /dev/null; then
-
-		tput setaf 3
-		echo "########################################################################"
-		echo "######### Installing with yay"
-		echo "########################################################################"
-		tput sgr0
-
-		yay -S --noconfirm $package
-
-	elif pacman -Qi trizen &> /dev/null; then
-
-		tput setaf 3
-		echo "########################################################################"
-		echo "######### Installing with trizen"
-		echo "########################################################################"
-		tput sgr0
-		trizen -S --noconfirm --needed --noedit $package
-
-	fi
-
-fi
-
-
-# Just checking if installation was successful
-if pacman -Qi $package &> /dev/null; then
-
-	tput setaf 2
-	echo "########################################################################"
-	echo "#########  Checking ..."$package" has been installed"
-	echo "########################################################################"
-	tput sgr0
-
-else
-
-	tput setaf 1
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	echo "!!!!!!!!!  "$package" has NOT been installed"
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	tput sgr0
-
-fi
-
-#----------------------------------------------------------------------------------
-
-
-echo "Starting your network vmware service to have network connection"
-sudo systemctl enable vmware-networks.service
-sudo systemctl start vmware-networks.service
-
-echo "REBOOT NOW"
+main "$@"

@@ -1,70 +1,62 @@
-#!/bin/bash
-#set -e
+#!/usr/bin/env bash
+
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Youtube   : https://youtube.com/erikdubois
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
 
-#end colors
-#tput sgr0
-##################################################################################################################################
+set -Euo pipefail
+shopt -s nullglob
 
-if [ "$DEBUG" = true ]; then
-    echo
-    echo "------------------------------------------------------------"
-    echo "Running $(basename $0)"
-    echo "------------------------------------------------------------"
-    echo
-    read -n 1 -s -r -p "Debug mode is on. Press any key to continue..."
-    echo
-fi
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+
+source "${COMMON_DIR}/common.sh"
 
 ##################################################################################################################################
+# Purpose
+# - Install local chaotic keyring and mirrorlist packages
+# - Backup current pacman.conf
+# - Install custom pacman.conf with chaotic repository enabled
+##################################################################################################################################
 
-# Installing chaotic-aur keys and mirrors
-pkg_dir="../../packages"
+main() {
 
-# Ensure directory exists
-if [[ ! -d "$pkg_dir" ]]; then
-    echo "Directory not found: $pkg_dir"
-    exit 1
-fi
+    local pkg_dir="${SCRIPT_DIR}/../../packages"
 
-# Install all local packages using pacman
-find "$pkg_dir" -maxdepth 1 -name '*.pkg.tar.zst' -print0 | sudo xargs -0 pacman -U --noconfirm
+    log_section "Installing Chaotic keyring and mirrorlist"
 
-# personal pacman.conf for Erik Dubois
-if [[ ! -f /etc/pacman.conf.nemesis ]]; then
-    sudo cp /etc/pacman.conf /etc/pacman.conf.nemesis
-else
-    echo "Backup already exists: /etc/pacman.conf.nemesis"
-fi
+    ############################################################################################################
+    # Install local chaotic packages
+    ############################################################################################################
 
-sudo cp pacman.conf /etc/pacman.conf
+    if [[ ! -d "${pkg_dir}" ]]; then
+        log_warn "Directory not found: ${pkg_dir}"
+        exit 1
+    fi
 
-tput setaf 3
-echo "########################################################################"
-echo "Done"
-echo "########################################################################"
-tput sgr0
+    log_subsection "Installing local packages from ${pkg_dir}"
+
+    find "${pkg_dir}" -maxdepth 1 -name '*.pkg.tar.zst' -print0 | sudo xargs -0 pacman -U --noconfirm
+
+    ############################################################################################################
+    # Backup pacman.conf
+    ############################################################################################################
+
+    backup_file_once /etc/pacman.conf /etc/pacman.conf.nemesis
+
+    ############################################################################################################
+    # Install new pacman.conf
+    ############################################################################################################
+
+    copy_file "${SCRIPT_DIR}/pacman.conf" /etc/pacman.conf
+
+    log_success "pacman.conf updated with chaotic repository"
+}
+
+main "$@"
