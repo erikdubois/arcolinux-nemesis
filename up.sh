@@ -1,5 +1,5 @@
-#!/bin/bash
-set -uo pipefail  # Do not use set -e, we want to continue on error
+#!/usr/bin/env bash
+
 ##################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -12,77 +12,157 @@ set -uo pipefail  # Do not use set -e, we want to continue on error
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
-##################################################################################################################################
-#tput setaf 0 = black
-#tput setaf 1 = red
-#tput setaf 2 = green
-#tput setaf 3 = yellow
-#tput setaf 4 = dark blue
-#tput setaf 5 = purple
-#tput setaf 6 = cyan
-#tput setaf 7 = gray
-#tput setaf 8 = light blue
+##################################################################################################################
 
-#end colors
-#tput sgr0
-##################################################################################################################################
+set -uo pipefail   # continue on error by design
+shopt -s nullglob
 
-# reset - commit your changes or stash them before you merge
-# git reset --hard - ArcoLinux alias - grh
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
 
-# reset - go back one commit - all is lost
-# git reset --hard HEAD~1
+source "${COMMON_DIR}/common.sh"
 
-# remove a file online but keep it locally
-# https://www.baeldung.com/ops/git-remove-file-without-deleting-it
-# git rm --cached file.txt
+WORKDIR="${SCRIPT_DIR}"
+CHAOTIC_URL="https://chaoticmirror.com/chaotic-aur/chaotic-aur/x86_64/"
+DEST="/home/erik/DATA/arcolinux-nemesis/packages/"
+MIRRORLIST_FILE="${WORKDIR}/mirrorlist"
 
-workdir=$(pwd)
+##################################################################################################################
+# Configuration
+##################################################################################################################
 
-./chaotic
+enable_chaotic_packages() {
+    CHAOTIC_ENABLED=true
+}
 
-rm $workdir/mirrorlist
-touch $workdir/mirrorlist
+##################################################################################################################
+# Helpers
+##################################################################################################################
 
-echo
-echo "## Best Arch Linux servers worldwide from arcolinux-nemesis
+get_version() {
+    local filename="${1:-}"
+    [[ -n "${filename}" ]] || return 0
+    basename "${filename}" | sed -E 's/^.*-([0-9]{8,})-[0-9]+-any\.pkg\.tar\.zst$/\1/'
+}
 
-Server = https://mirror.osbeck.com/archlinux/\$repo/os/\$arch
-Server = http://mirror.osbeck.com/archlinux/\$repo/os/\$arch
-Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch
-Server = https://geo.mirror.pkgbuild.com/\$repo/os/\$arch
-Server = http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
-Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch" | tee $workdir/mirrorlist
-echo
-echo "getting mirrorlist"
-wget "https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6" -O ->> $workdir/mirrorlist
-sed -i "s/#Server/Server/g" $workdir/mirrorlist
+fetch_remote_package_list() {
+    curl -fsSL "${CHAOTIC_URL}" | grep -oP 'href="[^"]*\.pkg\.tar\.zst"' | cut -d'"' -f2
+}
 
-# Below command will backup everything inside the project folder
-git add --all .
+update_chaotic_package() {
+    local pkg="$1"
+    local remote_list="$2"
+    local remote_file=""
+    local local_file=""
+    local remote_version=""
+    local local_version=""
 
-# Give a comment to the commit if you want
-echo
-echo "####################################"
-echo "Write your commit comment!"
-echo "####################################"
-echo
+    remote_file="$(echo "${remote_list}" | grep "^${pkg}-.*-any\.pkg\.tar\.zst" | sort -Vr | head -n1)"
+    if [[ -z "${remote_file}" ]]; then
+        log_warn "No remote version found for ${pkg}"
+        return 0
+    fi
 
-input="update"
+    local_file="$(find "${DEST}" -maxdepth 1 -type f -name "${pkg}-*-any.pkg.tar.zst" | sort -Vr | head -n1)"
 
-# Committing to the local repository with a message containing the time details and commit text
+    remote_version="$(get_version "${remote_file}")"
+    local_version="$(get_version "${local_file}")"
 
-git commit -m "$input"
+    if [[ "${remote_version}" != "${local_version}" ]]; then
+        log_subsection "Updating ${pkg}: ${local_version:-none} -> ${remote_version}"
 
-# Push the local files to github
+        if curl -fLO "${CHAOTIC_URL}${remote_file}"; then
+            rm -f "${DEST}/${pkg}"*
+            mv -f "${remote_file}" "${DEST}/"
+            log_success "${pkg} updated"
+        else
+            log_error "Failed to download ${pkg}"
+        fi
+    else
+        log_info "${pkg} is up to date: ${local_version}"
+    fi
+}
 
-branch=$(git rev-parse --abbrev-ref HEAD)
-git push -u origin "$branch"
+update_chaotic_packages() {
+    local remote_list=""
 
-echo
-tput setaf 6
-echo "##############################################################"
-echo "###################  $(basename $0) done"
-echo "##############################################################"
-tput sgr0
-echo
+    [[ "${CHAOTIC_ENABLED}" == "true" ]] || {
+        log_info "Chaotic package update disabled"
+        return 0
+    }
+
+    log_section "Updating Chaotic keyring and mirrorlist"
+
+    remote_list="$(fetch_remote_package_list)" || {
+        log_error "Failed to fetch remote package list from ${CHAOTIC_URL}"
+        return 1
+    }
+
+    update_chaotic_package "chaotic-keyring" "${remote_list}"
+    update_chaotic_package "chaotic-mirrorlist" "${remote_list}"
+}
+
+generate_mirrorlist() {
+    log_section "Generating mirrorlist"
+
+    rm -f "${MIRRORLIST_FILE}"
+    touch "${MIRRORLIST_FILE}"
+
+    cat <<'EOF' | tee "${MIRRORLIST_FILE}" >/dev/null
+## Best Arch Linux servers worldwide from arcolinux-nemesis
+
+Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = http://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch
+Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
+Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
+Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+EOF
+
+    log_info "Getting mirrorlist from archlinux.org"
+
+    if wget "https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6" -O - >> "${MIRRORLIST_FILE}"; then
+        sed -i 's/^#Server/Server/g' "${MIRRORLIST_FILE}"
+        log_success "Mirrorlist updated"
+    else
+        log_error "Failed to download Arch Linux mirrorlist"
+    fi
+}
+
+git_commit_and_push() {
+    local input="update"
+    local branch=""
+
+    log_section "Git add / commit / push"
+
+    git add --all .
+
+    echo
+    echo "####################################"
+    echo "Write your commit comment!"
+    echo "####################################"
+    echo
+
+    git commit -m "${input}" || log_warn "Nothing to commit or commit failed"
+
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+    git push -u origin "${branch}" || log_error "Git push failed"
+}
+
+main() {
+    enable_chaotic_packages
+
+    update_chaotic_packages
+    generate_mirrorlist
+    git_commit_and_push
+
+    echo
+    tput setaf 6
+    echo "##############################################################"
+    echo "###################  $(basename "$0") done"
+    echo "##############################################################"
+    tput sgr0
+    echo
+}
+
+main "$@"
