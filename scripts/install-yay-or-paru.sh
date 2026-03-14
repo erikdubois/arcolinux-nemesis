@@ -28,10 +28,11 @@ source "${COMMON_DIR}/common.sh"
 install_from_aur() {
     local pkg="$1"
     local url="https://aur.archlinux.org/cgit/aur.git/snapshot/${pkg}.tar.gz"
-    local tmp
+    local tmp oldpwd
 
     tmp="$(mktemp -d)"
-    trap 'rm -rf "$tmp"' RETURN
+    oldpwd="$(pwd)"
+    trap 'cd -- "${oldpwd:-/}"; rm -rf -- "${tmp:-}"' RETURN
 
     log_subsection "Building ${pkg}"
 
