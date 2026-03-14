@@ -38,6 +38,7 @@ handle_archbang() {
         sudo mkinitcpio -P
 
         install_sddm_git
+        remove_gpsd
     fi
 }
 

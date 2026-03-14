@@ -431,3 +431,14 @@ install_sddm_git() {
     echo "Please reboot later to start using the display manager."
     echo
 }
+
+remove_gpsd() {
+
+    if pacman -Qi gpsd &>/dev/null; then
+        echo "Removing gpsd..."
+        sudo pacman -Rns --noconfirm gpsd
+    else
+        echo "gpsd is not installed"
+    fi
+
+}
