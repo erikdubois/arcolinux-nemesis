@@ -33,6 +33,8 @@ main() {
     # Remove PipeWire stack
     ############################################################################################################
 
+    sudo pacman -Rdd --noconfirm pipewire-pulse pipewire pipewire-jack || true
+
     remove_matching_packages \
         gnome-bluetooth \
         blueberry \
@@ -40,8 +42,6 @@ main() {
         pipewire-alsa \
         pipewire-media-session \
         pipewire-zeroconf
-
-    sudo pacman -Rdd --noconfirm pipewire pipewire-jack || true
 
     ############################################################################################################
     # Install PulseAudio stack
