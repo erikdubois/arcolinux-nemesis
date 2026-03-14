@@ -33,7 +33,7 @@ main() {
     # Remove PipeWire stack
     ############################################################################################################
 
-    remove_matching_packages_dd \
+    remove_matching_packages_deps_dd \
         pulse-native-provider \
         gnome-bluetooth \
         blueberry \
