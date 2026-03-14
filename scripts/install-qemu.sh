@@ -57,11 +57,17 @@ ensure_default_network() {
         sudo virsh net-define /usr/share/libvirt/networks/default.xml
     fi
 
-    if ! sudo virsh net-info default | grep -q '^Active:.*yes'; then
+    if ! sudo virsh net-list --name | grep -qx "default"; then
         sudo virsh net-start default
+    else
+        log_info "Libvirt network default is already active"
     fi
 
-    sudo virsh net-autostart default
+    if ! sudo virsh net-info default | grep -q '^Autostart:.*yes'; then
+        sudo virsh net-autostart default
+    else
+        log_info "Libvirt network default already set to autostart"
+    fi
 }
 
 main() {
