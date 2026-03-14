@@ -69,23 +69,34 @@ uncomment_ini_extension() {
 configure_apache_for_php() {
     log_subsection "Configuring Apache for PHP"
 
-    replace_or_append '^#?LoadModule mpm_event_module modules/mod_mpm_event\.so$' \
-        '#LoadModule mpm_event_module modules/mod_mpm_event.so' \
-        "$HTTPD_CONF"
+    sudo sed -i \
+        -e 's|^LoadModule mpm_event_module modules/mod_mpm_event.so$|#LoadModule mpm_event_module modules/mod_mpm_event.so|' \
+        -e 's|^#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so$|LoadModule mpm_prefork_module modules/mod_mpm_prefork.so|' \
+        -e 's|^#LoadModule rewrite_module modules/mod_rewrite.so$|LoadModule rewrite_module modules/mod_rewrite.so|' \
+        -e 's|^DirectoryIndex index.html$|DirectoryIndex index.php index.html|' \
+        /etc/httpd/conf/httpd.conf
 
-    replace_or_append '^#?LoadModule mpm_prefork_module modules/mod_mpm_prefork\.so$' \
-        'LoadModule mpm_prefork_module modules/mod_mpm_prefork.so' \
-        "$HTTPD_CONF"
+    if ! grep -Fqx 'LoadModule php_module modules/libphp.so' /etc/httpd/conf/httpd.conf; then
+        echo 'LoadModule php_module modules/libphp.so' | sudo tee -a /etc/httpd/conf/httpd.conf >/dev/null
+    fi
 
-    replace_or_append '^#?LoadModule rewrite_module modules/mod_rewrite\.so$' \
-        'LoadModule rewrite_module modules/mod_rewrite.so' \
-        "$HTTPD_CONF"
+    if ! grep -Fqx 'Include conf/extra/php_module.conf' /etc/httpd/conf/httpd.conf; then
+        echo 'Include conf/extra/php_module.conf' | sudo tee -a /etc/httpd/conf/httpd.conf >/dev/null
+    fi
 
-    replace_or_append '^DirectoryIndex[[:space:]].*$' \
-        'DirectoryIndex index.php index.html' \
-        "$HTTPD_CONF"
+    if ! grep -q 'FilesMatch "\\.php\\$"' /etc/httpd/conf/httpd.conf; then
+        sudo tee -a /etc/httpd/conf/httpd.conf >/dev/null <<'EOF'
 
-    append_if_missing 'Include conf/extra/php_module.conf' "$HTTPD_CONF"
+<IfModule php_module>
+    <FilesMatch \.php$>
+        SetHandler application/x-httpd-php
+    </FilesMatch>
+    <FilesMatch \.phps$>
+        SetHandler application/x-httpd-php-source
+    </FilesMatch>
+</IfModule>
+EOF
+    fi
 }
 
 configure_php() {
