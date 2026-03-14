@@ -19,23 +19,6 @@ pause_if_debug
 #
 ##################################################################################################################################
 
-# Install a single AUR package only when it is not already present.
-# The helper explicitly depends on yay being available.
-install_aur_package_if_needed() {
-    local pkg="$1"
-
-    if pacman -Qi "${pkg}" &>/dev/null; then
-        echo "${pkg} is already installed."
-    else
-        log_subsection "Installing ${pkg} from AUR"
-        if ! command -v yay >/dev/null; then
-            log_error "$LINENO" "yay not installed"
-            return 1
-        fi
-        yay -S --noconfirm "${pkg}"
-    fi
-}
-
 log_section "Build Opera from AUR"
 
 install_aur_package_if_needed opera

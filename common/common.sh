@@ -587,3 +587,13 @@ remove_gpsd() {
         log_info "gpsd is not installed"
     fi
 }
+
+# Ensure a readable console font exists
+ensure_vconsole_font() {
+    echo "Adding font to /etc/vconsole.conf"
+
+    # Add font only if not already defined
+    if ! grep -q "^FONT=" /etc/vconsole.conf 2>/dev/null; then
+        echo "FONT=lat4-19" | sudo tee --append /etc/vconsole.conf >/dev/null
+    fi
+}

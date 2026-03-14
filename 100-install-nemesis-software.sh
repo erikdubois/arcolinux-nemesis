@@ -20,14 +20,7 @@ log_section "Running $(script_name)"
 pause_if_debug
 
 # Ensure a readable console font exists
-ensure_vconsole_font() {
-    echo "Adding font to /etc/vconsole.conf"
-
-    # Add font only if not already defined
-    if ! grep -q "^FONT=" /etc/vconsole.conf 2>/dev/null; then
-        echo "FONT=lat4-19" | sudo tee --append /etc/vconsole.conf >/dev/null
-    fi
-}
+ensure_vconsole_font
 
 # Install XFCE tools if XFCE session exists
 install_xfce_extras_if_needed() {
