@@ -33,7 +33,7 @@ main() {
     # Remove PipeWire stack
     ############################################################################################################
 
-    sudo pacman -Rdd --noconfirm pipewire-pulse pipewire pipewire-jack || true
+    sudo pacman -Rdd --noconfirm pipewire-pulse pulse-native-provider pipewire pipewire-jack || true
 
     remove_matching_packages \
         gnome-bluetooth \
