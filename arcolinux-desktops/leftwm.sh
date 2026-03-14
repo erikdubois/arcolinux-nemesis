@@ -130,7 +130,7 @@ ttf-iosevka-nerd
 ttf-material-design-iconic-font
 ttf-meslo-nerd-font-powerlevel10k
 ttf-sourcecodepro-nerd
-volumeicon
+volctl
 xfce4-terminal
 )
 

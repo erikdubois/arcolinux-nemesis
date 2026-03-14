@@ -123,7 +123,7 @@ thunar-archive-plugin
 thunar-volman
 ttf-hack
 vicious
-volumeicon
+volctl
 xfce4-terminal
 )
 

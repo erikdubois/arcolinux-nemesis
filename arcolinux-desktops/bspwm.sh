@@ -129,7 +129,7 @@ thunar
 thunar-archive-plugin
 thunar-volman
 ttf-hack
-volumeicon
+volctl
 xcb-util-cursor
 xfce4-notifyd
 xfce4-power-manager

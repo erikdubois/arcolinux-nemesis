@@ -125,7 +125,7 @@ thunar
 thunar-archive-plugin
 thunar-volman
 ttf-hack
-volumeicon
+volctl
 xfce4-terminal
 )
 

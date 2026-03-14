@@ -48,7 +48,7 @@ install_chadwm_packages() {
         ttf-font-awesome
         ttf-jetbrains-mono-nerd
         ttf-meslo-nerd-font-powerlevel10k
-        volumeicon
+        volctl
         xfce4-notifyd
         xfce4-power-manager
         xfce4-screenshooter
