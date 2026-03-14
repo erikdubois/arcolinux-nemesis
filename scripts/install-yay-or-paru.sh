@@ -16,6 +16,7 @@ shopt -s nullglob
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 source "${COMMON_DIR}/common.sh"
 

@@ -15,6 +15,7 @@ shopt -s nullglob
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 source "${COMMON_DIR}/common.sh"
 
@@ -27,7 +28,7 @@ source "${COMMON_DIR}/common.sh"
 
 main() {
 
-    local pkg_dir="${SCRIPT_DIR}/../../packages"
+    local pkg_dir="${PROJECT_DIR}/packages"
 
     log_section "Installing Chaotic keyring and mirrorlist"
 
@@ -54,7 +55,7 @@ main() {
     # Install new pacman.conf
     ############################################################################################################
 
-    copy_file "${SCRIPT_DIR}/pacman.conf" /etc/pacman.conf
+    copy_file "${PROJECT_DIR}/pacman.conf" /etc/pacman.conf
 
     log_success "pacman.conf updated with chaotic repository"
 }
