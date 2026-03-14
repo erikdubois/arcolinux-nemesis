@@ -88,6 +88,14 @@ configure_apache_for_php() {
 </IfModule>
 EOF
     fi
+
+    ############################################################################################################
+    # Fix Apache FQDN warning
+    ############################################################################################################
+
+    if ! grep -q '^ServerName ' /etc/httpd/conf/httpd.conf; then
+        echo "ServerName localhost" | sudo tee -a /etc/httpd/conf/httpd.conf >/dev/null
+    fi
 }
 
 configure_php() {
