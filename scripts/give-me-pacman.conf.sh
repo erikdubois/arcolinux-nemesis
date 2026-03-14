@@ -15,6 +15,9 @@ shopt -s nullglob
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+
+echo $SCRIPT_DIR
 
 source "${COMMON_DIR}/common.sh"
 
@@ -38,7 +41,7 @@ main() {
     # Copy new pacman.conf
     ############################################################################################################
 
-    copy_file "${SCRIPT_DIR}/pacman.conf" /etc/pacman.conf
+    copy_file "${PROJECT_DIR}/pacman.conf" /etc/pacman.conf
 
     log_success "pacman.conf updated"
 }
