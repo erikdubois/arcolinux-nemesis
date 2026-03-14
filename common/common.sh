@@ -409,3 +409,25 @@ disable_firewalld_stack() {
         firewall-config \
         firewalld
 }
+
+install_sddm_git() {
+
+    echo "Installing sddm-git..."
+
+    if command -v paru >/dev/null 2>&1; then
+        paru -S --noconfirm sddm-git
+    elif command -v yay >/dev/null 2>&1; then
+        yay -S --noconfirm sddm-git
+    else
+        echo "No AUR helper found (paru or yay required)."
+        return 1
+    fi
+
+    echo "Enabling SDDM service..."
+    sudo systemctl enable sddm.service
+
+    echo
+    echo "SDDM has been installed and enabled."
+    echo "Please reboot later to start using the display manager."
+    echo
+}

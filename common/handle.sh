@@ -16,6 +16,8 @@ is_omarchy() {
 }
 
 handle_archbang() {
+    #2026-03-14
+    #after installation pacman-key --init and pacman-key --populate archlinux
     if is_os_release_match "archbang"; then
 
         log_section "We are on ArchBang"
@@ -23,7 +25,7 @@ handle_archbang() {
 
         backup_file_once "${HOME}/.bash_profile" "${HOME}/.bash_profile_nemesis"
 
-        backup_file_once "${HOME}/.xinitrc"  "${HOME}/.xinitrc-nemesis"
+        backup_file_once "${HOME}/.bashrc"  "${HOME}/.bashrc_nemesis"
         
         mkdir -p "${HOME}/.bin"
 
@@ -34,6 +36,8 @@ handle_archbang() {
             /etc/mkinitcpio.conf
 
         sudo mkinitcpio -P
+
+        install_sddm_git
     fi
 }
 
