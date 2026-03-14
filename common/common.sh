@@ -289,6 +289,29 @@ remove_matching_packages_deps() {
     done
 }
 
+remove_matching_packages_deps_dd() {
+    local pattern
+    local matches=()
+    local pkg
+
+    for pattern in "$@"; do
+        matches=()
+        while IFS= read -r pkg; do
+            [[ -n "${pkg}" ]] && matches+=("${pkg}")
+        done < <(pacman -Qq | grep -Fx -- "${pattern}" || true)
+
+        if (( ${#matches[@]} > 0 )); then
+            log_subsection "Removing package with dependencies: ${pattern}"
+            for pkg in "${matches[@]}"; do
+                echo "Removing package: ${pkg}"
+                sudo pacman -Rdd --noconfirm "${pkg}"
+            done
+        else
+            echo "No package named '${pattern}' is installed."
+        fi
+    done
+}
+
 remove_file_if_exists() {
     local target="$1"
     if [[ -f "${target}" ]]; then

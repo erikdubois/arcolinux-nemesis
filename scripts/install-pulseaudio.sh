@@ -33,11 +33,12 @@ main() {
     # Remove PipeWire stack
     ############################################################################################################
 
-    sudo pacman -Rdd --noconfirm pipewire-pulse pulse-native-provider pipewire pipewire-jack || true
-
-    remove_matching_packages \
+    remove_matching_packages_dd \
+        pulse-native-provider \
         gnome-bluetooth \
         blueberry \
+        pipewire \
+        pipewire-jack \
         pipewire-pulse \
         pipewire-alsa \
         pipewire-media-session \
