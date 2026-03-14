@@ -18,7 +18,7 @@ set -uo pipefail   # continue on error by design
 shopt -s nullglob
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
+COMMON_DIR="$(cd -- "${SCRIPT_DIR}/common" && pwd)"
 
 source "${COMMON_DIR}/common.sh"
 
