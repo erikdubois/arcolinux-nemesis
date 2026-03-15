@@ -491,13 +491,13 @@ confirm_yes_no() {
         echo
         echo "${YELLOW}########################################################################${RESET}"
         echo "${prompt}"
-        echo "Answer with Y/y or N/n"
+        echo "Answer with Y/y or N/n (default: Y)"
         echo "${YELLOW}########################################################################${RESET}"
         echo
         read -r reply
 
         case "${reply}" in
-            [yY]) return 0 ;;
+            ""|[yY]) return 0 ;;
             [nN]) return 1 ;;
             *) echo "Invalid answer. Please use Y/y or N/n." ;;
         esac
