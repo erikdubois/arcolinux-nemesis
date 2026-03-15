@@ -276,8 +276,8 @@ handle_omarchy() {
 
         HYPR_DIR="$USER_HOME/.config/hypr"
 
-        move_file "$HYPR_DIR/bindings.conf" "$HYPR_DIR/bindings.conf_backup"
-        copy_file "$SETTINGS_DIR/hypr-omarchy/bindings.conf" "$HYPR_DIR/bindings.conf"
+        move_file_user "$HYPR_DIR/bindings.conf" "$HYPR_DIR/bindings.conf_backup"
+        copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings.conf" "$HYPR_DIR/bindings.conf"
     fi
 }
 

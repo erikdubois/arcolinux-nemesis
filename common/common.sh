@@ -28,6 +28,7 @@ shopt -s nullglob
 ##################################################################################################################################
 readonly COMMON_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 readonly PROJECT_DIR="$(cd -- "${COMMON_DIR}/.." && pwd)"
+TARGET_USER="${SUDO_USER:-$USER}"
 
 ##################################################################################################################################
 # Colors
@@ -382,6 +383,19 @@ copy_file() {
     sudo cp -v "${src}" "${dst}"
 }
 
+copy_file_user() {
+    local src="$1"
+    local dst="$2"
+
+    [[ -f "$src" ]] || {
+        log_warn "Source file missing: $src"
+        return 1
+    }
+
+    log_subsection "Copying (user: $TARGET_USER) $src -> $dst"
+    sudo -u "$TARGET_USER" cp -v -- "$src" "$dst"
+}
+
 move_file() {
     local src="$1"
     local dst="$2"
@@ -393,6 +407,19 @@ move_file() {
 
     log_subsection "Moving ${src} -> ${dst}"
     sudo mv -v "${src}" "${dst}"
+}
+
+move_file_user() {
+    local src="$1"
+    local dst="$2"
+
+    [[ -f "$src" ]] || {
+        log_warn "Source file missing: $src"
+        return 1
+    }
+
+    log_subsection "Moving (user: $TARGET_USER) $src -> $dst"
+    sudo -u "$TARGET_USER" mv -v -- "$src" "$dst"
 }
 
 write_file_as_root() {
