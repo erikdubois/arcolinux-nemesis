@@ -90,7 +90,7 @@ handle_archcraft() {
 }
 
 handle_archlinux() {
-    if is_os_release_match "Arch Linux|archlinux"; then
+    if is_os_release_match "Arch|arch|Arch Linux|archlinux"; then
         log_section "We are on Arch Linux"
     fi
 }
