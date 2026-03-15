@@ -3,6 +3,11 @@ source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
 
 log_section "Running $(script_name)"
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+echo $SCRIPT_DIR
+SETTINGS_DIR="${SCRIPT_DIR}/settings"
+echo $SETTINGS_DIR
+
 pause_if_debug
 
 ##################################################################################################################
@@ -20,44 +25,71 @@ pause_if_debug
 ##################################################################################################################
 
 get_virtualization_type() {
-    systemd-detect-virt 2>/dev/null || echo none
+    systemd-detect-virt 2>/dev/null || echo "none"
 }
 
 handle_virtualbox_template() {
     local result
+    local template_dir
+    local vm_dir
+    local output
+
     result="$(get_virtualization_type)"
+    template_dir="${PROJECT_DIR}/p/settings/virtualbox-template"
+    vm_dir="${HOME}/VirtualBox VMs"
 
     log_section "Virtualization detection"
-    echo "result = ${result}"
+    echo "Result: ${result}"
     echo
 
     if [[ "${result}" == "none" ]]; then
         log_section "Real hardware detected - installing VirtualBox template"
 
-        mkdir -p "${HOME}/VirtualBox VMs"
+        if [[ ! -d "${template_dir}" ]]; then
+            log_warn "Template directory not found: ${template_dir}"
+            return 1
+        fi
 
-        cp -rf \
-            "${PROJECT_DIR}/p/settings/virtualbox-template/"* \
-            "${HOME}/VirtualBox VMs/"
+        mkdir -p "${vm_dir}"
 
-        cd "${HOME}/VirtualBox VMs/" || return 1
+        cp -rf "${template_dir}/." "${vm_dir}/" || {
+            log_warn "Failed to copy VirtualBox template files"
+            return 1
+        }
 
-        tar -xzf template.tar.gz
-        rm -f template.tar.gz
+        cd "${vm_dir}" || return 1
+
+        if [[ -f "template.tar.gz" ]]; then
+            tar -xzf "template.tar.gz" || {
+                log_warn "Failed to extract template.tar.gz"
+                return 1
+            }
+            rm -f "template.tar.gz"
+        else
+            log_warn "template.tar.gz not found in ${vm_dir}"
+        fi
     else
-        log_warn "Virtual machine detected - skipping VirtualBox template
-Template not copied over
-We will set your screen resolution with xrandr"
+        log_warn "Virtual machine detected - skipping VirtualBox template"
+        log_warn "Template not copied over"
+        log_warn "We will set your screen resolution with xrandr"
 
-        local output
-        output="$(xrandr | grep " connected" | awk '{print $1}' || true)"
-
-        if [[ -z "${output}" ]]; then
-            log_warn "No connected display found."
+        if ! command -v xrandr >/dev/null 2>&1; then
+            log_warn "xrandr not found"
             return 0
         fi
 
-        xrandr --output "${output}" --primary --mode 1920x1080 --pos 0x0 --rotate normal
+        output="$(xrandr | awk '/ connected primary/ {print $1; exit} / connected/ {print $1; exit}')"
+
+        if [[ -z "${output}" ]]; then
+            log_warn "No connected display found"
+            return 0
+        fi
+
+        xrandr --output "${output}" --primary --mode 1920x1080 --pos 0x0 --rotate normal || {
+            log_warn "Failed to apply xrandr settings to ${output}"
+            return 1
+        }
+
         echo "Display settings applied to output: ${output}"
     fi
 }
