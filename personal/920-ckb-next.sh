@@ -34,11 +34,11 @@ install_ckb_next_if_keyboard_detected() {
         mkdir -p "${HOME}/.config/autostart"
 
         copy_file \
-            "${PROJECT_DIR}/Personal/settings/ckb-next/ckb-next.conf" \
+            "${PROJECT_DIR}/p/settings/ckb-next/ckb-next.conf" \
             "${HOME}/.config/ckb-next/ckb-next.conf"
 
         copy_file \
-            "${PROJECT_DIR}/Personal/settings/ckb-next/ckb-next.autostart.desktop" \
+            "${PROJECT_DIR}/personal/settings/ckb-next/ckb-next.autostart.desktop" \
             "${HOME}/.config/autostart/ckb-next.autostart.desktop"
 
         enable_service ckb-next-daemon.service

@@ -37,7 +37,7 @@ handle_virtualbox_template() {
         mkdir -p "${HOME}/VirtualBox VMs"
 
         cp -rf \
-            "${PROJECT_DIR}/Personal/settings/virtualbox-template/"* \
+            "${PROJECT_DIR}/p/settings/virtualbox-template/"* \
             "${HOME}/VirtualBox VMs/"
 
         cd "${HOME}/VirtualBox VMs/" || return 1

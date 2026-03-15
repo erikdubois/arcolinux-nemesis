@@ -1,5 +1,5 @@
 <h1 align="center">
- <img src="https://github.com/erikdubois/arcolinux-nemesis/blob/master/Personal/settings/arcolinuxw.png">
+ <img src="https://github.com/erikdubois/arcolinux-nemesis/blob/master/perrsonal/settings/arcolinuxw.png">
   <br />
    ArcoLinux Nemesis
 </h1>
@@ -124,27 +124,27 @@ These scripts can be used with various window managers and desktop environments.
 E.g.: awesome, i3, leftwm, qtile, ...
 
 <p align="center">
-  <img src="Personal/settings/desktop-images/awesome.png" alt="AwesomeWM" width="600"/>
+  <img src="personal/settings/desktop-images/awesome.png" alt="AwesomeWM" width="600"/>
 </p>
 
 <p align="center">
-  <img src="Personal/settings/desktop-images/i3.png" alt="i3WM" width="600"/>
+  <img src="personal/settings/desktop-images/i3.png" alt="i3WM" width="600"/>
 </p>
 
 <p align="center">
-  <img src="Personal/settings/desktop-images/leftwm.png" alt="LeftWM" width="600"/>
+  <img src="personal/settings/desktop-images/leftwm.png" alt="LeftWM" width="600"/>
 </p>
 
 <p align="center">
-  <img src="Personal/settings/desktop-images/qtile.png" alt="Qtile" width="600"/>
+  <img src="personal/settings/desktop-images/qtile.png" alt="Qtile" width="600"/>
 </p>
 
 <p align="center">
-  <img src="Personal/settings/desktop-images/install.png" alt="Install Process" width="600"/>
+  <img src="personal/settings/desktop-images/install.png" alt="Install Process" width="600"/>
 </p>
 
 <p align="center">
-  <img src="Personal/settings/desktop-images/desktops.png" alt="Desktops" width="600"/>
+  <img src="personal/settings/desktop-images/desktops.png" alt="Desktops" width="600"/>
 </p>
 
 # Social Media

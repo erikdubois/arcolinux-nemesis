@@ -15,7 +15,7 @@ pause_if_debug
 #
 ##################################################################################################################################
 
-readonly PERSONAL_SETTINGS_DIR="${PROJECT_DIR}/Personal/settings"
+readonly PERSONAL_SETTINGS_DIR="${PROJECT_DIR}/personal/settings"
 
 get_virtualization_type() {
     systemd-detect-virt 2>/dev/null || echo none

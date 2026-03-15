@@ -35,7 +35,7 @@ log_section "Running $(script_name)"
 export DEBUG=false
 
 readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-readonly PERSONAL_DIR="${SCRIPT_DIR}/Personal"
+readonly PERSONAL_DIR="${SCRIPT_DIR}/personal"
 
 # Files used for OS detection.
 OS_RELEASE="/etc/os-release"

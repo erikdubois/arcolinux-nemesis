@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+COMMON_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$COMMON_DIR")"
 PERSONAL_DIR="$PROJECT_DIR/personal"
+PACKAGES_DIR="$PROJECT_DIR/packages"
+SETTINGS_DIR="$PERSONAL_DIR/settings"
 
-#echo $PROJECT_DIR
-#echo $SCRIPT_DIR
-#echo $PERSONAL_DIR
+echo $PROJECT_DIR
+echo $COMMON_DIR
+echo $PACKAGES_DIR
+echo $PERSONAL_DIR
+echo $SETTINGS_DIR
 
 USERNAME="${SUDO_USER:-$USER}"
 USER_HOME="$(getent passwd "$USERNAME" | cut -d: -f6)"
-HYPR_DIR="$USER_HOME/.config/hypr"
 
 # Load shared helper functions
-source "$SCRIPT_DIR/common.sh"
+source "$COMMON_DIR/common.sh"
 
 # Only load once
 [[ -n "${HANDLE_SH_LOADED:-}" ]] && return 0
@@ -267,6 +270,8 @@ handle_nyarch() {
 handle_omarchy() {
     if is_omarchy; then
         log_section "We are on Omarchy"
+
+        HYPR_DIR="$USER_HOME/.config/hypr"
 
         move_file "$HYPR_DIR/bindings.conf" "$HYPR_DIR/bindings.conf_backup"
         copy_file "$SETTINGS_DIR/hypr-omarchy/bindings.conf" "$HYPR_DIR/bindings.conf"
