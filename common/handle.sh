@@ -26,7 +26,12 @@ readonly HANDLE_SH_LOADED=1
 
 is_os_release_match() {
     local pattern="$1"
-    grep -qi -- "$pattern" /etc/os-release 2>/dev/null
+    local os_release="/etc/os-release"
+
+    [[ -z "$pattern" ]] && return 1
+    [[ -r "$os_release" ]] || return 1
+
+    grep -qiE -- "$pattern" "$os_release"
 }
 
 is_omarchy() {
