@@ -207,7 +207,8 @@ run_remove_anywhere_software() {
     remove_matching_packages mpv
     remove_matching_packages clapper
 
-    log_warn "Partition formatting software - we check the root filesystem and remove the software for the filesystems that are not used on the system"
+    log_warn "Partition formatting software - we check the root filesystem"
+    log_warn "and remove the software for the filesystems that are not used on the system"
 
     # Keep only the tooling that fits the currently mounted root filesystem.
     root_fs="$(findmnt -no FSTYPE /)"
