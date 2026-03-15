@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
-source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/handle.sh"
-
-log_section "Running $(script_name)"
 
 ##################################################################################################################
 # Author    : Erik Dubois
@@ -34,17 +30,32 @@ log_section "Running $(script_name)"
 
 export DEBUG=false
 
+# Path setup
 WORKING_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-echo "Working directory: ${WORKING_DIR}"
+echo "Working directory             : ${WORKING_DIR}"
+
+COMMON_DIR="${WORKING_DIR}/common"
+echo "Common directory              : ${COMMON_DIR}"
 
 PERSONAL_DIR="${WORKING_DIR}/personal"
-echo "Personal scripts directory: ${PERSONAL_DIR}"
+echo "Personal directory            : ${PERSONAL_DIR}"
 
 PACKAGES_DIR="${WORKING_DIR}/packages"
-echo "Packages directory: ${PACKAGES_DIR}"
+echo "Packages directory            : ${PACKAGES_DIR}"
 
-SETTINGS_DIR="${WORKING_DIR}/settings"
-echo "Settings directory: ${SETTINGS_DIR}"
+SETTINGS_DIR="${WORKING_DIR}/personal/settings"
+echo "Settings directory            : ${SETTINGS_DIR}"
+
+# Source shared helper functions and handlers. These are kept separate to avoid cluttering
+# the main orchestration logic in this file.
+source "${WORKING_DIR}/common/common.sh"
+source "${WORKING_DIR}/common/handle.sh"
+
+USERNAME="${SUDO_USER:-$USER}"
+USER_HOME="$(getent passwd "$USERNAME" | cut -d: -f6)"
+
+# Start of the script
+log_section "Running $(script_name)"
 
 # Files used for OS detection.
 OS_RELEASE="/etc/os-release"

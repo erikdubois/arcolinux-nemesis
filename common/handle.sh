@@ -1,22 +1,5 @@
 #!/usr/bin/env bash
 
-COMMON_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(dirname "$COMMON_DIR")"
-PERSONAL_DIR="$PROJECT_DIR/personal"
-PACKAGES_DIR="$PROJECT_DIR/packages"
-SETTINGS_DIR="$PERSONAL_DIR/settings"
-
-echo $PROJECT_DIR
-echo $COMMON_DIR
-echo $PACKAGES_DIR
-echo $PERSONAL_DIR
-echo $SETTINGS_DIR
-
-USERNAME="${SUDO_USER:-$USER}"
-USER_HOME="$(getent passwd "$USERNAME" | cut -d: -f6)"
-
-# Load shared helper functions
-source "$COMMON_DIR/common.sh"
 
 # Only load once
 [[ -n "${HANDLE_SH_LOADED:-}" ]] && return 0
