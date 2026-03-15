@@ -311,6 +311,7 @@ handle_stormos() {
 }
 
 run_all_distro_handlers() {
+    log_section "Running distro-specific handlers from common/handle.sh"
     handle_aerynos
     handle_archbang
     handle_archcraft

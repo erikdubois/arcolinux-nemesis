@@ -263,8 +263,6 @@ run_glob "${PERSONAL_DIR}/910-*"
 run_glob "${PERSONAL_DIR}/920-*"
 run_glob "${PERSONAL_DIR}/930-*"
 
-run_glob "${PERSONAL_DIR}/970-distro*"
-
 run_glob "${PERSONAL_DIR}/990-skel*"
 run_glob "${PERSONAL_DIR}/999-last*"
 
