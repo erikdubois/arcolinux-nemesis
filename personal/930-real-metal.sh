@@ -1,12 +1,32 @@
-#!/usr/bin/env bash
-source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
+#!/bin/sh
+
+# Portable version of 930-real-metal.sh
+# Runs from Bash or Fish because the script itself is executed by /bin/sh.
+# Execute it, do not source it from Fish.
+
+# Resolve script path without BASH_SOURCE.
+SCRIPT_PATH=$0
+case "$SCRIPT_PATH" in
+    /*) : ;;
+    *) SCRIPT_PATH=$(command -v -- "$SCRIPT_PATH" 2>/dev/null || printf '%s' "$SCRIPT_PATH") ;;
+esac
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$SCRIPT_PATH")" && pwd)
+PARENT_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+COMMON_SH="$PARENT_DIR/common/common.sh"
+
+if [ ! -f "$COMMON_SH" ]; then
+    printf 'Error: common file not found: %s\n' "$COMMON_SH" >&2
+    exit 1
+fi
+
+# shellcheck disable=SC1090
+. "$COMMON_SH"
 
 log_section "Running $(script_name)"
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-echo $SCRIPT_DIR
-SETTINGS_DIR="${SCRIPT_DIR}/settings"
-echo $SETTINGS_DIR
+printf '%s\n' "$SCRIPT_DIR"
+SETTINGS_DIR="$SCRIPT_DIR/settings"
+printf '%s\n' "$SETTINGS_DIR"
 
 pause_if_debug
 
@@ -24,49 +44,75 @@ pause_if_debug
 #
 ##################################################################################################################
 
-get_virtualization_type() {
-    systemd-detect-virt 2>/dev/null || echo "none"
+get_virtualization_type_portable() {
+    result=""
+
+    if command -v systemd-detect-virt >/dev/null 2>&1; then
+        if systemd-detect-virt --quiet >/dev/null 2>&1; then
+            result=$(systemd-detect-virt 2>/dev/null)
+            if [ -n "$result" ]; then
+                printf '%s\n' "$result"
+                return 0
+            fi
+        fi
+    fi
+
+    vendor=$(cat /sys/class/dmi/id/sys_vendor 2>/dev/null)
+    product=$(cat /sys/class/dmi/id/product_name 2>/dev/null)
+    combined="$vendor $product"
+
+    case "$combined" in
+        *VirtualBox*) printf '%s\n' oracle ;;
+        *VMware*)     printf '%s\n' vmware ;;
+        *KVM*)        printf '%s\n' kvm ;;
+        *QEMU*)       printf '%s\n' qemu ;;
+        *Microsoft*)  printf '%s\n' microsoft ;;
+        *)
+            if grep -qi hypervisor /proc/cpuinfo 2>/dev/null; then
+                printf '%s\n' unknown-vm
+            else
+                printf '%s\n' none
+            fi
+            ;;
+    esac
 }
 
 handle_virtualbox_template() {
-    local result
-    local template_dir
-    local vm_dir
-    local output
-
-    result="$(get_virtualization_type)"
-    template_dir="${SETTINGS_DIR}/virtualbox-template"
-    vm_dir="${HOME}/VirtualBox VMs"
+    result=$(get_virtualization_type_portable)
+    template_dir="$SETTINGS_DIR/virtualbox-template"
+    vm_dir="$HOME/VirtualBox VMs"
 
     log_section "Virtualization detection"
-    echo "Result: ${result}"
-    echo
+    printf 'Result: %s\n\n' "$result"
 
-    if [[ "${result}" == "none" ]]; then
+    if [ "$result" = "none" ]; then
         log_section "Real hardware detected - installing VirtualBox template"
 
-        if [[ ! -d "${template_dir}" ]]; then
-            log_warn "Template directory not found: ${template_dir}"
+        if [ ! -d "$template_dir" ]; then
+            log_warn "Template directory not found: $template_dir"
             return 1
         fi
 
-        mkdir -p "${vm_dir}"
+        mkdir -p "$vm_dir" || {
+            log_warn "Failed to create directory: $vm_dir"
+            return 1
+        }
 
-        cp -rf "${template_dir}/." "${vm_dir}/" || {
+        cp -rf "$template_dir/." "$vm_dir/" || {
             log_warn "Failed to copy VirtualBox template files"
             return 1
         }
 
-        cd "${vm_dir}" || return 1
+        cd "$vm_dir" || return 1
 
-        if [[ -f "template.tar.gz" ]]; then
+        if [ -f "template.tar.gz" ]; then
             tar -xzf "template.tar.gz" || {
                 log_warn "Failed to extract template.tar.gz"
                 return 1
             }
             rm -f "template.tar.gz"
         else
-            log_warn "template.tar.gz not found in ${vm_dir}"
+            log_warn "template.tar.gz not found in $vm_dir"
         fi
     else
         log_warn "Virtual machine detected - skipping VirtualBox template"
@@ -78,37 +124,36 @@ handle_virtualbox_template() {
             return 0
         fi
 
-        output="$(xrandr | awk '/ connected primary/ {print $1; exit} / connected/ {print $1; exit}')"
+        output=$(xrandr | awk '/ connected primary/ {print $1; exit} / connected/ {print $1; exit}')
 
-        if [[ -z "${output}" ]]; then
+        if [ -z "$output" ]; then
             log_warn "No connected display found"
             return 0
         fi
 
-        xrandr --output "${output}" --primary --mode 1920x1080 --pos 0x0 --rotate normal || {
-            log_warn "Failed to apply xrandr settings to ${output}"
+        xrandr --output "$output" --primary --mode 1920x1080 --pos 0x0 --rotate normal || {
+            log_warn "Failed to apply xrandr settings to $output"
             return 1
         }
 
-        echo "Display settings applied to output: ${output}"
+        printf 'Display settings applied to output: %s\n' "$output"
     fi
 }
 
 remove_vm_software_if_real_hardware() {
-    local result
-    result="$(get_virtualization_type)"
+    result=$(get_virtualization_type_portable)
 
     log_section "Removal of virtual machine software"
 
-    if [[ "${result}" == "none" ]]; then
-        echo "Running on real hardware. Proceeding with cleanup..."
+    if [ "$result" = "none" ]; then
+        printf '%s\n' "Running on real hardware. Proceeding with cleanup..."
 
-        if systemctl list-units --full --all | grep -q 'qemu-guest-agent.service'; then
+        if systemctl list-units --full --all 2>/dev/null | grep -q 'qemu-guest-agent.service'; then
             sudo systemctl stop qemu-guest-agent.service
             sudo systemctl disable qemu-guest-agent.service
         fi
 
-        if systemctl list-units --full --all | grep -q 'vboxservice.service'; then
+        if systemctl list-units --full --all 2>/dev/null | grep -q 'vboxservice.service'; then
             sudo systemctl stop vboxservice.service
             sudo systemctl disable vboxservice.service
         fi
@@ -116,7 +161,7 @@ remove_vm_software_if_real_hardware() {
         remove_matching_packages qemu-guest-agent
         remove_matching_packages virtualbox-guest-utils
     else
-        echo "Virtual machine detected (${result}). No action taken."
+        printf 'Virtual machine detected (%s). No action taken.\n' "$result"
     fi
 }
 
