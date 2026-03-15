@@ -35,7 +35,7 @@ handle_virtualbox_template() {
     local output
 
     result="$(get_virtualization_type)"
-    template_dir="${PROJECT_DIR}/p/settings/virtualbox-template"
+    template_dir="${SETTINGS_DIR}/virtualbox-template"
     vm_dir="${HOME}/VirtualBox VMs"
 
     log_section "Virtualization detection"
