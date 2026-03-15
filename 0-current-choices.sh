@@ -34,8 +34,10 @@ log_section "Running $(script_name)"
 
 export DEBUG=false
 
-readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-readonly PERSONAL_DIR="${SCRIPT_DIR}/personal"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+echo "Working directory: ${SCRIPT_DIR}"
+PERSONAL_DIR="${SCRIPT_DIR}/personal"
+echo "Personal scripts directory: ${PERSONAL_DIR}"
 
 # Files used for OS detection.
 OS_RELEASE="/etc/os-release"
