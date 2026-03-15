@@ -251,6 +251,7 @@ run_glob "${SCRIPT_DIR}/200-software-aur-repo*"
 # run_glob "${SCRIPT_DIR}/400-surfn-extras*"
 
 run_glob "${SCRIPT_DIR}/500-plasma*"
+run_glob "${SCRIPT_DIR}/600-chadwm*"
 
 log_warn "Going to the Personal folder"
 cd "${PERSONAL_DIR}" || exit 1
