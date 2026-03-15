@@ -596,15 +596,17 @@ run_non_arch_distro_script() {
 }
 
 run_chadwm_choice() {
+    local flag="/tmp/install-chadwm"
+
     pause_if_debug
     log_section "Chadwm installation choice - installation will follow later on"
 
     if confirm_yes_no "Do you want to install Chadwm on your system?"; then
         log_warn "User chose to install Chadwm"
-        touch /tmp/install-chadwm
+        touch "$flag"
     else
         log_warn "User chose not to install Chadwm"
-        [[ -f /tmp/install-chadwm ]] && rm -f /tmp/install-chadwm
+        rm -f "$flag"
     fi
 }
 
