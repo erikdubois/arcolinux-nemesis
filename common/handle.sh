@@ -22,8 +22,6 @@ source "$COMMON_DIR/common.sh"
 [[ -n "${HANDLE_SH_LOADED:-}" ]] && return 0
 readonly HANDLE_SH_LOADED=1
 
-# shellcheck disable=SC2154
-
 is_os_release_match() {
     local pattern="$1"
     local os_release="/etc/os-release"

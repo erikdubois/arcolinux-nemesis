@@ -181,13 +181,22 @@ remove_packages() {
 
 remove_matching_packages() {
     local pkg
+    local output
 
     for pkg in "$@"; do
-        if pacman -Qq | grep -Fxq "${pkg}"; then
-            log_subsection "Removing package: ${pkg}"
-            sudo pacman -R --noconfirm "${pkg}"
+        [[ -n "$pkg" ]] || continue
+
+        if pacman -Q -- "$pkg" &>/dev/null; then
+            log_subsection "Removing package: $pkg"
+
+            if output=$(sudo pacman -Rs --noconfirm -- "$pkg" 2>&1); then
+                log_info "Removed package: $pkg"
+            else
+                log_warn "Could not remove package: $pkg"
+                log_info "$output"
+            fi
         else
-            log_info "Package '${pkg}' is not installed"
+            log_info "Package '$pkg' is not installed"
         fi
     done
 }
