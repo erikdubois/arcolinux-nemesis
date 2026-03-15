@@ -34,10 +34,17 @@ log_section "Running $(script_name)"
 
 export DEBUG=false
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-echo "Working directory: ${SCRIPT_DIR}"
-PERSONAL_DIR="${SCRIPT_DIR}/personal"
+WORKING_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+echo "Working directory: ${WORKING_DIR}"
+
+PERSONAL_DIR="${WORKING_DIR}/personal"
 echo "Personal scripts directory: ${PERSONAL_DIR}"
+
+PACKAGES_DIR="${WORKING_DIR}/packages"
+echo "Packages directory: ${PACKAGES_DIR}"
+
+SETTINGS_DIR="${WORKING_DIR}/settings"
+echo "Settings directory: ${SETTINGS_DIR}"
 
 # Files used for OS detection.
 OS_RELEASE="/etc/os-release"
@@ -241,19 +248,19 @@ log_warn "Start of the scripts - choices what to launch or not"
 
 run_remove_anywhere_software
 
-run_glob "${SCRIPT_DIR}/100-*"
-run_glob "${SCRIPT_DIR}/110-*"
-#run_glob "${SCRIPT_DIR}/120-*"
-run_glob "${SCRIPT_DIR}/130-*"
-run_glob "${SCRIPT_DIR}/140-*"
-run_glob "${SCRIPT_DIR}/150-*"
+run_glob "${WORKING_DIR}/100-*"
+run_glob "${WORKING_DIR}/110-*"
+#run_glob "${WORKING_DIR}/120-*"
+run_glob "${WORKING_DIR}/130-*"
+run_glob "${WORKING_DIR}/140-*"
+run_glob "${WORKING_DIR}/150-*"
 
-run_glob "${SCRIPT_DIR}/200-software-aur-repo*"
-# run_glob "${SCRIPT_DIR}/300-sardi-extras*"
-# run_glob "${SCRIPT_DIR}/400-surfn-extras*"
+run_glob "${WORKING_DIR}/200-software-aur-repo*"
+# run_glob "${WORKING_DIR}/300-sardi-extras*"
+# run_glob "${WORKING_DIR}/400-surfn-extras*"
 
-run_glob "${SCRIPT_DIR}/500-plasma*"
-run_glob "${SCRIPT_DIR}/600-chadwm*"
+run_glob "${WORKING_DIR}/500-plasma*"
+run_glob "${WORKING_DIR}/600-chadwm*"
 
 log_warn "Going to the Personal folder"
 cd "${PERSONAL_DIR}" || exit 1
