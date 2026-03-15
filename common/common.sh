@@ -297,7 +297,7 @@ install_local_packages_from_dir() {
 # Install local packages from default project packages directory
 ##################################################################################################################################
 install_local_packages() {
-    local dir="${1:-${PROJECT_DIR}/packages}"
+    local dir="${PACKAGES_DIR}"
     install_local_packages_from_dir "${dir}"
 }
 
