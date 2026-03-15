@@ -22,7 +22,11 @@ run_hardcode_fixer() {
     echo "and fixing them"
     echo "Wait for it ..."
 
-    sudo hardcode-fixer
+    if command -v hardcode-fixer >/dev/null 2>&1; then
+        sudo hardcode-fixer
+    else
+        log_warn "hardcode-fixer not installed"
+    fi
 }
 
 run_hardcode_fixer

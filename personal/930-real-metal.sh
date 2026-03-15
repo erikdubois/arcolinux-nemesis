@@ -114,6 +114,7 @@ handle_virtualbox_template() {
         else
             log_warn "template.tar.gz not found in $vm_dir"
         fi
+        
     else
         log_warn "Virtual machine detected - skipping VirtualBox template"
         log_warn "Template not copied over"

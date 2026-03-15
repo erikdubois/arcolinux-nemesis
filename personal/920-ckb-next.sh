@@ -29,14 +29,14 @@ install_hwinfo_if_needed() {
 
 install_ckb_next_if_keyboard_detected() {
 
-    if hwinfo | grep -q "CORSAIR K70"; then
+    if hwinfo --keyboard | grep -qi "corsair"; then
 
         log_section "Corsair keyboard detected - installing ckb-next"
 
         install_packages ckb-next-git
 
-        mkdir -p "${HOME}/.config/ckb-next"
-        mkdir -p "${HOME}/.config/autostart"
+        mkdir -p "${HOME}/.config/ckb-next" \
+            "${HOME}/.config/autostart"
 
         copy_file \
             "${PROJECT_DIR}/p/settings/ckb-next/ckb-next.conf" \

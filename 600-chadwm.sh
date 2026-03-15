@@ -74,6 +74,8 @@ configure_sddm_autologin() {
     local target_dir="/etc/sddm.conf.d"
     local target_file="${target_dir}/kde_settings.conf"
     local tmp_file
+    local target_user="${SUDO_USER:-$USER}"
+    USER=${target_user}
 
     if [[ -f /usr/local/bin/fix-sddm-conf ]]; then
         fix-sddm-conf

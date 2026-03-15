@@ -23,7 +23,9 @@ pause_if_debug
 create_personal_directories() {
     log_section "Personal directories to create"
 
-    sudo mkdir -p /etc/skel/.config
+    if [[ ! -d /etc/skel/.config ]]; then
+        sudo mkdir -p /etc/skel/.config
+    fi
 
     local dirs=(
         "${HOME}/.bin"
@@ -62,15 +64,18 @@ install_personal_settings() {
 
     log_subsection "Brave no gnome-keyring popup"
     cp -v "${SETTINGS_DIR}/brave/brave-browser.desktop" \
-          "${HOME}/.local/share/applications/"
+      "${HOME}/.local/share/applications/" || \
+      log_warn "Failed to copy Brave desktop file"
 
     log_subsection "Sublime Text settings"
     cp -v "${SETTINGS_DIR}/sublimetext/Preferences.sublime-settings" \
-          "${HOME}/.config/sublime-text/Packages/User/"
+          "${HOME}/.config/sublime-text/Packages/User/" || \
+          log_warn "Failed to copy Sublime Text settings"
 
     log_subsection "Flameshot settings"
     cp -v "${SETTINGS_DIR}/flameshot/flameshot.ini" \
-          "${HOME}/.config/flameshot/"
+          "${HOME}/.config/flameshot/" || \
+          log_warn "Failed to copy Flameshot settings"
 }
 
 configure_desktop_preferences() {
@@ -87,7 +92,7 @@ change_shell_to_fish() {
     log_subsection "Changing shell to fish"
 
     if command -v fish >/dev/null 2>&1; then
-        sudo chsh "${USER}" -s /bin/fish
+        chsh "${USER}" -s /bin/fish
     else
         log_warn "fish is not installed - skipping shell change"
     fi

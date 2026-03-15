@@ -34,6 +34,13 @@ export DEBUG=false
 WORKING_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 echo "Working directory             : ${WORKING_DIR}"
 
+# Source shared helper functions and handlers. These are kept separate to avoid cluttering
+# the main orchestration logic in this file.
+source "${WORKING_DIR}/common/common.sh"
+source "${WORKING_DIR}/common/handle.sh"
+
+##############################################################""
+
 COMMON_DIR="${WORKING_DIR}/common"
 echo "Common directory              : ${COMMON_DIR}"
 
@@ -46,11 +53,7 @@ echo "Packages directory            : ${PACKAGES_DIR}"
 SETTINGS_DIR="${WORKING_DIR}/personal/settings"
 echo "Settings directory            : ${SETTINGS_DIR}"
 
-# Source shared helper functions and handlers. These are kept separate to avoid cluttering
-# the main orchestration logic in this file.
-source "${WORKING_DIR}/common/common.sh"
-source "${WORKING_DIR}/common/handle.sh"
-
+# Determine the username and home directory of the user running the script.
 USERNAME="${SUDO_USER:-$USER}"
 USER_HOME="$(getent passwd "$USERNAME" | cut -d: -f6)"
 
@@ -274,7 +277,6 @@ run_glob "${WORKING_DIR}/500-plasma*"
 run_glob "${WORKING_DIR}/600-chadwm*"
 
 log_warn "Going to the Personal folder"
-cd "${PERSONAL_DIR}" || exit 1
 
 # Personal scripts run last so user-specific tweaks happen after the
 # generic distro and desktop setup has completed.
