@@ -48,6 +48,15 @@ install_non_plasma_packages() {
     fi
 }
 
+# Install XFCE tools if XFCE session exists
+install_xfce_extras_if_needed() {
+    if [[ -f /usr/share/xsessions/xfce.desktop ]]; then
+        install_packages \
+            menulibre \
+            mugshot
+    fi
+}
+
 # Main cross-desktop package set.
 # This list is intentionally broad: shells, fonts, browsers, utilities,
 # archive tools, firmware, and desktop helpers all live here.

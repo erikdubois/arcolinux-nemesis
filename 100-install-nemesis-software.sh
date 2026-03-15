@@ -22,15 +22,6 @@ pause_if_debug
 # Ensure a readable console font exists
 ensure_vconsole_font
 
-# Install XFCE tools if XFCE session exists
-install_xfce_extras_if_needed() {
-    if [[ -f /usr/share/xsessions/xfce.desktop ]]; then
-        install_packages \
-            menulibre \
-            mugshot
-    fi
-}
-
 # Install main Nemesis software set
 install_nemesis_software() {
     install_packages \
