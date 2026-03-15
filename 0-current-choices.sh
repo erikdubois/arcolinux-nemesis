@@ -125,21 +125,21 @@ run_backup_operations() {
 
     # Backup default skeleton shell configs only once.
     if [[ -f /etc/skel/.bashrc && ! -f /etc/skel/.bashrc-nemesis ]]; then
-        sudo mv -v /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
+        move_file /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
     fi
 
     if [[ -f /etc/skel/.zshrc && ! -f /etc/skel/.zshrc-nemesis ]]; then
-        sudo mv -v /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
+        move_file /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
     fi
 
     # Keep a copy of the current pacman mirrorlist before repo changes.
-    backup_file_once         /etc/pacman.d/mirrorlist         /etc/pacman.d/mirrorlist-nemesis
+    backup_file_once /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-nemesis
 
     # Preserve the original pacman.conf for the Nemesis workflow.
-    backup_file_once         /etc/pacman.conf         /etc/pacman.conf.nemesis
+    backup_file_once /etc/pacman.conf /etc/pacman.conf.nemesis
 
     # Preserve a second copy for the edu variant that is used elsewhere.
-    backup_file_once         /etc/pacman.conf         /etc/pacman.conf.edu
+    backup_file_once /etc/pacman.conf /etc/pacman.conf.edu
 
     log_warn "Backup operations completed"
 }
@@ -152,10 +152,9 @@ run_remove_anywhere_software() {
 
     log_warn "Move configs for all - backup"
 
-    # Compact one-line guards: move the files only when the source exists
-    # and the Nemesis backup target does not already exist.
-    [[ -f /etc/skel/.bashrc-nemesis ]] || [[ ! -f /etc/skel/.bashrc ]] || sudo mv -v /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
-    [[ -f /etc/skel/.zshrc-nemesis ]] || [[ ! -f /etc/skel/.zshrc ]] || sudo mv -v /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
+    # Move skel shell configs only once (Nemesis backup)
+    [[ -f /etc/skel/.bashrc && ! -f /etc/skel/.bashrc-nemesis ]] && move_file /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
+    [[ -f /etc/skel/.zshrc  && ! -f /etc/skel/.zshrc-nemesis  ]] && move_file /etc/skel/.zshrc  /etc/skel/.zshrc-nemesis
 
     log_warn "Removing the driver for xf86-video-vmware if possible"
 
@@ -164,7 +163,7 @@ run_remove_anywhere_software() {
     if command -v systemd-detect-virt >/dev/null 2>&1; then
         if ! systemd-detect-virt | grep -q "oracle"; then
             if pacman -Qi xf86-video-vmware >/dev/null 2>&1; then
-                sudo pacman -Rs --noconfirm xf86-video-vmware
+                remove_matching_packages xf86-video-vmware
             fi
         fi
     fi
@@ -229,7 +228,7 @@ sudo pacman -Syyu --noconfirm
 run_all_distro_handlers
 
 log_section "Installing much needed software"
-install_packages     sublime-text-4     ripgrep     meld
+install_packages sublime-text-4 ripgrep meld
 
 ###################################################################################
 # Numbered installer pipeline.

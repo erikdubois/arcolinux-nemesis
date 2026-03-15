@@ -20,58 +20,6 @@ pause_if_debug
 #
 ##################################################################################################################################
 
-# Detect any Plasma session, regardless of X11 or Wayland.
-is_plasma_installed() {
-    [[ -f /usr/share/wayland-sessions/plasma.desktop || -f /usr/share/xsessions/plasma.desktop ]]
-}
-
-# Detect Plasma X11 specifically. This matters for qt5ct/kvantum handling.
-is_plasma_x11_installed() {
-    [[ -f /usr/share/xsessions/plasmax11.desktop ]]
-}
-
-# Archcraft may ship without XFCE by default in the scenario targeted here,
-# so install it explicitly when that distro is detected.
-install_archcraft_xfce_if_needed() {
-    if grep -q "archcraft" /etc/os-release; then
-        log_warn "Archcraft detected - installing XFCE packages"
-        install_packages xfce4 xfce4-goodies
-    fi
-}
-
-# Non-Plasma systems use sddm-git here. Plasma keeps the regular sddm
-# package because that is the expected display-manager combination.
-replace_sddm_with_sddm_git_if_needed() {
-    if ! is_plasma_installed; then
-        log_warn "Not on Plasma. Replacing sddm with sddm-git"
-
-        if pacman -Qq sddm 2>/dev/null | grep -qx "sddm"; then
-            sudo pacman -R --noconfirm sddm &>/dev/null
-        fi
-
-        install_packages sddm-git
-    else
-        log_section "Plasma detected. Keeping sddm."
-    fi
-}
-
-# Ensure the git build is the installed variant.
-# Note: the current logic checks for the plain package name before removal.
-# That is consistent with the earlier cleanup direction you took today, but
-# this is also one of the first places I would revisit later for refinement.
-reinstall_simplescreenrecorder_git() {
-    log_section "Ensuring simplescreenrecorder-git is installed"
-
-    for pkg in simplescreenrecorder simplescreenrecorder-git; do
-        if pacman -Qq simplescreenrecorder 2>/dev/null | grep -qx "simplescreenrecorder"; then
-            echo "Removing ${pkg}..."
-            sudo pacman -Rns --noconfirm "${pkg}" &>/dev/null
-        fi
-    done
-
-    install_packages simplescreenrecorder-git
-}
-
 # Extra tools used on non-Plasma desktops.
 install_non_plasma_packages() {
     if ! [[ -f /usr/share/wayland-sessions/plasma.desktop ]]; then
@@ -230,26 +178,12 @@ enable_core_services() {
     enable_service ntpd.service
 }
 
-# qt5ct/kvantum are useful outside Plasma X11, but redundant or undesired
-# on Plasma X11 itself.
-handle_qt5ct_and_kvantum() {
-    if ! is_plasma_x11_installed; then
-        log_section "Plasma X11 not detected - installing qt5ct and kvantum-qt5"
-        install_packages qt5ct kvantum-qt5
-    else
-        log_section "Plasma X11 detected - removing qt5ct and kvantum-qt5"
-        remove_packages qt5ct kvantum-qt5
-    fi
-}
-
-# Execution order matters here: distro-specific desktop fixes first,
+# Execution order matters here: Sddm handling first
 # then display-manager handling, then packages, then services.
-install_archcraft_xfce_if_needed
 replace_sddm_with_sddm_git_if_needed
 reinstall_simplescreenrecorder_git
 install_non_plasma_packages
 install_core_packages
 enable_core_services
-handle_qt5ct_and_kvantum
 
 log_subsection "$(script_name) done"

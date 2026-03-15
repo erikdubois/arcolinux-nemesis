@@ -218,6 +218,40 @@ remove_matching_packages_deps_dd() {
     done
 }
 
+replace_sddm_with_sddm_git_if_needed() {
+    if ! is_plasma_installed; then
+        log_warn "Not on Plasma. Replacing sddm with sddm-git"
+
+        if pacman -Qq sddm 2>/dev/null | grep -qx "sddm"; then
+            sudo pacman -R --noconfirm sddm &>/dev/null
+        fi
+
+        install_packages sddm-git
+    else
+        log_section "Plasma detected. Keeping sddm."
+    fi
+}
+
+reinstall_simplescreenrecorder_git() {
+    log_section "Ensuring simplescreenrecorder-git is installed"
+
+    for pkg in simplescreenrecorder simplescreenrecorder-git; do
+        if pacman -Qq "${pkg}" 2>/dev/null | grep -qx "${pkg}"; then
+            sudo pacman -Rns --noconfirm "${pkg}" &>/dev/null
+        fi
+    done
+
+    install_packages simplescreenrecorder-git
+}
+
+is_plasma_installed() {
+    [[ -f /usr/share/wayland-sessions/plasma.desktop || -f /usr/share/xsessions/plasma.desktop ]]
+}
+
+is_plasma_x11_installed() {
+    [[ -f /usr/share/xsessions/plasmax11.desktop ]]
+}
+
 ##################################################################################################################################
 # Install local packages from directory
 ##################################################################################################################################
@@ -268,6 +302,12 @@ enable_service() {
     sudo systemctl enable "${service}"
 }
 
+enable_now_service() {
+    local service="$1"
+    log_subsection "Enabling and starting service: ${service}"
+    sudo systemctl enable --now "${service}"
+}
+
 disable_service() {
     local service="$1"
 
@@ -287,12 +327,6 @@ start_service() {
     local service="$1"
     log_subsection "Starting service: ${service}"
     sudo systemctl start "${service}"
-}
-
-enable_now_service() {
-    local service="$1"
-    log_subsection "Enabling and starting service: ${service}"
-    sudo systemctl enable --now "${service}"
 }
 
 restart_service() {
@@ -337,6 +371,19 @@ copy_file() {
 
     log_subsection "Copying ${src} -> ${dst}"
     sudo cp -v "${src}" "${dst}"
+}
+
+move_file() {
+    local src="$1"
+    local dst="$2"
+
+    if [[ ! -f "${src}" ]]; then
+        log_warn "Source file missing: ${src}"
+        return 1
+    fi
+
+    log_subsection "Moving ${src} -> ${dst}"
+    sudo mv -v "${src}" "${dst}"
 }
 
 write_file_as_root() {

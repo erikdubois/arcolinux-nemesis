@@ -54,11 +54,9 @@ configure_pulseaudio_modules() {
     if [[ -f /etc/pulse/system.pa ]]; then
         log_section "Configuring PulseAudio bluetooth modules"
 
-        grep -q "module-switch-on-connect" /etc/pulse/system.pa ||             echo "load-module module-switch-on-connect" | sudo tee -a /etc/pulse/system.pa >/dev/null
-
-        grep -q "module-bluetooth-policy" /etc/pulse/system.pa ||             echo "load-module module-bluetooth-policy" | sudo tee -a /etc/pulse/system.pa >/dev/null
-
-        grep -q "module-bluetooth-discover" /etc/pulse/system.pa ||             echo "load-module module-bluetooth-discover" | sudo tee -a /etc/pulse/system.pa >/dev/null
+        append_line_if_missing "load-module module-switch-on-connect" "/etc/pulse/system.pa"
+        append_line_if_missing "load-module module-bluetooth-policy" "/etc/pulse/system.pa"
+        append_line_if_missing "load-module module-bluetooth-discover" "/etc/pulse/system.pa"
     fi
 }
 

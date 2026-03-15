@@ -15,6 +15,12 @@ is_omarchy() {
     [[ -f /etc/plymouth/plymouthd.conf ]] && grep -qi "omarchy" /etc/plymouth/plymouthd.conf
 }
 
+handle_aerynos() {
+    if is_os_release_match "Aerynos"; then
+        log_section "We are on Aerynos"
+    fi
+}
+
 handle_archbang() {
     #2026-03-14
     #after installation pacman-key --init and pacman-key --populate archlinux
@@ -62,6 +68,18 @@ handle_archcraft() {
         remove_matching_packages simplescreenrecorder
 
         log_warn "Software removed for Archcraft"
+    fi
+}
+
+handle_archlinux() {
+    if is_os_release_match "Arch Linux|archlinux"; then
+        log_section "We are on Arch Linux"
+    fi
+}
+
+handle_arcris() {
+    if is_os_release_match "Arcris"; then
+        log_section "We are on Arcris"
     fi
 }
 
@@ -115,6 +133,12 @@ handle_blendos() {
     fi
 }
 
+handle_bluestarlinux() {
+    if is_os_release_match "Bluestar|BluestarLinux"; then
+        log_section "We are on BluestarLinux"
+    fi
+}
+
 handle_cachyos() {
     if is_os_release_match "CachyOS|cachyos"; then
         log_section "We are on CachyOS"
@@ -147,6 +171,12 @@ handle_cachyos() {
     fi
 }
 
+handle_calamares_arch_installer() {
+    if is_os_release_match "Calamares-arch-installer|calamares-arch-installer"; then
+        log_section "We are on Calamares Arch Installer"
+    fi
+}
+
 handle_endeavouros() {
     if is_os_release_match "EndeavourOS"; then
         log_section "We are on EndeavourOS"
@@ -176,6 +206,12 @@ handle_garuda() {
     fi
 }
 
+handle_kaos() {
+    if is_os_release_match "KaOS|Kaos"; then
+        log_section "We are on KaOS"
+    fi
+}
+
 handle_liya() {
     if is_os_release_match "Liya"; then
         log_section "We are on Liya"
@@ -193,6 +229,12 @@ handle_linuxhub() {
     fi
 }
 
+handle_mabox() {
+    if is_os_release_match "Mabox"; then
+        log_section "We are on Mabox"
+    fi
+}
+
 handle_manjaro() {
     if is_os_release_match "Manjaro"; then
         log_section "We are on Manjaro"
@@ -201,13 +243,19 @@ handle_manjaro() {
     fi
 }
 
-handle_omarch() {
+handle_nyarch() {
+    if is_os_release_match "Nyarch"; then
+        log_section "We are on Nyarch"
+    fi
+}
+
+handle_omarchy() {
     if is_omarchy; then
         log_section "We are on Omarchy"
     fi
 }
 
-handle_prism() {
+handle_prismlinux() {
     if is_os_release_match "Prism"; then
         log_section "We are on Prism"
     fi
@@ -221,22 +269,51 @@ handle_rebornos() {
     fi
 }
 
+handle_rengeos() {
+    if is_os_release_match "RengeOS|rengeos"; then
+        log_section "We are on RengeOS"
+    fi
+}
+
+handle_shanios() {
+    if is_os_release_match "Shanios"; then
+        log_section "We are on Shanios"
+    fi
+}
+
+handle_stormos() {
+    if is_os_release_match "StormOS|stormos"; then
+        log_section "We are on StormOS"
+    fi
+}
+
 run_all_distro_handlers() {
+    handle_aerynos
     handle_archbang
     handle_archcraft
+    handle_archlinux
     handle_archman
+    handle_arcris
     handle_artix
     handle_berserk
     handle_biglinux
     handle_blendos
+    handle_bluestarlinux
     handle_cachyos
+    handle_calamares_arch_installer
     handle_endeavouros
     handle_ezarch
     handle_garuda
+    handle_kaos
     handle_liya
     handle_linuxhub
+    handle_mabox
     handle_manjaro
-    handle_omarch
-    handle_prism
+    handle_nyarch
+    handle_omarchy
+    handle_prismlinux
     handle_rebornos
+    handle_rengeos
+    handle_shanios
+    handle_stormos
 }
