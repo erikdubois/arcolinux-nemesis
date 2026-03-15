@@ -56,19 +56,16 @@ install_personal_settings() {
     log_section "Personal settings to install - any OS"
 
     log_subsection "Brave no gnome-keyring popup"
-    cp -v \
-        "${SETTINGS_DIR}/brave/brave-browser.desktop" \
-        "${HOME}/.local/share/applications/brave-browser.desktop"
+    cp -v "${SETTINGS_DIR}/brave/brave-browser.desktop" \
+          "${HOME}/.local/share/applications/"
 
     log_subsection "Sublime Text settings"
-    cp -v \
-        "${SETTINGS_DIR}/sublimetext/Preferences.sublime-settings" \
-        "${HOME}/.config/sublime-text/Packages/User/Preferences.sublime-settings"
+    cp -v "${SETTINGS_DIR}/sublimetext/Preferences.sublime-settings" \
+          "${HOME}/.config/sublime-text/Packages/User/"
 
     log_subsection "Flameshot settings"
-    cp -v \
-        "${SETTINGS_DIR}/flameshot/flameshot.ini" \
-        "${HOME}/.config/flameshot/flameshot.ini"
+    cp -v "${SETTINGS_DIR}/flameshot/flameshot.ini" \
+          "${HOME}/.config/flameshot/"
 }
 
 configure_desktop_preferences() {
