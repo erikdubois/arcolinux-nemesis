@@ -22,19 +22,15 @@ pause_if_debug
 install_plasma_extras() {
     # This script augments an existing Plasma install. It does not pull in
     # the full Plasma desktop on its own.
-    if [[ ! -f /usr/share/wayland-sessions/plasma.desktop &&       ! -f /usr/share/xsessions/plasma.desktop ]]; then
+    if [[ ! -f /usr/share/wayland-sessions/plasma.desktop ]]; then
         log_warn "Plasma is not installed - skipping Plasma extras"
         return 0
     fi
 
-    log_section "Plasma detected"
-    echo "This will not install Plasma"
-    echo "It detects whether Plasma is installed like when on ArcoPlasma"
-    echo
+    log_section "Plasma detected - extra software to install"
 
-    log_section "Plasma software to install"
-
-    install_packages         edu-plasma-keybindings-git         edu-plasma-servicemenus-git         obs-studio         surfn-plasma-dark-icons-git         surfn-plasma-light-icons-git
+    install_packages edu-plasma-keybindings-git edu-plasma-servicemenus-git obs-studio \
+        surfn-plasma-dark-icons-git surfn-plasma-light-icons-git
 }
 
 install_plasma_extras
