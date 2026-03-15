@@ -108,9 +108,8 @@ install_virtualbox_guest_utils_if_needed() {
     fi
 }
 
-# Install Chadwm either when the marker file exists or when this script is
-# launched directly by name.
-if [[ -f /tmp/install-chadwm || "$(basename "$0")" == "600-chadwm.sh" ]]; then
+# Install Chadwm
+if [[ -f "/tmp/install-chadwm" ]]; then
     log_section "Let us install Chadwm"
 
     install_chadwm_packages
