@@ -92,7 +92,7 @@ change_shell_to_fish() {
     log_subsection "Changing shell to fish"
 
     if command -v fish >/dev/null 2>&1; then
-        chsh "${USER}" -s /bin/fish
+        sudo chsh "${USER}" -s /bin/fish
     else
         log_warn "fish is not installed - skipping shell change"
     fi
