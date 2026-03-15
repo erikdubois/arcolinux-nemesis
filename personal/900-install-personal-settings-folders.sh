@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+SETTINGS_DIR="${SCRIPT_DIR}/../settings"
+
 log_section "Running $(script_name)"
 
 pause_if_debug
