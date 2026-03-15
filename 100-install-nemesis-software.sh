@@ -59,7 +59,6 @@ install_nemesis_software() {
 # Main execution
 log_section "Installing software from nemesis_repo"
 
-install_xfce_extras_if_needed
 ensure_vconsole_font
 install_nemesis_software
 
