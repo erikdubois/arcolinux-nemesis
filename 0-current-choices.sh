@@ -28,7 +28,7 @@
 #
 ##################################################################################################################
 
-export DEBUG=true
+export DEBUG=false
 
 # Path setup
 WORKING_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
