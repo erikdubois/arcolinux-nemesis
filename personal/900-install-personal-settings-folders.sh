@@ -121,7 +121,7 @@ log_subsection "$(script_name) done"
 # Debug verification section
 ##################################################################################################################################
 
-if [[ "${debug}" == "true" ]]; then
+if [[ "${DEBUG}" == "true" ]]; then
 
     log_section "Debug verification - checking applied changes"
 
