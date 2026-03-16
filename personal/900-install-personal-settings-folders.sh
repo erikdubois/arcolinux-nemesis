@@ -103,7 +103,7 @@ set_default_cursor_theme() {
     local theme="Bibata-Modern-Ice"
 
     if [[ -f "$file" ]]; then
-        sed -i "s/^Inherits=.*/Inherits=$theme/" "$file"
+        sudo sed -i "s/^Inherits=.*/Inherits=$theme/" "$file"
         echo "Cursor theme set to $theme in $file"
     else
         echo "File not found: $file"
