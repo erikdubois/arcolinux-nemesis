@@ -121,13 +121,13 @@ log_subsection "$(script_name) done"
 # Debug verification section
 ##################################################################################################################################
 
-if [[ "${DEBUG}" == "true" ]]; then
+if [[ "${debug}" == "true" ]]; then
 
     log_section "Debug verification - checking applied changes"
 
     log_subsection "Checking personal directories"
 
-    local check_dirs=(
+    check_dirs=(
         "${HOME}/.bin"
         "${HOME}/.fonts"
         "${HOME}/.icons"
@@ -157,7 +157,6 @@ if [[ "${DEBUG}" == "true" ]]; then
         [[ -d "$dir" ]] && echo "OK   - $dir" || echo "MISS - $dir"
     done
 
-
     log_subsection "Checking installed configuration files"
 
     check_files=(
@@ -170,16 +169,15 @@ if [[ "${DEBUG}" == "true" ]]; then
         [[ -f "$file" ]] && echo "OK   - $file" || echo "MISS - $file"
     done
 
-
     log_subsection "Checking shell"
 
     current_shell="$(getent passwd "$USER" | cut -d: -f7)"
     echo "Current shell: $current_shell"
 
-
     log_subsection "Checking cursor theme"
 
     theme_file="/usr/share/icons/default/index.theme"
+
     if [[ -f "$theme_file" ]]; then
         grep "^Inherits=" "$theme_file"
     else
