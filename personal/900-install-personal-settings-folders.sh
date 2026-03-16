@@ -98,9 +98,21 @@ change_shell_to_fish() {
     fi
 }
 
+set_default_cursor_theme() {
+    local file="/usr/share/icons/default/index.theme"
+    local theme="Bibata-Modern-Ice"
+
+    if [[ -f "$file" ]]; then
+        sed -i "s/^Inherits=.*/Inherits=$theme/" "$file"
+        echo "Cursor theme set to $theme in $file"
+    else
+        echo "File not found: $file"
+    fi
+}
 create_personal_directories
 install_personal_settings
 configure_desktop_preferences
 change_shell_to_fish
+set_default_cursor_theme
 
 log_subsection "$(script_name) done"
