@@ -94,9 +94,10 @@ install_personal_settings_as_root() {
           log_warn "Failed to copy nsswitch.conf settings"
 
     log_subsection "sysctl settings"
-    copy_file "${SETTINGS_DIR}/sysctl/*" \
-          "/etc/sysctl.d/" || \
-          log_warn "Failed to copy sysctl.conf settings"
+    for file in "${SETTINGS_DIR}/sysctl/"*; do
+        copy_file "$file" "/etc/sysctl.d/" || \
+            log_warn "Failed to copy $(basename "$file")"
+    done
 }
 
 configure_desktop_preferences() {
