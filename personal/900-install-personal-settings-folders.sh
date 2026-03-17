@@ -59,23 +59,44 @@ create_personal_directories() {
     done
 }
 
-install_personal_settings() {
-    log_section "Personal settings to install - any OS"
+# as User
+install_personal_settings_as_user() {
+    log_section "Personal settings to install - any OS - as user"
 
     log_subsection "Brave no gnome-keyring popup"
-    cp -v "${SETTINGS_DIR}/brave/brave-browser.desktop" \
+    copy_file_user "${SETTINGS_DIR}/brave/brave-browser.desktop" \
       "${HOME}/.local/share/applications/" || \
       log_warn "Failed to copy Brave desktop file"
 
     log_subsection "Sublime Text settings"
-    cp -v "${SETTINGS_DIR}/sublimetext/Preferences.sublime-settings" \
+    copy_file_user "${SETTINGS_DIR}/sublimetext/Preferences.sublime-settings" \
           "${HOME}/.config/sublime-text/Packages/User/" || \
           log_warn "Failed to copy Sublime Text settings"
 
-    log_subsection "Flameshot settings"
-    cp -v "${SETTINGS_DIR}/flameshot/flameshot.ini" \
+    log_subsection "flameshot settings"
+    copy_file_user "${SETTINGS_DIR}/flameshot/flameshot.ini" \
           "${HOME}/.config/flameshot/" || \
           log_warn "Failed to copy Flameshot settings"
+}
+
+# as Root
+install_personal_settings_as_root() {
+    log_section "Personal settings to install - any OS - as root"
+
+    log_subsection "nanorc settings"
+    copy_file "${SETTINGS_DIR}/nano/nanorc" \
+          "/etc/nanorc" || \
+          log_warn "Failed to copy nanorc settings"
+
+    log_subsection "nsswitch.conf settings"
+    copy_file "${SETTINGS_DIR}/nsswitch/nsswitch.conf" \
+          "/etc/nsswitch.conf" || \
+          log_warn "Failed to copy nsswitch.conf settings"
+
+    log_subsection "sysctl settings"
+    copy_file "${SETTINGS_DIR}/sysctl/*" \
+          "/etc/sysctl.d/" || \
+          log_warn "Failed to copy sysctl.conf settings"
 }
 
 configure_desktop_preferences() {
@@ -134,7 +155,8 @@ EOF
 }
 
 create_personal_directories
-install_personal_settings
+install_personal_settings_as_user
+install_personal_settings_as_root
 configure_desktop_preferences
 change_shell_to_fish
 set_default_cursor_theme

@@ -351,6 +351,24 @@ restart_service() {
 ##################################################################################################################################
 # File helpers
 ##################################################################################################################################
+backup_folder_as_root() {
+    local src="$1"
+    local dst="$2"
+
+    if [[ ! -d "${src}" ]]; then
+        log_warn "Source folder does not exist: ${src}"
+        return 1
+    fi
+
+    if [[ -d "${dst}" ]]; then
+        log_info "Backup already exists: ${dst}"
+        return 0
+    fi
+
+    log_subsection "Backing up folder ${src} -> ${dst}"
+    sudo cp -a "${src}" "${dst}"
+}
+
 backup_file_once() {
     local src="$1"
     local dst="$2"

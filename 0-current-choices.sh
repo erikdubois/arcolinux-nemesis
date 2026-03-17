@@ -147,13 +147,10 @@ run_backup_operations() {
     log_warn "Creating backups of important configuration files"
 
     # Backup default skeleton shell configs only once.
-    if [[ -f /etc/skel/.bashrc && ! -f /etc/skel/.bashrc-nemesis ]]; then
-        move_file /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
-    fi
-
-    if [[ -f /etc/skel/.zshrc && ! -f /etc/skel/.zshrc-nemesis ]]; then
-        move_file /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
-    fi
+    backup_file_once /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
+  
+    # Backup the default skeleton zsh config only once.
+    backup_file_once /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
 
     # Keep a copy of the current pacman mirrorlist before repo changes.
     backup_file_once /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-nemesis
@@ -164,8 +161,18 @@ run_backup_operations() {
     # Preserve a second copy for the edu variant that is used elsewhere.
     backup_file_once /etc/pacman.conf /etc/pacman.conf.edu
 
-    #
+    # Back up the current environment file before any changes are made.
     backup_file_once /etc/environment /etc/environment.nemesis
+    
+    # This file is used to set global environment variables, and Nemesis may add entries here. 
+    # Keeping a backup allows for easy restoration if needed.
+    backup_file_once /etc/nanorc /etc/nanorc.nemesis
+
+    # The nsswitch.conf file is critical for system name resolution and other services. 
+    backup_file_once /etc/nsswitch.conf /etc/nsswitch.conf.nemesis
+
+    # Back up the current sysctl.d directory before any Nemesis-specific tweaks are applied.
+    backup_folder_as_root /etc/sysctl.d/ /etc/sysctl.d.nemesis
 
     log_warn "Backup operations completed"
 }
