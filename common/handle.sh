@@ -254,26 +254,7 @@ handle_nyarch() {
 }
 
 handle_omarchy() {
-    if is_omarchy; then
-        log_section "We are on Omarchy"
-
-        HYPR_DIR="$USER_HOME/.config/hypr"
-        OMARCHY_DIR="$USER_HOME/.config/omarchy"
-        LOCAL_OMARCHY_DIR="$USER_HOME/.local/share/omarchy"
-
-        backup_folder_as_user "$HYPR_DIR" "${HYPR_DIR}_nemesis"
-        backup_folder_as_user "$OMARCHY_DIR" "${OMARCHY_DIR}_nemesis"
-        backup_folder_as_user "$LOCAL_OMARCHY_DIR" "${LOCAL_OMARCHY_DIR}_nemesis"
-
-        move_file_user "$HYPR_DIR/bindings.conf" "$HYPR_DIR/bindings.conf_backup"
-        copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings.conf" "$HYPR_DIR/bindings.conf"
-        copy_file_user "$SETTINGS_DIR/hypr-omarchy/input.conf" "$HYPR_DIR/input.conf"
-        copy_file_user "$SETTINGS_DIR/hypr-omarchy/gsettings.sh" "$HYPR_DIR/gsettings.sh"
-        bash "$HYPR_DIR/gsettings.sh"
-    fi
-
     set_sddm_session_hyprland() {
-
         local file="/etc/sddm.conf.d/kde_settings.conf"
 
         log_subsection "Setting SDDM session to Hyprland"
@@ -290,7 +271,25 @@ handle_omarchy() {
         fi
     }
 
-    set_sddm_session_hyprland
+    if is_omarchy; then
+        log_section "We are on Omarchy"
+
+        local HYPR_DIR="$USER_HOME/.config/hypr"
+        local OMARCHY_DIR="$USER_HOME/.config/omarchy"
+        local LOCAL_OMARCHY_DIR="$USER_HOME/.local/share/omarchy"
+
+        backup_folder_as_user "$HYPR_DIR" "${HYPR_DIR}_nemesis"
+        backup_folder_as_user "$OMARCHY_DIR" "${OMARCHY_DIR}_nemesis"
+        backup_folder_as_user "$LOCAL_OMARCHY_DIR" "${LOCAL_OMARCHY_DIR}_nemesis"
+
+        move_file_user "$HYPR_DIR/bindings.conf" "$HYPR_DIR/bindings.conf_backup"
+        copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings.conf" "$HYPR_DIR/bindings.conf"
+        copy_file_user "$SETTINGS_DIR/hypr-omarchy/input.conf" "$HYPR_DIR/input.conf"
+        copy_file_user "$SETTINGS_DIR/hypr-omarchy/gsettings.sh" "$HYPR_DIR/gsettings.sh"
+
+        bash "$HYPR_DIR/gsettings.sh"
+        set_sddm_session_hyprland
+    fi
 }
 
 handle_prismlinux() {
