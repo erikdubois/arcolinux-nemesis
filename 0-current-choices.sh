@@ -185,10 +185,6 @@ run_remove_anywhere_software() {
 
     log_warn "Move configs for all - backup"
 
-    # Move skel shell configs only once (Nemesis backup)
-    [[ -f /etc/skel/.bashrc && ! -f /etc/skel/.bashrc-nemesis ]] && move_file /etc/skel/.bashrc /etc/skel/.bashrc-nemesis
-    [[ -f /etc/skel/.zshrc  && ! -f /etc/skel/.zshrc-nemesis  ]] && move_file /etc/skel/.zshrc  /etc/skel/.zshrc-nemesis
-
     log_warn "Removing the driver for xf86-video-vmware if possible"
 
     # Keep the VMware video driver only when VirtualBox/Oracle is detected.
