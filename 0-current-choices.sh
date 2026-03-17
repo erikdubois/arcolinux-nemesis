@@ -253,10 +253,6 @@ append_nemesis_repo
 log_section "Updating the system - sudo pacman -Syyu - after configure_repos"
 sudo pacman -Syyu --noconfirm
 
-# Run distro-specific handlers from common/handle.sh. This is where
-# per-distro cleanup and repo adjustments are applied.
-run_all_distro_handlers
-
 log_section "Installing much needed software"
 install_packages sublime-text-4 ripgrep meld
 
@@ -291,6 +287,10 @@ run_glob "${PERSONAL_DIR}/900-*"
 run_glob "${PERSONAL_DIR}/910-*"
 run_glob "${PERSONAL_DIR}/920-*"
 run_glob "${PERSONAL_DIR}/930-*"
+
+# Run distro-specific handlers from common/handle.sh. This is where
+# per-distro cleanup and repo adjustments are applied.
+run_all_distro_handlers
 
 run_glob "${PERSONAL_DIR}/990-skel*"
 run_glob "${PERSONAL_DIR}/999-last*"
