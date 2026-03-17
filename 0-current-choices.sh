@@ -250,6 +250,8 @@ install_local_packages
 append_chaotic_repo
 append_nemesis_repo
 
+set_parallel_downloads
+
 log_section "Updating the system - sudo pacman -Syyu - after configure_repos"
 sudo pacman -Syyu --noconfirm
 

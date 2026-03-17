@@ -508,6 +508,24 @@ append_text_as_root() {
     sudo tee -a "$target" >/dev/null
 }
 
+set_parallel_downloads() {
+
+    local file="/etc/pacman.conf"
+
+    echo "Setting ParallelDownloads to 25"
+
+    if [[ ! -f "$file" ]]; then
+        echo "File not found: $file"
+        return 1
+    fi
+
+    if grep -q "^ParallelDownloads=" "$file"; then
+        sudo sed -i 's/^ParallelDownloads=.*/ParallelDownloads=25/' "$file"
+    else
+        echo "ParallelDownloads=25" | sudo tee -a "$file" >/dev/null
+    fi
+}
+
 ##################################################################################################################################
 # User and group helpers
 ##################################################################################################################################
