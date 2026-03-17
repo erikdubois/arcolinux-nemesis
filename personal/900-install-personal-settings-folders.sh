@@ -94,7 +94,7 @@ install_personal_settings_as_root() {
           log_warn "Failed to copy nsswitch.conf settings"
 
     log_subsection "sysctl settings"
-    for file in "${SETTINGS_DIR}/sysctl/"*; do
+    for file in "${SETTINGS_DIR}/sysctl.d/"*; do
         copy_file "$file" "/etc/sysctl.d/" || \
             log_warn "Failed to copy $(basename "$file")"
     done
