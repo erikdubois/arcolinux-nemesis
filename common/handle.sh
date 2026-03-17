@@ -262,6 +262,8 @@ handle_omarchy() {
         move_file_user "$HYPR_DIR/bindings.conf" "$HYPR_DIR/bindings.conf_backup"
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings.conf" "$HYPR_DIR/bindings.conf"
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/input.conf" "$HYPR_DIR/input.conf"
+        copy_file_user "$SETTINGS_DIR/hypr-omarchy/gsettings.sh" "$HYPR_DIR/gsettings.sh"
+        bash "$HYPR_DIR/gsettings.sh"
     fi
 
     set_sddm_session_hyprland() {
