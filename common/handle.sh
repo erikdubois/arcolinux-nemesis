@@ -262,7 +262,29 @@ handle_omarchy() {
         move_file_user "$HYPR_DIR/bindings.conf" "$HYPR_DIR/bindings.conf_backup"
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings.conf" "$HYPR_DIR/bindings.conf"
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/input.conf" "$HYPR_DIR/input.conf"
+
+        copy_file "$SETTINGS_DIR/omarchy/omarchy-wallpapers.conf" "/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml"
     fi
+
+    set_sddm_session_hyprland() {
+
+        local file="/etc/sddm.conf.d/kde_settings.conf"
+
+        log_subsection "Setting SDDM session to Hyprland"
+
+        if [[ ! -f "$file" ]]; then
+            log_warn "File not found: $file"
+            return 0
+        fi
+
+        if grep -q '^Session=' "$file"; then
+            sudo sed -i 's/^Session=.*/Session=hyprland-uwsm/' "$file"
+        else
+            echo "Session=hyprland-uwsm" | sudo tee -a "$file" >/dev/null
+        fi
+    }
+
+    set_sddm_session_hyprland
 }
 
 handle_prismlinux() {
