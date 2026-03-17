@@ -514,12 +514,9 @@ set_parallel_downloads() {
 
     echo "Setting ParallelDownloads to 25"
 
-    if [[ ! -f "$file" ]]; then
-        echo "File not found: $file"
-        return 1
-    fi
+    [[ -f "$file" ]] || { echo "File not found: $file"; return 1; }
 
-    sudo sed -i 's/^ParallelDownloads=.*/ParallelDownloads=25/' "$file"
+    sudo sed -i 's/^ParallelDownloads = .*/ParallelDownloads = 25/' "$file"
 }
 
 ##################################################################################################################################
