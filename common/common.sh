@@ -375,7 +375,7 @@ backup_file_once() {
 
     if [[ ! -f "${src}" ]]; then
         log_warn "Source file does not exist: ${src}"
-        return 1
+        return 0
     fi
 
     if [[ -f "${dst}" ]]; then
