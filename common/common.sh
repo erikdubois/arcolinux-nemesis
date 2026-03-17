@@ -519,11 +519,7 @@ set_parallel_downloads() {
         return 1
     fi
 
-    if grep -q "^ParallelDownloads=" "$file"; then
-        sudo sed -i 's/^ParallelDownloads=.*/ParallelDownloads=25/' "$file"
-    else
-        echo "ParallelDownloads=25" | sudo tee -a "$file" >/dev/null
-    fi
+    sudo sed -i 's/^ParallelDownloads=.*/ParallelDownloads=25/' "$file"
 }
 
 ##################################################################################################################################
