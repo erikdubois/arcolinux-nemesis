@@ -2,9 +2,9 @@
 source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-echo $SCRIPT_DIR
+#echo $SCRIPT_DIR
 SETTINGS_DIR="${SCRIPT_DIR}/settings"
-echo $SETTINGS_DIR
+#echo $SETTINGS_DIR
 
 log_section "Running $(script_name)"
 
@@ -120,6 +120,7 @@ change_shell_to_fish() {
 }
 
 set_default_cursor_theme() {
+    log_subsection "Setting default cursor theme to Bibata-Modern-Ice"
     local file="/usr/share/icons/default/index.theme"
     local theme="Bibata-Modern-Ice"
 
