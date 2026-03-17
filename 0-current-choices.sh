@@ -164,6 +164,9 @@ run_backup_operations() {
     # Preserve a second copy for the edu variant that is used elsewhere.
     backup_file_once /etc/pacman.conf /etc/pacman.conf.edu
 
+    #
+    backup_file_once /etc/environment /etc/environment.nemesis
+
     log_warn "Backup operations completed"
 }
 

@@ -109,10 +109,35 @@ set_default_cursor_theme() {
         echo "File not found: $file"
     fi
 }
+
+set_environment_defaults() {
+
+    log_subsection "Setting environment defaults in /etc/environment"
+
+    local ENV_FILE="/etc/environment"
+
+    sudo sed -i '/^QT_QPA_PLATFORMTHEME=/d' "$ENV_FILE"
+    sudo sed -i '/^QT_STYLE_OVERRIDE=/d' "$ENV_FILE"
+    sudo sed -i '/^GTK_THEME=/d' "$ENV_FILE"
+    sudo sed -i '/^EDITOR=/d' "$ENV_FILE"
+    sudo sed -i '/^BROWSER=/d' "$ENV_FILE"
+
+    sudo bash -c "cat >> $ENV_FILE" <<EOF
+QT_QPA_PLATFORMTHEME=qt5ct
+QT_STYLE_OVERRIDE=kvantum
+GTK_THEME=Arc-Dawn-Dark
+EDITOR=nano
+BROWSER=firefox
+EOF
+
+    echo "Environment variables written to $ENV_FILE"
+}
+
 create_personal_directories
 install_personal_settings
 configure_desktop_preferences
 change_shell_to_fish
 set_default_cursor_theme
+set_environment_defaults
 
 log_subsection "$(script_name) done"
