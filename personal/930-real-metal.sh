@@ -24,9 +24,9 @@ fi
 
 log_section "Running $(script_name)"
 
-printf '%s\n' "$SCRIPT_DIR"
+#printf '%s\n' "$SCRIPT_DIR"
 SETTINGS_DIR="$SCRIPT_DIR/settings"
-printf '%s\n' "$SETTINGS_DIR"
+#printf '%s\n' "$SETTINGS_DIR"
 
 pause_if_debug
 
