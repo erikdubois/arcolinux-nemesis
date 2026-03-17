@@ -371,6 +371,26 @@ backup_folder_as_root() {
     sudo cp -a -- "${src}" "${dst}"
 }
 
+backup_folder_as_user() {
+    local src="$1"
+    local dst="$2"
+
+    # If destination already exists, skip
+    if [[ -d "${dst}" ]]; then
+        log_info "Backup already exists: ${dst}"
+        return 0
+    fi
+
+    # If source does not exist, warn but do not fail
+    if [[ ! -d "${src}" ]]; then
+        log_warn "Source folder does not exist: ${src}"
+        return 0
+    fi
+
+    log_subsection "Creating folder backup: ${src} -> ${dst}"
+    cp -a -- "${src}" "${dst}"
+}
+
 backup_file_once() {
     local src="$1"
     local dst="$2"

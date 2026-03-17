@@ -258,6 +258,12 @@ handle_omarchy() {
         log_section "We are on Omarchy"
 
         HYPR_DIR="$USER_HOME/.config/hypr"
+        OMARCHY_DIR="$USER_HOME/.config/omarchy"
+        LOCAL_OMARCHY_DIR="$USER_HOME/.local/share/omarchy"
+
+        backup_folder_as_user "$HYPR_DIR" "${HYPR_DIR}_nemesis"
+        backup_folder_as_user "$OMARCHY_DIR" "${OMARCHY_DIR}_nemesis"
+        backup_folder_as_user "$LOCAL_OMARCHY_DIR" "${LOCAL_OMARCHY_DIR}_nemesis"
 
         move_file_user "$HYPR_DIR/bindings.conf" "$HYPR_DIR/bindings.conf_backup"
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings.conf" "$HYPR_DIR/bindings.conf"
