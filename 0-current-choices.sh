@@ -177,6 +177,10 @@ run_backup_operations() {
     log_warn "Backup operations completed"
 }
 
+# Run distro-specific handlers from common/handle.sh. This is where
+# per-distro cleanup and repo adjustments are applied.
+run_all_distro_handlers
+
 # Remove packages and configs that commonly clash with the Nemesis setup
 # across many Arch-based distributions.
 run_remove_anywhere_software() {
@@ -289,10 +293,6 @@ run_glob "${PERSONAL_DIR}/900-*"
 run_glob "${PERSONAL_DIR}/910-*"
 run_glob "${PERSONAL_DIR}/920-*"
 run_glob "${PERSONAL_DIR}/930-*"
-
-# Run distro-specific handlers from common/handle.sh. This is where
-# per-distro cleanup and repo adjustments are applied.
-run_all_distro_handlers
 
 run_glob "${PERSONAL_DIR}/990-skel*"
 run_glob "${PERSONAL_DIR}/999-last*"
