@@ -162,6 +162,7 @@ handle_cachyos() {
         remove_matching_packages cachyos-zsh-config
         remove_matching_packages octopi
         remove_matching_packages paru
+        remove_matching_packages ufw-extras
         remove_matching_packages ufw
         remove_matching_packages cachyos-emerald-kde-theme-git
         remove_matching_packages cachyos-iridescent-kde
