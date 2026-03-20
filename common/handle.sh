@@ -279,6 +279,8 @@ handle_omarchy() {
         local OMARCHY_DIR="$USER_HOME/.config/omarchy"
         local LOCAL_OMARCHY_DIR="$USER_HOME/.local/share/omarchy"
 
+        create_gtk3_dir
+
         backup_folder_as_user "$HYPR_DIR" "${HYPR_DIR}_nemesis"
         backup_folder_as_user "$OMARCHY_DIR" "${OMARCHY_DIR}_nemesis"
         backup_folder_as_user "$LOCAL_OMARCHY_DIR" "${LOCAL_OMARCHY_DIR}_nemesis"

@@ -509,7 +509,6 @@ append_text_as_root() {
 }
 
 set_parallel_downloads() {
-
     local file="/etc/pacman.conf"
 
     echo "Setting ParallelDownloads to 25"
@@ -517,6 +516,11 @@ set_parallel_downloads() {
     [[ -f "$file" ]] || { echo "File not found: $file"; return 1; }
 
     sudo sed -i '/ParallelDownloads/c\ParallelDownloads = 25' "$file"
+}
+
+create_gtk3_dir() {
+  local GTK3_DIR="$USER_HOME/.config/gtk-3.0"
+  mkdir -p "$GTK3_DIR"
 }
 
 ##################################################################################################################################
