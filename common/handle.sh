@@ -309,7 +309,7 @@ handle_omarchy() {
         echo "Done. Lines added if they were missing."
 
         bash "$HYPR_DIR/gsettings.sh"
-        set_sddm_session_hyprland
+        #set_sddm_session_hyprland
     fi
 }
 
