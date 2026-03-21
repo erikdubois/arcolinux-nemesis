@@ -336,6 +336,24 @@ handle_omarchy() {
 
         log_info "Done. Matching lines commented."
 
+        #add gsettings to autostart
+        AUTOSTART_FILE="$USER_HOME/.config/hypr/autostart.conf"
+
+        LINE='exec = ~/.config/hypr/gsettings.sh'
+
+        # Ensure file exists
+        if [[ ! -f "$AUTOSTART_FILE" ]]; then
+            echo "Error: $AUTOSTART_FILE not found!"
+            exit 1
+        fi
+
+        # Append lines if they are not already present
+        grep -qxF "$LINE" "$AUTOSTART_FILE" || echo "$LINE" >> "$AUTOSTART_FILE"
+
+        echo "Done. Line added if it was missing."
+
+
+
     fi
 }
 
