@@ -317,6 +317,7 @@ handle_omarchy() {
         PATTERNS=(
             "Terminal"
             "omarchy-launch-browser"
+            "Docker"
         )
 
         log_info "Using file: $CONFIG_FILE"
