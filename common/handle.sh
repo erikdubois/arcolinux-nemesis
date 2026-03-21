@@ -310,6 +310,30 @@ handle_omarchy() {
 
         bash "$HYPR_DIR/gsettings.sh"
         #set_sddm_session_hyprland
+
+        #removing double keybindings
+        #commented out for now
+        CONFIG_FILE="/home/$USER/.config/hypr/bindings.conf"
+
+        # Patterns to match inside lines
+        PATTERNS=(
+            "Terminal"
+            "omarchy-launch-browser"
+        )
+
+        # Check if config file exists
+        if [[ ! -f "$CONFIG_FILE" ]]; then
+            echo "Cannot find $CONFIG_FILE"
+            exit 1
+        fi
+
+        # Process file
+        for pattern in "${PATTERNS[@]}"; do
+            sed -i "/^[[:space:]]*source.*$pattern/ s/^/#/" "$CONFIG_FILE"
+        done
+
+        echo "Done. Matching lines commented."
+
     fi
 }
 
