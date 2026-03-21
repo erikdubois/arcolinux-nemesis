@@ -157,7 +157,7 @@ handle_cachyos() {
         remove_matching_packages cachyos-hello
         remove_matching_packages cachyos-micro-settings
         remove_matching_packages cachyos-packageinstaller
-        remove_matching_packages cachyos-rate-mirrors
+        #remove_matching_packages cachyos-rate-mirrors
         remove_matching_packages cachyos-wallpapers
         remove_matching_packages cachyos-zsh-config
         remove_matching_packages octopi
