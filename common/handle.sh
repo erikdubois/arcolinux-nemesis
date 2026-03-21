@@ -275,7 +275,7 @@ handle_omarchy() {
     if is_omarchy; then
         log_section "We are on Omarchy"
 
-        pkg_installed swww
+        install_packages swww
 
         local HYPR_DIR="$USER_HOME/.config/hypr"
         local OMARCHY_DIR="$USER_HOME/.config/omarchy"
