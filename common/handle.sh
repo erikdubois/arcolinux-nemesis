@@ -286,9 +286,27 @@ handle_omarchy() {
         backup_folder_as_user "$LOCAL_OMARCHY_DIR" "${LOCAL_OMARCHY_DIR}_nemesis"
 
         move_file_user "$HYPR_DIR/bindings.conf" "$HYPR_DIR/bindings.conf_backup"
-        copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings.conf" "$HYPR_DIR/bindings.conf"
-        copy_file_user "$SETTINGS_DIR/hypr-omarchy/input.conf" "$HYPR_DIR/input.conf"
+        copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings-nemesis.conf" "$HYPR_DIR/bindings-nemesis.conf"
+        copy_file_user "$SETTINGS_DIR/hypr-omarchy/input-nemesis.conf" "$HYPR_DIR/input-nemesis.conf"
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/gsettings.sh" "$HYPR_DIR/gsettings.sh"
+
+        #add lines if not exist
+        CONFIG_FILE="$USER_HOME/.config/hypr/hyprland.conf"
+
+        LINE1='source = ~/.config/hypr/bindings-nemesis.conf'
+        LINE2='source = ~/.config/hypr/input-nemesis.conf'
+
+        # Ensure file exists
+        if [[ ! -f "$CONFIG_FILE" ]]; then
+            echo "Error: $CONFIG_FILE not found!"
+            exit 1
+        fi
+
+        # Append lines if they are not already present
+        grep -qxF "$LINE1" "$CONFIG_FILE" || echo "$LINE1" >> "$CONFIG_FILE"
+        grep -qxF "$LINE2" "$CONFIG_FILE" || echo "$LINE2" >> "$CONFIG_FILE"
+
+        echo "Done. Lines added if they were missing."
 
         bash "$HYPR_DIR/gsettings.sh"
         set_sddm_session_hyprland
