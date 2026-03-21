@@ -344,6 +344,7 @@ handle_omarchy() {
 
         LINE1='exec = ~/.config/hypr/gsettings.sh'
         LINE2='exec-once = swww-daemon &'
+        LINE3='exec-once = swww img ~/.config/hypr/robot.png'
 
         # Ensure file exists
         if [[ ! -f "$AUTOSTART_FILE" ]]; then
@@ -354,6 +355,7 @@ handle_omarchy() {
         # Append lines if they are not already present
         grep -qxF "$LINE1" "$AUTOSTART_FILE" || echo "$LINE1" >> "$AUTOSTART_FILE"
         grep -qxF "$LINE2" "$AUTOSTART_FILE" || echo "$LINE2" >> "$AUTOSTART_FILE"
+        grep -qxF "$LINE3" "$AUTOSTART_FILE" || echo "$LINE3" >> "$AUTOSTART_FILE"
 
         echo "Done. Lines added if they were missing."
 
