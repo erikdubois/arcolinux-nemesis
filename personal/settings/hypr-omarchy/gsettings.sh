@@ -29,7 +29,6 @@ GNOME_SCHEMA="org.gnome.desktop.interface"
 # Check if config file exists
 if [ ! -f "$CONFIG_FILE" ]; then
     echo "Cannot find $CONFIG_FILE"
-    exit 1
 fi
 
 # Check if gsettings exists
