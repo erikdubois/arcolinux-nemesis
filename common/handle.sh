@@ -275,6 +275,8 @@ handle_omarchy() {
     if is_omarchy; then
         log_section "We are on Omarchy"
 
+        pkg_installed swww
+
         local HYPR_DIR="$USER_HOME/.config/hypr"
         local OMARCHY_DIR="$USER_HOME/.config/omarchy"
         local LOCAL_OMARCHY_DIR="$USER_HOME/.local/share/omarchy"
@@ -340,7 +342,8 @@ handle_omarchy() {
         #add gsettings to autostart
         AUTOSTART_FILE="$USER_HOME/.config/hypr/autostart.conf"
 
-        LINE='exec = ~/.config/hypr/gsettings.sh'
+        LINE1='exec = ~/.config/hypr/gsettings.sh'
+        LINE2='exec-once = swww-daemon &'
 
         # Ensure file exists
         if [[ ! -f "$AUTOSTART_FILE" ]]; then
@@ -349,9 +352,10 @@ handle_omarchy() {
         fi
 
         # Append lines if they are not already present
-        grep -qxF "$LINE" "$AUTOSTART_FILE" || echo "$LINE" >> "$AUTOSTART_FILE"
+        grep -qxF "$LINE1" "$AUTOSTART_FILE" || echo "$LINE1" >> "$AUTOSTART_FILE"
+        grep -qxF "$LINE2" "$AUTOSTART_FILE" || echo "$LINE2" >> "$AUTOSTART_FILE"
 
-        echo "Done. Line added if it was missing."
+        echo "Done. Lines added if they were missing."
 
 
 
