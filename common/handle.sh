@@ -286,7 +286,6 @@ handle_omarchy() {
         backup_folder_as_user "$OMARCHY_DIR" "${OMARCHY_DIR}_nemesis"
         backup_folder_as_user "$LOCAL_OMARCHY_DIR" "${LOCAL_OMARCHY_DIR}_nemesis"
 
-        move_file_user "$HYPR_DIR/bindings.conf" "$HYPR_DIR/bindings.conf_backup"
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings-nemesis.conf" "$HYPR_DIR/bindings-nemesis.conf"
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/input-nemesis.conf" "$HYPR_DIR/input-nemesis.conf"
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/gsettings.sh" "$HYPR_DIR/gsettings.sh"
