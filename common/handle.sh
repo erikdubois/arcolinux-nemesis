@@ -334,14 +334,10 @@ handle_omarchy() {
             sed -i "/$pattern/ {/^[[:space:]]*#/! s/^/#/}" "$CONFIG_FILE"
         done
 
-        log_info "Done. Matching lines commented."
-
         #add gsettings to autostart
+        log_info "Adding line(s) to autostart"
         AUTOSTART_FILE="$USER_HOME/.config/hypr/autostart.conf"
-
         LINE1='exec = ~/.config/hypr/gsettings.sh'
-        LINE2='exec-once = swww-daemon &'
-        LINE3='exec-once = swww img ~/.config/hypr/robot.png'
 
         # Ensure file exists
         if [[ ! -f "$AUTOSTART_FILE" ]]; then
@@ -351,12 +347,29 @@ handle_omarchy() {
 
         # Append lines if they are not already present
         grep -qxF "$LINE1" "$AUTOSTART_FILE" || echo "$LINE1" >> "$AUTOSTART_FILE"
-        grep -qxF "$LINE2" "$AUTOSTART_FILE" || echo "$LINE2" >> "$AUTOSTART_FILE"
-        grep -qxF "$LINE3" "$AUTOSTART_FILE" || echo "$LINE3" >> "$AUTOSTART_FILE"
 
         echo "Done. Lines added if they were missing."
 
+        #add rmc to set wallpaper in thunar
+        log_info "Adding line(s) to uca.xml for thunar"
+        UCA_FILE="$HOME/.config/Thunar/uca.xml"
 
+        OLD_LINE='<command>feh --bg-fill %f</command>'
+        NEW_LINE='<command>swaybg -i %f</command>'
+
+        # Ensure file exists
+        if [[ ! -f "$UCA_FILE" ]]; then
+            echo "Error: $UCA_FILE not found!"
+            exit 1
+        fi
+
+        # Replace only if OLD_LINE exists and NEW_LINE is not already present
+        if grep -qxF "$OLD_LINE" "$UCA_FILE"; then
+            sed -i "s|$OLD_LINE|$NEW_LINE|g" "$UCA_FILE"
+            echo "Replaced feh with swaybg."
+        else
+            echo "No matching feh line found or already replaced."
+        fi
 
     fi
 }
