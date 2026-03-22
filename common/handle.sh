@@ -275,8 +275,6 @@ handle_omarchy() {
     if is_omarchy; then
         log_section "We are on Omarchy"
 
-        install_packages swww
-
         local HYPR_DIR="$USER_HOME/.config/hypr"
         local OMARCHY_DIR="$USER_HOME/.config/omarchy"
         local LOCAL_OMARCHY_DIR="$USER_HOME/.local/share/omarchy"
@@ -291,7 +289,6 @@ handle_omarchy() {
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings-nemesis.conf" "$HYPR_DIR/bindings-nemesis.conf"
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/input-nemesis.conf" "$HYPR_DIR/input-nemesis.conf"
         copy_file_user "$SETTINGS_DIR/hypr-omarchy/gsettings.sh" "$HYPR_DIR/gsettings.sh"
-        copy_file_user "$SETTINGS_DIR/hypr-omarchy/robot.png" "$HYPR_DIR/robot.png"
 
         #add lines if not exist
         CONFIG_FILE="$USER_HOME/.config/hypr/hyprland.conf"
