@@ -350,12 +350,13 @@ handle_omarchy() {
 
         echo "Done. Lines added if they were missing."
 
-        #add rmc to set wallpaper in thunar
-        log_info "Adding line(s) to uca.xml for thunar"
+        # add rmc to set wallpaper in thunar
+        log_info "Updating wallpaper command in uca.xml for Thunar"
+
         UCA_FILE="$HOME/.config/Thunar/uca.xml"
 
-        OLD_LINE='<command>feh --bg-fill %f</command>'
-        NEW_LINE='<command>swaybg -i %f</command>'
+        OLD_TEXT='feh --bg-fill %f'
+        NEW_TEXT='swaybg -i %f'
 
         # Ensure file exists
         if [[ ! -f "$UCA_FILE" ]]; then
@@ -363,12 +364,12 @@ handle_omarchy() {
             exit 1
         fi
 
-        # Replace only if OLD_LINE exists and NEW_LINE is not already present
-        if grep -qxF "$OLD_LINE" "$UCA_FILE"; then
-            sed -i "s|$OLD_LINE|$NEW_LINE|g" "$UCA_FILE"
+        # Replace only if OLD_TEXT exists
+        if grep -qF "$OLD_TEXT" "$UCA_FILE"; then
+            sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$UCA_FILE"
             echo "Replaced feh with swaybg."
         else
-            echo "No matching feh line found or already replaced."
+            echo "No matching feh text found or already replaced."
         fi
 
     fi
