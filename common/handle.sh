@@ -380,7 +380,7 @@ handle_omarchy() {
 
         # Replace only if OLD_TEXT exists
         if grep -qF "$OLD_TEXT" "$ETC_UCA_FILE"; then
-            sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$ETC_UCA_FILE"
+            sudo sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$ETC_UCA_FILE"
             echo "Replaced feh with swaybg."
         else
             echo "No matching feh text found or already replaced."
