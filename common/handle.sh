@@ -354,6 +354,7 @@ handle_omarchy() {
         log_info "Updating wallpaper command in uca.xml for Thunar"
 
         UCA_FILE="$HOME/.config/Thunar/uca.xml"
+        ETC_UCA_FILE="/etc/skel/.config/Thunar/uca.xml"
 
         OLD_TEXT='feh --bg-fill %f'
         NEW_TEXT='swaybg -i %f'
@@ -364,9 +365,22 @@ handle_omarchy() {
             exit 1
         fi
 
+        if [[ ! -f "$ETC_UCA_FILE" ]]; then
+            echo "Error: $ETC_UCA_FILE not found!"
+            exit 1
+        fi
+
         # Replace only if OLD_TEXT exists
         if grep -qF "$OLD_TEXT" "$UCA_FILE"; then
             sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$UCA_FILE"
+            echo "Replaced feh with swaybg."
+        else
+            echo "No matching feh text found or already replaced."
+        fi
+
+        # Replace only if OLD_TEXT exists
+        if grep -qF "$OLD_TEXT" "$ETC_UCA_FILE"; then
+            sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$ETC_UCA_FILE"
             echo "Replaced feh with swaybg."
         else
             echo "No matching feh text found or already replaced."
