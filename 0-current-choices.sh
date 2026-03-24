@@ -207,6 +207,7 @@ run_remove_anywhere_software() {
     remove_matching_packages neofetch
     remove_matching_packages fastfetch
     remove_matching_packages yay
+    remove_matching_packages yay-bin
     remove_matching_packages paru
     remove_matching_packages picom
     remove_matching_packages mkinitcpio-nfs-utils
