@@ -507,12 +507,18 @@ move_folder_if_exists() {
     local source="$1"
     local destination="$2"
 
-    if [[ -d "${source}" ]]; then
-        sudo mv "${source}" "${destination}"
-        log_info "Moved folder: ${source} -> ${destination}"
-    else
+    if [[ ! -d "${source}" ]]; then
         log_info "Source folder does not exist: ${source}"
+        return
     fi
+
+    if [[ -e "${destination}" ]]; then
+        log_info "Destination already exists: ${destination}"
+        return
+    fi
+
+    sudo mv "${source}" "${destination}"
+    log_info "Moved folder: ${source} -> ${destination}"
 }
 
 append_text_as_root() {
