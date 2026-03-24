@@ -248,17 +248,15 @@ handle_manjaro() {
     fi
 }
 
-handle_manjaro() {
-    if is_os_release_match "Manjaro"; then
-        log_section "We are on Manjaro"
-        remove_matching_packages manjaro-xfce-settings
-        log_warn "Software removed for Manjaro"
-    fi
-}
-
 handle_ml4w() {
     if is_os_release_match "ML4W"; then
         log_section "We are on ML4Wos"
+    fi
+}
+
+handle_nyarch() {
+    if is_os_release_match "Nyarch"; then
+        log_section "We are on Nyarch"
     fi
 }
 
