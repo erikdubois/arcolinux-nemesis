@@ -503,6 +503,18 @@ remove_folder_if_exists() {
     fi
 }
 
+move_folder_if_exists() {
+    local source="$1"
+    local destination="$2"
+
+    if [[ -d "${source}" ]]; then
+        sudo mv "${source}" "${destination}"
+        log_info "Moved folder: ${source} -> ${destination}"
+    else
+        log_info "Source folder does not exist: ${source}"
+    fi
+}
+
 append_text_as_root() {
     local target="$1"
     sudo tee -a "$target" >/dev/null
