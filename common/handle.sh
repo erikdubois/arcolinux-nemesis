@@ -251,7 +251,11 @@ handle_manjaro() {
 handle_ml4w() {
     if is_os_release_match "ML4W"; then
         log_section "We are on ML4Wos"
-        #move_folder_if_exists /etc/skel/.config/ /etc/skel/.config-nemesis/
+        move_folder_if_exists /etc/skel/.config/btop /etc/skel/.config/btop-nemesis
+        move_folder_if_exists /etc/skel/.config/fastfetch /etc/skel/.config/fastfetch-nemesis
+        move_folder_if_exists /etc/skel/.config/gtk-3.0 /etc/skel/.config/gtk-3.0-nemesis
+        move_folder_if_exists /etc/skel/.config/gtk-4.0 /etc/skel/.config/gtk-4.0-nemesis
+        move_folder_if_exists /etc/skel/.config/rofi /etc/skel/.config/rofi-nemesis
         move_file /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
     fi
 }
