@@ -399,10 +399,8 @@ handle_omarchy() {
                     log_warn "Failed to update: $file"
                 fi
             fi
-}
-
-replace_wallpaper_cmd "$UCA_FILE"
-replace_wallpaper_cmd "$ETC_UCA_FILE" true
+        replace_wallpaper_cmd "$UCA_FILE"
+        replace_wallpaper_cmd "$ETC_UCA_FILE" true
 }
 
 handle_prismlinux() {
