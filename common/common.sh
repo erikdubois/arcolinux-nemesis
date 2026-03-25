@@ -171,6 +171,23 @@ replace_text_in_file() {
             || log_warn "Failed to update: $file"
     fi
 }
+
+comment_out_patterns_in_file() {
+    local file="$1"
+    shift
+    local patterns=("$@")
+
+    if [[ ! -f "$file" ]]; then
+        log_warn "Skipping: file not found: $file"
+        return 0
+    fi
+
+    local pattern
+    for pattern in "${patterns[@]}"; do
+        log_info "Processing pattern: $pattern"
+        sed -i "/$pattern/ {/^[[:space:]]*#/! s/^/#/}" "$file"
+    done
+}
 ##################################################################################################################################
 # Package helpers
 ##################################################################################################################################
