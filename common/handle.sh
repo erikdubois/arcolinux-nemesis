@@ -268,25 +268,9 @@ handle_nyarch() {
 }
 
 handle_omarchy() {
-    set_sddm_session_hyprland() {
-        local file="/etc/sddm.conf.d/kde_settings.conf"
-
-        log_subsection "Setting SDDM session to Hyprland"
-
-        if [[ ! -f "$file" ]]; then
-            log_warn "File not found: $file"
-            return 0
-        fi
-
-        if grep -q '^Session=' "$file"; then
-            sudo sed -i 's/^Session=.*/Session=hyprland-uwsm/' "$file"
-        else
-            echo "Session=hyprland-uwsm" | sudo tee -a "$file" >/dev/null
-        fi
-    }
-
 if is_omarchy; then
     log_section "We are on Omarchy"
+    set_sddm_session "hyprland-uwsm"
 
     local HYPR_DIR="$USER_HOME/.config/hypr"
     local OMARCHY_DIR="$USER_HOME/.config/omarchy"
@@ -390,11 +374,12 @@ if is_omarchy; then
                 log_warn "Failed to update: $file"
             fi
         fi
+
     }
 
     replace_wallpaper_cmd "$UCA_FILE"
     replace_wallpaper_cmd "$ETC_UCA_FILE" true
-    fi
+fi
 }
 
 handle_prismlinux() {
