@@ -355,7 +355,7 @@ handle_omarchy() {
         # Ensure file exists
         if [[ ! -f "$AUTOSTART_FILE" ]]; then
             echo "Error: $AUTOSTART_FILE not found!"
-            return 0
+            return 1
         fi
 
         # Append lines if they are not already present
@@ -372,34 +372,37 @@ handle_omarchy() {
         OLD_TEXT='feh --bg-fill %f'
         NEW_TEXT='swaybg -i %f'
 
-        # Ensure file exists
-        if [[ ! -f "$UCA_FILE" ]]; then
-            echo "Error: $UCA_FILE not found!"
-            exit 1
-        fi
+        replace_wallpaper_cmd() {
+            local file="$1"
+            local use_sudo="${2:-false}"
 
-        if [[ ! -f "$ETC_UCA_FILE" ]]; then
-            echo "Error: $ETC_UCA_FILE not found!"
-            exit 1
-        fi
+            if [[ ! -f "$file" ]]; then
+                log_warn "Skipping: file not found: $file"
+                return 0
+            fi
 
-        # Replace only if OLD_TEXT exists
-        if grep -qF "$OLD_TEXT" "$UCA_FILE"; then
-            sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$UCA_FILE"
-            echo "Replaced feh with swaybg."
-        else
-            echo "No matching feh text found or already replaced."
-        fi
+            if ! grep -qF "$OLD_TEXT" "$file"; then
+                log_info "No replacement needed in: $file"
+                return 0
+            fi
 
-        # Replace only if OLD_TEXT exists
-        if grep -qF "$OLD_TEXT" "$ETC_UCA_FILE"; then
-            sudo sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$ETC_UCA_FILE"
-            echo "Replaced feh with swaybg."
-        else
-            echo "No matching feh text found or already replaced."
-        fi
+            if [[ "$use_sudo" == "true" ]]; then
+                if sudo sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$file"; then
+                    log_info "Updated wallpaper command in: $file"
+                else
+                    log_warn "Failed to update: $file"
+                fi
+            else
+                if sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$file"; then
+                    log_info "Updated wallpaper command in: $file"
+                else
+                    log_warn "Failed to update: $file"
+                fi
+            fi
+}
 
-    fi
+replace_wallpaper_cmd "$UCA_FILE"
+replace_wallpaper_cmd "$ETC_UCA_FILE" true
 }
 
 handle_prismlinux() {
