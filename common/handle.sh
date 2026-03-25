@@ -256,6 +256,7 @@ handle_ml4w() {
         move_folder_if_exists /etc/skel/.config/gtk-3.0 /etc/skel/.config/gtk-3.0-nemesis
         move_folder_if_exists /etc/skel/.config/gtk-4.0 /etc/skel/.config/gtk-4.0-nemesis
         move_folder_if_exists /etc/skel/.config/rofi /etc/skel/.config/rofi-nemesis
+        move_folder_if_exists /etc/skel/.config/fish /etc/skel/.config/fish-nemesis
         move_file /etc/skel/.zshrc /etc/skel/.zshrc-nemesis
     fi
 }
