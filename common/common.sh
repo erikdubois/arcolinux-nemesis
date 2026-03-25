@@ -145,6 +145,32 @@ pause_if_debug() {
     fi
 }
 
+replace_text_in_file() {
+    local file="$1"
+    local old_text="$2"
+    local new_text="$3"
+    local use_sudo="${4:-false}"
+
+    if [[ ! -f "$file" ]]; then
+        log_warn "Skipping: file not found: $file"
+        return 0
+    fi
+
+    if ! grep -qF "$old_text" "$file"; then
+        log_info "No replacement needed in: $file"
+        return 0
+    fi
+
+    if [[ "$use_sudo" == "true" ]]; then
+        sudo sed -i "s|$old_text|$new_text|g" "$file" \
+            && log_info "Updated: $file" \
+            || log_warn "Failed to update: $file"
+    else
+        sed -i "s|$old_text|$new_text|g" "$file" \
+            && log_info "Updated: $file" \
+            || log_warn "Failed to update: $file"
+    fi
+}
 ##################################################################################################################################
 # Package helpers
 ##################################################################################################################################
@@ -465,16 +491,19 @@ write_file_as_root() {
 }
 
 append_line_if_missing() {
-    local line="$1"
-    local file="$2"
+    local file="$1"
+    local line="$2"
 
-    if [[ ! -f "${file}" ]]; then
-        echo "${line}" | sudo tee "${file}" >/dev/null
+    if [[ ! -f "$file" ]]; then
+        log_warn "Skipping: file not found: $file"
         return 0
     fi
 
-    if ! grep -Fqx "${line}" "${file}"; then
-        echo "${line}" | sudo tee -a "${file}" >/dev/null
+    if grep -qxF "$line" "$file"; then
+        log_info "Line already present in $file"
+    else
+        printf '%s\n' "$line" >> "$file"
+        log_info "Added line to $file: $line"
     fi
 }
 

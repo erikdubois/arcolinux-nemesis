@@ -33,11 +33,11 @@ handle_archbang() {
         log_section "We are on ArchBang"
         echo "Making backups of important files to start openbox"
 
-        backup_file_once "${HOME}/.bash_profile" "${HOME}/.bash_profile_nemesis"
+        backup_file_once "${USER_HOME}/.bash_profile" "${USER_HOME}/.bash_profile_nemesis"
 
-        backup_file_once "${HOME}/.bashrc"  "${HOME}/.bashrc_nemesis"
+        backup_file_once "${USER_HOME}/.bashrc"  "${USER_HOME}/.bashrc_nemesis"
         
-        mkdir -p "${HOME}/.bin"
+        mkdir -p "${USER_HOME}/.bin"
 
         log_warn "Change from xz to zstd in mkinitcpio"
         sudo sed -i \
@@ -268,118 +268,67 @@ handle_nyarch() {
 }
 
 handle_omarchy() {
-if is_omarchy; then
+    if ! is_omarchy; then
+        return 0
+    fi
+
     log_section "We are on Omarchy"
-    set_sddm_session "hyprland-uwsm"
 
-    local HYPR_DIR="$USER_HOME/.config/hypr"
-    local OMARCHY_DIR="$USER_HOME/.config/omarchy"
-    local LOCAL_OMARCHY_DIR="$USER_HOME/.local/share/omarchy"
+    local hypr_dir="$USER_HOME/.config/hypr"
+    local omarchy_dir="$USER_HOME/.config/omarchy"
+    local local_omarchy_dir="$USER_HOME/.local/share/omarchy"
 
-    create_gtk3_dir
-    create_hypr_dir
+    local hyprland_conf="$hypr_dir/hyprland.conf"
+    local gsettings_script="$hypr_dir/gsettings.sh"
+    local bindings_conf="$hypr_dir/bindings.conf"
+    local autostart_conf="$hypr_dir/autostart.conf"
 
-    backup_folder_as_user "$HYPR_DIR" "${HYPR_DIR}_nemesis"
-    backup_folder_as_user "$OMARCHY_DIR" "${OMARCHY_DIR}_nemesis"
-    backup_folder_as_user "$LOCAL_OMARCHY_DIR" "${LOCAL_OMARCHY_DIR}_nemesis"
+    local uca_file="$USER_HOME/.config/Thunar/uca.xml"
+    local etc_uca_file="/etc/skel/.config/Thunar/uca.xml"
 
-    copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings-nemesis.conf" "$HYPR_DIR/bindings-nemesis.conf"
-    copy_file_user "$SETTINGS_DIR/hypr-omarchy/input-nemesis.conf" "$HYPR_DIR/input-nemesis.conf"
-    copy_file_user "$SETTINGS_DIR/hypr-omarchy/gsettings.sh" "$HYPR_DIR/gsettings.sh"
+    local bindings_line='source = ~/.config/hypr/bindings-nemesis.conf'
+    local input_line='source = ~/.config/hypr/input-nemesis.conf'
+    local autostart_line='exec = ~/.config/hypr/gsettings.sh'
 
-    # add lines if not exist
-    CONFIG_FILE="$USER_HOME/.config/hypr/hyprland.conf"
-    LINE1='source = ~/.config/hypr/bindings-nemesis.conf'
-    LINE2='source = ~/.config/hypr/input-nemesis.conf'
-
-    if [[ -f "$CONFIG_FILE" ]]; then
-        grep -qxF "$LINE1" "$CONFIG_FILE" || echo "$LINE1" >> "$CONFIG_FILE"
-        grep -qxF "$LINE2" "$CONFIG_FILE" || echo "$LINE2" >> "$CONFIG_FILE"
-        log_info "Updated $CONFIG_FILE"
-    else
-        log_warn "Skipping: file not found: $CONFIG_FILE"
-    fi
-
-    if [[ -f "$HYPR_DIR/gsettings.sh" ]]; then
-        bash "$HYPR_DIR/gsettings.sh"
-    else
-        log_warn "Skipping: file not found: $HYPR_DIR/gsettings.sh"
-    fi
-
-    # removing double keybindings
-    CONFIG_FILE="$USER_HOME/.config/hypr/bindings.conf"
-    PATTERNS=(
+    local -a patterns=(
         "Terminal"
         "omarchy-launch-browser"
         "Docker"
         "x.com"
     )
 
-    log_info "Using file: $CONFIG_FILE"
+    set_sddm_session "hyprland-uwsm"
 
-    if [[ -f "$CONFIG_FILE" ]]; then
-        for pattern in "${PATTERNS[@]}"; do
-            log_info "Processing pattern: $pattern"
-            sed -i "/$pattern/ {/^[[:space:]]*#/! s/^/#/}" "$CONFIG_FILE"
-        done
+    # backup existing folders first
+    backup_folder_as_user "$hypr_dir" "${hypr_dir}_nemesis"
+    backup_folder_as_user "$omarchy_dir" "${omarchy_dir}_nemesis"
+    backup_folder_as_user "$local_omarchy_dir" "${local_omarchy_dir}_nemesis"
+
+    create_gtk3_dir
+    create_hypr_dir
+
+    copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings-nemesis.conf" "$hypr_dir/bindings-nemesis.conf"
+    copy_file_user "$SETTINGS_DIR/hypr-omarchy/input-nemesis.conf" "$hypr_dir/input-nemesis.conf"
+
+    append_line_if_missing "$hyprland_conf" "$bindings_line"
+    append_line_if_missing "$hyprland_conf" "$input_line"
+
+    copy_file_user "$SETTINGS_DIR/hypr-omarchy/gsettings.sh" "$gsettings_script"
+    if [[ -f "$gsettings_script" ]]; then
+        bash "$gsettings_script"
     else
-        log_warn "Skipping: file not found: $CONFIG_FILE"
+        log_warn "Skipping: file not found: $gsettings_script"
     fi
 
-    # add gsettings to autostart
+    log_info "Using file: $bindings_conf"
+    comment_out_patterns_in_file "$bindings_conf" "${patterns[@]}"
+
     log_info "Adding line(s) to autostart"
-    AUTOSTART_FILE="$USER_HOME/.config/hypr/autostart.conf"
-    LINE1='exec = ~/.config/hypr/gsettings.sh'
+    append_line_if_missing "$autostart_conf" "$autostart_line"
 
-    if [[ -f "$AUTOSTART_FILE" ]]; then
-        grep -qxF "$LINE1" "$AUTOSTART_FILE" || echo "$LINE1" >> "$AUTOSTART_FILE"
-        log_info "Updated $AUTOSTART_FILE"
-    else
-        log_warn "Skipping: file not found: $AUTOSTART_FILE"
-    fi
-
-    # add rmc to set wallpaper in thunar
     log_info "Updating wallpaper command in uca.xml for Thunar"
-
-    UCA_FILE="$HOME/.config/Thunar/uca.xml"
-    ETC_UCA_FILE="/etc/skel/.config/Thunar/uca.xml"
-
-    OLD_TEXT='feh --bg-fill %f'
-    NEW_TEXT='swaybg -i %f'
-
-    replace_wallpaper_cmd() {
-        local file="$1"
-        local use_sudo="${2:-false}"
-
-        if [[ ! -f "$file" ]]; then
-            log_warn "Skipping: file not found: $file"
-            return 0
-        fi
-
-        if ! grep -qF "$OLD_TEXT" "$file"; then
-            log_info "No replacement needed in: $file"
-            return 0
-        fi
-
-        if [[ "$use_sudo" == "true" ]]; then
-            if sudo sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$file"; then
-                log_info "Updated wallpaper command in: $file"
-            else
-                log_warn "Failed to update: $file"
-            fi
-        else
-            if sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$file"; then
-                log_info "Updated wallpaper command in: $file"
-            else
-                log_warn "Failed to update: $file"
-            fi
-        fi
-
-    }
-
-    replace_wallpaper_cmd "$UCA_FILE"
-    replace_wallpaper_cmd "$ETC_UCA_FILE" true
-fi
+    replace_text_in_file "$uca_file" "feh --bg-fill %f" "swaybg -i %f"
+    replace_text_in_file "$etc_uca_file" "feh --bg-fill %f" "swaybg -i %f" true
 }
 
 handle_prismlinux() {
