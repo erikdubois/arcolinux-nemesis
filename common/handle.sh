@@ -285,125 +285,116 @@ handle_omarchy() {
         fi
     }
 
-    if is_omarchy; then
-        log_section "We are on Omarchy"
+if is_omarchy; then
+    log_section "We are on Omarchy"
 
-        local HYPR_DIR="$USER_HOME/.config/hypr"
-        local OMARCHY_DIR="$USER_HOME/.config/omarchy"
-        local LOCAL_OMARCHY_DIR="$USER_HOME/.local/share/omarchy"
+    local HYPR_DIR="$USER_HOME/.config/hypr"
+    local OMARCHY_DIR="$USER_HOME/.config/omarchy"
+    local LOCAL_OMARCHY_DIR="$USER_HOME/.local/share/omarchy"
 
-        create_gtk3_dir
-        create_hypr_dir
+    create_gtk3_dir
+    create_hypr_dir
 
-        backup_folder_as_user "$HYPR_DIR" "${HYPR_DIR}_nemesis"
-        backup_folder_as_user "$OMARCHY_DIR" "${OMARCHY_DIR}_nemesis"
-        backup_folder_as_user "$LOCAL_OMARCHY_DIR" "${LOCAL_OMARCHY_DIR}_nemesis"
+    backup_folder_as_user "$HYPR_DIR" "${HYPR_DIR}_nemesis"
+    backup_folder_as_user "$OMARCHY_DIR" "${OMARCHY_DIR}_nemesis"
+    backup_folder_as_user "$LOCAL_OMARCHY_DIR" "${LOCAL_OMARCHY_DIR}_nemesis"
 
-        copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings-nemesis.conf" "$HYPR_DIR/bindings-nemesis.conf"
-        copy_file_user "$SETTINGS_DIR/hypr-omarchy/input-nemesis.conf" "$HYPR_DIR/input-nemesis.conf"
-        copy_file_user "$SETTINGS_DIR/hypr-omarchy/gsettings.sh" "$HYPR_DIR/gsettings.sh"
+    copy_file_user "$SETTINGS_DIR/hypr-omarchy/bindings-nemesis.conf" "$HYPR_DIR/bindings-nemesis.conf"
+    copy_file_user "$SETTINGS_DIR/hypr-omarchy/input-nemesis.conf" "$HYPR_DIR/input-nemesis.conf"
+    copy_file_user "$SETTINGS_DIR/hypr-omarchy/gsettings.sh" "$HYPR_DIR/gsettings.sh"
 
-        #add lines if not exist
-        CONFIG_FILE="$USER_HOME/.config/hypr/hyprland.conf"
+    # add lines if not exist
+    CONFIG_FILE="$USER_HOME/.config/hypr/hyprland.conf"
+    LINE1='source = ~/.config/hypr/bindings-nemesis.conf'
+    LINE2='source = ~/.config/hypr/input-nemesis.conf'
 
-        LINE1='source = ~/.config/hypr/bindings-nemesis.conf'
-        LINE2='source = ~/.config/hypr/input-nemesis.conf'
-
-        # Ensure file exists
-        if [[ ! -f "$CONFIG_FILE" ]]; then
-            echo "Error: $CONFIG_FILE not found!"
-            exit 1
-        fi
-
-        # Append lines if they are not already present
+    if [[ -f "$CONFIG_FILE" ]]; then
         grep -qxF "$LINE1" "$CONFIG_FILE" || echo "$LINE1" >> "$CONFIG_FILE"
         grep -qxF "$LINE2" "$CONFIG_FILE" || echo "$LINE2" >> "$CONFIG_FILE"
+        log_info "Updated $CONFIG_FILE"
+    else
+        log_warn "Skipping: file not found: $CONFIG_FILE"
+    fi
 
-        echo "Done. Lines added if they were missing."
-
+    if [[ -f "$HYPR_DIR/gsettings.sh" ]]; then
         bash "$HYPR_DIR/gsettings.sh"
-        #set_sddm_session_hyprland
+    else
+        log_warn "Skipping: file not found: $HYPR_DIR/gsettings.sh"
+    fi
 
-        # removing double keybindings
-        CONFIG_FILE="$USER_HOME/.config/hypr/bindings.conf"
+    # removing double keybindings
+    CONFIG_FILE="$USER_HOME/.config/hypr/bindings.conf"
+    PATTERNS=(
+        "Terminal"
+        "omarchy-launch-browser"
+        "Docker"
+        "x.com"
+    )
 
-        PATTERNS=(
-            "Terminal"
-            "omarchy-launch-browser"
-            "Docker"
-            "x.com"
-        )
+    log_info "Using file: $CONFIG_FILE"
 
-        log_info "Using file: $CONFIG_FILE"
-
-        if [[ ! -f "$CONFIG_FILE" ]]; then
-            log_warn "Cannot find $CONFIG_FILE"
-            return 1
-        fi
-
+    if [[ -f "$CONFIG_FILE" ]]; then
         for pattern in "${PATTERNS[@]}"; do
             log_info "Processing pattern: $pattern"
-
             sed -i "/$pattern/ {/^[[:space:]]*#/! s/^/#/}" "$CONFIG_FILE"
         done
-
-        #add gsettings to autostart
-        log_info "Adding line(s) to autostart"
-        AUTOSTART_FILE="$USER_HOME/.config/hypr/autostart.conf"
-        LINE1='exec = ~/.config/hypr/gsettings.sh'
-
-        # Ensure file exists
-        if [[ ! -f "$AUTOSTART_FILE" ]]; then
-            echo "Error: $AUTOSTART_FILE not found!"
-            return 1
-        fi
-
-        # Append lines if they are not already present
-        grep -qxF "$LINE1" "$AUTOSTART_FILE" || echo "$LINE1" >> "$AUTOSTART_FILE"
-
-        echo "Done. Lines added if they were missing."
-
-        # add rmc to set wallpaper in thunar
-        log_info "Updating wallpaper command in uca.xml for Thunar"
-
-        UCA_FILE="$HOME/.config/Thunar/uca.xml"
-        ETC_UCA_FILE="/etc/skel/.config/Thunar/uca.xml"
-
-        OLD_TEXT='feh --bg-fill %f'
-        NEW_TEXT='swaybg -i %f'
-
-        replace_wallpaper_cmd() {
-            local file="$1"
-            local use_sudo="${2:-false}"
-
-            if [[ ! -f "$file" ]]; then
-                log_warn "Skipping: file not found: $file"
-                return 0
-            fi
-
-            if ! grep -qF "$OLD_TEXT" "$file"; then
-                log_info "No replacement needed in: $file"
-                return 0
-            fi
-
-            if [[ "$use_sudo" == "true" ]]; then
-                if sudo sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$file"; then
-                    log_info "Updated wallpaper command in: $file"
-                else
-                    log_warn "Failed to update: $file"
-                fi
-            else
-                if sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$file"; then
-                    log_info "Updated wallpaper command in: $file"
-                else
-                    log_warn "Failed to update: $file"
-                fi
-            fi
-        fi
-        replace_wallpaper_cmd "$UCA_FILE"
-        replace_wallpaper_cmd "$ETC_UCA_FILE" true
+    else
+        log_warn "Skipping: file not found: $CONFIG_FILE"
     fi
-}
+
+    # add gsettings to autostart
+    log_info "Adding line(s) to autostart"
+    AUTOSTART_FILE="$USER_HOME/.config/hypr/autostart.conf"
+    LINE1='exec = ~/.config/hypr/gsettings.sh'
+
+    if [[ -f "$AUTOSTART_FILE" ]]; then
+        grep -qxF "$LINE1" "$AUTOSTART_FILE" || echo "$LINE1" >> "$AUTOSTART_FILE"
+        log_info "Updated $AUTOSTART_FILE"
+    else
+        log_warn "Skipping: file not found: $AUTOSTART_FILE"
+    fi
+
+    # add rmc to set wallpaper in thunar
+    log_info "Updating wallpaper command in uca.xml for Thunar"
+
+    UCA_FILE="$HOME/.config/Thunar/uca.xml"
+    ETC_UCA_FILE="/etc/skel/.config/Thunar/uca.xml"
+
+    OLD_TEXT='feh --bg-fill %f'
+    NEW_TEXT='swaybg -i %f'
+
+    replace_wallpaper_cmd() {
+        local file="$1"
+        local use_sudo="${2:-false}"
+
+        if [[ ! -f "$file" ]]; then
+            log_warn "Skipping: file not found: $file"
+            return 0
+        fi
+
+        if ! grep -qF "$OLD_TEXT" "$file"; then
+            log_info "No replacement needed in: $file"
+            return 0
+        fi
+
+        if [[ "$use_sudo" == "true" ]]; then
+            if sudo sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$file"; then
+                log_info "Updated wallpaper command in: $file"
+            else
+                log_warn "Failed to update: $file"
+            fi
+        else
+            if sed -i "s|$OLD_TEXT|$NEW_TEXT|g" "$file"; then
+                log_info "Updated wallpaper command in: $file"
+            else
+                log_warn "Failed to update: $file"
+            fi
+        fi
+    }
+
+    replace_wallpaper_cmd "$UCA_FILE"
+    replace_wallpaper_cmd "$ETC_UCA_FILE" true
+fi
 
 handle_prismlinux() {
     if is_os_release_match "Prism"; then
