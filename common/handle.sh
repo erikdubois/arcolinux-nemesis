@@ -394,7 +394,8 @@ if is_omarchy; then
 
     replace_wallpaper_cmd "$UCA_FILE"
     replace_wallpaper_cmd "$ETC_UCA_FILE" true
-fi
+    fi
+}
 
 handle_prismlinux() {
     if is_os_release_match "Prism"; then
