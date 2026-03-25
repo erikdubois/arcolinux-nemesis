@@ -438,10 +438,7 @@ move_file() {
     local src="$1"
     local dst="$2"
 
-    if [[ ! -f "${src}" ]]; then
-        log_warn "Source file missing: ${src}"
-        return 1
-    fi
+    [[ -f "${src}" ]] || return 0
 
     log_subsection "Moving ${src} -> ${dst}"
     sudo mv -v "${src}" "${dst}"
