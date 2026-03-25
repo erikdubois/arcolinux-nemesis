@@ -401,6 +401,7 @@ handle_omarchy() {
             fi
         replace_wallpaper_cmd "$UCA_FILE"
         replace_wallpaper_cmd "$ETC_UCA_FILE" true
+    fi
 }
 
 handle_prismlinux() {
