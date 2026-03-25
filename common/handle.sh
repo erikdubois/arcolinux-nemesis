@@ -355,7 +355,7 @@ handle_omarchy() {
         # Ensure file exists
         if [[ ! -f "$AUTOSTART_FILE" ]]; then
             echo "Error: $AUTOSTART_FILE not found!"
-            exit 1
+            return 0
         fi
 
         # Append lines if they are not already present
