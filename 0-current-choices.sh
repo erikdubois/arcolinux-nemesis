@@ -204,6 +204,7 @@ run_remove_anywhere_software() {
     # Remove overlapping tools so the preferred Nemesis variants can be
     # installed later. The exact-match dependency helper now prevents
     # pamac from accidentally matching pamac-aur.
+    remove_matching_packages archinstall
     remove_matching_packages neofetch
     remove_matching_packages fastfetch
     remove_matching_packages yay
