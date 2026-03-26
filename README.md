@@ -164,8 +164,9 @@ Distributions that have been checked
 
 1. Arch Linux (every release)
 2. Kiro Linux (every release)
-3. Cachyos - cachyos-desktop-linux-2603.08.iso
+3. CachyOS - cachyos-desktop-linux-2603.08.iso
 4. Omarchy - omarchy-3.4.2-2.iso
+5. EndeavourOS - EndeavourOS_Titan-2026.03.06.iso
 
 Rest will gradually follow and will probably work with improved code...
 
