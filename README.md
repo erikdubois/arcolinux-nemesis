@@ -155,7 +155,19 @@ Github : https://github.com/erikdubois
 
 Website : https://erikdubois.be
 
+
+
+
 # ArcoLinux Nemesis Series
+
+Distributions that have been checked
+
+1. Arch Linux (every release)
+2. Kiro Linux (every release)
+3. Cachyos - cachyos-desktop-linux-2603.08.iso
+4. Omarchy - omarchy-3.4.2-2.iso
+
+Rest will gradually follow and will probably work with improved code...
 
 The **ArcoLinux Nemesis series** on YouTube  
 [https://www.youtube.com/playlist?list=PLlloYVGq5pS7bFIboMzh6qfUNvvpDVZaU](https://www.youtube.com/playlist?list=PLlloYVGq5pS7bFIboMzh6qfUNvvpDVZaU)  
