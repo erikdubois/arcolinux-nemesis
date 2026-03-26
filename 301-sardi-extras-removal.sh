@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
+
 log_section "Running $(script_name)"
 
 pause_if_debug
@@ -14,12 +15,11 @@ pause_if_debug
 #
 ##################################################################################################################################
 
-install_sardi_extras() {
+remove_sardi_extras() {
 
-    log_section "Installing software from nemesis_repo"
+    log_section "Removing software from nemesis_repo"
 
     local packages=(
-        sardi-icons
         sardi-colora-variations-icons-git
         sardi-flat-colora-variations-icons-git
         sardi-flat-mint-y-icons-git
@@ -43,6 +43,7 @@ install_sardi_extras() {
         sardi-orb-colora-mint-y-icons-git
         sardi-orb-colora-mixing-icons-git
         sardi-orb-colora-variations-icons-git
+        sardi-icons
     )
 
     local count=0
@@ -50,11 +51,11 @@ install_sardi_extras() {
 
     for pkg in "${packages[@]}"; do
         ((++count))
-        log_subsection "Installing package nr. ${count} ${pkg}"
-        install_packages "${pkg}"
+        log_subsection "Removing package nr. ${count} ${pkg}"
+        remove_packages "${pkg}"
     done
 }
 
-install_sardi_extras
+remove_sardi_extras
 
 log_subsection "$(script_name) done"

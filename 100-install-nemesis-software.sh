@@ -11,7 +11,8 @@
 ##################################################################################################################################
 
 # Load shared helper functions
-source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
+
 # Log current script
 log_section "Running $(script_name)"
 
