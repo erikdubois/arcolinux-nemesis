@@ -8,7 +8,7 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2026-03-25
+## Generated on 2026-03-26
 ##
 
 ## Worldwide
@@ -428,6 +428,7 @@ Server = https://mirror.4v1.in/archlinux/$repo/os/$arch
 Server = https://mirrors.abhy.me/archlinux/$repo/os/$arch
 Server = https://mirror.del2.albony.in/archlinux/$repo/os/$arch
 Server = https://mirror.maa.albony.in/archlinux/$repo/os/$arch
+Server = https://mirror.bom.kat.cx/archlinux/$repo/os/$arch
 Server = http://in.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://in.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://mirror.dawn.org.in/arch/$repo/os/$arch
@@ -674,6 +675,8 @@ Server = https://mirrors.pidginhost.com/arch/$repo/os/$arch
 ## Russia
 Server = http://archlinux.gay/archlinux/$repo/os/$arch
 Server = https://archlinux.gay/archlinux/$repo/os/$arch
+Server = http://mirror.cachy-arch.ru/archlinux/$repo/os/$arch
+Server = https://mirror.cachy-arch.ru/archlinux/$repo/os/$arch
 Server = http://ru.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://ru.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = http://mirror.kamtv.ru/archlinux/$repo/os/$arch
