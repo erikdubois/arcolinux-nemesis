@@ -170,8 +170,8 @@ Distributions that have been checked
 Rest will gradually follow and will probably work with improved code...
 
 The **ArcoLinux Nemesis series** on YouTube  
-[https://www.youtube.com/playlist?list=PLlloYVGq5pS7bFIboMzh6qfUNvvpDVZaU](https://www.youtube.com/playlist?list=PLlloYVGq5pS7bFIboMzh6qfUNvvpDVZaU)  
-is a technical video collection focused on building, customizing, and experimenting with Arch-based Linux systems and others using scripts.
+[Watch the playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS7bFIboMzh6qfUNvvpDVZaU)  
+is a technical video collection focused on building, customizing, and experimenting with Arch-based Linux systems using the ArcoLinux ecosystem.
 ---
 
 ## Overview
