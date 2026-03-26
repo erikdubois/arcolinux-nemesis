@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
-
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
 log_section "Running $(script_name)"
 
 pause_if_debug
@@ -15,32 +14,29 @@ pause_if_debug
 #
 ##################################################################################################################################
 
-install_nemesis_icon_themes() {
-    local pkgs=(
-        edu-neo-candy-arc-git
-        edu-neo-candy-arc-mint-grey-git
-        edu-neo-candy-arc-mint-red-git
-        edu-neo-candy-qogir-git
-        edu-neo-candy-tela-git
-        edu-papirus-dark-tela-git
-        edu-papirus-dark-tela-grey-git
-        surfn-plasma-flow-git
-    )
+remove_surfn_extras() {
 
-    log_section "Install all icons from Nemesis repo"
+    log_section "Removing software from nemesis_repo"
+
+    local packages=(
+        surfn-arc-breeze-icons-git
+        surfn-mint-y-icons-git
+        surfn-plasma-flow-git
+        surfn-plasma-dark-icons-git
+        surfn-plasma-light-icons-git
+        surfn-icons-git
+    )
 
     local count=0
     local pkg
 
-    for pkg in "${pkgs[@]}"; do
+    for pkg in "${packages[@]}"; do
         ((++count))
-        log_subsection "Installing package nr. ${count} ${pkg}"
-        install_packages "${pkg}"
+        log_subsection "Removing package nr. ${count} ${pkg}"
+        remove_packages "${pkg}"
     done
 }
 
-log_warn "Edu icon themes"
-
-install_nemesis_icon_themes
+remove_surfn_extras
 
 log_subsection "$(script_name) done"

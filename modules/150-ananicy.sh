@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
-
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
 log_section "Running $(script_name)"
 
 pause_if_debug
@@ -13,31 +12,24 @@ pause_if_debug
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
+#   Purpose:
+#   - Install Ananicy and its rule set.
+#   - Enable the service so process priority tuning starts immediately.
+#
 ##################################################################################################################################
 
-remove_surfn_extras() {
+install_ananicy_packages() {
+    log_section "Installing Ananicy packages"
 
-    log_section "Removing software from nemesis_repo"
-
-    local packages=(
-        surfn-arc-breeze-icons-git
-        surfn-mint-y-icons-git
-        surfn-plasma-flow-git
-        surfn-plasma-dark-icons-git
-        surfn-plasma-light-icons-git
-        surfn-icons-git
-    )
-
-    local count=0
-    local pkg
-
-    for pkg in "${packages[@]}"; do
-        ((++count))
-        log_subsection "Removing package nr. ${count} ${pkg}"
-        remove_packages "${pkg}"
-    done
+    install_packages         ananicy-cpp         cachyos-ananicy-rules
 }
 
-remove_surfn_extras
+enable_ananicy_service() {
+    log_section "Enabling Ananicy service"
+    enable_now_service ananicy-cpp.service
+}
+
+install_ananicy_packages
+enable_ananicy_service
 
 log_subsection "$(script_name) done"
