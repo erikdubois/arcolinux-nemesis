@@ -8,7 +8,7 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2026-03-26
+## Generated on 2026-03-28
 ##
 
 ## Worldwide
@@ -904,6 +904,7 @@ Server = http://www.mirrorservice.org/sites/ftp.archlinux.org/$repo/os/$arch
 Server = https://www.mirrorservice.org/sites/ftp.archlinux.org/$repo/os/$arch
 Server = http://mirror.netweaver.uk/archlinux/$repo/os/$arch
 Server = https://mirror.netweaver.uk/archlinux/$repo/os/$arch
+Server = https://uk.arch.niranjan.co/$repo/os/$arch
 Server = http://lon.mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://lon.mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = http://mirror.server.net/archlinux/$repo/os/$arch

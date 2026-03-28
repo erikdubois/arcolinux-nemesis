@@ -32,6 +32,7 @@ create_personal_directories() {
         "${HOME}/.fonts"
         "${HOME}/.icons"
         "${HOME}/.themes"
+        "${HOME}/.local/share/bin"
         "${HOME}/.local/share/icons"
         "${HOME}/.local/share/themes"
         "${HOME}/.local/share/applications"
