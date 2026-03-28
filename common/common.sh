@@ -802,26 +802,3 @@ ensure_vconsole_font() {
         echo "FONT=lat4-19" | sudo tee --append /etc/vconsole.conf >/dev/null
     fi
 }
-
-set_sddm_session() {
-    local session_name="$1"
-    local file="/etc/sddm.conf.d/kde_settings.conf"
-
-    log_subsection "Setting SDDM session to ${session_name}"
-
-    if [[ -z "$session_name" ]]; then
-        log_warn "No SDDM session name provided"
-        return 1
-    fi
-
-    if [[ ! -f "$file" ]]; then
-        log_warn "File not found: $file"
-        return 0
-    fi
-
-    if grep -q '^Session=' "$file"; then
-        sudo sed -i "s/^Session=.*/Session=${session_name}/" "$file"
-    else
-        echo "Session=${session_name}" | sudo tee -a "$file" >/dev/null
-    fi
-}

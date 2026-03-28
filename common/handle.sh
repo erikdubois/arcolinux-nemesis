@@ -297,10 +297,6 @@ handle_omarchy() {
         "x.com"
     )
 
-    if pkg_installed "sddm" || pkg_installed "sddm-git"; then
-        set_sddm_session "hyprland-uwsm"
-    fi  
-
     # backup existing folders first
     backup_folder_as_user "$hypr_dir" "${hypr_dir}_nemesis"
     backup_folder_as_user "$omarchy_dir" "${omarchy_dir}_nemesis"
