@@ -312,10 +312,13 @@ handle_omarchy() {
     append_line_if_missing "$hyprland_conf" "$input_line"
 
     copy_file_user "$SETTINGS_DIR/hypr-omarchy/gsettings.sh" "$gsettings_script"
-    if [[ -f "$gsettings_script" ]]; then
+
+    gtk_settings="$HOME/.config/gtk-3.0/settings.ini"
+
+    if [[ -f "$gsettings_script" && -f "$gtk_settings" ]]; then
         bash "$gsettings_script"
     else
-        log_warn "Skipping: file not found: $gsettings_script"
+        log_warn "Skipping: required file missing: $gsettings_script or $gtk_settings"
     fi
 
     log_info "Using file: $bindings_conf"
