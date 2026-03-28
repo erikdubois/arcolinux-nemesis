@@ -328,11 +328,13 @@ handle_omarchy() {
     append_line_if_missing "$autostart_conf" "$autostart_line"
 
     log_info "Updating wallpaper command in uca.xml for Thunar"
-    [[ -f "$uca_file" ]] && \
+    if [[ -n "$uca_file" && -f "$uca_file" ]]; then
         replace_text_in_file "$uca_file" "feh --bg-fill %f" "swaybg -i %f"
+    fi
 
-    [[ -f "$etc_uca_file" ]] && \
+    if [[ -n "$etc_uca_file" && -f "$etc_uca_file" ]]; then
         replace_text_in_file "$etc_uca_file" "feh --bg-fill %f" "swaybg -i %f" true
+    fi
 }
 
 handle_prismlinux() {
