@@ -351,7 +351,7 @@ install_local_packages() {
 enable_service() {
     local service="$1"
     log_subsection "Enabling service: ${service}"
-    sudo systemctl enable "${service}"
+    sudo systemctl enable --now "${service}"
 }
 
 enable_now_service() {
