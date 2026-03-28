@@ -22,7 +22,7 @@ pause_if_debug
 install_ananicy_packages() {
     log_section "Installing Ananicy packages"
 
-    install_packages         ananicy-cpp         cachyos-ananicy-rules
+    install_packages ananicy-cpp cachyos-ananicy-rules-git
 }
 
 enable_ananicy_service() {
