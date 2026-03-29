@@ -14,7 +14,7 @@
 #
 ##################################################################################################################
 
-set -uo pipefail   # continue on error by design
+set -uo pipefail   # -e intentionally omitted: continue on errors by design
 shopt -s nullglob
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
@@ -24,7 +24,7 @@ source "${COMMON_DIR}/common.sh"
 
 WORKDIR="${SCRIPT_DIR}"
 CHAOTIC_URL="https://chaoticmirror.com/chaotic-aur/chaotic-aur/x86_64/"
-DEST="/home/erik/DATA/arcolinux-nemesis/packages/"
+DEST="${SCRIPT_DIR}/packages"
 MIRRORLIST_FILE="${WORKDIR}/mirrorlist"
 
 ##################################################################################################################
@@ -105,8 +105,7 @@ update_chaotic_packages() {
 generate_mirrorlist() {
     log_section "Generating mirrorlist"
 
-    rm -f "${MIRRORLIST_FILE}"
-    touch "${MIRRORLIST_FILE}"
+    > "${MIRRORLIST_FILE}"
 
     cat <<'EOF' | tee "${MIRRORLIST_FILE}" >/dev/null
 ## Best Arch Linux servers worldwide from arcolinux-nemesis
@@ -130,18 +129,14 @@ EOF
 }
 
 git_commit_and_push() {
-    local input="update"
-    local branch=""
+    local input branch
 
     log_section "Git add / commit / push"
-
     git add --all .
 
     echo
-    echo "####################################"
-    echo "Write your commit comment!"
-    echo "####################################"
-    echo
+    read -r -p "Commit message [update]: " input
+    input="${input:-update}"
 
     git commit -m "${input}" || log_warn "Nothing to commit or commit failed"
 
