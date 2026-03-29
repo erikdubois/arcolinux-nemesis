@@ -272,9 +272,9 @@ handle_omarchy() {
         return 0
     fi
 
-    install_packages lua-luarocks
-
     log_section "We are on Omarchy"
+
+    install_packages lua-luarocks
 
     local hypr_dir="$USER_HOME/.config/hypr"
     local omarchy_dir="$USER_HOME/.config/omarchy"
