@@ -46,8 +46,7 @@ install_ckb_next_if_keyboard_detected() {
             "${SETTINGS_DIR}/ckb-next/ckb-next.autostart.desktop" \
             "${HOME}/.config/autostart/ckb-next.autostart.desktop"
 
-        enable_service ckb-next-daemon.service
-        start_service ckb-next-daemon.service
+        enable_now_service ckb-next-daemon.service
 
         log_section "Corsair keyboard configured"
 

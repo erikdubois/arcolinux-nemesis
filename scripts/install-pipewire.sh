@@ -60,7 +60,7 @@ main() {
     # Enable Bluetooth service
     ############################################################################################################
 
-    enable_service bluetooth.service
+    enable_now_service bluetooth.service
 
     log_success "PipeWire installation completed"
     log_warn "Reboot recommended"

@@ -40,8 +40,8 @@ main() {
 
     sudo smbpasswd -a "${username}"
 
-    enable_service smb.service
-    enable_service nmb.service
+    enable_now_service smb.service
+    enable_now_service nmb.service
 
     log_success "Samba installation completed"
 }

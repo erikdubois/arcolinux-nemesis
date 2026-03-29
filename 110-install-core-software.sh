@@ -183,8 +183,8 @@ install_core_packages() {
 # These services are part of the baseline experience expected by this setup.
 enable_core_services() {
     log_section "Enabling core services"
-    enable_service avahi-daemon.service
-    enable_service ntpd.service
+    enable_now_service avahi-daemon.service
+    enable_now_service ntpd.service
 }
 
 # Execution order matters here: Sddm handling first

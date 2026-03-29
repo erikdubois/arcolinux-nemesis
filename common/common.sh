@@ -348,12 +348,6 @@ install_local_packages() {
 ##################################################################################################################################
 # 7. Service helpers
 ##################################################################################################################################
-enable_service() {
-    local service="$1"
-    log_subsection "Enabling service: ${service}"
-    sudo systemctl enable --now "${service}"
-}
-
 enable_now_service() {
     local service="$1"
     log_subsection "Enabling and starting service: ${service}"
@@ -776,7 +770,7 @@ disable_firewalld_stack() {
 install_sddm_git() {
     log_subsection "Installing sddm-git"
     install_aur_package sddm-git
-    enable_service sddm.service
+    enable_now_service sddm.service
 
     echo
     echo "SDDM has been installed and enabled."
