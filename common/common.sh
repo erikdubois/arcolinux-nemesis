@@ -275,16 +275,12 @@ remove_matching_packages_deps_dd() {
 }
 
 replace_sddm_with_sddm_git_if_needed() {
-    if ! is_plasma_installed; then
-        log_warn "Not on Plasma. Replacing sddm with sddm-git"
-
-        if pacman -Qq sddm 2>/dev/null | grep -qx "sddm"; then
-            sudo pacman -R --noconfirm sddm &>/dev/null
-        fi
-
+    if pacman -Qq sddm 2>/dev/null | grep -qx "sddm"; then
+        log_warn "sddm gevonden. Vervangen door sddm-git..."
+        sudo pacman -R --noconfirm sddm &>/dev/null
         install_packages sddm-git
     else
-        log_section "Plasma detected. Keeping sddm."
+        log_section "sddm niet geïnstalleerd. Niets te doen."
     fi
 }
 
