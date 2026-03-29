@@ -32,6 +32,7 @@ install_chadwm_packages() {
         autorandr
         dash
         dmenu
+        fastcompmgr-git
         feh
         gcc
         gvfs
