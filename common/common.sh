@@ -161,12 +161,16 @@ replace_text_in_file() {
         return 0
     fi
 
+    local escaped_old escaped_new
+    escaped_old=$(printf '%s' "$old_text" | sed 's/[[\.*^$()+?{|]/\\&/g')
+    escaped_new=$(printf '%s' "$new_text" | sed 's/[\\&|]/\\&/g')
+
     if [[ "$use_sudo" == "true" ]]; then
-        sudo sed -i "s|$old_text|$new_text|g" "$file" \
+        sudo sed -i "s|${escaped_old}|${escaped_new}|g" "$file" \
             && log_info "Updated: $file" \
             || log_warn "Failed to update: $file"
     else
-        sed -i "s|$old_text|$new_text|g" "$file" \
+        sed -i "s|${escaped_old}|${escaped_new}|g" "$file" \
             && log_info "Updated: $file" \
             || log_warn "Failed to update: $file"
     fi
@@ -476,10 +480,13 @@ move_file() {
     local src="$1"
     local dst="$2"
 
-    [[ -f "${src}" ]] || return 0
+    if [[ ! -f "${src}" ]]; then
+        log_warn "Source file missing: ${src}"
+        return 1
+    fi
 
     log_subsection "Moving ${src} -> ${dst}"
-    sudo mv -v "${src}" "${dst}"
+    sudo mv -v -- "${src}" "${dst}"
 }
 
 move_file_user() {
