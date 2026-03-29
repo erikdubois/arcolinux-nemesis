@@ -134,11 +134,7 @@ git_commit_and_push() {
     log_section "Git add / commit / push"
     git add --all .
 
-    echo
-    read -r -p "Commit message [update]: " input
-    input="${input:-update}"
-
-    git commit -m "${input}" || log_warn "Nothing to commit or commit failed"
+    git commit -m "update" || log_warn "Nothing to commit or commit failed"
 
     branch="$(git rev-parse --abbrev-ref HEAD)"
     git push -u origin "${branch}" || log_error "Git push failed"
