@@ -24,10 +24,11 @@ install_chadwm_packages() {
     log_section "Install Chadwm"
 
     local packages=(
+        edu-chadwm-git
+        ohmychadwm-git
         make
         alacritty
         archlinux-logout-git
-        edu-chadwm-git
         edu-xfce-git
         autorandr
         dash
