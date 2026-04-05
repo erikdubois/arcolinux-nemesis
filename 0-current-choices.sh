@@ -39,7 +39,7 @@ echo "Working directory             : ${WORKING_DIR}"
 source "${WORKING_DIR}/common/common.sh"
 source "${WORKING_DIR}/common/handle.sh"
 
-##############################################################""
+##############################################################
 
 COMMON_DIR="${WORKING_DIR}/common"
 echo "Common directory              : ${COMMON_DIR}"
@@ -113,7 +113,7 @@ printf "
 run_chadwm_choice
 
 # First check if we are on something else than Arch based, then we run the script for that distro
-if [[ -f "${LSB_RELEASE}" ]] && grep -q "MX 23.4" "${LSB_RELEASE}"; then
+if [[ -f "${LSB_RELEASE}" ]] && grep -q "MX" "${LSB_RELEASE}"; then
     run_non_arch_distro_script "mxlinux"
 fi
 
