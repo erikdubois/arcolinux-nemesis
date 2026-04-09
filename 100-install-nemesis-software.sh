@@ -30,7 +30,7 @@ install_nemesis_software() {
         archlinux-tweak-tool-git \
         edu-dot-files-git \
         arc-gtk-theme \
-        archlinux-logout-git \
+        archlinux-logout-gtk4-git \
         edu-arc-dawn-git \
         edu-arc-kde \
         edu-hblock-git \
