@@ -34,7 +34,6 @@ install_core_packages() {
         alacritty
         archlinux-logout-gtk4-git
         edu-xfce-git
-        dash
         dmenu
         fastcompmgr-git
         feh
@@ -75,13 +74,14 @@ install_core_packages() {
 }
 
 # Create or refresh the SDDM drop-in file used for autologin.
+# $1: session name (e.g. chadwm or ohmychadwm)
 configure_sddm_autologin() {
+    local session="${1}"
     local target_dir="/etc/sddm.conf.d"
     local target_file="${target_dir}/kde_settings.conf"
     local tmp_file
     local target_user="${SUDO_USER:-$USER}"
     USER=${target_user}
-
 
     sudo mkdir -p "${target_dir}"
 
@@ -89,7 +89,7 @@ configure_sddm_autologin() {
     cat > "${tmp_file}" <<EOF
 [Autologin]
 Relogin=false
-Session=ohmychadwm
+Session=${session}
 User=${USER}
 
 [General]
@@ -136,14 +136,14 @@ fi
 if "$_install_chadwm"; then
     log_section "Let us install Chadwm"
     install_chadwm_package
-    configure_sddm_autologin
+    configure_sddm_autologin chadwm
 fi
 
-# Install Ohmychadwm
+# Install Ohmychadwm (runs after chadwm if both selected, overriding session to ohmychadwm)
 if "$_install_ohmychadwm"; then
     log_section "Let us install Ohmychadwm"
     install_ohmychadwm_package
-    configure_sddm_autologin
+    configure_sddm_autologin ohmychadwm
 fi
 
 log_subsection "$(script_name) done"
