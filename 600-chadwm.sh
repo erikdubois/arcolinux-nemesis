@@ -20,10 +20,10 @@ pause_if_debug
 #
 ##################################################################################################################################
 install_chadwm_package() {
-    edu-chadwm-git
+    install_packages edu-chadwm-git
 }
 install_ohmychadwm_package() {
-    ohmychadwm-git
+    install_packages ohmychadwm-git
 }
 
 install_core_packages() {
