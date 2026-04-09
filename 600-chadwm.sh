@@ -34,7 +34,6 @@ install_core_packages() {
         alacritty
         archlinux-logout-gtk4-git
         edu-xfce-git
-        autorandr
         dash
         dmenu
         fastcompmgr-git
