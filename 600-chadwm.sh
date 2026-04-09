@@ -123,23 +123,27 @@ install_virtualbox_guest_utils_if_needed() {
     fi
 }
 
-# Install Chadwm
-if [[ -f "/tmp/install-chadwm" ]]; then
-    log_section "Let us install Chadwm"
+_install_chadwm=false
+_install_ohmychadwm=false
+[[ -f "/tmp/install-chadwm" ]] && _install_chadwm=true
+[[ -f "/tmp/install-ohmychadwm" ]] && _install_ohmychadwm=true
 
+if "$_install_chadwm" || "$_install_ohmychadwm"; then
     install_core_packages
-    install_chadwm_package
     install_virtualbox_guest_utils_if_needed
+fi
+
+# Install Chadwm
+if "$_install_chadwm"; then
+    log_section "Let us install Chadwm"
+    install_chadwm_package
     configure_sddm_autologin
 fi
 
 # Install Ohmychadwm
-if [[ -f "/tmp/install-ohmychadwm" ]]; then
+if "$_install_ohmychadwm"; then
     log_section "Let us install Ohmychadwm"
-
-    install_core_packages
     install_ohmychadwm_package
-    install_virtualbox_guest_utils_if_needed
     configure_sddm_autologin
 fi
 
