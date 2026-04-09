@@ -32,7 +32,7 @@ install_core_packages() {
     local packages=(
         make
         alacritty
-        archlinux-logout-git
+        archlinux-logout-gtk4-git
         edu-xfce-git
         autorandr
         dash
