@@ -51,7 +51,7 @@ main() {
     ############################################################################################################
 
     VBoxManage setextradata global GUI/SuppressMessages "all" || true
-
+    VBoxManage setextradata "template" "VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled" 1
     log_success "VirtualBox installed"
     log_warn "Reboot recommended"
 }

@@ -79,24 +79,31 @@ configure_sddm_autologin() {
     local target_user="${SUDO_USER:-$USER}"
     USER=${target_user}
 
-    if [[ -f /usr/local/bin/fix-sddm-conf ]]; then
-        fix-sddm-conf
-    else
-        sudo mkdir -p "${target_dir}"
 
-        tmp_file="$(mktemp)"
-        cat > "${tmp_file}" <<EOF
+    sudo mkdir -p "${target_dir}"
+
+    tmp_file="$(mktemp)"
+    cat > "${tmp_file}" <<EOF
 [Autologin]
+Relogin=false
+Session=ohmychadwm
 User=${USER}
-Session=
 
 [General]
-InputMethod=
-Numlock=on
+HaltCommand=/usr/bin/systemctl poweroff
+RebootCommand=/usr/bin/systemctl reboot
+
+[Theme]
+Current=arcolinux-simplicity
+CursorTheme=Bibata-Modern-Ice
+Font=Noto Sans,10,-1,0,50,0,0,0,0,0
+
+[Users]
+MaximumUid=60513
+MinimumUid=1000
 EOF
 
-        sudo mv "${tmp_file}" "${target_file}"
-    fi
+    sudo mv "${tmp_file}" "${target_file}"
 
     log_section "SDDM configuration changed and set User=${USER} at
 /etc/sddm.conf.d/kde_settings.conf
