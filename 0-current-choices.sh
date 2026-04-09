@@ -112,6 +112,9 @@ printf "
 # Optional Chadwm decision point controlled elsewhere in the project.
 run_chadwm_choice
 
+# Optional Ohmychadwm decision point controlled elsewhere in the project.
+run_ohmychadwm_choice
+
 # First check if we are on something else than Arch based, then we run the script for that distro
 if [[ -f "${LSB_RELEASE}" ]] && grep -q "MX" "${LSB_RELEASE}"; then
     run_non_arch_distro_script "mxlinux"

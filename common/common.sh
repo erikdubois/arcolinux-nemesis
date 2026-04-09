@@ -764,6 +764,21 @@ run_chadwm_choice() {
     fi
 }
 
+run_ohmychadwm_choice() {
+    local flag="/tmp/install-ohmychadwm"
+
+    pause_if_debug
+    log_section "Ohmyhadwm installation choice - installation will follow later on"
+
+    if confirm_yes_no "Do you want to install ohmychadwm on your system?"; then
+        log_warn "User chose to install Ohmychadwm"
+        touch "$flag"
+    else
+        log_warn "User chose not to install Ohmychadwm"
+        rm -f "$flag"
+    fi
+}
+
 disable_firewalld_stack() {
     log_subsection "Removing firewalld stack"
 

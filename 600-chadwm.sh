@@ -19,13 +19,17 @@ pause_if_debug
 #   - Configure SDDM autologin for the current user.
 #
 ##################################################################################################################################
+install_chadwm_package() {
+    edu-chadwm-git
+}
+install_ohmychadwm_package() {
+    ohmychadwm-git
+}
 
-install_chadwm_packages() {
-    log_section "Install Chadwm"
+install_core_packages() {
+    log_section "Install core packages for Chadwm and/or ohmychadwm"
 
     local packages=(
-        edu-chadwm-git
-        ohmychadwm-git
         make
         alacritty
         archlinux-logout-git
@@ -123,7 +127,18 @@ install_virtualbox_guest_utils_if_needed() {
 if [[ -f "/tmp/install-chadwm" ]]; then
     log_section "Let us install Chadwm"
 
-    install_chadwm_packages
+    install_core_packages
+    install_chadwm_package
+    install_virtualbox_guest_utils_if_needed
+    configure_sddm_autologin
+fi
+
+# Install Ohmychadwm
+if [[ -f "/tmp/install-ohmychadwm" ]]; then
+    log_section "Let us install Ohmychadwm"
+
+    install_core_packages
+    install_ohmychadwm_package
     install_virtualbox_guest_utils_if_needed
     configure_sddm_autologin
 fi
