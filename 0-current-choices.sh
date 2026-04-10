@@ -221,6 +221,7 @@ run_remove_anywhere_software() {
     remove_matching_packages_deps pamac-git
     remove_matching_packages mpv
     remove_matching_packages clapper
+    remove_matching_packages archlinux-logout-git
 
     log_warn "Partition formatting software - we check the root filesystem"
     log_warn "and remove the software for the filesystems that are not used on the system"
