@@ -535,7 +535,7 @@ append_line_if_missing_root() {
     if grep -qxF "$line" "$file"; then
         log_info "Line already present in $file"
     else
-        sudo printf '%s\n' "$line" >> "$file"
+        printf '%s\n' "$line" | sudo tee -a "$file" > /dev/null
         log_info "Added line to $file: $line"
     fi
 }
