@@ -122,7 +122,6 @@ install_core_packages() {
         oh-my-zsh-git
         pacmanlogviewer
         polkit-gnome
-        pulseaudio
         python-pylint
         python-pywal
         pv
