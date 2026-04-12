@@ -119,7 +119,7 @@ Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
 </Directory>
 EOF
 
-    append_line_if_missing 'Include conf/extra/phpmyadmin.conf' "$HTTPD_CONF"
+    append_line_if_missing_root 'Include conf/extra/phpmyadmin.conf' "$HTTPD_CONF"
 }
 
 configure_wordpress_alias() {
@@ -135,7 +135,7 @@ Alias /wordpress "/usr/share/webapps/wordpress"
 </Directory>
 EOF
 
-    append_line_if_missing 'Include conf/extra/httpd-wordpress.conf' "$HTTPD_CONF"
+    append_line_if_missing_root 'Include conf/extra/httpd-wordpress.conf' "$HTTPD_CONF"
 }
 
 create_test_pages() {

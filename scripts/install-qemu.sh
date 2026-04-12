@@ -35,12 +35,12 @@ enable_nested_kvm() {
     echo "kvm" | sudo tee /etc/modules-load.d/kvm.conf >/dev/null
 
     if grep -qi "GenuineIntel" /proc/cpuinfo; then
-        append_line_if_missing "kvm_intel" /etc/modules-load.d/kvm.conf
+        append_line_if_missing_root "kvm_intel" /etc/modules-load.d/kvm.conf
         echo "options kvm_intel nested=1" | sudo tee /etc/modprobe.d/kvm_intel.conf >/dev/null
         sudo modprobe kvm || true
         sudo modprobe kvm_intel || true
     elif grep -qi "AuthenticAMD" /proc/cpuinfo; then
-        append_line_if_missing "kvm_amd" /etc/modules-load.d/kvm.conf
+        append_line_if_missing_root "kvm_amd" /etc/modules-load.d/kvm.conf
         echo "options kvm_amd nested=1" | sudo tee /etc/modprobe.d/kvm_amd.conf >/dev/null
         sudo modprobe kvm || true
         sudo modprobe kvm_amd || true

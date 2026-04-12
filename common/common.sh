@@ -523,6 +523,24 @@ append_line_if_missing() {
     fi
 }
 
+append_line_if_missing_root() {
+    local file="$1"
+    local line="$2"
+
+    if [[ ! -f "$file" ]]; then
+        log_warn "Skipping: file not found: $file"
+        return 0
+    fi
+
+    if grep -qxF "$line" "$file"; then
+        log_info "Line already present in $file"
+    else
+        sudo printf '%s\n' "$line" >> "$file"
+        log_info "Added line to $file: $line"
+    fi
+}
+
+
 remove_file_if_exists() {
     local target="$1"
 
