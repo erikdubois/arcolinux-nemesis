@@ -32,8 +32,6 @@ alacritty
 archlinux-logout-git
 edu-chadwm-git
 edu-xfce-git
-autorandr
-dash
 dmenu
 fastcompmgr-git
 feh
