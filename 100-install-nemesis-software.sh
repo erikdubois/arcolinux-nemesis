@@ -27,7 +27,7 @@ install_nemesis_software() {
     install_packages \
         mkinitcpio-firmware \
         upd72020x-fw \
-        archlinux-tweak-tool-git \
+        archlinux-tweak-tool-gtk4-git \
         edu-dot-files-git \
         arc-gtk-theme \
         archlinux-logout-gtk4-git \
