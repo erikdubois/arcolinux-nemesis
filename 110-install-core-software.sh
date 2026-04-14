@@ -117,7 +117,6 @@ install_core_packages() {
         namcap
         nomacs
         noto-fonts
-        ntp
         nss-mdns
         oh-my-zsh-git
         pacmanlogviewer

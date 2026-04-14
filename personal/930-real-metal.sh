@@ -10,6 +10,7 @@ case "$SCRIPT_PATH" in
     /*) : ;;
     *) SCRIPT_PATH=$(command -v -- "$SCRIPT_PATH" 2>/dev/null || printf '%s' "$SCRIPT_PATH") ;;
 esac
+
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$SCRIPT_PATH")" && pwd)
 PARENT_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 COMMON_SH="$PARENT_DIR/common/common.sh"
@@ -24,9 +25,7 @@ fi
 
 log_section "Running $(script_name)"
 
-#printf '%s\n' "$SCRIPT_DIR"
 SETTINGS_DIR="$SCRIPT_DIR/settings"
-#printf '%s\n' "$SETTINGS_DIR"
 
 pause_if_debug
 
@@ -46,6 +45,9 @@ pause_if_debug
 
 get_virtualization_type_portable() {
     result=""
+    vendor=""
+    product=""
+    combined=""
 
     if command -v systemd-detect-virt >/dev/null 2>&1; then
         if systemd-detect-virt --quiet >/dev/null 2>&1; then
@@ -62,16 +64,16 @@ get_virtualization_type_portable() {
     combined="$vendor $product"
 
     case "$combined" in
-        *VirtualBox*) printf '%s\n' oracle ;;
-        *VMware*)     printf '%s\n' vmware ;;
-        *KVM*)        printf '%s\n' kvm ;;
-        *QEMU*)       printf '%s\n' qemu ;;
-        *Microsoft*)  printf '%s\n' microsoft ;;
+        *VirtualBox*) printf '%s\n' "oracle" ;;
+        *VMware*)     printf '%s\n' "vmware" ;;
+        *KVM*)        printf '%s\n' "kvm" ;;
+        *QEMU*)       printf '%s\n' "qemu" ;;
+        *Microsoft*)  printf '%s\n' "microsoft" ;;
         *)
             if grep -qi hypervisor /proc/cpuinfo 2>/dev/null; then
-                printf '%s\n' unknown-vm
+                printf '%s\n' "unknown-vm"
             else
-                printf '%s\n' none
+                printf '%s\n' "none"
             fi
             ;;
     esac
@@ -103,18 +105,23 @@ handle_virtualbox_template() {
             return 1
         }
 
-        cd "$vm_dir" || return 1
+        cd "$vm_dir" || {
+            log_warn "Failed to enter directory: $vm_dir"
+            return 1
+        }
 
-        if [ -f "template.tar.gz" ]; then
-            tar -xzf "template.tar.gz" || {
+        if [ -f "$vm_dir/template.tar.gz" ]; then
+            tar -xzf "$vm_dir/template.tar.gz" || {
                 log_warn "Failed to extract template.tar.gz"
                 return 1
             }
-            rm -f "template.tar.gz"
+            rm -f "$vm_dir/template.tar.gz" || {
+                log_warn "Failed to remove template.tar.gz"
+                return 1
+            }
         else
             log_warn "template.tar.gz not found in $vm_dir"
         fi
-        
     else
         log_warn "Virtual machine detected - skipping VirtualBox template"
         log_warn "Template not copied over"
@@ -149,14 +156,16 @@ remove_vm_software_if_real_hardware() {
     if [ "$result" = "none" ]; then
         printf '%s\n' "Running on real hardware. Proceeding with cleanup..."
 
-        if systemctl list-units --full --all 2>/dev/null | grep -q 'qemu-guest-agent.service'; then
-            sudo systemctl stop qemu-guest-agent.service
-            sudo systemctl disable qemu-guest-agent.service
-        fi
+        if command -v systemctl >/dev/null 2>&1; then
+            if systemctl list-units --full --all 2>/dev/null | grep -q 'qemu-guest-agent.service'; then
+                sudo systemctl stop qemu-guest-agent.service
+                sudo systemctl disable qemu-guest-agent.service
+            fi
 
-        if systemctl list-units --full --all 2>/dev/null | grep -q 'vboxservice.service'; then
-            sudo systemctl stop vboxservice.service
-            sudo systemctl disable vboxservice.service
+            if systemctl list-units --full --all 2>/dev/null | grep -q 'vboxservice.service'; then
+                sudo systemctl stop vboxservice.service
+                sudo systemctl disable vboxservice.service
+            fi
         fi
 
         remove_matching_packages qemu-guest-agent
@@ -175,7 +184,9 @@ ProcessSizeMax=0"
 
     log_section "Disabling systemd coredumps"
 
-    if [ -f "$conf_file" ] && grep -q "Storage=none" "$conf_file" && grep -q "ProcessSizeMax=0" "$conf_file"; then
+    if [ -f "$conf_file" ] &&
+       grep -q "Storage=none" "$conf_file" &&
+       grep -q "ProcessSizeMax=0" "$conf_file"; then
         log_info "Coredump config already present: $conf_file"
         return 0
     fi
@@ -185,7 +196,7 @@ ProcessSizeMax=0"
         return 1
     }
 
-    printf '%s\n' "$expected_content" | sudo tee "$conf_file" > /dev/null || {
+    printf '%s\n' "$expected_content" | sudo tee "$conf_file" >/dev/null || {
         log_warn "Failed to write: $conf_file"
         return 1
     }
@@ -199,7 +210,6 @@ harden_kernel() {
 
     log_section "Kernel hardening"
 
-    # Check if already applied
     if [ -f "$sysctl_file" ]; then
         log_info "Hardening config already present: $sysctl_file"
         return 0
@@ -210,9 +220,7 @@ harden_kernel() {
         return 1
     }
 
-    # Apply kernel hardening parameters
-    # These are safe on modern systems and don't break standard tools
-    sudo tee "$sysctl_file" > /dev/null <<'EOF'
+    sudo tee "$sysctl_file" >/dev/null <<'EOF'
 # Kernel hardening parameters - 930-real-metal.sh
 # Privacy: Hide kernel pointers and restrict debug access
 kernel.sysrq = 0
@@ -237,9 +245,8 @@ EOF
         return 1
     fi
 
-    # Apply settings immediately (without reboot)
     if command -v sysctl >/dev/null 2>&1; then
-        sudo sysctl -p "$sysctl_file" > /dev/null 2>&1 || {
+        sudo sysctl -p "$sysctl_file" >/dev/null 2>&1 || {
             log_warn "Failed to apply sysctl settings"
             return 1
         }
@@ -250,9 +257,48 @@ EOF
     fi
 }
 
+swappiness() {
+    sysctl_dir="/etc/sysctl.d"
+    sysctl_file="$sysctl_dir/99-swappiness.conf"
+
+    log_section "Setting swappiness"
+
+    if [ -f "$sysctl_file" ]; then
+        log_info "Swappiness config already present: $sysctl_file"
+        return 0
+    fi
+
+    sudo mkdir -p "$sysctl_dir" || {
+        log_warn "Failed to create directory: $sysctl_dir"
+        return 1
+    }
+
+    sudo tee "$sysctl_file" >/dev/null <<'EOF'
+# Swappiness parameter - 930-real-metal.sh
+vm.swappiness = 10
+EOF
+
+    if [ $? -ne 0 ]; then
+        log_warn "Failed to write: $sysctl_file"
+        return 1
+    fi
+
+    if command -v sysctl >/dev/null 2>&1; then
+        sudo sysctl -p "$sysctl_file" >/dev/null 2>&1 || {
+            log_warn "Failed to apply sysctl settings"
+            return 1
+        }
+        log_info "Swappiness applied and made persistent"
+    else
+        log_warn "sysctl not found - settings written but not applied"
+        return 1
+    fi
+}
+
 handle_virtualbox_template
 remove_vm_software_if_real_hardware
 systemd_no_coredump
 harden_kernel
+swappiness
 
 log_subsection "$(script_name) done"
