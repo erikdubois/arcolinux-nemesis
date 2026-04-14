@@ -166,7 +166,93 @@ remove_vm_software_if_real_hardware() {
     fi
 }
 
+systemd_no_coredump() {
+    conf_dir="/etc/systemd/coredump.conf.d"
+    conf_file="$conf_dir/custom.conf"
+    expected_content="[Coredump]
+Storage=none
+ProcessSizeMax=0"
+
+    log_section "Disabling systemd coredumps"
+
+    if [ -f "$conf_file" ] && grep -q "Storage=none" "$conf_file" && grep -q "ProcessSizeMax=0" "$conf_file"; then
+        log_info "Coredump config already present: $conf_file"
+        return 0
+    fi
+
+    sudo mkdir -p "$conf_dir" || {
+        log_warn "Failed to create directory: $conf_dir"
+        return 1
+    }
+
+    printf '%s\n' "$expected_content" | sudo tee "$conf_file" > /dev/null || {
+        log_warn "Failed to write: $conf_file"
+        return 1
+    }
+
+    log_info "Coredump config written: $conf_file"
+}
+
+harden_kernel() {
+    sysctl_dir="/etc/sysctl.d"
+    sysctl_file="$sysctl_dir/99-hardening.conf"
+
+    log_section "Kernel hardening"
+
+    # Check if already applied
+    if [ -f "$sysctl_file" ]; then
+        log_info "Hardening config already present: $sysctl_file"
+        return 0
+    fi
+
+    sudo mkdir -p "$sysctl_dir" || {
+        log_warn "Failed to create directory: $sysctl_dir"
+        return 1
+    }
+
+    # Apply kernel hardening parameters
+    # These are safe on modern systems and don't break standard tools
+    sudo tee "$sysctl_file" > /dev/null <<'EOF'
+# Kernel hardening parameters - 930-real-metal.sh
+# Privacy: Hide kernel pointers and restrict debug access
+kernel.sysrq = 0
+kernel.kptr_restrict = 2
+kernel.dmesg_restrict = 1
+kernel.yama.ptrace_scope = 2
+kernel.unprivileged_bpf_disabled = 1
+kernel.perf_event_paranoid = 3
+
+# Core dumps: Prevent unintended core dump leaks
+kernel.core_uses_pid = 1
+fs.suid_dumpable = 0
+
+# Network: Basic hardening (SYN cookies, no redirects)
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.tcp_syncookies = 1
+EOF
+
+    if [ $? -ne 0 ]; then
+        log_warn "Failed to write: $sysctl_file"
+        return 1
+    fi
+
+    # Apply settings immediately (without reboot)
+    if command -v sysctl >/dev/null 2>&1; then
+        sudo sysctl -p "$sysctl_file" > /dev/null 2>&1 || {
+            log_warn "Failed to apply sysctl settings"
+            return 1
+        }
+        log_info "Kernel hardening applied and made persistent"
+    else
+        log_warn "sysctl not found - settings written but not applied"
+        return 1
+    fi
+}
+
 handle_virtualbox_template
 remove_vm_software_if_real_hardware
+systemd_no_coredump
+harden_kernel
 
 log_subsection "$(script_name) done"
