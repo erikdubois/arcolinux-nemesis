@@ -182,7 +182,6 @@ install_core_packages() {
 enable_core_services() {
     log_section "Enabling core services"
     enable_now_service avahi-daemon.service
-    enable_now_service ntpd.service
 }
 
 # Execution order matters here: Sddm handling first
