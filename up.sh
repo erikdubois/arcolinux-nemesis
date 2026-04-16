@@ -128,6 +128,23 @@ EOF
     fi
 }
 
+update_kiro_sysctl() {
+    log_section "Updating kiro sysctl optimizations from GitHub"
+
+    local sysctl_dir="${SCRIPT_DIR}/personal/settings/sysctl.d"
+    local sysctl_file="${sysctl_dir}/99-kiro-optimizations.conf"
+    local sysctl_url="https://raw.githubusercontent.com/erikdubois/edu-dot-files/refs/heads/main/etc/sysctl.d/99-kiro-optimizations.conf"
+
+    mkdir -p "${sysctl_dir}"
+
+    if curl -fsSL "${sysctl_url}" -o "${sysctl_file}"; then
+        log_success "kiro sysctl optimizations updated"
+    else
+        log_error "Failed to download kiro sysctl optimizations"
+        return 1
+    fi
+}
+
 git_commit_and_push() {
     local input branch
 
@@ -142,9 +159,9 @@ git_commit_and_push() {
 
 main() {
     enable_chaotic_packages
-
     update_chaotic_packages
     generate_mirrorlist
+    update_kiro_sysctl
     git_commit_and_push
 
     echo
