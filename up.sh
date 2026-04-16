@@ -179,6 +179,23 @@ update_nsswitch() {
     fi
 }
 
+update_nanorc() {
+    log_section "Updating nanorc from GitHub"
+
+    local nano_dir="${SCRIPT_DIR}/personal/settings/nano"
+    local nano_file="${nano_dir}/nanorc"
+    local nano_url="https://raw.githubusercontent.com/kirodubes/kiro-iso/refs/heads/main/archiso/airootfs/etc/nanorc"
+
+    mkdir -p "${nano_dir}"
+
+    if curl -fsSL "${nano_url}" -o "${nano_file}"; then
+        log_success "nanorc updated"
+    else
+        log_error "Failed to download nanorc"
+        return 1
+    fi
+}
+
 git_commit_and_push() {
     local input branch
 
@@ -198,6 +215,7 @@ main() {
     update_kiro_sysctl
     update_kiro_coredump
     update_nsswitch
+    update_nanorc
     git_commit_and_push
 
     echo
