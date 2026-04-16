@@ -175,7 +175,33 @@ remove_vm_software_if_real_hardware() {
     fi
 }
 
+configure_gnupg_keyserver() {
+    log_subsection "Configuring GnuPG keyserver"
+
+    local gpg_conf="/etc/pacman.d/gnupg/gpg.conf"
+    local keyserver_line="keyserver hkp://keyserver.ubuntu.com:80"
+
+    if [ ! -f "$gpg_conf" ]; then
+        log_info "GnuPG gpg.conf not found: $gpg_conf"
+        return 0
+    fi
+
+    if grep -q "^keyserver hkp://keyserver.ubuntu.com:80$" "$gpg_conf"; then
+        log_info "Keyserver already configured in $gpg_conf"
+        return 0
+    fi
+
+    sudo sed -i "/^keyserver/d" "$gpg_conf"
+    printf '%s\n' "$keyserver_line" | sudo tee -a "$gpg_conf" >/dev/null || {
+        log_warn "Failed to write keyserver configuration"
+        return 1
+    }
+
+    log_info "Keyserver configured: $keyserver_line"
+}
+
 handle_virtualbox_template
 remove_vm_software_if_real_hardware
+configure_gnupg_keyserver
 
 log_subsection "$(script_name) done"
