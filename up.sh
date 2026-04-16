@@ -162,6 +162,23 @@ update_kiro_coredump() {
     fi
 }
 
+update_nsswitch() {
+    log_section "Updating nsswitch.conf from GitHub"
+
+    local nsswitch_dir="${SCRIPT_DIR}/personal/settings/nsswitch"
+    local nsswitch_file="${nsswitch_dir}/nsswitch.conf"
+    local nsswitch_url="https://raw.githubusercontent.com/kirodubes/kiro-iso/refs/heads/main/archiso/airootfs/etc/nsswitch.conf"
+
+    mkdir -p "${nsswitch_dir}"
+
+    if curl -fsSL "${nsswitch_url}" -o "${nsswitch_file}"; then
+        log_success "nsswitch.conf updated"
+    else
+        log_error "Failed to download nsswitch.conf"
+        return 1
+    fi
+}
+
 git_commit_and_push() {
     local input branch
 
@@ -180,6 +197,7 @@ main() {
     generate_mirrorlist
     update_kiro_sysctl
     update_kiro_coredump
+    update_nsswitch
     git_commit_and_push
 
     echo
