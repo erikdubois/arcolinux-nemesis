@@ -36,8 +36,9 @@ fi
 
 ##################################################################################################################################
 
-# also packages for printing to pdf
-sudo pacman -S wps-office wps-office-fonts wps-office-mime libtiff5 --noconfirm --needed
+# also packages for printing to pdf and formula symbols
+sudo pacman -S wps-office wps-office-fonts wps-office-mime libtiff5 \
+    ttf-ms-fonts ttf-dejavu ttf-liberation --noconfirm --needed
 
 echo
 tput setaf 6
