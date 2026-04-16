@@ -145,6 +145,23 @@ update_kiro_sysctl() {
     fi
 }
 
+update_kiro_coredump() {
+    log_section "Updating kiro coredump configuration from GitHub"
+
+    local coredump_dir="${SCRIPT_DIR}/personal/settings/systemd/coredump.conf.d"
+    local coredump_file="${coredump_dir}/10-kiro-coredump.conf"
+    local coredump_url="https://raw.githubusercontent.com/erikdubois/edu-dot-files/refs/heads/main/etc/systemd/coredump.conf.d/10-kiro-coredump.conf"
+
+    mkdir -p "${coredump_dir}"
+
+    if curl -fsSL "${coredump_url}" -o "${coredump_file}"; then
+        log_success "kiro coredump configuration updated"
+    else
+        log_error "Failed to download kiro coredump configuration"
+        return 1
+    fi
+}
+
 git_commit_and_push() {
     local input branch
 
@@ -162,6 +179,7 @@ main() {
     update_chaotic_packages
     generate_mirrorlist
     update_kiro_sysctl
+    update_kiro_coredump
     git_commit_and_push
 
     echo
