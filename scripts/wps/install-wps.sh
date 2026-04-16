@@ -37,7 +37,7 @@ fi
 ##################################################################################################################################
 
 # also packages for printing to pdf
-sudo pacman -S wps-office wps-office-fonts wps-office-mime libtiff5 libpng12
+sudo pacman -S wps-office wps-office-fonts wps-office-mime libtiff5 --noconfirm --needed
 
 echo
 tput setaf 6
