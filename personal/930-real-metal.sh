@@ -191,7 +191,6 @@ configure_gnupg_keyserver() {
         return 0
     fi
 
-    sudo sed -i "/^keyserver/d" "$gpg_conf"
     printf '%s\n' "$keyserver_line" | sudo tee -a "$gpg_conf" >/dev/null || {
         log_warn "Failed to write keyserver configuration"
         return 1
