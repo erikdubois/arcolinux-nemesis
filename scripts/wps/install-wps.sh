@@ -36,9 +36,9 @@ fi
 
 ##################################################################################################################################
 
-# also packages for printing to pdf and formula symbols
-sudo pacman -S wps-office wps-office-fonts wps-office-mime libtiff5 \
-    ttf-ms-fonts ttf-dejavu ttf-liberation --noconfirm --needed
+# WPS Office with formula symbol fonts from AUR
+# ttf-wps-fonts provides: Symbol, Wingdings, Wingdings 2, Wingdings 3, MT Extra
+yay -S wps-office wps-office-fonts wps-office-mime libtiff5 ttf-wps-fonts --noconfirm --needed
 
 echo
 tput setaf 6
