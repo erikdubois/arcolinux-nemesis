@@ -175,55 +175,7 @@ remove_vm_software_if_real_hardware() {
     fi
 }
 
-systemd_no_coredump() {
-    conf_dir="/etc/systemd/coredump.conf.d"
-    conf_file="$conf_dir/10-kiro-coredump.conf"
-
-    log_section "Disabling systemd coredumps"
-
-    if [ -f "$conf_file" ] &&
-       grep -q "Storage=none" "$conf_file" &&
-       grep -q "Compress=yes" "$conf_file" &&
-       grep -q "MaxUse=0" "$conf_file"; then
-        log_info "Coredump config already present: $conf_file"
-        return 0
-    fi
-
-    sudo mkdir -p "$conf_dir" || {
-        log_warn "Failed to create directory: $conf_dir"
-        return 1
-    }
-
-    sudo tee "$conf_file" >/dev/null <<'EOF'
-# ============================================================================
-# Kiro-ISO Coredump Configuration
-# ============================================================================
-# Disable core dumps for performance and storage savings
-# Core dumps are rarely needed on desktop systems
-
-[Coredump]
-
-# Storage location for core dumps
-# "none" = disabled (recommended for live systems)
-Storage=none
-
-# Compression method (if core dumps were enabled)
-Compress=yes
-
-# Maximum number of core dumps to keep
-MaxUse=0
-EOF
-
-    if [ $? -ne 0 ]; then
-        log_warn "Failed to write: $conf_file"
-        return 1
-    fi
-
-    log_info "Coredump config written: $conf_file"
-}
-
 handle_virtualbox_template
 remove_vm_software_if_real_hardware
-systemd_no_coredump
 
 log_subsection "$(script_name) done"

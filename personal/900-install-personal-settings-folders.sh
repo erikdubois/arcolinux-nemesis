@@ -99,6 +99,59 @@ install_personal_settings_as_root() {
         copy_file "$file" "/etc/sysctl.d/" || \
             log_warn "Failed to copy $(basename "$file")"
     done
+
+    log_subsection "systemd coredump settings"
+    for file in "${SETTINGS_DIR}/systemd/coredump.conf.d/"*; do
+        copy_file "$file" "/etc/systemd/coredump.conf.d/" || \
+            log_warn "Failed to copy $(basename "$file")"
+    done
+}
+
+systemd_no_coredump() {
+    log_subsection "Disabling systemd coredumps"
+
+    local conf_dir="/etc/systemd/coredump.conf.d"
+    local conf_file="${conf_dir}/10-kiro-coredump.conf"
+
+    if [[ -f "$conf_file" ]] &&
+       grep -q "Storage=none" "$conf_file" &&
+       grep -q "Compress=yes" "$conf_file" &&
+       grep -q "MaxUse=0" "$conf_file"; then
+        log_info "Coredump config already present: $conf_file"
+        return 0
+    fi
+
+    sudo mkdir -p "$conf_dir" || {
+        log_warn "Failed to create directory: $conf_dir"
+        return 1
+    }
+
+    sudo tee "$conf_file" >/dev/null <<'EOF'
+# ============================================================================
+# Kiro-ISO Coredump Configuration
+# ============================================================================
+# Disable core dumps for performance and storage savings
+# Core dumps are rarely needed on desktop systems
+
+[Coredump]
+
+# Storage location for core dumps
+# "none" = disabled (recommended for live systems)
+Storage=none
+
+# Compression method (if core dumps were enabled)
+Compress=yes
+
+# Maximum number of core dumps to keep
+MaxUse=0
+EOF
+
+    if [[ $? -ne 0 ]]; then
+        log_warn "Failed to write: $conf_file"
+        return 1
+    fi
+
+    log_info "Coredump config written: $conf_file"
 }
 
 configure_desktop_preferences() {
@@ -160,6 +213,7 @@ EOF
 create_personal_directories
 install_personal_settings_as_user
 install_personal_settings_as_root
+systemd_no_coredump
 configure_desktop_preferences
 change_shell_to_fish
 set_default_cursor_theme
