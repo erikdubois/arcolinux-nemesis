@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration
-URL="https://chaoticmirror.com/chaotic-aur/chaotic-aur/x86_64/"
+URL="https://geo-mirror.chaotic.cx/chaotic-aur/x86_64/"
 DEST="/home/erik/DATA/arcolinux-nemesis/packages/"
 PACKAGES=("chaotic-keyring")
 
@@ -36,7 +36,7 @@ for pkg in "${PACKAGES[@]}"; do
 done
 
 # Configuration
-URL="https://chaoticmirror.com/chaotic-aur/chaotic-aur/x86_64/"
+URL="https://geo-mirror.chaotic.cx/chaotic-aur/x86_64/"
 DEST="/home/erik/DATA/arcolinux-nemesis/packages/"
 PACKAGES=("chaotic-mirrorlist")
 

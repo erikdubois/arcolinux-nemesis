@@ -23,7 +23,7 @@ COMMON_DIR="$(cd -- "${SCRIPT_DIR}/common" && pwd)"
 source "${COMMON_DIR}/common.sh"
 
 WORKDIR="${SCRIPT_DIR}"
-CHAOTIC_URL="https://chaoticmirror.com/chaotic-aur/chaotic-aur/x86_64/"
+CHAOTIC_URL="https://geo-mirror.chaotic.cx/chaotic-aur/x86_64/"
 DEST="${SCRIPT_DIR}/packages"
 MIRRORLIST_FILE="${WORKDIR}/mirrorlist"
 
