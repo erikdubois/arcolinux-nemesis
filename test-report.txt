@@ -1,9 +1,5 @@
 =============================================
-<<<<<<< HEAD
-  Test Report - 2026-04-18 08:18:24
-=======
-  Test Report - 2026-04-18 08:32:46
->>>>>>> c34dea20f0348d027924e1b6937751d2e1f5b9dd
+  Test Report - 2026-04-18 08:40:01
 =============================================
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -207,7 +203,7 @@
   [✓ SUCCESS] service avahi-daemon.service - enabled
   [✓ SUCCESS] service man-db.timer - enabled
   [✓ SUCCESS] service plocate-updatedb.timer - enabled
-  [✓ SUCCESS] service logrotate.timer - enabled
+  [✗ FAILED]  service logrotate.timer - not enabled
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [130] 130-install-bluetooth.sh
@@ -309,14 +305,9 @@
 =============================================
   Final Summary
 =============================================
-<<<<<<< HEAD
-Total  : 241
-Passed : 241
-Failed : 0
-=======
-Total  : 242
-Passed : 238
-Failed : 4
+Total  : 244
+Passed : 243
+Failed : 1
 
 =============================================
   Systemd Services Summary
@@ -325,15 +316,23 @@ Failed : 4
   [✓ enabled]  avahi-daemon.service
   [✓ enabled]  man-db.timer
   [✓ enabled]  plocate-updatedb.timer
-  [✓ enabled]  logrotate.timer
+  [⊘ skipped]  logrotate.timer (package not installed)
   [✓ enabled]  bluetooth.service
   [✓ enabled]  cups.service
   [✓ enabled]  ananicy-cpp.service
   [✓ enabled]  ckb-next-daemon.service
 
-  Enabled : 8  |  Not enabled : 0  |  Skipped : 0
+  Enabled : 7  |  Not enabled : 0  |  Skipped : 1
   Package services not covered by scripts (potential oversights)
   [✗ missing]  smartd.service
 
   Enabled : 0  |  Not enabled : 1  |  Skipped : 0
->>>>>>> c34dea20f0348d027924e1b6937751d2e1f5b9dd
+
+=============================================
+  Drive Health: /dev/sda
+=============================================
+SMART overall-health self-assessment test result: PASSED
+  5 Reallocated_Sector_Ct   0x0033   100   100   010    Pre-fail  Always       -       0
+  9 Power_On_Hours          0x0032   099   099   000    Old_age   Always       -       2157
+187 Uncorrectable_Error_Cnt 0x0032   100   100   000    Old_age   Always       -       0
+190 Airflow_Temperature_Cel 0x0032   077   044   000    Old_age   Always       -       23

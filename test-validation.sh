@@ -583,3 +583,121 @@ if [[ ${#implicit_services[@]} -gt 0 ]]; then
 fi
 
 echo ""
+
+##################################################################################################################
+# SMART Drive Health Summary
+##################################################################################################################
+
+print_smart_summary() {
+    local device="$1"
+
+    echo -e "${BLUE}============================================${NC}"
+    echo -e "${BLUE}  Drive Health: ${device}${NC}"
+    echo -e "${BLUE}============================================${NC}"
+    {
+        echo ""
+        echo "============================================="
+        echo "  Drive Health: ${device}"
+        echo "============================================="
+    } >> "$REPORT_FILE"
+
+    if ! command -v smartctl &>/dev/null; then
+        echo -e "  ${YELLOW}smartctl not installed — skipping${NC}"
+        return
+    fi
+
+    if [[ ! -b "$device" ]]; then
+        echo -e "  ${YELLOW}${device} not found — skipping${NC}"
+        return
+    fi
+
+    local raw
+    raw=$(sudo smartctl -a "$device" 2>&1)
+
+    # Model / type
+    local model
+    model=$(echo "$raw" | grep -E "^(Device Model|Model Number|Model Family):" | head -1 | sed 's/.*:[[:space:]]*//')
+    echo -e "  Model        : ${CYAN}${model:-unknown}${NC}"
+
+    # Overall health
+    local health
+    health=$(echo "$raw" | grep "overall-health self-assessment" | awk '{print $NF}')
+    if [[ "$health" == "PASSED" ]]; then
+        echo -e "  Health       : ${GREEN}PASSED${NC}"
+    else
+        echo -e "  Health       : ${RED}${health:-UNKNOWN}${NC}"
+    fi
+
+    # Temperature
+    local temp
+    temp=$(echo "$raw" | grep -E "^(190|194) " | awk '{print $NF}')
+    [[ -z "$temp" ]] && temp=$(echo "$raw" | grep -i "^Temperature:" | awk '{print $2}')
+    [[ -n "$temp" ]] && echo -e "  Temperature  : ${temp}°C"
+
+    # Power-on hours
+    local hours
+    hours=$(echo "$raw" | grep -E "^  9 " | awk '{print $NF}')
+    [[ -n "$hours" ]] && echo -e "  Power-on hrs : ${hours}"
+
+    # Power cycle count
+    local cycles
+    cycles=$(echo "$raw" | grep -E "^  12 " | awk '{print $NF}')
+    [[ -n "$cycles" ]] && echo -e "  Power cycles : ${cycles}"
+
+    # Reallocated sectors — non-zero is a warning
+    local realloc
+    realloc=$(echo "$raw" | grep -E "^  5 " | awk '{print $NF}')
+    if [[ -n "$realloc" ]]; then
+        if [[ "$realloc" -eq 0 ]]; then
+            echo -e "  Reallocated  : ${GREEN}${realloc}${NC}"
+        else
+            echo -e "  Reallocated  : ${RED}${realloc} ← WARNING${NC}"
+        fi
+    fi
+
+    # Pending sectors
+    local pending
+    pending=$(echo "$raw" | grep -E "^197 " | awk '{print $NF}')
+    if [[ -n "$pending" ]]; then
+        if [[ "$pending" -eq 0 ]]; then
+            echo -e "  Pending      : ${GREEN}${pending}${NC}"
+        else
+            echo -e "  Pending      : ${RED}${pending} ← WARNING${NC}"
+        fi
+    fi
+
+    # Uncorrectable sectors
+    local uncorr
+    uncorr=$(echo "$raw" | grep -E "^198 " | awk '{print $NF}')
+    if [[ -n "$uncorr" ]]; then
+        if [[ "$uncorr" -eq 0 ]]; then
+            echo -e "  Uncorrectable: ${GREEN}${uncorr}${NC}"
+        else
+            echo -e "  Uncorrectable: ${RED}${uncorr} ← WARNING${NC}"
+        fi
+    fi
+
+    # NVMe: percentage used + available spare
+    local pct_used spare
+    pct_used=$(echo "$raw" | grep "Percentage Used:" | awk '{print $3}')
+    spare=$(echo "$raw" | grep "Available Spare:" | head -1 | awk '{print $3}')
+    [[ -n "$pct_used" ]] && echo -e "  NVMe used    : ${pct_used}"
+    [[ -n "$spare"    ]] && echo -e "  Spare left   : ${spare}"
+
+    echo ""
+    echo "$raw" | grep -E "(overall-health|Temperature|Power_On|Reallocated|Pending|Uncorrectable|Percentage Used|Available Spare)" \
+        >> "$REPORT_FILE"
+}
+
+# Auto-detect all physical drives (excludes loop, ram, partitions)
+mapfile -t DRIVES < <(lsblk -dn -o NAME,TYPE | awk '$2=="disk" && $1 !~ /^zram/{print "/dev/"$1}')
+
+if [[ ${#DRIVES[@]} -eq 0 ]]; then
+    echo -e "  ${YELLOW}No drives detected — skipping SMART summary${NC}"
+else
+    for drive in "${DRIVES[@]}"; do
+        print_smart_summary "$drive"
+    done
+fi
+
+echo ""
