@@ -78,7 +78,7 @@ log_warn() {
 
 log_error() {
     local lineno="$1"
-    local cmd="$2"
+    local cmd="${2:-}"
 
     echo
     echo "${RED}⚠️ ERROR DETECTED${RESET}"

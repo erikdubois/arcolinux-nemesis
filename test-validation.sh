@@ -450,3 +450,136 @@ echo ""
     echo "Passed : $success_count"
     echo "Failed : $failure_count"
 } >> "$REPORT_FILE"
+
+##################################################################################################################
+# Systemd service summary
+##################################################################################################################
+
+# Packages installed by the pipeline that have a service/timer not explicitly enabled by any script.
+# Format: "package:service-or-timer"
+PKG_SERVICE_MAP=(
+    "smartmontools:smartd.service"
+    "logrotate:logrotate.timer"
+    "man-db:man-db.timer"
+    "plocate:plocate-updatedb.timer"
+    "cups:cups.service"
+    "bluetooth:bluetooth.service"
+    "avahi:avahi-daemon.service"
+    "ananicy-cpp:ananicy-cpp.service"
+    "ckb-next-git:ckb-next-daemon.service"
+)
+
+print_service_block() {
+    local heading="$1"; shift
+    local -n _svcs="$1"
+    local svc_enabled_count=0
+    local svc_missing_count=0
+    local svc_skipped_count=0
+
+    echo -e "${CYAN}  ${heading}${NC}"
+    echo "  ${heading}" >> "$REPORT_FILE"
+
+    for entry in "${_svcs[@]}"; do
+        local pkg="${entry%%:*}"
+        local svc="${entry##*:}"
+
+        if ! pacman -Qq "$pkg" &>/dev/null; then
+            echo -e "  ${YELLOW}⊘${NC} ${svc}  ${YELLOW}skipped${NC} (${pkg} not installed)"
+            echo "  [⊘ skipped]  $svc ($pkg not installed)" >> "$REPORT_FILE"
+            svc_skipped_count=$(( svc_skipped_count + 1 ))
+            continue
+        fi
+
+        if systemctl is-enabled --quiet "$svc" 2>/dev/null; then
+            echo -e "  ${GREEN}✓${NC} ${svc}  ${GREEN}enabled${NC}"
+            echo "  [✓ enabled]  $svc" >> "$REPORT_FILE"
+            svc_enabled_count=$(( svc_enabled_count + 1 ))
+        else
+            echo -e "  ${RED}✗${NC} ${svc}  ${RED}NOT enabled${NC}"
+            echo "  [✗ missing]  $svc" >> "$REPORT_FILE"
+            svc_missing_count=$(( svc_missing_count + 1 ))
+        fi
+    done
+
+    echo ""
+    echo -e "  Enabled : ${GREEN}${svc_enabled_count}${NC}  |  Not enabled : ${RED}${svc_missing_count}${NC}  |  Skipped : ${YELLOW}${svc_skipped_count}${NC}"
+    {
+        echo ""
+        echo "  Enabled : $svc_enabled_count  |  Not enabled : $svc_missing_count  |  Skipped : $svc_skipped_count"
+    } >> "$REPORT_FILE"
+}
+
+echo ""
+echo -e "${BLUE}============================================${NC}"
+echo -e "${BLUE}  Systemd Services Summary${NC}"
+echo -e "${BLUE}============================================${NC}"
+echo ""
+
+{
+    echo ""
+    echo "============================================="
+    echo "  Systemd Services Summary"
+    echo "============================================="
+} >> "$REPORT_FILE"
+
+# --- Section 1: services explicitly enabled by pipeline scripts ---
+declare -A seen_services
+declare -a pipeline_services=()
+
+for script_path in "${ALL_SCRIPTS[@]}"; do
+    while IFS= read -r svc; do
+        [[ -z "$svc" ]] && continue
+        if [[ -z "${seen_services[$svc]+_}" ]]; then
+            seen_services[$svc]=1
+            pipeline_services+=("$svc")
+        fi
+    done < <(grep -E '^[[:space:]]*(enable_now_service|sudo systemctl enable --now)[[:space:]]+' "$script_path" \
+        | grep -v '^[[:space:]]*#' \
+        | sed -E 's/^[[:space:]]*(enable_now_service|sudo systemctl enable --now)[[:space:]]*//' \
+        | sed "s/['\"]//g" \
+        | xargs -n1 2>/dev/null)
+done
+
+echo -e "${CYAN}  Explicitly enabled by scripts${NC}"
+echo "  Explicitly enabled by scripts" >> "$REPORT_FILE"
+exp_enabled=0; exp_missing=0; exp_skipped=0
+for svc in "${pipeline_services[@]}"; do
+    svc_name="${svc%.service}"
+    pkg_found=false
+    pacman -Qq "$svc_name" &>/dev/null && pkg_found=true
+    pacman -Qq "${svc_name%-*}" &>/dev/null && pkg_found=true
+
+    if systemctl is-enabled --quiet "$svc" 2>/dev/null; then
+        echo -e "  ${GREEN}✓${NC} ${svc}  ${GREEN}enabled${NC}"
+        echo "  [✓ enabled]  $svc" >> "$REPORT_FILE"
+        exp_enabled=$(( exp_enabled + 1 ))
+    elif ! $pkg_found; then
+        echo -e "  ${YELLOW}⊘${NC} ${svc}  ${YELLOW}skipped${NC} (package not installed)"
+        echo "  [⊘ skipped]  $svc (package not installed)" >> "$REPORT_FILE"
+        exp_skipped=$(( exp_skipped + 1 ))
+    else
+        echo -e "  ${RED}✗${NC} ${svc}  ${RED}NOT enabled${NC}"
+        echo "  [✗ missing]  $svc" >> "$REPORT_FILE"
+        exp_missing=$(( exp_missing + 1 ))
+    fi
+done
+echo ""
+echo -e "  Enabled : ${GREEN}${exp_enabled}${NC}  |  Not enabled : ${RED}${exp_missing}${NC}  |  Skipped : ${YELLOW}${exp_skipped}${NC}"
+{ echo ""; echo "  Enabled : $exp_enabled  |  Not enabled : $exp_missing  |  Skipped : $exp_skipped"; } >> "$REPORT_FILE"
+
+# --- Section 2: services from installed packages not covered by scripts ---
+echo ""
+declare -a implicit_services=()
+for entry in "${PKG_SERVICE_MAP[@]}"; do
+    pkg="${entry%%:*}"; svc="${entry##*:}"
+    # Only include if NOT already tracked by the pipeline
+    if [[ -z "${seen_services[$svc]+_}" ]]; then
+        implicit_services+=("$entry")
+    fi
+done
+
+if [[ ${#implicit_services[@]} -gt 0 ]]; then
+    print_service_block "Package services not covered by scripts (potential oversights)" implicit_services
+fi
+
+echo ""

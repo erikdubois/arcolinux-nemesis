@@ -197,7 +197,7 @@ update_nanorc() {
 }
 
 git_commit_and_push() {
-    local input branch
+    local branch
 
     log_section "Git add / commit / push"
     git add --all .
@@ -205,7 +205,12 @@ git_commit_and_push() {
     git commit -m "update" || log_warn "Nothing to commit or commit failed"
 
     branch="$(git rev-parse --abbrev-ref HEAD)"
-    git push -u origin "${branch}" || log_error "Git push failed"
+
+    if ! git push -u origin "${branch}"; then
+        log_warn "Push rejected — rebasing on remote changes and retrying"
+        git pull --rebase origin "${branch}" || { log_error "Rebase failed — resolve conflicts manually"; return 1; }
+        git push -u origin "${branch}" || log_error "Git push failed after rebase"
+    fi
 }
 
 git_pull() {

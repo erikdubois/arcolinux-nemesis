@@ -1,5 +1,9 @@
 =============================================
+<<<<<<< HEAD
   Test Report - 2026-04-18 08:18:24
+=======
+  Test Report - 2026-04-18 08:32:46
+>>>>>>> c34dea20f0348d027924e1b6937751d2e1f5b9dd
 =============================================
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -201,6 +205,9 @@
   [✓ SUCCESS] install spotify
   [✓ SUCCESS] install visual-studio-code-bin
   [✓ SUCCESS] service avahi-daemon.service - enabled
+  [✓ SUCCESS] service man-db.timer - enabled
+  [✓ SUCCESS] service plocate-updatedb.timer - enabled
+  [✓ SUCCESS] service logrotate.timer - enabled
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [130] 130-install-bluetooth.sh
@@ -302,6 +309,31 @@
 =============================================
   Final Summary
 =============================================
+<<<<<<< HEAD
 Total  : 241
 Passed : 241
 Failed : 0
+=======
+Total  : 242
+Passed : 238
+Failed : 4
+
+=============================================
+  Systemd Services Summary
+=============================================
+  Explicitly enabled by scripts
+  [✓ enabled]  avahi-daemon.service
+  [✓ enabled]  man-db.timer
+  [✓ enabled]  plocate-updatedb.timer
+  [✓ enabled]  logrotate.timer
+  [✓ enabled]  bluetooth.service
+  [✓ enabled]  cups.service
+  [✓ enabled]  ananicy-cpp.service
+  [✓ enabled]  ckb-next-daemon.service
+
+  Enabled : 8  |  Not enabled : 0  |  Skipped : 0
+  Package services not covered by scripts (potential oversights)
+  [✗ missing]  smartd.service
+
+  Enabled : 0  |  Not enabled : 1  |  Skipped : 0
+>>>>>>> c34dea20f0348d027924e1b6937751d2e1f5b9dd
