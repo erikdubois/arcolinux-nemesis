@@ -71,3 +71,34 @@ The framework adds two custom repos to `pacman.conf`:
 ### Debug Mode
 
 Setting `DEBUG=true` before running causes the pipeline to pause before each section for step-by-step inspection.
+
+### TARGET_USER
+
+`$TARGET_USER` (set in `common/common.sh` as `${SUDO_USER:-$USER}`) resolves to the invoking user even when running under sudo. Use it when writing files to user home directories.
+
+## Helper Functions in common/common.sh
+
+**Logging:** `log_section`, `log_subsection`, `log_info`, `log_warn`, `log_success`
+
+**Packages:**
+- `install_packages pkg...` — pacman -S --needed
+- `remove_packages pkg...` — only removes if installed
+- `remove_matching_packages pkg...` — removes with deps (Rs)
+- `remove_matching_packages_deps pkg...` — removes with deps+orphans (Rns)
+- `remove_matching_packages_deps_dd pkg...` — force remove ignoring deps (Rdd)
+- `pkg_installed pkg` — boolean check via `pacman -Q`
+- `install_local_packages` — installs `*.pkg.tar.*` from `$PACKAGES_DIR`
+
+**Services:** `enable_now_service`, `disable_service`, `start_service`, `restart_service`
+
+**Files:**
+- `backup_file_once src dst` — copies only if dst doesn't exist
+- `copy_file src dst` / `copy_file_user src dst` — root vs TARGET_USER
+- `move_file src dst` / `move_file_user src dst`
+- `write_file_as_root target` — reads stdin, writes via sudo tee
+- `append_line_if_missing file line` / `append_line_if_missing_root file line`
+- `remove_file_if_exists`, `remove_folder_if_exists`
+- `replace_text_in_file file old new [use_sudo]`
+- `comment_out_patterns_in_file file pattern...`
+
+**Detection:** `is_plasma_installed`, `is_plasma_x11_installed`
