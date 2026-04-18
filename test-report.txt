@@ -1,5 +1,5 @@
 =============================================
-  Test Report - 2026-04-18 08:16:18
+  Test Report - 2026-04-18 08:18:24
 =============================================
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -30,14 +30,14 @@
   [✓ SUCCESS] clapper - not present
   [✓ SUCCESS] archlinux-logout-git - not present
   [✓ SUCCESS] archlinux-tweak-tool-git - not present
-  [✗ FAILED]  btrfs-progs - still installed (should be removed)
+  [✓ SUCCESS] btrfs-progs - not present
   [✓ SUCCESS] jfsutils - not present
   [✓ SUCCESS] xfsprogs - not present
   [✓ SUCCESS] jfsutils - not present
   [✓ SUCCESS] xfsprogs - not present
-  [✗ FAILED]  btrfs-progs - still installed (should be removed)
+  [✓ SUCCESS] btrfs-progs - not present
   [✓ SUCCESS] xfsprogs - not present
-  [✗ FAILED]  btrfs-progs - still installed (should be removed)
+  [✓ SUCCESS] btrfs-progs - not present
   [✓ SUCCESS] jfsutils - not present
   [✓ SUCCESS] install sublime-text-4
   [✓ SUCCESS] install ripgrep
@@ -91,6 +91,8 @@
   [✓ SUCCESS] install surfn-icons-git
   [✓ SUCCESS] install xcolor
   [✓ SUCCESS] install xorg-xkill
+  [✓ SUCCESS] install menulibre
+  [✓ SUCCESS] install mugshot
   [✓ SUCCESS] install fastfetch-git
   [✓ SUCCESS] install unifetch
   [✓ SUCCESS] install yay-git
@@ -141,7 +143,7 @@
   [✓ SUCCESS] install mintstick
   [✓ SUCCESS] install most
   [✓ SUCCESS] install namcap
-  [✓ SUCCESS] install nomacs
+  [✓ SUCCESS] install nomacs (via nomacs-git)
   [✓ SUCCESS] install noto-fonts
   [✓ SUCCESS] install nss-mdns
   [✓ SUCCESS] install oh-my-zsh-git
@@ -207,7 +209,7 @@
   [✓ SUCCESS] install bluez-libs
   [✓ SUCCESS] install bluez-utils
   [✓ SUCCESS] install blueberry
-  [✗ FAILED]  install pulseaudio-bluetooth - not found
+  [✓ SUCCESS] install pulseaudio-bluetooth
   [✓ SUCCESS] service bluetooth.service - enabled
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -300,6 +302,6 @@
 =============================================
   Final Summary
 =============================================
-Total  : 239
-Passed : 235
-Failed : 4
+Total  : 241
+Passed : 241
+Failed : 0
