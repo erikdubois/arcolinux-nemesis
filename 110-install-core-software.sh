@@ -180,6 +180,9 @@ install_core_packages() {
 enable_core_services() {
     log_section "Enabling core services"
     enable_now_service avahi-daemon.service
+    enable_now_service man-db.timer
+    enable_now_service plocate-updatedb.timer
+    enable_now_service logrotate.timer
 }
 
 # Execution order matters here: Sddm handling first
