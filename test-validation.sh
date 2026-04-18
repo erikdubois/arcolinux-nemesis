@@ -39,13 +39,38 @@ log_result() {
     total_checks=$((total_checks + 1))
     if [[ "$status" == "SUCCESS" ]]; then
         success_count=$((success_count + 1))
-        echo -e "  ${GREEN}✓${NC} ${description}  ${GREEN}SUCCESS${NC}"
+        if [[ "$DETAIL_MODE" == true ]]; then
+            echo -e "  ${GREEN}✓${NC} ${description}  ${GREEN}SUCCESS${NC}"
+        fi
         echo "  [✓ SUCCESS] $description" >> "$REPORT_FILE"
     else
         failure_count=$((failure_count + 1))
-        echo -e "  ${RED}✗${NC} ${description}  ${RED}FAILED${NC}"
+        if [[ "$DETAIL_MODE" == true ]]; then
+            echo -e "  ${RED}✗${NC} ${description}  ${RED}FAILED${NC}"
+        fi
         echo "  [✗ FAILED]  $description" >> "$REPORT_FILE"
     fi
+}
+
+##################################################################################################################
+# Conditional package guards — packages only relevant when a DE is present
+##################################################################################################################
+
+XFCE_ONLY_PKGS=("menulibre" "mugshot")
+
+is_xfce_installed() {
+    [[ -f /usr/share/xsessions/xfce.desktop ]]
+}
+
+pkg_should_skip() {
+    local pkg="$1"
+    local p
+    for p in "${XFCE_ONLY_PKGS[@]}"; do
+        if [[ "$pkg" == "$p" ]] && ! is_xfce_installed; then
+            return 0
+        fi
+    done
+    return 1
 }
 
 ##################################################################################################################
@@ -54,6 +79,12 @@ log_result() {
 
 check_pkg_installed() {
     local pkg="$1"
+    if pkg_should_skip "$pkg"; then
+        if [[ "$DETAIL_MODE" == true ]]; then
+            echo -e "  ${YELLOW}⊘${NC} install $pkg  ${YELLOW}SKIPPED${NC} (xfce4 not installed)"
+        fi
+        return
+    fi
     local git_variant="${pkg}-git"
     if pacman -Qq | grep -Fxq "$pkg"; then
         log_result "SUCCESS" "install $pkg"
@@ -278,11 +309,6 @@ validate_script() {
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     } >> "$REPORT_FILE"
 
-    if [[ "$DETAIL_MODE" != true ]]; then
-        echo "  (run with --detail for line-by-line results)"
-        return
-    fi
-
     # Backup file checks
     while IFS= read -r args; do
         [[ -z "$args" ]] && continue
@@ -341,8 +367,16 @@ validate_script() {
 
     if [[ $script_checks -eq 0 ]]; then
         echo -e "  ${YELLOW}(no trackable operations found)${NC}"
-    else
+    elif [[ "$DETAIL_MODE" == true ]]; then
         echo -e "  ${script_name}: ${GREEN}${script_pass} passed${NC} / ${RED}${script_fail} failed${NC} / ${script_checks} total"
+    fi
+
+    if [[ $script_checks -gt 0 ]]; then
+        if [[ $script_fail -eq 0 ]]; then
+            echo -e "  ${GREEN}SUCCESS${NC}"
+        else
+            echo -e "  ${RED}ERROR${NC} (${script_fail} failed / ${script_checks} total)"
+        fi
     fi
 }
 
