@@ -24,7 +24,7 @@ install_cups_packages() {
 
     # Keep printing and scanning together because both are part of the same
     # workstation setup phase for most users.
-    install_packages         cups         cups-pdf         ghostscript         gsfonts         gutenprint         gtk3-print-backends         libcups         system-config-printer         sane         simple-scan
+    install_packages cups cups-pdf ghostscript gsfonts gutenprint libcups         system-config-printer         sane         simple-scan
 }
 
 enable_cups_service() {

@@ -1,0 +1,307 @@
+=============================================
+  Test Report - 2026-04-17 20:56:41
+=============================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[0] 0-current-choices.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] backup .bashrc → .bashrc-nemesis
+  [✓ SUCCESS] backup .zshrc → .zshrc-nemesis
+  [✓ SUCCESS] backup mirrorlist → mirrorlist-nemesis
+  [✓ SUCCESS] backup pacman.conf → pacman.conf-nemesis
+  [✓ SUCCESS] backup pacman.conf → pacman.conf-nemesis
+  [✓ SUCCESS] backup environment → environment-nemesis
+  [✓ SUCCESS] backup nanorc → nanorc-nemesis
+  [✓ SUCCESS] backup nsswitch.conf → nsswitch.conf-nemesis
+  [✓ SUCCESS] xf86-video-vmware - not present
+  [✓ SUCCESS] archinstall - not present
+  [✓ SUCCESS] neofetch - not present
+  [✓ SUCCESS] fastfetch - not present
+  [✓ SUCCESS] yay - not present
+  [✓ SUCCESS] yay-bin - not present
+  [✓ SUCCESS] paru - not present
+  [✓ SUCCESS] picom - not present
+  [✓ SUCCESS] mkinitcpio-nfs-utils - not present
+  [✓ SUCCESS] xfburn - not present
+  [✓ SUCCESS] parole - not present
+  [✓ SUCCESS] pamac - not present
+  [✓ SUCCESS] pamac-git - not present
+  [✓ SUCCESS] mpv - not present
+  [✓ SUCCESS] clapper - not present
+  [✓ SUCCESS] archlinux-logout-git - not present
+  [✓ SUCCESS] archlinux-tweak-tool-git - not present
+  [✓ SUCCESS] btrfs-progs - not present
+  [✓ SUCCESS] jfsutils - not present
+  [✓ SUCCESS] xfsprogs - not present
+  [✓ SUCCESS] jfsutils - not present
+  [✓ SUCCESS] xfsprogs - not present
+  [✓ SUCCESS] btrfs-progs - not present
+  [✓ SUCCESS] xfsprogs - not present
+  [✓ SUCCESS] btrfs-progs - not present
+  [✓ SUCCESS] jfsutils - not present
+  [✓ SUCCESS] install sublime-text-4
+  [✓ SUCCESS] install ripgrep
+  [✓ SUCCESS] install meld
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[100] 100-install-nemesis-software.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install mkinitcpio-firmware
+  [✓ SUCCESS] install upd72020x-fw
+  [✓ SUCCESS] install archlinux-tweak-tool-gtk4-git
+  [✓ SUCCESS] install edu-dot-files-git
+  [✓ SUCCESS] install arc-gtk-theme
+  [✓ SUCCESS] install archlinux-logout-gtk4-git
+  [✓ SUCCESS] install edu-arc-dawn-git
+  [✓ SUCCESS] install edu-arc-kde
+  [✓ SUCCESS] install edu-hblock-git
+  [✓ SUCCESS] install edu-rofi-git
+  [✓ SUCCESS] install edu-rofi-themes-git
+  [✓ SUCCESS] install edu-sddm-simplicity-git
+  [✓ SUCCESS] install edu-shells-git
+  [✓ SUCCESS] install edu-variety-config-git
+  [✓ SUCCESS] install edu-xfce-git
+  [✓ SUCCESS] install flameshot-git
+  [✓ SUCCESS] install gittyup
+  [✓ SUCCESS] install hardcode-fixer-git
+  [✓ SUCCESS] install lastpass
+  [✓ SUCCESS] install neo-candy-icons-git
+  [✓ SUCCESS] install rofi
+  [✓ SUCCESS] install sparklines-git
+  [✓ SUCCESS] install surfn-icons-git
+  [✓ SUCCESS] install wttr
+  [✓ SUCCESS] install pamac-aur
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[110] 110-install-core-software.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install alacritty
+  [✓ SUCCESS] install arandr
+  [✓ SUCCESS] install catfish
+  [✓ SUCCESS] install dmenu
+  [✓ SUCCESS] install evince
+  [✓ SUCCESS] install galculator
+  [✓ SUCCESS] install network-manager-applet
+  [✓ SUCCESS] install networkmanager-openvpn
+  [✓ SUCCESS] install networkmanager
+  [✓ SUCCESS] install numlockx
+  [✓ SUCCESS] install pavucontrol
+  [✓ SUCCESS] install playerctl
+  [✓ SUCCESS] install sardi-icons
+  [✓ SUCCESS] install surfn-icons-git
+  [✓ SUCCESS] install xcolor
+  [✓ SUCCESS] install xorg-xkill
+  [✓ SUCCESS] install menulibre
+  [✓ SUCCESS] install mugshot
+  [✓ SUCCESS] install fastfetch-git
+  [✓ SUCCESS] install unifetch
+  [✓ SUCCESS] install yay-git
+  [✓ SUCCESS] install paru-git
+  [✓ SUCCESS] install adobe-source-sans-fonts
+  [✓ SUCCESS] install aic94xx-firmware
+  [✓ SUCCESS] install avahi
+  [✓ SUCCESS] install baobab
+  [✓ SUCCESS] install bash-completion
+  [✓ SUCCESS] install bat
+  [✓ SUCCESS] install bibata-cursor-theme
+  [✓ SUCCESS] install brave-bin
+  [✓ SUCCESS] install btop
+  [✓ SUCCESS] install chromium
+  [✓ SUCCESS] install curl
+  [✓ SUCCESS] install dconf-editor
+  [✓ SUCCESS] install debugedit
+  [✓ SUCCESS] install devtools
+  [✓ SUCCESS] install downgrade
+  [✓ SUCCESS] install duf
+  [✓ SUCCESS] install expac
+  [✓ SUCCESS] install fakeroot
+  [✓ SUCCESS] install feh
+  [✓ SUCCESS] install file-roller
+  [✓ SUCCESS] install firefox
+  [✓ SUCCESS] install fish
+  [✓ SUCCESS] install font-manager
+  [✓ SUCCESS] install gcolor3
+  [✓ SUCCESS] install gimp
+  [✓ SUCCESS] install git
+  [✓ SUCCESS] install gnome-disk-utility
+  [✓ SUCCESS] install gparted
+  [✓ SUCCESS] install gvfs-smb
+  [✓ SUCCESS] install gvfs-dnssd
+  [✓ SUCCESS] install hardcode-fixer-git
+  [✓ SUCCESS] install hardinfo2
+  [✓ SUCCESS] install inetutils
+  [✓ SUCCESS] install inkscape
+  [✓ SUCCESS] install logrotate
+  [✓ SUCCESS] install lolcat
+  [✓ SUCCESS] install lsb-release
+  [✓ SUCCESS] install lshw
+  [✓ SUCCESS] install man-db
+  [✓ SUCCESS] install man-pages
+  [✓ SUCCESS] install nano
+  [✓ SUCCESS] install plocate
+  [✓ SUCCESS] install meld
+  [✓ SUCCESS] install mintstick
+  [✓ SUCCESS] install most
+  [✓ SUCCESS] install namcap
+  [✓ SUCCESS] install nomacs (via nomacs-git)
+  [✓ SUCCESS] install noto-fonts
+  [✓ SUCCESS] install nss-mdns
+  [✓ SUCCESS] install oh-my-zsh-git
+  [✓ SUCCESS] install pacmanlogviewer
+  [✓ SUCCESS] install polkit-gnome
+  [✓ SUCCESS] install python-pylint
+  [✓ SUCCESS] install python-pywal
+  [✓ SUCCESS] install pv
+  [✓ SUCCESS] install qbittorrent
+  [✓ SUCCESS] install rate-mirrors
+  [✓ SUCCESS] install resources
+  [✓ SUCCESS] install ripgrep
+  [✓ SUCCESS] install rsync
+  [✓ SUCCESS] install scrot
+  [✓ SUCCESS] install shortwave
+  [✓ SUCCESS] install smartmontools
+  [✓ SUCCESS] install speedtest-cli
+  [✓ SUCCESS] install squashfs-tools
+  [✓ SUCCESS] install sublime-text-4
+  [✓ SUCCESS] install system-config-printer
+  [✓ SUCCESS] install the_silver_searcher
+  [✓ SUCCESS] install time
+  [✓ SUCCESS] install thunar
+  [✓ SUCCESS] install thunar-archive-plugin
+  [✓ SUCCESS] install thunar-volman
+  [✓ SUCCESS] install tree
+  [✓ SUCCESS] install ttf-dejavu
+  [✓ SUCCESS] install ttf-droid
+  [✓ SUCCESS] install ttf-hack
+  [✓ SUCCESS] install ttf-liberation
+  [✓ SUCCESS] install ttf-ms-fonts
+  [✓ SUCCESS] install ttf-roboto
+  [✓ SUCCESS] install ttf-roboto-mono
+  [✓ SUCCESS] install ttf-ubuntu-font-family
+  [✓ SUCCESS] install upd72020x-fw
+  [✓ SUCCESS] install variety
+  [✓ SUCCESS] install vivaldi
+  [✓ SUCCESS] install vivaldi-ffmpeg-codecs
+  [✓ SUCCESS] install vlc
+  [✓ SUCCESS] install vlc-plugins-all
+  [✓ SUCCESS] install wd719x-firmware
+  [✓ SUCCESS] install wget
+  [✓ SUCCESS] install xdg-user-dirs
+  [✓ SUCCESS] install yad
+  [✓ SUCCESS] install zsh
+  [✓ SUCCESS] install zsh-completions
+  [✓ SUCCESS] install zsh-syntax-highlighting
+  [✓ SUCCESS] install gzip
+  [✓ SUCCESS] install unace
+  [✓ SUCCESS] install unrar
+  [✓ SUCCESS] install unzip
+  [✓ SUCCESS] install hw-probe
+  [✓ SUCCESS] install insync
+  [✓ SUCCESS] install signal-in-tray
+  [✓ SUCCESS] install spotify
+  [✓ SUCCESS] install visual-studio-code-bin
+  [✓ SUCCESS] service avahi-daemon.service - enabled
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[130] 130-install-bluetooth.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install bluez
+  [✓ SUCCESS] install bluez-libs
+  [✓ SUCCESS] install bluez-utils
+  [✓ SUCCESS] install blueberry
+  [✓ SUCCESS] install pulseaudio-bluetooth
+  [✓ SUCCESS] service bluetooth.service - enabled
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[140] 140-install-cups.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install cups
+  [✓ SUCCESS] install cups-pdf
+  [✓ SUCCESS] install ghostscript
+  [✓ SUCCESS] install gsfonts
+  [✓ SUCCESS] install gutenprint
+  [✓ SUCCESS] install libcups
+  [✓ SUCCESS] install system-config-printer
+  [✓ SUCCESS] install sane
+  [✓ SUCCESS] install simple-scan
+  [✓ SUCCESS] service cups.service - enabled
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[150] 150-ananicy.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install ananicy-cpp
+  [✓ SUCCESS] install cachyos-ananicy-rules-git
+  [✓ SUCCESS] service ananicy-cpp.service - enabled
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[200] 200-software-aur-repo.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[600] 600-chadwm.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install edu-chadwm-git
+  [✓ SUCCESS] install ohmychadwm-git
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[900] 900-install-personal-settings-folders.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] dir /etc/skel/.config
+  [✓ SUCCESS] dir /home/erik/.bin
+  [✓ SUCCESS] dir /home/erik/.fonts
+  [✓ SUCCESS] dir /home/erik/.icons
+  [✓ SUCCESS] dir /home/erik/.themes
+  [✓ SUCCESS] dir /home/erik/.local/share/bin
+  [✓ SUCCESS] dir /home/erik/.local/share/icons
+  [✓ SUCCESS] dir /home/erik/.local/share/themes
+  [✓ SUCCESS] dir /home/erik/.local/share/applications
+  [✓ SUCCESS] dir /home/erik/.config
+  [✓ SUCCESS] dir /home/erik/.config/xfce4
+  [✓ SUCCESS] dir /home/erik/.config/autostart
+  [✓ SUCCESS] dir /home/erik/.config/xfce4/xfconf
+  [✓ SUCCESS] dir /home/erik/.config/gtk-3.0
+  [✓ SUCCESS] dir /home/erik/.config/gtk-4.0
+  [✓ SUCCESS] dir /home/erik/.config/variety
+  [✓ SUCCESS] dir /home/erik/.config/fish
+  [✓ SUCCESS] dir /home/erik/.config/obs-studio
+  [✓ SUCCESS] dir /home/erik/.config/neofetch
+  [✓ SUCCESS] dir /home/erik/.config/flameshot
+  [✓ SUCCESS] dir /home/erik/DATA
+  [✓ SUCCESS] dir /home/erik/Insync
+  [✓ SUCCESS] dir /home/erik/Projects
+  [✓ SUCCESS] dir /home/erik/SHARED
+  [✓ SUCCESS] dir /home/erik/.config/sublime-text/Packages/User
+  [✓ SUCCESS] copied → /etc/nanorc
+  [✓ SUCCESS] copied → /etc/nsswitch.conf
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[910] 910-plasma-specific-applications-and-settings.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[920] 920-ckb-next.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install hwinfo
+  [✓ SUCCESS] install ckb-next-git
+  [✓ SUCCESS] service ckb-next-daemon.service - enabled
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[930] 930-real-metal.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] qemu-guest-agent - not present
+  [✓ SUCCESS] virtualbox-guest-utils - not present
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[990] 990-skel.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[999] 999-last-changes.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+=============================================
+  Final Summary
+=============================================
+Total  : 241
+Passed : 241
+Failed : 0

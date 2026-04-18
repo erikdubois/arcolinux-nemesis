@@ -159,23 +159,23 @@ run_backup_operations() {
     backup_file_once /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-nemesis
 
     # Preserve the original pacman.conf for the Nemesis workflow.
-    backup_file_once /etc/pacman.conf /etc/pacman.conf.nemesis
+    backup_file_once /etc/pacman.conf /etc/pacman.conf-nemesis
 
     # Preserve a second copy for the edu variant that is used elsewhere.
-    backup_file_once /etc/pacman.conf /etc/pacman.conf.edu
+    backup_file_once /etc/pacman.conf /etc/pacman.conf-nemesis
 
     # Back up the current environment file before any changes are made.
-    backup_file_once /etc/environment /etc/environment.nemesis
+    backup_file_once /etc/environment /etc/environment-nemesis
     
     # This file is used to set global environment variables, and Nemesis may add entries here. 
     # Keeping a backup allows for easy restoration if needed.
-    backup_file_once /etc/nanorc /etc/nanorc.nemesis
+    backup_file_once /etc/nanorc /etc/nanorc-nemesis
 
     # The nsswitch.conf file is critical for system name resolution and other services. 
-    backup_file_once /etc/nsswitch.conf /etc/nsswitch.conf.nemesis
+    backup_file_once /etc/nsswitch.conf /etc/nsswitch.conf-nemesis
 
     # Back up the current sysctl.d directory before any Nemesis-specific tweaks are applied.
-    backup_folder_as_root /etc/sysctl.d/ /etc/sysctl.d.nemesis
+    backup_folder_as_root /etc/sysctl.d/ /etc/sysctl.d-nemesis
 
     log_warn "Backup operations completed"
 }

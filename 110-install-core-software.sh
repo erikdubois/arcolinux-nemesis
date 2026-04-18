@@ -70,7 +70,6 @@ install_core_packages() {
         paru-git
         adobe-source-sans-fonts
         aic94xx-firmware
-        archlinux-tools
         avahi
         baobab
         bash-completion
@@ -164,7 +163,6 @@ install_core_packages() {
         zsh-completions
         zsh-syntax-highlighting
         gzip
-        p7zip
         unace
         unrar
         unzip
