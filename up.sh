@@ -208,7 +208,13 @@ git_commit_and_push() {
     git push -u origin "${branch}" || log_error "Git push failed"
 }
 
+git_pull() {
+    log_section "Git pull"
+    git -C "${SCRIPT_DIR}" pull || log_warn "Git pull failed — continuing with local state"
+}
+
 main() {
+    git_pull
     enable_chaotic_packages
     update_chaotic_packages
     generate_mirrorlist
