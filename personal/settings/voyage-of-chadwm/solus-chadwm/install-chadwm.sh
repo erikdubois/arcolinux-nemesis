@@ -77,8 +77,8 @@ sudo eopkg install -y variety
 git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
 sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
 sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
-cp -rv /tmp/edu-chadwm/etc/skel/.bin ~
-cp -rv /tmp/edu-chadwm/etc/skel/.config ~
+cp -r /tmp/edu-chadwm/etc/skel/.bin ~
+cp -r /tmp/edu-chadwm/etc/skel/.config ~
 
 # building Ohmyhadwm
 cd ~/.config/arco-chadwm/chadwm
@@ -93,8 +93,8 @@ git clone https://github.com/erikdubois/ohmychadwm  /tmp/ohmychadwm
 [ -d /tmp/edu-powermenu ] && rm -rf /tmp/edu-powermenu
 git clone https://github.com/erikdubois/edu-powermenu  /tmp/edu-powermenu
 sudo cp /tmp/edu-powermenu/usr/local/bin/edu-powermenu /usr/local/bin/edu-powermenu
-cp -rv /tmp/edu-chadwm/etc/skel/.bin ~
-cp -rv /tmp/edu-chadwm/etc/skel/.config ~
+cp -r /tmp/edu-chadwm/etc/skel/.bin ~
+cp -r /tmp/edu-chadwm/etc/skel/.config ~
 
 # building Chadwm
 cd ~/.config/ohmychadwm/chadwm
