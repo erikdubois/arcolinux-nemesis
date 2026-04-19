@@ -88,9 +88,13 @@ sudo make clean
 # getting the official code
 [ -d /tmp/ohmychadwm ] && rm -rf /tmp/ohmychadwm
 git clone https://github.com/erikdubois/ohmychadwm  /tmp/ohmychadwm
-sudo cp /tmp/ohmychadwm/usr/bin/exec-ohmychadwm /usr/bin
-sudo cp /tmp/ohmychadwm/usr/share/xsessions/ohmychadwm.desktop /usr/share/xsessions
-cp -rv /tmp/ohmychadwm/etc/skel/.config ~
+
+# getting edu-powermenu
+[ -d /tmp/edu-powermenu ] && rm -rf /tmp/edu-powermenu
+git clone https://github.com/erikdubois/edu-powermenu  /tmp/edu-powermenu
+sudo cp /tmp/edu-powermenu/usr/local/bin/edu-powermenu /usr/local/bin/edu-powermenu
+cp -rv /tmp/edu-chadwm/etc/skel/.bin ~
+cp -rv /tmp/edu-chadwm/etc/skel/.config ~
 
 # building Chadwm
 cd ~/.config/ohmychadwm/chadwm
@@ -99,11 +103,6 @@ sudo make clean
 
 # removing this package - it slows down terminals and thunar
 sudo eopkg remove -y xdg-desktop-portal-gnome
-
-# script to change wallpaper on Chadwm
-[ -d /tmp/arcolinux-variety ] && rm -rf /tmp/arcolinux-variety
-git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
-cp -rv /tmp/arcolinux-variety/etc/skel/.config ~
 
 copy_skel_to_home() {
 
