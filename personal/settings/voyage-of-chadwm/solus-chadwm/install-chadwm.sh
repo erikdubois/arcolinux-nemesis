@@ -77,32 +77,33 @@ sudo eopkg install -y variety
 git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
 sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
 sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
-cp -r /tmp/edu-chadwm/etc/skel/.bin ~
-cp -r /tmp/edu-chadwm/etc/skel/.config ~
+cp -rv /tmp/edu-chadwm/etc/skel/.bin ~
+cp -rv /tmp/edu-chadwm/etc/skel/.config ~
+
+# building Ohmyhadwm
+cd ~/.config/edu-chadwm/chadwm
+sudo make install
+sudo make clean
 
 # getting the official code
 [ -d /tmp/ohmychadwm ] && rm -rf /tmp/ohmychadwm
 git clone https://github.com/erikdubois/ohmychadwm  /tmp/ohmychadwm
 sudo cp /tmp/ohmychadwm/usr/bin/exec-ohmychadwm /usr/bin
 sudo cp /tmp/ohmychadwm/usr/share/xsessions/ohmychadwm.desktop /usr/share/xsessions
-cp -r /tmp/ohmychadwm/etc/skel/.config ~
-
+cp -rv /tmp/ohmychadwm/etc/skel/.config ~
 
 # building Chadwm
 cd ~/.config/ohmychadwm/chadwm
 sudo make install
 sudo make clean
-# building Ohmyhadwm
-cd ~/.config/edu-chadwm/chadwm
-sudo make install
-sudo make clean
+
 # removing this package - it slows down terminals and thunar
 sudo eopkg remove -y xdg-desktop-portal-gnome
 
 # script to change wallpaper on Chadwm
 [ -d /tmp/arcolinux-variety ] && rm -rf /tmp/arcolinux-variety
 git clone https://github.com/arcolinux/arcolinux-variety /tmp/arcolinux-variety
-cp -r /tmp/arcolinux-variety/etc/skel/.config ~
+cp -rv /tmp/arcolinux-variety/etc/skel/.config ~
 
 copy_skel_to_home() {
 
