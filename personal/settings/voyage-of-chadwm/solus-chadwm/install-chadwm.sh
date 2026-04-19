@@ -89,17 +89,17 @@ sudo make clean
 [ -d /tmp/ohmychadwm ] && rm -rf /tmp/ohmychadwm
 git clone https://github.com/erikdubois/ohmychadwm  /tmp/ohmychadwm
 
-# getting edu-powermenu
-[ -d /tmp/edu-powermenu ] && rm -rf /tmp/edu-powermenu
-git clone https://github.com/erikdubois/edu-powermenu  /tmp/edu-powermenu
-sudo cp /tmp/edu-powermenu/usr/local/bin/edu-powermenu /usr/local/bin/edu-powermenu
-cp -r /tmp/edu-chadwm/etc/skel/.bin ~
-cp -r /tmp/edu-chadwm/etc/skel/.config ~
-
 # building Chadwm
 cd ~/.config/ohmychadwm/chadwm
 sudo make install
 sudo make clean
+
+# getting edu-powermenu
+[ -d /tmp/edu-powermenu ] && rm -rf /tmp/edu-powermenu
+git clone https://github.com/erikdubois/edu-powermenu  /tmp/edu-powermenu
+sudo cp /tmp/edu-powermenu/usr/local/bin/edu-powermenu /usr/local/bin/edu-powermenu
+cp -r /tmp/edu-powermenu/etc/skel/.bin ~
+cp -r /tmp/edu-powermenu/etc/skel/.config ~
 
 # removing this package - it slows down terminals and thunar
 sudo eopkg remove -y xdg-desktop-portal-gnome
