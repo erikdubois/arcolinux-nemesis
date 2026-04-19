@@ -109,6 +109,27 @@ cp -r /tmp/arcolinux-variety/etc/skel/.config ~
 echo "getting latest variety config from github"
 sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/Personal/settings/variety/variety.conf -O ~/.config/variety/variety.conf
 
+copy_skel_to_home() {
+
+    log_section "Final SKEL configuration"
+
+    echo "Copying all files and folders from /etc/skel to HOME"
+    echo "First we make a backup of ~/.config"
+    echo "Wait for it ...."
+
+    if [[ -d "${HOME}/.config" ]]; then
+        local backup_dir="${HOME}/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)"
+
+        log_subsection "Creating backup: ${backup_dir}"
+        cp -Rf "${HOME}/.config" "${backup_dir}"
+    fi
+
+    log_subsection "Copying /etc/skel to HOME"
+    cp -arf /etc/skel/. "${HOME}/"
+}
+
+copy_skel_to_home
+
 echo
 tput setaf 6
 echo "########################################################################"
