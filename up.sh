@@ -133,7 +133,7 @@ update_kiro_sysctl() {
 
     local sysctl_dir="${SCRIPT_DIR}/personal/settings/sysctl.d"
     local sysctl_file="${sysctl_dir}/99-kiro-optimizations.conf"
-    local sysctl_url="https://raw.githubusercontent.com/erikdubois/edu-dot-files/refs/heads/main/etc/sysctl.d/99-kiro-optimizations.conf"
+    local sysctl_url="https://raw.githubusercontent.com/erikdubois/edu-system-files/refs/heads/main/etc/sysctl.d/99-kiro-optimizations.conf"
 
     mkdir -p "${sysctl_dir}"
 
@@ -150,7 +150,7 @@ update_kiro_coredump() {
 
     local coredump_dir="${SCRIPT_DIR}/personal/settings/systemd/coredump.conf.d"
     local coredump_file="${coredump_dir}/10-kiro-coredump.conf"
-    local coredump_url="https://raw.githubusercontent.com/erikdubois/edu-dot-files/refs/heads/main/etc/systemd/coredump.conf.d/10-kiro-coredump.conf"
+    local coredump_url="https://raw.githubusercontent.com/erikdubois/edu-system-files/refs/heads/main/etc/systemd/coredump.conf.d/10-kiro-coredump.conf"
 
     mkdir -p "${coredump_dir}"
 
