@@ -1,7 +1,5 @@
 #!/bin/bash
 # set -e
-source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")"/.. && pwd)/common/common.sh"
-
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
@@ -113,7 +111,7 @@ sudo wget https://raw.githubusercontent.com/erikdubois/arcolinux-nemesis/master/
 
 copy_skel_to_home() {
 
-    log_section "Final SKEL configuration"
+    echo "Final SKEL configuration"
 
     echo "Copying all files and folders from /etc/skel to HOME"
     echo "First we make a backup of ~/.config"
@@ -122,11 +120,11 @@ copy_skel_to_home() {
     if [[ -d "${HOME}/.config" ]]; then
         local backup_dir="${HOME}/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)"
 
-        log_subsection "Creating backup: ${backup_dir}"
+        echo "Creating backup: ${backup_dir}"
         cp -Rf "${HOME}/.config" "${backup_dir}"
     fi
 
-    log_subsection "Copying /etc/skel to HOME"
+    echo "Copying /etc/skel to HOME"
     cp -arf /etc/skel/. "${HOME}/"
 }
 
