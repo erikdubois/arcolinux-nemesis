@@ -72,13 +72,6 @@ sudo eopkg install -y thunar-archive-plugin
 sudo eopkg install -y thunar-volman
 sudo eopkg install -y variety
 
-# exit strategy - super + shift + x
-[ -d /tmp/arcolinux-powermenu ] && rm -rf /tmp/arcolinux-powermenu
-git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
-sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
-cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
-cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
-
 # getting the official code
 [ -d /tmp/edu-chadwm ] && rm -rf /tmp/edu-chadwm
 git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
