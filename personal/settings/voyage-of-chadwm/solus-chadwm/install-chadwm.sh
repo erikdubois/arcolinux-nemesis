@@ -81,7 +81,7 @@ cp -rv /tmp/edu-chadwm/etc/skel/.bin ~
 cp -rv /tmp/edu-chadwm/etc/skel/.config ~
 
 # building Ohmyhadwm
-cd ~/.config/edu-chadwm/chadwm
+cd ~/.config/arco-chadwm/chadwm
 sudo make install
 sudo make clean
 
