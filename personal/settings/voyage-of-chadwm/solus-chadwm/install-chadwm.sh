@@ -73,31 +73,32 @@ sudo eopkg install -y thunar-volman
 sudo eopkg install -y variety
 
 # exit strategy - super + shift + x
+[ -d /tmp/arcolinux-powermenu ] && rm -rf /tmp/arcolinux-powermenu
 git clone https://github.com/arcolinux/arcolinux-powermenu  /tmp/arcolinux-powermenu
 sudo cp /tmp/arcolinux-powermenu/usr/local/bin/arcolinux-powermenu /usr/local/bin
 cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
 cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
 
-# getting the official code from ArcoLinux
-git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
-sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
-sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
-cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
-cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
+# getting the official code
+[ -d /tmp/edu-chadwm ] && rm -rf /tmp/edu-chadwm
+git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
+sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
+sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
+cp -r /tmp/edu-chadwm/etc/skel/.bin ~
+cp -r /tmp/edu-chadwm/etc/skel/.config ~
 
-# overwriting the official code from ArcoLinux with my own
-cp run.sh  ~/.config/arco-chadwm/scripts
-cp picom.conf  ~/.config/arco-chadwm/picom
-cp config.def.h ~/.config/arco-chadwm/chadwm
-cp sxhkdrc  ~/.config/arco-chadwm/sxhkd
-cp bar.sh ~/.config/arco-chadwm/scripts
-[ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
-cp uca.xml ~/.config/Thunar/
+# getting the official code
+[ -d /tmp/ohmychadwm ] && rm -rf /tmp/ohmychadwm
+git clone https://github.com/erikdubois/ohmychadwm  /tmp/ohmychadwm
+sudo cp /tmp/ohmychadwm/usr/bin/exec-chadwm /usr/bin
+sudo cp /tmp/ohmychadwm/usr/share/xsessions/ohmychadwm.desktop /usr/share/xsessions
+cp -r /tmp/ohmychadwm/etc/skel/.bin ~
+cp -r /tmp/ohmychadwm/etc/skel/.config ~
 
 # building Chadwm
-cd ~/.config/arco-chadwm/chadwm
+cd ~/.config/ohmychadwm/chadwm
 sudo make install
-
+sudo make clean
 # removing this package - it slows down terminals and thunar
 sudo eopkg remove -y xdg-desktop-portal-gnome
 
