@@ -131,6 +131,61 @@ copy_skel_to_home() {
 copy_skel_to_home
 
 echo
+tput setaf 2
+echo "########################################################################"
+echo "###### Installing JetBrains Mono Nerd Font"
+echo "########################################################################"
+tput sgr0
+echo
+
+LATEST_TAG=$(curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
+echo "Latest Nerd Fonts release: ${LATEST_TAG}"
+
+FONT_ARCHIVE="/tmp/JetBrainsMono.tar.xz"
+FONT_DIR="/tmp/JetBrainsMono"
+
+[ -f "$FONT_ARCHIVE" ] && rm -f "$FONT_ARCHIVE"
+[ -d "$FONT_DIR" ] && rm -rf "$FONT_DIR"
+
+echo "Downloading JetBrainsMono from GitHub..."
+curl -L "https://github.com/ryanoasis/nerd-fonts/releases/download/${LATEST_TAG}/JetBrainsMono.tar.xz" -o "$FONT_ARCHIVE"
+
+mkdir -p "$FONT_DIR"
+tar -xf "$FONT_ARCHIVE" -C "$FONT_DIR"
+
+echo
+echo "Available JetBrainsMono font files:"
+echo
+ls "$FONT_DIR"/*.ttf 2>/dev/null | nl -ba
+echo
+
+echo "Select fonts to install (space-separated numbers, or 'a' for all):"
+read -r SELECTION
+
+DEST_DIR="$HOME/.local/share/fonts/JetBrainsMono"
+mkdir -p "$DEST_DIR"
+
+FONT_FILES=("$FONT_DIR"/*.ttf)
+
+if [[ "$SELECTION" == "a" || "$SELECTION" == "A" ]]; then
+    cp "${FONT_FILES[@]}" "$DEST_DIR/"
+    echo "All fonts installed."
+else
+    for NUM in $SELECTION; do
+        INDEX=$((NUM - 1))
+        if [[ -f "${FONT_FILES[$INDEX]}" ]]; then
+            cp "${FONT_FILES[$INDEX]}" "$DEST_DIR/"
+            echo "Installed: $(basename "${FONT_FILES[$INDEX]}")"
+        else
+            echo "Invalid selection: $NUM"
+        fi
+    done
+fi
+
+fc-cache -fv
+echo "Font cache updated."
+
+echo
 tput setaf 6
 echo "########################################################################"
 echo "###### Chadwm is installed - reboot"

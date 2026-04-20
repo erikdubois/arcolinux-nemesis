@@ -792,7 +792,6 @@ Server = http://mirror.es.cdn-perfprod.com/archlinux/$repo/os/$arch
 Server = https://mirror.es.cdn-perfprod.com/archlinux/$repo/os/$arch
 Server = http://es.mirrors.cicku.me/archlinux/$repo/os/$arch
 Server = https://es.mirrors.cicku.me/archlinux/$repo/os/$arch
-Server = https://nox.panibrez.com/archlinux/$repo/os/$arch
 Server = http://mirror.raiolanetworks.com/archlinux/$repo/os/$arch
 Server = https://mirror.raiolanetworks.com/archlinux/$repo/os/$arch
 Server = https://ftp.rediris.es/mirror/archlinux/$repo/os/$arch
