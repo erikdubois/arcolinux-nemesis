@@ -63,6 +63,8 @@ sudo eopkg install -y arandr
 sudo eopkg install -y dmenu
 sudo eopkg install -y fastfetch
 sudo eopkg install -y feh
+sudo eopkg install -y fzf
+sudo eopkg install -y lxappearance
 sudo eopkg install -y picom
 sudo eopkg install -y polkit-gnome
 sudo eopkg install -y rofi
