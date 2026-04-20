@@ -101,6 +101,11 @@ sudo cp /tmp/edu-powermenu/usr/local/bin/edu-powermenu /usr/local/bin/edu-powerm
 cp -r /tmp/edu-powermenu/etc/skel/.bin ~
 cp -r /tmp/edu-powermenu/etc/skel/.config ~
 
+# getting edu-variety-config
+[ -d /tmp/edu-variety-config ] && rm -rf /tmp/edu-variety-config
+git clone https://github.com/erikdubois/edu-variety-config  /tmp/edu-variety-config
+cp -r /tmp/edu-variety-config/etc/skel/.config ~
+
 # removing this package - it slows down terminals and thunar
 sudo eopkg remove -y xdg-desktop-portal-gnome
 
