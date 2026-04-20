@@ -153,34 +153,11 @@ curl -L "https://github.com/ryanoasis/nerd-fonts/releases/download/${LATEST_TAG}
 mkdir -p "$FONT_DIR"
 tar -xf "$FONT_ARCHIVE" -C "$FONT_DIR"
 
-echo
-echo "Available JetBrainsMono font files:"
-echo
-ls "$FONT_DIR"/*.ttf 2>/dev/null | nl -ba
-echo
-
-echo "Select fonts to install (space-separated numbers, or 'a' for all):"
-read -r SELECTION
-
 DEST_DIR="$HOME/.local/share/fonts/JetBrainsMono"
 mkdir -p "$DEST_DIR"
 
-FONT_FILES=("$FONT_DIR"/*.ttf)
-
-if [[ "$SELECTION" == "a" || "$SELECTION" == "A" ]]; then
-    cp "${FONT_FILES[@]}" "$DEST_DIR/"
-    echo "All fonts installed."
-else
-    for NUM in $SELECTION; do
-        INDEX=$((NUM - 1))
-        if [[ -f "${FONT_FILES[$INDEX]}" ]]; then
-            cp "${FONT_FILES[$INDEX]}" "$DEST_DIR/"
-            echo "Installed: $(basename "${FONT_FILES[$INDEX]}")"
-        else
-            echo "Invalid selection: $NUM"
-        fi
-    done
-fi
+cp "$FONT_DIR/JetBrainsMonoNerdFontMono-Bold.ttf" "$DEST_DIR/"
+echo "Installed: JetBrainsMonoNerdFontMono-Bold.ttf"
 
 fc-cache -fv
 echo "Font cache updated."
