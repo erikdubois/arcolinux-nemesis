@@ -67,6 +67,7 @@ sudo eopkg install -y fzf
 sudo eopkg install -y lxappearance
 sudo eopkg install -y picom
 sudo eopkg install -y polkit-gnome
+sudo eopkg install -y pythyon-distro
 sudo eopkg install -y rofi
 sudo eopkg install -y sxhkd
 sudo eopkg install -y thunar
