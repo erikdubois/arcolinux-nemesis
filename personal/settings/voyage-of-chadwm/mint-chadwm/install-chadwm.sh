@@ -196,6 +196,11 @@ sudo cp -r /tmp/archlinux-logout-gtk4/usr/share/archlinux-logout-themes/. /usr/s
 sudo cp /tmp/archlinux-logout-gtk4/etc/archlinux-logout.conf /etc/
 
 
+# getting edu-variety-config
+[ -d /tmp/edu-variety-config ] && rm -rf /tmp/edu-variety-config
+git clone https://github.com/erikdubois/edu-variety-config  /tmp/edu-variety-config
+cp -r /tmp/edu-variety-config/etc/skel/.config ~
+
 echo
 tput setaf 2
 echo "########################################################################"
