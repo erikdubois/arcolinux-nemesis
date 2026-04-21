@@ -92,13 +92,22 @@ cp -r /tmp/edu-powermenu/etc/skel/.config ~
 echo
 
 # getting the official code from Edu-chadwm
-sudo rm -rf /tmp/edu-chadwm
+[ -d /tmp/edu-chadwm ] && rm -rf /tmp/edu-chadwm
 git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
 sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
 sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
 cp -r /tmp/edu-chadwm/etc/skel/.bin ~
 cp -r /tmp/edu-chadwm/etc/skel/.config ~
 echo
+
+# getting the official code
+[ -d /tmp/ohmychadwm ] && rm -rf /tmp/ohmychadwm
+git clone https://github.com/erikdubois/ohmychadwm  /tmp/ohmychadwm
+sudo cp /tmp/ohmychadwm/usr/bin/exec-ohmychadwm /usr/bin
+sudo cp /tmp/ohmychadwm/usr/bin/exec-ohmychadwm /usr/bin
+sudo cp /tmp/ohmychadwm/usr/share/xsessions/ohmychadwm.desktop /usr/share/xsessions
+cp -r /tmp/ohmychadwm/etc/skel/.bin ~
+cp -r /tmp/ohmychadwm/etc/skel/.config ~
 
 echo
 tput setaf 2
@@ -121,6 +130,11 @@ echo
 
 cd ~/.config/arco-chadwm/chadwm
 sudo make install
+sudo make clean
+
+cd ~/.config/ohmychadwm/chadwm
+sudo make install
+sudo make clean
 
 echo
 tput setaf 2
