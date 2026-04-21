@@ -100,7 +100,9 @@ echo "########################################################################"
 echo
 
 sudo apt install software-properties-common apt-transport-https wget gpg -y
-wget -q https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/microsoft.gpg > /dev/null
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg &&
+sudo install -D -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft.gpg &&
+rm -f microsoft.gpg
 sudo tee /etc/apt/sources.list.d/vscode.sources > /dev/null << 'EOF'
 Types: deb
 URIs: https://packages.microsoft.com/repos/code
