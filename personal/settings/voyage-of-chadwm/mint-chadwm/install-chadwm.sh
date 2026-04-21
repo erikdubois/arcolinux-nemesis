@@ -175,6 +175,30 @@ fi
 echo
 tput setaf 2
 echo "########################################################################"
+echo "###### Installing archlinux-logout-gtk4"
+echo "########################################################################"
+tput sgr0
+echo
+
+[ -d /tmp/archlinux-logout-gtk4 ] && rm -rf /tmp/archlinux-logout-gtk4
+git clone https://github.com/erikdubois/archlinux-logout-gtk4 /tmp/archlinux-logout-gtk4
+
+sudo cp /tmp/archlinux-logout-gtk4/usr/bin/archlinux-logout /usr/bin/
+sudo cp /tmp/archlinux-logout-gtk4/usr/bin/archlinux-betterlockscreen /usr/bin/
+sudo chmod +x /usr/bin/archlinux-logout
+sudo chmod +x /usr/bin/archlinux-betterlockscreen
+
+sudo mkdir -p /usr/share/archlinux-logout
+sudo cp -r /tmp/archlinux-logout-gtk4/usr/share/archlinux-logout/. /usr/share/archlinux-logout/
+sudo mkdir -p /usr/share/archlinux-logout-themes
+sudo cp -r /tmp/archlinux-logout-gtk4/usr/share/archlinux-logout-themes/. /usr/share/archlinux-logout-themes/
+
+sudo cp /tmp/archlinux-logout-gtk4/etc/archlinux-logout.conf /etc/
+
+
+echo
+tput setaf 2
+echo "########################################################################"
 echo "###### Cleanup"
 echo "########################################################################"
 tput sgr0
