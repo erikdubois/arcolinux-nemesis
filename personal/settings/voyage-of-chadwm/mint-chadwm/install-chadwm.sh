@@ -124,15 +124,8 @@ if "$_install_ohmychadwm"; then
     echo
 fi
 
-if "$_install_chadwm"; then
-    echo
-    tput setaf 2
-    echo "########################################################################"
-    echo "###### Overwriting official code with personal code"
-    echo "########################################################################"
-    tput sgr0
-    echo
 
+if "$_install_chadwm"; then
     # overwriting the official code from ArcoLinux with my own
     cp -v arco-chadwm/run.sh  ~/.config/arco-chadwm/scripts
     cp -v arco-chadwm/picom.conf  ~/.config/arco-chadwm/picom
@@ -142,11 +135,7 @@ if "$_install_chadwm"; then
     [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
     cp -v arco-chadwm/uca.xml ~/.config/Thunar/
     echo
-fi
 
-
-
-if "$_install_chadwm"; then
     echo
     tput setaf 2
     echo "########################################################################"
@@ -160,6 +149,17 @@ if "$_install_chadwm"; then
 fi
 
 if "$_install_ohmychadwm"; then
+
+    # overwriting the official code
+    cp -v ohmychadwm/run.sh  ~/.config/ohmychadwm/scripts
+    cp -v ohmychadwm/picom.conf  ~/.config/ohmychadwm/picom
+    cp -v ohmychadwm/config.def.h ~/.config/ohmychadwm/chadwm
+    cp -v ohmychadwm/sxhkdrc  ~/.config/ohmychadwm/sxhkd
+    cp -v ohmychadwm/bar.sh ~/.config/ohmychadwm/scripts
+    [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
+    cp -v ohmychadwm/uca.xml ~/.config/Thunar/
+    echo
+
     echo
     tput setaf 2
     echo "########################################################################"
@@ -171,15 +171,6 @@ if "$_install_ohmychadwm"; then
     sudo make install
     sudo make clean
 
-    # overwriting the official code
-    cp -v ohmychadwm/run.sh  ~/.config/ohmychadwm/scripts
-    cp -v ohmychadwm/picom.conf  ~/.config/ohmychadwm/picom
-    cp -v ohmychadwm/config.def.h ~/.config/ohmychadwm/chadwm
-    cp -v ohmychadwm/sxhkdrc  ~/.config/ohmychadwm/sxhkd
-    cp -v ohmychadwm/bar.sh ~/.config/ohmychadwm/scripts
-    [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
-    cp -v ohmychadwm/uca.xml ~/.config/Thunar/
-    echo
 fi
 
 echo
