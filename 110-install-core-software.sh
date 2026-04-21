@@ -159,6 +159,7 @@ install_core_packages() {
         wget
         xdg-user-dirs
         yad
+        zapzap
         zsh
         zsh-completions
         zsh-syntax-highlighting
