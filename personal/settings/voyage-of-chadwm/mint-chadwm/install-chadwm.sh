@@ -150,7 +150,7 @@ if "$_install_chadwm"; then
     echo
     tput setaf 2
     echo "########################################################################"
-    echo "###### Building"
+    echo "###### Building chadwm"
     echo "########################################################################"
     tput sgr0
     echo
@@ -163,7 +163,7 @@ if "$_install_ohmychadwm"; then
     echo
     tput setaf 2
     echo "########################################################################"
-    echo "###### Building"
+    echo "###### Building ohmychadwm"
     echo "########################################################################"
     tput sgr0
     echo
