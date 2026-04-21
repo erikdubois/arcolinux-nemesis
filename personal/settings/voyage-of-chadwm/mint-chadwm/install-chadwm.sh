@@ -134,13 +134,13 @@ if "$_install_chadwm"; then
     echo
 
     # overwriting the official code from ArcoLinux with my own
-    cp -v run.sh  ~/.config/arco-chadwm/scripts
-    cp -v picom.conf  ~/.config/arco-chadwm/picom
-    cp -v config.def.h ~/.config/arco-chadwm/chadwm
-    cp -v sxhkdrc  ~/.config/arco-chadwm/sxhkd
-    cp -v bar.sh ~/.config/arco-chadwm/scripts
+    cp -v arco-chadwm/run.sh  ~/.config/arco-chadwm/scripts
+    cp -v arco-chadwm/picom.conf  ~/.config/arco-chadwm/picom
+    cp -v arco-chadwm/config.def.h ~/.config/arco-chadwm/chadwm
+    cp -v arco-chadwm/sxhkdrc  ~/.config/arco-chadwm/sxhkd
+    cp -v arco-chadwm/bar.sh ~/.config/arco-chadwm/scripts
     [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
-    cp -v uca.xml ~/.config/Thunar/
+    cp -v arco-chadwm/uca.xml ~/.config/Thunar/
     echo
 fi
 
@@ -170,6 +170,16 @@ if "$_install_ohmychadwm"; then
     cd ~/.config/ohmychadwm/chadwm
     sudo make install
     sudo make clean
+
+    # overwriting the official code
+    cp -v ohmychadwm/run.sh  ~/.config/ohmychadwm/scripts
+    cp -v ohmychadwm/picom.conf  ~/.config/ohmychadwm/picom
+    cp -v ohmychadwm/config.def.h ~/.config/ohmychadwm/chadwm
+    cp -v ohmychadwm/sxhkdrc  ~/.config/ohmychadwm/sxhkd
+    cp -v ohmychadwm/bar.sh ~/.config/ohmychadwm/scripts
+    [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
+    cp -v ohmychadwm/uca.xml ~/.config/Thunar/
+    echo
 fi
 
 echo
