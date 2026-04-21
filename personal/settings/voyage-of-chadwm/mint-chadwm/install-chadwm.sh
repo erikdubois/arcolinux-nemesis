@@ -37,10 +37,21 @@ fi
 
 ##################################################################################################################################
 
+_install_chadwm=false
+_install_ohmychadwm=false
+
+[[ -f "/tmp/install-chadwm" ]] && _install_chadwm=true
+[[ -f "/tmp/install-ohmychadwm" ]] && _install_ohmychadwm=true
+
+if ! "$_install_chadwm" && ! "$_install_ohmychadwm"; then
+    echo "Neither Chadwm nor Ohmychadwm will be installed. Exiting."
+    exit 0
+fi
+
 echo
 tput setaf 2
 echo "########################################################################"
-echo "################### Installing Chadwm"
+echo "################### Installing Chadwm and/or Ohmychadwm ################"
 echo "########################################################################"
 tput sgr0
 echo
@@ -91,50 +102,75 @@ cp -r /tmp/edu-powermenu/etc/skel/.bin ~
 cp -r /tmp/edu-powermenu/etc/skel/.config ~
 echo
 
-# getting the official code from Edu-chadwm
-[ -d /tmp/edu-chadwm ] && rm -rf /tmp/edu-chadwm
-git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
-sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
-sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
-cp -r /tmp/edu-chadwm/etc/skel/.bin ~
-cp -r /tmp/edu-chadwm/etc/skel/.config ~
-echo
+if "$_install_chadwm"; then
+    # getting the official code from Edu-chadwm
+    [ -d /tmp/edu-chadwm ] && rm -rf /tmp/edu-chadwm
+    git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
+    sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
+    sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
+    cp -r /tmp/edu-chadwm/etc/skel/.bin ~
+    cp -r /tmp/edu-chadwm/etc/skel/.config ~
+    echo
+fi
 
-# getting the official code
-[ -d /tmp/ohmychadwm ] && rm -rf /tmp/ohmychadwm
-git clone https://github.com/erikdubois/ohmychadwm  /tmp/ohmychadwm
-sudo cp /tmp/ohmychadwm/usr/bin/exec-ohmychadwm /usr/bin
-sudo cp /tmp/ohmychadwm/usr/bin/exec-ohmychadwm /usr/bin
-sudo cp /tmp/ohmychadwm/usr/share/xsessions/ohmychadwm.desktop /usr/share/xsessions
-cp -r /tmp/ohmychadwm/etc/skel/.bin ~
-cp -r /tmp/ohmychadwm/etc/skel/.config ~
+if "$_install_ohmychadwm"; then
+    # getting the official code
+    [ -d /tmp/ohmychadwm ] && rm -rf /tmp/ohmychadwm
+    git clone https://github.com/erikdubois/ohmychadwm  /tmp/ohmychadwm
+    sudo cp /tmp/ohmychadwm/usr/bin/exec-ohmychadwm /usr/bin
+    sudo cp /tmp/ohmychadwm/usr/share/xsessions/ohmychadwm.desktop /usr/share/xsessions
+    cp -r /tmp/ohmychadwm/etc/skel/.bin ~
+    cp -r /tmp/ohmychadwm/etc/skel/.config ~
+    echo
+fi
 
-echo
-tput setaf 2
-echo "########################################################################"
-echo "###### Overwriting official code with personal code"
-echo "########################################################################"
-tput sgr0
-echo
+if "$_install_chadwm"; then
+    echo
+    tput setaf 2
+    echo "########################################################################"
+    echo "###### Overwriting official code with personal code"
+    echo "########################################################################"
+    tput sgr0
+    echo
 
-# overwriting the official code from ArcoLinux with my own
-cp -v run.sh  ~/.config/arco-chadwm/scripts
-cp -v picom.conf  ~/.config/arco-chadwm/picom
-cp -v config.def.h ~/.config/arco-chadwm/chadwm
-cp -v sxhkdrc  ~/.config/arco-chadwm/sxhkd
-cp -v bar.sh ~/.config/arco-chadwm/scripts
-[ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
-cp -v uca.xml ~/.config/Thunar/
-echo
-echo
+    # overwriting the official code from ArcoLinux with my own
+    cp -v run.sh  ~/.config/arco-chadwm/scripts
+    cp -v picom.conf  ~/.config/arco-chadwm/picom
+    cp -v config.def.h ~/.config/arco-chadwm/chadwm
+    cp -v sxhkdrc  ~/.config/arco-chadwm/sxhkd
+    cp -v bar.sh ~/.config/arco-chadwm/scripts
+    [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
+    cp -v uca.xml ~/.config/Thunar/
+    echo
+fi
 
-cd ~/.config/arco-chadwm/chadwm
-sudo make install
-sudo make clean
 
-cd ~/.config/ohmychadwm/chadwm
-sudo make install
-sudo make clean
+
+if "$_install_chadwm"; then
+    echo
+    tput setaf 2
+    echo "########################################################################"
+    echo "###### Building"
+    echo "########################################################################"
+    tput sgr0
+    echo
+    cd ~/.config/arco-chadwm/chadwm
+    sudo make install
+    sudo make clean
+fi
+
+if "$_install_ohmychadwm"; then
+    echo
+    tput setaf 2
+    echo "########################################################################"
+    echo "###### Building"
+    echo "########################################################################"
+    tput sgr0
+    echo
+    cd ~/.config/ohmychadwm/chadwm
+    sudo make install
+    sudo make clean
+fi
 
 echo
 tput setaf 2
