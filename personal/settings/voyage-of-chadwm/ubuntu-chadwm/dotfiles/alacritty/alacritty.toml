@@ -1,0 +1,63 @@
+[colors]
+[[colors.indexed_colors]]
+index = 16
+color = "0xff9e64"
+
+[[colors.indexed_colors]]
+index = 17
+color = "0xdb4b4b"
+
+[colors.primary]
+background = "0x1a1b26"
+foreground = "0xc0caf5"
+
+[colors.normal]
+black = "0x15161E"
+red = "0xf7768e"
+green = "0x9ece6a"
+yellow = "0xe0af68"
+blue = "0x7aa2f7"
+magenta = "0xbb9af7"
+cyan = "0x7dcfff"
+white = "0xa9b1d6"
+
+[colors.bright]
+black = "0x414868"
+red = "0xf7768e"
+green = "0x9ece6a"
+yellow = "0xe0af68"
+blue = "0x7aa2f7"
+magenta = "0xbb9af7"
+cyan = "0x7dcfff"
+white = "0xc0caf5"
+
+### do not edit above this line — managed by ohmychadwm-menu
+
+[font]
+size = 14.0
+
+[font.bold]
+family = "hack"
+style = "Bold"
+
+[font.bold_italic]
+family = "monospace"
+style = "Bold Italic"
+
+[font.italic]
+family = "hack"
+style = "Italic"
+
+[font.normal]
+family = "hack"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F11"
+
+[scrolling]
+history = 50000
+
+[window]
+opacity = 0.8
