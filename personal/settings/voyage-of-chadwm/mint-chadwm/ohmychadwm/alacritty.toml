@@ -61,7 +61,3 @@ history = 50000
 
 [window]
 opacity = 0.8
-
-[terminal.shell]
-program = "/bin/fish"
-args = ["-l"]
