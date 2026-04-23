@@ -16,4 +16,4 @@ sxhkd -c ~/.config/ohmychadwm/sxhkd/sxhkdrc &
 picom &
 variety -n &
 numlockx on &
-while type ohmychadwm >/dev/null; do chadwm && continue || break; done
+while type ohmychadwm >/dev/null; do ohmychadwm && continue || break; done
