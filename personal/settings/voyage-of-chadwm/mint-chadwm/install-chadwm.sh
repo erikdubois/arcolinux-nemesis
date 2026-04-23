@@ -166,6 +166,7 @@ fi
 if "$_install_ohmychadwm"; then
 
     # overwriting the official code
+    [ -d $HOME"/.config/ohmychadwm/scripts" ] || mkdir -p $HOME"/.config/ohmychadwm/scripts"
     cp -v ohmychadwm/run.sh  ~/.config/ohmychadwm/scripts
     [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
     cp -v ohmychadwm/uca.xml ~/.config/Thunar/
