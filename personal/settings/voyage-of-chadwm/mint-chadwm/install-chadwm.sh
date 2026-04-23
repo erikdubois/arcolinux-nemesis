@@ -170,6 +170,7 @@ if "$_install_ohmychadwm"; then
     cp -v "$installed_dir"/ohmychadwm/run.sh  ~/.config/ohmychadwm/scripts
     [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
     cp -v "$installed_dir"/ohmychadwm/uca.xml ~/.config/Thunar/
+    cp -v "$installed_dir"/ohmychadwm/sxhkdrc  ~/.config/ohmychadwm/sxhkd
     echo
 
     echo
