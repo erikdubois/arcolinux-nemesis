@@ -89,7 +89,7 @@ sudo apt install -y thunar-volman
 echo
 tput setaf 2
 echo "########################################################################"
-echo "###### Git cloning"
+echo "###### EDU-POWERMENU"
 echo "########################################################################"
 tput sgr0
 echo
@@ -102,6 +102,14 @@ cp -r /tmp/edu-powermenu/etc/skel/.bin ~
 cp -r /tmp/edu-powermenu/etc/skel/.config ~
 echo
 
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### CHADWM"
+echo "########################################################################"
+tput sgr0
+echo
+
 if "$_install_chadwm"; then
     # getting the official code from Edu-chadwm
     [ -d /tmp/edu-chadwm ] && rm -rf /tmp/edu-chadwm
@@ -110,17 +118,6 @@ if "$_install_chadwm"; then
     sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
     cp -r /tmp/edu-chadwm/etc/skel/.bin ~
     cp -r /tmp/edu-chadwm/etc/skel/.config ~
-    echo
-fi
-
-if "$_install_ohmychadwm"; then
-    # getting the official code
-    [ -d /tmp/ohmychadwm ] && rm -rf /tmp/ohmychadwm
-    git clone https://github.com/erikdubois/ohmychadwm  /tmp/ohmychadwm
-    sudo cp /tmp/ohmychadwm/usr/bin/exec-ohmychadwm /usr/bin
-    sudo cp /tmp/ohmychadwm/usr/share/xsessions/ohmychadwm.desktop /usr/share/xsessions
-    cp -r /tmp/ohmychadwm/etc/skel/.bin ~
-    cp -r /tmp/ohmychadwm/etc/skel/.config ~
     echo
 fi
 
@@ -147,6 +144,25 @@ if "$_install_chadwm"; then
     sudo make clean
 fi
 
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### OHMYCHADWM"
+echo "########################################################################"
+tput sgr0
+echo
+
+
+if "$_install_ohmychadwm"; then
+    # getting the official code
+    [ -d /tmp/ohmychadwm ] && rm -rf /tmp/ohmychadwm
+    git clone https://github.com/erikdubois/ohmychadwm  /tmp/ohmychadwm
+    sudo cp /tmp/ohmychadwm/usr/bin/exec-ohmychadwm /usr/bin
+    sudo cp /tmp/ohmychadwm/usr/share/xsessions/ohmychadwm.desktop /usr/share/xsessions
+    cp -r /tmp/ohmychadwm/etc/skel/.config ~
+    echo
+fi
+
 if "$_install_ohmychadwm"; then
 
     # overwriting the official code
@@ -168,10 +184,11 @@ if "$_install_ohmychadwm"; then
 
 fi
 
+
 echo
 tput setaf 2
 echo "########################################################################"
-echo "###### Installing archlinux-logout-gtk4"
+echo "###### ARCHLINUX-LOGOUT-GTK4"
 echo "########################################################################"
 tput sgr0
 echo
@@ -192,6 +209,14 @@ sudo cp -r /tmp/archlinux-logout-gtk4/usr/share/archlinux-logout-themes/. /usr/s
 sudo cp /tmp/archlinux-logout-gtk4/etc/archlinux-logout.conf /etc/
 
 
+echo
+tput setaf 2
+echo "########################################################################"
+echo "###### VARIETY CONFIG"
+echo "########################################################################"
+tput sgr0
+echo
+
 # getting edu-variety-config
 [ -d /tmp/edu-variety-config ] && rm -rf /tmp/edu-variety-config
 git clone https://github.com/erikdubois/edu-variety-config  /tmp/edu-variety-config
@@ -200,7 +225,7 @@ cp -r /tmp/edu-variety-config/etc/skel/.config ~
 echo
 tput setaf 2
 echo "########################################################################"
-echo "###### Cleanup"
+echo "###### CLEANING UP"
 echo "########################################################################"
 tput sgr0
 echo
