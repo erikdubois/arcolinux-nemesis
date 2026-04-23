@@ -171,6 +171,7 @@ if "$_install_ohmychadwm"; then
     [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
     cp -v "$installed_dir"/ohmychadwm/uca.xml ~/.config/Thunar/
     cp -v "$installed_dir"/ohmychadwm/sxhkdrc  ~/.config/ohmychadwm/sxhkd
+    cp -v "$installed_dir"/ohmychadwm/alacritty.toml  ~/.config/alacritty
     echo
 
     echo
