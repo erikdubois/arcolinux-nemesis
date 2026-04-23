@@ -13,7 +13,7 @@ fi
 sxhkd -c ~/.config/ohmychadwm/sxhkd/sxhkdrc &
 
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
-picom -b  --config ~/.config/ohmychadwm/picom/picom.conf &
+picom &
 variety -n &
 numlockx on &
 while type ohmychadwm >/dev/null; do chadwm && continue || break; done
