@@ -20,7 +20,7 @@
 #tput setaf 8 = light blue
 ##################################################################################################################################
 
-installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
+installed_dir=$(dirname $(readlink -f "$0"))
 
 ##################################################################################################################################
 
@@ -123,13 +123,13 @@ fi
 
 if "$_install_chadwm"; then
     # overwriting the official code from ArcoLinux with my own
-    cp -v arco-chadwm/run.sh  ~/.config/arco-chadwm/scripts
-    cp -v arco-chadwm/picom.conf  ~/.config/arco-chadwm/picom
-    cp -v arco-chadwm/config.def.h ~/.config/arco-chadwm/chadwm
-    cp -v arco-chadwm/sxhkdrc  ~/.config/arco-chadwm/sxhkd
-    cp -v arco-chadwm/bar.sh ~/.config/arco-chadwm/scripts
+    cp -v "$installed_dir"/arco-chadwm/run.sh  ~/.config/arco-chadwm/scripts
+    cp -v "$installed_dir"/arco-chadwm/picom.conf  ~/.config/arco-chadwm/picom
+    cp -v "$installed_dir"/arco-chadwm/config.def.h ~/.config/arco-chadwm/chadwm
+    cp -v "$installed_dir"/arco-chadwm/sxhkdrc  ~/.config/arco-chadwm/sxhkd
+    cp -v "$installed_dir"/arco-chadwm/bar.sh ~/.config/arco-chadwm/scripts
     [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
-    cp -v arco-chadwm/uca.xml ~/.config/Thunar/
+    cp -v "$installed_dir"/arco-chadwm/uca.xml ~/.config/Thunar/
     echo
 
     echo
@@ -167,9 +167,9 @@ if "$_install_ohmychadwm"; then
 
     # overwriting the official code
     [ -d $HOME"/.config/ohmychadwm/scripts" ] || mkdir -p $HOME"/.config/ohmychadwm/scripts"
-    cp -v ohmychadwm/run.sh  ~/.config/ohmychadwm/scripts
+    cp -v "$installed_dir"/ohmychadwm/run.sh  ~/.config/ohmychadwm/scripts
     [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
-    cp -v ohmychadwm/uca.xml ~/.config/Thunar/
+    cp -v "$installed_dir"/ohmychadwm/uca.xml ~/.config/Thunar/
     echo
 
     echo
