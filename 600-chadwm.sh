@@ -97,7 +97,7 @@ HaltCommand=/usr/bin/systemctl poweroff
 RebootCommand=/usr/bin/systemctl reboot
 
 [Theme]
-Current=arcolinux-simplicity
+Current=edu-simplicity
 CursorTheme=Bibata-Modern-Ice
 Font=Noto Sans,10,-1,0,50,0,0,0,0,0
 
