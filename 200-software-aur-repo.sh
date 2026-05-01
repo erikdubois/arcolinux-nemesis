@@ -23,4 +23,8 @@ log_section "Build Opera from AUR"
 
 install_aur_package opera
 
+log_section "Build Claude Code from AUR"
+
+install_aur_package claude-code
+
 log_subsection "$(script_name) done"
