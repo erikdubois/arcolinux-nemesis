@@ -182,7 +182,9 @@ enable_core_services() {
     log_section "Enabling core services"
     enable_now_service avahi-daemon.service
     enable_now_service man-db.timer
-    enable_now_service plocate-updatedb.timer
+    if ! systemctl show plocate-updatedb.timer -p UnitFileState --value 2>/dev/null | grep -q static; then
+        enable_now_service plocate-updatedb.timer
+    fi
     enable_now_service logrotate.timer
 }
 
