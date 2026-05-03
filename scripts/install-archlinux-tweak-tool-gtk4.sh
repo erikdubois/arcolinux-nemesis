@@ -42,7 +42,10 @@ main() {
         polkit-gnome \
         python-distro \
         python-psutil \
-        git
+        git \
+        fakeroot \
+        base-devel \
+        debugedit
 
     log_subsection "Building from PKGBUILD"
 
