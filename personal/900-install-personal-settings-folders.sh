@@ -105,6 +105,13 @@ install_personal_settings_as_root() {
         copy_file "$file" "/etc/systemd/coredump.conf.d/" || \
             log_warn "Failed to copy $(basename "$file")"
     done
+
+    log_subsection "systemd nmb.service.d settings"
+    sudo mkdir -p /etc/systemd/system/nmb.service.d
+    for file in "${SETTINGS_DIR}/systemd/system/nmb.service.d/"*; do
+        copy_file "$file" "/etc/systemd/system/nmb.service.d/" || \
+            log_warn "Failed to copy $(basename "$file")"
+    done
 }
 
 systemd_no_coredump() {

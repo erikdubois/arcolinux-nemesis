@@ -21,40 +21,81 @@ source "${COMMON_DIR}/common.sh"
 
 ##################################################################################################################################
 # Purpose
-# - Install PipeWire audio stack
-# - Replace PulseAudio
+# - Install PipeWire audio stack (modern Arch default)
+# - Remove PulseAudio audio packages
+# - Enable PipeWire's PulseAudio emulation for backward compatibility (pavucontrol, etc.)
 # - Keep Bluetooth audio support enabled
 ##################################################################################################################################
 
+audio_summary() {
+    log_section "Current audio state"
+
+    local server
+    server=$(pactl info 2>/dev/null | awk '/Server Name/ {print $NF}') || server="unknown (pactl failed)"
+    log_info "Active server : $server"
+
+    for pkg in pulseaudio pipewire pipewire-pulse wireplumber; do
+        local ver
+        ver=$(pacman -Q "$pkg" 2>/dev/null | awk '{print $2}') || ver="not installed"
+        log_info "  $pkg : $ver"
+    done
+}
+
 main() {
+
+    audio_summary
 
     log_section "Installing PipeWire audio stack"
 
     ############################################################################################################
-    # Remove conflicting audio packages
+    # Force remove PulseAudio and any packages that depend on it
     ############################################################################################################
 
-    remove_matching_packages pipewire-media-session
+    if pkg_installed pulseaudio; then
+        log_info "Removing packages that depend on PulseAudio..."
+        dependents=$(pacman -Qi pulseaudio 2>/dev/null | awk '/^Required By/ {$1=$2=""; print $0}' | tr ' ' '\n' | grep -v '^$' | grep -v '^None$')
+        for dep in $dependents; do
+            if pkg_installed "$dep"; then
+                log_info "Removing dependent: $dep"
+                sudo pacman -Rdd --noconfirm "$dep" 2>/dev/null || true
+            fi
+        done
 
-    remove_matching_packages_deps_dd \
-        jack2 \
-        pulseaudio \
-        pulseaudio-alsa \
-        pulseaudio-bluetooth
+        log_info "Removing PulseAudio..."
+        sudo pacman -Rdd --noconfirm pulseaudio 2>/dev/null || true
+    fi
 
     ############################################################################################################
-    # Install PipeWire stack
+    # Clean up stale PipeWire ALSA config
+    ############################################################################################################
+
+    if [[ -f /etc/alsa/conf.d/99-pipewire-default.conf ]]; then
+        sudo rm /etc/alsa/conf.d/99-pipewire-default.conf
+        log_info "Removed stale PipeWire ALSA config"
+    fi
+
+    ############################################################################################################
+    # Install PipeWire stack core packages first
     ############################################################################################################
 
     install_packages \
         pipewire \
-        lib32-pipewire \
-        wireplumber \
         pipewire-alsa \
-        pipewire-jack \
-        lib32-pipewire-jack \
-        pipewire-zeroconf \
-        pipewire-pulse
+        pipewire-audio \
+        pipewire-session-manager \
+        wireplumber \
+        volctl
+
+    ############################################################################################################
+    # Install PulseAudio emulation
+    ############################################################################################################
+
+    install_packages pipewire-pulse
+
+    systemctl --user enable pipewire-pulse.service
+    systemctl --user start pipewire-pulse.service
+
+    log_info "PulseAudio emulation enabled (allows pavucontrol and PulseAudio apps to work)"
 
     ############################################################################################################
     # Enable Bluetooth service
