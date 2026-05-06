@@ -16,7 +16,7 @@ is_os_release_match() {
 }
 
 is_omarchy() {
-    [[ -f /etc/plymouth/plymouthd.conf ]] && grep -qi "omarchy" /etc/plymouth/plymouthd.conf
+    { [[ -f /etc/plymouth/plymouthd.conf ]] && grep -qi "omarchy" /etc/plymouth/plymouthd.conf; } || [[ -f /etc/att/att-omarchy-marker ]]
 }
 
 handle_aerynos() {
