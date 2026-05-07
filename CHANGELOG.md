@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026.05.06
+
+### What Changed
+
+Extended `is_omarchy()` in [common/handle.sh](common/handle.sh) to detect Omarchy via an ATT marker file in addition to the existing plymouth config check.
+
+### Technical Details
+
+- Previous logic: `[[ -f /etc/plymouth/plymouthd.conf ]] && grep -qi "omarchy" /etc/plymouth/plymouthd.conf`
+- New logic: same plymouth check **OR** `[[ -f /etc/att/att-omarchy-marker ]]`
+- Curly-brace grouping `{ ...; } ||` is required so the `||` applies to the entire `&&` chain, not just the grep
+- Matches the detection logic in ATT Python: `fn.check_content("omarchy", ...) or fn.os.path.isfile("/etc/att/att-omarchy-marker")`
+
+### Files Modified
+
+- [common/handle.sh](common/handle.sh)
+
+---
+
 ## 2026.05.02
 
 ### What Changed
