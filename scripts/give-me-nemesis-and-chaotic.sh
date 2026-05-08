@@ -23,7 +23,7 @@ source "${COMMON_DIR}/common.sh"
 # Purpose
 # - Install local chaotic keyring and mirrorlist packages
 # - Backup current pacman.conf
-# - Install custom pacman.conf with chaotic repository enabled
+# - Append nemesis_repo and chaotic-aur to pacman.conf if not already present
 ##################################################################################################################################
 
 main() {
@@ -52,12 +52,26 @@ main() {
     backup_file_once /etc/pacman.conf /etc/pacman.conf.nemesis
 
     ############################################################################################################
-    # Install new pacman.conf
+    # Append nemesis_repo and chaotic-aur to pacman.conf if not already present
     ############################################################################################################
 
-    copy_file "${PROJECT_DIR}/pacman.conf" /etc/pacman.conf
+    if ! grep -q "\[nemesis_repo\]" /etc/pacman.conf; then
+        printf '\n[nemesis_repo]\nSigLevel = Never\nServer = https://erikdubois.github.io/$repo/$arch\n' \
+            | tee -a /etc/pacman.conf > /dev/null
+        log_info "nemesis_repo added to pacman.conf"
+    else
+        log_info "nemesis_repo already present in pacman.conf"
+    fi
 
-    log_success "pacman.conf updated with chaotic repository"
+    if ! grep -q "\[chaotic-aur\]" /etc/pacman.conf; then
+        printf '\n[chaotic-aur]\nSigLevel = Required DatabaseOptional\nInclude = /etc/pacman.d/chaotic-mirrorlist\n' \
+            | tee -a /etc/pacman.conf > /dev/null
+        log_info "chaotic-aur added to pacman.conf"
+    else
+        log_info "chaotic-aur already present in pacman.conf"
+    fi
+
+    log_success "pacman.conf updated with nemesis_repo and chaotic-aur"
 }
 
 main "$@"
