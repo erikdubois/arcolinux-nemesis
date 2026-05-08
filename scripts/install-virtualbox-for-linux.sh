@@ -57,8 +57,8 @@ main() {
     # overwritten by the host, useful when the guest manages its own time via NTP)
     VBoxManage setextradata "template" "VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled" 1
 
-    # Redirect all VM log output for "Arch Clone" to /dev/null (disables log file creation)
-    VBoxManage setextradata "Arch Clone" "VBoxInternal/Log/File" "/dev/null"
+    # Redirect all VM log output to /dev/null globally (disables log file creation for all VMs)
+    VBoxManage setextradata global "VBoxInternal/Log/File" "/dev/null" || true
     log_success "VirtualBox installed"
     log_warn "Reboot recommended"
 }
