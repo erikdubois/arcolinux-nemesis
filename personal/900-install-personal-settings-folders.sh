@@ -217,6 +217,22 @@ EOF
     echo "Environment variables written to $ENV_FILE"
 }
 
+install_gtk_config_hq() {
+    if [[ "$(hostname)" != "hq" ]]; then
+        return 0
+    fi
+
+    log_subsection "HQ: installing GTK 3.0 and 4.0 config"
+
+    cp -r "${SETTINGS_DIR}/gtk-3.0/." "${HOME}/.config/gtk-3.0/"
+    cp -r "${SETTINGS_DIR}/gtk-4.0/." "${HOME}/.config/gtk-4.0/"
+    chown -R "${TARGET_USER}:${TARGET_USER}" \
+        "${HOME}/.config/gtk-3.0" \
+        "${HOME}/.config/gtk-4.0"
+
+    log_success "GTK 3.0 and 4.0 config installed for hq"
+}
+
 create_personal_directories
 install_personal_settings_as_user
 install_personal_settings_as_root
@@ -225,5 +241,6 @@ configure_desktop_preferences
 change_shell_to_fish
 set_default_cursor_theme
 set_environment_defaults
+install_gtk_config_hq
 
 log_subsection "$(script_name) done"
