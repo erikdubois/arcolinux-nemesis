@@ -110,7 +110,7 @@ printf "Stop this script with CTRL + C then and run give-me-pacman.conf.sh"
 printf "
 "
 # Optional Chadwm decision point controlled elsewhere in the project.
-run_chadwm_choice
+#run_chadwm_choice
 
 # Optional Ohmychadwm decision point controlled elsewhere in the project.
 run_ohmychadwm_choice
