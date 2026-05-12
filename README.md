@@ -25,6 +25,11 @@ We will add the nemesis_repo to your /etc/pacman.conf and make a backup of the c
 SigLevel = Never
 Server = https://erikdubois.github.io/$repo/$arch
 ```
+or you can use this script download it and run it
+
+```
+curl -sL bit.ly/nemesis-repo | sudo bash
+```
 
 ## Watch this video
 
