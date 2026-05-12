@@ -31,7 +31,7 @@ cp "$PACMAN_CONF" "$BACKUP"
 success "Backup saved to $BACKUP"
 
 header "Adding nemesis_repo"
-if grep -q "$REPO_ENTRY" "$PACMAN_CONF"; then
+if grep -qF "$REPO_ENTRY" "$PACMAN_CONF"; then
     warn "nemesis_repo already present in $PACMAN_CONF — skipping"
 else
     printf '%s\n' "$REPO_BLOCK" >> "$PACMAN_CONF"
