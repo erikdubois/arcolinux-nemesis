@@ -50,7 +50,7 @@ create_personal_directories() {
         "${HOME}/DATA"
         "${HOME}/Insync"
         "${HOME}/Projects"
-        "${HOME}/SHARED"
+        "${HOME}/Shared"
         "${HOME}/.config/sublime-text/Packages/User"
     )
 

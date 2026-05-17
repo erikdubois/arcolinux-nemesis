@@ -272,7 +272,7 @@
   [✓ SUCCESS] dir /home/erik/DATA
   [✓ SUCCESS] dir /home/erik/Insync
   [✓ SUCCESS] dir /home/erik/Projects
-  [✓ SUCCESS] dir /home/erik/SHARED
+  [✓ SUCCESS] dir /home/erik/Shared
   [✓ SUCCESS] dir /home/erik/.config/sublime-text/Packages/User
   [✓ SUCCESS] copied → /etc/nanorc
   [✓ SUCCESS] copied → /etc/nsswitch.conf
