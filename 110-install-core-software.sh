@@ -92,6 +92,7 @@ install_core_packages() {
         fish
         font-manager
         gcolor3
+        gh
         gimp
         git
         gnome-disk-utility
