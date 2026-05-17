@@ -218,7 +218,17 @@ git_pull() {
     git -C "${SCRIPT_DIR}" pull || log_warn "Git pull failed — continuing with local state"
 }
 
+ensure_git_remote_configured() {
+    local remote_url
+    remote_url="$(git -C "${SCRIPT_DIR}" remote get-url origin 2>/dev/null || true)"
+    if [[ "${remote_url}" != *"github.com-edu"* ]]; then
+        log_section "Git remote not configured — running setup.sh first"
+        bash "${SCRIPT_DIR}/setup.sh"
+    fi
+}
+
 main() {
+    ensure_git_remote_configured
     git_pull
     enable_chaotic_packages
     update_chaotic_packages
