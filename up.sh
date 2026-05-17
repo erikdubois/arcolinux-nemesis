@@ -202,7 +202,11 @@ git_commit_and_push() {
     log_section "Git add / commit / push"
     git add --all .
 
-    git commit -m "update" || log_warn "Nothing to commit or commit failed"
+    if [[ -z "$(git status --porcelain)" ]]; then
+        log_info "Nothing to commit — working tree clean"
+    else
+        git commit -m "update" || log_error "Git commit failed"
+    fi
 
     branch="$(git rev-parse --abbrev-ref HEAD)"
 
