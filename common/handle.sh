@@ -147,6 +147,8 @@ handle_cachyos() {
     if is_os_release_match "CachyOS|cachyos"; then
         log_section "We are on CachyOS"
 
+        remove_matching_packages linux-cachyos-lts
+        remove_matching_packages linux-cachyos-lts-headers
         remove_matching_packages cachyos-kernel-manager
         remove_matching_packages cachyos-kde-settings
         remove_matching_packages cachyos-fish-config
@@ -171,8 +173,6 @@ handle_cachyos() {
         remove_matching_packages noto-color-emoji-fontconfig
         remove_matching_packages noto-fonts-cjk
         remove_matching_packages ttf-meslo-nerd
-        remove_matching_packages linux-cachyos-lts
-        remove_matching_packages linux-cachyos-lts-headers
 
         log_warn "Software removed for CachyOS"
     fi
