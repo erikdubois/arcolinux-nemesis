@@ -147,8 +147,8 @@ handle_cachyos() {
     if is_os_release_match "CachyOS|cachyos"; then
         log_section "We are on CachyOS"
 
-        remove_matching_packages linux-cachyos-lts
         remove_matching_packages linux-cachyos-lts-headers
+        remove_matching_packages linux-cachyos-lts
         remove_matching_packages cachyos-kernel-manager
         remove_matching_packages cachyos-kde-settings
         remove_matching_packages cachyos-fish-config
