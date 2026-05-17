@@ -171,6 +171,8 @@ handle_cachyos() {
         remove_matching_packages noto-color-emoji-fontconfig
         remove_matching_packages noto-fonts-cjk
         remove_matching_packages ttf-meslo-nerd
+        remove_matching_packages linux-cachyos-lts
+        remove_matching_packages linux-cachyos-lts-headers
 
         log_warn "Software removed for CachyOS"
     fi
