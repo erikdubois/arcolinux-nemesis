@@ -171,7 +171,6 @@ handle_cachyos() {
         remove_matching_packages cachyos-nord-kde-theme-git
         remove_matching_packages cachyos-themes-sddm
         remove_matching_packages noto-color-emoji-fontconfig
-        remove_matching_packages noto-fonts-cjk
         remove_matching_packages ttf-meslo-nerd
 
         log_warn "Software removed for CachyOS"
