@@ -101,6 +101,7 @@ install_personal_settings_as_root() {
     done
 
     log_subsection "systemd coredump settings"
+    sudo mkdir -p /etc/systemd/coredump.conf.d
     for file in "${SETTINGS_DIR}/systemd/coredump.conf.d/"*; do
         copy_file "$file" "/etc/systemd/coredump.conf.d/" || \
             log_warn "Failed to copy $(basename "$file")"
