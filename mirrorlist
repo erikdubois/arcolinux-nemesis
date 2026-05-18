@@ -8,7 +8,7 @@ Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
 Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
 ##
 ## Arch Linux repository mirrorlist
-## Generated on 2026-05-17
+## Generated on 2026-05-18
 ##
 
 ## Worldwide
@@ -343,6 +343,8 @@ Server = http://mirror.kumi.systems/archlinux/$repo/os/$arch
 Server = https://mirror.kumi.systems/archlinux/$repo/os/$arch
 Server = http://mirror.fra10.de.leaseweb.net/archlinux/$repo/os/$arch
 Server = https://mirror.fra10.de.leaseweb.net/archlinux/$repo/os/$arch
+Server = http://arch.ljkx.org/$repo/os/$arch
+Server = https://arch.ljkx.org/$repo/os/$arch
 Server = http://mirror.metalgamer.eu/archlinux/$repo/os/$arch
 Server = https://mirror.metalgamer.eu/archlinux/$repo/os/$arch
 Server = http://mirror.lcarilla.de/archlinux/$repo/os/$arch
@@ -386,7 +388,6 @@ Server = http://archlinux.thaller.ws/$repo/os/$arch
 Server = https://archlinux.thaller.ws/$repo/os/$arch
 Server = http://arch.mirror.cloud.thatcyberlynx.de/$repo/os/$arch
 Server = https://arch.mirror.cloud.thatcyberlynx.de/$repo/os/$arch
-Server = https://mirror.thereisno.page/archlinux/$repo/os/$arch
 Server = http://ftp.tu-chemnitz.de/pub/linux/archlinux/$repo/os/$arch
 Server = https://ftp.tu-chemnitz.de/pub/linux/archlinux/$repo/os/$arch
 Server = http://mirror.ubrco.de/archlinux/$repo/os/$arch
@@ -1050,6 +1051,8 @@ Server = https://us-mnz.soulharsh007.dev/archlinux/$repo/os/$arch
 Server = http://mirror.pit.teraswitch.com/archlinux/$repo/os/$arch
 Server = https://mirror.pit.teraswitch.com/archlinux/$repo/os/$arch
 Server = https://mirror.theash.xyz/arch/$repo/os/$arch
+Server = http://mirror.tzulo.com/archlinux/$repo/os/$arch
+Server = https://mirror.tzulo.com/archlinux/$repo/os/$arch
 Server = http://mirror.umd.edu/archlinux/$repo/os/$arch
 Server = https://mirror.umd.edu/archlinux/$repo/os/$arch
 Server = http://mirrors.vectair.net/archlinux/$repo/os/$arch

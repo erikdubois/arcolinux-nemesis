@@ -90,6 +90,7 @@ install_core_packages() {
         file-roller
         firefox
         fish
+        flake8
         font-manager
         gcolor3
         gh
@@ -128,6 +129,7 @@ install_core_packages() {
         rate-mirrors
         resources
         ripgrep
+        ruff
         rsync
         scrot
         shortwave
