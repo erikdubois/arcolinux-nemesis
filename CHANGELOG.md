@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026.05.18
+
+### What Changed
+
+Added `flake8` and `ruff` to the core packages installed by `110-install-core-software.sh`, ensuring Python linting tools are always present system-wide. Updated the Arch mirrorlist to the 2026-05-18 generated version with two new mirrors added and one stale mirror removed.
+
+### Technical Details
+
+- `flake8` and `ruff` added to the `install_core_packages()` array in alphabetical order alongside existing dev tools
+- Mirrorlist regenerated: added `arch.ljkx.org` and `mirror.tzulo.com`, removed `mirror.thereisno.page/archlinux` (stale)
+- No structural changes; pure package list and mirror maintenance
+
+### Files Modified
+
+- [110-install-core-software.sh](110-install-core-software.sh)
+- [mirrorlist](mirrorlist)
+
+---
+
 ## 2026.05.06
 
 ### What Changed
