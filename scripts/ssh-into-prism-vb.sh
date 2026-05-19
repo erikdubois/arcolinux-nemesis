@@ -90,6 +90,8 @@ get_vm_state() {
 }
 
 rule_exists() {
+    # NAT rule format in machinereadable output: natpf1="ssh-prism,tcp,,2022,,22"
+    # Match on opening quote + name + comma to avoid false positives.
     VBoxManage showvminfo "${VM_NAME}" --machinereadable \
         | grep -q "\"${NAT_RULE_NAME},"
 }
@@ -106,9 +108,11 @@ setup_port_forwarding() {
     state=$(get_vm_state)
 
     if [[ "${state}" == "running" ]]; then
+        # controlvm works on a live VM
         VBoxManage controlvm "${VM_NAME}" natpf1 delete "${NAT_RULE_NAME}" 2>/dev/null || true
         VBoxManage controlvm "${VM_NAME}" natpf1 "${NAT_RULE_NAME},tcp,,${VM_PORT},,22"
     else
+        # modifyvm requires the VM to be off
         VBoxManage modifyvm "${VM_NAME}" --natpf1 delete "${NAT_RULE_NAME}" 2>/dev/null || true
         VBoxManage modifyvm "${VM_NAME}" --natpf1 "${NAT_RULE_NAME},tcp,,${VM_PORT},,22"
     fi
