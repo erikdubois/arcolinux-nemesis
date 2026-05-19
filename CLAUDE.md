@@ -102,3 +102,19 @@ Setting `DEBUG=true` before running causes the pipeline to pause before each sec
 - `comment_out_patterns_in_file file pattern...`
 
 **Detection:** `is_plasma_installed`, `is_plasma_x11_installed`
+
+## Distro Comparison Research
+
+VirtualBox VMs running other Arch-based distros (PrismLinux, CachyOS, EndeavourOS, etc.)
+are used as **reference machines** — their configs are inspected to find settings or
+approaches that could improve **Kiro** (our distro). We never install or modify
+`edu-system-files` on these reference VMs. The research flow is:
+
+1. SSH into the reference VM (`scripts/ssh-into-<name>-vb.sh`)
+2. Inspect its `/etc/sysctl.d/`, `/etc/udev/rules.d/`, `/etc/modprobe.d/`, etc.
+3. Compare with Kiro's configs in `~/EDU/edu-system-files/`
+4. Record findings in `<Kiro>-vs-<Distro>.md` in this repo
+5. Apply any improvements to `~/EDU/edu-system-files/` — never to the reference VM
+
+Comparison docs (e.g. `Kiro-vs-Prism.md`) document what Kiro can learn, not what
+Prism needs. Action items in these docs always target Kiro's `edu-system-files`.
