@@ -113,8 +113,9 @@ approaches that could improve **Kiro** (our distro). We never install or modify
 1. SSH into the reference VM (`scripts/ssh-into-<name>-vb.sh`)
 2. Inspect its `/etc/sysctl.d/`, `/etc/udev/rules.d/`, `/etc/modprobe.d/`, etc.
 3. Compare with Kiro's configs in `~/EDU/edu-system-files/`
-4. Record findings in `<Kiro>-vs-<Distro>.md` in this repo
+4. Record findings in `<Kiro>-vs-<Distro>.md` in `~/KIRO/kiro-iso/`
 5. Apply any improvements to `~/EDU/edu-system-files/` — never to the reference VM
 
-Comparison docs (e.g. `Kiro-vs-Prism.md`) document what Kiro can learn, not what
-Prism needs. Action items in these docs always target Kiro's `edu-system-files`.
+Comparison docs (e.g. `Kiro-vs-Prism.md`) live in `kiro-iso`, not here.
+They document what Kiro can learn, not what the reference distro needs.
+Action items always target Kiro's `edu-system-files`.
