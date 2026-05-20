@@ -34,7 +34,6 @@ install_nemesis_software() {
         archlinux-logout-gtk4-git \
         edu-arc-dawn-git \
         edu-arc-kde \
-        edu-hblock-git \
         edu-rofi-git \
         edu-rofi-themes-git \
         edu-sddm-simplicity-git \

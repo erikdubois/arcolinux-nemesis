@@ -93,7 +93,6 @@ install_core_packages() {
         flake8
         font-manager
         gcolor3
-        gh
         gimp
         git
         gnome-disk-utility
