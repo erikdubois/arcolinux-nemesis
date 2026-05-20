@@ -47,6 +47,7 @@ create_personal_directories() {
         "${HOME}/.config/obs-studio"
         "${HOME}/.config/neofetch"
         "${HOME}/.config/flameshot"
+        "${HOME}/.config/yay"
         "${HOME}/DATA"
         "${HOME}/Insync"
         "${HOME}/Projects"
@@ -78,6 +79,11 @@ install_personal_settings_as_user() {
     copy_file_user "${SETTINGS_DIR}/flameshot/flameshot.ini" \
           "${HOME}/.config/flameshot/" || \
           log_warn "Failed to copy Flameshot settings"
+
+    log_subsection "yay settings"
+    copy_file_user "${SETTINGS_DIR}/yay/yay.conf" \
+          "${HOME}/.config/yay/" || \
+          log_warn "Failed to copy yay settings"
 }
 
 # as Root

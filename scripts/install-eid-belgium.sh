@@ -31,8 +31,9 @@ main() {
     install_packages pcsclite ccid opensc
     enable_now_service pcscd
 
-    log_subsection "Importing GPG key"
+    log_subsection "Importing GPG keys"
     gpg --recv-key 824A5E0010A04D46
+    gpg --recv-key 222294FD09089348
 
     install_aur_package eid-mw
 
