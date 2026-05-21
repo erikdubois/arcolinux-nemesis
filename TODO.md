@@ -8,10 +8,10 @@ _(none)_
 
 - [ ] Lazy audit: fix renamed/dropped Arch packages **when they fail at install** on the next fresh install, rather than pre-auditing now. Deferred 2026-05-21 — pre-audit was too heavy for the value, and pacman will tell us at install time.
 - [ ] Consider a `scripts/1-install-scripts.sh` health-check mode that lists what would be installed without installing
-- [ ] Investigate replacing `SigLevel=Never` with per-package signing once nemesis_repo has a stable key
 
 ## Done
 
+- [x] Investigate per-package signing for nemesis_repo — _closed permanent-no (2026.05.21): Erik will never sign his packages. `SigLevel = Never` is the final answer for nemesis_repo / kiro_repo by design. Don't re-open._
 - [x] Add `ruff` linting pass to manual checklist — _closed obsolete (2026.05.21): repo is pure bash, zero `.py` files. Re-open if Python scripts land later._
 - [x] Add `flake8` and `ruff` to core packages (2026.05.18)
 - [x] Fix plocate-updatedb.timer skip on static-unit systems (2026.05.02)
