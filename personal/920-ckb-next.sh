@@ -35,20 +35,16 @@ install_ckb_next_if_keyboard_detected() {
 
         install_packages ckb-next-git
 
-        mkdir -p "${HOME}/.config/ckb-next" \
-            "${HOME}/.config/autostart"
+        mkdir -p "${HOME}/.config/ckb-next"
 
-        copy_file \
+        copy_file_user \
             "${SETTINGS_DIR}/ckb-next/ckb-next.conf" \
             "${HOME}/.config/ckb-next/ckb-next.conf"
-
-        copy_file \
-            "${SETTINGS_DIR}/ckb-next/ckb-next.autostart.desktop" \
-            "${HOME}/.config/autostart/ckb-next.autostart.desktop"
 
         enable_now_service ckb-next-daemon.service
 
         log_section "Corsair keyboard configured"
+        log_info "GUI autostart is handled by ohmychadwm scripts/run.sh — no .desktop autostart needed"
 
     fi
 }
