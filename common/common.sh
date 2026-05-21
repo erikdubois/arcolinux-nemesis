@@ -193,6 +193,30 @@ comment_out_patterns_in_file() {
     done
 }
 
+# Extract the "# Purpose:" block from a script header.
+# Reads from the first "# Purpose:" line through the next blank-comment line
+# or non-comment line. Strips the leading "# " and optional "- " bullet prefix.
+# Usage: extract_purpose <script-path>
+# Prints: one description bullet per line. Empty output if no Purpose block found.
+extract_purpose() {
+    local script="$1"
+    [[ -f "$script" ]] || return 1
+
+    awk '
+        /^#[[:space:]]*Purpose[[:space:]]*$/ { in_block=1; next }
+        /^#[[:space:]]*Purpose:/             { in_block=1; next }
+        in_block {
+            if (!/^#/)              { exit }
+            if (/^#[[:space:]]*$/)  { exit }
+            if (/^##+/)             { exit }
+            line = $0
+            sub(/^#[[:space:]]*/, "", line)
+            sub(/^-[[:space:]]*/,  "", line)
+            print line
+        }
+    ' "$script"
+}
+
 ##################################################################################################################################
 # 6. Package helpers
 ##################################################################################################################################

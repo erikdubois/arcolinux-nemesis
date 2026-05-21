@@ -18,6 +18,49 @@ Refreshed the saved ckb-next config in `personal/settings/ckb-next/` from the no
 - [personal/settings/ckb-next/ckb-next.autostart.desktop](personal/settings/ckb-next/ckb-next.autostart.desktop) (deleted)
 - [personal/920-ckb-next.sh](personal/920-ckb-next.sh)
 
+---
+
+### What Changed (later, same day)
+
+Removed two scripts that collided with system-level configs now owned by `edu-system-files` (Kiro block). Cross-stack audit between this personal install repo and the Kiro `edu-system-files` block identified that nemesis was overwriting Kiro-tuned files; ownership moved to the Kiro side.
+
+### Technical Details
+
+- `scripts/install-zram.sh` deleted — was writing `/etc/systemd/zram-generator.conf` with `lz4` + uncapped `ram/2`. `edu-system-files` now ships this file with `zstd` + `min(ram/2, 4096)` cap. Kiro owns zram tuning.
+- `scripts/enable-oomd.sh` deleted — was writing `/etc/systemd/system.conf.d/90-memory-accounting.conf` including the deprecated `DefaultSwapAccounting=true`. `edu-system-files` ships the correct file (memory accounting only). Kiro owns this.
+- `scripts/disable-oomd.sh` deleted as a pair — its remaining purpose was to undo what enable-oomd.sh did; with the enable side gone and Kiro owning the memory-accounting config, the disable script no longer has a meaningful job.
+- Audit results recorded in [Kiro-HQ/TODO.md](/home/erik/Insync/Kiro/Kiro-HQ/TODO.md) item closed.
+
+### Files Modified
+
+- [scripts/install-zram.sh](scripts/install-zram.sh) (deleted)
+- [scripts/enable-oomd.sh](scripts/enable-oomd.sh) (deleted)
+- [scripts/disable-oomd.sh](scripts/disable-oomd.sh) (deleted)
+
+---
+
+### What Changed (later, same day — describe-mode for the launcher)
+
+Wired up a "describe what each script does" feature in `scripts/1-install-scripts.sh` so a user can preview what a script will do without running it or reading its bash. Backed by a new `# Purpose:` block convention in each script's header and a small parsing helper in `common/common.sh`. Two scripts updated as a pilot; the remaining 15 are tracked in TODO.md.
+
+### Technical Details
+
+- New helper `extract_purpose <script>` in [common/common.sh](common/common.sh) — awk-based parser that returns the bullets under a script's `# Purpose` (or `# Purpose:`) header. Exits cleanly on the next blank-comment line, banner separator (`^##+`), or non-comment line.
+- [scripts/1-install-scripts.sh](scripts/1-install-scripts.sh) updated:
+    - `build_menu_items` now fills the dialog description column with each script's first Purpose bullet (truncated to 60 chars).
+    - New top-of-checklist option **"Describe selected scripts (don't run anything)"** alongside the existing "Install all scripts". When checked, prints each selected script's full Purpose block and exits without running anything; if checked alone (no scripts), describes all discovered scripts.
+    - New helpers `describe_selected_scripts`, `is_describe_selected`, `filter_out_describe_and_all`.
+- Purpose blocks added to 2 scripts as pilot: [100-install-nemesis-software.sh](100-install-nemesis-software.sh) (5 bullets) and [120-install-nemesis-icon-themes.sh](120-install-nemesis-icon-themes.sh) (3 bullets). 8 other scripts already had Purpose blocks from earlier; 15 still need one (tracked in [TODO.md](TODO.md)).
+- Format convention: a `##############...` banner line, `# Purpose` (no colon needed) on its own line, then `# - bullet` lines, then a closing banner. Sits right after the standard `DO NOT JUST RUN THIS` banner.
+
+### Files Modified
+
+- [common/common.sh](common/common.sh)
+- [scripts/1-install-scripts.sh](scripts/1-install-scripts.sh)
+- [100-install-nemesis-software.sh](100-install-nemesis-software.sh)
+- [120-install-nemesis-icon-themes.sh](120-install-nemesis-icon-themes.sh)
+- [TODO.md](TODO.md)
+
 ## 2026.05.18
 
 ### What Changed

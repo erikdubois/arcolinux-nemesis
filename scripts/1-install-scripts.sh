@@ -29,6 +29,7 @@ source "${COMMON_DIR}/common.sh"
 ##################################################################################################################################
 
 ALL_OPTION="__ALL__"
+DESCRIBE_OPTION="__DESCRIBE__"
 
 get_dialog_bin() {
     command -v dialog || command -v whiptail
@@ -50,11 +51,15 @@ collect_scripts() {
 build_menu_items() {
     local script
     local items=()
+    local desc
 
-    items+=( "${ALL_OPTION}" "Install all scripts" "OFF" )
+    items+=( "${ALL_OPTION}"      "Install all scripts"                              "OFF" )
+    items+=( "${DESCRIBE_OPTION}" "Describe selected scripts (don't run anything)"   "OFF" )
 
     for script in "$@"; do
-        items+=( "${script}" "" "OFF" )
+        desc="$(extract_purpose "${SCRIPTS_DIR}/${script}" | head -1)"
+        desc="${desc:0:60}"
+        items+=( "${script}" "${desc}" "OFF" )
     done
 
     printf '%s\n' "${items[@]}"
@@ -129,6 +134,38 @@ run_selected_scripts() {
     done
 }
 
+describe_selected_scripts() {
+    local script
+    local purpose
+
+    for script in "$@"; do
+        log_subsection "${script}"
+        purpose="$(extract_purpose "${SCRIPTS_DIR}/${script}")"
+        if [[ -z "${purpose}" ]]; then
+            printf '  (no Purpose block — read the script directly)\n'
+        else
+            printf '%s\n' "${purpose}" | sed 's/^/  - /'
+        fi
+    done
+}
+
+is_describe_selected() {
+    local item
+    for item in "$@"; do
+        [[ "${item}" == "${DESCRIBE_OPTION}" ]] && return 0
+    done
+    return 1
+}
+
+filter_out_describe_and_all() {
+    local item
+    for item in "$@"; do
+        [[ "${item}" == "${DESCRIBE_OPTION}" ]] && continue
+        [[ "${item}" == "${ALL_OPTION}" ]]      && continue
+        printf '%s\n' "${item}"
+    done
+}
+
 main() {
     local dialog_bin
     local selected_raw
@@ -158,6 +195,17 @@ main() {
         log_warn "No scripts selected"
         exit 0
     }
+
+    if is_describe_selected "${selected[@]}"; then
+        local -a to_describe=()
+        mapfile -t to_describe < <(filter_out_describe_and_all "${selected[@]}")
+        if (( ${#to_describe[@]} == 0 )); then
+            mapfile -t to_describe < <(collect_scripts)
+        fi
+        log_section "Describing ${#to_describe[@]} script(s) — nothing will run"
+        describe_selected_scripts "${to_describe[@]}"
+        exit 0
+    fi
 
     mapfile -t expanded_selected < <(expand_all_selection "${selected[@]}")
 

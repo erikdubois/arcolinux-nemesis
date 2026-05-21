@@ -2,11 +2,27 @@
 
 ## Active
 
-_(none)_
+- [ ] **Finish adding `# Purpose:` blocks to the remaining 15 scripts** so `1-install-scripts.sh` describe-mode (and the dialog checklist column) can show a one-line summary for every script. Helper + launcher are already wired (2026-05-21).
+      Scripts that still need a Purpose block:
+      - `300-sardi-extras.sh`
+      - `301-sardi-extras-removal.sh`
+      - `400-surfn-extras.sh`
+      - `401-surfn-extras-removal.sh`
+      - `scripts/change-boot-sequence-boot-kernel.sh`
+      - `scripts/check-boot-config.sh`
+      - `scripts/diagnose-boot.sh`
+      - `scripts/give-me-nemesis-repo.sh`
+      - `scripts/setup-printer.sh`
+      - `personal/900-install-personal-settings-folders.sh`
+      - `personal/910-plasma-specific-applications-and-settings.sh`
+      - `personal/920-ckb-next.sh`
+      - `personal/930-real-metal.sh`
+      - `personal/990-skel.sh`
+      - `personal/999-last-changes.sh`
 
 ## Backlog
 
-- [ ] Consider a `scripts/1-install-scripts.sh` health-check mode that lists what would be installed without installing
+_(none)_
 
 ## Done
 

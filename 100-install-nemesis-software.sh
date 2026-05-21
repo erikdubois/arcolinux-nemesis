@@ -10,6 +10,15 @@
 #
 ##################################################################################################################################
 
+##################################################################################################################################
+# Purpose
+# - Install Erik's core Nemesis software set from nemesis_repo
+# - Includes archlinux-tweak-tool-gtk4, alacritty-tweak-tool, archlinux-logout-gtk4, edu-* themes and configs
+# - Adds icon themes (neo-candy, surfn), rofi + rofi-themes, flameshot, wttr, lastpass, gittyup, hardcode-fixer
+# - Ensure a readable vconsole font exists before installing
+# - Install pamac-aur on non-Manjaro systems (avoids conflict with Manjaro's bundled pamac)
+##################################################################################################################################
+
 # Load shared helper functions
 source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common/common.sh"
 
