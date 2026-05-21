@@ -6,7 +6,6 @@ _(none)_
 
 ## Backlog
 
-- [ ] Lazy audit: fix renamed/dropped Arch packages **when they fail at install** on the next fresh install, rather than pre-auditing now. Deferred 2026-05-21 — pre-audit was too heavy for the value, and pacman will tell us at install time.
 - [ ] Consider a `scripts/1-install-scripts.sh` health-check mode that lists what would be installed without installing
 
 ## Done
