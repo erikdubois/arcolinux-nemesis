@@ -3,7 +3,6 @@
 ## Active
 
 - [ ] Review all numbered scripts (100–900 range) for any packages that have been renamed or dropped from Arch repos
-- [ ] Add a `ruff` linting pass to the CI-equivalent manual checklist for Python scripts in the repo
 
 ## Backlog
 
@@ -12,6 +11,7 @@
 
 ## Done
 
+- [x] Add `ruff` linting pass to manual checklist — _closed obsolete (2026.05.21): repo is pure bash, zero `.py` files. Re-open if Python scripts land later._
 - [x] Add `flake8` and `ruff` to core packages (2026.05.18)
 - [x] Fix plocate-updatedb.timer skip on static-unit systems (2026.05.02)
 - [x] Add PipeWire install script + make audio scripts symmetric (2026.05.02)
