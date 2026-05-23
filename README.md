@@ -1,7 +1,7 @@
 <h1 align="center">
- <img src="https://github.com/erikdubois/arcolinux-nemesis/blob/master/perrsonal/settings/arcolinuxw.png">
+  <img src="kiro.jpg" alt="Kiro" width="220" />
   <br />
-   ArcoLinux Nemesis
+  ArcoLinux Nemesis
 </h1>
 
 ![Last-Commit](https://img.shields.io/github/last-commit/erikdubois/arcolinux-nemesis?style=for-the-badge)
