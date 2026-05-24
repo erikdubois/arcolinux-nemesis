@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026.05.24
+
+### What Changed
+
+Fixed the chadwm installers that broke when `edu-chadwm` renamed its desktop config folder `arco-chadwm` → `chadwm` (Kiro de-brand). The install destinations now follow the new name so chadwm installs cleanly again on Arch and on the cross-distro Mint/Solus paths.
+
+### Technical Details
+
+- `arcolinux-desktops/chadwm.sh` — copies `/etc/skel/.config/chadwm` (was `arco-chadwm`); the `edu-chadwm-git` package now ships that path.
+- `arcolinux-desktops/ohmychadwm.sh` — was copying `/etc/skel/.config/arco-chadwm` (latent copy-paste bug in an ohmychadwm installer); now copies `/etc/skel/.config/ohmychadwm`, its own config.
+- `personal/settings/voyage-of-chadwm/{mint,solus}-chadwm/install-chadwm.sh` — these clone `edu-chadwm`, which now lands at `~/.config/chadwm`; repointed the override-copy destinations and the `cd .../chadwm` build dir. Bundled per-distro override dirs (`$installed_dir/arco-chadwm/`) left as-is — part of the deferred cross-distro de-brand.
+
+### Files Modified
+
+- arcolinux-desktops/chadwm.sh
+- arcolinux-desktops/ohmychadwm.sh
+- personal/settings/voyage-of-chadwm/mint-chadwm/install-chadwm.sh
+- personal/settings/voyage-of-chadwm/solus-chadwm/install-chadwm.sh
+
 ## 2026.05.21
 
 ### What Changed

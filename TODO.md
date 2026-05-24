@@ -2,6 +2,8 @@
 
 ## Active
 
+- [ ] **Cross-distro `voyage-of-chadwm` de-brand: `arco-chadwm` → `chadwm`** — _added 2026-05-24._ The functional breaks from the edu-chadwm rename are fixed (chadwm.sh, ohmychadwm.sh, mint, solus). Remaining is cosmetic brand consistency across the ~14 self-contained subtrees (ubuntu, debian, fedora, void, popos, mxlinux, nobara, peppermint, lmde6, bunsenlabs, freebsd, ghostbsd, anduin, almalinux) that bundle their own configs and use `~/.config/arco-chadwm`. Includes renaming the bundled `mint-chadwm/arco-chadwm/` override dir. No functional payoff — only do it for a uniform folder name across distros. These are out of Kiro scope (personal stack).
+
 - [ ] **Finish adding `# Purpose:` blocks to the remaining 15 scripts** so `1-install-scripts.sh` describe-mode (and the dialog checklist column) can show a one-line summary for every script. Helper + launcher are already wired (2026-05-21).
       Scripts that still need a Purpose block:
       - `300-sardi-extras.sh`
