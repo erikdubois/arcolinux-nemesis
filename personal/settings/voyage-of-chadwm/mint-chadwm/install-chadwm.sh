@@ -123,11 +123,11 @@ fi
 
 if "$_install_chadwm"; then
     # overwriting the official code from ArcoLinux with my own
-    cp -v "$installed_dir"/arco-chadwm/run.sh  ~/.config/arco-chadwm/scripts
-    cp -v "$installed_dir"/arco-chadwm/picom.conf  ~/.config/arco-chadwm/picom
-    cp -v "$installed_dir"/arco-chadwm/config.def.h ~/.config/arco-chadwm/chadwm
-    cp -v "$installed_dir"/arco-chadwm/sxhkdrc  ~/.config/arco-chadwm/sxhkd
-    cp -v "$installed_dir"/arco-chadwm/bar.sh ~/.config/arco-chadwm/scripts
+    cp -v "$installed_dir"/arco-chadwm/run.sh  ~/.config/chadwm/scripts
+    cp -v "$installed_dir"/arco-chadwm/picom.conf  ~/.config/chadwm/picom
+    cp -v "$installed_dir"/arco-chadwm/config.def.h ~/.config/chadwm/chadwm
+    cp -v "$installed_dir"/arco-chadwm/sxhkdrc  ~/.config/chadwm/sxhkd
+    cp -v "$installed_dir"/arco-chadwm/bar.sh ~/.config/chadwm/scripts
     [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
     cp -v "$installed_dir"/arco-chadwm/uca.xml ~/.config/Thunar/
     echo
@@ -139,7 +139,7 @@ if "$_install_chadwm"; then
     echo "########################################################################"
     tput sgr0
     echo
-    cd ~/.config/arco-chadwm/chadwm
+    cd ~/.config/chadwm/chadwm
     sudo make install
     sudo make clean
 fi

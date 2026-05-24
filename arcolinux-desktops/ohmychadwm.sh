@@ -78,7 +78,7 @@ echo "########################################################################"
 tput sgr0
 echo
 
-cp -af /etc/skel/.config/arco-chadwm ~/.config/
+cp -af /etc/skel/.config/ohmychadwm ~/.config/
 cp -af /etc/skel/.bin ~
 
 echo
