@@ -3,14 +3,6 @@
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -57,7 +49,7 @@ sudo xbps-install -Su --yes
 ./personal-configs.sh
 
 # after installing everything rebuilding
-cd ~/.config/arco-chadwm/chadwm
+cd ~/.config/chadwm/chadwm
 ./rebuild.sh
 
 echo

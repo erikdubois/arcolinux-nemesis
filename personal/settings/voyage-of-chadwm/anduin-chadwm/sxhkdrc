@@ -134,7 +134,7 @@ super + p
 
 #rofi large
 super + d
-    rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/arco-chadwm/rofi/launcher2.rasi
+    rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/chadwm/rofi/launcher2.rasi
 
 #reload sxhkd:
 super + shift + s
@@ -410,4 +410,4 @@ XF86MonBrightnessDown
 
 #Picom Toggle
 ctrl + alt + o
-    ~/.config/arco-chadwm/scripts/picom-toggle.sh
+    ~/.config/chadwm/scripts/picom-toggle.sh

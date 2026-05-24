@@ -4,20 +4,23 @@
 
 ### What Changed
 
-Fixed the chadwm installers that broke when `edu-chadwm` renamed its desktop config folder `arco-chadwm` → `chadwm` (Kiro de-brand). The install destinations now follow the new name so chadwm installs cleanly again on Arch and on the cross-distro Mint/Solus paths.
+Full chadwm de-brand, triggered by `edu-chadwm` renaming its desktop config folder `arco-chadwm` → `chadwm` (Kiro de-brand). Two parts:
+
+1. **Arch installers (functional fix)** — `arcolinux-desktops/chadwm.sh` and `ohmychadwm.sh` broke because they copied the now-gone `/etc/skel/.config/arco-chadwm`.
+2. **Cross-distro `voyage-of-chadwm` migration** — all 16 distro chadwm installers now use `~/.config/chadwm`, and the 13 that pulled the desktop from the upstream **`arcolinux/arcolinux-chadwm`** repo were switched to clone **`erikdubois/edu-chadwm`** instead. (Correcting an earlier note in this log: those 13 were *not* self-contained — they cloned the ArcoLinux upstream, which is why renaming required switching the clone source.)
 
 ### Technical Details
 
 - `arcolinux-desktops/chadwm.sh` — copies `/etc/skel/.config/chadwm` (was `arco-chadwm`); the `edu-chadwm-git` package now ships that path.
 - `arcolinux-desktops/ohmychadwm.sh` — was copying `/etc/skel/.config/arco-chadwm` (latent copy-paste bug in an ohmychadwm installer); now copies `/etc/skel/.config/ohmychadwm`, its own config.
-- `personal/settings/voyage-of-chadwm/{mint,solus}-chadwm/install-chadwm.sh` — these clone `edu-chadwm`, which now lands at `~/.config/chadwm`; repointed the override-copy destinations and the `cd .../chadwm` build dir. Bundled per-distro override dirs (`$installed_dir/arco-chadwm/`) left as-is — part of the deferred cross-distro de-brand.
+- `voyage-of-chadwm` (16 subtrees): `arcolinux/arcolinux-chadwm` → `erikdubois/edu-chadwm` clone source (+ `/tmp/arcolinux-chadwm` → `/tmp/edu-chadwm`), and `arco-chadwm` → `chadwm` across install scripts, run.sh, bar.sh, sxhkdrc, and gtk bookmarks. The mint bundled override dir `mint-chadwm/arco-chadwm/` was `git mv`'d to `chadwm/`.
+- Stripped the `arcolinux.* / alci.online / ariser.eu` Website URL header lines (kept `erikdubois.be`) from the chadwm entry scripts (`install-chadwm.sh`, `1-all-in-one.sh`).
+- **Left for follow-up** (see TODO): the parallel `arcolinux/arcolinux-powermenu` → `edu-powermenu` migration, and stripping the same brand URL headers from the ~150 non-chadwm install scripts across voyage-of-chadwm.
 
 ### Files Modified
 
-- arcolinux-desktops/chadwm.sh
-- arcolinux-desktops/ohmychadwm.sh
-- personal/settings/voyage-of-chadwm/mint-chadwm/install-chadwm.sh
-- personal/settings/voyage-of-chadwm/solus-chadwm/install-chadwm.sh
+- arcolinux-desktops/chadwm.sh, arcolinux-desktops/ohmychadwm.sh
+- personal/settings/voyage-of-chadwm/ — all 16 `*-chadwm/` subtrees (install scripts, run.sh, bar.sh, sxhkdrc, bookmarks; mint bundled dir renamed)
 
 ## 2026.05.21
 

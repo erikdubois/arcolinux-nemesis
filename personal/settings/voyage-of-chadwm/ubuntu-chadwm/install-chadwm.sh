@@ -123,27 +123,27 @@ echo
 
 if "$_install_chadwm"; then
     # getting the official code from ArcoLinux
-    sudo rm -rf /tmp/arcolinux-chadwm
-    git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
-    sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
-    sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
-    cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
-    cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
+    sudo rm -rf /tmp/edu-chadwm
+    git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
+    sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
+    sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
+    cp -r /tmp/edu-chadwm/etc/skel/.bin ~
+    cp -r /tmp/edu-chadwm/etc/skel/.config ~
     echo
 fi
 
 if "$_install_chadwm"; then
     # overwriting the official code from ArcoLinux with my own
-    cp -v run.sh  ~/.config/arco-chadwm/scripts
+    cp -v run.sh  ~/.config/chadwm/scripts
     #specific picom for Ubuntu
-    cp -v picom.conf  ~/.config/arco-chadwm/picom
-    cp -v config.def.h ~/.config/arco-chadwm/chadwm
-    cp -v sxhkdrc  ~/.config/arco-chadwm/sxhkd
-    cp -v bar.sh ~/.config/arco-chadwm/scripts
+    cp -v picom.conf  ~/.config/chadwm/picom
+    cp -v config.def.h ~/.config/chadwm/chadwm
+    cp -v sxhkdrc  ~/.config/chadwm/sxhkd
+    cp -v bar.sh ~/.config/chadwm/scripts
     [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
     cp -v uca.xml ~/.config/Thunar/
 
-    cd ~/.config/arco-chadwm/chadwm
+    cd ~/.config/chadwm/chadwm
     sudo make install
     sudo make clean
 fi

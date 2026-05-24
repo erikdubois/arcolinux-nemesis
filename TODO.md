@@ -2,7 +2,11 @@
 
 ## Active
 
-- [ ] **Cross-distro `voyage-of-chadwm` de-brand: `arco-chadwm` → `chadwm`** — _added 2026-05-24._ The functional breaks from the edu-chadwm rename are fixed (chadwm.sh, ohmychadwm.sh, mint, solus). Remaining is cosmetic brand consistency across the ~14 self-contained subtrees (ubuntu, debian, fedora, void, popos, mxlinux, nobara, peppermint, lmde6, bunsenlabs, freebsd, ghostbsd, anduin, almalinux) that bundle their own configs and use `~/.config/arco-chadwm`. Includes renaming the bundled `mint-chadwm/arco-chadwm/` override dir. No functional payoff — only do it for a uniform folder name across distros. These are out of Kiro scope (personal stack).
+- [x] **Cross-distro `voyage-of-chadwm` de-brand: `arco-chadwm` → `chadwm`** — _done 2026-05-24._ All 16 distro installers migrated: the 13 that cloned upstream `arcolinux/arcolinux-chadwm` now clone `erikdubois/edu-chadwm`; `arco-chadwm` → `chadwm` everywhere; mint's bundled `arco-chadwm/` override dir renamed to `chadwm/`; brand URL headers stripped from the chadwm entry scripts. Behavioral change — these distros now install the edu-chadwm desktop; **retest per distro before relying on them.**
+
+- [ ] **Migrate `arcolinux/arcolinux-powermenu` → `edu-powermenu` across voyage-of-chadwm** — _added 2026-05-24._ 14 subtrees still clone the ArcoLinux upstream powermenu; mint already uses `edu-powermenu`. Parallel to the chadwm migration; switch clone source + retest the super+shift+x exit binding per distro.
+
+- [ ] **De-brand the remaining voyage-of-chadwm script headers** — _added 2026-05-24._ ~150 non-chadwm install scripts (`install-cubic.sh`, `install-xanmod.sh`, `install-apps-*.sh`, `dotfiles/fish/*`, `personal-configs.sh`, etc.) still carry `arcolinux.* / alci.online / ariser.eu` Website URL header lines. Strip them down to the `erikdubois.be` line (chadwm entry scripts already done).
 
 - [ ] **Finish adding `# Purpose:` blocks to the remaining 15 scripts** so `1-install-scripts.sh` describe-mode (and the dialog checklist column) can show a one-line summary for every script. Helper + launcher are already wired (2026-05-21).
       Scripts that still need a Purpose block:

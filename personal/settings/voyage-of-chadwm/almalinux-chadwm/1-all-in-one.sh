@@ -44,7 +44,7 @@ sudo dnf upgrade -y
 sudo dnf autoremove -y
 
 # building Chadwm
-cd ~/.config/arco-chadwm/chadwm
+cd ~/.config/chadwm/chadwm
 sudo make install
 
 echo

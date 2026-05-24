@@ -3,14 +3,6 @@
 ##################################################################################################################################
 # Author    : Erik Dubois
 # Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
 ##################################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -78,28 +70,28 @@ cp -r /tmp/arcolinux-powermenu/etc/skel/.bin ~
 cp -r /tmp/arcolinux-powermenu/etc/skel/.config ~
 
 # getting the official code from ArcoLinux
-folder="/tmp/arcolinux-chadwm"
+folder="/tmp/edu-chadwm"
 if [ -d "$folder" ]; then
     sudo rm -r "$folder"
 fi
-git clone https://github.com/arcolinux/arcolinux-chadwm  /tmp/arcolinux-chadwm
-sudo cp /tmp/arcolinux-chadwm/usr/bin/exec-chadwm /usr/bin
-sudo cp /tmp/arcolinux-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
-cp -r /tmp/arcolinux-chadwm/etc/skel/.bin ~
-cp -r /tmp/arcolinux-chadwm/etc/skel/.config ~
+git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
+sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
+sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
+cp -r /tmp/edu-chadwm/etc/skel/.bin ~
+cp -r /tmp/edu-chadwm/etc/skel/.config ~
 
 # overwriting the official code from ArcoLinux with my own
-cp run.sh  ~/.config/arco-chadwm/scripts
-cp picom.conf  ~/.config/arco-chadwm/picom
-cp config.def.h ~/.config/arco-chadwm/chadwm
-cp sxhkdrc  ~/.config/arco-chadwm/sxhkd
-cp bar.sh ~/.config/arco-chadwm/scripts
+cp run.sh  ~/.config/chadwm/scripts
+cp picom.conf  ~/.config/chadwm/picom
+cp config.def.h ~/.config/chadwm/chadwm
+cp sxhkdrc  ~/.config/chadwm/sxhkd
+cp bar.sh ~/.config/chadwm/scripts
 [ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
 cp uca.xml ~/.config/Thunar/
 
 # building Chadwm
 if [ ! -f /usr/local/bin/chadwm ] ; then
-	cd ~/.config/arco-chadwm/chadwm
+	cd ~/.config/chadwm/chadwm
 	sudo make install
 fi
 
