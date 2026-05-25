@@ -14,20 +14,17 @@ pause_if_debug
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 #   Purpose:
-#   - Install the Chadwm stack and related XFCE utilities.
+#   - Install the Ohmychadwm stack and related XFCE utilities.
 #   - Replace conflicting ArcoLinux packages when necessary.
 #   - Configure SDDM autologin for the current user.
 #
 ##################################################################################################################################
-install_chadwm_package() {
-    install_packages edu-chadwm-git
-}
 install_ohmychadwm_package() {
     install_packages ohmychadwm-git
 }
 
 install_core_packages() {
-    log_section "Install core packages for Chadwm and/or ohmychadwm"
+    log_section "Install core packages for ohmychadwm"
 
     local packages=(
         make
@@ -122,25 +119,13 @@ install_virtualbox_guest_utils_if_needed() {
     fi
 }
 
-_install_chadwm=false
 _install_ohmychadwm=false
-[[ -f "/tmp/install-chadwm" ]] && _install_chadwm=true
 [[ -f "/tmp/install-ohmychadwm" ]] && _install_ohmychadwm=true
 
-if "$_install_chadwm" || "$_install_ohmychadwm"; then
+# Install Ohmychadwm
+if "$_install_ohmychadwm"; then
     install_core_packages
     install_virtualbox_guest_utils_if_needed
-fi
-
-# Install Chadwm
-if "$_install_chadwm"; then
-    log_section "Let us install Chadwm"
-    install_chadwm_package
-    configure_sddm_autologin chadwm
-fi
-
-# Install Ohmychadwm (runs after chadwm if both selected, overriding session to ohmychadwm)
-if "$_install_ohmychadwm"; then
     log_section "Let us install Ohmychadwm"
     install_ohmychadwm_package
     configure_sddm_autologin ohmychadwm

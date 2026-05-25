@@ -109,9 +109,6 @@ printf "
 printf "Stop this script with CTRL + C then and run give-me-pacman.conf.sh"
 printf "
 "
-# Optional Chadwm decision point controlled elsewhere in the project.
-#run_chadwm_choice
-
 # Optional Ohmychadwm decision point controlled elsewhere in the project.
 run_ohmychadwm_choice
 
@@ -290,7 +287,7 @@ run_glob "${WORKING_DIR}/200-software-aur-repo*"
 # run_glob "${WORKING_DIR}/400-surfn-extras*"
 
 run_glob "${WORKING_DIR}/500-plasma*"
-run_glob "${WORKING_DIR}/600-chadwm*"
+run_glob "${WORKING_DIR}/600-ohmychadwm*"
 
 log_warn "Going to the Personal folder"
 
