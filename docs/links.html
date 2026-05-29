@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Learn &mdash; ArcoLinux Nemesis</title>
-    <meta name="description" content="The ArcoLinux Nemesis learning hub: getting started, how the script pipeline works, desktops, and supported distributions. Learn Linux by doing." />
+    <title>Links &mdash; ArcoLinux Nemesis</title>
+    <meta name="description" content="The most important links for an Arch Linux beginner: the Installation guide, General recommendations, pacman, the AUR, Arch news, the forums, and more — all on the official ArchWiki and archlinux.org." />
     <meta name="theme-color" content="#0f172a" />
     <link rel="icon" href="assets/branding/logo.png" />
     <link rel="apple-touch-icon" href="assets/branding/logo.png" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://erikdubois.github.io/arcolinux-nemesis/learn.html" />
-    <meta property="og:title" content="Learn — ArcoLinux Nemesis" />
-    <meta property="og:description" content="Getting started, the script pipeline, desktops, and supported distros. Learn Linux by doing." />
+    <meta property="og:url" content="https://erikdubois.github.io/arcolinux-nemesis/links.html" />
+    <meta property="og:title" content="Links — ArcoLinux Nemesis" />
+    <meta property="og:description" content="Essential reading for Arch Linux beginners — the ArchWiki pages and official resources worth reading first." />
     <meta name="twitter:card" content="summary" />
-    <link rel="canonical" href="https://erikdubois.github.io/arcolinux-nemesis/learn.html" />
+    <link rel="canonical" href="https://erikdubois.github.io/arcolinux-nemesis/links.html" />
     <link rel="stylesheet" href="dist/tailwind.css" />
     <script>
       window.DEFAULT_ACCENT = 'sky';
@@ -48,12 +48,12 @@
             <span class="hidden sm:inline">ArcoLinux <span class="text-accent-400">Nemesis</span></span>
           </a>
           <nav class="hidden gap-4 text-sm text-slate-300 lg:flex">
-            <a href="learn.html"           class="font-medium text-white" aria-current="page">Learn</a>
+            <a href="learn.html"           class="hover:text-white">Learn</a>
             <a href="getting-started.html" class="hover:text-white">Getting started</a>
             <a href="the-scripts.html"     class="hover:text-white">The scripts</a>
             <a href="desktops.html"        class="hover:text-white">Desktops</a>
             <a href="distros.html"         class="hover:text-white">Distros</a>
-          <a href="links.html" class="hover:text-white">Links</a>
+            <a href="links.html"           class="font-medium text-white" aria-current="page">Links</a>
           </nav>
         </div>
         <div class="flex items-center gap-3">
@@ -87,13 +87,13 @@
         </div>
       </div>
       <div id="mobile-menu" class="hidden border-t border-slate-800 lg:hidden">
-        <nav class="mx-auto flex max-w-[70.4rem] flex-col gap-1 px-6 py-3 text-sm text-slate-300">
-          <a href="learn.html"           class="rounded-md px-2 py-2 font-medium text-white" aria-current="page">Learn</a>
+        <nav class="mx-auto flex max-w-5xl flex-col gap-1 px-6 py-3 text-sm text-slate-300">
+          <a href="learn.html"           class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Learn</a>
           <a href="getting-started.html" class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Getting started</a>
           <a href="the-scripts.html"     class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">The scripts</a>
           <a href="desktops.html"        class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Desktops</a>
           <a href="distros.html"         class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Distros</a>
-          <a href="links.html" class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Links</a>
+          <a href="links.html"           class="rounded-md px-2 py-2 font-medium text-white" aria-current="page">Links</a>
           <a href="https://github.com/erikdubois/arcolinux-nemesis" target="_blank" rel="noopener noreferrer" class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">GitHub</a>
           <a href="https://www.youtube.com/erikdubois" target="_blank" rel="noopener noreferrer" class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">YouTube</a>
         </nav>
@@ -104,82 +104,126 @@
       <section class="relative overflow-hidden border-b border-slate-800">
         <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_rgb(var(--accent-400)/0.12),_transparent_60%)]"></div>
         <div class="mx-auto max-w-[70.4rem] px-6 py-16 sm:py-20">
-          <p class="text-sm font-semibold uppercase tracking-wider text-accent-400">Learning hub</p>
-          <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Learn Linux by doing</h1>
+          <p class="text-sm font-semibold uppercase tracking-wider text-accent-400">Links</p>
+          <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Essential reading for Arch beginners</h1>
           <p class="mt-4 max-w-2xl text-lg text-slate-300">
-            ArcoLinux Nemesis is a structured set of tutorials and experiments. You build real systems
-            with automation scripts, customize them, and learn how an Arch-based setup fits together &mdash;
-            then take the same ideas to any distribution.
+            Arch is a do-it-yourself distribution &mdash; you assemble the system, and the
+            <strong class="text-white">ArchWiki</strong> is your manual. These are the pages worth reading first.
+            ArcoLinux Nemesis runs on top of an Arch install you set up with these.
           </p>
         </div>
       </section>
 
-      <section class="mx-auto max-w-[79.2rem] px-6 py-16">
-        <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Start here</h2>
-        <div class="mt-8 grid gap-6 sm:grid-cols-2">
-          <a href="getting-started.html" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
-            <h3 class="flex items-center justify-between font-semibold text-white">Getting started <span class="text-accent-400 transition group-hover:translate-x-0.5">&rarr;</span></h3>
-            <p class="mt-2 text-sm text-slate-400">Add the nemesis_repo, clone the repo, and run the orchestrator. Backups, debug mode, and safety notes.</p>
+      <!-- Golden rule callout -->
+      <section class="mx-auto max-w-[70.4rem] px-6 pt-12">
+        <div class="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5">
+          <h2 class="font-semibold text-amber-200">The golden rule</h2>
+          <p class="mt-2 text-sm text-slate-300">
+            Before every big system update, skim the <a href="https://archlinux.org/news/" target="_blank" rel="noopener noreferrer" class="text-accent-300 hover:text-accent-200">Arch news</a>.
+            Breaking changes that need manual intervention are announced there first &mdash; reading it saves you from a broken boot.
+          </p>
+        </div>
+      </section>
+
+      <!-- 1. Start here -->
+      <section class="mx-auto max-w-[70.4rem] px-6 py-12">
+        <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Start here &mdash; before &amp; during install</h2>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <a href="https://wiki.archlinux.org/title/Installation_guide" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+            <h3 class="flex items-center justify-between font-semibold text-white">Installation guide <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+            <p class="mt-2 text-sm text-slate-400">The official, authoritative step-by-step install. Everything else assumes you&rsquo;ve followed it.</p>
           </a>
-          <a href="the-scripts.html" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
-            <h3 class="flex items-center justify-between font-semibold text-white">The scripts <span class="text-accent-400 transition group-hover:translate-x-0.5">&rarr;</span></h3>
-            <p class="mt-2 text-sm text-slate-400">How the numbered pipeline works, the shared helper library, and the standalone utility scripts.</p>
+          <a href="https://wiki.archlinux.org/title/Help:Reading" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+            <h3 class="flex items-center justify-between font-semibold text-white">Help:Reading <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+            <p class="mt-2 text-sm text-slate-400">How to read the wiki: its conventions, assumptions, and how commands are written. Read this first.</p>
           </a>
-          <a href="desktops.html" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
-            <h3 class="flex items-center justify-between font-semibold text-white">Desktops <span class="text-accent-400 transition group-hover:translate-x-0.5">&rarr;</span></h3>
-            <p class="mt-2 text-sm text-slate-400">Thirteen desktops and window managers, one script each &mdash; with screenshots to browse.</p>
+          <a href="https://wiki.archlinux.org/title/Frequently_asked_questions" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+            <h3 class="flex items-center justify-between font-semibold text-white">Frequently asked questions <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+            <p class="mt-2 text-sm text-slate-400">What Arch is, who it&rsquo;s for, and the questions every newcomer asks.</p>
           </a>
-          <a href="distros.html" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
-            <h3 class="flex items-center justify-between font-semibold text-white">Supported distros <span class="text-accent-400 transition group-hover:translate-x-0.5">&rarr;</span></h3>
-            <p class="mt-2 text-sm text-slate-400">Arch-based systems out of the box, plus Debian, Fedora, Ubuntu, FreeBSD, Void and more.</p>
+          <a href="https://archlinux.org/download/" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+            <h3 class="flex items-center justify-between font-semibold text-white">Download Arch Linux <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+            <p class="mt-2 text-sm text-slate-400">Get the official ISO and verify it before you write it to a USB stick.</p>
           </a>
         </div>
       </section>
 
+      <!-- 2. Understand -->
       <section class="border-t border-slate-800 bg-slate-900/30">
-        <div class="mx-auto max-w-[79.2rem] px-6 py-16">
-          <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">What you&rsquo;ll learn</h2>
-          <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/50 p-6">
-              <h3 class="font-semibold text-white">Script-driven installs</h3>
-              <p class="mt-2 text-sm text-slate-400">Replace manual setup with scripts that are fast, consistent, and reproducible.</p>
-            </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/50 p-6">
-              <h3 class="font-semibold text-white">Customization &amp; ricing (theming your setup)</h3>
-              <p class="mt-2 text-sm text-slate-400">Window managers, themes, icons, and workflow tweaks &mdash; make the system yours.</p>
-            </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/50 p-6">
-              <h3 class="font-semibold text-white">Cross-distro workflows</h3>
-              <p class="mt-2 text-sm text-slate-400">Carry the same approach across Arch, Debian, Fedora and others.</p>
-            </div>
-            <div class="rounded-2xl border border-slate-800 bg-slate-950/50 p-6">
-              <h3 class="font-semibold text-white">Continuous improvement</h3>
-              <p class="mt-2 text-sm text-slate-400">Scripts evolve, techniques get refined &mdash; experiment and adapt as you go.</p>
-            </div>
+        <div class="mx-auto max-w-[70.4rem] px-6 py-12">
+          <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Understand what you&rsquo;re running</h2>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <a href="https://wiki.archlinux.org/title/Arch_Linux" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-950/50 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+              <h3 class="flex items-center justify-between font-semibold text-white">Arch Linux &amp; the Arch Way <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+              <p class="mt-2 text-sm text-slate-400">The principles: simplicity, the user is in control, do-it-yourself. Know what you&rsquo;re signing up for.</p>
+            </a>
+            <a href="https://wiki.archlinux.org/title/Arch_terminology" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-950/50 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+              <h3 class="flex items-center justify-between font-semibold text-white">Arch terminology <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+              <p class="mt-2 text-sm text-slate-400">The vocabulary you&rsquo;ll meet everywhere: AUR, pacman, split packages, and more.</p>
+            </a>
+            <a href="https://wiki.archlinux.org/title/General_recommendations" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-950/50 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+              <h3 class="flex items-center justify-between font-semibold text-white">General recommendations <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+              <p class="mt-2 text-sm text-slate-400">The post-install index: users, GUI, audio, power, fonts. Read it right after installing.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Keep healthy -->
+      <section class="mx-auto max-w-[70.4rem] px-6 py-12">
+        <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Keep your system healthy</h2>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <a href="https://wiki.archlinux.org/title/Pacman" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+            <h3 class="flex items-center justify-between font-semibold text-white">pacman <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+            <p class="mt-2 text-sm text-slate-400">The package manager. Learn this first &mdash; everything else builds on it.</p>
+          </a>
+          <a href="https://wiki.archlinux.org/title/Arch_User_Repository" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+            <h3 class="flex items-center justify-between font-semibold text-white">Arch User Repository (AUR) <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+            <p class="mt-2 text-sm text-slate-400">Community packages, and how to use them safely.</p>
+          </a>
+          <a href="https://wiki.archlinux.org/title/System_maintenance" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+            <h3 class="flex items-center justify-between font-semibold text-white">System maintenance <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+            <p class="mt-2 text-sm text-slate-400">How to keep a rolling-release install stable and healthy over time.</p>
+          </a>
+          <a href="https://archlinux.org/news/" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+            <h3 class="flex items-center justify-between font-semibold text-white">Arch news <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+            <p class="mt-2 text-sm text-slate-400">Read before big updates &mdash; changes needing manual intervention are posted here first.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- 4. Help & give back -->
+      <section class="border-t border-slate-800 bg-slate-900/30">
+        <div class="mx-auto max-w-[70.4rem] px-6 py-12">
+          <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Get help &amp; give back</h2>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <a href="https://bbs.archlinux.org/" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-950/50 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+              <h3 class="flex items-center justify-between font-semibold text-white">Arch Linux Forums <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+              <p class="mt-2 text-sm text-slate-400">The official place to ask &mdash; after you&rsquo;ve searched the wiki and the forum first.</p>
+            </a>
+            <a href="https://lists.archlinux.org/" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-950/50 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+              <h3 class="flex items-center justify-between font-semibold text-white">Mailing lists (arch-announce) <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+              <p class="mt-2 text-sm text-slate-400">Subscribe to <code class="text-slate-300">arch-announce</code> for advance warning of manual-intervention updates.</p>
+            </a>
+            <a href="https://wiki.archlinux.org/title/Getting_involved" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-950/50 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+              <h3 class="flex items-center justify-between font-semibold text-white">Getting involved <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+              <p class="mt-2 text-sm text-slate-400">Give back: report bugs, improve the wiki, help with packaging.</p>
+            </a>
+            <a href="https://wiki.archlinux.org/title/Main_page" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-slate-800 bg-slate-950/50 p-6 transition hover:border-accent-500/50 hover:bg-slate-900">
+              <h3 class="flex items-center justify-between font-semibold text-white">ArchWiki (home) <span class="text-accent-400 transition group-hover:translate-x-0.5">&#8599;</span></h3>
+              <p class="mt-2 text-sm text-slate-400">Bookmark it. Almost every answer about Arch starts here.</p>
+            </a>
           </div>
         </div>
       </section>
 
       <section class="mx-auto max-w-[70.4rem] px-6 py-16">
-        <div class="grid gap-10 md:grid-cols-2">
+        <div class="flex flex-col gap-4 rounded-2xl border border-slate-800 bg-slate-900/40 p-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Who it&rsquo;s for</h2>
-            <ul class="mt-4 space-y-2 text-slate-300">
-              <li class="flex gap-2"><span class="text-accent-400">&bull;</span> Intermediate to advanced Linux users</li>
-              <li class="flex gap-2"><span class="text-accent-400">&bull;</span> Arch learners who want deeper understanding</li>
-              <li class="flex gap-2"><span class="text-accent-400">&bull;</span> Developers interested in automation</li>
-              <li class="flex gap-2"><span class="text-accent-400">&bull;</span> Anyone who enjoys full control of their system</li>
-            </ul>
-            <p class="mt-4 text-sm text-slate-400">Beginners can follow along too &mdash; basic Linux knowledge is recommended.</p>
+            <h2 class="text-xl font-bold tracking-tight">Ready to make it yours?</h2>
+            <p class="mt-2 text-sm text-slate-400">Once Arch is installed, Nemesis takes it from bare to your setup.</p>
           </div>
-          <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-            <h2 class="text-xl font-bold tracking-tight">Follow the series</h2>
-            <p class="mt-3 text-sm text-slate-400">The ArcoLinux Nemesis series on YouTube walks through building, customizing, and experimenting with Arch-based systems.</p>
-            <div class="mt-5 flex flex-col gap-3 sm:flex-row">
-              <a href="https://www.youtube.com/playlist?list=PLlloYVGq5pS7bFIboMzh6qfUNvvpDVZaU" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-5 py-2.5 font-semibold text-white hover:bg-accent-400">Watch the series</a>
-              <a href="https://www.youtube.com/erikdubois" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-700 px-5 py-2.5 font-semibold text-slate-200 hover:border-slate-600 hover:bg-slate-900">Channel</a>
-            </div>
-          </div>
+          <a href="getting-started.html" class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-accent-500 px-5 py-2.5 font-semibold text-white hover:bg-accent-400">Get started</a>
         </div>
       </section>
     </main>
@@ -203,7 +247,7 @@
               <li><a href="the-scripts.html" class="hover:text-white">The scripts</a></li>
               <li><a href="desktops.html" class="hover:text-white">Desktops</a></li>
               <li><a href="distros.html" class="hover:text-white">Distros</a></li>
-            <li><a href="links.html" class="hover:text-white">Links</a></li>
+              <li><a href="links.html" class="hover:text-white">Links</a></li>
             </ul>
           </div>
           <div>

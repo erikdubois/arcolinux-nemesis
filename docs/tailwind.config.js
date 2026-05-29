@@ -12,6 +12,7 @@ module.exports = {
     './the-scripts.html',
     './desktops.html',
     './distros.html',
+    './links.html',
     './404.html',
   ],
   theme: {
