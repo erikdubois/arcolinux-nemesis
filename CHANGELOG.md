@@ -21,6 +21,22 @@ Added a full learning website under `docs/`, served by GitHub Pages at `https://
 - `docs/` tooling: `build-css.sh`, `package.json`, `tailwind.config.js`, `tailwind.input.css`, `css/style.css`, `assets/site.js`, `.gitignore`, `robots.txt`, `sitemap.xml`
 - `docs/assets/branding/logo.png`, `docs/assets/screenshots/*` (7 images)
 
+### Refinements (same day)
+
+After the initial build, the site was reviewed and iterated, then deployed:
+
+- **Layout** — widened the body 10% on every page (`max-w-5xl` → `70.4rem`, `max-w-6xl` → `79.2rem`); still centered and responsive on all devices.
+- **Personal credit** — changed from "creator of ArcoLinux" to **"creator of Kiro"** (hero subline, all footers, homepage meta descriptions). The "ArcoLinux Nemesis" project name and every repo/URL reference were intentionally kept.
+- **Copy polish (review pass)** —
+  - Homepage hero pill relabeled to **"The learning hub"** (it pointed at `learn.html` while the "Get started" button points at `getting-started.html` — two "start" prompts were confusing).
+  - Desktop names normalized to first-letter-capital everywhere (hero, Desktops cards, gallery captions, meta): Awesome, Bspwm, I3, Leftwm, Qtile, Chadwm, Ohmychadwm, Plasma, Gnome, Cinnamon, Mate, Budgie, Xfce.
+  - Footer brand expanded from "Nemesis" to the full **"ArcoLinux Nemesis"** on all pages (matching the header).
+  - Added a calm safety line — *"Prefer to read it first? Use the manual block above."* — under both `curl … | sudo bash` one-liners (index + getting-started).
+  - Hero ending reworded: *"— reproducibly, on any distro."* → *"— and lets you reproduce it on any distro."*
+  - Learn page: *"Customization & ricing"* → *"Customization & ricing (theming your setup)"*.
+  - Left unchanged by choice: the homepage quick-start "Clone the repo" step.
+- **Deployed** — GitHub Pages build succeeded (commit `43ed2b6`); live and verified at `https://erikdubois.github.io/arcolinux-nemesis/`.
+
 ## 2026.05.25
 
 ### What Changed
