@@ -37,6 +37,13 @@ After the initial build, the site was reviewed and iterated, then deployed:
   - Left unchanged by choice: the homepage quick-start "Clone the repo" step.
 - **Deployed** — GitHub Pages build succeeded (commit `43ed2b6`); live and verified at `https://erikdubois.github.io/arcolinux-nemesis/`.
 
+### New: Links page
+
+- Added **`links.html`** — a curated set of the most important resources for an Arch Linux beginner, researched from the web and grouped into four sections: *start here* (Installation guide, Help:Reading, FAQ, Download), *understand it* (Arch Linux / the Arch Way, terminology, General recommendations), *keep it healthy* (pacman, AUR, System maintenance, Arch news), and *help & give back* (Forums, Code of conduct, Getting involved, ArchWiki home). Every URL was verified to return HTTP 200.
+- **"Links" added to the nav (at the end) and the footer "Learn" list on all pages**, plus `sitemap.xml` and the `tailwind.config.js` content array.
+- Dropped the `arch-announce` mailing-list link — `lists.archlinux.org` was returning 502/unreachable at the time, so the verified **Code of conduct** page was used instead (the "warning before updates" value is already covered by the Arch news card). No social-media links included, per project preference.
+- **Fix:** the `getting-started.html` steps were in a narrow off-center column (`max-w-3xl`); widened to `max-w-[70.4rem]` to align with the hero and the rest of the site.
+
 ## 2026.05.25
 
 ### What Changed
