@@ -39,6 +39,8 @@ install_dev_tooling_must_have() {
         codespell \
         fd \
         inxi \
+        obs-studio \
+        ffmpeg \
         whisper-cpp-git \
         python-openai-whisper \
         imagemagick
