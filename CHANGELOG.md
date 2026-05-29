@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 2026.05.29
+
+### What Changed
+
+Added a full learning website under `docs/`, served by GitHub Pages at `https://erikdubois.github.io/arcolinux-nemesis`. It rewrites the README's content into a multi-page site that matches the kiro-website look (dark slate theme, switchable accent palette, accessibility widget). Six pages: landing, learning hub, getting started, the scripts, desktops, distros — plus a 404. The site logo is the Kiro "K".
+
+### Technical Details
+
+- Build pipeline mirrors kiro-website: Tailwind v3 CLI (`build-css.sh`) scans the HTML pages listed in `tailwind.config.js` and emits minified `dist/tailwind.css`. The accent system resolves through CSS variables (`--accent-200..500`) so the visitor-switchable theme needs no rebuild.
+- **Differs from kiro-website on purpose** (both noted in-file): `dist/` is committed (GitHub Pages serves `/docs` directly, no build step), and the shared interactions live in one `assets/site.js` (loaded `defer`) instead of being inlined into every page — only a small pre-paint accent/a11y boot is inline per page.
+- Content drawn from the existing README and scripts: quick-start (`nemesis_repo` + `0-current-choices.sh`), the numbered pipeline (100–600, personal 900–999), `common/common.sh` helper summary, the 13 desktops from `arcolinux-desktops/`, and the full Arch-based + non-Arch distro lists with their real YouTube playlist links.
+- Assets reused from the repo: `personal/settings/arcolinux.png` (initial logo, since replaced by the Kiro logo) and the seven `personal/settings/desktop-images/` screenshots, copied into `docs/assets/`.
+- Logo set to the Kiro "K" (`docs/assets/branding/logo.png`, copied from `kiro-website/assets/branding/logo.png`). Favicon currently points at that logo; a lightweight dedicated favicon set is not yet generated.
+- SEO scaffold: `robots.txt`, `sitemap.xml` (5 indexable pages), per-page canonical + Open Graph tags; `404.html` is `noindex`.
+
+### Files Modified
+
+- `docs/` (new): `index.html`, `learn.html`, `getting-started.html`, `the-scripts.html`, `desktops.html`, `distros.html`, `404.html`
+- `docs/` tooling: `build-css.sh`, `package.json`, `tailwind.config.js`, `tailwind.input.css`, `css/style.css`, `assets/site.js`, `.gitignore`, `robots.txt`, `sitemap.xml`
+- `docs/assets/branding/logo.png`, `docs/assets/screenshots/*` (7 images)
+
 ## 2026.05.25
 
 ### What Changed
