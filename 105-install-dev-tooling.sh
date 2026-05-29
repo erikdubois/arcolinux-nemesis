@@ -14,7 +14,7 @@
 # Purpose
 # - Install the developer / workflow tooling accreted on Erik's Kiro dev box that core nemesis software did not cover
 # - Lens: building and maintaining the Kiro ISO + nemesis_repo, plus the daily content/dev flow
-# - Must-have set: ISO/chroot tooling, mirror ranking, gh, sshpass, codespell, fd, inxi, whisper (cpp + python), imagemagick
+# - Must-have set: ISO/chroot tooling, mirror ranking, gh, sshpass, codespell, fd, inxi, obs-studio, ffmpeg, whisper (cpp + python), imagemagick
 # - Nice-to-have set: pacman/repo helpers, monitors, terminal QoL, theming + content-pipeline extras (trim to taste)
 # Why:
 # - These tools drifted onto the dev box one-by-one; bootstrapping a fresh box should pull them in automatically
