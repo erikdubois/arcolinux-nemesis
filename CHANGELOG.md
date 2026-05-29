@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026.05.25
+
+### What Changed
+
+Removed the Chadwm installation path from the Arch pipeline, leaving only Ohmychadwm. The renamed `600-chadwm.sh` → `600-ohmychadwm.sh` now installs ohmychadwm exclusively, and the dead chadwm decision point was stripped from the orchestrator and shared library.
+
+### Technical Details
+
+- `600-ohmychadwm.sh` — dropped `install_chadwm_package()`, the `_install_chadwm` flag and its `/tmp/install-chadwm` check, and the chadwm install block. Core packages + VirtualBox guest utils now install only when `/tmp/install-ohmychadwm` is present. Purpose header and the core-packages log line updated to ohmychadwm-only.
+- `0-current-choices.sh` — removed the already-commented `#run_chadwm_choice` decision point and its comment (lines 112-113).
+- `common/common.sh` — removed the now-dead `run_chadwm_choice()` function (it was the only writer of `/tmp/install-chadwm`, which nothing reads anymore).
+- **Not touched:** the cross-distro `personal/settings/voyage-of-chadwm/*-chadwm/install-chadwm.sh` installers still build chadwm — that is the separate non-Arch subsystem, out of scope for the Arch pipeline.
+
+### Files Modified
+
+- [600-ohmychadwm.sh](600-ohmychadwm.sh)
+- [0-current-choices.sh](0-current-choices.sh)
+- [common/common.sh](common/common.sh)
+
 ## 2026.05.24
 
 ### What Changed

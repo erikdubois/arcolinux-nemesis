@@ -79,7 +79,6 @@ sudo pkg install -y qt5ct
 sudo pkg install -y ripgrep
 sudo pkg install -y telegram-desktop
 sudo pkg install -y scrot
-sudo pkg install -y simplescreenrecorder
 sudo pkg install -y linux-sublime-text4
 sudo pkg install -y system-config-printer
 sudo pkg install -y variety

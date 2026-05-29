@@ -69,7 +69,6 @@ handle_archcraft() {
         remove_matching_packages archcraft-config-qt
         remove_matching_packages archcraft-neofetch
         remove_matching_packages archcraft-arandr
-        remove_matching_packages simplescreenrecorder
 
         log_warn "Software removed for Archcraft"
     fi

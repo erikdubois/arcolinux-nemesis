@@ -42,7 +42,7 @@ echo
 # installing extra shell
 sudo xbps-install --yes fish-shell
 
-# making sure simplescreenrecorder, virtualbox and other apps are dark
+# making sure virtualbox and other apps are dark
 sudo cp environment /etc/environment
 # .config I would like to have
 cp -rv dotfiles/* ~/.config

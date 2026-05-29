@@ -192,7 +192,6 @@ enable_core_services() {
 
 # Execution order matters here: Sddm handling first
 # then display-manager handling, then packages, then services.
-reinstall_simplescreenrecorder_git
 install_non_plasma_packages
 install_xfce_extras_if_needed
 install_core_packages

@@ -65,7 +65,6 @@ sudo dnf install -y pylint
 sudo dnf install -y qbittorrent
 sudo dnf install -y ripgrep
 sudo dnf install -y scrot
-sudo dnf install -y simplescreenrecorder
 sudo dnf install -y speedtest-cli
 sudo dnf install -y system-config-printer
 sudo dnf install -y variety

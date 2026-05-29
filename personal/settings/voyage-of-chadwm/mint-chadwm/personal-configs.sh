@@ -56,7 +56,7 @@ REPLACE="\/usr\/bin\/fish"
 sudo sed -i "s/$FIND/$REPLACE/g" /etc/passwd
 echo
 
-# making sure simplescreenrecorder, virtualbox and other apps are dark
+# making sure virtualbox and other apps are dark
 sudo cp -v environment /etc/environment
 # .config I would like to have
 cp -rv dotfiles/* ~/.config

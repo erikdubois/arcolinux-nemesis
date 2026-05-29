@@ -309,18 +309,6 @@ replace_sddm_with_sddm_git_if_needed() {
     fi
 }
 
-reinstall_simplescreenrecorder_git() {
-    log_section "Ensuring simplescreenrecorder-git is installed"
-
-    for pkg in simplescreenrecorder; do
-        if pacman -Qq "${pkg}" 2>/dev/null | grep -qx "${pkg}"; then
-            sudo pacman -Rns --noconfirm "${pkg}" &>/dev/null
-        fi
-    done
-
-    install_packages simplescreenrecorder-git
-}
-
 is_plasma_installed() {
     [[ -f /usr/share/wayland-sessions/plasma.desktop || -f /usr/share/xsessions/plasma.desktop ]]
 }
