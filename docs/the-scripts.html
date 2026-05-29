@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth scroll-pt-20">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The scripts &mdash; ArcoLinux Nemesis</title>
+    <meta name="description" content="How ArcoLinux Nemesis works: the orchestrator, the numbered pipeline, the shared common.sh helper library, and the standalone utility scripts." />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="icon" href="assets/branding/logo.png" />
+    <link rel="apple-touch-icon" href="assets/branding/logo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://erikdubois.github.io/arcolinux-nemesis/the-scripts.html" />
+    <meta property="og:title" content="The scripts — ArcoLinux Nemesis" />
+    <meta property="og:description" content="The orchestrator, the numbered pipeline, common.sh, and the utility scripts." />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://erikdubois.github.io/arcolinux-nemesis/the-scripts.html" />
+    <link rel="stylesheet" href="dist/tailwind.css" />
+    <script>
+      window.DEFAULT_ACCENT = 'sky';
+      window.PALETTES = {
+        sky:     { 200: '186 230 253', 300: '125 211 252', 400: '56 189 248',  500: '14 165 233' },
+        gold:    { 200: '253 230 138', 300: '252 211 77',  400: '251 191 36',  500: '245 158 11' },
+        emerald: { 200: '167 243 208', 300: '110 231 183', 400: '52 211 153',  500: '16 185 129' },
+        violet:  { 200: '221 214 254', 300: '196 181 253', 400: '167 139 250', 500: '139 92 246' },
+        rose:    { 200: '254 205 211', 300: '253 164 175', 400: '251 113 133', 500: '244 63 94'  },
+      };
+      (function () {
+        function apply(n) { var p = window.PALETTES[n]; if (!p) return; for (var k in p) document.documentElement.style.setProperty('--accent-' + k, p[k]); }
+        var s = null; try { s = localStorage.getItem('nemesis-accent'); } catch (e) {}
+        apply(s && window.PALETTES[s] ? s : window.DEFAULT_ACCENT);
+        try {
+          if (localStorage.getItem('nemesis-a11y-large') === '1') document.documentElement.classList.add('a11y-large');
+          if (localStorage.getItem('nemesis-a11y-contrast') === '1') document.documentElement.classList.add('a11y-contrast');
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-accent-500 focus:px-4 focus:py-2 focus:font-semibold focus:text-white">Skip to content</a>
+
+    <header class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
+        <div class="flex items-center gap-6">
+          <a href="index.html" class="inline-flex shrink-0 items-center gap-2 text-lg font-semibold tracking-tight" aria-label="ArcoLinux Nemesis home">
+            <img src="assets/branding/logo.png" alt="" class="h-7 w-7 object-contain" width="28" height="28" />
+            <span class="hidden sm:inline">ArcoLinux <span class="text-accent-400">Nemesis</span></span>
+          </a>
+          <nav class="hidden gap-4 text-sm text-slate-300 lg:flex">
+            <a href="learn.html"           class="hover:text-white">Learn</a>
+            <a href="getting-started.html" class="hover:text-white">Getting started</a>
+            <a href="the-scripts.html"     class="font-medium text-white" aria-current="page">The scripts</a>
+            <a href="desktops.html"        class="hover:text-white">Desktops</a>
+            <a href="distros.html"         class="hover:text-white">Distros</a>
+          </nav>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="hidden items-center gap-2 whitespace-nowrap sm:flex" aria-label="Project links">
+            <a href="https://github.com/erikdubois/arcolinux-nemesis" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-md border border-slate-700 bg-slate-800/40 px-2.5 py-1 text-xs font-medium text-slate-200 transition hover:border-slate-600 hover:bg-slate-800 hover:text-white">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.42.36.79 1.07.79 2.16v3.2c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.youtube.com/erikdubois" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-md border border-red-500/30 bg-red-500/10 px-2.5 py-1 text-xs font-medium text-red-200 transition hover:border-red-400/50 hover:bg-red-500/20 hover:text-red-100">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+              <span>YouTube</span>
+            </a>
+          </div>
+          <div class="relative">
+            <button type="button" data-accent-menu aria-label="Choose accent color" aria-haspopup="true" aria-expanded="false" aria-controls="accent-menu" class="inline-flex h-8 w-8 items-center justify-center rounded-md text-slate-300 transition hover:bg-slate-800 hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" /></svg>
+            </button>
+            <div id="accent-menu" class="absolute right-0 z-50 mt-2 hidden rounded-lg border border-slate-800 bg-slate-900 p-2 shadow-lg shadow-black/30">
+              <div class="flex items-center gap-1.5" role="group" aria-label="Accent color">
+                <button type="button" data-accent="sky"     aria-label="Sky accent"     style="background-color:#38bdf8" class="h-5 w-5 rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-slate-900 transition hover:scale-110 aria-pressed:ring-white/60"></button>
+                <button type="button" data-accent="gold"    aria-label="Gold accent"    style="background-color:#fbbf24" class="h-5 w-5 rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-slate-900 transition hover:scale-110 aria-pressed:ring-white/60"></button>
+                <button type="button" data-accent="emerald" aria-label="Emerald accent" style="background-color:#34d399" class="h-5 w-5 rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-slate-900 transition hover:scale-110 aria-pressed:ring-white/60"></button>
+                <button type="button" data-accent="violet"  aria-label="Violet accent"  style="background-color:#a78bfa" class="h-5 w-5 rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-slate-900 transition hover:scale-110 aria-pressed:ring-white/60"></button>
+                <button type="button" data-accent="rose"    aria-label="Rose accent"    style="background-color:#fb7185" class="h-5 w-5 rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-slate-900 transition hover:scale-110 aria-pressed:ring-white/60"></button>
+              </div>
+            </div>
+          </div>
+          <button type="button" data-menu-toggle aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu" class="inline-flex items-center justify-center rounded-md p-1.5 text-slate-300 hover:bg-slate-800 hover:text-white lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="hidden border-t border-slate-800 lg:hidden">
+        <nav class="mx-auto flex max-w-5xl flex-col gap-1 px-6 py-3 text-sm text-slate-300">
+          <a href="learn.html"           class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Learn</a>
+          <a href="getting-started.html" class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Getting started</a>
+          <a href="the-scripts.html"     class="rounded-md px-2 py-2 font-medium text-white" aria-current="page">The scripts</a>
+          <a href="desktops.html"        class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Desktops</a>
+          <a href="distros.html"         class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Distros</a>
+          <a href="https://github.com/erikdubois/arcolinux-nemesis" target="_blank" rel="noopener noreferrer" class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">GitHub</a>
+          <a href="https://www.youtube.com/erikdubois" target="_blank" rel="noopener noreferrer" class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">YouTube</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="relative overflow-hidden border-b border-slate-800">
+        <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_rgb(var(--accent-400)/0.12),_transparent_60%)]"></div>
+        <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+          <p class="text-sm font-semibold uppercase tracking-wider text-accent-400">The scripts</p>
+          <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">How the pipeline works</h1>
+          <p class="mt-4 max-w-2xl text-lg text-slate-300">
+            One orchestrator, a library of shared helpers, and a numbered pipeline you control by
+            commenting lines. Everything is plain Bash &mdash; nothing hidden.
+          </p>
+        </div>
+      </section>
+
+      <!-- Orchestrator -->
+      <section class="mx-auto max-w-5xl px-6 py-16">
+        <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">The orchestrator</h2>
+        <p class="mt-4 max-w-3xl text-slate-300">
+          <code class="rounded bg-slate-800 px-1.5 py-0.5 text-sm text-accent-300">0-current-choices.sh</code> sources the helper library,
+          detects your OS from <code class="text-slate-300">/etc/os-release</code>, configures repos, updates the system, runs any
+          distro-specific fixups, then runs the numbered scripts in order:
+        </p>
+        <div class="mt-5 rounded-lg border border-slate-800 bg-slate-900 p-4">
+          <pre class="whitespace-pre-wrap break-words text-sm leading-relaxed text-slate-200"><code>run_glob "${WORKING_DIR}/100-*"   # all 100-prefixed scripts, in order
+run_glob "${WORKING_DIR}/110-*"
+# ... and so on</code></pre>
+        </div>
+        <p class="mt-4 text-sm text-slate-400">
+          Enable or disable a step by commenting its line in that one file. The numbering defines execution order.
+        </p>
+      </section>
+
+      <!-- Pipeline table -->
+      <section class="border-t border-slate-800 bg-slate-900/30">
+        <div class="mx-auto max-w-5xl px-6 py-16">
+          <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">The numbered pipeline</h2>
+          <p class="mt-4 max-w-3xl text-slate-300">Each stage is a self-contained script that sources <code class="text-slate-300">common/common.sh</code> and can also be run on its own.</p>
+          <div class="mt-8 overflow-hidden rounded-2xl border border-slate-800">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-slate-900 text-xs uppercase tracking-wider text-accent-400">
+                <tr>
+                  <th class="px-4 py-3 font-semibold">Stage</th>
+                  <th class="px-4 py-3 font-semibold">Does</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800 text-slate-300">
+                <tr><td class="px-4 py-3 font-mono text-slate-200">100</td><td class="px-4 py-3">Install the core Nemesis software set</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">105</td><td class="px-4 py-3">Install development tooling</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">110</td><td class="px-4 py-3">Install core system software</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">120</td><td class="px-4 py-3">Install Nemesis icon themes</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">130</td><td class="px-4 py-3">Set up Bluetooth</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">140</td><td class="px-4 py-3">Set up CUPS printing</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">150</td><td class="px-4 py-3">Configure ananicy (process priorities)</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">200</td><td class="px-4 py-3">Configure the AUR software repo</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">300 / 301</td><td class="px-4 py-3">Sardi icon extras &mdash; install / remove</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">400 / 401</td><td class="px-4 py-3">Surfn icon extras &mdash; install / remove</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">500</td><td class="px-4 py-3">Plasma-specific setup</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">600</td><td class="px-4 py-3">Build and install Ohmychadwm</td></tr>
+                <tr><td class="px-4 py-3 font-mono text-slate-200">900&ndash;999</td><td class="px-4 py-3">Personal layer &mdash; dotfiles, themes, and app configs (in <code class="text-slate-300">personal/</code>)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-4 text-xs text-slate-500">Stages evolve over time &mdash; the GitHub repo is always the source of truth.</p>
+        </div>
+      </section>
+
+      <!-- common.sh -->
+      <section class="mx-auto max-w-5xl px-6 py-16">
+        <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">The shared library</h2>
+        <p class="mt-4 max-w-3xl text-slate-300">
+          Every script sources <code class="rounded bg-slate-800 px-1.5 py-0.5 text-sm text-accent-300">common/common.sh</code>. It wraps the
+          messy parts so scripts stay readable and cross-distro &mdash; on non-Arch systems the right package manager is swapped in automatically.
+        </p>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="font-semibold text-white">Packages</h3>
+            <p class="mt-2 text-sm text-slate-400"><code class="text-slate-300">install_packages</code>, <code class="text-slate-300">remove_packages</code>, <code class="text-slate-300">pkg_installed</code> &mdash; install/remove via the distro's package manager.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="font-semibold text-white">Services</h3>
+            <p class="mt-2 text-sm text-slate-400"><code class="text-slate-300">enable_now_service</code>, <code class="text-slate-300">disable_service</code>, <code class="text-slate-300">restart_service</code>.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="font-semibold text-white">Files</h3>
+            <p class="mt-2 text-sm text-slate-400"><code class="text-slate-300">backup_file_once</code>, <code class="text-slate-300">copy_file</code>, <code class="text-slate-300">append_line_if_missing</code>, <code class="text-slate-300">replace_text_in_file</code>.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="font-semibold text-white">Logging</h3>
+            <p class="mt-2 text-sm text-slate-400"><code class="text-slate-300">log_section</code>, <code class="text-slate-300">log_info</code>, <code class="text-slate-300">log_warn</code>, <code class="text-slate-300">log_success</code> &mdash; consistent, readable output.</p>
+          </div>
+        </div>
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="font-semibold text-white">Safe by default</h3>
+            <p class="mt-2 text-sm text-slate-400"><code class="text-slate-300">backup_file_once</code> saves originals with a <code class="text-slate-300">.nemesis</code> suffix before overwriting &mdash; <code class="text-slate-300">pacman.conf</code>, <code class="text-slate-300">environment</code>, mirrorlist, and more.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="font-semibold text-white">Right user under sudo</h3>
+            <p class="mt-2 text-sm text-slate-400"><code class="text-slate-300">$TARGET_USER</code> resolves to the invoking user even under sudo, so dotfiles land in the right home directory.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Utilities -->
+      <section class="border-t border-slate-800 bg-slate-900/30">
+        <div class="mx-auto max-w-5xl px-6 py-16">
+          <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Standalone utilities</h2>
+          <p class="mt-4 max-w-3xl text-slate-300">
+            The <code class="text-slate-300">scripts/</code> folder holds focused, run-on-their-own tools. Launch the interactive menu with
+            <code class="rounded bg-slate-800 px-1.5 py-0.5 text-sm text-accent-300">bash scripts/1-install-scripts.sh</code>, or run any one directly.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-2 text-sm">
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">ArchLinux Tweak Tool (GTK4)</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">PipeWire / PulseAudio</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Samba</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">VirtualBox</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">VMware Workstation</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">QEMU</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Qt dev environment</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">LAMP / XAMPP + WordPress</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">yay / paru</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Belgian eID</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">AZERTY Belgium locale</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Printer setup</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Build an Arch ISO</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Boot diagnostics</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-5xl px-6 py-16">
+        <div class="flex flex-col gap-4 rounded-2xl border border-slate-800 bg-slate-900/40 p-8 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 class="text-xl font-bold tracking-tight">Read the source</h2>
+            <p class="mt-2 text-sm text-slate-400">Every script is plain Bash on GitHub. Examine and judge before you run.</p>
+          </div>
+          <a href="https://github.com/erikdubois/arcolinux-nemesis" target="_blank" rel="noopener noreferrer" class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-accent-500 px-5 py-2.5 font-semibold text-white hover:bg-accent-400">Open the repo</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-800">
+      <div class="mx-auto max-w-5xl px-6 py-12">
+        <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
+          <div>
+            <a href="index.html" class="inline-flex items-center gap-2" aria-label="ArcoLinux Nemesis home">
+              <img src="assets/branding/logo.png" alt="" class="h-7 w-7 object-contain" width="28" height="28" />
+              <span class="text-lg font-semibold tracking-tight text-white">Nemesis</span>
+            </a>
+            <p class="mt-3 text-sm text-slate-400">Bash scripts to install, configure, and personalize any Linux &mdash; by Erik Dubois, creator of ArcoLinux.</p>
+            <p class="mt-3 text-xs text-slate-500">Read before you run. Use at your own risk.</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-accent-400">Learn</p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-400">
+              <li><a href="learn.html" class="hover:text-white">Learning hub</a></li>
+              <li><a href="getting-started.html" class="hover:text-white">Getting started</a></li>
+              <li><a href="the-scripts.html" class="hover:text-white">The scripts</a></li>
+              <li><a href="desktops.html" class="hover:text-white">Desktops</a></li>
+              <li><a href="distros.html" class="hover:text-white">Distros</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-accent-400">Project</p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-400">
+              <li><a href="https://github.com/erikdubois/arcolinux-nemesis" target="_blank" rel="noopener noreferrer" class="hover:text-white">GitHub repo</a></li>
+              <li><a href="https://www.youtube.com/erikdubois" target="_blank" rel="noopener noreferrer" class="hover:text-white">YouTube</a></li>
+              <li><a href="https://www.erikdubois.be" target="_blank" rel="noopener noreferrer" class="hover:text-white">erikdubois.be</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-accent-400">Support</p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-400">
+              <li><a href="https://github.com/sponsors/erikdubois" target="_blank" rel="noopener noreferrer" class="hover:text-white">GitHub Sponsors</a></li>
+              <li><a href="https://ko-fi.com/erikdubois" target="_blank" rel="noopener noreferrer" class="hover:text-white">Ko-fi</a></li>
+              <li><a href="https://www.patreon.com/c/kiroproject" target="_blank" rel="noopener noreferrer" class="hover:text-white">Patreon</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-10 border-t border-slate-800 pt-6 text-sm text-slate-500">
+          &copy; 2026 Erik Dubois &middot; ArcoLinux Nemesis &middot;
+          <a href="https://www.erikdubois.be" class="hover:text-white">erikdubois.be</a>
+        </div>
+      </div>
+    </footer>
+
+    <div id="zoom-overlay" role="dialog" aria-modal="true" aria-label="Image preview" class="hidden fixed inset-0 z-50 cursor-zoom-out bg-slate-950/85 p-6 backdrop-blur-sm">
+      <img id="zoom-image" src="" alt="" class="m-auto block max-h-[90vh] max-w-[95vw] rounded-xl shadow-2xl shadow-black/50" />
+    </div>
+    <button type="button" data-back-to-top aria-label="Back to top" style="display:none" class="fixed bottom-4 left-4 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-slate-200 shadow-lg shadow-black/40 transition hover:border-slate-600 hover:bg-slate-800 hover:text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" /></svg>
+    </button>
+    <div class="fixed bottom-4 right-4 z-50">
+      <button type="button" data-a11y-menu aria-label="Accessibility options" aria-haspopup="true" aria-expanded="false" aria-controls="a11y-menu" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-slate-200 shadow-lg shadow-black/40 transition hover:border-slate-600 hover:bg-slate-800 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a2 2 0 110 4 2 2 0 010-4zm9 5.25a1 1 0 01-.757 1.71l-4.243.708V12l1.94 6.34a1 1 0 11-1.92.56L14.25 13.5h-4.5l-1.77 5.4a1 1 0 11-1.92-.56L8 12V9.668L3.757 8.96A1 1 0 014 7.25l5.5.917a15 15 0 005 0L21 7.25z"/></svg>
+      </button>
+      <div id="a11y-menu" class="absolute bottom-14 right-0 hidden w-56 rounded-xl border border-slate-800 bg-slate-900 p-3 shadow-xl shadow-black/40">
+        <p class="px-1 pb-2 text-xs font-semibold uppercase tracking-wider text-accent-400">Accessibility</p>
+        <button type="button" data-a11y-toggle="large" aria-pressed="false" class="flex w-full items-center justify-between rounded-md px-2 py-2 text-sm text-slate-200 hover:bg-slate-800"><span>Larger text</span><span data-a11y-state class="text-xs font-medium text-slate-500">Off</span></button>
+        <button type="button" data-a11y-toggle="contrast" aria-pressed="false" class="flex w-full items-center justify-between rounded-md px-2 py-2 text-sm text-slate-200 hover:bg-slate-800"><span>High contrast</span><span data-a11y-state class="text-xs font-medium text-slate-500">Off</span></button>
+      </div>
+    </div>
+    <script src="assets/site.js" defer></script>
+  </body>
+</html>

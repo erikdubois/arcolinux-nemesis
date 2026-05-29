@@ -1,0 +1,16 @@
+{
+  "name": "arcolinux-nemesis-docs",
+  "version": "1.0.0",
+  "description": "Source of the ArcoLinux Nemesis learning website — published at https://erikdubois.github.io/arcolinux-nemesis via GitHub Pages (/docs).",
+  "main": "index.html",
+  "scripts": {
+    "build": "./build-css.sh"
+  },
+  "keywords": [],
+  "author": "Erik Dubois",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

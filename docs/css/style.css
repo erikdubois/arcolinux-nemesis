@@ -1,0 +1,60 @@
+/*
+ * Site-specific overrides on top of Tailwind.
+ * Keep this file small — prefer Tailwind utility classes in the markup.
+ * Anything that lands here should be either:
+ *   - a tweak that Tailwind can't express cleanly, or
+ *   - a global rule (typography, scrollbar, selection colors, etc.)
+ */
+
+::selection {
+  background-color: rgb(var(--accent-400)); /* set by the accent palette script in the page head */
+  color: #0f172a;                           /* slate-900 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Avoid single-word "orphans" in paragraphs and balance line lengths in headings. */
+h1, h2, h3, h4 { text-wrap: balance; }
+p              { text-wrap: pretty;  }
+
+/* Hide the native disclosure triangle on <summary> across browsers. */
+summary::-webkit-details-marker { display: none; }
+summary { list-style: none; }
+
+/* Stronger, consistent keyboard-focus indicator that matches the accent palette. */
+:focus-visible {
+  outline: 2px solid rgb(var(--accent-400));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect "reduce motion": kill transitions, animations, and smooth-scroll. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Honor an OS "increase contrast" preference. style.css loads after the built
+   Tailwind, so these win at equal specificity. */
+@media (prefers-contrast: more) {
+  .text-slate-400 { color: rgb(203 213 225); } /* slate-300 */
+  .text-slate-500 { color: rgb(148 163 184); } /* slate-400 */
+  .border-slate-800 { border-color: rgb(71 85 105); } /* slate-600 */
+}
+
+/* Manual accessibility toggles (floating widget) — classes set on <html> and
+   persisted in localStorage. */
+html.a11y-large { font-size: 18px; }
+html.a11y-contrast .text-slate-400 { color: rgb(226 232 240); } /* slate-200 */
+html.a11y-contrast .text-slate-500 { color: rgb(203 213 225); } /* slate-300 */
+html.a11y-contrast .text-slate-300 { color: rgb(241 245 249); } /* slate-100 */
+html.a11y-contrast .border-slate-800 { border-color: rgb(100 116 139); } /* slate-500 */
+
+/* Render markdown-style code blocks and inline code consistently. */
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }

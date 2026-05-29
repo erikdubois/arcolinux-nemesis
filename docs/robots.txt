@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://erikdubois.github.io/arcolinux-nemesis/sitemap.xml

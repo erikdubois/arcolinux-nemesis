@@ -1,0 +1,5 @@
+/* Tailwind layer scaffold. Built into dist/tailwind.css by `npx tailwindcss`.
+   Custom site overrides still live in css/style.css and load after this file. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

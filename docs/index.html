@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth scroll-pt-20">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ArcoLinux Nemesis &mdash; turn any Linux into one you can work on</title>
+    <meta name="description" content="ArcoLinux Nemesis is a collection of Bash scripts that install, configure, and personalize Arch Linux and 30+ other distributions. Learn Linux by doing. By Erik Dubois, creator of ArcoLinux." />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Favicon (single logo mark; dedicated favicons can be generated later). -->
+    <link rel="icon" href="assets/branding/logo.png" />
+    <link rel="apple-touch-icon" href="assets/branding/logo.png" />
+
+    <!-- Open Graph / Twitter Card (text-only; no image) -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://erikdubois.github.io/arcolinux-nemesis/" />
+    <meta property="og:title"       content="ArcoLinux Nemesis — turn any Linux into one you can work on" />
+    <meta property="og:description" content="A DIY toolkit of Bash scripts to build, customize, and reproduce your Linux setup on any distribution. Learn by doing, with Erik Dubois." />
+    <meta name="twitter:card"        content="summary" />
+    <meta name="twitter:title"       content="ArcoLinux Nemesis — learn Linux by doing" />
+    <meta name="twitter:description" content="Bash scripts to install, configure, and personalize Arch and 30+ other distros. By Erik Dubois, creator of ArcoLinux." />
+
+    <link rel="canonical" href="https://erikdubois.github.io/arcolinux-nemesis/" />
+
+    <!-- Built Tailwind CSS (build with ./build-css.sh; commit dist/tailwind.css). -->
+    <link rel="stylesheet" href="dist/tailwind.css" />
+
+    <!-- Pre-paint accent + accessibility boot (must run before first paint). -->
+    <script>
+      window.DEFAULT_ACCENT = 'sky';
+      window.PALETTES = {
+        sky:     { 200: '186 230 253', 300: '125 211 252', 400: '56 189 248',  500: '14 165 233' },
+        gold:    { 200: '253 230 138', 300: '252 211 77',  400: '251 191 36',  500: '245 158 11' },
+        emerald: { 200: '167 243 208', 300: '110 231 183', 400: '52 211 153',  500: '16 185 129' },
+        violet:  { 200: '221 214 254', 300: '196 181 253', 400: '167 139 250', 500: '139 92 246' },
+        rose:    { 200: '254 205 211', 300: '253 164 175', 400: '251 113 133', 500: '244 63 94'  },
+      };
+      (function () {
+        function apply(n) {
+          var p = window.PALETTES[n]; if (!p) return;
+          for (var k in p) document.documentElement.style.setProperty('--accent-' + k, p[k]);
+        }
+        var s = null; try { s = localStorage.getItem('nemesis-accent'); } catch (e) {}
+        apply(s && window.PALETTES[s] ? s : window.DEFAULT_ACCENT);
+        try {
+          if (localStorage.getItem('nemesis-a11y-large') === '1') document.documentElement.classList.add('a11y-large');
+          if (localStorage.getItem('nemesis-a11y-contrast') === '1') document.documentElement.classList.add('a11y-contrast');
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Site overrides on top of Tailwind -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <a href="#main-content"
+       class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-accent-500 focus:px-4 focus:py-2 focus:font-semibold focus:text-white">
+      Skip to content
+    </a>
+
+    <!-- ============================ HEADER ============================ -->
+    <header class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
+        <div class="flex items-center gap-6">
+          <a href="index.html" class="inline-flex shrink-0 items-center gap-2 text-lg font-semibold tracking-tight" aria-label="ArcoLinux Nemesis home">
+            <img src="assets/branding/logo.png" alt="" class="h-7 w-7 object-contain" width="28" height="28" />
+            <span class="hidden sm:inline">ArcoLinux <span class="text-accent-400">Nemesis</span></span>
+          </a>
+          <nav class="hidden gap-4 text-sm text-slate-300 lg:flex">
+            <a href="learn.html"           class="hover:text-white">Learn</a>
+            <a href="getting-started.html" class="hover:text-white">Getting started</a>
+            <a href="the-scripts.html"     class="hover:text-white">The scripts</a>
+            <a href="desktops.html"        class="hover:text-white">Desktops</a>
+            <a href="distros.html"         class="hover:text-white">Distros</a>
+          </nav>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="hidden items-center gap-2 whitespace-nowrap sm:flex" aria-label="Project links">
+            <a href="https://github.com/erikdubois/arcolinux-nemesis" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 rounded-md border border-slate-700 bg-slate-800/40 px-2.5 py-1 text-xs font-medium text-slate-200 transition hover:border-slate-600 hover:bg-slate-800 hover:text-white">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.42.36.79 1.07.79 2.16v3.2c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.youtube.com/erikdubois" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 rounded-md border border-red-500/30 bg-red-500/10 px-2.5 py-1 text-xs font-medium text-red-200 transition hover:border-red-400/50 hover:bg-red-500/20 hover:text-red-100">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+              <span>YouTube</span>
+            </a>
+          </div>
+
+          <!-- Accent palette switcher -->
+          <div class="relative">
+            <button type="button" data-accent-menu aria-label="Choose accent color" aria-haspopup="true" aria-expanded="false" aria-controls="accent-menu"
+                    class="inline-flex h-8 w-8 items-center justify-center rounded-md text-slate-300 transition hover:bg-slate-800 hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />
+              </svg>
+            </button>
+            <div id="accent-menu" class="absolute right-0 z-50 mt-2 hidden rounded-lg border border-slate-800 bg-slate-900 p-2 shadow-lg shadow-black/30">
+              <div class="flex items-center gap-1.5" role="group" aria-label="Accent color">
+                <button type="button" data-accent="sky"     aria-label="Sky accent"     style="background-color:#38bdf8" class="h-5 w-5 rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-slate-900 transition hover:scale-110 aria-pressed:ring-white/60"></button>
+                <button type="button" data-accent="gold"    aria-label="Gold accent"    style="background-color:#fbbf24" class="h-5 w-5 rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-slate-900 transition hover:scale-110 aria-pressed:ring-white/60"></button>
+                <button type="button" data-accent="emerald" aria-label="Emerald accent" style="background-color:#34d399" class="h-5 w-5 rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-slate-900 transition hover:scale-110 aria-pressed:ring-white/60"></button>
+                <button type="button" data-accent="violet"  aria-label="Violet accent"  style="background-color:#a78bfa" class="h-5 w-5 rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-slate-900 transition hover:scale-110 aria-pressed:ring-white/60"></button>
+                <button type="button" data-accent="rose"    aria-label="Rose accent"    style="background-color:#fb7185" class="h-5 w-5 rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-slate-900 transition hover:scale-110 aria-pressed:ring-white/60"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile menu toggle -->
+          <button type="button" data-menu-toggle aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu"
+                  class="inline-flex items-center justify-center rounded-md p-1.5 text-slate-300 hover:bg-slate-800 hover:text-white lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden border-t border-slate-800 lg:hidden">
+        <nav class="mx-auto flex max-w-5xl flex-col gap-1 px-6 py-3 text-sm text-slate-300">
+          <a href="learn.html"           class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Learn</a>
+          <a href="getting-started.html" class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Getting started</a>
+          <a href="the-scripts.html"     class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">The scripts</a>
+          <a href="desktops.html"        class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Desktops</a>
+          <a href="distros.html"         class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">Distros</a>
+          <a href="https://github.com/erikdubois/arcolinux-nemesis" target="_blank" rel="noopener noreferrer" class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">GitHub</a>
+          <a href="https://www.youtube.com/erikdubois" target="_blank" rel="noopener noreferrer" class="rounded-md px-2 py-2 hover:bg-slate-800 hover:text-white">YouTube</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- ============================ HERO ============================ -->
+      <section class="relative overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_rgb(var(--accent-400)/0.15),_transparent_60%)]"></div>
+        <div class="mx-auto max-w-5xl px-6 py-24 text-center sm:py-32">
+          <a href="learn.html" class="inline-flex items-center gap-2 rounded-full border border-accent-500/30 bg-accent-500/10 px-3 py-1 text-xs font-medium text-accent-300 hover:border-accent-400/50 hover:text-accent-200">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-accent-400"></span>
+            </span>
+            Learn Linux by doing &middot; start here
+          </a>
+          <h1 class="mt-6 text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+            Turn any Linux into<br /><span class="text-accent-400">one you can work on.</span>
+          </h1>
+          <p class="mx-auto mt-4 max-w-2xl text-sm text-slate-400">
+            A project by <strong class="text-white">Erik Dubois</strong> &mdash; creator of <strong class="text-slate-300">ArcoLinux</strong>.
+          </p>
+          <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
+            ArcoLinux Nemesis is a collection of Bash scripts that install, configure, and personalize
+            Arch Linux and 30+ other distributions. Minimal scripting turns a fresh install into a
+            system that&rsquo;s yours &mdash; reproducibly, on any distro.
+          </p>
+          <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+            <a href="getting-started.html"
+               class="inline-flex items-center gap-2 rounded-lg bg-accent-500 px-6 py-3 font-semibold text-white shadow-lg shadow-accent-500/20 hover:bg-accent-400">
+              Get started
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a1 1 0 0 1 1-1h9.586l-3.293-3.293a1 1 0 1 1 1.414-1.414l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414-1.414L13.586 11H4a1 1 0 0 1-1-1z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+            <a href="https://github.com/erikdubois/arcolinux-nemesis" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 hover:border-slate-600 hover:bg-slate-900">
+              View on GitHub
+            </a>
+          </div>
+          <p class="mx-auto mt-6 max-w-xl text-xs text-slate-500">
+            These scripts are meant to be examined and run at your own discretion. Read before you run.
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================= WHAT IS NEMESIS ======================= -->
+      <section id="what" class="border-t border-slate-800">
+        <div class="mx-auto max-w-6xl px-6 py-20">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">What is &ldquo;Nemesis&rdquo;?</h2>
+            <p class="mt-4 text-slate-300">
+              Not a distribution. A <strong class="text-white">collection of scripts and methodologies</strong> &mdash;
+              a DIY toolkit for building your own Linux system, on whatever distro you already run.
+            </p>
+          </div>
+          <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+              <h3 class="font-semibold text-white">Learn by doing</h3>
+              <p class="mt-2 text-sm text-slate-400">Real system building, not theory. Every script is plain Bash you can read, judge, and adapt.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+              <h3 class="font-semibold text-white">Reproducible</h3>
+              <p class="mt-2 text-sm text-slate-400">Recreate the same setup again and again. Scripts make installs consistent and repeatable.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+              <h3 class="font-semibold text-white">Cross-distribution</h3>
+              <p class="mt-2 text-sm text-slate-400">Arch, Debian, Fedora, Ubuntu, FreeBSD, Void and more &mdash; the same toolkit, the right package manager.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+              <h3 class="font-semibold text-white">Full control</h3>
+              <p class="mt-2 text-sm text-slate-400">Remove what you don&rsquo;t want, install what you do, apply your own configs. Your system, your rules.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= QUICK START ======================= -->
+      <section id="quick-start" class="border-t border-slate-800 bg-slate-900/30">
+        <div class="mx-auto max-w-5xl px-6 py-20">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Quick start</h2>
+            <p class="mt-4 text-slate-300">Add the <code class="rounded bg-slate-800 px-1.5 py-0.5 text-sm text-accent-300">nemesis_repo</code>, then run the orchestrator. A backup of your current config is made first.</p>
+          </div>
+
+          <div class="mt-10 grid gap-6 lg:grid-cols-2">
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/60 p-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-accent-400">1 &middot; Add the repo</p>
+              <p class="mt-2 text-sm text-slate-400">Append to <code class="text-slate-300">/etc/pacman.conf</code>:</p>
+              <div class="mt-3 rounded-lg border border-slate-800 bg-slate-900 p-4">
+                <pre class="whitespace-pre-wrap break-all text-sm leading-relaxed text-slate-200"><code>[nemesis_repo]
+SigLevel = Never
+Server = https://erikdubois.github.io/$repo/$arch</code></pre>
+              </div>
+              <p class="mt-4 text-sm text-slate-400">Or let the script do it for you:</p>
+              <div class="mt-3 flex items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-900 p-3">
+                <code class="overflow-x-auto text-sm text-slate-200">curl -sL bit.ly/nemesis-repo | sudo bash</code>
+                <button type="button" data-copy="curl -sL bit.ly/nemesis-repo | sudo bash"
+                        class="shrink-0 rounded-md border border-slate-700 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:border-slate-600 hover:text-white">Copy</button>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-slate-800 bg-slate-950/60 p-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-accent-400">2 &middot; Run the orchestrator</p>
+              <p class="mt-2 text-sm text-slate-400">Clone the repo, then run the main entry point:</p>
+              <div class="mt-3 flex items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-900 p-3">
+                <code class="overflow-x-auto text-sm text-slate-200">bash 0-current-choices.sh</code>
+                <button type="button" data-copy="bash 0-current-choices.sh"
+                        class="shrink-0 rounded-md border border-slate-700 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:border-slate-600 hover:text-white">Copy</button>
+              </div>
+              <p class="mt-4 text-sm text-slate-400">
+                It detects your OS, configures repos, updates the system, and runs the numbered pipeline.
+                Enable or disable steps by commenting lines in that one file.
+              </p>
+              <a href="the-scripts.html" class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent-300 hover:text-accent-200">
+                How the pipeline works
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a1 1 0 0 1 1-1h9.586l-3.293-3.293a1 1 0 1 1 1.414-1.414l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414-1.414L13.586 11H4a1 1 0 0 1-1-1z" clip-rule="evenodd"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= DESKTOPS PREVIEW ======================= -->
+      <section id="desktops" class="border-t border-slate-800">
+        <div class="mx-auto max-w-6xl px-6 py-20">
+          <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+            <div class="max-w-2xl">
+              <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Any desktop you like</h2>
+              <p class="mt-4 text-slate-300">
+                One script per environment &mdash; awesome, i3, leftwm, qtile, bspwm, Chadwm, Ohmychadwm,
+                Plasma, GNOME, Cinnamon, Mate, Budgie, XFCE. Click an image to zoom.
+              </p>
+            </div>
+            <a href="desktops.html" class="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:border-slate-600 hover:bg-slate-900">
+              All desktops
+            </a>
+          </div>
+          <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <button type="button" data-zoom="assets/screenshots/awesome.png" aria-label="AwesomeWM screenshot" class="group overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+              <img src="assets/screenshots/awesome.png" alt="AwesomeWM" loading="lazy" class="aspect-video w-full object-cover transition group-hover:scale-[1.02]" />
+              <span class="block px-3 py-2 text-left text-sm text-slate-400">AwesomeWM</span>
+            </button>
+            <button type="button" data-zoom="assets/screenshots/i3.png" aria-label="i3WM screenshot" class="group overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+              <img src="assets/screenshots/i3.png" alt="i3WM" loading="lazy" class="aspect-video w-full object-cover transition group-hover:scale-[1.02]" />
+              <span class="block px-3 py-2 text-left text-sm text-slate-400">i3WM</span>
+            </button>
+            <button type="button" data-zoom="assets/screenshots/leftwm.png" aria-label="LeftWM screenshot" class="group overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+              <img src="assets/screenshots/leftwm.png" alt="LeftWM" loading="lazy" class="aspect-video w-full object-cover transition group-hover:scale-[1.02]" />
+              <span class="block px-3 py-2 text-left text-sm text-slate-400">LeftWM</span>
+            </button>
+            <button type="button" data-zoom="assets/screenshots/qtile.png" aria-label="Qtile screenshot" class="group overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+              <img src="assets/screenshots/qtile.png" alt="Qtile" loading="lazy" class="aspect-video w-full object-cover transition group-hover:scale-[1.02]" />
+              <span class="block px-3 py-2 text-left text-sm text-slate-400">Qtile</span>
+            </button>
+            <button type="button" data-zoom="assets/screenshots/ohmychadwm.jpg" aria-label="Ohmychadwm screenshot" class="group overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+              <img src="assets/screenshots/ohmychadwm.jpg" alt="Ohmychadwm" loading="lazy" class="aspect-video w-full object-cover transition group-hover:scale-[1.02]" />
+              <span class="block px-3 py-2 text-left text-sm text-slate-400">Ohmychadwm</span>
+            </button>
+            <button type="button" data-zoom="assets/screenshots/desktops.png" aria-label="Desktop selection screenshot" class="group overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+              <img src="assets/screenshots/desktops.png" alt="Desktop selection" loading="lazy" class="aspect-video w-full object-cover transition group-hover:scale-[1.02]" />
+              <span class="block px-3 py-2 text-left text-sm text-slate-400">Pick your desktop</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= DISTROS TEASER ======================= -->
+      <section id="distros" class="border-t border-slate-800 bg-slate-900/30">
+        <div class="mx-auto max-w-5xl px-6 py-20 text-center">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Runs on the distro you already have</h2>
+          <p class="mx-auto mt-4 max-w-2xl text-slate-300">
+            Built on Arch, but the toolkit reaches far beyond it. Arch-based distros work out of the box;
+            Debian, Fedora, Ubuntu, FreeBSD, Void and more are handled per-distro.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm">
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Arch Linux</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">EndeavourOS</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">CachyOS</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Manjaro</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Debian</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Fedora</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Ubuntu</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">Void</span>
+            <span class="rounded-full border border-slate-700 bg-slate-800/40 px-3 py-1 text-slate-300">&hellip; and more</span>
+          </div>
+          <a href="distros.html" class="mt-8 inline-flex items-center gap-1.5 rounded-lg border border-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:border-slate-600 hover:bg-slate-900">
+            See the full list
+          </a>
+        </div>
+      </section>
+
+      <!-- ======================= VIDEO SERIES ======================= -->
+      <section id="series" class="border-t border-slate-800">
+        <div class="mx-auto max-w-5xl px-6 py-20">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">The ArcoLinux Nemesis series</h2>
+            <p class="mt-4 text-slate-300">
+              A technical video collection on building, customizing, and experimenting with Arch-based
+              Linux systems. Follow along on YouTube.
+            </p>
+          </div>
+          <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+            <a href="https://www.youtube.com/playlist?list=PLlloYVGq5pS7bFIboMzh6qfUNvvpDVZaU" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 rounded-lg bg-accent-500 px-6 py-3 font-semibold text-white shadow-lg shadow-accent-500/20 hover:bg-accent-400">
+              Watch the series
+            </a>
+            <a href="https://www.youtube.com/erikdubois" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 hover:border-slate-600 hover:bg-slate-900">
+              YouTube channel
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================ FOOTER ============================ -->
+    <footer class="border-t border-slate-800">
+      <div class="mx-auto max-w-5xl px-6 py-12">
+        <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
+          <div>
+            <a href="index.html" class="inline-flex items-center gap-2" aria-label="ArcoLinux Nemesis home">
+              <img src="assets/branding/logo.png" alt="" class="h-7 w-7 object-contain" width="28" height="28" />
+              <span class="text-lg font-semibold tracking-tight text-white">Nemesis</span>
+            </a>
+            <p class="mt-3 text-sm text-slate-400">Bash scripts to install, configure, and personalize any Linux &mdash; by Erik Dubois, creator of ArcoLinux.</p>
+            <p class="mt-3 text-xs text-slate-500">Read before you run. Use at your own risk.</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-accent-400">Learn</p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-400">
+              <li><a href="learn.html" class="hover:text-white">Learning hub</a></li>
+              <li><a href="getting-started.html" class="hover:text-white">Getting started</a></li>
+              <li><a href="the-scripts.html" class="hover:text-white">The scripts</a></li>
+              <li><a href="desktops.html" class="hover:text-white">Desktops</a></li>
+              <li><a href="distros.html" class="hover:text-white">Distros</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-accent-400">Project</p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-400">
+              <li><a href="https://github.com/erikdubois/arcolinux-nemesis" target="_blank" rel="noopener noreferrer" class="hover:text-white">GitHub repo</a></li>
+              <li><a href="https://www.youtube.com/erikdubois" target="_blank" rel="noopener noreferrer" class="hover:text-white">YouTube</a></li>
+              <li><a href="https://www.erikdubois.be" target="_blank" rel="noopener noreferrer" class="hover:text-white">erikdubois.be</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-accent-400">Support</p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-400">
+              <li><a href="https://github.com/sponsors/erikdubois" target="_blank" rel="noopener noreferrer" class="hover:text-white">GitHub Sponsors</a></li>
+              <li><a href="https://ko-fi.com/erikdubois" target="_blank" rel="noopener noreferrer" class="hover:text-white">Ko-fi</a></li>
+              <li><a href="https://www.patreon.com/c/kiroproject" target="_blank" rel="noopener noreferrer" class="hover:text-white">Patreon</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-10 border-t border-slate-800 pt-6 text-sm text-slate-500">
+          &copy; 2026 Erik Dubois &middot; ArcoLinux Nemesis &middot;
+          <a href="https://www.erikdubois.be" class="hover:text-white">erikdubois.be</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Image zoom overlay -->
+    <div id="zoom-overlay" role="dialog" aria-modal="true" aria-label="Image preview"
+         class="hidden fixed inset-0 z-50 cursor-zoom-out bg-slate-950/85 p-6 backdrop-blur-sm">
+      <img id="zoom-image" src="" alt="" class="m-auto block max-h-[90vh] max-w-[95vw] rounded-xl shadow-2xl shadow-black/50" />
+    </div>
+
+    <!-- Back to top -->
+    <button type="button" data-back-to-top aria-label="Back to top" style="display:none"
+            class="fixed bottom-4 left-4 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-slate-200 shadow-lg shadow-black/40 transition hover:border-slate-600 hover:bg-slate-800 hover:text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+      </svg>
+    </button>
+
+    <!-- Accessibility controls (floating) -->
+    <div class="fixed bottom-4 right-4 z-50">
+      <button type="button" data-a11y-menu aria-label="Accessibility options" aria-haspopup="true" aria-expanded="false" aria-controls="a11y-menu"
+              class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-slate-200 shadow-lg shadow-black/40 transition hover:border-slate-600 hover:bg-slate-800 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2a2 2 0 110 4 2 2 0 010-4zm9 5.25a1 1 0 01-.757 1.71l-4.243.708V12l1.94 6.34a1 1 0 11-1.92.56L14.25 13.5h-4.5l-1.77 5.4a1 1 0 11-1.92-.56L8 12V9.668L3.757 8.96A1 1 0 014 7.25l5.5.917a15 15 0 005 0L21 7.25z"/>
+        </svg>
+      </button>
+      <div id="a11y-menu" class="absolute bottom-14 right-0 hidden w-56 rounded-xl border border-slate-800 bg-slate-900 p-3 shadow-xl shadow-black/40">
+        <p class="px-1 pb-2 text-xs font-semibold uppercase tracking-wider text-accent-400">Accessibility</p>
+        <button type="button" data-a11y-toggle="large" aria-pressed="false"
+                class="flex w-full items-center justify-between rounded-md px-2 py-2 text-sm text-slate-200 hover:bg-slate-800">
+          <span>Larger text</span><span data-a11y-state class="text-xs font-medium text-slate-500">Off</span>
+        </button>
+        <button type="button" data-a11y-toggle="contrast" aria-pressed="false"
+                class="flex w-full items-center justify-between rounded-md px-2 py-2 text-sm text-slate-200 hover:bg-slate-800">
+          <span>High contrast</span><span data-a11y-state class="text-xs font-medium text-slate-500">Off</span>
+        </button>
+      </div>
+    </div>
+
+    <script src="assets/site.js" defer></script>
+  </body>
+</html>

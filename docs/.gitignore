@@ -1,0 +1,12 @@
+# Node tooling — only the source files (tailwind.config.js, tailwind.input.css)
+# are checked in. The CLI itself is reinstalled per-machine via `npm install`.
+node_modules/
+
+# NOTE: dist/ is intentionally NOT ignored. GitHub Pages serves this /docs
+# folder directly with no build step, so the built dist/tailwind.css must be
+# committed. Rebuild it with build-css.sh and commit it alongside the HTML.
+
+# Editor / OS noise
+.DS_Store
+*.swp
+*.bak
