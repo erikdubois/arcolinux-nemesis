@@ -114,7 +114,8 @@ Check with 'nsddmk' in a terminal and change the variables when necessary"
 install_virtualbox_guest_utils_if_needed() {
     if command -v systemd-detect-virt >/dev/null 2>&1; then
         if systemd-detect-virt | grep -q "oracle"; then
-            sudo add-virtualbox-guest-utils
+            install_packages virtualbox-guest-utils
+            enable_now_service vboxservice.service
         fi
     fi
 }

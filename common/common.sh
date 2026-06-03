@@ -273,10 +273,14 @@ remove_matching_packages() {
 }
 
 remove_matching_packages_deps() {
-    local pkg
+    local pkg installed
+    # Capture once into a variable: piping pacman -Qq straight into grep -q lets
+    # grep exit early and SIGPIPE pacman, which under pipefail makes the check
+    # falsely report "not installed". A here-string has no pipe to fail.
+    installed=$(pacman -Qq)
 
     for pkg in "$@"; do
-        if pacman -Qq | grep -Fxq -- "${pkg}"; then
+        if grep -Fxq -- "${pkg}" <<<"${installed}"; then
             log_subsection "Removing package with dependencies: ${pkg}"
             sudo pacman -Rns --noconfirm "${pkg}"
         else
@@ -286,10 +290,12 @@ remove_matching_packages_deps() {
 }
 
 remove_matching_packages_deps_dd() {
-    local pkg
+    local pkg installed
+    # See remove_matching_packages_deps: avoid the pacman -Qq | grep -q SIGPIPE trap.
+    installed=$(pacman -Qq)
 
     for pkg in "$@"; do
-        if pacman -Qq | grep -Fxq -- "${pkg}"; then
+        if grep -Fxq -- "${pkg}" <<<"${installed}"; then
             log_subsection "Force removing package: ${pkg}"
             sudo pacman -Rdd --noconfirm "${pkg}"
         else
