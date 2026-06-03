@@ -13,6 +13,11 @@ Gathered all Kiro packages into a new dedicated `101-install-kiro-packages.sh`. 
 - Moved out of `120-install-nemesis-icon-themes.sh`: the 7 Kiro icon themes (`kiro-neo-candy-*`, `kiro-papirus-dark-tela*`). `surfn-plasma-flow-git` remains, so 120 still ships the non-Kiro icon theme.
 - Added four packages from the ISO pkglist that the framework did not install before: `kiro-keybindings` (distinct from the plasma-specific `kiro-plasma-keybindings`, which intentionally stays in `500-plasma.sh`), `kiro-powermenu`, `kiro-system-files`, and `plymouth-theme-kiro-logo`. `kiro-calamares-config` was intentionally left out (installer-only).
 - `kiro-system-files` is installed by its own `install_kiro_system_files()` step, **not** in the atomic `install_packages` batch — it overwrites real `/etc` files and can hit `exists in filesystem` conflicts. A `pacman -Sp` dry-run confirms it resolves, then the real install runs inside an `if` (condition context), so a conflict logs a warning and the pipeline continues instead of the whole 19-package transaction aborting. Relies on `common.sh` using `set -Euo pipefail` with no `-e` and a non-exiting `ERR` trap.
+
+**Two robustness fixes surfaced while testing the run in a VirtualBox VM:**
+
+- **`enable_now_service` now skips missing units** (`common/common.sh`). It blindly ran `sudo systemctl enable --now "${service}"`; when a unit didn't exist (e.g. `man-db.timer`, `plocate-updatedb.timer` on a system where those packages failed to install), systemctl errored and the `ERR` trap stalled ~10s per miss — twice per call via `errtrace` (helper line + call site). Now it guards with `systemctl cat "${service}" &>/dev/null` and `log_warn`+`return 0` when absent. Fixes every caller (cups, bluetooth, samba, mariadb, …), not just the timers.
+- **Stopped force-removing `fastfetch`** (`0-current-choices.sh`, `common/handle.sh`). Both ran `remove_matching_packages fastfetch` to make room for `fastfetch-git` (installed in 110). But `fastfetch-git` already **Provides** and **Conflicts** `fastfetch`, so `pacman -S fastfetch-git` swaps it cleanly. The explicit `-Rs` broke `alacritty-tweak-tool-gtk4-git`'s hard dependency on `fastfetch` (`removing fastfetch breaks dependency 'fastfetch'`) on any re-run where ATT was already installed. Both removal lines deleted; the install handles the swap.
 - Orchestrator: added `run_glob "${WORKING_DIR}/101-*"` after the `100-*` line in `0-current-choices.sh`. Note `120-*` remains commented out (pre-existing).
 - All four touched scripts pass `bash -n`.
 
@@ -20,6 +25,7 @@ Gathered all Kiro packages into a new dedicated `101-install-kiro-packages.sh`. 
 
 - `101-install-kiro-packages.sh` (new)
 - `100-install-nemesis-software.sh`, `120-install-nemesis-icon-themes.sh`, `0-current-choices.sh`
+- `common/common.sh` (enable_now_service guard), `common/handle.sh` (fastfetch removal dropped)
 
 ## 2026.06.03 — edu→kiro repoint
 

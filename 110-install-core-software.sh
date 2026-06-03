@@ -63,8 +63,16 @@ install_xfce_extras_if_needed() {
 install_core_packages() {
     log_section "Installing core software"
 
+    # Swap stock fastfetch -> fastfetch-git as its own step first.
+    # fastfetch-git Conflicts/Provides fastfetch, but pacman --noconfirm answers
+    # "N" to the replace prompt and would abort the whole batch. Force-remove
+    # fastfetch (-Rdd, ignoring alacritty-tweak-tool-gtk4-git's hard dep), then
+    # install fastfetch-git, which immediately re-provides fastfetch so the
+    # dependency is satisfied again. The helper is a no-op if fastfetch is absent.
+    remove_matching_packages_deps_dd fastfetch
+    install_packages fastfetch-git
+
     local pkgs=(
-        fastfetch-git
         unifetch
         yay-git
         paru-git
