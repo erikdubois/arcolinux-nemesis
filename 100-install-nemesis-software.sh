@@ -38,17 +38,8 @@ install_nemesis_software() {
         upd72020x-fw \
         archlinux-tweak-tool-gtk4-git \
         alacritty-tweak-tool-git \
-        kiro-dot-files \
         arc-gtk-theme \
         archlinux-logout-gtk4-git \
-        kiro-arc-dawn \
-        kiro-arc-kde \
-        kiro-rofi \
-        kiro-rofi-themes \
-        kiro-sddm-simplicity \
-        kiro-shells \
-        kiro-variety-config \
-        kiro-xfce \
         flameshot-git \
         gittyup \
         hardcode-fixer-git \

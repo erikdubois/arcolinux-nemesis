@@ -17,20 +17,13 @@ pause_if_debug
 
 ##################################################################################################################################
 # Purpose
-# - Install kiro-neo-candy and surfn-plasma-flow icon themes from nemesis_repo
-# - Covers 8 themes total (neo-candy variants: arc, arc-mint-grey/red, qogir, tela; papirus-dark-tela variants; surfn-plasma-flow)
+# - Install the surfn-plasma-flow icon theme from nemesis_repo
 # - Iterates one package at a time with numbered progress logging
+# - Kiro icon themes (neo-candy, papirus-dark-tela) now live in 101-install-kiro-packages.sh
 ##################################################################################################################################
 
 install_nemesis_icon_themes() {
     local pkgs=(
-        kiro-neo-candy-arc
-        kiro-neo-candy-arc-mint-grey
-        kiro-neo-candy-arc-mint-red
-        kiro-neo-candy-qogir
-        kiro-neo-candy-tela
-        kiro-papirus-dark-tela
-        kiro-papirus-dark-tela-grey
         surfn-plasma-flow-git
     )
 

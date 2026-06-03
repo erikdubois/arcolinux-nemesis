@@ -4,6 +4,26 @@
 
 ### What Changed
 
+Gathered all Kiro packages into a new dedicated `101-install-kiro-packages.sh`. Previously the `kiro-*` packages were scattered: 9 mixed into `100-install-nemesis-software.sh` and 7 icon themes inside `120-install-nemesis-icon-themes.sh`. They now live in one place (20 packages total), making the Kiro set easy to find and maintain. Wired into the pipeline right after `100-*`. While here, cross-checked against the `kiro-v26.06.02` ISO pkglist and added four packages not previously installed by the framework: `kiro-keybindings`, `kiro-powermenu`, `kiro-system-files`, and `plymouth-theme-kiro-logo`.
+
+### Technical Details
+
+- New `101-install-kiro-packages.sh` follows the existing repo script idiom (erikdubois header banner, `source common/common.sh`, `log_section` + `pause_if_debug`, single `install_packages` call).
+- Moved out of `100-install-nemesis-software.sh`: `kiro-dot-files`, `kiro-arc-dawn`, `kiro-arc-kde`, `kiro-rofi`, `kiro-rofi-themes`, `kiro-sddm-simplicity`, `kiro-shells`, `kiro-variety-config`, `kiro-xfce`. The non-Kiro Nemesis set (ATT, arc-gtk-theme, flameshot, neo-candy-icons, surfn-icons, rofi, etc.) stays in 100.
+- Moved out of `120-install-nemesis-icon-themes.sh`: the 7 Kiro icon themes (`kiro-neo-candy-*`, `kiro-papirus-dark-tela*`). `surfn-plasma-flow-git` remains, so 120 still ships the non-Kiro icon theme.
+- Added four packages from the ISO pkglist that the framework did not install before: `kiro-keybindings` (distinct from the plasma-specific `kiro-plasma-keybindings`, which intentionally stays in `500-plasma.sh`), `kiro-powermenu`, `kiro-system-files`, and `plymouth-theme-kiro-logo`. `kiro-calamares-config` was intentionally left out (installer-only).
+- Orchestrator: added `run_glob "${WORKING_DIR}/101-*"` after the `100-*` line in `0-current-choices.sh`. Note `120-*` remains commented out (pre-existing).
+- All four touched scripts pass `bash -n`.
+
+### Files Modified
+
+- `101-install-kiro-packages.sh` (new)
+- `100-install-nemesis-software.sh`, `120-install-nemesis-icon-themes.sh`, `0-current-choices.sh`
+
+## 2026.06.03 — edu→kiro repoint
+
+### What Changed
+
 Repointed all `edu-*` references to the new `kiro-*` names after the edu→kiro repo move and package rename. Fresh installs now pull the renamed packages from nemesis_repo and clone from the `kirodubes` account instead of `erikdubois`. 33 scripts touched across the numbered pipeline, the desktop installers, and the voyage-of-chadwm distro scripts.
 
 ### Technical Details

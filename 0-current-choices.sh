@@ -276,6 +276,7 @@ log_warn "Start of the scripts - choices what to launch or not"
 run_remove_anywhere_software
 
 run_glob "${WORKING_DIR}/100-*"
+run_glob "${WORKING_DIR}/101-*"
 run_glob "${WORKING_DIR}/105-*"
 run_glob "${WORKING_DIR}/110-*"
 #run_glob "${WORKING_DIR}/120-*"
