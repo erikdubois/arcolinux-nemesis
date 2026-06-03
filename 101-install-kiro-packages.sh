@@ -77,7 +77,7 @@ install_kiro_system_files() {
 log_section "Installing Kiro packages from nemesis_repo"
 
 install_kiro_packages
-install_kiro_system_files
+#install_kiro_system_files
 
 # Finished
 log_subsection "$(script_name) done"

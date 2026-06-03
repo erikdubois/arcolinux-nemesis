@@ -206,9 +206,9 @@ run_remove_anywhere_software() {
     # pamac from accidentally matching pamac-aur.
     remove_matching_packages archinstall
     remove_matching_packages neofetch
-    # fastfetch is NOT removed here: fastfetch-git (installed in 110) Provides and
-    # Conflicts fastfetch, so pacman swaps it cleanly. An explicit -Rs would break
-    # alacritty-tweak-tool-gtk4-git, which hard-depends on fastfetch.
+    # fastfetch is NOT removed here: the stock->git swap is done in 110 via -Rdd
+    # then install fastfetch-git. An -Rs here breaks alacritty-tweak-tool-gtk4-git,
+    # which hard-depends on fastfetch.
     remove_matching_packages yay
     remove_matching_packages yay-bin
     remove_matching_packages paru
