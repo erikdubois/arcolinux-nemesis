@@ -96,7 +96,7 @@ echo
 
 # exit strategy - super + shift + x
 sudo rm -rf /tmp/edu-powermenu
-git clone https://github.com/erikdubois/edu-powermenu  /tmp/edu-powermenu
+git clone https://github.com/kirodubes/kiro-powermenu  /tmp/edu-powermenu
 sudo cp /tmp/edu-powermenu/usr/local/bin/edu-powermenu /usr/local/bin
 cp -r /tmp/edu-powermenu/etc/skel/.bin ~
 cp -r /tmp/edu-powermenu/etc/skel/.config ~
@@ -113,7 +113,7 @@ echo
 if "$_install_chadwm"; then
     # getting the official code from Edu-chadwm
     [ -d /tmp/edu-chadwm ] && rm -rf /tmp/edu-chadwm
-    git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
+    git clone https://github.com/kirodubes/kiro-chadwm  /tmp/edu-chadwm
     sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
     sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
     cp -r /tmp/edu-chadwm/etc/skel/.bin ~
@@ -220,9 +220,9 @@ echo "########################################################################"
 tput sgr0
 echo
 
-# getting edu-variety-config
+# getting kiro-variety-config
 [ -d /tmp/edu-variety-config ] && rm -rf /tmp/edu-variety-config
-git clone https://github.com/erikdubois/edu-variety-config  /tmp/edu-variety-config
+git clone https://github.com/kirodubes/kiro-variety-config  /tmp/edu-variety-config
 cp -r /tmp/edu-variety-config/etc/skel/.config ~
 
 echo

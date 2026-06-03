@@ -32,11 +32,11 @@ archlinux-logout-git
 awesome-terminal-fonts
 bspwm
 dmenu
-edu-bspwm-git
-edu-polybar-git
-edu-rofi-git
-edu-rofi-themes-git
-edu-xfce-git
+kiro-bspwm
+kiro-polybar
+kiro-rofi
+kiro-rofi-themes
+kiro-xfce
 feh
 lxappearance
 noto-fonts

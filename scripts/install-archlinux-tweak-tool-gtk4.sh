@@ -22,10 +22,10 @@ source "${COMMON_DIR}/common.sh"
 # Purpose
 # - Install archlinux-tweak-tool-gtk4 (ATT) from PKGBUILD
 # - Source: https://github.com/erikdubois/archlinux-tweak-tool-gtk4
-# - PKGBUILD: https://github.com/erikdubois/edu-pkgbuild/tree/main/archlinux-tweak-tool-gtk4-git
+# - PKGBUILD: https://github.com/kirodubes/KIRO-PKG-BUILD-APPS/tree/main/archlinux-tweak-tool-gtk4-git
 ##################################################################################################################################
 
-PKGBUILD_BASE="https://raw.githubusercontent.com/erikdubois/edu-pkgbuild/main/archlinux-tweak-tool-gtk4-git"
+PKGBUILD_BASE="https://raw.githubusercontent.com/kirodubes/KIRO-PKG-BUILD-APPS/main/archlinux-tweak-tool-gtk4-git"
 
 main() {
     if [[ $EUID -eq 0 ]]; then

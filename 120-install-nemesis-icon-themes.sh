@@ -17,20 +17,20 @@ pause_if_debug
 
 ##################################################################################################################################
 # Purpose
-# - Install edu-neo-candy and surfn-plasma-flow icon themes from nemesis_repo
+# - Install kiro-neo-candy and surfn-plasma-flow icon themes from nemesis_repo
 # - Covers 8 themes total (neo-candy variants: arc, arc-mint-grey/red, qogir, tela; papirus-dark-tela variants; surfn-plasma-flow)
 # - Iterates one package at a time with numbered progress logging
 ##################################################################################################################################
 
 install_nemesis_icon_themes() {
     local pkgs=(
-        edu-neo-candy-arc-git
-        edu-neo-candy-arc-mint-grey-git
-        edu-neo-candy-arc-mint-red-git
-        edu-neo-candy-qogir-git
-        edu-neo-candy-tela-git
-        edu-papirus-dark-tela-git
-        edu-papirus-dark-tela-grey-git
+        kiro-neo-candy-arc
+        kiro-neo-candy-arc-mint-grey
+        kiro-neo-candy-arc-mint-red
+        kiro-neo-candy-qogir
+        kiro-neo-candy-tela
+        kiro-papirus-dark-tela
+        kiro-papirus-dark-tela-grey
         surfn-plasma-flow-git
     )
 

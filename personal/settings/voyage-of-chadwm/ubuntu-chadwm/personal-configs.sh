@@ -171,9 +171,9 @@ cp -r * ~/.themes
 echo
 
 
-# getting edu-variety
+# getting kiro-variety-config
 sudo rm -rf /tmp/edu-variety-config
-git clone https://github.com/erikdubois/edu-variety-config /tmp/edu-variety-config
+git clone https://github.com/kirodubes/kiro-variety-config /tmp/edu-variety-config
 cp -r /tmp/edu-variety-config/etc/skel/.config/* ~/.config/
 echo
 

@@ -31,7 +31,7 @@ list=(
 alacritty
 archlinux-logout-git
 ohmychadwm-git
-edu-xfce-git
+kiro-xfce
 dmenu
 fastcompmgr-git
 feh

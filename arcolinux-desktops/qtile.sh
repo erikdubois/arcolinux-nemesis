@@ -32,10 +32,10 @@ alacritty
 archlinux-logout-git
 awesome-terminal-fonts
 dmenu
-edu-qtile-git
-edu-rofi-git
-edu-rofi-themes-git
-edu-xfce-git
+kiro-qtile
+kiro-rofi
+kiro-rofi-themes
+kiro-xfce
 feh
 lxappearance
 noto-fonts

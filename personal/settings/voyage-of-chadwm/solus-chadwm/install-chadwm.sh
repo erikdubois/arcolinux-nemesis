@@ -69,7 +69,7 @@ sudo eopkg install -y variety
 
 # getting the official code
 [ -d /tmp/edu-chadwm ] && rm -rf /tmp/edu-chadwm
-git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
+git clone https://github.com/kirodubes/kiro-chadwm  /tmp/edu-chadwm
 sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
 sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
 cp -r /tmp/edu-chadwm/etc/skel/.bin ~
@@ -91,14 +91,14 @@ sudo make clean
 
 # getting edu-powermenu
 [ -d /tmp/edu-powermenu ] && rm -rf /tmp/edu-powermenu
-git clone https://github.com/erikdubois/edu-powermenu  /tmp/edu-powermenu
+git clone https://github.com/kirodubes/kiro-powermenu  /tmp/edu-powermenu
 sudo cp /tmp/edu-powermenu/usr/local/bin/edu-powermenu /usr/local/bin/edu-powermenu
 cp -r /tmp/edu-powermenu/etc/skel/.bin ~
 cp -r /tmp/edu-powermenu/etc/skel/.config ~
 
-# getting edu-variety-config
+# getting kiro-variety-config
 [ -d /tmp/edu-variety-config ] && rm -rf /tmp/edu-variety-config
-git clone https://github.com/erikdubois/edu-variety-config  /tmp/edu-variety-config
+git clone https://github.com/kirodubes/kiro-variety-config  /tmp/edu-variety-config
 cp -r /tmp/edu-variety-config/etc/skel/.config ~
 
 # removing this package - it slows down terminals and thunar

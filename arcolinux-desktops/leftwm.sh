@@ -31,8 +31,8 @@ list=(
 alacritty
 archlinux-logout-git
 dmenu
-edu-leftwm-git
-edu-xfce-git
+kiro-leftwm
+kiro-xfce
 feh
 leftwm-git
 leftwm-theme-git

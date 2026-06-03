@@ -30,7 +30,7 @@ install_core_packages() {
         make
         alacritty
         archlinux-logout-gtk4-git
-        edu-xfce-git
+        kiro-xfce
         dmenu
         fastcompmgr-git
         feh

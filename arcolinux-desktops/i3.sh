@@ -32,8 +32,8 @@ alacritty
 archlinux-logout-git
 autotiling
 dmenu
-edu-i3-git
-edu-xfce-git
+kiro-i3
+kiro-xfce
 feh
 i3-wm
 i3status

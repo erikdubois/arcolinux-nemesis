@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026.06.03
+
+### What Changed
+
+Repointed all `edu-*` references to the new `kiro-*` names after the edu→kiro repo move and package rename. Fresh installs now pull the renamed packages from nemesis_repo and clone from the `kirodubes` account instead of `erikdubois`. 33 scripts touched across the numbered pipeline, the desktop installers, and the voyage-of-chadwm distro scripts.
+
+### Technical Details
+
+- **Package names drop the `-git` suffix** — the rename was not 1:1. `edu-X-git` → `kiro-X` (e.g. `edu-chadwm-git` → `kiro-chadwm`, `edu-xfce-git` → `kiro-xfce`); `edu-arc-kde` (already suffix-less) → `kiro-arc-kde`. Verified every target exists in `~/EDU/nemesis_repo/x86_64/`. A naive `edu-`→`kiro-` swap would have produced nonexistent `kiro-*-git` names.
+- **Clone URLs** — `github.com/erikdubois/edu-X` → `github.com/kirodubes/kiro-X` (Phase-1 repo move is live with redirects; URLs cleaned up to the real targets). One exception: `edu-pkgbuild` moved to `kirodubes/KIRO-PKG-BUILD-APPS` (not `kiro-pkgbuild`), subpath `archlinux-tweak-tool-gtk4-git` unchanged.
+- **Deliberately preserved (still ship as `edu-`)** — three artifacts inside the renamed repos were not renamed: the SDDM theme dir `edu-simplicity` (`Current=edu-simplicity`), the `/usr/local/bin/edu-powermenu` binary basename, and one `# getting edu-powermenu` comment that accurately names it. Confirmed against the live `kirodubes` repos.
+- **`/tmp/edu-*` working dirs left untouched** by rule — never modify `/tmp` paths.
+- Applied via two scoped sed passes whose regexes (`-git` suffix / `erikdubois/` prefix) cannot match the preserved items; all 33 scripts pass `bash -n`.
+
+### Files Modified
+
+- Package lists: `100-install-nemesis-software.sh`, `120-install-nemesis-icon-themes.sh`, `500-plasma.sh`, `600-ohmychadwm.sh`, `arcolinux-desktops/{awesome,bspwm,chadwm,i3,leftwm,ohmychadwm,qtile,xfce}.sh`
+- Clone URLs: `scripts/install-archlinux-tweak-tool-gtk4.sh`, `personal/settings/voyage-of-chadwm/*/install-chadwm.sh`, `.../{mint,ubuntu}-chadwm/{personal-configs,install-apps-install}.sh`
+
 ## 2026.05.29
 
 ### What Changed

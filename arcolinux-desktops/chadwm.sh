@@ -30,8 +30,8 @@ echo
 list=(
 alacritty
 archlinux-logout-git
-edu-chadwm-git
-edu-xfce-git
+kiro-chadwm
+kiro-xfce
 dmenu
 fastcompmgr-git
 feh

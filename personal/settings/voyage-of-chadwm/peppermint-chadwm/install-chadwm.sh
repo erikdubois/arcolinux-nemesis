@@ -76,7 +76,7 @@ folder="/tmp/edu-chadwm"
 if [ -d "$folder" ]; then
     sudo rm -r "$folder"
 fi
-git clone https://github.com/erikdubois/edu-chadwm  /tmp/edu-chadwm
+git clone https://github.com/kirodubes/kiro-chadwm  /tmp/edu-chadwm
 sudo cp /tmp/edu-chadwm/usr/bin/exec-chadwm /usr/bin
 sudo cp /tmp/edu-chadwm/usr/share/xsessions/chadwm.desktop /usr/share/xsessions
 cp -r /tmp/edu-chadwm/etc/skel/.bin ~

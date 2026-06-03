@@ -31,7 +31,7 @@ list=(
 alacritty
 catfish
 dmenu
-edu-xfce-git
+kiro-xfce
 lxappearance
 mugshot
 polkit-gnome

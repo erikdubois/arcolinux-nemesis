@@ -106,7 +106,7 @@ sudo apt install -y ubuntu-restricted-extras
 
 # getting dot files from Edu nemesis-repo
 sudo rm -rf /tmp/edu-dot-files
-git clone https://github.com/erikdubois/edu-dot-files /tmp/edu-dot-files
+git clone https://github.com/kirodubes/kiro-dot-files /tmp/edu-dot-files
 cp -r /tmp/edu-dot-files/etc/skel/.config ~
 cp -r /tmp/edu-dot-files/etc/skel/.local ~
 

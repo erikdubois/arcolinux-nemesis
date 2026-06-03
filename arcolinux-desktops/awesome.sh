@@ -32,8 +32,8 @@ alacritty
 archlinux-logout-git
 awesome
 dmenu
-edu-awesome-git
-edu-xfce-git
+kiro-awesome
+kiro-xfce
 feh
 lxappearance
 noto-fonts

@@ -29,7 +29,7 @@ install_plasma_extras() {
 
     log_section "Plasma detected - extra software to install"
 
-    install_packages edu-plasma-keybindings-git edu-plasma-servicemenus-git obs-studio \
+    install_packages kiro-plasma-keybindings kiro-plasma-servicemenus obs-studio \
         surfn-plasma-dark-icons-git surfn-plasma-light-icons-git
 }
 
