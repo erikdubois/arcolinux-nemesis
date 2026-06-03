@@ -14,8 +14,9 @@
 # Purpose
 # - Install all Kiro packages from nemesis_repo, gathered in one place
 # - Core Kiro set: dot-files, arc-dawn, arc-kde, keybindings, rofi + rofi-themes, sddm-simplicity,
-#   shells, variety-config, xfce, powermenu, system-files, plymouth-theme-kiro-logo
+#   shells, variety-config, xfce, powermenu, plymouth-theme-kiro-logo
 # - Kiro icon themes: neo-candy variants (arc, arc-mint-grey/red, qogir, tela) and papirus-dark-tela variants
+# - kiro-system-files installed separately (dry-run + guarded) since it overwrites /etc and may conflict
 ##################################################################################################################################
 
 # Load shared helper functions
@@ -41,7 +42,6 @@ install_kiro_packages() {
         kiro-variety-config \
         kiro-xfce \
         kiro-powermenu \
-        kiro-system-files \
         plymouth-theme-kiro-logo \
         kiro-neo-candy-arc \
         kiro-neo-candy-arc-mint-grey \
@@ -52,10 +52,32 @@ install_kiro_packages() {
         kiro-papirus-dark-tela-grey
 }
 
+# Install kiro-system-files on its own — it overwrites real /etc system files and
+# can hit "exists in filesystem" conflicts. A dry-run confirms it resolves first;
+# the real install runs in a condition context so any failure logs a warning and
+# the pipeline keeps going instead of aborting the whole batch.
+install_kiro_system_files() {
+    log_subsection "kiro-system-files: dry-run check"
+
+    if ! sudo pacman -Sp kiro-system-files &>/dev/null; then
+        log_warn "kiro-system-files not found in repos - skipping"
+        return 0
+    fi
+
+    log_info "Dry-run OK - installing kiro-system-files"
+
+    if sudo pacman -S --noconfirm --needed kiro-system-files; then
+        log_success "kiro-system-files installed"
+    else
+        log_warn "kiro-system-files failed to install - continuing pipeline"
+    fi
+}
+
 # Main execution
 log_section "Installing Kiro packages from nemesis_repo"
 
 install_kiro_packages
+install_kiro_system_files
 
 # Finished
 log_subsection "$(script_name) done"
