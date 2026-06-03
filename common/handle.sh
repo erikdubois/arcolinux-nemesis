@@ -153,7 +153,8 @@ handle_cachyos() {
         remove_matching_packages cachyos-fish-config
         remove_matching_packages btrfs-progs
         remove_matching_packages cachy-browser
-        remove_matching_packages fastfetch
+        # fastfetch swap is handled by installing fastfetch-git (Provides/Conflicts
+        # fastfetch); an explicit -Rs breaks alacritty-tweak-tool-gtk4-git's dep.
         remove_matching_packages cachyos-alacritty-config
         remove_matching_packages cachyos-hello
         remove_matching_packages cachyos-micro-settings

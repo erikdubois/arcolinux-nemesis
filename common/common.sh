@@ -363,6 +363,14 @@ install_local_packages() {
 ##################################################################################################################################
 enable_now_service() {
     local service="$1"
+
+    # Skip cleanly when the unit isn't installed, otherwise systemctl fails and
+    # the ERR trap stalls the pipeline 10s per miss (twice, via errtrace).
+    if ! systemctl cat "${service}" &>/dev/null; then
+        log_warn "Unit ${service} not found - skipping"
+        return 0
+    fi
+
     log_subsection "Enabling and starting service: ${service}"
     sudo systemctl enable --now "${service}"
 }
