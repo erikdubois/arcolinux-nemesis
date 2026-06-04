@@ -29,7 +29,7 @@ install_core_packages() {
     local packages=(
         make
         alacritty
-        archlinux-logout-gtk4-git
+        archlinux-logout-gtk4
         kiro-xfce
         dmenu
         fastcompmgr-git

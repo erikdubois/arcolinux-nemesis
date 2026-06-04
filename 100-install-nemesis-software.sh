@@ -36,10 +36,10 @@ install_nemesis_software() {
     install_packages \
         mkinitcpio-firmware \
         upd72020x-fw \
-        archlinux-tweak-tool-gtk4-git \
-        alacritty-tweak-tool-git \
+        archlinux-tweak-tool-gtk4 \
+        alacritty-tweak-tool \
         arc-gtk-theme \
-        archlinux-logout-gtk4-git \
+        archlinux-logout-gtk4 \
         flameshot-git \
         gittyup \
         hardcode-fixer-git \
