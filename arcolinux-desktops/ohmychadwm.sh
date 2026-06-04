@@ -30,7 +30,7 @@ echo
 list=(
 alacritty
 archlinux-logout-git
-ohmychadwm-git
+ohmychadwm
 kiro-xfce
 dmenu
 fastcompmgr-git

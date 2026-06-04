@@ -14,18 +14,21 @@ Gathered all Kiro packages into a new dedicated `101-install-kiro-packages.sh`. 
 - Added four packages from the ISO pkglist that the framework did not install before: `kiro-keybindings` (distinct from the plasma-specific `kiro-plasma-keybindings`, which intentionally stays in `500-plasma.sh`), `kiro-powermenu`, `kiro-system-files`, and `plymouth-theme-kiro-logo`. `kiro-calamares-config` was intentionally left out (installer-only).
 - `kiro-system-files` is installed by its own `install_kiro_system_files()` step, **not** in the atomic `install_packages` batch — it overwrites real `/etc` files and can hit `exists in filesystem` conflicts. A `pacman -Sp` dry-run confirms it resolves, then the real install runs inside an `if` (condition context), so a conflict logs a warning and the pipeline continues instead of the whole 19-package transaction aborting. Relies on `common.sh` using `set -Euo pipefail` with no `-e` and a non-exiting `ERR` trap.
 
-**Two robustness fixes surfaced while testing the run in a VirtualBox VM:**
+**Robustness fixes surfaced while testing the run in a VirtualBox VM:**
 
 - **`enable_now_service` now skips missing units** (`common/common.sh`). It blindly ran `sudo systemctl enable --now "${service}"`; when a unit didn't exist (e.g. `man-db.timer`, `plocate-updatedb.timer` on a system where those packages failed to install), systemctl errored and the `ERR` trap stalled ~10s per miss — twice per call via `errtrace` (helper line + call site). Now it guards with `systemctl cat "${service}" &>/dev/null` and `log_warn`+`return 0` when absent. Fixes every caller (cups, bluetooth, samba, mariadb, …), not just the timers.
-- **Stopped force-removing `fastfetch`** (`0-current-choices.sh`, `common/handle.sh`). Both ran `remove_matching_packages fastfetch` to make room for `fastfetch-git` (installed in 110). But `fastfetch-git` already **Provides** and **Conflicts** `fastfetch`, so `pacman -S fastfetch-git` swaps it cleanly. The explicit `-Rs` broke `alacritty-tweak-tool-gtk4-git`'s hard dependency on `fastfetch` (`removing fastfetch breaks dependency 'fastfetch'`) on any re-run where ATT was already installed. Both removal lines deleted; the install handles the swap.
+- **`fastfetch` → `fastfetch-git` swap reworked into a single deterministic step in `110-install-core-software.sh`.** The journey: `fastfetch-git` **Provides** and **Conflicts** `fastfetch`, but under `--noconfirm` pacman answers **N** to the `Remove fastfetch?` prompt, so `pacman -S fastfetch-git` aborts the whole core batch. And the old `remove_matching_packages fastfetch` (`-Rs`) in `0-current-choices.sh` / `handle.sh` broke `alacritty-tweak-tool-gtk4-git`'s hard dep. Final design: the early `-Rs` removals were **deleted**, and `install_core_packages` now does `remove_matching_packages_deps_dd fastfetch` (`-Rdd`, drops stock fastfetch ignoring the ATT dep) immediately followed by `install_packages fastfetch-git` (which re-provides `fastfetch`, restoring the dep). `fastfetch-git` was pulled out of the big batch so the swap can't take the batch down.
+- **Fixed a `pacman -Qq | grep -q` SIGPIPE bug in `remove_matching_packages_deps` and `remove_matching_packages_deps_dd`** (`common/common.sh`). `grep -q` exits on first match and SIGPIPEs `pacman`; under `set -o pipefail` the pipeline goes non-zero, so the helper **falsely reported an installed package as "not installed"** and skipped the removal — exactly why the VM hit the fastfetch conflict (it logged "No package named 'fastfetch' is installed" while stock fastfetch was present). Both helpers now capture `pacman -Qq` into a variable once and match with a here-string — no pipe, no SIGPIPE. (Note: the `pacman -Q`-based `pkg_installed`/`remove_matching_packages` resolve *provides*, so `fastfetch` would match `fastfetch-git` there; the `-Qq | grep -Fxq` exact-name path is intentional for the swap and was the right helper to harden.)
+- **Replaced bogus `sudo add-virtualbox-guest-utils`** in `600-ohmychadwm.sh` (a non-existent command → `command not found` → 10s ERR-trap stall on VBox guests) with `install_packages virtualbox-guest-utils` + `enable_now_service vboxservice.service`.
 - Orchestrator: added `run_glob "${WORKING_DIR}/101-*"` after the `100-*` line in `0-current-choices.sh`. Note `120-*` remains commented out (pre-existing).
-- All four touched scripts pass `bash -n`.
+- All touched scripts pass `bash -n`.
 
 ### Files Modified
 
 - `101-install-kiro-packages.sh` (new)
 - `100-install-nemesis-software.sh`, `120-install-nemesis-icon-themes.sh`, `0-current-choices.sh`
-- `common/common.sh` (enable_now_service guard), `common/handle.sh` (fastfetch removal dropped)
+- `110-install-core-software.sh` (fastfetch swap), `600-ohmychadwm.sh` (vbox guest utils)
+- `common/common.sh` (enable_now_service guard + SIGPIPE-safe removers), `common/handle.sh` (fastfetch `-Rs` dropped)
 
 ## 2026.06.03 — edu→kiro repoint
 
