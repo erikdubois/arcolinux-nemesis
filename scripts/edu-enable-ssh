@@ -175,6 +175,13 @@ main() {
     execute_or_dryrun "Install bash-completion, obs-studio and samba client tools" \
         pacman -S bash-completion obs-studio smbclient cifs-utils gvfs-smb avahi nss-mdns --noconfirm --needed
 
+    log_subsection "Installing PipeWire support (only what's missing)"
+    # --needed skips anything already present, so this is a no-op on systems
+    # that already ship PipeWire. gst-plugin-pipewire helps OBS screen capture.
+    execute_or_dryrun "Install PipeWire stack" \
+        pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber gst-plugin-pipewire \
+        --noconfirm --needed
+
     log_subsection "Enabling avahi-daemon (mDNS discovery)"
     execute_or_dryrun "Enable avahi-daemon" systemctl enable --now avahi-daemon
 
