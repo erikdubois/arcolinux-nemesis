@@ -170,9 +170,32 @@ main() {
 
     log_subsection "Installing extra packages (bash-completion, obs-studio, samba client)"
     # smbclient browses shares, cifs-utils mounts them, gvfs-smb exposes them
-    # to GTK file managers (Files, Thunar, etc.).
+    # to GTK file managers (Files, Thunar, etc.). avahi + nss-mdns let the
+    # Samba server resolve by 'hostname.local' on the LAN.
     execute_or_dryrun "Install bash-completion, obs-studio and samba client tools" \
-        pacman -S bash-completion obs-studio smbclient cifs-utils gvfs-smb --noconfirm --needed
+        pacman -S bash-completion obs-studio smbclient cifs-utils gvfs-smb avahi nss-mdns --noconfirm --needed
+
+    log_subsection "Enabling avahi-daemon (mDNS discovery)"
+    execute_or_dryrun "Enable avahi-daemon" systemctl enable --now avahi-daemon
+
+    log_subsection "Enabling mDNS hostname resolution (nsswitch.conf)"
+    # Without mdns_minimal on the hosts line, 'hostname.local' won't resolve
+    # even with avahi running. Insert it before 'resolve' (or 'dns') so the
+    # NSS lookup tries mDNS before falling through to regular DNS.
+    nsswitch="/etc/nsswitch.conf"
+    if grep -qE '^hosts:.*mdns' "$nsswitch"; then
+        log_info "nsswitch.conf already has mdns — leaving it as-is"
+    else
+        [[ -f "${nsswitch}.nemesis" ]] || \
+            execute_or_dryrun "Back up nsswitch.conf" cp -a "$nsswitch" "${nsswitch}.nemesis"
+        if grep -qE '^hosts:.*\bresolve\b' "$nsswitch"; then
+            execute_or_dryrun "Add mdns_minimal to nsswitch.conf hosts line" \
+                sed -i -E '/^hosts:/ s/\bresolve\b/mdns_minimal [NOTFOUND=return] resolve/' "$nsswitch"
+        else
+            execute_or_dryrun "Add mdns_minimal to nsswitch.conf hosts line" \
+                sed -i -E '/^hosts:/ s/\bdns\b/mdns_minimal [NOTFOUND=return] dns/' "$nsswitch"
+        fi
+    fi
 
     log_subsection "Enabling and starting sshd"
     execute_or_dryrun "Enable sshd" systemctl enable --now sshd
