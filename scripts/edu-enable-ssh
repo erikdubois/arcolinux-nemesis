@@ -194,8 +194,28 @@ main() {
     fi
     execute_or_dryrun "Install pipewire-jack" pacman -S pipewire-jack --noconfirm --needed
 
+    log_subsection "Forcing avahi mDNS to IPv4 (so discovered SMB hosts are reachable)"
+    # Samba advertises itself over mDNS by default. With IPv6 enabled, avahi
+    # resolves the discovered host to its link-local IPv6 (fe80::…), which SMB
+    # cannot connect to — the share appears in the file manager's Network view
+    # but clicking it silently does nothing. Restricting avahi to IPv4 makes
+    # discovered hosts resolve to their routable LAN address (192.168.x.x), so
+    # the share actually opens from the Network icon.
+    avahiconf="/etc/avahi/avahi-daemon.conf"
+    if grep -qE '^use-ipv6=no' "$avahiconf"; then
+        log_info "avahi already set to IPv4-only — leaving it as-is"
+    elif [[ -f "$avahiconf" ]]; then
+        [[ -f "${avahiconf}.nemesis" ]] || \
+            execute_or_dryrun "Back up avahi-daemon.conf" cp -a "$avahiconf" "${avahiconf}.nemesis"
+        execute_or_dryrun "Set avahi to IPv4-only (use-ipv6=no)" \
+            sed -i -E 's/^#?use-ipv6=.*/use-ipv6=no/' "$avahiconf"
+    fi
+
     log_subsection "Enabling avahi-daemon (mDNS discovery)"
-    execute_or_dryrun "Enable avahi-daemon" systemctl enable --now avahi-daemon
+    # enable for boot, then restart so the IPv4-only change above is applied
+    # even on a re-run where avahi is already running.
+    execute_or_dryrun "Enable avahi-daemon" systemctl enable avahi-daemon
+    execute_or_dryrun "Restart avahi-daemon to apply config" systemctl restart avahi-daemon
 
     log_subsection "Enabling mDNS hostname resolution (nsswitch.conf)"
     # Without mdns_minimal on the hosts line, 'hostname.local' won't resolve
