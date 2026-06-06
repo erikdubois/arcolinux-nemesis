@@ -190,16 +190,26 @@ main() {
         log_info "firewalld not installed — skipping firewall rule"
     fi
 
-    log_subsection "Setting liveuser password (live ISO only)"
-    # On the live ISO, liveuser has no password set, so sshd's password auth
-    # refuses the login. Detect the live ISO via /run/archiso/bootmnt (the
-    # mount point archiso always creates) and set 'erik' as the password.
-    # On an installed system /run/archiso/bootmnt doesn't exist → this is a no-op.
+    log_subsection "Setting password to 'erik'"
+    # sshd's password auth refuses a login for an account with no password.
+    # On the live ISO liveuser ships passwordless; on an installed system the
+    # invoking user may also lack a usable password for SSH. Either way, set
+    # 'erik' as the password so password auth works. The invoking user is
+    # resolved through sudo/pkexec since the script re-runs as root.
+    target_user=""
     if [[ -d /run/archiso/bootmnt ]] && id -u liveuser >/dev/null 2>&1; then
-        execute_or_dryrun "Set liveuser password to 'erik'" \
-            bash -c "echo 'liveuser:erik' | chpasswd"
+        target_user="liveuser"
+    elif [[ -n "${SUDO_USER:-}" && "${SUDO_USER}" != "root" ]]; then
+        target_user="${SUDO_USER}"
+    elif [[ -n "${PKEXEC_UID:-}" ]]; then
+        target_user="$(id -un "${PKEXEC_UID}" 2>/dev/null || true)"
+    fi
+
+    if [[ -n "${target_user}" ]] && id -u "${target_user}" >/dev/null 2>&1; then
+        execute_or_dryrun "Set password for '${target_user}' to 'erik'" \
+            bash -c "echo '${target_user}:erik' | chpasswd"
     else
-        log_info "Not on live ISO (or no liveuser) — skipping liveuser password setup"
+        log_info "Could not resolve a user to set a password for — skipping"
     fi
 
     log_success "$(basename "$0") done"
