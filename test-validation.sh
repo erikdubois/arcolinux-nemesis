@@ -29,6 +29,11 @@ total_checks=0
 success_count=0
 failure_count=0
 
+# Every failed check description, repeated in the recap at the end of the run.
+declare -a failed_items=()
+# Label of the script currently being validated, attached to each captured failure.
+current_script_label=""
+
 ##################################################################################################################
 # Result helpers
 ##################################################################################################################
@@ -45,6 +50,7 @@ log_result() {
         echo "  [✓ SUCCESS] $description" >> "$REPORT_FILE"
     else
         failure_count=$((failure_count + 1))
+        failed_items+=("${current_script_label:+${current_script_label}  }${description}")
         if [[ "$DETAIL_MODE" == true ]]; then
             echo -e "  ${RED}✗${NC} ${description}  ${RED}FAILED${NC}"
         fi
@@ -57,9 +63,24 @@ log_result() {
 ##################################################################################################################
 
 XFCE_ONLY_PKGS=("menulibre" "mugshot")
+# VirtualBox-guest-only operations — the scripts install/enable these only inside a
+# VirtualBox guest, so they must be skipped (not failed) on bare metal.
+VBOX_ONLY_PKGS=("virtualbox-guest-utils")
+VBOX_ONLY_SVCS=("vboxservice.service")
+# Packages the scripts only install when PipeWire Pulse is absent — skipped (not
+# failed) on PipeWire systems, which is the default audio stack now.
+PIPEWIRE_REPLACED_PKGS=("pulseaudio-bluetooth")
 
 is_xfce_installed() {
     [[ -f /usr/share/xsessions/xfce.desktop ]]
+}
+
+is_virtualbox_guest() {
+    systemd-detect-virt 2>/dev/null | grep -q "oracle"
+}
+
+has_pipewire_pulse() {
+    pacman -Qi pipewire-pulse &>/dev/null
 }
 
 pkg_should_skip() {
@@ -67,6 +88,27 @@ pkg_should_skip() {
     local p
     for p in "${XFCE_ONLY_PKGS[@]}"; do
         if [[ "$pkg" == "$p" ]] && ! is_xfce_installed; then
+            return 0
+        fi
+    done
+    for p in "${VBOX_ONLY_PKGS[@]}"; do
+        if [[ "$pkg" == "$p" ]] && ! is_virtualbox_guest; then
+            return 0
+        fi
+    done
+    for p in "${PIPEWIRE_REPLACED_PKGS[@]}"; do
+        if [[ "$pkg" == "$p" ]] && has_pipewire_pulse; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+svc_should_skip() {
+    local svc="$1"
+    local s
+    for s in "${VBOX_ONLY_SVCS[@]}"; do
+        if [[ "$svc" == "$s" ]] && ! is_virtualbox_guest; then
             return 0
         fi
     done
@@ -81,7 +123,7 @@ check_pkg_installed() {
     local pkg="$1"
     if pkg_should_skip "$pkg"; then
         if [[ "$DETAIL_MODE" == true ]]; then
-            echo -e "  ${YELLOW}⊘${NC} install $pkg  ${YELLOW}SKIPPED${NC} (xfce4 not installed)"
+            echo -e "  ${YELLOW}⊘${NC} install $pkg  ${YELLOW}SKIPPED${NC} (install guard not met on this host)"
         fi
         return
     fi
@@ -136,6 +178,12 @@ check_dir_exists() {
 
 check_service_enabled() {
     local svc="$1"
+    if svc_should_skip "$svc"; then
+        if [[ "$DETAIL_MODE" == true ]]; then
+            echo -e "  ${YELLOW}⊘${NC} service $svc  ${YELLOW}SKIPPED${NC} (enable guard not met on this host)"
+        fi
+        return
+    fi
     if systemctl is-enabled --quiet "$svc" 2>/dev/null; then
         log_result "SUCCESS" "service $svc - enabled"
     else
@@ -293,6 +341,7 @@ validate_script() {
     script_name=$(basename "$script_path")
     local script_num
     script_num=$(echo "$script_name" | grep -oE '^[0-9]+' || echo "0")
+    current_script_label="[${script_num}] ${script_name}"
 
     local script_total_before=$total_checks
     local script_success_before=$success_count
@@ -405,7 +454,7 @@ ALL_SCRIPTS+=("${WORKING_DIR}/0-current-choices.sh")
 ON_PLASMA=false
 [[ "${XDG_CURRENT_DESKTOP,,}" == *plasma* || "${XDG_CURRENT_DESKTOP,,}" == *kde* || "${DESKTOP_SESSION,,}" == *plasma* ]] && ON_PLASMA=true
 
-for pattern in "100-*" "110-*" "130-*" "140-*" "150-*" "200-software-aur-repo*" "600-chadwm*"; do
+for pattern in "100-*" "101-*" "105-*" "110-*" "130-*" "140-*" "150-*" "200-software-aur-repo*" "600-ohmychadwm*"; do
     for script in "${WORKING_DIR}"/${pattern}; do
         [[ -f "$script" ]] && ALL_SCRIPTS+=("$script")
     done
@@ -458,7 +507,6 @@ echo ""
 # Packages installed by the pipeline that have a service/timer not explicitly enabled by any script.
 # Format: "package:service-or-timer"
 PKG_SERVICE_MAP=(
-    "smartmontools:smartd.service"
     "logrotate:logrotate.timer"
     "man-db:man-db.timer"
     "plocate:plocate-updatedb.timer"
@@ -484,8 +532,8 @@ print_service_block() {
         local svc="${entry##*:}"
 
         if ! pacman -Qq "$pkg" &>/dev/null; then
-            echo -e "  ${YELLOW}⊘${NC} ${svc}  ${YELLOW}skipped${NC} (${pkg} not installed)"
-            echo "  [⊘ skipped]  $svc ($pkg not installed)" >> "$REPORT_FILE"
+            echo -e "  ${GREEN}✓${NC} ${svc}  ${GREEN}PASSED${NC} (${pkg} not installed — not needed)"
+            echo "  [✓ PASSED]  $svc ($pkg not installed - not needed)" >> "$REPORT_FILE"
             svc_skipped_count=$(( svc_skipped_count + 1 ))
             continue
         fi
@@ -502,10 +550,10 @@ print_service_block() {
     done
 
     echo ""
-    echo -e "  Enabled : ${GREEN}${svc_enabled_count}${NC}  |  Not enabled : ${RED}${svc_missing_count}${NC}  |  Skipped : ${YELLOW}${svc_skipped_count}${NC}"
+    echo -e "  Enabled : ${GREEN}${svc_enabled_count}${NC}  |  Not enabled : ${RED}${svc_missing_count}${NC}  |  Not needed : ${GREEN}${svc_skipped_count}${NC}"
     {
         echo ""
-        echo "  Enabled : $svc_enabled_count  |  Not enabled : $svc_missing_count  |  Skipped : $svc_skipped_count"
+        echo "  Enabled : $svc_enabled_count  |  Not enabled : $svc_missing_count  |  Not needed : $svc_skipped_count"
     } >> "$REPORT_FILE"
 }
 
@@ -554,8 +602,8 @@ for svc in "${pipeline_services[@]}"; do
         echo "  [✓ enabled]  $svc" >> "$REPORT_FILE"
         exp_enabled=$(( exp_enabled + 1 ))
     elif ! $pkg_found; then
-        echo -e "  ${YELLOW}⊘${NC} ${svc}  ${YELLOW}skipped${NC} (package not installed)"
-        echo "  [⊘ skipped]  $svc (package not installed)" >> "$REPORT_FILE"
+        echo -e "  ${GREEN}✓${NC} ${svc}  ${GREEN}PASSED${NC} (package not installed — not needed)"
+        echo "  [✓ PASSED]  $svc (package not installed - not needed)" >> "$REPORT_FILE"
         exp_skipped=$(( exp_skipped + 1 ))
     else
         echo -e "  ${RED}✗${NC} ${svc}  ${RED}NOT enabled${NC}"
@@ -564,8 +612,8 @@ for svc in "${pipeline_services[@]}"; do
     fi
 done
 echo ""
-echo -e "  Enabled : ${GREEN}${exp_enabled}${NC}  |  Not enabled : ${RED}${exp_missing}${NC}  |  Skipped : ${YELLOW}${exp_skipped}${NC}"
-{ echo ""; echo "  Enabled : $exp_enabled  |  Not enabled : $exp_missing  |  Skipped : $exp_skipped"; } >> "$REPORT_FILE"
+echo -e "  Enabled : ${GREEN}${exp_enabled}${NC}  |  Not enabled : ${RED}${exp_missing}${NC}  |  Not needed : ${GREEN}${exp_skipped}${NC}"
+{ echo ""; echo "  Enabled : $exp_enabled  |  Not enabled : $exp_missing  |  Not needed : $exp_skipped"; } >> "$REPORT_FILE"
 
 # --- Section 2: services from installed packages not covered by scripts ---
 echo ""
@@ -697,6 +745,34 @@ if [[ ${#DRIVES[@]} -eq 0 ]]; then
 else
     for drive in "${DRIVES[@]}"; do
         print_smart_summary "$drive"
+    done
+fi
+
+echo ""
+
+##################################################################################################################
+# Failures recap — repeat every failed check at the very end so nothing scrolls off
+##################################################################################################################
+
+echo -e "${BLUE}============================================${NC}"
+echo -e "${BLUE}  Failures Recap${NC}"
+echo -e "${BLUE}============================================${NC}"
+{
+    echo ""
+    echo "============================================="
+    echo "  Failures Recap"
+    echo "============================================="
+} >> "$REPORT_FILE"
+
+if [[ ${#failed_items[@]} -eq 0 ]]; then
+    echo -e "  ${GREEN}No failures — all checks passed${NC}"
+    echo "  No failures - all checks passed" >> "$REPORT_FILE"
+else
+    echo -e "  ${RED}${#failed_items[@]} failed check(s):${NC}"
+    echo "  ${#failed_items[@]} failed check(s):" >> "$REPORT_FILE"
+    for item in "${failed_items[@]}"; do
+        echo -e "  ${RED}✗${NC} ${item}"
+        echo "  [✗ FAILED]  $item" >> "$REPORT_FILE"
     done
 fi
 

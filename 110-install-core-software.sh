@@ -98,7 +98,7 @@ install_core_packages() {
         file-roller
         firefox
         fish
-        flake8
+        python-flake8
         font-manager
         gcolor3
         gimp
