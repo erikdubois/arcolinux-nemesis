@@ -168,6 +168,12 @@ main() {
     log_subsection "Installing openssh"
     execute_or_dryrun "Install openssh" pacman -S openssh --noconfirm
 
+    log_subsection "Installing extra packages (bash-completion, obs-studio, samba client)"
+    # smbclient browses shares, cifs-utils mounts them, gvfs-smb exposes them
+    # to GTK file managers (Files, Thunar, etc.).
+    execute_or_dryrun "Install bash-completion, obs-studio and samba client tools" \
+        pacman -S bash-completion obs-studio smbclient cifs-utils gvfs-smb --noconfirm --needed
+
     log_subsection "Enabling and starting sshd"
     execute_or_dryrun "Enable sshd" systemctl enable --now sshd
 
