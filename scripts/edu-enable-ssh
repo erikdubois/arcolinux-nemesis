@@ -178,9 +178,21 @@ main() {
     log_subsection "Installing PipeWire support (only what's missing)"
     # --needed skips anything already present, so this is a no-op on systems
     # that already ship PipeWire. gst-plugin-pipewire helps OBS screen capture.
+    # pipewire-jack is handled separately below because it conflicts with jack2.
     execute_or_dryrun "Install PipeWire stack" \
-        pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber gst-plugin-pipewire \
+        pacman -S pipewire pipewire-pulse pipewire-alsa wireplumber gst-plugin-pipewire \
         --noconfirm --needed
+
+    log_subsection "Installing pipewire-jack (resolving jack2 conflict)"
+    # pipewire-jack and jack2 both provide 'jack' and cannot coexist. Remove
+    # jack2 first (-Rdd ignores the reverse deps on 'jack'; pipewire-jack
+    # re-provides it immediately after, so dependents stay satisfied).
+    if pacman -Qq jack2 >/dev/null 2>&1; then
+        log_info "jack2 is installed — removing it so pipewire-jack can take over"
+        execute_or_dryrun "Remove jack2 (conflicts with pipewire-jack)" \
+            pacman -Rdd jack2 --noconfirm
+    fi
+    execute_or_dryrun "Install pipewire-jack" pacman -S pipewire-jack --noconfirm --needed
 
     log_subsection "Enabling avahi-daemon (mDNS discovery)"
     execute_or_dryrun "Enable avahi-daemon" systemctl enable --now avahi-daemon
