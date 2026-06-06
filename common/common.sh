@@ -726,10 +726,10 @@ Use nano /etc/pacman.d/mirrorlist to inspect on others"
 }
 
 restore_pacman_conf() {
-    if [[ -f /etc/pacman.conf.nemesis ]]; then
-        copy_file /etc/pacman.conf.nemesis /etc/pacman.conf
+    if [[ -f /etc/pacman.conf-nemesis ]]; then
+        copy_file /etc/pacman.conf-nemesis /etc/pacman.conf
     else
-        log_warn "/etc/pacman.conf.nemesis not found - cannot restore pacman.conf"
+        log_warn "/etc/pacman.conf-nemesis not found - cannot restore pacman.conf"
     fi
 }
 

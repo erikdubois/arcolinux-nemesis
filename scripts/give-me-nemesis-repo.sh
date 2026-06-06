@@ -15,7 +15,7 @@ warn()      { printf '%s%s%s\n' "$YELLOW" "$1" "$RESET"; }
 error()     { printf '%s%s%s\n' "$RED"    "$1" "$RESET"; exit 1; }
 
 PACMAN_CONF="/etc/pacman.conf"
-BACKUP="/etc/pacman.conf.nemesis"
+BACKUP="/etc/pacman.conf-nemesis"
 REPO_ENTRY="[nemesis_repo]"
 REPO_BLOCK="
 [nemesis_repo]

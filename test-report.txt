@@ -1,5 +1,5 @@
 =============================================
-  Test Report - 2026-04-18 08:40:01
+  Test Report - 2026-06-06 12:15:57
 =============================================
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -9,21 +9,19 @@
   [✓ SUCCESS] backup .zshrc → .zshrc-nemesis
   [✓ SUCCESS] backup mirrorlist → mirrorlist-nemesis
   [✓ SUCCESS] backup pacman.conf → pacman.conf-nemesis
-  [✓ SUCCESS] backup pacman.conf → pacman.conf-nemesis
   [✓ SUCCESS] backup environment → environment-nemesis
   [✓ SUCCESS] backup nanorc → nanorc-nemesis
   [✓ SUCCESS] backup nsswitch.conf → nsswitch.conf-nemesis
   [✓ SUCCESS] xf86-video-vmware - not present
   [✓ SUCCESS] archinstall - not present
   [✓ SUCCESS] neofetch - not present
-  [✓ SUCCESS] fastfetch - not present
   [✓ SUCCESS] yay - not present
   [✓ SUCCESS] yay-bin - not present
   [✓ SUCCESS] paru - not present
   [✓ SUCCESS] picom - not present
   [✓ SUCCESS] mkinitcpio-nfs-utils - not present
-  [✓ SUCCESS] xfburn - not present
-  [✓ SUCCESS] parole - not present
+  [✗ FAILED]  xfburn - still installed (should be removed)
+  [✗ FAILED]  parole - still installed (should be removed)
   [✓ SUCCESS] pamac - not present
   [✓ SUCCESS] pamac-git - not present
   [✓ SUCCESS] mpv - not present
@@ -48,19 +46,10 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   [✓ SUCCESS] install mkinitcpio-firmware
   [✓ SUCCESS] install upd72020x-fw
-  [✓ SUCCESS] install archlinux-tweak-tool-gtk4-git
-  [✓ SUCCESS] install edu-dot-files-git
+  [✓ SUCCESS] install archlinux-tweak-tool-gtk4
+  [✓ SUCCESS] install alacritty-tweak-tool
   [✓ SUCCESS] install arc-gtk-theme
-  [✓ SUCCESS] install archlinux-logout-gtk4-git
-  [✓ SUCCESS] install edu-arc-dawn-git
-  [✓ SUCCESS] install edu-arc-kde
-  [✓ SUCCESS] install edu-hblock-git
-  [✓ SUCCESS] install edu-rofi-git
-  [✓ SUCCESS] install edu-rofi-themes-git
-  [✓ SUCCESS] install edu-sddm-simplicity-git
-  [✓ SUCCESS] install edu-shells-git
-  [✓ SUCCESS] install edu-variety-config-git
-  [✓ SUCCESS] install edu-xfce-git
+  [✓ SUCCESS] install archlinux-logout-gtk4
   [✓ SUCCESS] install flameshot-git
   [✓ SUCCESS] install gittyup
   [✓ SUCCESS] install hardcode-fixer-git
@@ -75,6 +64,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [110] 110-install-core-software.sh
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] fastfetch - not present
   [✓ SUCCESS] install alacritty
   [✓ SUCCESS] install arandr
   [✓ SUCCESS] install catfish
@@ -119,6 +109,7 @@
   [✓ SUCCESS] install file-roller
   [✓ SUCCESS] install firefox
   [✓ SUCCESS] install fish
+  [✗ FAILED]  install flake8 - not found
   [✓ SUCCESS] install font-manager
   [✓ SUCCESS] install gcolor3
   [✓ SUCCESS] install gimp
@@ -156,6 +147,7 @@
   [✓ SUCCESS] install rate-mirrors
   [✓ SUCCESS] install resources
   [✓ SUCCESS] install ripgrep
+  [✓ SUCCESS] install ruff
   [✓ SUCCESS] install rsync
   [✓ SUCCESS] install scrot
   [✓ SUCCESS] install shortwave
@@ -188,6 +180,7 @@
   [✓ SUCCESS] install wget
   [✓ SUCCESS] install xdg-user-dirs
   [✓ SUCCESS] install yad
+  [✓ SUCCESS] install zapzap
   [✓ SUCCESS] install zsh
   [✓ SUCCESS] install zsh-completions
   [✓ SUCCESS] install zsh-syntax-highlighting
@@ -203,7 +196,7 @@
   [✓ SUCCESS] service avahi-daemon.service - enabled
   [✓ SUCCESS] service man-db.timer - enabled
   [✓ SUCCESS] service plocate-updatedb.timer - enabled
-  [✗ FAILED]  service logrotate.timer - not enabled
+  [✓ SUCCESS] service logrotate.timer - enabled
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [130] 130-install-bluetooth.sh
@@ -212,7 +205,7 @@
   [✓ SUCCESS] install bluez-libs
   [✓ SUCCESS] install bluez-utils
   [✓ SUCCESS] install blueberry
-  [✓ SUCCESS] install pulseaudio-bluetooth
+  [✗ FAILED]  install pulseaudio-bluetooth - not found
   [✓ SUCCESS] service bluetooth.service - enabled
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -233,18 +226,12 @@
 [150] 150-ananicy.sh
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   [✓ SUCCESS] install ananicy-cpp
-  [✓ SUCCESS] install cachyos-ananicy-rules-git
+  [✓ SUCCESS] install cachyos-ananicy-rules (via cachyos-ananicy-rules-git)
   [✓ SUCCESS] service ananicy-cpp.service - enabled
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [200] 200-software-aur-repo.sh
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[600] 600-chadwm.sh
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  [✓ SUCCESS] install edu-chadwm-git
-  [✓ SUCCESS] install ohmychadwm-git
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [900] 900-install-personal-settings-folders.sh
@@ -269,13 +256,13 @@
   [✓ SUCCESS] dir /home/erik/.config/obs-studio
   [✓ SUCCESS] dir /home/erik/.config/neofetch
   [✓ SUCCESS] dir /home/erik/.config/flameshot
+  [✓ SUCCESS] dir /home/erik/.config/yay
   [✓ SUCCESS] dir /home/erik/DATA
   [✓ SUCCESS] dir /home/erik/Insync
   [✓ SUCCESS] dir /home/erik/Projects
   [✓ SUCCESS] dir /home/erik/Shared
   [✓ SUCCESS] dir /home/erik/.config/sublime-text/Packages/User
   [✓ SUCCESS] copied → /etc/nanorc
-  [✓ SUCCESS] copied → /etc/nsswitch.conf
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [910] 910-plasma-specific-applications-and-settings.sh
@@ -305,9 +292,9 @@
 =============================================
   Final Summary
 =============================================
-Total  : 244
-Passed : 243
-Failed : 1
+Total  : 235
+Passed : 231
+Failed : 4
 
 =============================================
   Systemd Services Summary
@@ -316,13 +303,13 @@ Failed : 1
   [✓ enabled]  avahi-daemon.service
   [✓ enabled]  man-db.timer
   [✓ enabled]  plocate-updatedb.timer
-  [⊘ skipped]  logrotate.timer (package not installed)
+  [✓ enabled]  logrotate.timer
   [✓ enabled]  bluetooth.service
   [✓ enabled]  cups.service
   [✓ enabled]  ananicy-cpp.service
   [✓ enabled]  ckb-next-daemon.service
 
-  Enabled : 7  |  Not enabled : 0  |  Skipped : 1
+  Enabled : 8  |  Not enabled : 0  |  Skipped : 0
   Package services not covered by scripts (potential oversights)
   [✗ missing]  smartd.service
 
@@ -333,6 +320,6 @@ Failed : 1
 =============================================
 SMART overall-health self-assessment test result: PASSED
   5 Reallocated_Sector_Ct   0x0033   100   100   010    Pre-fail  Always       -       0
-  9 Power_On_Hours          0x0032   099   099   000    Old_age   Always       -       2157
+  9 Power_On_Hours          0x0032   099   099   000    Old_age   Always       -       2469
 187 Uncorrectable_Error_Cnt 0x0032   100   100   000    Old_age   Always       -       0
-190 Airflow_Temperature_Cel 0x0032   077   044   000    Old_age   Always       -       23
+190 Airflow_Temperature_Cel 0x0032   072   044   000    Old_age   Always       -       28

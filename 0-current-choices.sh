@@ -158,9 +158,6 @@ run_backup_operations() {
     # Preserve the original pacman.conf for the Nemesis workflow.
     backup_file_once /etc/pacman.conf /etc/pacman.conf-nemesis
 
-    # Preserve a second copy for the edu variant that is used elsewhere.
-    backup_file_once /etc/pacman.conf /etc/pacman.conf-nemesis
-
     # Back up the current environment file before any changes are made.
     backup_file_once /etc/environment /etc/environment-nemesis
     

@@ -33,7 +33,7 @@ main() {
     # Backup pacman.conf if needed
     ############################################################################################################
 
-    backup_file_once /etc/pacman.conf /etc/pacman.conf.nemesis
+    backup_file_once /etc/pacman.conf /etc/pacman.conf-nemesis
 
     ############################################################################################################
     # Copy new pacman.conf

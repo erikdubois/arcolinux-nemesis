@@ -49,7 +49,7 @@ main() {
     # Backup pacman.conf
     ############################################################################################################
 
-    backup_file_once /etc/pacman.conf /etc/pacman.conf.nemesis
+    backup_file_once /etc/pacman.conf /etc/pacman.conf-nemesis
 
     ############################################################################################################
     # Append nemesis_repo and chaotic-aur to pacman.conf if not already present
