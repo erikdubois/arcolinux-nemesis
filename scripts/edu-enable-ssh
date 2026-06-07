@@ -8,24 +8,35 @@ set -Euo pipefail
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 #   Purpose:
-#   Refreshes the pacman database, installs openssh, enables the sshd
-#   service, allows SSH through firewalld, and (on the live ISO only)
-#   sets a password for the passwordless `liveuser` so sshd's password
-#   auth becomes usable.
+#   One-command post-install setup for the Kiro (Arch-based) system, meant to
+#   be run as-is across different Arch-based distros. Despite the name it does
+#   more than SSH — it sets up a recording-ready workstation:
 #
-#   Why: SSH isn't enabled by default in the Kiro ISO for security;
-#   this is the one-command opt-in for users who want remote access.
-#   firewalld's default zone already permits ssh, but allowing it
-#   explicitly keeps the opt-in working on hardened or non-default zones.
-#   On the live ISO, liveuser ships with no password — without one,
-#   sshd's password auth refuses the login even when the daemon is up.
+#     SSH        refresh pacman, install openssh, enable sshd, open it in
+#                firewalld (handles the live-ISO/offline case too), and give
+#                the invoking user a login password so password auth works
+#                (prompts interactively, or generates one when there's no TTY).
+#     Sound      ensure ONE complete sound server so OBS can record — detect
+#                what's present, finish that stack, and default to PipeWire
+#                when nothing is installed (e.g. a pure Arch install); respects
+#                an existing PulseAudio setup instead of replacing it.
+#     Recording  install obs-studio plus the GStreamer plugins it needs.
+#     Media      install VLC with all plugins.
+#     Samba      install the client + gvfs/gnome-keyring so Thunar can browse
+#                the network, mount shares, and show a login popup; configure
+#                avahi (IPv4-only) and nsswitch mdns so 'hostname.local' works.
+#
+#   Why: these aren't enabled by default in the Kiro ISO (SSH for security,
+#   the rest to keep the base image lean); this is the opt-in that turns a
+#   fresh install into a remote-accessible machine ready to record a video.
 #
 #   Standalone: this script vendors the few helpers it needs so it has
-#   no dependency on common.sh / kiro-common.sh.
+#   no dependency on common.sh / kiro-common.sh. It assumes pacman, so it
+#   targets Arch-based distros only.
 #
 ##################################################################################################################
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+VERSION="2.0"
 DRY_RUN=false
 
 # ── Colors ──────────────────────────────────────────────────────────────────
@@ -41,6 +52,11 @@ if command -v tput >/dev/null 2>&1 && [[ -t 1 ]]; then
 else
     RED="" GREEN="" YELLOW="" BLUE="" CYAN="" RESET="" BOLD=""
 fi
+
+# Fail loudly instead of dying silently mid-run. set -E makes this ERR trap
+# inherit into functions; conditionals (if/while/&&/||) are exempt, so it only
+# fires on a genuinely unhandled failure — e.g. a pacman install that aborts.
+trap 'rc=$?; echo "${RED}✗ $(basename "$0") failed at line ${LINENO} (exit ${rc}). The system may be partially configured.${RESET}" >&2' ERR
 
 # ── Logging ───────────────────────────────────────────────────────────────────
 log_section() {
@@ -65,6 +81,10 @@ log_info() {
 
 log_success() {
     echo "${GREEN}✓ ${1}${RESET}"
+}
+
+log_warn() {
+    echo "${YELLOW}⚠ ${1}${RESET}" >&2
 }
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -99,7 +119,34 @@ show_version() {
     if pkg="$(pacman -Qqo "${resolved}" 2>/dev/null)" && [[ -n "${pkg}" ]]; then
         pacman -Q "${pkg}"
     else
-        echo "${script_name} (not installed via pacman)"
+        echo "${script_name} ${VERSION} (not installed via pacman)"
+    fi
+}
+
+# This script speaks pacman only. Fail early and clearly on non-Arch systems
+# rather than dying with a confusing 'pacman: command not found' partway in.
+require_pacman() {
+    command -v pacman >/dev/null 2>&1 && return 0
+    echo "${RED}✗ This script requires pacman — it only supports Arch-based distros.${RESET}" >&2
+    exit 1
+}
+
+# True on the live ISO (archiso overlay present).
+is_live_iso() { [[ -d /run/archiso/bootmnt ]]; }
+
+# True if a package with this exact name is installed (provides don't count, so
+# 'pulseaudio' does NOT match the pipewire-pulse drop-in replacement).
+pkg_installed() { pacman -Qq "$1" >/dev/null 2>&1; }
+
+# Resolve the human user behind this run (the script re-execs as root). Used for
+# the login password and for checking the per-user sound server.
+resolve_target_user() {
+    if is_live_iso && id -u liveuser >/dev/null 2>&1; then
+        echo "liveuser"
+    elif [[ -n "${SUDO_USER:-}" && "${SUDO_USER}" != "root" ]]; then
+        echo "${SUDO_USER}"
+    elif [[ -n "${PKEXEC_UID:-}" ]]; then
+        id -un "${PKEXEC_UID}" 2>/dev/null || true
     fi
 }
 
@@ -131,75 +178,128 @@ execute_or_dryrun() {
     fi
 }
 
-# ── Main ────────────────────────────────────────────────────────────────────
-main() {
-    for arg in "$@"; do
-        case "$arg" in
-            -h|--help)
-                show_help "$(basename "$0")" \
-                    "Install openssh, enable sshd, and allow SSH through the firewall" \
-                    "[--help] [--version] [--dry-run]"
-                exit 0
-                ;;
-            -v|--version)
-                show_version "$(basename "$0")"
-                exit 0
-                ;;
-            -d|--dry-run)
-                DRY_RUN=true
-                log_info "Dry-run mode enabled — no changes will be made"
-                ;;
-            *)
-                echo "${RED}Unknown option: $arg${RESET}" >&2
-                exit 1
-                ;;
-        esac
-    done
-
-    ensure_root "$@"
-
-    log_section "Enabling SSH"
-
-    log_subsection "Refreshing pacman database"
-    # Live ISO ships a seeded /var/lib/pacman/sync/ that may be empty or stale;
-    # always refresh first so `pacman -S openssh` succeeds without manual `-Sy`.
-    execute_or_dryrun "Refresh pacman database" pacman -Sy --noconfirm
-
-    log_subsection "Installing openssh"
-    execute_or_dryrun "Install openssh" pacman -S openssh --noconfirm
-
-    log_subsection "Installing extra packages (bash-completion, obs-studio, samba client)"
-    # smbclient browses shares, cifs-utils mounts them, gvfs-smb exposes them
-    # to GTK file managers (Files, Thunar, etc.). avahi + nss-mdns let the
-    # Samba server resolve by 'hostname.local' on the LAN.
-    execute_or_dryrun "Install bash-completion, obs-studio and samba client tools" \
-        pacman -S bash-completion obs-studio smbclient cifs-utils gvfs-smb avahi nss-mdns --noconfirm --needed
-
-    log_subsection "Installing PipeWire support (only what's missing)"
-    # --needed skips anything already present, so this is a no-op on systems
-    # that already ship PipeWire. gst-plugin-pipewire helps OBS screen capture.
-    # pipewire-jack is handled separately below because it conflicts with jack2.
-    execute_or_dryrun "Install PipeWire stack" \
-        pacman -S pipewire pipewire-pulse pipewire-alsa wireplumber gst-plugin-pipewire \
-        --noconfirm --needed
-
-    log_subsection "Installing pipewire-jack (resolving jack2 conflict)"
-    # pipewire-jack and jack2 both provide 'jack' and cannot coexist. Remove
-    # jack2 first (-Rdd ignores the reverse deps on 'jack'; pipewire-jack
-    # re-provides it immediately after, so dependents stay satisfied).
-    if pacman -Qq jack2 >/dev/null 2>&1; then
-        log_info "jack2 is installed — removing it so pipewire-jack can take over"
-        execute_or_dryrun "Remove jack2 (conflicts with pipewire-jack)" \
-            pacman -Rdd jack2 --noconfirm
+# ── Packages ──────────────────────────────────────────────────────────────────
+refresh_packages() {
+    log_subsection "Refreshing packages"
+    if is_live_iso; then
+        # Live ISO: the shipped /var/lib/pacman/sync/ may be empty or stale, so a
+        # refresh is needed before installing. We deliberately do NOT -Syu: a full
+        # upgrade of a running live system can exhaust the RAM overlay and break
+        # the session, and partial-upgrade risk is moot on a throwaway system.
+        execute_or_dryrun "Refresh pacman database (live ISO)" pacman -Sy --noconfirm
+    else
+        # Installed system: never '-Sy then -S' — that is the classic partial
+        # upgrade (new package linked against old in-system libs → breakage).
+        # A full sync+upgrade keeps everything consistent.
+        execute_or_dryrun "Sync and upgrade the system" pacman -Syu --noconfirm
     fi
-    execute_or_dryrun "Install pipewire-jack" pacman -S pipewire-jack --noconfirm --needed
+}
 
+install_openssh() {
+    log_subsection "Installing openssh"
+    execute_or_dryrun "Install openssh" pacman -S openssh --noconfirm --needed
+}
+
+install_extra_packages() {
+    log_subsection "Installing extra packages (bash-completion, obs-studio, samba client)"
+    # Thunar "Browse Network" → see a Samba server → click → login popup needs:
+    #   gvfs          base GVFS + the network:// view itself
+    #   gvfs-dnssd    the dnssd backend that LISTS hosts advertised over mDNS in
+    #                 the Network view. This is a SEPARATE Arch package — gvfs
+    #                 alone does NOT include it, so without gvfs-dnssd an mDNS
+    #                 Samba server never appears under "Browse Network" even
+    #                 though avahi can see it. (This was the exact missing piece.)
+    #   gvfs-smb      the smb:// backend that mounts shares AND raises the
+    #                 GTK username/password dialog when a share needs auth
+    #   smbclient     libsmbclient, used by gvfs to enumerate a host's shares
+    #   cifs-utils    mounts shares from the command line (mount -t cifs)
+    #   gnome-keyring credential store so the login popup's "remember password"
+    #   libsecret     works and you aren't re-prompted every mount
+    #   avahi+nss-mdns resolve 'hostname.local' on the LAN (see avahi steps below)
+    execute_or_dryrun "Install bash-completion, obs-studio and samba client tools" \
+        pacman -S bash-completion obs-studio smbclient cifs-utils gvfs gvfs-dnssd gvfs-smb \
+        gnome-keyring libsecret avahi nss-mdns --noconfirm --needed
+}
+
+install_vlc() {
     log_subsection "Installing VLC with all plugins"
     # vlc is the Qt GUI; vlc-plugins-all is the meta package that pulls in every
     # vlc-plugin-* (codecs, outputs, visualizations, smb, jack, etc.).
     execute_or_dryrun "Install VLC and all plugins" \
         pacman -S vlc vlc-plugins-all --noconfirm --needed
+}
 
+# ── Audio ─────────────────────────────────────────────────────────────────────
+# OBS needs one *complete* sound server to record from. This runs across many
+# Arch-based distros, so we don't assume one: detect what's there, finish the
+# stack that's already in use, and only pick a default (PipeWire) when the box
+# has no sound server at all (e.g. a pure Arch install).
+setup_audio() {
+    local have_pipewire="false" have_pulse="false"
+    if pkg_installed pipewire;   then have_pipewire="true"; fi
+    if pkg_installed pulseaudio; then have_pulse="true";    fi
+
+    # Classic PulseAudio in use (and not PipeWire): complete THAT stack. Pulling
+    # in pipewire-pulse here would conflict with pulseaudio and, under
+    # --noconfirm, rip out the working setup — so leave PipeWire alone.
+    if [[ "$have_pulse" == "true" && "$have_pipewire" != "true" ]]; then
+        log_subsection "Sound: PulseAudio detected — completing its stack"
+        # pulseaudio-alsa routes ALSA apps; -bluetooth adds BT audio; the
+        # gst good plugins give OBS its audio encoders.
+        execute_or_dryrun "Install/complete PulseAudio stack" \
+            pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth gst-plugins-good \
+            --noconfirm --needed
+        log_success "PulseAudio stack complete"
+        return 0
+    fi
+
+    # Otherwise PipeWire is already here (complete it) or nothing is (default).
+    if [[ "$have_pipewire" == "true" ]]; then
+        log_subsection "Sound: PipeWire detected — completing its stack"
+    else
+        log_subsection "Sound: no server found — installing PipeWire (default)"
+    fi
+    # wireplumber is the session manager — without it PipeWire is silent.
+    # pipewire-pulse provides the PulseAudio API OBS records through; -alsa
+    # routes ALSA apps; gst-plugin-pipewire helps OBS screen+audio capture.
+    # --needed makes each piece a no-op when already present.
+    execute_or_dryrun "Install/complete PipeWire stack" \
+        pacman -S pipewire pipewire-pulse pipewire-alsa wireplumber \
+        gst-plugin-pipewire gst-plugins-good --noconfirm --needed
+
+    # pipewire-jack and jack2 both provide 'jack' and cannot coexist. Only swap
+    # when jack2 is actually installed; pipewire-jack re-provides 'jack' right
+    # after, so dependents stay satisfied (-Rdd skips the reverse-dep check).
+    # Note: there's a brief window between the remove and the install where no
+    # 'jack' provider exists — if the install fails, the ERR trap fires so the
+    # half-done state is visible rather than silent.
+    if pkg_installed jack2; then
+        log_info "jack2 is installed — removing it so pipewire-jack can take over"
+        execute_or_dryrun "Remove jack2 (conflicts with pipewire-jack)" \
+            pacman -Rdd jack2 --noconfirm
+    fi
+    execute_or_dryrun "Install pipewire-jack" pacman -S pipewire-jack --noconfirm --needed
+    log_success "PipeWire stack complete"
+}
+
+# Best-effort: confirm a sound server is actually answering for the real user.
+# Never fails the script — a fresh install often needs a re-login to start.
+verify_audio() {
+    local user="$1" uid srv
+    [[ "${DRY_RUN:-false}" == "true" ]] && return 0
+    [[ -z "$user" ]] && { log_info "No user to check the sound server for — skipping"; return 0; }
+    uid="$(id -u "$user" 2>/dev/null)" || return 0
+
+    if srv="$(sudo -u "$user" XDG_RUNTIME_DIR="/run/user/${uid}" pactl info 2>/dev/null)"; then
+        log_success "Sound server is live: $(echo "$srv" | grep -i '^Server Name' | cut -d: -f2- | sed 's/^ *//')"
+    else
+        log_info "Sound packages are installed, but no server is running for '${user}' yet."
+        log_info "  Log out and back in (or reboot), then OBS will see audio."
+    fi
+}
+
+# ── Samba discovery (avahi / mDNS) ────────────────────────────────────────────
+setup_avahi_ipv4() {
     log_subsection "Forcing avahi mDNS to IPv4 (so discovered SMB hosts are reachable)"
     # Samba advertises itself over mDNS by default. With IPv6 enabled, avahi
     # resolves the discovered host to its link-local IPv6 (fe80::…), which SMB
@@ -207,44 +307,76 @@ main() {
     # but clicking it silently does nothing. Restricting avahi to IPv4 makes
     # discovered hosts resolve to their routable LAN address (192.168.x.x), so
     # the share actually opens from the Network icon.
-    avahiconf="/etc/avahi/avahi-daemon.conf"
+    local avahiconf="/etc/avahi/avahi-daemon.conf"
+    [[ -f "$avahiconf" ]] || { log_info "avahi config not found — skipping"; return 0; }
+
     if grep -qE '^use-ipv6=no' "$avahiconf"; then
         log_info "avahi already set to IPv4-only — leaving it as-is"
-    elif [[ -f "$avahiconf" ]]; then
-        [[ -f "${avahiconf}.nemesis" ]] || \
-            execute_or_dryrun "Back up avahi-daemon.conf" cp -a "$avahiconf" "${avahiconf}.nemesis"
-        execute_or_dryrun "Set avahi to IPv4-only (use-ipv6=no)" \
-            sed -i -E 's/^#?use-ipv6=.*/use-ipv6=no/' "$avahiconf"
+        return 0
     fi
 
+    [[ -f "${avahiconf}.nemesis" ]] || \
+        execute_or_dryrun "Back up avahi-daemon.conf" cp -a "$avahiconf" "${avahiconf}.nemesis"
+
+    if grep -qE '^#?use-ipv6=' "$avahiconf"; then
+        # Key present (commented or not) — rewrite it in place.
+        execute_or_dryrun "Set avahi to IPv4-only (use-ipv6=no)" \
+            sed -i -E 's/^#?use-ipv6=.*/use-ipv6=no/' "$avahiconf"
+    elif grep -qE '^\[server\]' "$avahiconf"; then
+        # No key, but a [server] section — insert the setting under it.
+        execute_or_dryrun "Add use-ipv6=no under [server]" \
+            sed -i -E '/^\[server\]/a use-ipv6=no' "$avahiconf"
+    else
+        # Neither key nor section — append a fresh [server] block.
+        execute_or_dryrun "Append [server] use-ipv6=no" \
+            bash -c "printf '\n[server]\nuse-ipv6=no\n' >> '${avahiconf}'"
+    fi
+}
+
+enable_avahi() {
     log_subsection "Enabling avahi-daemon (mDNS discovery)"
     # enable for boot, then restart so the IPv4-only change above is applied
     # even on a re-run where avahi is already running.
     execute_or_dryrun "Enable avahi-daemon" systemctl enable avahi-daemon
     execute_or_dryrun "Restart avahi-daemon to apply config" systemctl restart avahi-daemon
+}
 
+setup_mdns_nsswitch() {
     log_subsection "Enabling mDNS hostname resolution (nsswitch.conf)"
     # Without mdns_minimal on the hosts line, 'hostname.local' won't resolve
     # even with avahi running. Insert it before 'resolve' (or 'dns') so the
     # NSS lookup tries mDNS before falling through to regular DNS.
-    nsswitch="/etc/nsswitch.conf"
+    local nsswitch="/etc/nsswitch.conf"
+    [[ -f "$nsswitch" ]] || { log_info "nsswitch.conf not found — skipping"; return 0; }
+
     if grep -qE '^hosts:.*mdns' "$nsswitch"; then
         log_info "nsswitch.conf already has mdns — leaving it as-is"
-    else
-        [[ -f "${nsswitch}.nemesis" ]] || \
-            execute_or_dryrun "Back up nsswitch.conf" cp -a "$nsswitch" "${nsswitch}.nemesis"
-        if grep -qE '^hosts:.*\bresolve\b' "$nsswitch"; then
-            execute_or_dryrun "Add mdns_minimal to nsswitch.conf hosts line" \
-                sed -i -E '/^hosts:/ s/\bresolve\b/mdns_minimal [NOTFOUND=return] resolve/' "$nsswitch"
-        else
-            execute_or_dryrun "Add mdns_minimal to nsswitch.conf hosts line" \
-                sed -i -E '/^hosts:/ s/\bdns\b/mdns_minimal [NOTFOUND=return] dns/' "$nsswitch"
-        fi
+        return 0
     fi
 
+    [[ -f "${nsswitch}.nemesis" ]] || \
+        execute_or_dryrun "Back up nsswitch.conf" cp -a "$nsswitch" "${nsswitch}.nemesis"
+
+    if grep -qE '^hosts:.*\bresolve\b' "$nsswitch"; then
+        execute_or_dryrun "Add mdns_minimal to nsswitch.conf hosts line" \
+            sed -i -E '/^hosts:/ s/\bresolve\b/mdns_minimal [NOTFOUND=return] resolve/' "$nsswitch"
+    elif grep -qE '^hosts:.*\bdns\b' "$nsswitch"; then
+        execute_or_dryrun "Add mdns_minimal to nsswitch.conf hosts line" \
+            sed -i -E '/^hosts:/ s/\bdns\b/mdns_minimal [NOTFOUND=return] dns/' "$nsswitch"
+    else
+        # Unusual hosts line with neither token — don't guess where to insert.
+        log_warn "nsswitch.conf hosts line has neither 'resolve' nor 'dns' — left unchanged."
+        log_info "  Add 'mdns_minimal [NOTFOUND=return]' to it manually for hostname.local."
+    fi
+}
+
+# ── SSH service & firewall ────────────────────────────────────────────────────
+enable_sshd() {
     log_subsection "Enabling and starting sshd"
     execute_or_dryrun "Enable sshd" systemctl enable --now sshd
+}
 
+setup_firewall_ssh() {
     log_subsection "Allowing SSH through the firewall"
     if command -v firewall-cmd >/dev/null 2>&1; then
         # firewall-cmd (even --permanent) needs the daemon over D-Bus; when it's
@@ -263,28 +395,127 @@ main() {
     else
         log_info "firewalld not installed — skipping firewall rule"
     fi
+}
 
-    log_subsection "Setting password to 'erik'"
+# ── Login password ────────────────────────────────────────────────────────────
+set_login_password() {
+    log_subsection "Setting a login password (required for SSH password auth)"
     # sshd's password auth refuses a login for an account with no password.
     # On the live ISO liveuser ships passwordless; on an installed system the
-    # invoking user may also lack a usable password for SSH. Either way, set
-    # 'erik' as the password so password auth works. The invoking user is
-    # resolved through sudo/pkexec since the script re-runs as root.
-    target_user=""
-    if [[ -d /run/archiso/bootmnt ]] && id -u liveuser >/dev/null 2>&1; then
-        target_user="liveuser"
-    elif [[ -n "${SUDO_USER:-}" && "${SUDO_USER}" != "root" ]]; then
-        target_user="${SUDO_USER}"
-    elif [[ -n "${PKEXEC_UID:-}" ]]; then
-        target_user="$(id -un "${PKEXEC_UID}" 2>/dev/null || true)"
-    fi
+    # invoking user may also lack a usable password for SSH. Resolve that user
+    # (through sudo/pkexec since the script re-runs as root) and give it a
+    # password. We never hardcode one: prompt interactively when a terminal is
+    # available, otherwise generate a random password and print it once.
+    local target_user genpw
+    target_user="$(resolve_target_user)"
 
-    if [[ -n "${target_user}" ]] && id -u "${target_user}" >/dev/null 2>&1; then
-        execute_or_dryrun "Set password for '${target_user}' to 'erik'" \
-            bash -c "echo '${target_user}:erik' | chpasswd"
-    else
+    if [[ -z "${target_user}" ]] || ! id -u "${target_user}" >/dev/null 2>&1; then
         log_info "Could not resolve a user to set a password for — skipping"
+    elif [[ "${DRY_RUN:-false}" == "true" ]]; then
+        log_info "[DRY-RUN] Would set a login password for '${target_user}'"
+    elif [[ -t 0 ]]; then
+        # Terminal available — let passwd prompt for and confirm the password.
+        # It never echoes, and nothing lands in the script or shell history.
+        log_info "Set a login password for '${target_user}' (used for SSH):"
+        until passwd "${target_user}"; do
+            log_info "Password not accepted — please try again"
+        done
+        log_success "Password set for '${target_user}'"
+    else
+        # No terminal (e.g. launched from a .desktop entry) — generate a strong
+        # random password and show it once so the user can write it down.
+        if command -v openssl >/dev/null 2>&1; then
+            genpw="$(openssl rand -base64 12)"
+        else
+            genpw="$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 16)"
+        fi
+        echo "${target_user}:${genpw}" | chpasswd
+        log_success "Generated a login password for '${target_user}'"
+        echo
+        echo "    ${BOLD}${YELLOW}Username: ${target_user}${RESET}"
+        echo "    ${BOLD}${YELLOW}Password: ${genpw}${RESET}"
+        echo "    ${YELLOW}Write this down — it is shown only once.${RESET}"
+        echo
     fi
+}
+
+# ── Samba help ────────────────────────────────────────────────────────────────
+print_samba_help() {
+    log_subsection "Samba in Thunar — how to connect"
+    # This is a CLIENT machine. Thunar can now mount shares and will show a
+    # username/password popup (gvfs-smb), remembering creds in gnome-keyring.
+    # But a remote Linux/Samba server only APPEARS in "Browse Network"
+    # automatically if THAT server advertises itself over mDNS. Samba does not
+    # do this by default, so add an avahi service file ON THE SERVER:
+    #
+    #   /etc/avahi/services/smb.service  (then: systemctl restart avahi-daemon)
+    #   <?xml version="1.0" standalone='no'?>
+    #   <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+    #   <service-group>
+    #     <name replace-wildcards="yes">%h</name>
+    #     <service><type>_smb._tcp</type><port>445</port></service>
+    #   </service-group>
+    #
+    # Without that, the server won't list itself — but you can still reach it
+    # directly: in Thunar press Ctrl+L and type  smb://SERVER.local/  (or its
+    # IP). The credentials popup appears the same way.
+    log_info "Thunar: shares mount with a login popup. To see a server under"
+    log_info "  'Browse Network' it must advertise mDNS — otherwise connect via"
+    log_info "  Ctrl+L → ${BOLD}smb://SERVER.local/${RESET} (see comments in this script)."
+}
+
+# ── Main ────────────────────────────────────────────────────────────────────
+main() {
+    for arg in "$@"; do
+        case "$arg" in
+            -h|--help)
+                show_help "$(basename "$0")" \
+                    "Set up SSH, a recording-ready sound server, OBS, VLC and Samba browsing" \
+                    "[--help] [--version] [--dry-run]"
+                exit 0
+                ;;
+            -v|--version)
+                show_version "$(basename "$0")"
+                exit 0
+                ;;
+            -d|--dry-run)
+                DRY_RUN=true
+                log_info "Dry-run mode enabled — no changes will be made"
+                ;;
+            *)
+                echo "${RED}Unknown option: $arg${RESET}" >&2
+                exit 1
+                ;;
+        esac
+    done
+
+    require_pacman
+
+    # A dry run only prints what it would do, so it doesn't need root — don't
+    # prompt for a password just to describe the plan.
+    [[ "${DRY_RUN}" == "true" ]] || ensure_root "$@"
+
+    log_section "Kiro post-install setup"
+
+    # Packages
+    refresh_packages
+    install_openssh
+    install_extra_packages
+    setup_audio
+    verify_audio "$(resolve_target_user)"
+    install_vlc
+
+    # Samba discovery
+    setup_avahi_ipv4
+    enable_avahi
+    setup_mdns_nsswitch
+
+    # SSH service, firewall, login
+    enable_sshd
+    setup_firewall_ssh
+    set_login_password
+
+    print_samba_help
 
     log_success "$(basename "$0") done"
 }
