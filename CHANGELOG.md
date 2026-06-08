@@ -15,6 +15,24 @@ Added `edu-desktops/niri.sh` — a personal-exploration install for **niri**, th
 - Placed in `edu-desktops/` (personal/unofficial), so it is intentionally **not** picked up by the official `kiro-desktops/1-install-desktops.sh` menu (which globs only its own directory). Run it standalone; it sources `../common/common.sh` itself.
 - KDL not live-validated (niri isn't installed on this X11 box); `bash -n` passes.
 
+---
+
+### What Changed
+
+Fixed `scripts/install-qemu.sh` failing at "Ensuring default libvirt network" now that firewalld is installed on the system. `virsh net-start default` aborted with `firewalld can't find the 'libvirt' zone that should have been installed with libvirt`. firewalld only loads new zone files on reload, and it hadn't reloaded since the libvirt package dropped its `libvirt` zone file — so the zone was missing from firewalld's runtime config when the network tried to start.
+
+### Technical Details
+
+- Added a shared helper `reload_firewalld_for_libvirt()` to `common/common.sh` (next to `disable_firewalld_stack`): if `systemctl is-active --quiet firewalld`, run `sudo firewall-cmd --reload` so firewalld picks up `/usr/lib/firewalld/zones/libvirt.xml`. No-op when firewalld isn't running, so it stays safe on the historical firewalld-less setups.
+- `install-qemu.sh` calls it in `main()` immediately before `ensure_default_network`, so the zone exists before `virsh net-start default` runs.
+- Minimal fix by design — no `network.conf`/`firewall_backend` changes. Diagnosed from the live error, not theory: the two firewalld failure modes (hard-fail vs. no-VM-network) need different fixes; this was the hard-fail/zone branch.
+- `bash -n` passes on both files.
+
+### Files Modified
+
+- `common/common.sh`
+- `scripts/install-qemu.sh`
+
 ## 2026.06.03
 
 ### What Changed
