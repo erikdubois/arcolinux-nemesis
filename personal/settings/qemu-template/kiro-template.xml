@@ -30,6 +30,11 @@
       <source file='/var/lib/libvirt/images/kiro-template.qcow2'/>
       <target dev='vda' bus='virtio'/>
     </disk>
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <target dev='sda' bus='sata'/>
+      <readonly/>
+    </disk>
     <controller type='usb' model='qemu-xhci'/>
     <interface type='network'>
       <source network='default'/>

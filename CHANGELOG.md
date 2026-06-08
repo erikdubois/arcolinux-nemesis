@@ -37,18 +37,21 @@ Fixed `scripts/install-qemu.sh` failing at "Ensuring default libvirt network" no
 
 ### What Changed
 
-Added the QEMU/KVM host template (part A of the deferred QEMU MASTER_TODO item) so a tuned `kiro-template` libvirt domain is defined on real hardware, mirroring the existing VirtualBox template. Lets the author clone-then-install Kiro VMs under QEMU/KVM with sane defaults instead of building a domain by hand. Part B (`spice-vdagent` in the ISO + Calamares VM-cleanup) remains open in MASTER_TODO.
+Added the QEMU/KVM host template (part A of the deferred QEMU MASTER_TODO item) and made QEMU install by default, so a tuned `kiro-template` libvirt domain is registered and shows up in virt-manager ready to clone — no hand-building a domain. Verified: `kiro-template` appears under the QEMU/KVM (system) connection. Part B (`spice-vdagent` in the ISO + Calamares VM-cleanup) remains open in MASTER_TODO.
 
 ### Technical Details
 
 - New `personal/settings/qemu-template/kiro-template.xml` — libvirt domain: `type=kvm`, q35 machine, UEFI (`firmware='efi'`), `cpu mode='maximum'` with topology 1 socket / 4 cores / 2 threads (8 vCPU), 10 GiB RAM, virtio disk (`cache=none io=native discard=unmap`) at `/var/lib/libvirt/images/kiro-template.qcow2`, virtio NIC on the default network, virtio-gpu + SPICE with the `spicevmc` channel (ready for part B's guest agent). No UUID/MAC baked in — libvirt generates them on define.
-- New `handle_qemu_template()` in `personal/930-real-metal.sh`, called next to `handle_virtualbox_template`. Real-hardware only (skips inside a VM); skips with a warning if `virsh`/`qemu-img` aren't installed (points at `scripts/install-qemu.sh`). Ensures libvirtd, ensures the default storage pool (define/build/start/autostart only if absent), creates an empty 40 G qcow2 if absent, then `virsh -c qemu:///system define` only if the domain isn't already defined. Fully idempotent.
-- POSIX `/bin/sh` to match the rest of the script. `sh -n` passes; XML validates with `xmllint --noout`.
+- `scripts/install-qemu.sh` now also registers the template after the network: `ensure_default_pool()` (define/build/start/autostart the default `dir` pool at `/var/lib/libvirt/images` only if absent) and `define_kiro_template()` (create an empty 40 G qcow2 if absent, then `virsh -c qemu:///system define` only if the domain isn't already defined). Idempotent. A libvirt domain must be *registered* with libvirtd to appear — it can't sit as a loose file like the VirtualBox folder template, which is why this lives in the installer rather than as a copied file.
+- `0-current-choices.sh` runs `scripts/install-qemu.sh` by default (in the Arch-only pipeline section, after the AUR repo). Non-Arch distros never reach it — `run_non_arch_distro_script` does `exit 0`.
+- Decided against the original `handle_qemu_template()` in `personal/930-real-metal.sh`: a libvirt define needs QEMU already installed, so the natural trigger is the QEMU installer itself, not the personal pipeline. `930` is unchanged.
+- `bash -n` / `sh -n` pass; XML validates with `xmllint --noout`.
 
 ### Files Modified
 
 - `personal/settings/qemu-template/kiro-template.xml` (new)
-- `personal/930-real-metal.sh`
+- `scripts/install-qemu.sh`
+- `0-current-choices.sh`
 
 ## 2026.06.03
 
