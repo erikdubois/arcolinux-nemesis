@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2026.06.08
+
+### What Changed
+
+Added `edu-desktops/niri.sh` — a personal-exploration install for **niri**, the scrollable-tiling Wayland compositor, so its development over the past year can be tried out. niri ships only a compositor, so the script also pulls a minimal usable Wayland stack and writes a `~/.config/niri/config.kdl` that carries Kiro's keybinding scheme adapted to niri's column model. Lives in `edu-desktops/` (edu = Erik Dubois = personal/unofficial), **not** `kiro-desktops/` (the official shipped Kiro desktops): niri is personal exploration tooling, not a shipped Kiro desktop, and Kiro stays X11-only by design (see Kiro-HQ/KIRO-NIRI-WAYLAND-STUDY.md).
+
+### Technical Details
+
+- Follows the repo desktop-script idiom exactly: erikdubois header banner, `set -Euo pipefail` + `shopt -s nullglob`, `source ../common/common.sh`, `install_packages` loop over a package `list=()`, tput banners, `$(basename $0) done` footer.
+- Package set (all verified in Arch `extra`): `niri` + `waybar fuzzel mako swaylock swayidle swaybg grim slurp wl-clipboard xdg-desktop-portal-gtk xorg-xwayland qt5-wayland qt6-wayland brightnessctl` + the family defaults (alacritty, thunar*, polkit-gnome, noto-fonts, ttf-hack).
+- No `kiro-niri` package or `/etc/skel` config exists, so the script writes `config.kdl` from a quoted heredoc instead of the usual skel copy; backs up any pre-existing config to `config.kdl.bak` first (never overwrite originals).
+- Keybindings mirror `ohmychadwm/keybindings.txt` where they translate (terminal, launcher→fuzzel, close, file manager, app F-keys, workspaces 1-9, multimedia, screenshots, `Super+Ctrl+s` cheatsheet). Window-management binds that can't exist on a scrollable compositor (master/stack/gaps) are replaced by niri-native column navigation (`focus/move-column-*`, `consume/expel-window`, `set/switch-preset-column-width`).
+- Placed in `edu-desktops/` (personal/unofficial), so it is intentionally **not** picked up by the official `kiro-desktops/1-install-desktops.sh` menu (which globs only its own directory). Run it standalone; it sources `../common/common.sh` itself.
+- KDL not live-validated (niri isn't installed on this X11 box); `bash -n` passes.
+
 ## 2026.06.03
 
 ### What Changed
