@@ -50,17 +50,6 @@ enable_nested_kvm() {
 }
 
 
-reload_firewalld_for_libvirt() {
-    # libvirt ships a 'libvirt' firewalld zone at /usr/lib/firewalld/zones/,
-    # but firewalld only loads new zone files on reload. Without this,
-    # 'virsh net-start default' fails with:
-    #   firewalld can't find the 'libvirt' zone that should have been installed with libvirt
-    if systemctl is-active --quiet firewalld; then
-        log_subsection "Reloading firewalld so the libvirt zone is available"
-        sudo firewall-cmd --reload
-    fi
-}
-
 ensure_default_network() {
     log_subsection "Ensuring default libvirt network"
 

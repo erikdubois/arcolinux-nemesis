@@ -815,6 +815,17 @@ disable_firewalld_stack() {
     remove_matching_packages firewall-applet firewall-config firewalld
 }
 
+reload_firewalld_for_libvirt() {
+    # libvirt ships a 'libvirt' firewalld zone at /usr/lib/firewalld/zones/,
+    # but firewalld only loads new zone files on reload. Without this,
+    # 'virsh net-start default' fails with:
+    #   firewalld can't find the 'libvirt' zone that should have been installed with libvirt
+    if systemctl is-active --quiet firewalld; then
+        log_subsection "Reloading firewalld so the libvirt zone is available"
+        sudo firewall-cmd --reload
+    fi
+}
+
 install_sddm_git() {
     log_subsection "Installing sddm-git"
     install_aur_package sddm-git
