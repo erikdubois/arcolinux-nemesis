@@ -4,6 +4,27 @@
 
 ### What Changed
 
+Moved both virtualization installers into the personal pipeline and made VirtualBox install by default alongside QEMU/KVM. The two installers used to be called directly from the main orchestrator via `scripts/`; they now live in `personal/` and are driven by a new `personal/940-virtual-machines.sh`, picked up by the `940-*` glob. Rationale: these are personal-setup installs, so they belong in the `9xx` personal section users opt into, not the core scripts pipeline. The QEMU `kiro-template` VM is still defined by `install-qemu.sh`; the VirtualBox template is still copied into `~/VirtualBox VMs/` on real hardware by `personal/930-real-metal.sh`.
+
+### Technical Details
+
+- `git mv scripts/install-qemu.sh personal/install-qemu.sh` and `git mv scripts/install-virtualbox-for-linux.sh personal/install-virtualbox-for-linux.sh`. Both resolve `common.sh` via `../common`, so they work unchanged from `personal/` (verified `PROJECT_DIR`/`COMMON_DIR` still point at the project root; the qemu template path `${PROJECT_DIR}/personal/settings/qemu-template/` stays valid).
+- New `personal/940-virtual-machines.sh` follows the personal-script idiom (`source ../common/common.sh`, `log_section "Running $(script_name)"`, `pause_if_debug`, erikdubois banner, `$(script_name) done` footer). It just calls the two `install-*` helpers via `bash`.
+- `0-current-choices.sh`: removed the two `bash "${WORKING_DIR}/scripts/install-*.sh"` lines from the core section and added `run_glob "${PERSONAL_DIR}/940-*"` right after the `930-*` run.
+- The `install-*` helpers keep their non-numeric names, so they are not matched by any `9x0-*` glob — only `940-virtual-machines.sh` triggers them.
+- Order is preserved: `930-real-metal.sh` (copies the VirtualBox template files / removes guest-utils on real metal) runs before `940` (installs the hypervisors).
+
+### Files Modified
+
+- `0-current-choices.sh`
+- `personal/install-qemu.sh` (moved from `scripts/`)
+- `personal/install-virtualbox-for-linux.sh` (moved from `scripts/`)
+- `personal/940-virtual-machines.sh` (new)
+
+---
+
+### What Changed
+
 Added `edu-desktops/niri.sh` — a personal-exploration install for **niri**, the scrollable-tiling Wayland compositor, so its development over the past year can be tried out. niri ships only a compositor, so the script also pulls a minimal usable Wayland stack and writes a `~/.config/niri/config.kdl` that carries Kiro's keybinding scheme adapted to niri's column model. Lives in `edu-desktops/` (edu = Erik Dubois = personal/unofficial), **not** `kiro-desktops/` (the official shipped Kiro desktops): niri is personal exploration tooling, not a shipped Kiro desktop, and Kiro stays X11-only by design (see Kiro-HQ/KIRO-NIRI-WAYLAND-STUDY.md).
 
 ### Technical Details

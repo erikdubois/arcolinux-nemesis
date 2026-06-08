@@ -286,8 +286,6 @@ run_glob "${WORKING_DIR}/150-*"
 run_glob "${WORKING_DIR}/200-software-aur-repo*"
 # run_glob "${WORKING_DIR}/300-sardi-extras*"
 
-# Install QEMU/KVM by default and define the kiro-template VM to clone.
-bash "${WORKING_DIR}/scripts/install-qemu.sh"
 # run_glob "${WORKING_DIR}/400-surfn-extras*"
 
 run_glob "${WORKING_DIR}/500-plasma*"
@@ -301,6 +299,8 @@ run_glob "${PERSONAL_DIR}/900-*"
 run_glob "${PERSONAL_DIR}/910-*"
 run_glob "${PERSONAL_DIR}/920-*"
 run_glob "${PERSONAL_DIR}/930-*"
+# Install QEMU/KVM (defines the kiro-template VM) and VirtualBox by default.
+run_glob "${PERSONAL_DIR}/940-*"
 
 run_glob "${PERSONAL_DIR}/990-skel*"
 run_glob "${PERSONAL_DIR}/999-last*"
