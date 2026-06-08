@@ -200,7 +200,6 @@ configure_gnupg_keyserver() {
 }
 
 handle_virtualbox_template
-handle_qemu_template
 remove_vm_software_if_real_hardware
 configure_gnupg_keyserver
 
