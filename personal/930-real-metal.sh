@@ -148,57 +148,6 @@ handle_virtualbox_template() {
     fi
 }
 
-handle_qemu_template() {
-    result=$(get_virtualization_type_portable)
-    template_xml="$SETTINGS_DIR/qemu-template/kiro-template.xml"
-    disk="/var/lib/libvirt/images/kiro-template.qcow2"
-
-    log_section "QEMU/KVM template"
-    printf 'Result: %s\n\n' "$result"
-
-    if [ "$result" != "none" ]; then
-        log_warn "Virtual machine detected ($result) - skipping QEMU template"
-        return 0
-    fi
-
-    # virsh/qemu-img come from the QEMU stack; install-qemu.sh sets it up.
-    if ! command -v virsh >/dev/null 2>&1 || ! command -v qemu-img >/dev/null 2>&1; then
-        log_warn "QEMU/KVM not installed - run scripts/install-qemu.sh first; skipping template"
-        return 0
-    fi
-
-    if [ ! -f "$template_xml" ]; then
-        log_warn "Template not found: $template_xml"
-        return 1
-    fi
-
-    enable_now_service libvirtd.service
-
-    log_subsection "Ensuring default storage pool"
-    if sudo virsh -c qemu:///system pool-info default >/dev/null 2>&1; then
-        log_info "Storage pool default already exists"
-    else
-        sudo virsh -c qemu:///system pool-define-as default dir --target /var/lib/libvirt/images
-        sudo virsh -c qemu:///system pool-build default
-        sudo virsh -c qemu:///system pool-start default
-        sudo virsh -c qemu:///system pool-autostart default
-    fi
-
-    log_subsection "Creating empty 40G template disk if absent"
-    if [ -f "$disk" ]; then
-        log_info "Disk already exists: $disk"
-    else
-        sudo qemu-img create -f qcow2 "$disk" 40G
-    fi
-
-    log_subsection "Defining kiro-template domain"
-    if sudo virsh -c qemu:///system dominfo kiro-template >/dev/null 2>&1; then
-        log_info "Domain kiro-template already defined"
-    else
-        sudo virsh -c qemu:///system define "$template_xml"
-    fi
-}
-
 remove_vm_software_if_real_hardware() {
     result=$(get_virtualization_type_portable)
 
