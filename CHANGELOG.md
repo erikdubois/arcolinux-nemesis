@@ -8,7 +8,7 @@ Restored standalone QEMU/KVM and VirtualBox installers in `scripts/` so they rea
 
 ### Technical Details
 
-- `cp personal/install-qemu.sh scripts/install-qemu.sh` and `cp personal/install-virtualbox-for-linux.sh scripts/install-virtualbox-for-linux.sh` — byte-identical copies (verified with `diff`).
+- `cp personal/install-qemu.sh scripts/install-qemu.sh` and `cp personal/install-virtualbox-for-linux.sh scripts/install-virtualbox-for-linux.sh`, then stripped the template logic from the `scripts/` copies: removed `define_kiro_template()` + its call + the now-dead `PROJECT_DIR` var from `scripts/install-qemu.sh`, and removed the `VBoxManage setextradata "template" ...` line from `scripts/install-virtualbox-for-linux.sh`. Everything else (services, group adds, default network/pool, kernel modules, log-silencing) is kept since the software needs it.
 - `scripts/` and `personal/` are both direct children of the repo root, so `SCRIPT_DIR`/`COMMON_DIR`/`PROJECT_DIR` resolve identically; the qemu template path `${PROJECT_DIR}/personal/settings/qemu-template/kiro-template.xml` stays valid from `scripts/` too (and degrades gracefully with a warn if missing).
 - `personal/940-virtual-machines.sh` left untouched, as requested.
 - The menu picks them up automatically: `collect_scripts` globs `scripts/*.sh` (skips only `1-*`), and the checklist description comes from each script's `# Purpose` block via `extract_purpose`.
