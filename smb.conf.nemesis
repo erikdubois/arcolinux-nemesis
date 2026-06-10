@@ -108,12 +108,12 @@
 ;   wins support = yes
 
 # WINS Server - Tells the NMBD components of Samba to be a WINS Client
-#	Note: Samba can be either a WINS Server, or a WINS Client, but NOT both
+#  Note: Samba can be either a WINS Server, or a WINS Client, but NOT both
 ;   wins server = w.x.y.z
 
 # WINS Proxy - Tells Samba to answer name resolution queries on
 # behalf of a non WINS capable client, for this to work there must be
-# at least one	WINS Server on the network. The default is NO.
+# at least one WINS Server on the network. The default is NO.
 ;   wins proxy = yes
 
 # DNS Proxy - tells Samba whether or not to try to resolve NetBIOS names
@@ -241,10 +241,14 @@
 ;   printable = no
 ;   create mask = 0765
 
-# Change the username - create the Shared folder
+# Change the username - create the SHARED folder
 [SAMBASHARE]
-path = /home/erik/Shared
-browseable = yes
-guest ok = yes
-public = yes
-writable = yes
+   comment = Erik's Shared folder
+   path = /home/erik/Shared
+   browseable = yes
+   read only = no
+   valid users = erik
+   force user = erik
+   force group = erik
+   create mask = 0664
+   directory mask = 0775
