@@ -4,7 +4,7 @@
 
 ### What Changed
 
-Restored standalone QEMU/KVM and VirtualBox installers in `scripts/` so they reappear as options in the `scripts/1-install-scripts.sh` interactive menu. The June 8 move relocated both installers into `personal/` (driven by `personal/940-virtual-machines.sh`), which removed them from the generic `scripts/` menu. They are now available in both places: `personal/940` still drives the personal-pipeline install unchanged, and the `scripts/` copies give a manual menu entry for each. Verbatim copies (kiro-template step kept, per request).
+Restored standalone QEMU/KVM and VirtualBox installers in `scripts/` so they reappear as options in the `scripts/1-install-scripts.sh` interactive menu. The June 8 move relocated both installers into `personal/` (driven by `personal/940-virtual-machines.sh`), which removed them from the generic `scripts/` menu. They are now available in both places: `personal/940` still drives the personal-pipeline install unchanged, and the `scripts/` copies give a manual menu entry for each. Verbatim copies (kiro-template step kept, per request). Also added a recommended-config `.txt` companion next to each installer documenting the settings the script applies plus recommended VM-creation settings and guest-additions notes.
 
 ### Technical Details
 
@@ -17,6 +17,8 @@ Restored standalone QEMU/KVM and VirtualBox installers in `scripts/` so they rea
 
 - `scripts/install-qemu.sh` (new — copy of `personal/install-qemu.sh`)
 - `scripts/install-virtualbox-for-linux.sh` (new — copy of `personal/install-virtualbox-for-linux.sh`)
+- `scripts/install-qemu-recommended-config.txt` (new)
+- `scripts/install-virtualbox-recommended-config.txt` (new)
 
 ---
 

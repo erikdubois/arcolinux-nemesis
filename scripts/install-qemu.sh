@@ -15,7 +15,6 @@ shopt -s nullglob
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 COMMON_DIR="$(cd -- "${SCRIPT_DIR}/../common" && pwd)"
-PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 source "${COMMON_DIR}/common.sh"
 
@@ -84,30 +83,6 @@ ensure_default_pool() {
     sudo virsh -c qemu:///system pool-autostart default
 }
 
-define_kiro_template() {
-    local template_xml="${PROJECT_DIR}/personal/settings/qemu-template/kiro-template.xml"
-    local disk="/var/lib/libvirt/images/kiro-template.qcow2"
-
-    log_subsection "Defining the kiro-template VM (clone this in virt-manager)"
-
-    if [[ ! -f "$template_xml" ]]; then
-        log_warn "Template not found: $template_xml - skipping"
-        return 0
-    fi
-
-    if [[ -f "$disk" ]]; then
-        log_info "Template disk already exists: $disk"
-    else
-        sudo qemu-img create -f qcow2 "$disk" 40G
-    fi
-
-    if sudo virsh -c qemu:///system dominfo kiro-template >/dev/null 2>&1; then
-        log_info "Domain kiro-template already defined"
-    else
-        sudo virsh -c qemu:///system define "$template_xml"
-    fi
-}
-
 main() {
     local USER_NAME="${SUDO_USER:-$(whoami)}"
 
@@ -130,13 +105,12 @@ main() {
     reload_firewalld_for_libvirt
     ensure_default_network
     ensure_default_pool
-    define_kiro_template
 
     # Optional: only enable if you really need nested virtualization
     # enable_nested_kvm
 
     log_success "QEMU/KVM installation completed"
-    log_info "Open virt-manager and clone 'kiro-template' to make a new VM"
+    log_info "Open virt-manager to create a new VM"
     log_warn "Log out and back in for group membership to apply"
 }
 main "$@"
