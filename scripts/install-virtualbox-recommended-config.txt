@@ -1,0 +1,62 @@
+###############################################################################
+# Recommended VirtualBox configuration
+# Companion to: install-virtualbox-for-linux.sh
+# Author : Erik Dubois - https://www.erikdubois.be
+###############################################################################
+
+What install-virtualbox-for-linux.sh sets up for you
+----------------------------------------------------
+- Kernel headers: installs the *-headers package for every kernel present
+                   (linux, linux-lts, linux-zen, linux-hardened, linux-lqx,
+                    linux-cachyos) so the host modules can build via DKMS
+- Packages      : virtualbox, virtualbox-host-dkms
+- Kernel modules: vboxdrv, vboxnetadp, vboxnetflt loaded now and on every boot
+                  (/etc/modules-load.d/virtualbox.conf)
+- Group         : your user is added to 'vboxusers'
+                   (log out and back in for this to take effect)
+- Quieter logs  : GUI popups suppressed, VM + GUI logs redirected to /dev/null,
+                  VBOX_LOG_DEST=nofile added to /etc/environment
+
+Recommended settings when CREATING a VM
+----------------------------------------
+- Type/Version : match the guest OS (e.g. "Linux / Arch Linux (64-bit)")
+- Memory       : 4096 MB minimum for a desktop guest, 8192 MB comfortable
+- CPUs         : 2 to 4
+- Video memory : 128 MB (the maximum)
+- Graphics     : VMSVGA controller; enable 3D acceleration only if needed
+- Disk         : VDI, dynamically allocated, 40 GB+
+- Storage ctrl : SATA (AHCI) for the disk
+- Network      : NAT for simple internet, or Bridged for LAN visibility
+- System       : enable I/O APIC; EFI only if the guest needs it
+- Clipboard /  : Bidirectional (needs Guest Additions in the guest)
+  Drag'n'Drop
+
+Guest Additions (install INSIDE the guest)
+-------------------------------------------
+Provides clipboard sharing, shared folders, auto-resize and better video.
+On an Arch guest:
+  sudo pacman -S virtualbox-guest-utils
+  sudo systemctl enable --now vboxservice
+Then in the VM menu: Devices -> Shared Clipboard / Drag and Drop -> Bidirectional.
+
+Extension Pack (optional)
+-------------------------
+Adds USB 2.0/3.0, RDP, disk encryption, PXE boot. Licensed PUEL (personal/
+evaluation use). On Arch:
+  yay -S virtualbox-ext-oracle
+
+Module troubleshooting
+----------------------
+If a VM refuses to start with "VT-x/AMD-V not available" or "vboxdrv not loaded":
+  - Enable VT-x/AMD-V (virtualization) in the host BIOS/UEFI
+  - sudo modprobe vboxdrv vboxnetadp vboxnetflt
+  - After a kernel update, the DKMS modules rebuild automatically; reboot if a
+    VM still won't start
+  - Check membership: groups   (vboxusers must be listed, after re-login)
+
+Note on logging
+----------------
+This script intentionally silences VirtualBox logs (popups, per-VM logs, GUI
+log). If you are debugging a VM problem you may want them back temporarily:
+  - remove VBOX_LOG_DEST=nofile from /etc/environment
+  - rm ~/.config/VirtualBox/VirtualBox.log   (it is a symlink to /dev/null)

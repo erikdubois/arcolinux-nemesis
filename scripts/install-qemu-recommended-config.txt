@@ -1,0 +1,57 @@
+###############################################################################
+# Recommended QEMU/KVM configuration
+# Companion to: install-qemu.sh
+# Author : Erik Dubois - https://www.erikdubois.be
+###############################################################################
+
+What install-qemu.sh sets up for you
+------------------------------------
+- Packages: qemu-desktop, virt-manager, libvirt, dnsmasq, edk2-ovmf, swtpm
+- Service: libvirtd.service is enabled and started
+- Groups : your user is added to the 'kvm' and 'libvirt' groups
+            (log out and back in for this to take effect)
+- Network: the default libvirt NAT network is defined, started and set to autostart
+- Storage: the default storage pool is created at /var/lib/libvirt/images
+- Firewall: firewalld is reloaded so libvirt's NAT rules apply
+
+Recommended settings when CREATING a VM in virt-manager
+-------------------------------------------------------
+- Firmware     : UEFI (OVMF)  -> requires edk2-ovmf (installed by the script)
+- Chipset      : Q35
+- CPU          : "host-passthrough" (or "Copy host CPU configuration")
+- Memory       : 4096 MB minimum for a desktop guest, 8192 MB comfortable
+- vCPUs        : 2 to 4
+- Disk         : qcow2, virtio bus, 40 GB+ (thin-provisioned)
+- Network      : virtio NIC on the 'default' NAT network
+- Display      : Virtio / Spice with 3D acceleration off unless needed
+- TPM          : emulated TPM 2.0 via swtpm (installed by the script)
+- Boot         : enable "Start virtual machine on host boot" only if wanted
+
+Guest additions (install INSIDE the guest)
+-------------------------------------------
+- spice-vdagent      -> clipboard sharing + auto-resize
+- qemu-guest-agent   -> graceful shutdown, host/guest info
+  (enable: systemctl enable --now qemu-guest-agent  inside the guest)
+
+Nested virtualization (optional - off by default)
+--------------------------------------------------
+The script ships enable_nested_kvm() but leaves it COMMENTED OUT.
+Only enable it if you need to run VMs *inside* a VM. To turn it on:
+  Intel: options kvm_intel nested=1   -> /etc/modprobe.d/kvm_intel.conf
+  AMD  : options kvm_amd   nested=1   -> /etc/modprobe.d/kvm_amd.conf
+Verify after reboot:
+  cat /sys/module/kvm_intel/parameters/nested   (Y = enabled)
+  cat /sys/module/kvm_amd/parameters/nested
+
+Useful checks
+-------------
+  virsh net-list --all          # default network active + autostart?
+  virsh pool-list --all         # default pool active?
+  groups                        # kvm + libvirt present? (after re-login)
+  virt-host-validate            # reports any missing KVM prerequisites
+
+The kiro-template VM
+--------------------
+install-qemu.sh also defines a 'kiro-template' domain from
+personal/settings/qemu-template/kiro-template.xml (skipped with a warning if
+the XML is absent). Clone it in virt-manager to spin up a fresh VM quickly.
