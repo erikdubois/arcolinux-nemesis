@@ -80,10 +80,6 @@ main() {
     # Suppress all VirtualBox GUI warning/error popups (e.g. "cannot power off cleanly")
     VBoxManage setextradata global GUI/SuppressMessages "all" || true
 
-    # Disable host time sync for the VM named "template" (prevents guest clock from being
-    # overwritten by the host, useful when the guest manages its own time via NTP)
-    VBoxManage setextradata "template" "VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled" 1
-
     # Redirect all VM process log output to /dev/null globally
     VBoxManage setextradata global "VBoxInternal/Log/File" "/dev/null" || true
 

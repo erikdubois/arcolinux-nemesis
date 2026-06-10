@@ -49,9 +49,3 @@ Useful checks
   virsh pool-list --all         # default pool active?
   groups                        # kvm + libvirt present? (after re-login)
   virt-host-validate            # reports any missing KVM prerequisites
-
-The kiro-template VM
---------------------
-install-qemu.sh also defines a 'kiro-template' domain from
-personal/settings/qemu-template/kiro-template.xml (skipped with a warning if
-the XML is absent). Clone it in virt-manager to spin up a fresh VM quickly.
