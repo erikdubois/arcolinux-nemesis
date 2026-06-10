@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 2026.06.10
+
+### What Changed
+
+Restored standalone QEMU/KVM and VirtualBox installers in `scripts/` so they reappear as options in the `scripts/1-install-scripts.sh` interactive menu. The June 8 move relocated both installers into `personal/` (driven by `personal/940-virtual-machines.sh`), which removed them from the generic `scripts/` menu. They are now available in both places: `personal/940` still drives the personal-pipeline install unchanged, and the `scripts/` copies give a manual menu entry for each. Verbatim copies (kiro-template step kept, per request).
+
+### Technical Details
+
+- `cp personal/install-qemu.sh scripts/install-qemu.sh` and `cp personal/install-virtualbox-for-linux.sh scripts/install-virtualbox-for-linux.sh` — byte-identical copies (verified with `diff`).
+- `scripts/` and `personal/` are both direct children of the repo root, so `SCRIPT_DIR`/`COMMON_DIR`/`PROJECT_DIR` resolve identically; the qemu template path `${PROJECT_DIR}/personal/settings/qemu-template/kiro-template.xml` stays valid from `scripts/` too (and degrades gracefully with a warn if missing).
+- `personal/940-virtual-machines.sh` left untouched, as requested.
+- The menu picks them up automatically: `collect_scripts` globs `scripts/*.sh` (skips only `1-*`), and the checklist description comes from each script's `# Purpose` block via `extract_purpose`.
+
+### Files Modified
+
+- `scripts/install-qemu.sh` (new — copy of `personal/install-qemu.sh`)
+- `scripts/install-virtualbox-for-linux.sh` (new — copy of `personal/install-virtualbox-for-linux.sh`)
+
+---
+
 ## 2026.06.08
 
 ### What Changed
