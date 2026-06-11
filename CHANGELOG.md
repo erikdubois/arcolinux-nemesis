@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026.06.11
+
+### What Changed
+
+Fixed QEMU/KVM guests getting no internet (link-up but no DHCP lease) after a fresh `install-qemu.sh` run. The default libvirt NAT bridge `virbr0` was not being placed in firewalld's `libvirt` zone, so it fell under the default `public` zone, which silently dropped the guests' DHCP (UDP 67) and DNS (53) requests. Symptom in the guest: virtio NIC up, NetworkManager active, but `Activation: failed for connection` repeating every 45s and no `192.168.122.x` address. Added a `bind_virbr0_to_libvirt_zone()` helper that explicitly binds the bridge to the `libvirt` zone, and wired it into both QEMU installers after the network starts.
+
+### Technical Details
+
+- New `bind_virbr0_to_libvirt_zone()` in `common/common.sh`: idempotent — skips if firewalld inactive, if `virbr0` doesn't exist yet, if the `libvirt` zone isn't loaded, or if the interface is already bound (`firewall-cmd --permanent --zone=libvirt --query-interface=virbr0`). Otherwise does a permanent `--change-interface=virbr0` + reload.
+- Call ordering matters: `reload_firewalld_for_libvirt` must stay *before* `ensure_default_network` (the libvirt zone has to be loadable or `virsh net-start` fails), but the bind must run *after* it so `virbr0` actually exists. Inserted `bind_virbr0_to_libvirt_zone` between `ensure_default_network` and `ensure_default_pool` in both `scripts/install-qemu.sh` and `personal/install-qemu.sh`.
+- Updated `scripts/install-qemu-recommended-config.txt` Firewall line to document the bind.
+
+### Files Modified
+
+- `common/common.sh` (new `bind_virbr0_to_libvirt_zone` helper)
+- `scripts/install-qemu.sh`
+- `personal/install-qemu.sh`
+- `scripts/install-qemu-recommended-config.txt`
+
 ## 2026.06.10
 
 ### What Changed

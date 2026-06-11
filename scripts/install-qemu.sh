@@ -104,6 +104,7 @@ main() {
 
     reload_firewalld_for_libvirt
     ensure_default_network
+    bind_virbr0_to_libvirt_zone
     ensure_default_pool
 
     # Optional: only enable if you really need nested virtualization

@@ -129,6 +129,7 @@ main() {
 
     reload_firewalld_for_libvirt
     ensure_default_network
+    bind_virbr0_to_libvirt_zone
     ensure_default_pool
     define_kiro_template
 

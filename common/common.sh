@@ -826,6 +826,34 @@ reload_firewalld_for_libvirt() {
     fi
 }
 
+bind_virbr0_to_libvirt_zone() {
+    # libvirt is meant to drop virbr0 into firewalld's 'libvirt' zone when the
+    # default network starts, but this doesn't always happen. When it doesn't,
+    # the bridge falls under the default 'public' zone, which drops the guest's
+    # DHCP (UDP 67) and DNS (53) requests -> guests get link-up but never a lease.
+    # Bind it explicitly. Must run AFTER the default network is up so virbr0 exists.
+    systemctl is-active --quiet firewalld || return 0
+
+    if ! ip link show virbr0 >/dev/null 2>&1; then
+        log_warn "virbr0 not present yet - skipping firewalld zone bind"
+        return 0
+    fi
+
+    if ! sudo firewall-cmd --get-zones | tr ' ' '\n' | grep -qx libvirt; then
+        log_warn "firewalld 'libvirt' zone not found - skipping virbr0 bind"
+        return 0
+    fi
+
+    if sudo firewall-cmd --permanent --zone=libvirt --query-interface=virbr0 >/dev/null 2>&1; then
+        log_info "virbr0 already bound to the libvirt firewalld zone"
+        return 0
+    fi
+
+    log_subsection "Binding virbr0 to the libvirt firewalld zone"
+    sudo firewall-cmd --permanent --zone=libvirt --change-interface=virbr0
+    sudo firewall-cmd --reload
+}
+
 install_sddm_git() {
     log_subsection "Installing sddm-git"
     install_aur_package sddm-git

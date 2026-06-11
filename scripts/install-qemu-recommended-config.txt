@@ -12,7 +12,9 @@ What install-qemu.sh sets up for you
             (log out and back in for this to take effect)
 - Network: the default libvirt NAT network is defined, started and set to autostart
 - Storage: the default storage pool is created at /var/lib/libvirt/images
-- Firewall: firewalld is reloaded so libvirt's NAT rules apply
+- Firewall: firewalld is reloaded so libvirt's NAT rules apply, and the
+            virbr0 bridge is bound to the 'libvirt' firewalld zone so guests
+            can reach DHCP/DNS (without this they get link-up but no IP lease)
 
 Recommended settings when CREATING a VM in virt-manager
 -------------------------------------------------------
