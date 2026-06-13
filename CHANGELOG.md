@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 2026.06.13
+
+### What Changed
+
+Switched `nemesis_repo` and `chaotic-aur` to inherit the global `SigLevel` instead of carrying their own per-repo override. `nemesis_repo` is now PGP-signed by the Kiro key (trusted via `kiro-keyring`), so it no longer needs `SigLevel = Never`; both repos now fall under the global `SigLevel = Required DatabaseOptional` from `pacman.conf`. Removed the hardcoded per-repo `SigLevel` lines from every place the repos get written so the whole framework is consistent with the updated `pacman.conf` template.
+
+### Technical Details
+
+- Dropped `SigLevel = Never` from the `nemesis_repo` block written by `scripts/give-me-nemesis-repo.sh`, `scripts/give-me-nemesis-and-chaotic.sh`, and `common/common.sh` (`append_nemesis_repo`).
+- Dropped `SigLevel = Required DatabaseOptional` from the `chaotic-aur` block written by `scripts/give-me-nemesis-and-chaotic.sh` and `common/common.sh` (`append_chaotic_repo`); it now inherits the same global value.
+- `pacman.conf` template already had both per-repo `SigLevel` lines removed.
+- Non-Kiro users adding the repo by hand need `kiro-keyring` present first (the Kiro signing key `149ABD0C3A0563EE`), otherwise package installs fail signature verification under the inherited `Required`.
+
+### Files Modified
+
+- `pacman.conf`
+- `scripts/give-me-nemesis-repo.sh`
+- `scripts/give-me-nemesis-and-chaotic.sh`
+- `common/common.sh`
+
 ## 2026.06.11
 
 ### What Changed

@@ -19,7 +19,6 @@ BACKUP="/etc/pacman.conf-nemesis"
 REPO_ENTRY="[nemesis_repo]"
 REPO_BLOCK="
 [nemesis_repo]
-SigLevel = Never
 Server = https://erikdubois.github.io/\$repo/\$arch"
 
 header "Checking for root"

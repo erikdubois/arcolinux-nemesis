@@ -56,7 +56,7 @@ main() {
     ############################################################################################################
 
     if ! grep -q "\[nemesis_repo\]" /etc/pacman.conf; then
-        printf '\n[nemesis_repo]\nSigLevel = Never\nServer = https://erikdubois.github.io/$repo/$arch\n' \
+        printf '\n[nemesis_repo]\nServer = https://erikdubois.github.io/$repo/$arch\n' \
             | tee -a /etc/pacman.conf > /dev/null
         log_info "nemesis_repo added to pacman.conf"
     else
@@ -64,7 +64,7 @@ main() {
     fi
 
     if ! grep -q "\[chaotic-aur\]" /etc/pacman.conf; then
-        printf '\n[chaotic-aur]\nSigLevel = Required DatabaseOptional\nInclude = /etc/pacman.d/chaotic-mirrorlist\n' \
+        printf '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist\n' \
             | tee -a /etc/pacman.conf > /dev/null
         log_info "chaotic-aur added to pacman.conf"
     else

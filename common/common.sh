@@ -740,7 +740,6 @@ append_nemesis_repo() {
         sudo tee -a /etc/pacman.conf >/dev/null <<'EOF_NEMESIS'
 
 [nemesis_repo]
-SigLevel = Never
 Server = https://erikdubois.github.io/$repo/$arch
 EOF_NEMESIS
     else
@@ -755,7 +754,6 @@ append_chaotic_repo() {
         sudo tee -a /etc/pacman.conf >/dev/null <<'EOF_CHAOTIC'
 
 [chaotic-aur]
-SigLevel = Required DatabaseOptional
 Include = /etc/pacman.d/chaotic-mirrorlist
 EOF_CHAOTIC
     else
