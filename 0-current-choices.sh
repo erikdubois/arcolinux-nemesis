@@ -257,6 +257,10 @@ install_local_packages
 append_chaotic_repo
 append_nemesis_repo
 
+# Trust the Kiro signing key + install kiro-keyring/kiro-mirrorlist so
+# nemesis_repo packages verify (no-op on Kiro).
+install_kiro_keyring_and_mirrorlist
+
 set_parallel_downloads
 
 log_section "Updating the system - sudo pacman -Syyu - after configure_repos"

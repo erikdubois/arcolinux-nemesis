@@ -761,6 +761,40 @@ EOF_CHAOTIC
     fi
 }
 
+# Bootstrap nemesis_repo on a non-Kiro box: trust the Kiro signing key, then
+# install the two packages the repo needs — kiro-keyring (ships/maintains the
+# key) and kiro-mirrorlist (the [nemesis_repo] server list). nemesis_repo
+# inherits the global SigLevel = Required, so the key must be trusted BEFORE any
+# install — the keyring is itself a signed nemesis package (chicken-and-egg), and
+# a remote `pacman -U` URL is governed by RemoteFileSigLevel (defaults to
+# Required), so it can't bootstrap an untrusted key either. We fetch the master
+# key from a public keyserver and locally sign it: the published bootstrap path
+# (the key lives on keyserver.ubuntu.com and keys.openpgp.org) and the same
+# recv+lsign pattern the ISO build host uses for cachyos. Idempotent + no-op on
+# Kiro: a box that already has both packages is detected and skipped.
+install_kiro_keyring_and_mirrorlist() {
+    local key_id="149ABD0C3A0563EE"
+
+    if pacman -Qq kiro-keyring &>/dev/null && pacman -Qq kiro-mirrorlist &>/dev/null; then
+        log_info "kiro-keyring and kiro-mirrorlist already installed - nemesis_repo trusted"
+        return 0
+    fi
+
+    log_warn "Trusting the Kiro signing key from the keyserver"
+    if ! sudo pacman-key --recv-keys "${key_id}" --keyserver keyserver.ubuntu.com; then
+        log_warn "keyserver.ubuntu.com failed - trying keys.openpgp.org"
+        if ! sudo pacman-key --recv-keys "${key_id}" --keyserver keys.openpgp.org; then
+            log_warn "Could not receive the Kiro signing key - skipping nemesis_repo setup"
+            return 0
+        fi
+    fi
+    sudo pacman-key --lsign-key "${key_id}"
+
+    log_warn "Installing kiro-keyring and kiro-mirrorlist from nemesis_repo"
+    sudo pacman -Sy --needed --noconfirm kiro-keyring kiro-mirrorlist
+    log_success "kiro-keyring and kiro-mirrorlist installed - nemesis_repo ready"
+}
+
 ##################################################################################################################################
 # 12. Project-specific helpers
 ##################################################################################################################################

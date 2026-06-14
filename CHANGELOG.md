@@ -1,17 +1,31 @@
 # CHANGELOG
 
+## 2026.06.14
+
+### What Changed
+
+Switched the nemesis_repo key bootstrap from the `pacman -U` URL hack to the proper **keyserver recv + lsign** path, and made it install **both** packages the repo needs — `kiro-keyring` *and* `kiro-mirrorlist`. The 06.13 entry noted keyserver bootstrap "is not usable here — the Kiro key is not published on keyserver.ubuntu.com"; that limitation is now lifted: the Kiro signing key `149ABD0C3A0563EE` was published to `keyserver.ubuntu.com` and `keys.openpgp.org`, so a non-Kiro box can fetch and verify it directly. This also fixes a real bug — the old `pacman -U <remote url>` path is governed by `RemoteFileSigLevel` (defaults to `Required`), not `LocalFileSigLevel`, so it would reject the not-yet-trusted Kiro signature on a foreign box rather than bootstrap it.
+
+### Technical Details
+
+- Renamed `install_kiro_keyring()` → `install_kiro_keyring_and_mirrorlist()` in `common/common.sh`. New body: skip if both `kiro-keyring` and `kiro-mirrorlist` are already installed (no-op on Kiro), else `pacman-key --recv-keys 149ABD0C3A0563EE` (ubuntu keyserver, falling back to keys.openpgp.org) + `--lsign-key`, then `pacman -Sy --needed kiro-keyring kiro-mirrorlist`. Same recv+lsign pattern the ISO build host uses for cachyos.
+- Updated both call sites: `0-current-choices.sh` (after `append_nemesis_repo`) and `scripts/give-me-nemesis-and-chaotic.sh`.
+- `scripts/give-me-nemesis-repo.sh` (standalone, no `common.sh`) got the same keyserver bootstrap inline, installing both packages; on total keyserver failure it `error`s out (this script's existing fail-hard semantics) rather than continuing.
+- `append_nemesis_repo` left on the direct `Server =` line by design — the foreign-bootstrap script can't `Include = /etc/pacman.d/kiro-mirrorlist` before that file exists, and `kiro-mirrorlist` still gets installed for parity with the Kiro ISO. nemesis_repo keeps inheriting the global `SigLevel = Required DatabaseOptional`; with the key now trusted before any install, signed packages verify cleanly.
+
 ## 2026.06.13
 
 ### What Changed
 
-Switched `nemesis_repo` and `chaotic-aur` to inherit the global `SigLevel` instead of carrying their own per-repo override. `nemesis_repo` is now PGP-signed by the Kiro key (trusted via `kiro-keyring`), so it no longer needs `SigLevel = Never`; both repos now fall under the global `SigLevel = Required DatabaseOptional` from `pacman.conf`. Removed the hardcoded per-repo `SigLevel` lines from every place the repos get written so the whole framework is consistent with the updated `pacman.conf` template.
+Switched `nemesis_repo` and `chaotic-aur` to inherit the global `SigLevel` instead of carrying their own per-repo override, and added an automatic Kiro-key bootstrap so the signed `nemesis_repo` works on non-Kiro boxes (e.g. Garuda). `nemesis_repo` is now PGP-signed by the Kiro key (trusted via `kiro-keyring`), so it no longer needs `SigLevel = Never`; both repos now fall under the global `SigLevel = Required DatabaseOptional` from `pacman.conf`. Since a fresh non-Kiro system doesn't trust the Kiro key, the repo-adding scripts now install `kiro-keyring` directly from the repo URL before any signed install.
 
 ### Technical Details
 
 - Dropped `SigLevel = Never` from the `nemesis_repo` block written by `scripts/give-me-nemesis-repo.sh`, `scripts/give-me-nemesis-and-chaotic.sh`, and `common/common.sh` (`append_nemesis_repo`).
-- Dropped `SigLevel = Required DatabaseOptional` from the `chaotic-aur` block written by `scripts/give-me-nemesis-and-chaotic.sh` and `common/common.sh` (`append_chaotic_repo`); it now inherits the same global value.
-- `pacman.conf` template already had both per-repo `SigLevel` lines removed.
-- Non-Kiro users adding the repo by hand need `kiro-keyring` present first (the Kiro signing key `149ABD0C3A0563EE`), otherwise package installs fail signature verification under the inherited `Required`.
+- Dropped `SigLevel = Required DatabaseOptional` from the `chaotic-aur` block written by `scripts/give-me-nemesis-and-chaotic.sh` and `common/common.sh` (`append_chaotic_repo`); it now inherits the same global value. `pacman.conf` template already had both per-repo `SigLevel` lines removed.
+- New `install_kiro_keyring()` in `common/common.sh`: skips if `kiro-keyring` already installed (no-op on Kiro), else `pacman -Sy` then resolves the keyring URL via `pacman -Sp nemesis_repo/kiro-keyring` and `pacman -U`s it. The `-U` path is governed by `LocalFileSigLevel = Optional`, which permits the not-yet-trusted Kiro signature; the keyring's `post_install` runs `pacman-key --populate kiro` to trust key `149ABD0C3A0563EE`, after which normal `-S` installs verify under the global `Required`.
+- Wired `install_kiro_keyring` into `0-current-choices.sh` right after `append_nemesis_repo`, and into `scripts/give-me-nemesis-and-chaotic.sh` after the repos are added.
+- `scripts/give-me-nemesis-repo.sh` (standalone, no `common.sh`) got the same bootstrap inline after the db sync. URL is resolved at runtime via `pacman -Sp`, so it never goes stale when the keyring is rebuilt. Keyserver bootstrap (the chaotic/cachyos `--recv-key` pattern) is not usable here — the Kiro key is not published on `keyserver.ubuntu.com`.
 
 ### Files Modified
 
@@ -19,6 +33,7 @@ Switched `nemesis_repo` and `chaotic-aur` to inherit the global `SigLevel` inste
 - `scripts/give-me-nemesis-repo.sh`
 - `scripts/give-me-nemesis-and-chaotic.sh`
 - `common/common.sh`
+- `0-current-choices.sh`
 
 ## 2026.06.11
 

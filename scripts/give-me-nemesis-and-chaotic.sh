@@ -72,6 +72,14 @@ main() {
     fi
 
     log_success "pacman.conf updated with nemesis_repo and chaotic-aur"
+
+    ############################################################################################################
+    # Trust the Kiro signing key + install kiro-keyring/kiro-mirrorlist so
+    # nemesis_repo packages verify (no-op on Kiro)
+    ############################################################################################################
+
+    log_section "Trusting the Kiro signing key and installing keyring + mirrorlist"
+    install_kiro_keyring_and_mirrorlist
 }
 
 main "$@"

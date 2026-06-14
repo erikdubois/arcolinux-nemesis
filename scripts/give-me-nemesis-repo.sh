@@ -39,4 +39,26 @@ fi
 
 header "Syncing package databases"
 pacman -Sy
-success "Done"
+success "Databases synced"
+
+# nemesis_repo inherits the global SigLevel = Required, so the Kiro key must be
+# trusted BEFORE any install — the keyring is itself a signed nemesis package
+# (chicken-and-egg), and a remote `pacman -U` URL is governed by
+# RemoteFileSigLevel (defaults to Required), so it can't bootstrap an untrusted
+# key either. Fetch the master key from a public keyserver and locally sign it
+# (the key lives on keyserver.ubuntu.com and keys.openpgp.org), then install the
+# two packages nemesis_repo needs: kiro-keyring + kiro-mirrorlist.
+header "Trusting the Kiro signing key and installing keyring + mirrorlist"
+if pacman -Qq kiro-keyring &>/dev/null && pacman -Qq kiro-mirrorlist &>/dev/null; then
+    success "kiro-keyring and kiro-mirrorlist already installed — nemesis_repo trusted"
+else
+    KEY_ID="149ABD0C3A0563EE"
+    if ! pacman-key --recv-keys "$KEY_ID" --keyserver keyserver.ubuntu.com; then
+        warn "keyserver.ubuntu.com failed — trying keys.openpgp.org"
+        pacman-key --recv-keys "$KEY_ID" --keyserver keys.openpgp.org \
+            || error "Could not receive the Kiro signing key"
+    fi
+    pacman-key --lsign-key "$KEY_ID"
+    pacman -Sy --needed --noconfirm kiro-keyring kiro-mirrorlist
+    success "kiro-keyring and kiro-mirrorlist installed — nemesis_repo ready"
+fi
