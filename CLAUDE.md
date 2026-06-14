@@ -62,7 +62,11 @@ The framework adds two custom repos to `pacman.conf`:
 - **Chaotic AUR** — Pre-built AUR packages (keyring/mirrorlist in `packages/`)
 - **Nemesis repo** — Author's personal packages (ArcoLinux tools, dot-files, etc.)
 
-`SigLevel=Never` is intentional for these repos.
+`nemesis_repo` is **signed** (Kiro key `149ABD0C3A0563EE`) and inherits the global
+`SigLevel = Required DatabaseOptional` — no per-repo `Never`. The repo-adding scripts
+bootstrap trust via keyserver `--recv-keys` + `--lsign-key`, then install
+`kiro-keyring` + `kiro-mirrorlist` (see `install_kiro_keyring_and_mirrorlist` in
+`common/common.sh`). Chaotic AUR is signed via its own keyring/mirrorlist.
 
 ### Backup Pattern
 
