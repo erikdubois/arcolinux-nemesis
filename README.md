@@ -18,17 +18,35 @@ Renaming isn’t feasible, as these scripts have been referenced thousands of ti
 
 Learn, have fun and enjoy.
 
-We will add the nemesis_repo to your /etc/pacman.conf and make a backup of the current config.
-
-```
-[nemesis_repo]
-Server = https://erikdubois.github.io/$repo/$arch
-```
-or you can use this script download it and run it
+The nemesis_repo is signed with the Kiro key, so it inherits pacman's global `SigLevel = Required`. The easiest way to add it is the helper script — it trusts the key, installs `kiro-keyring` + `kiro-mirrorlist`, and adds the repo (backing up your current `/etc/pacman.conf` first):
 
 ```
 curl -sL bit.ly/nemesis-repo | sudo bash
 ```
+
+Once set up, your `/etc/pacman.conf` holds the repo via the mirrorlist shipped by `kiro-mirrorlist`:
+
+```
+[nemesis_repo]
+Include = /etc/pacman.d/kiro-mirrorlist
+```
+
+Prefer to do it by hand? The mirrorlist file doesn't exist until `kiro-mirrorlist` is installed, so bootstrap with a direct `Server` line first, then trust the key and install the packages:
+
+```
+# add to /etc/pacman.conf
+[nemesis_repo]
+Server = https://erikdubois.github.io/$repo/$arch
+```
+
+```
+sudo pacman -Sy
+sudo pacman-key --recv-keys 149ABD0C3A0563EE --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 149ABD0C3A0563EE
+sudo pacman -Sy --needed kiro-keyring kiro-mirrorlist
+```
+
+You can then swap the `Server` line for `Include = /etc/pacman.d/kiro-mirrorlist`.
 
 ## Watch this video
 
@@ -105,7 +123,7 @@ Non Arch based distros
 | [Ubuntu](https://ubuntu.com/download)         |[Examples](https://github.com/erikdubois/ubuntu-chadwm) | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS5OoJJI03yCinWaxpBg4Y_8) |
 | [Void](https://voidlinux.org)         |   [Examples](https://github.com/erikdubois/void-chadwm)     | [YouTube Playlist](https://www.youtube.com/playlist?list=PLlloYVGq5pS4fX0vmGGk-kdi0NCDZsqXP) |
 
-The scripts for Nixos are on a seperate github - https://github.com/erikdubois/nixos-configurations
+The scripts for Nixos are on a separate github - https://github.com/erikdubois/nixos-configurations
 
 ## Workflow
 

@@ -20,12 +20,14 @@ Switched the nemesis_repo key bootstrap from the `pacman -U` URL hack to the pro
 - Lead path on both pages is the helper one-liner `curl -sL bit.ly/nemesis-repo | sudo bash`, which trusts the key and installs `kiro-keyring` + `kiro-mirrorlist`. The `Include` block is framed as "what you end up with", not as a paste-first step — an `Include` line would error on a fresh box before the mirrorlist file exists.
 - `getting-started.html`: the by-hand path moved into a collapsible `<details>` that bootstraps correctly — a temporary `Server =` line first (so pacman can pull the packages), then `pacman -Sy` → `pacman-key --recv-keys 149ABD0C3A0563EE` → `--lsign-key` → `pacman -Sy --needed kiro-keyring kiro-mirrorlist`, then swap to the `Include` line. Mirrors `scripts/give-me-nemesis-repo.sh`.
 - Rebuilt `dist/tailwind.css` via `build-css.sh` to pick up the new `<details>` utilities (`cursor-pointer`, `bg-slate-900/50`).
+- `README.md`: same rework — helper as the lead path, canonical `Include = /etc/pacman.d/kiro-mirrorlist` block, and a by-hand bootstrap. Also fixed a pre-existing typo (`seperate` → `separate`).
 
 ### Files Modified
 
 - `docs/index.html`
 - `docs/getting-started.html`
 - `docs/dist/tailwind.css`
+- `README.md`
 
 ## 2026.06.13
 
