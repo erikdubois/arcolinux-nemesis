@@ -221,16 +221,15 @@
               <p class="mt-2 text-sm text-slate-400">Append to <code class="text-slate-300">/etc/pacman.conf</code>:</p>
               <div class="mt-3 rounded-lg border border-slate-800 bg-slate-900 p-4">
                 <pre class="whitespace-pre-wrap break-all text-sm leading-relaxed text-slate-200"><code>[nemesis_repo]
-SigLevel = Never
 Server = https://erikdubois.github.io/$repo/$arch</code></pre>
               </div>
-              <p class="mt-4 text-sm text-slate-400">Or let the script do it for you:</p>
+              <p class="mt-4 text-sm text-slate-400">The repo is signed, so let the script add it <em>and</em> trust the key:</p>
               <div class="mt-3 flex items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-900 p-3">
                 <code class="overflow-x-auto text-sm text-slate-200">curl -sL bit.ly/nemesis-repo | sudo bash</code>
                 <button type="button" data-copy="curl -sL bit.ly/nemesis-repo | sudo bash"
                         class="shrink-0 rounded-md border border-slate-700 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:border-slate-600 hover:text-white">Copy</button>
               </div>
-              <p class="mt-3 text-xs text-slate-500">Prefer to read it first? Use the manual block above.</p>
+              <p class="mt-3 text-xs text-slate-500">Manual key-trust steps are on the <a href="getting-started.html" class="text-accent-300 hover:text-accent-200">getting started</a> page.</p>
             </div>
 
             <div class="rounded-2xl border border-slate-800 bg-slate-950/60 p-6">

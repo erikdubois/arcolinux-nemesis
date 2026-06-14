@@ -13,6 +13,18 @@ Switched the nemesis_repo key bootstrap from the `pacman -U` URL hack to the pro
 - `scripts/give-me-nemesis-repo.sh` (standalone, no `common.sh`) got the same keyserver bootstrap inline, installing both packages; on total keyserver failure it `error`s out (this script's existing fail-hard semantics) rather than continuing.
 - `append_nemesis_repo` left on the direct `Server =` line by design — the foreign-bootstrap script can't `Include = /etc/pacman.d/kiro-mirrorlist` before that file exists, and `kiro-mirrorlist` still gets installed for parity with the Kiro ISO. nemesis_repo keeps inheriting the global `SigLevel = Required DatabaseOptional`; with the key now trusted before any install, signed packages verify cleanly.
 
+**Website (GitHub Pages, `docs/`):** brought the site in line with the now-signed repo. The quick-start blocks on `index.html` and `getting-started.html` were still showing the stale `[nemesis_repo]` block with `SigLevel = Never` and a "Never is intentional" note.
+
+- Removed the `SigLevel = Never` line from both `[nemesis_repo]` example blocks; the block now matches what the scripts actually write (just `Server =`, inheriting the global `Required`).
+- `getting-started.html`: replaced the "Never is intentional" note with an explanation that the repo is signed, and added a manual key-trust block (`pacman-key --recv-keys 149ABD0C3A0563EE` → `--lsign-key` → `pacman -Sy --needed kiro-keyring kiro-mirrorlist`) mirroring `scripts/give-me-nemesis-repo.sh` for users who don't use the helper.
+- `index.html`: tightened the quick-start note and pointed users to the getting-started page for the manual key-trust steps.
+- No new Tailwind utilities introduced (used the existing `text-accent-300 hover:text-accent-200` link idiom), so no CSS rebuild required.
+
+### Files Modified
+
+- `docs/index.html`
+- `docs/getting-started.html`
+
 ## 2026.06.13
 
 ### What Changed

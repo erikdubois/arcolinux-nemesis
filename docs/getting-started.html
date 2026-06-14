@@ -133,16 +133,19 @@
           <p class="mt-3 text-slate-300">Append the repo to <code class="rounded bg-slate-800 px-1.5 py-0.5 text-sm text-accent-300">/etc/pacman.conf</code>. The scripts back up your current config first.</p>
           <div class="mt-4 rounded-lg border border-slate-800 bg-slate-900 p-4">
             <pre class="whitespace-pre-wrap break-all text-sm leading-relaxed text-slate-200"><code>[nemesis_repo]
-SigLevel = Never
 Server = https://erikdubois.github.io/$repo/$arch</code></pre>
           </div>
-          <p class="mt-4 text-sm text-slate-400">Or let the helper script add it for you:</p>
+          <p class="mt-4 text-sm text-slate-400">The repo is <strong class="text-slate-300">signed</strong> with the Kiro key, so it inherits pacman's global <code class="rounded bg-slate-800 px-1.5 py-0.5 text-slate-300">SigLevel = Required</code> &mdash; no per-repo override. Let the helper script add the repo <em>and</em> trust the key for you:</p>
           <div class="mt-3 flex items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-900 p-3">
             <code class="overflow-x-auto text-sm text-slate-200">curl -sL bit.ly/nemesis-repo | sudo bash</code>
             <button type="button" data-copy="curl -sL bit.ly/nemesis-repo | sudo bash" class="shrink-0 rounded-md border border-slate-700 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:border-slate-600 hover:text-white">Copy</button>
           </div>
-          <p class="mt-3 text-xs text-slate-500">Prefer to read it first? Use the manual block above.</p>
-          <p class="mt-2 text-xs text-slate-500"><code class="text-slate-400">SigLevel = Never</code> is intentional for this repo.</p>
+          <p class="mt-4 text-sm text-slate-400">Prefer to do it by hand? After adding the block above, trust the Kiro signing key and install the keyring + mirrorlist:</p>
+          <div class="mt-3 rounded-lg border border-slate-800 bg-slate-900 p-4">
+            <pre class="whitespace-pre-wrap break-all text-sm leading-relaxed text-slate-200"><code>sudo pacman-key --recv-keys 149ABD0C3A0563EE --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 149ABD0C3A0563EE
+sudo pacman -Sy --needed kiro-keyring kiro-mirrorlist</code></pre>
+          </div>
         </div>
 
         <!-- Step 2 -->
