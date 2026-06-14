@@ -93,6 +93,8 @@ User=${USER}
 HaltCommand=/usr/bin/systemctl poweroff
 RebootCommand=/usr/bin/systemctl reboot
 
+#edu-simplicity is a name not the package
+#kiro-sddm-simplicity is the package
 [Theme]
 Current=edu-simplicity
 CursorTheme=Bibata-Modern-Ice
