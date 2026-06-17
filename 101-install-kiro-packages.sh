@@ -15,6 +15,7 @@
 # - Install all Kiro packages from nemesis_repo, gathered in one place
 # - Core Kiro set: dot-files, arc-dawn, arc-kde, keybindings, rofi + rofi-themes, sddm-simplicity,
 #   shells, variety-config, xfce, powermenu, plymouth-theme-kiro-logo
+# - Kiro apps used to build/run Kiro: iso-builder, assistant, news
 # - Kiro icon themes: neo-candy variants (arc, arc-mint-grey/red, qogir, tela) and papirus-dark-tela variants
 # - kiro-system-files installed separately (dry-run + guarded) since it overwrites /etc and may conflict
 ##################################################################################################################################
@@ -35,6 +36,9 @@ install_kiro_packages() {
         kiro-arc-dawn \
         kiro-arc-kde \
         kiro-keybindings \
+        kiro-iso-builder \
+        kiro-assistant \
+        kiro-news \
         kiro-rofi \
         kiro-rofi-themes \
         kiro-sddm-simplicity \
