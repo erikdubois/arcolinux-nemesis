@@ -153,6 +153,20 @@ EOF
     echo "Environment variables written to $ENV_FILE"
 }
 
+enable_personal_fish_aliases() {
+    log_subsection "Enabling personal / dev-box fish aliases"
+    local file="/usr/share/kiro/fish/parts/40-aliases.fish"
+
+    if [[ -f "$file" ]]; then
+        # Uncomment the "# alias ..." lines from the "Personal / dev-box"
+        # section to the end of the file; the section divider stays commented.
+        sudo sed -i '/Personal \/ dev-box/,$ s/^# alias /alias /' "$file"
+        echo "Personal aliases enabled in $file"
+    else
+        log_warn "$file not found - skipping personal fish aliases"
+    fi
+}
+
 install_gtk_config_hq() {
     if [[ "$(hostname)" != "hq" ]]; then
         return 0
@@ -176,6 +190,7 @@ configure_desktop_preferences
 change_shell_to_fish
 set_default_cursor_theme
 set_environment_defaults
+enable_personal_fish_aliases
 install_gtk_config_hq
 
 log_subsection "$(script_name) done"
