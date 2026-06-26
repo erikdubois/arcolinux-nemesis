@@ -1,15 +1,21 @@
 file:///home/erik/Documents
 file:///home/erik/Downloads Downloads
+file:///home/erik/Music
 file:///home/erik/Pictures Pictures
-file:///home/erik/Projects
 file:///home/erik/Videos Videos
+file:///home/erik/Projects
+file:///home/erik/KIRO/fastfetch-tweak-tool/usr/share/fastfetch-tweak-tool
+file:///home/erik/KIRO/archlinux-tweak-tool-gtk4/usr/share/archlinux-tweak-tool
 file:///home/erik/Insync/Kiro/Kiro-HQ
 file:///home/erik/.bin
 file:///home/erik/DATA/arcolinux-nemesis
+file:///home/erik/DATA/kiro-plasma
 file:///home/erik/.config/ohmychadwm
 file:///home/erik/Insync
 file:///etc/skel /etc/skel
 file:///home/erik/.config .config
+file:///home/erik/.config/fish
+file:///home/erik/EDU
 file:///home/erik/KIRO
 file:///home/erik/KIRO-ISO-CALAMARES
 file:///home/erik/KIRO-SPECIAL
@@ -17,6 +23,7 @@ file:///home/erik/KIRO-PKG-BUILD-APPS
 file:///home/erik/KIRO-PKG-BUILD-3PARTY
 file:///home/erik/KIRO-PKG-BUILD-ICONS
 file:///home/erik/KIRO-PKG-BUILD-CALAMARES
+file:///home/erik/KIRO-PROJECTS
 file:///home/erik/kiro-Out
 file:///home/erik/.icons .icons
 file:///usr/share/icons icons
@@ -26,3 +33,4 @@ file:///usr/share/applications applications
 file:///home/erik/EDU/nemesis_repo
 file:///home/erik/KIRO/kiro_repo
 file:///home/erik/Shared
+file:///home/erik/KIROTUX
