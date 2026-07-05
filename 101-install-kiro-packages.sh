@@ -47,11 +47,6 @@ install_kiro_packages() {
         kiro-xfce \
         kiro-powermenu \
         plymouth-theme-kiro-logo \
-        kiro-neo-candy-arc \
-        kiro-neo-candy-arc-mint-grey \
-        kiro-neo-candy-arc-mint-red \
-        kiro-neo-candy-qogir \
-        kiro-neo-candy-tela \
         kiro-papirus-dark-tela \
         kiro-papirus-dark-tela-grey
 }

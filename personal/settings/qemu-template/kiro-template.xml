@@ -2,6 +2,10 @@
   <name>kiro-template</name>
   <memory unit='GiB'>10</memory>
   <currentMemory unit='GiB'>10</currentMemory>
+  <memoryBacking>
+    <source type='memfd'/>
+    <access mode='shared'/>
+  </memoryBacking>
   <vcpu placement='static'>8</vcpu>
   <os firmware='efi'>
     <type arch='x86_64' machine='q35'>hvm</type>
@@ -45,11 +49,14 @@
       <target type='virtio' name='com.redhat.spice.0'/>
     </channel>
     <input type='tablet' bus='usb'/>
-    <graphics type='spice' autoport='yes'>
-      <listen type='address'/>
+    <graphics type='spice'>
+      <listen type='none'/>
+      <gl enable='yes'/>
     </graphics>
     <video>
-      <model type='virtio'/>
+      <model type='virtio' heads='1' primary='yes' blob='on'>
+        <acceleration accel3d='yes'/>
+      </model>
     </video>
     <memballoon model='virtio'/>
     <rng model='virtio'>

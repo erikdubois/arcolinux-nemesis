@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 2026.07.04
+
+### What Changed
+
+`scripts/install-qemu.sh` now also **creates an ideal Wayland/niri-capable VM template** (`kiro-template`) as the final step of the QEMU/KVM install, so a fresh box ends up with a ready-to-clone base domain that renders Wayland compositors (niri, sway, Hyprland) with GPU acceleration — no hand-editing of video devices in virt-manager. The config mirrors the proven `personal/settings/qemu-template/kiro-template.xml`.
+
+### Technical Details
+
+- New `ensure_wayland_template()` function, called from `main()` after `ensure_default_pool`. It creates a sparse 40G qcow2 template disk in the default pool (only if missing, then `pool-refresh default`), then `virsh -c qemu:///system define`s a domain built via heredoc.
+- The template is the full Wayland-capable GL stack, the three pieces that are easy to miss: `<memoryBacking><source type='memfd'/><access mode='shared'/>` (required for virtio-gpu blob resources), `<video><model type='virtio' … blob='on'><acceleration accel3d='yes'/>` (virtio-gpu + virgl 3D), and `<graphics type='spice'><listen type='none'/><gl enable='yes'/>` (local SPICE GL). UEFI (`firmware='efi'`) + q35, `cpu mode='maximum'`, 10 GiB / 8 vcpu, virtio net on the default network, empty SATA cdrom + `boot hd,cdrom` so it can install from an attached ISO.
+- Config knobs hoisted to top of script: `TEMPLATE_NAME`, `TEMPLATE_DISK`, `TEMPLATE_DISK_SIZE`.
+- Verified the emitted XML defines cleanly against libvirt 12.5 / qemu 11 — resolves to `virtio-vga-gl` with `accel3d`, `blob=on`, `memfd` intact.
+
+### Files Modified
+
+- `scripts/install-qemu.sh`
+
 ## 2026.06.14
 
 ### What Changed
