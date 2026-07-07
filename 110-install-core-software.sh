@@ -38,7 +38,6 @@ install_non_plasma_packages() {
             numlockx
             pavucontrol
             playerctl
-            sardi-icons
             surfn-icons-git
             xcolor
             xorg-xkill
