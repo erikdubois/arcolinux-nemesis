@@ -306,7 +306,12 @@ run_glob "${PERSONAL_DIR}/910-*"
 run_glob "${PERSONAL_DIR}/920-*"
 run_glob "${PERSONAL_DIR}/930-*"
 # Install QEMU/KVM (defines the kiro-template VM) and VirtualBox by default.
-run_glob "${PERSONAL_DIR}/940-*"
+# Only on real metal - skip inside a VM where nested virtualization is pointless.
+if systemd-detect-virt --quiet; then
+    log_warn "Running inside a VM ($(systemd-detect-virt)) - skipping 940 virtualization install"
+else
+    run_glob "${PERSONAL_DIR}/940-*"
+fi
 
 run_glob "${PERSONAL_DIR}/990-skel*"
 run_glob "${PERSONAL_DIR}/999-last*"
