@@ -1,0 +1,18 @@
+{
+    "window": {
+        "title": "Hitelesítés szükséges"
+    },
+    "prompt": {
+        "password": "Jelszó"
+    },
+    "action": {
+        "cancel": "Mégse",
+        "authenticate": "Hitelesítés"
+    },
+    "error": {
+        "failed": {
+            "title": "Hitelesítés sikertelen",
+            "message": "A megadott jelszó helytelen volt."
+        }
+    }
+}

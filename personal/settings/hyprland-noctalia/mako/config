@@ -1,0 +1,17 @@
+# mako notifications — shared across the Kiro Wayland editions (kiro-wayland-dotfiles).
+# Tokyo Night defaults. pywal editions (wayfire/sway/river/labwc) regenerate the
+# colour lines at login via their own set-theme.sh; the static editions keep these.
+font=JetBrainsMono Nerd Font 10
+background-color=#1a1b26
+text-color=#c0caf5
+border-color=#7aa2f7
+border-size=2
+border-radius=8
+padding=10
+margin=8
+default-timeout=5000
+anchor=top-right
+
+[urgency=critical]
+border-color=#f7768e
+default-timeout=0

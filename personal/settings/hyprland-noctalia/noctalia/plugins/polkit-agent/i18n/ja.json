@@ -1,0 +1,18 @@
+{
+    "window": {
+        "title": "認証が必要です"
+    },
+    "prompt": {
+        "password": "パスワード"
+    },
+    "action": {
+        "cancel": "キャンセル",
+        "authenticate": "認証"
+    },
+    "error": {
+        "failed": {
+            "title": "認証に失敗しました",
+            "message": "入力されたパスワードが正しくありません。"
+        }
+    }
+}

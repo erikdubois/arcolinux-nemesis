@@ -1,0 +1,18 @@
+{
+    "window": {
+        "title": "Autenticação Necessária"
+    },
+    "prompt": {
+        "password": "Senha"
+    },
+    "action": {
+        "cancel": "Cancelar",
+        "authenticate": "Autenticar"
+    },
+    "error": {
+        "failed": {
+            "title": "Autenticação Falhou",
+            "message": "A senha introduzida está incorreta."
+        }
+    }
+}

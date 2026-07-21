@@ -1,0 +1,122 @@
+###############################################################################
+#  KEYBINDINGS — Kiro Hyprland (noctalia)
+#  Source: etc/skel/.config/kiro-hyprland-noctalia/hyprland.lua
+#  Shell:  noctalia-shell (launcher / control center / lock / wallpaper)
+###############################################################################
+
+── 1. Applications & Launchers ────────────────────────────────────────────────
+  super + Return          Terminal
+  super + T               Terminal
+  super + shift + Return  File manager
+  super + E               Code editor
+  super + D               App launcher (noctalia)
+  super + Space           App launcher (noctalia)
+  super + ctrl + Return   App launcher (noctalia)
+  super + S               Control center (noctalia)
+  super + shift + S       noctalia settings
+  super + V               Volume control
+  super + O               Colour picker
+  ctrl + alt + A          Alacritty tweak tool
+  ctrl + alt + B          Brave
+  ctrl + alt + C          Chromium
+  ctrl + alt + D          OBS Studio
+  ctrl + alt + E          Tweak tool
+  ctrl + alt + F          Firefox
+  ctrl + alt + G          Chromium
+  ctrl + alt + I          Kiro ISO builder
+  ctrl + alt + M          USB image writer
+  ctrl + alt + O          Opera
+  ctrl + alt + P          Package manager
+  ctrl + alt + Q          Alacritty tweak tool
+  ctrl + alt + Return     Terminal
+  ctrl + alt + T          Terminal
+  ctrl + alt + S          Tweak tool
+  ctrl + alt + U          Volume control
+  ctrl + alt + V          Vivaldi
+  ctrl + alt + W          Fastfetch tweak tool
+  ctrl + alt + Z          Fastfetch tweak tool
+  ctrl + alt + End        System monitor
+  ctrl + shift + Escape   System monitor
+  super + F1              Firefox
+  super + F2              Code editor
+  super + F3              Inkscape
+  super + F4              GIMP
+  super + F5              Meld
+  super + F6              VLC
+  super + F7              VirtualBox
+  super + F8              File manager
+  super + F9              Virt-manager
+  super + F10             Spotify
+  super + F11             App launcher (noctalia)
+  super + F12             App launcher (noctalia)
+
+── 2. Window Management ───────────────────────────────────────────────────────
+  super + Q               Close window
+  super + shift + Q       Close window
+  super + shift + Space   Toggle floating
+  super + F               Fullscreen
+  super + alt + F         Maximize
+  super + P               Pseudo-tile
+  super + left            Focus left
+  super + right           Focus right
+  super + up              Focus up
+  super + down            Focus down
+  super + shift + left    Swap left
+  super + shift + right   Swap right
+  super + shift + up      Swap up
+  super + shift + down    Swap down
+  super + shift + H       Shrink width
+  super + shift + L       Grow width
+  super + shift + K       Shrink height
+  super + shift + J       Grow height
+  super + left-click      Move window
+  super + right-click     Resize window
+
+── 3. Workspaces / Tags / Groups ──────────────────────────────────────────────
+  super + 1..0            Workspace 1..10  (AZERTY: same physical keys)
+  super + ctrl + 1..0     Move to workspace 1..10
+  super + shift + 1..0    Send to workspace 1..10
+  super + period          Next workspace
+  super + comma           Previous workspace
+  super + scroll down     Next workspace
+  super + scroll up       Previous workspace
+  super + Tab             Next workspace
+  super + shift + Tab     Previous workspace
+  super + U               Toggle scratchpad
+  super + shift + U       Send to scratchpad
+  super + G               Toggle group
+  super + ctrl + left     Into group left
+  super + ctrl + right    Into group right
+  super + ctrl + up       Into group up
+  super + ctrl + down     Into group down
+
+── 4. Layout & Tiling ─────────────────────────────────────────────────────────
+  super + J               Toggle split
+  super + I               Add master
+  super + ctrl + Space    Swap with master
+
+── 6. Multimedia & Hardware ───────────────────────────────────────────────────
+  XF86AudioRaiseVolume    Volume up
+  XF86AudioLowerVolume    Volume down
+  XF86AudioMute           Mute
+  XF86AudioPlay           Play / pause
+  XF86AudioNext           Next track
+  XF86AudioPrev           Previous track
+  XF86MonBrightnessUp     Brightness up
+  XF86MonBrightnessDown   Brightness down
+
+── 7. Screenshots ─────────────────────────────────────────────────────────────
+  Print                   Screenshot region
+  super + Print           Screenshot screen
+
+── 8. System & Session ────────────────────────────────────────────────────────
+  super + X               Logout menu
+  super + shift + X       Power menu
+  super + alt + L         Lock screen (noctalia)
+  ctrl + alt + R          Lock screen (noctalia)
+  super + shift + W       Wallpaper selector (noctalia)
+  super + Escape          Kill mode
+  super + ctrl + S        Show keybindings
+  ctrl + alt + K          Logout menu
+  super + shift + R       Reload Hyprland
+  ctrl + alt + L          Logout settings

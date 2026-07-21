@@ -40,6 +40,7 @@ install_nemesis_software() {
         alacritty-tweak-tool \
         arc-gtk-theme \
         archlinux-logout-gtk4 \
+        celestial-theme-forge \
         flameshot-git \
         gittyup \
         hardcode-fixer-git \

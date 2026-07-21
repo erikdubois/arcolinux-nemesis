@@ -1,0 +1,18 @@
+{
+    "window": {
+        "title": "需要身份驗證"
+    },
+    "prompt": {
+        "password": "密碼"
+    },
+    "action": {
+        "cancel": "取消",
+        "authenticate": "驗證"
+    },
+    "error": {
+        "failed": {
+            "title": "身份驗證失敗",
+            "message": "您輸入的密碼不正確。"
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "window": {
+        "title": "인증 필요"
+    },
+    "prompt": {
+        "password": "비밀번호"
+    },
+    "action": {
+        "cancel": "취소",
+        "authenticate": "인증"
+    },
+    "error": {
+        "failed": {
+            "title": "인증 실패",
+            "message": "입력한 비밀번호가 올바르지 않습니다."
+        }
+    }
+}

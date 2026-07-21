@@ -1,0 +1,18 @@
+{
+    "window": {
+        "title": "Wymagane uwierzytelnienie"
+    },
+    "prompt": {
+        "password": "Hasło"
+    },
+    "action": {
+        "cancel": "Anuluj",
+        "authenticate": "Uwierzytelnij"
+    },
+    "error": {
+        "failed": {
+            "title": "Uwierzytelnienie nie powiodło się",
+            "message": "Wprowadzone hasło jest nieprawidłowe."
+        }
+    }
+}

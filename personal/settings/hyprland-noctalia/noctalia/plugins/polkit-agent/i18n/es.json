@@ -1,0 +1,18 @@
+{
+    "window": {
+        "title": "Autenticación requerida"
+    },
+    "prompt": {
+        "password": "Contraseña"
+    },
+    "action": {
+        "cancel": "Cancelar",
+        "authenticate": "Autenticar"
+    },
+    "error": {
+        "failed": {
+            "title": "Autenticación fallida",
+            "message": "La contraseña introducida es incorrecta."
+        }
+    }
+}

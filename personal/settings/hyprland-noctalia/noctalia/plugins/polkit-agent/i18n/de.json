@@ -1,0 +1,18 @@
+{
+    "window": {
+        "title": "Authentifizierung erforderlich"
+    },
+    "prompt": {
+        "password": "Passwort"
+    },
+    "action": {
+        "cancel": "Abbrechen",
+        "authenticate": "Authentifizieren"
+    },
+    "error": {
+        "failed": {
+            "title": "Authentifizierung fehlgeschlagen",
+            "message": "Das eingegebene Passwort war falsch."
+        }
+    }
+}

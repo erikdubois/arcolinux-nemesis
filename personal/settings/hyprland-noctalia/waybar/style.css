@@ -1,0 +1,74 @@
+/* Shared waybar stylesheet for the Kiro Wayland editions (kiro-wayland-dotfiles).
+ * Carries every edition's workspace-selector block — sway (#workspaces), river
+ * (#tags), wayfire/labwc (#taskbar) — so one stylesheet themes them all; unused
+ * selectors are harmless. Each edition launches `waybar -c config-<wm>.jsonc`,
+ * which picks up this style.css. Colours come from colors.css (pywal-generated). */
+@import "colors.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 13px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: @bg;
+  color: @fg;
+}
+
+/* sway / hyprland — #workspaces pills */
+#workspaces button {
+  padding: 0 8px;
+  color: @muted;
+  background: transparent;
+}
+#workspaces button.active,
+#workspaces button.focused,
+#workspaces button.visible {
+  color: @bg;
+  background: @accent;
+  border-radius: 6px;
+}
+#workspaces button.urgent { color: @crit; }
+
+/* river — #tags pills */
+#tags button {
+  padding: 0 8px;
+  color: @muted;
+  background: transparent;
+}
+#tags button.occupied { color: @fg; }
+#tags button.focused {
+  color: @bg;
+  background: @accent;
+  border-radius: 6px;
+}
+#tags button.urgent { color: @crit; }
+
+/* wayfire / labwc — #taskbar app icons */
+#taskbar button {
+  padding: 0 6px;
+  margin: 2px 1px;
+}
+#taskbar button.active {
+  background: @accent;
+  border-radius: 6px;
+}
+
+#mode   { color: @warn; padding: 0 8px; }
+#window { color: @fg; padding: 0 8px; }
+
+#clock, #pulseaudio, #network, #cpu, #memory, #battery, #tray {
+  padding: 0 10px;
+  margin: 4px 2px;
+}
+
+#clock     { color: @accent; font-weight: bold; }
+#pulseaudio{ color: @accent2; }
+#network   { color: @info; }
+#cpu       { color: @good; }
+#memory    { color: @warn; }
+#battery.warning  { color: @warn; }
+#battery.critical { color: @crit; }

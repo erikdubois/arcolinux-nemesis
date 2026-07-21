@@ -1,0 +1,18 @@
+{
+    "window": {
+        "title": "Autentisering kreves"
+    },
+    "prompt": {
+        "password": "Passord"
+    },
+    "action": {
+        "cancel": "Avbryt",
+        "authenticate": "Autentiser"
+    },
+    "error": {
+        "failed": {
+            "title": "Autentisering mislyktes",
+            "message": "Passordet du skrev inn var feil."
+        }
+    }
+}

@@ -1,0 +1,12 @@
+/* Waybar palette — Tokyo Night defaults.
+ * Overwritten at login by ~/.config/wayfire/scripts/set-theme.sh (pywal),
+ * which regenerates this file from the wallpaper and reloads waybar. */
+@define-color bg      rgba(26, 27, 38, 0.92);
+@define-color fg      #c0caf5;
+@define-color muted   #565f89;
+@define-color accent  #7aa2f7;
+@define-color accent2 #bb9af7;
+@define-color info    #7dcfff;
+@define-color good    #9ece6a;
+@define-color warn    #e0af68;
+@define-color crit    #f7768e;

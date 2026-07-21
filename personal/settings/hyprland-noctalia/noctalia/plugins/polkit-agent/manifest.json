@@ -1,0 +1,24 @@
+{
+  "id": "polkit-agent",
+  "name": "Polkit Agent",
+  "version": "1.0.6",
+  "minNoctaliaVersion": "4.4.3",
+  "author": "Noctalia Team <team@noctalia.dev>",
+  "official": true,
+  "license": "MIT",
+  "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+  "description": "Provides a Polkit authentication agent.",
+  "tags": [
+    "System",
+    "Security"
+  ],
+  "entryPoints": {
+    "main": "Main.qml"
+  },
+  "dependencies": {
+    "plugins": []
+  },
+  "metadata": {
+    "defaultSettings": {}
+  }
+}

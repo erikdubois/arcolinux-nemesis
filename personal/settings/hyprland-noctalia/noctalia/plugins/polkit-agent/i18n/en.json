@@ -1,0 +1,18 @@
+{
+    "window": {
+        "title": "Authentication Required"
+    },
+    "prompt": {
+        "password": "Password"
+    },
+    "action": {
+        "cancel": "Cancel",
+        "authenticate": "Authenticate"
+    },
+    "error": {
+        "failed": {
+            "title": "Authentication Failed",
+            "message": "The password you entered was incorrect."
+        }
+    }
+}

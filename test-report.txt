@@ -1,0 +1,383 @@
+=============================================
+  Test Report - 2026-07-07 08:40:52
+=============================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[0] 0-current-choices.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] backup .bashrc → .bashrc-nemesis
+  [✓ SUCCESS] backup .zshrc → .zshrc-nemesis
+  [✓ SUCCESS] backup mirrorlist → mirrorlist-nemesis
+  [✓ SUCCESS] backup pacman.conf → pacman.conf-nemesis
+  [✓ SUCCESS] backup environment → environment-nemesis
+  [✓ SUCCESS] backup nanorc → nanorc-nemesis
+  [✓ SUCCESS] backup nsswitch.conf → nsswitch.conf-nemesis
+  [✓ SUCCESS] xf86-video-vmware - not present
+  [✓ SUCCESS] linux-zen - not present
+  [✓ SUCCESS] linux-zen-headers - not present
+  [✓ SUCCESS] archinstall - not present
+  [✓ SUCCESS] neofetch - not present
+  [✓ SUCCESS] yay - not present
+  [✓ SUCCESS] yay-bin - not present
+  [✓ SUCCESS] paru - not present
+  [✓ SUCCESS] picom - not present
+  [✓ SUCCESS] mkinitcpio-nfs-utils - not present
+  [✓ SUCCESS] xfburn - not present
+  [✓ SUCCESS] parole - not present
+  [✓ SUCCESS] pamac - not present
+  [✓ SUCCESS] pamac-git - not present
+  [✓ SUCCESS] mpv - not present
+  [✓ SUCCESS] clapper - not present
+  [✓ SUCCESS] archlinux-logout-git - not present
+  [✓ SUCCESS] archlinux-tweak-tool-git - not present
+  [✓ SUCCESS] btrfs-progs - not present
+  [✓ SUCCESS] jfsutils - not present
+  [✓ SUCCESS] xfsprogs - not present
+  [✓ SUCCESS] jfsutils - not present
+  [✓ SUCCESS] xfsprogs - not present
+  [✓ SUCCESS] btrfs-progs - not present
+  [✓ SUCCESS] xfsprogs - not present
+  [✓ SUCCESS] btrfs-progs - not present
+  [✓ SUCCESS] jfsutils - not present
+  [✓ SUCCESS] install sublime-text-4
+  [✓ SUCCESS] install ripgrep
+  [✓ SUCCESS] install meld
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[100] 100-install-nemesis-software.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install mkinitcpio-firmware
+  [✓ SUCCESS] install upd72020x-fw
+  [✓ SUCCESS] install archlinux-tweak-tool-gtk4
+  [✓ SUCCESS] install alacritty-tweak-tool
+  [✓ SUCCESS] install arc-gtk-theme
+  [✓ SUCCESS] install archlinux-logout-gtk4
+  [✓ SUCCESS] install flameshot-git
+  [✓ SUCCESS] install gittyup
+  [✓ SUCCESS] install hardcode-fixer-git
+  [✓ SUCCESS] install lastpass
+  [✓ SUCCESS] install neo-candy-icons-git
+  [✓ SUCCESS] install rofi
+  [✓ SUCCESS] install sparklines-git
+  [✓ SUCCESS] install surfn-icons-git
+  [✓ SUCCESS] install wttr
+  [✓ SUCCESS] install pamac-aur
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[101] 101-install-kiro-packages.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install kiro-dot-files
+  [✓ SUCCESS] install kiro-arc-dawn
+  [✓ SUCCESS] install kiro-arc-kde
+  [✓ SUCCESS] install kiro-keybindings
+  [✓ SUCCESS] install kiro-iso-builder
+  [✓ SUCCESS] install kiro-assistant
+  [✓ SUCCESS] install kiro-news
+  [✓ SUCCESS] install kiro-rofi
+  [✓ SUCCESS] install kiro-rofi-themes
+  [✓ SUCCESS] install kiro-sddm-simplicity
+  [✓ SUCCESS] install kiro-shells
+  [✓ SUCCESS] install kiro-variety-config
+  [✓ SUCCESS] install kiro-xfce
+  [✓ SUCCESS] install kiro-powermenu
+  [✓ SUCCESS] install plymouth-theme-kiro-logo
+  [✓ SUCCESS] install kiro-papirus-dark-tela
+  [✓ SUCCESS] install kiro-papirus-dark-tela-grey
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[105] 105-install-dev-tooling.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install arch-install-scripts
+  [✓ SUCCESS] install reflector
+  [✓ SUCCESS] install github-cli
+  [✓ SUCCESS] install sshpass
+  [✓ SUCCESS] install codespell
+  [✓ SUCCESS] install fd
+  [✓ SUCCESS] install inxi
+  [✓ SUCCESS] install obs-studio
+  [✓ SUCCESS] install ffmpeg
+  [✓ SUCCESS] install whisper-cpp-git
+  [✓ SUCCESS] install python-openai-whisper
+  [✓ SUCCESS] install imagemagick
+  [✓ SUCCESS] install pkgfile
+  [✓ SUCCESS] install pacquery
+  [✓ SUCCESS] install arch-rebuild-order
+  [✓ SUCCESS] install nodejs
+  [✓ SUCCESS] install npm
+  [✓ SUCCESS] install ncdu
+  [✓ SUCCESS] install glances
+  [✓ SUCCESS] install tmux
+  [✓ SUCCESS] install sysz
+  [✓ SUCCESS] install tldr
+  [✓ SUCCESS] install ripgrep-all
+  [✓ SUCCESS] install yt-dlp
+  [✓ SUCCESS] install xclip
+  [✓ SUCCESS] install gpick
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[110] 110-install-core-software.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] fastfetch - not present
+  [✓ SUCCESS] install alacritty
+  [✓ SUCCESS] install arandr
+  [✓ SUCCESS] install catfish
+  [✓ SUCCESS] install dmenu
+  [✓ SUCCESS] install evince
+  [✓ SUCCESS] install galculator
+  [✓ SUCCESS] install network-manager-applet
+  [✓ SUCCESS] install networkmanager-openvpn
+  [✓ SUCCESS] install networkmanager
+  [✓ SUCCESS] install numlockx
+  [✓ SUCCESS] install pavucontrol
+  [✓ SUCCESS] install playerctl
+  [✓ SUCCESS] install surfn-icons-git
+  [✓ SUCCESS] install xcolor
+  [✓ SUCCESS] install xorg-xkill
+  [✓ SUCCESS] install menulibre
+  [✓ SUCCESS] install mugshot
+  [✓ SUCCESS] install fastfetch-git
+  [✓ SUCCESS] install unifetch
+  [✓ SUCCESS] install yay-git
+  [✓ SUCCESS] install paru-git
+  [✓ SUCCESS] install adobe-source-sans-fonts
+  [✓ SUCCESS] install aic94xx-firmware
+  [✓ SUCCESS] install avahi
+  [✓ SUCCESS] install baobab
+  [✓ SUCCESS] install bash-completion
+  [✓ SUCCESS] install bat
+  [✓ SUCCESS] install bibata-cursor-theme
+  [✓ SUCCESS] install brave-bin
+  [✓ SUCCESS] install btop
+  [✓ SUCCESS] install chromium
+  [✓ SUCCESS] install curl
+  [✓ SUCCESS] install dconf-editor
+  [✓ SUCCESS] install debugedit
+  [✓ SUCCESS] install devtools
+  [✓ SUCCESS] install downgrade
+  [✓ SUCCESS] install duf
+  [✓ SUCCESS] install expac
+  [✓ SUCCESS] install fakeroot
+  [✓ SUCCESS] install feh
+  [✓ SUCCESS] install file-roller
+  [✓ SUCCESS] install firefox
+  [✓ SUCCESS] install fish
+  [✓ SUCCESS] install python-flake8
+  [✓ SUCCESS] install font-manager
+  [✓ SUCCESS] install gcolor3
+  [✓ SUCCESS] install gimp
+  [✓ SUCCESS] install git
+  [✓ SUCCESS] install gnome-disk-utility
+  [✓ SUCCESS] install gparted
+  [✓ SUCCESS] install gvfs-smb
+  [✓ SUCCESS] install gvfs-dnssd
+  [✓ SUCCESS] install hardcode-fixer-git
+  [✓ SUCCESS] install hardinfo2
+  [✓ SUCCESS] install inetutils
+  [✓ SUCCESS] install inkscape
+  [✓ SUCCESS] install logrotate
+  [✓ SUCCESS] install lolcat
+  [✓ SUCCESS] install lsb-release
+  [✓ SUCCESS] install lshw
+  [✓ SUCCESS] install man-db
+  [✓ SUCCESS] install man-pages
+  [✓ SUCCESS] install nano
+  [✓ SUCCESS] install plocate
+  [✓ SUCCESS] install meld
+  [✓ SUCCESS] install mintstick
+  [✓ SUCCESS] install most
+  [✓ SUCCESS] install namcap
+  [✓ SUCCESS] install nomacs
+  [✓ SUCCESS] install noto-fonts
+  [✓ SUCCESS] install nss-mdns
+  [✓ SUCCESS] install oh-my-zsh-git
+  [✓ SUCCESS] install pacmanlogviewer
+  [✓ SUCCESS] install polkit-gnome
+  [✓ SUCCESS] install python-pylint
+  [✓ SUCCESS] install python-pywal
+  [✓ SUCCESS] install pv
+  [✓ SUCCESS] install qbittorrent
+  [✓ SUCCESS] install rate-mirrors
+  [✓ SUCCESS] install resources
+  [✓ SUCCESS] install ripgrep
+  [✓ SUCCESS] install ruff
+  [✓ SUCCESS] install rsync
+  [✓ SUCCESS] install scrot
+  [✓ SUCCESS] install shortwave
+  [✓ SUCCESS] install smartmontools
+  [✓ SUCCESS] install speedtest-cli
+  [✓ SUCCESS] install squashfs-tools
+  [✓ SUCCESS] install sublime-text-4
+  [✓ SUCCESS] install system-config-printer
+  [✓ SUCCESS] install the_silver_searcher
+  [✓ SUCCESS] install time
+  [✓ SUCCESS] install thunar
+  [✓ SUCCESS] install thunar-archive-plugin
+  [✓ SUCCESS] install thunar-volman
+  [✓ SUCCESS] install tree
+  [✓ SUCCESS] install ttf-dejavu
+  [✓ SUCCESS] install ttf-droid
+  [✓ SUCCESS] install ttf-hack
+  [✓ SUCCESS] install ttf-liberation
+  [✓ SUCCESS] install ttf-ms-fonts
+  [✓ SUCCESS] install ttf-roboto
+  [✓ SUCCESS] install ttf-roboto-mono
+  [✓ SUCCESS] install ttf-ubuntu-font-family
+  [✓ SUCCESS] install upd72020x-fw
+  [✓ SUCCESS] install variety
+  [✓ SUCCESS] install vivaldi
+  [✓ SUCCESS] install vivaldi-ffmpeg-codecs
+  [✓ SUCCESS] install vlc
+  [✓ SUCCESS] install vlc-plugins-all
+  [✓ SUCCESS] install wd719x-firmware
+  [✓ SUCCESS] install wget
+  [✓ SUCCESS] install xdg-user-dirs
+  [✓ SUCCESS] install yad
+  [✓ SUCCESS] install zapzap
+  [✓ SUCCESS] install zsh
+  [✓ SUCCESS] install zsh-completions
+  [✓ SUCCESS] install zsh-syntax-highlighting
+  [✓ SUCCESS] install gzip
+  [✓ SUCCESS] install unace
+  [✓ SUCCESS] install unrar
+  [✓ SUCCESS] install unzip
+  [✓ SUCCESS] install hw-probe
+  [✓ SUCCESS] install insync
+  [✓ SUCCESS] install signal-in-tray
+  [✓ SUCCESS] install spotify
+  [✓ SUCCESS] install visual-studio-code-bin
+  [✓ SUCCESS] service avahi-daemon.service - enabled
+  [✓ SUCCESS] service man-db.timer - enabled
+  [✓ SUCCESS] service plocate-updatedb.timer - enabled
+  [✓ SUCCESS] service logrotate.timer - enabled
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[130] 130-install-bluetooth.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install bluez
+  [✓ SUCCESS] install bluez-libs
+  [✓ SUCCESS] install bluez-utils
+  [✓ SUCCESS] install blueberry
+  [✓ SUCCESS] service bluetooth.service - enabled
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[140] 140-install-cups.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install cups
+  [✓ SUCCESS] install cups-pdf
+  [✓ SUCCESS] install ghostscript
+  [✓ SUCCESS] install gsfonts
+  [✓ SUCCESS] install gutenprint
+  [✓ SUCCESS] install libcups
+  [✓ SUCCESS] install system-config-printer
+  [✓ SUCCESS] install sane
+  [✓ SUCCESS] install simple-scan
+  [✓ SUCCESS] service cups.service - enabled
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[150] 150-ananicy.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install ananicy-cpp
+  [✓ SUCCESS] install cachyos-ananicy-rules-git
+  [✓ SUCCESS] service ananicy-cpp.service - enabled
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[200] 200-software-aur-repo.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[600] 600-ohmychadwm.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install ohmychadwm
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[900] 900-install-personal-settings-folders.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] dir /etc/skel/.config
+  [✓ SUCCESS] dir /home/erik/.bin
+  [✓ SUCCESS] dir /home/erik/.fonts
+  [✓ SUCCESS] dir /home/erik/.icons
+  [✓ SUCCESS] dir /home/erik/.themes
+  [✓ SUCCESS] dir /home/erik/.local/share/bin
+  [✓ SUCCESS] dir /home/erik/.local/share/icons
+  [✓ SUCCESS] dir /home/erik/.local/share/themes
+  [✓ SUCCESS] dir /home/erik/.local/share/applications
+  [✓ SUCCESS] dir /home/erik/.config
+  [✓ SUCCESS] dir /home/erik/.config/xfce4
+  [✓ SUCCESS] dir /home/erik/.config/autostart
+  [✓ SUCCESS] dir /home/erik/.config/xfce4/xfconf
+  [✓ SUCCESS] dir /home/erik/.config/gtk-3.0
+  [✓ SUCCESS] dir /home/erik/.config/gtk-4.0
+  [✓ SUCCESS] dir /home/erik/.config/variety
+  [✓ SUCCESS] dir /home/erik/.config/fish
+  [✓ SUCCESS] dir /home/erik/.config/obs-studio
+  [✓ SUCCESS] dir /home/erik/.config/neofetch
+  [✓ SUCCESS] dir /home/erik/.config/flameshot
+  [✓ SUCCESS] dir /home/erik/.config/yay
+  [✓ SUCCESS] dir /home/erik/DATA
+  [✓ SUCCESS] dir /home/erik/Insync
+  [✓ SUCCESS] dir /home/erik/Projects
+  [✓ SUCCESS] dir /home/erik/Shared
+  [✓ SUCCESS] dir /home/erik/.config/sublime-text/Packages/User
+  [✓ SUCCESS] copied → /etc/nanorc
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[910] 910-plasma-specific-applications-and-settings.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[920] 920-ckb-next.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] install hwinfo
+  [✓ SUCCESS] install ckb-next-git
+  [✓ SUCCESS] service ckb-next-daemon.service - enabled
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[930] 930-real-metal.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [✓ SUCCESS] qemu-guest-agent - not present
+  [✓ SUCCESS] virtualbox-guest-utils - not present
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[990] 990-skel.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[999] 999-last-changes.sh
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+=============================================
+  Final Summary
+=============================================
+Total  : 279
+Passed : 279
+Failed : 0
+
+=============================================
+  Systemd Services Summary
+=============================================
+  Explicitly enabled by scripts
+  [✓ enabled]  avahi-daemon.service
+  [✓ enabled]  man-db.timer
+  [✓ enabled]  plocate-updatedb.timer
+  [✓ enabled]  logrotate.timer
+  [✓ enabled]  bluetooth.service
+  [✓ enabled]  cups.service
+  [✓ enabled]  ananicy-cpp.service
+  [✓ PASSED]  vboxservice.service (package not installed - not needed)
+  [✓ enabled]  ckb-next-daemon.service
+
+  Enabled : 8  |  Not enabled : 0  |  Not needed : 1
+
+=============================================
+  Drive Health: /dev/sda
+=============================================
+SMART overall-health self-assessment test result: PASSED
+  5 Reallocated_Sector_Ct   0x0033   100   100   010    Pre-fail  Always       -       0
+  9 Power_On_Hours          0x0032   098   098   000    Old_age   Always       -       5171
+187 Uncorrectable_Error_Cnt 0x0032   100   100   000    Old_age   Always       -       0
+190 Airflow_Temperature_Cel 0x0032   070   039   000    Old_age   Always       -       30
+
+=============================================
+  Failures Recap
+=============================================
+  No failures - all checks passed

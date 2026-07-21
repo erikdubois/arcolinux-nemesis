@@ -1,0 +1,18 @@
+{
+    "window": {
+        "title": "Kimlik Doğrulaması Gerekli"
+    },
+    "prompt": {
+        "password": "Parola"
+    },
+    "action": {
+        "cancel": "İptal",
+        "authenticate": "Doğrula"
+    },
+    "error": {
+        "failed": {
+            "title": "Kimlik Doğrulama Başarısız",
+            "message": "Girdiğiniz parola yanlış."
+        }
+    }
+}

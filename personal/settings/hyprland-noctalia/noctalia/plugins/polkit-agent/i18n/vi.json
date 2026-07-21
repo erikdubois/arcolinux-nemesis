@@ -1,0 +1,18 @@
+{
+  "window": {
+    "title": "Yêu cầu xác thực"
+  },
+  "prompt": {
+    "password": "Mật khẩu"
+  },
+  "action": {
+    "cancel": "Hủy",
+    "authenticate": "Xác thực"
+  },
+  "error": {
+    "failed": {
+      "title": "Xác thực thất bại",
+      "message": "Mật khẩu bạn nhập không đúng."
+    }
+  }
+}
