@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026.10.01
+
+### archlinux-logout-gtk4 is now archlinux-logout
+
+**What Changed.** The logout app's package and repo names carried a GTK version suffix that says nothing to users. Everything it installs was already named `archlinux-logout`, so only the package name and the references to it change.
+
+**Technical Details.** The install scripts use the new package name. The voyage-of-chadwm installers now clone `https://github.com/kirodubes/archlinux-logout` directly instead of the old erikdubois URL.
+
+**Files Modified.**
+- `100-install-nemesis-software.sh`
+- `600-ohmychadwm.sh`
+- `personal/settings/hyprland-noctalia/kiro-hyprland-noctalia/hyprland.lua` (comment)
+- `personal/settings/voyage-of-chadwm/{mint,solus,ubuntu}-chadwm/install-chadwm.sh`
+
 ## 2026.09.26
 
 ### What Changed

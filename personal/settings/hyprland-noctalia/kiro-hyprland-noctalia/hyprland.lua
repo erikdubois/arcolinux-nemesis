@@ -26,7 +26,7 @@ local mod = "SUPER"
 local term     = "alacritty"
 local files    = "thunar"
 local editor   = "code"
-local logout   = "archlinux-logout"   -- Kiro logout dialog (archlinux-logout-gtk4), as on the other editions
+local logout   = "archlinux-logout"   -- Kiro logout dialog (archlinux-logout), as on the other editions
 local powermenu = "kiro-powermenu"
 local keybindings = "kiro-keybindings"   -- searchable PySide6/QML cheatsheet (auto-detects Hyprland)
 

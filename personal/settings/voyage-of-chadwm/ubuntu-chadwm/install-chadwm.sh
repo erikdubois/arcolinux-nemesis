@@ -199,20 +199,20 @@ echo "########################################################################"
 tput sgr0
 echo
 
-[ -d /tmp/archlinux-logout-gtk4 ] && rm -rf /tmp/archlinux-logout-gtk4
-git clone https://github.com/erikdubois/archlinux-logout-gtk4 /tmp/archlinux-logout-gtk4
+[ -d /tmp/archlinux-logout ] && rm -rf /tmp/archlinux-logout
+git clone https://github.com/kirodubes/archlinux-logout /tmp/archlinux-logout
 
-sudo cp /tmp/archlinux-logout-gtk4/usr/bin/archlinux-logout /usr/bin/
-sudo cp /tmp/archlinux-logout-gtk4/usr/bin/archlinux-betterlockscreen /usr/bin/
+sudo cp /tmp/archlinux-logout/usr/bin/archlinux-logout /usr/bin/
+sudo cp /tmp/archlinux-logout/usr/bin/archlinux-betterlockscreen /usr/bin/
 sudo chmod +x /usr/bin/archlinux-logout
 sudo chmod +x /usr/bin/archlinux-betterlockscreen
 
 sudo mkdir -p /usr/share/archlinux-logout
-sudo cp -r /tmp/archlinux-logout-gtk4/usr/share/archlinux-logout/. /usr/share/archlinux-logout/
+sudo cp -r /tmp/archlinux-logout/usr/share/archlinux-logout/. /usr/share/archlinux-logout/
 sudo mkdir -p /usr/share/archlinux-logout-themes
-sudo cp -r /tmp/archlinux-logout-gtk4/usr/share/archlinux-logout-themes/. /usr/share/archlinux-logout-themes/
+sudo cp -r /tmp/archlinux-logout/usr/share/archlinux-logout-themes/. /usr/share/archlinux-logout-themes/
 
-sudo cp /tmp/archlinux-logout-gtk4/etc/archlinux-logout.conf /etc/
+sudo cp /tmp/archlinux-logout/etc/archlinux-logout.conf /etc/
 
 
 echo
