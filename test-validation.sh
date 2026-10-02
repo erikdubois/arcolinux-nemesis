@@ -171,10 +171,14 @@ check_pkg_installed() {
         return
     fi
     local git_variant="${pkg}-git"
+    # kiro-iso-next ships the beta "-nemesis" drop-in (e.g. kiro-iso-builder-nemesis), which conflicts with $pkg.
+    local nemesis_variant="${pkg}-nemesis"
     if pacman -Qq | grep -Fxq "$pkg"; then
         log_result "SUCCESS" "install $pkg"
     elif pacman -Qq | grep -Fxq "$git_variant"; then
         log_result "SUCCESS" "install $pkg (via $git_variant)"
+    elif pacman -Qq | grep -Fxq "$nemesis_variant"; then
+        log_result "SUCCESS" "install $pkg (via $nemesis_variant)"
     else
         log_result "FAILED"  "install $pkg - not found"
     fi

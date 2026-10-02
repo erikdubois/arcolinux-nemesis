@@ -20,6 +20,15 @@
 - `0-current-choices.sh`
 - `test-report.txt`
 
+### Validator accepts the beta "-nemesis" packages
+
+**What Changed.** Machines installed from the kiro-iso-next ISO ship `kiro-iso-builder-nemesis`, the beta build of the ISO builder, in place of `kiro-iso-builder`. The two packages conflict, and the beta one is correct on those machines. `test-validation.sh` used to report `kiro-iso-builder` as "not found" there. It now passes the check when the `-nemesis` variant is installed. `101-install-kiro-packages.sh` is unchanged.
+
+**Technical Details.** `check_pkg_installed` checks for `${pkg}-nemesis` after the existing `${pkg}-git` fallback. Tested on a machine installed from the next ISO, where the check now passes.
+
+**Files Modified.**
+- `test-validation.sh`
+
 ## 2026.10.01
 
 ### archlinux-logout-gtk4 is now archlinux-logout
