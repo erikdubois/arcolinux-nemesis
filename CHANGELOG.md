@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026.10.02
+
+### Unused Vulkan drivers are removed
+
+**What Changed.** `0-current-choices.sh` now removes `vulkan-intel` when the machine has no Intel GPU, and `vulkan-radeon` when it has no AMD GPU. A driver is kept whenever a matching GPU is present. `test-validation.sh` skips the check for a driver whose GPU is present, so it doesn't report it as "still installed".
+
+**Technical Details.** The script finds GPU vendors by reading `/sys/bus/pci/devices/*/class` (display controllers are class `0x03xxxx`) and `vendor` (`0x8086` Intel, `0x1002` AMD). Reading sysfs means `pciutils` doesn't need to be installed. The validator does the same test through a new `GPU_VULKAN_PKGS` map and a `has_gpu_for_pkg()` helper, following the existing `FS_TOOL_PKGS` pattern.
+
+**Files Modified.**
+- `0-current-choices.sh`
+- `test-validation.sh`
+
 ## 2026.10.01
 
 ### archlinux-logout-gtk4 is now archlinux-logout

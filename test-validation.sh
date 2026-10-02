@@ -83,6 +83,19 @@ is_root_fs_tool() {
     [[ -n "${FS_TOOL_PKGS[$pkg]:-}" && "${FS_TOOL_PKGS[$pkg]}" == "$(findmnt -no FSTYPE /)" ]]
 }
 
+# 0-current-choices.sh removes a Vulkan driver only when no GPU of that PCI vendor is present.
+declare -A GPU_VULKAN_PKGS=(["vulkan-intel"]="0x8086" ["vulkan-radeon"]="0x1002")
+
+has_gpu_for_pkg() {
+    local pkg="$1" dev
+    [[ -n "${GPU_VULKAN_PKGS[$pkg]:-}" ]] || return 1
+    for dev in /sys/bus/pci/devices/*; do
+        [[ "$(cat "${dev}/class" 2>/dev/null)" == 0x03* ]] || continue
+        [[ "$(cat "${dev}/vendor" 2>/dev/null)" == "${GPU_VULKAN_PKGS[$pkg]}" ]] && return 0
+    done
+    return 1
+}
+
 is_xfce_installed() {
     [[ -f /usr/share/xsessions/xfce.desktop ]]
 }
@@ -181,6 +194,12 @@ check_pkg_removed() {
     if is_root_fs_tool "$pkg"; then
         if [[ "$DETAIL_MODE" == true ]]; then
             echo -e "  ${YELLOW}⊘${NC} remove $pkg  ${YELLOW}SKIPPED${NC} (root filesystem is ${FS_TOOL_PKGS[$pkg]})"
+        fi
+        return
+    fi
+    if has_gpu_for_pkg "$pkg"; then
+        if [[ "$DETAIL_MODE" == true ]]; then
+            echo -e "  ${YELLOW}⊘${NC} remove $pkg  ${YELLOW}SKIPPED${NC} (matching GPU present)"
         fi
         return
     fi

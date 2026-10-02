@@ -198,6 +198,28 @@ run_remove_anywhere_software() {
         fi
     fi
 
+    log_warn "Removing Vulkan drivers for GPU vendors that are not present"
+
+    # Read PCI display controllers (class 0x03xxxx) from sysfs so this works
+    # without pciutils installed. 0x8086 = Intel, 0x1002 = AMD.
+    local has_intel_gpu=false
+    local has_amd_gpu=false
+    local dev
+    for dev in /sys/bus/pci/devices/*; do
+        [[ "$(cat "${dev}/class" 2>/dev/null)" == 0x03* ]] || continue
+        case "$(cat "${dev}/vendor" 2>/dev/null)" in
+            0x8086) has_intel_gpu=true ;;
+            0x1002) has_amd_gpu=true ;;
+        esac
+    done
+
+    if [[ "${has_intel_gpu}" == false ]]; then
+        remove_matching_packages vulkan-intel
+    fi
+    if [[ "${has_amd_gpu}" == false ]]; then
+        remove_matching_packages vulkan-radeon
+    fi
+
     # Remove overlapping tools so the preferred Nemesis variants can be
     # installed later. The exact-match dependency helper now prevents
     # pamac from accidentally matching pamac-aur.
