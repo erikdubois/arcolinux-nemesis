@@ -1,5 +1,5 @@
 =============================================
-  Test Report - 2026-07-07 08:40:52
+  Test Report - 2026-09-26 06:39:33
 =============================================
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -48,10 +48,11 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   [✓ SUCCESS] install mkinitcpio-firmware
   [✓ SUCCESS] install upd72020x-fw
-  [✓ SUCCESS] install archlinux-tweak-tool-gtk4
+  [✓ SUCCESS] install archlinux-tweak-tool
   [✓ SUCCESS] install alacritty-tweak-tool
   [✓ SUCCESS] install arc-gtk-theme
   [✓ SUCCESS] install archlinux-logout-gtk4
+  [✓ SUCCESS] install celestial-theme-forge
   [✓ SUCCESS] install flameshot-git
   [✓ SUCCESS] install gittyup
   [✓ SUCCESS] install hardcode-fixer-git
@@ -348,8 +349,8 @@
 =============================================
   Final Summary
 =============================================
-Total  : 279
-Passed : 279
+Total  : 280
+Passed : 280
 Failed : 0
 
 =============================================
@@ -371,11 +372,6 @@ Failed : 0
 =============================================
   Drive Health: /dev/sda
 =============================================
-SMART overall-health self-assessment test result: PASSED
-  5 Reallocated_Sector_Ct   0x0033   100   100   010    Pre-fail  Always       -       0
-  9 Power_On_Hours          0x0032   098   098   000    Old_age   Always       -       5171
-187 Uncorrectable_Error_Cnt 0x0032   100   100   000    Old_age   Always       -       0
-190 Airflow_Temperature_Cel 0x0032   070   039   000    Old_age   Always       -       30
 
 =============================================
   Failures Recap

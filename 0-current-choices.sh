@@ -225,6 +225,8 @@ run_remove_anywhere_software() {
     # pamac from accidentally matching pamac-aur.
     remove_matching_packages linux-zen
     remove_matching_packages linux-zen-headers
+    remove_matching_packages linux-lts
+    remove_matching_packages linux-lts-headers
     remove_matching_packages archinstall
     remove_matching_packages neofetch
     # fastfetch is NOT removed here: the stock->git swap is done in 110 via -Rdd

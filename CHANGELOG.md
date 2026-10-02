@@ -12,6 +12,14 @@
 - `0-current-choices.sh`
 - `test-validation.sh`
 
+### linux-lts is removed
+
+**What Changed.** `run_remove_anywhere_software` now removes `linux-lts` and `linux-lts-headers` alongside `linux-zen`. `test-report.txt` is refreshed from the latest validator run.
+
+**Files Modified.**
+- `0-current-choices.sh`
+- `test-report.txt`
+
 ## 2026.10.01
 
 ### archlinux-logout-gtk4 is now archlinux-logout
