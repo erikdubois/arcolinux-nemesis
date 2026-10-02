@@ -45,10 +45,7 @@ install_kiro_packages() {
         kiro-shells \
         kiro-variety-config \
         kiro-xfce \
-        kiro-powermenu \
-        plymouth-theme-kiro-logo \
-        kiro-papirus-dark-tela \
-        kiro-papirus-dark-tela-grey
+        kiro-powermenu
 }
 
 # Install kiro-system-files on its own — it overwrites real /etc system files and
