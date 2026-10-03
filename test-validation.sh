@@ -352,7 +352,8 @@ parse_remove_packages() {
         | grep -v '^[[:space:]]*#' \
         | sed -E 's/^[[:space:]]*(remove_matching_packages_deps_dd|remove_matching_packages_deps|remove_matching_packages|remove_packages)[[:space:]]*//' \
         | sed "s/['\"]//g" \
-        | xargs -n1
+        | xargs -n1 \
+        | awk '!seen[$0]++'  # the root-fs case branches list the same tools several times
 }
 
 # Extract src/dst from backup_file_once calls
@@ -818,6 +819,13 @@ print_smart_summary() {
 
     if [[ ! -b "$device" ]]; then
         echo -e "  ${YELLOW}${device} not found — skipping${NC}"
+        return
+    fi
+
+    # Without a terminal sudo cannot prompt (e.g. run over SSH); skip instead of reporting UNKNOWN health.
+    if [[ ! -t 0 ]] && ! sudo -n true 2>/dev/null; then
+        echo -e "  ${YELLOW}sudo needs a password and there is no terminal — skipping${NC}"
+        echo "  skipped - sudo needs a password and there is no terminal" >> "$REPORT_FILE"
         return
     fi
 

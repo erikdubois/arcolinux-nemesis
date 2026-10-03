@@ -24,6 +24,15 @@ The new validator flagged the `vboxusers` bug on the machine that had passed 280
 **Files Modified.**
 - `test-validation.sh`
 
+### Validator output cleanups
+
+**What Changed.** The filesystem tools (`btrfs-progs`, `xfsprogs`, `jfsutils`) were counted three times each, because every root-filesystem `case` branch lists them. Each removed package is now checked once, so a full run reports 293 checks instead of 299. The drive health section used to report `UNKNOWN` when sudo couldn't prompt for a password, for example over SSH. It now says it is skipping for that reason. Run from a terminal, it prompts and works as before.
+
+**Technical Details.** `parse_remove_packages` drops duplicates with `awk '!seen[$0]++'`. `print_smart_summary` skips when there is no TTY and `sudo -n true` fails.
+
+**Files Modified.**
+- `test-validation.sh`
+
 ## 2026.10.02
 
 ### Unused Vulkan drivers are removed
