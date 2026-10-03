@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 2026.10.03
+
+### User is added to vboxusers again
+
+**What Changed.** `install-virtualbox-for-linux.sh` only added the user to `vboxusers` when `SUDO_USER` was set. The pipeline runs as the normal user, so that step never ran, and the bare `gpasswd` without sudo would have failed anyway. A full run on a real-metal test machine left the user outside `vboxusers`. The script now uses `add_user_to_group "${SUDO_USER:-$USER}" vboxusers`, the same way `install-qemu.sh` adds `kvm` and `libvirt`.
+
+**Files Modified.**
+- `personal/install-virtualbox-for-linux.sh`
+
+### Validator covers more of the pipeline
+
+**What Changed.** `test-validation.sh` reported 280/280 passed on that same machine and missed the `vboxusers` bug, because it never looked at stage 940. It now checks:
+- **Stage 940** (real metal only, matching `0-current-choices.sh`): the packages, `libvirtd` and group membership set up by `install-qemu.sh` and `install-virtualbox-for-linux.sh`.
+- **Repository setup:** `[nemesis_repo]` and `[chaotic-aur]` in `pacman.conf`, `ParallelDownloads = 25`, and `kiro-keyring`/`kiro-mirrorlist`.
+- **Folder backups:** `backup_folder_as_root` destinations such as `/etc/sysctl.d-nemesis`.
+- **990-skel:** that a `~/.config-backup-*` exists.
+
+The new validator flagged the `vboxusers` bug on the machine that had passed 280/280 (298 of 299 checks passed).
+
+**Technical Details.** New parsers `parse_backup_folders` and `parse_user_groups`, plus a `script_calls` helper that keys checks off a helper call at the start of a line, so commented-out calls are skipped. 940 is validated through the two installers it calls, because `940-virtual-machines.sh` itself only wraps them.
+
+**Files Modified.**
+- `test-validation.sh`
+
 ## 2026.10.02
 
 ### Unused Vulkan drivers are removed

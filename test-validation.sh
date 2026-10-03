@@ -226,6 +226,34 @@ check_backup_file() {
     fi
 }
 
+check_backup_dir() {
+    local dst="$1"
+    if [[ -d "$dst" ]]; then
+        log_result "SUCCESS" "backup folder $dst"
+    else
+        log_result "FAILED"  "backup folder $dst - missing"
+    fi
+}
+
+check_user_in_group() {
+    local group="$1"
+    if id -nG "$USER" | grep -qw "$group"; then
+        log_result "SUCCESS" "user $USER in group $group"
+    else
+        log_result "FAILED"  "user $USER not in group $group"
+    fi
+}
+
+check_pacman_conf_line() {
+    local pattern="$1"
+    local label="$2"
+    if grep -qE "$pattern" /etc/pacman.conf; then
+        log_result "SUCCESS" "pacman.conf: $label"
+    else
+        log_result "FAILED"  "pacman.conf: $label - missing"
+    fi
+}
+
 check_service_active() {
     local svc="$1"
     if systemctl is-active --quiet "$svc" 2>/dev/null; then
@@ -335,6 +363,26 @@ parse_backup_files() {
         | sed 's/^[[:space:]]*backup_file_once[[:space:]]*//'
 }
 
+# Extract the destination folder from backup_folder_as_root calls
+parse_backup_folders() {
+    local script="$1"
+    grep -E '^[[:space:]]*backup_folder_as_root[[:space:]]+' "$script" \
+        | awk '{print $3}'
+}
+
+# Extract the group (last argument) from add_user_to_group calls
+parse_user_groups() {
+    local script="$1"
+    grep -E '^[[:space:]]*add_user_to_group[[:space:]]+' "$script" \
+        | awk '{print $NF}' \
+        | sed "s/['\"]//g"
+}
+
+# True when the script calls the given helper at the start of a line (not commented out)
+script_calls() {
+    grep -qE "^[[:space:]]*$2([[:space:]]|$)" "$1"
+}
+
 # Extract services from start_service / systemctl enable
 parse_services_started() {
     local script="$1"
@@ -433,6 +481,39 @@ validate_script() {
         dst=$(echo "$args" | awk '{print $2}')
         [[ -n "$src" && -n "$dst" ]] && check_backup_file "$src" "$dst"
     done < <(parse_backup_files "$script_path")
+
+    while IFS= read -r dst; do
+        [[ -n "$dst" ]] && check_backup_dir "$dst"
+    done < <(parse_backup_folders "$script_path")
+
+    # Repository setup checks
+    if script_calls "$script_path" append_nemesis_repo; then
+        check_pacman_conf_line '^\[nemesis_repo\]' "[nemesis_repo]"
+    fi
+    if script_calls "$script_path" append_chaotic_repo; then
+        check_pacman_conf_line '^\[chaotic-aur\]' "[chaotic-aur]"
+    fi
+    if script_calls "$script_path" set_parallel_downloads; then
+        check_pacman_conf_line '^ParallelDownloads = 25' "ParallelDownloads = 25"
+    fi
+    if script_calls "$script_path" install_kiro_keyring_and_mirrorlist; then
+        check_pkg_installed kiro-keyring
+        check_pkg_installed kiro-mirrorlist
+    fi
+
+    # 990-skel backs up ~/.config before copying /etc/skel over HOME
+    if script_calls "$script_path" copy_skel_to_home; then
+        if compgen -G "${HOME}/.config-backup-*" >/dev/null; then
+            log_result "SUCCESS" "skel copy - ~/.config backup present"
+        else
+            log_result "FAILED"  "skel copy - no ~/.config-backup-* found"
+        fi
+    fi
+
+    # Group membership checks
+    while IFS= read -r group; do
+        [[ -n "$group" ]] && check_user_in_group "$group"
+    done < <(parse_user_groups "$script_path")
 
     # Remove checks
     while IFS= read -r pkg; do
@@ -536,7 +617,20 @@ else
     echo -e "${YELLOW}Skipping 500-plasma* (not running Plasma — XDG_CURRENT_DESKTOP=${XDG_CURRENT_DESKTOP})${NC}"
 fi
 
-for pattern in "900-*" "910-*" "920-*" "930-*" "990-skel*" "999-last*"; do
+for pattern in "900-*" "910-*" "920-*" "930-*"; do
+    for script in "${PERSONAL_DIR}"/${pattern}; do
+        [[ -f "$script" ]] && ALL_SCRIPTS+=("$script")
+    done
+done
+
+# 940 only runs on real metal; its work lives in the two installers it calls.
+if is_virtual_machine; then
+    echo -e "${YELLOW}Skipping 940 virtualization (running inside a VM)${NC}"
+else
+    ALL_SCRIPTS+=("${PERSONAL_DIR}/install-qemu.sh" "${PERSONAL_DIR}/install-virtualbox-for-linux.sh")
+fi
+
+for pattern in "990-skel*" "999-last*"; do
     for script in "${PERSONAL_DIR}"/${pattern}; do
         [[ -f "$script" ]] && ALL_SCRIPTS+=("$script")
     done

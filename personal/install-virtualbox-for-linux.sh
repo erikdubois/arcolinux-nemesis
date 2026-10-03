@@ -68,10 +68,7 @@ main() {
     # User group
     ############################################################################################################
 
-    if [[ -n "${SUDO_USER:-}" ]]; then
-        log_subsection "Adding ${SUDO_USER} to vboxusers group"
-        gpasswd -a "$SUDO_USER" vboxusers
-    fi
+    add_user_to_group "${SUDO_USER:-$USER}" vboxusers
 
     ############################################################################################################
     # Remove VirtualBox GUI warnings and suppress log files
