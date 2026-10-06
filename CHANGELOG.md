@@ -2,6 +2,19 @@
 
 ## 2026.10.06
 
+### X11-only tools skipped on Wayland-only systems
+
+**What Changed.** A full run on the msi laptop (KIROTUX hyprland-dms) installed eight tools that only work on X11: arandr, dmenu, numlockx, xcolor, xorg-xkill, scrot (all from 110), xclip and gpick (from 105). 110 treated every non-Plasma desktop as an X11 window manager. These tools are now installed only when an X session exists, so a Wayland-only system skips them.
+
+**Technical Details.** New `has_x11_session` in `common/common.sh` checks for any `/usr/share/xsessions/*.desktop`; KIROTUX ships no such folder. 110 gets `install_x11_only_packages`: scrot whenever an X session exists, and the other five only when Plasma is also absent, matching the old non-Plasma rule. 105 installs xclip and gpick behind the same check. `test-validation.sh` gets an `X11_ONLY_PKGS` guard so these show as SKIPPED, not FAILED, on Wayland-only hosts. The validator does not source common.sh, so it has its own copy of the check. Known edge: 110 runs before `600-ohmychadwm`, so on a KIROTUX box where you choose ohmychadwm, the first run still skips them (600 installs dmenu itself).
+
+**Files Modified.**
+- `common/common.sh`
+- `110-install-core-software.sh`
+- `105-install-dev-tooling.sh`
+- `test-validation.sh`
+- `CHANGELOG.md`
+
 ### KIROTUX: no package conflicts in 101
 
 **What Changed.** KIROTUX ships two packages that conflict with Kiro ones that `101-install-kiro-packages.sh` installs: `kiro-sddm-simplicity-hyprland` (conflicts with `kiro-sddm-simplicity`) and `kirotux-thunar` (conflicts with `kiro-xfce` and `kiro-thunar`). 101 installs all Kiro packages in one batch, and pacman `--noconfirm` answers N to a conflict prompt, so the whole batch would abort on KIROTUX. 101 now skips `kiro-sddm-simplicity` and `kiro-xfce` when the KIROTUX variant is installed, and keeps the KIROTUX one. `kiro-thunar` is not installed by any nemesis script.

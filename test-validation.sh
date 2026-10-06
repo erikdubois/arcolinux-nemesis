@@ -75,6 +75,8 @@ CORSAIR_ONLY_PKGS=("ckb-next-git")
 CORSAIR_ONLY_SVCS=("ckb-next-daemon.service")
 # 930-real-metal.sh removes these only on bare metal — inside any VM they must stay.
 BARE_METAL_REMOVE_PKGS=("qemu-guest-agent" "virtualbox-guest-utils")
+# 105/110 install these X11-only tools only when an X session exists (none on KIROTUX).
+X11_ONLY_PKGS=("scrot" "arandr" "dmenu" "numlockx" "xcolor" "xorg-xkill" "xclip" "gpick")
 # 0-current-choices.sh keeps the tooling for the root filesystem and removes the rest.
 declare -A FS_TOOL_PKGS=(["btrfs-progs"]="btrfs" ["xfsprogs"]="xfs" ["jfsutils"]="jfs")
 
@@ -98,6 +100,10 @@ has_gpu_for_pkg() {
 
 is_xfce_installed() {
     [[ -f /usr/share/xsessions/xfce.desktop ]]
+}
+
+has_x11_session() {
+    compgen -G "/usr/share/xsessions/*.desktop" >/dev/null
 }
 
 is_virtualbox_guest() {
@@ -131,6 +137,11 @@ pkg_should_skip() {
     done
     for p in "${PIPEWIRE_REPLACED_PKGS[@]}"; do
         if [[ "$pkg" == "$p" ]] && has_pipewire_pulse; then
+            return 0
+        fi
+    done
+    for p in "${X11_ONLY_PKGS[@]}"; do
+        if [[ "$pkg" == "$p" ]] && ! has_x11_session; then
             return 0
         fi
     done

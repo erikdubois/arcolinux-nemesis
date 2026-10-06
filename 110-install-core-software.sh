@@ -27,23 +27,32 @@ install_non_plasma_packages() {
 
         local pkgs=(
             alacritty
-            arandr
             catfish
-            dmenu
             evince
             galculator
             network-manager-applet
             networkmanager-openvpn
             networkmanager
-            numlockx
             pavucontrol
             playerctl
             surfn-icons-git
-            xcolor
-            xorg-xkill
         )
 
         install_packages "${pkgs[@]}"
+    fi
+}
+
+# X11-only tools - useless on a Wayland-only system, so skipped when there is no X session.
+install_x11_only_packages() {
+    if ! has_x11_session; then
+        log_warn "No X11 session found - skipping X11-only tools"
+        return 0
+    fi
+
+    install_packages scrot
+
+    if ! [[ -f /usr/share/wayland-sessions/plasma.desktop ]]; then
+        install_packages arandr dmenu numlockx xcolor xorg-xkill
     fi
 }
 
@@ -137,7 +146,6 @@ install_core_packages() {
         ripgrep
         ruff
         rsync
-        scrot
         shortwave
         smartmontools
         speedtest-cli
@@ -200,6 +208,7 @@ enable_core_services() {
 # Execution order matters here: Sddm handling first
 # then display-manager handling, then packages, then services.
 install_non_plasma_packages
+install_x11_only_packages
 install_xfce_extras_if_needed
 install_core_packages
 enable_core_services

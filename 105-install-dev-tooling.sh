@@ -60,9 +60,12 @@ install_dev_tooling_nice_to_have() {
         sysz \
         tldr \
         ripgrep-all \
-        yt-dlp \
-        xclip \
-        gpick
+        yt-dlp
+
+    # X11-only: xclip is the X clipboard, gpick picks colours through X11.
+    if has_x11_session; then
+        install_packages xclip gpick
+    fi
 }
 
 # Main execution

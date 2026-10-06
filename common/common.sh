@@ -323,6 +323,11 @@ is_plasma_x11_installed() {
     [[ -f /usr/share/xsessions/plasmax11.desktop ]]
 }
 
+# False on Wayland-only systems such as KIROTUX, which ship no /usr/share/xsessions at all.
+has_x11_session() {
+    compgen -G "/usr/share/xsessions/*.desktop" >/dev/null
+}
+
 ##################################################################################################################################
 # Install local packages from directory
 ##################################################################################################################################
