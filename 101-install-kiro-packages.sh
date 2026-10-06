@@ -43,16 +43,21 @@ install_kiro_packages() {
         kiro-rofi-themes
         kiro-shells
         kiro-variety-config
-        kiro-xfce
         kiro-powermenu
     )
 
-    # KIROTUX ships kiro-sddm-simplicity-hyprland, which conflicts with kiro-sddm-simplicity.
-    # pacman --noconfirm answers N to the conflict prompt and would abort the whole batch.
+    # KIROTUX ships variants that conflict with these Kiro packages. pacman --noconfirm
+    # answers N to the conflict prompt and would abort the whole batch.
     if pkg_installed kiro-sddm-simplicity-hyprland; then
         log_warn "kiro-sddm-simplicity-hyprland installed - keeping it, skipping kiro-sddm-simplicity"
     else
         pkgs+=(kiro-sddm-simplicity)
+    fi
+
+    if pkg_installed kirotux-thunar; then
+        log_warn "kirotux-thunar installed - keeping it, skipping kiro-xfce"
+    else
+        pkgs+=(kiro-xfce)
     fi
 
     install_packages "${pkgs[@]}"

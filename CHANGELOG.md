@@ -2,11 +2,11 @@
 
 ## 2026.10.06
 
-### KIROTUX: no kiro-sddm-simplicity conflict in 101
+### KIROTUX: no package conflicts in 101
 
-**What Changed.** KIROTUX ships `kiro-sddm-simplicity-hyprland`, which declares `conflicts=('kiro-sddm-simplicity')`. `101-install-kiro-packages.sh` installed `kiro-sddm-simplicity` in one batch with the other Kiro packages. pacman `--noconfirm` answers N to the conflict prompt, so the whole batch would abort on KIROTUX. 101 now skips `kiro-sddm-simplicity` when the hyprland variant is installed, and keeps the KIROTUX one.
+**What Changed.** KIROTUX ships two packages that conflict with Kiro ones that `101-install-kiro-packages.sh` installs: `kiro-sddm-simplicity-hyprland` (conflicts with `kiro-sddm-simplicity`) and `kirotux-thunar` (conflicts with `kiro-xfce` and `kiro-thunar`). 101 installs all Kiro packages in one batch, and pacman `--noconfirm` answers N to a conflict prompt, so the whole batch would abort on KIROTUX. 101 now skips `kiro-sddm-simplicity` and `kiro-xfce` when the KIROTUX variant is installed, and keeps the KIROTUX one. `kiro-thunar` is not installed by any nemesis script.
 
-**Technical Details.** The package list became a `pkgs` array; `kiro-sddm-simplicity` is appended only when `pkg_installed kiro-sddm-simplicity-hyprland` is false. Side effect: `test-validation.sh` parses the array but not the `pkgs+=` line, so it no longer checks `kiro-sddm-simplicity` on plain Kiro.
+**Technical Details.** The package list became a `pkgs` array; each conflicting package is appended only when `pkg_installed` says its KIROTUX variant is absent. Side effect: `test-validation.sh` parses the array but not the `pkgs+=` lines, so it no longer checks those two packages on plain Kiro. `600-ohmychadwm.sh` (opt-in) and the manual `kiro-desktops/*.sh` scripts still list `kiro-xfce`; they install an X11 desktop on purpose and were left alone.
 
 **Files Modified.**
 - `101-install-kiro-packages.sh`
