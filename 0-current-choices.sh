@@ -320,6 +320,7 @@ run_glob "${WORKING_DIR}/200-software-aur-repo*"
 
 run_glob "${WORKING_DIR}/500-plasma*"
 run_glob "${WORKING_DIR}/600-ohmychadwm*"
+run_glob "${WORKING_DIR}/700-kirotux*"
 
 log_warn "Going to the Personal folder"
 
