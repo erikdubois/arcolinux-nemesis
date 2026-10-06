@@ -31,21 +31,31 @@ pause_if_debug
 
 # Install all Kiro packages from nemesis_repo
 install_kiro_packages() {
-    install_packages \
-        kiro-dot-files \
-        kiro-arc-dawn \
-        kiro-arc-kde \
-        kiro-keybindings \
-        kiro-iso-builder \
-        kiro-assistant \
-        kiro-news \
-        kiro-rofi \
-        kiro-rofi-themes \
-        kiro-sddm-simplicity \
-        kiro-shells \
-        kiro-variety-config \
-        kiro-xfce \
+    local pkgs=(
+        kiro-dot-files
+        kiro-arc-dawn
+        kiro-arc-kde
+        kiro-keybindings
+        kiro-iso-builder
+        kiro-assistant
+        kiro-news
+        kiro-rofi
+        kiro-rofi-themes
+        kiro-shells
+        kiro-variety-config
+        kiro-xfce
         kiro-powermenu
+    )
+
+    # KIROTUX ships kiro-sddm-simplicity-hyprland, which conflicts with kiro-sddm-simplicity.
+    # pacman --noconfirm answers N to the conflict prompt and would abort the whole batch.
+    if pkg_installed kiro-sddm-simplicity-hyprland; then
+        log_warn "kiro-sddm-simplicity-hyprland installed - keeping it, skipping kiro-sddm-simplicity"
+    else
+        pkgs+=(kiro-sddm-simplicity)
+    fi
+
+    install_packages "${pkgs[@]}"
 }
 
 # Install kiro-system-files on its own — it overwrites real /etc system files and

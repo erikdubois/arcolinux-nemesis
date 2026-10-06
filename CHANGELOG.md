@@ -2,6 +2,16 @@
 
 ## 2026.10.06
 
+### KIROTUX: no kiro-sddm-simplicity conflict in 101
+
+**What Changed.** KIROTUX ships `kiro-sddm-simplicity-hyprland`, which declares `conflicts=('kiro-sddm-simplicity')`. `101-install-kiro-packages.sh` installed `kiro-sddm-simplicity` in one batch with the other Kiro packages. pacman `--noconfirm` answers N to the conflict prompt, so the whole batch would abort on KIROTUX. 101 now skips `kiro-sddm-simplicity` when the hyprland variant is installed, and keeps the KIROTUX one.
+
+**Technical Details.** The package list became a `pkgs` array; `kiro-sddm-simplicity` is appended only when `pkg_installed kiro-sddm-simplicity-hyprland` is false. Side effect: `test-validation.sh` parses the array but not the `pkgs+=` line, so it no longer checks `kiro-sddm-simplicity` on plain Kiro.
+
+**Files Modified.**
+- `101-install-kiro-packages.sh`
+- `CHANGELOG.md`
+
 ### KIROTUX apps: already covered, no extra script
 
 **What Changed.** `700-kirotux.sh` was added to install the apps the KIROTUX ISO leaves out compared to the Kiro ISO (brave-bin, chromium, vivaldi + codecs, visual-studio-code-bin, claude-code, gimp, inkscape, obs-studio, qbittorrent, neo-candy-icons-git), then removed the same day. Every one of them is already installed, on every Arch-based system, by an earlier stage. A full run of `0-current-choices.sh` on KIROTUX therefore installs them without a dedicated script.
