@@ -2,16 +2,15 @@
 
 ## 2026.10.06
 
-### KIROTUX gets its missing apps back
+### KIROTUX apps: already covered, no extra script
 
-**What Changed.** The KIROTUX hyprland-dms ISO leaves out 226 packages that the Kiro ISO ships. New `700-kirotux.sh` installs the apps from that list that Erik uses every day: brave-bin, chromium, vivaldi (+ ffmpeg codecs), visual-studio-code-bin, claude-code, gimp, inkscape, obs-studio, qbittorrent and neo-candy-icons-git. On any other system it skips.
+**What Changed.** `700-kirotux.sh` was added to install the apps the KIROTUX ISO leaves out compared to the Kiro ISO (brave-bin, chromium, vivaldi + codecs, visual-studio-code-bin, claude-code, gimp, inkscape, obs-studio, qbittorrent, neo-candy-icons-git), then removed the same day. Every one of them is already installed, on every Arch-based system, by an earlier stage. A full run of `0-current-choices.sh` on KIROTUX therefore installs them without a dedicated script.
 
-**Technical Details.** Modelled on `500-plasma.sh`. KIROTUX is detected from `ISO_CODENAME=kirotux` in `/etc/dev-rel`, which the ISO writes and the install keeps. Everything comes from repos (claude-code is in chaotic-aur), so one `install_packages` call covers it with no AUR build. It runs after `600-ohmychadwm*` in `0-current-choices.sh`, and `test-validation.sh` checks it only on KIROTUX installs.
+**Technical Details.** Already covered by: `110-install-core-software.sh` (browsers, VS Code, gimp, inkscape, qbittorrent), `105-install-dev-tooling.sh` (obs-studio), `200-software-aur-repo.sh` (claude-code) and `100-install-nemesis-software.sh` (neo-candy-icons-git). None of these are gated by distro.
 
 **Files Modified.**
-- `700-kirotux.sh` (new)
-- `0-current-choices.sh`
-- `test-validation.sh`
+- `700-kirotux.sh` (added, then removed)
+- `0-current-choices.sh`, `test-validation.sh` (wiring added, then removed)
 - `CHANGELOG.md`
 
 ## 2026.10.03

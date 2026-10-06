@@ -618,14 +618,6 @@ else
     echo -e "${YELLOW}Skipping 500-plasma* (not running Plasma — XDG_CURRENT_DESKTOP=${XDG_CURRENT_DESKTOP})${NC}"
 fi
 
-if grep -q "^ISO_CODENAME=kirotux" /etc/dev-rel 2>/dev/null; then
-    for script in "${WORKING_DIR}"/700-kirotux*; do
-        [[ -f "$script" ]] && ALL_SCRIPTS+=("$script")
-    done
-else
-    echo -e "${YELLOW}Skipping 700-kirotux* (not a KIROTUX install)${NC}"
-fi
-
 for pattern in "900-*" "910-*" "920-*" "930-*"; do
     for script in "${PERSONAL_DIR}"/${pattern}; do
         [[ -f "$script" ]] && ALL_SCRIPTS+=("$script")
