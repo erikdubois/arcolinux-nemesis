@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026.10.06
+
+### KIROTUX gets its missing apps back
+
+**What Changed.** The KIROTUX hyprland-dms ISO leaves out 226 packages that the Kiro ISO ships. New `700-kirotux.sh` installs the apps from that list that Erik uses every day: brave-bin, chromium, vivaldi (+ ffmpeg codecs), visual-studio-code-bin, claude-code, gimp, inkscape, obs-studio, qbittorrent and neo-candy-icons-git. On any other system it skips.
+
+**Technical Details.** Modelled on `500-plasma.sh`. KIROTUX is detected from `ISO_CODENAME=kirotux` in `/etc/dev-rel`, which the ISO writes and the install keeps. Everything comes from repos (claude-code is in chaotic-aur), so one `install_packages` call covers it with no AUR build. It runs after `600-ohmychadwm*` in `0-current-choices.sh`, and `test-validation.sh` checks it only on KIROTUX installs.
+
+**Files Modified.**
+- `700-kirotux.sh` (new)
+- `0-current-choices.sh`
+- `test-validation.sh`
+- `CHANGELOG.md`
+
 ## 2026.10.03
 
 ### User is added to vboxusers again
