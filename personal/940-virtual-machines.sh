@@ -30,8 +30,8 @@ install_qemu() {
 }
 
 install_virtualbox() {
-    if ! has_x11_session; then
-        log_warn "No X11 session found - skipping VirtualBox on a Wayland-only system"
+    if is_wayland_only; then
+        log_warn "Only Wayland sessions found - skipping VirtualBox"
         return 0
     fi
     bash "${SCRIPT_DIR}/install-virtualbox-for-linux.sh"

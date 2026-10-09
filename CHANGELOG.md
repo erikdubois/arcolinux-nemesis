@@ -6,9 +6,10 @@
 
 **What Changed.** A full run on riker (KIROTUX hyprland-dms, Wayland-only) installed VirtualBox and copied the VirtualBox template VM into `~/VirtualBox VMs`. On a Wayland-only system 940 no longer installs VirtualBox, and 930 no longer copies the template. QEMU/KVM is still installed. The unused `personal/settings/hyprland-noctalia/hypr/` folder is removed; no script referenced it.
 
-**Technical Details.** 940 checks `has_x11_session` (any `/usr/share/xsessions/*.desktop`). This is the same check that gates the X11-only tools. "Wayland-only" means no X session at all, so a box that has both X11 and Wayland sessions, such as ohmychadwm with xfce-wayland, still gets VirtualBox. 930 runs under `/bin/sh` and does not source common.sh, so it repeats the check with `ls /usr/share/xsessions/*.desktop`.
+**Technical Details.** New `is_wayland_only` in `common/common.sh` is true when there is no `/usr/share/xsessions/*.desktop` and at least one `/usr/share/wayland-sessions/*.desktop` (new `has_wayland_session`). 940 skips VirtualBox when it is true. A box with both X11 and Wayland sessions, such as ohmychadwm plus xfce-wayland, still gets VirtualBox. So does a box with no desktop session at all. 930 runs under `/bin/sh` and does not source common.sh, so it repeats the same two-folder check with `ls`.
 
 **Files Modified.**
+- `common/common.sh`
 - `personal/940-virtual-machines.sh`
 - `personal/930-real-metal.sh`
 - `personal/settings/hyprland-noctalia/hypr/` (removed)

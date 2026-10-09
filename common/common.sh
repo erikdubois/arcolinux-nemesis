@@ -328,6 +328,14 @@ has_x11_session() {
     compgen -G "/usr/share/xsessions/*.desktop" >/dev/null
 }
 
+has_wayland_session() {
+    compgen -G "/usr/share/wayland-sessions/*.desktop" >/dev/null
+}
+
+is_wayland_only() {
+    ! has_x11_session && has_wayland_session
+}
+
 ##################################################################################################################################
 # Install local packages from directory
 ##################################################################################################################################
