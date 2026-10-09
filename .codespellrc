@@ -1,0 +1,3 @@
+[codespell]
+# CHANGELOG quotes old typos in backticks on purpose (e.g. `seperate` -> `separate`)
+ignore-regex = `seperate`

@@ -11,6 +11,13 @@
 **Files Modified.**
 - `101-install-kiro-packages.sh`
 
+### .codespellrc added
+
+**What Changed.** codespell flagged the quoted old typo `seperate` in an earlier CHANGELOG entry on every run. `.codespellrc` now ignores that backticked word, so a real new misspelling of it is still caught.
+
+**Files Modified.**
+- `.codespellrc` (new)
+
 ### VirtualBox skipped on Wayland-only systems; orphan noctalia hypr folder removed
 
 **What Changed.** A full run on riker (KIROTUX hyprland-dms, Wayland-only) installed VirtualBox and copied the VirtualBox template VM into `~/VirtualBox VMs`. On a Wayland-only system 940 no longer installs VirtualBox, and 930 no longer copies the template. QEMU/KVM is still installed. The unused `personal/settings/hyprland-noctalia/hypr/` folder is removed; no script referenced it.
