@@ -88,6 +88,12 @@ handle_virtualbox_template() {
     printf 'Result: %s\n\n' "$result"
 
     if [ "$result" = "none" ]; then
+        # 940 installs no VirtualBox on a Wayland-only system, so a template would be useless there.
+        if ! ls /usr/share/xsessions/*.desktop >/dev/null 2>&1; then
+            log_warn "No X11 session found - skipping VirtualBox template on a Wayland-only system"
+            return 0
+        fi
+
         log_section "Real hardware detected - installing VirtualBox template"
 
         if [ ! -d "$template_dir" ]; then

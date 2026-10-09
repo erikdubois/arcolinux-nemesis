@@ -20,7 +20,7 @@ pause_if_debug
 # Purpose
 # - Install both virtualization stacks by default so users can run VMs out of the box:
 #   - QEMU/KVM + virt-manager, defining the kiro-template VM (install-qemu.sh)
-#   - VirtualBox + host modules (install-virtualbox-for-linux.sh)
+#   - VirtualBox + host modules (install-virtualbox-for-linux.sh), skipped on Wayland-only systems
 # - The VirtualBox template VM is copied into ~/VirtualBox VMs/ on real hardware by 930-real-metal.sh.
 #
 ##################################################################################################################################
@@ -30,6 +30,10 @@ install_qemu() {
 }
 
 install_virtualbox() {
+    if ! has_x11_session; then
+        log_warn "No X11 session found - skipping VirtualBox on a Wayland-only system"
+        return 0
+    fi
     bash "${SCRIPT_DIR}/install-virtualbox-for-linux.sh"
 }
 
