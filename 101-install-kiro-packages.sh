@@ -32,7 +32,6 @@ pause_if_debug
 # Install all Kiro packages from nemesis_repo
 install_kiro_packages() {
     local pkgs=(
-        kiro-dot-files
         kiro-arc-dawn
         kiro-arc-kde
         kiro-keybindings
@@ -48,6 +47,12 @@ install_kiro_packages() {
 
     # KIROTUX ships variants that conflict with these Kiro packages. pacman --noconfirm
     # answers N to the conflict prompt and would abort the whole batch.
+    if pkg_installed kiro-wayland-dotfiles; then
+        log_warn "kiro-wayland-dotfiles installed - keeping it, skipping kiro-dot-files"
+    else
+        pkgs+=(kiro-dot-files)
+    fi
+
     if pkg_installed kiro-sddm-simplicity-hyprland; then
         log_warn "kiro-sddm-simplicity-hyprland installed - keeping it, skipping kiro-sddm-simplicity"
     else

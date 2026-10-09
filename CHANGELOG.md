@@ -2,6 +2,15 @@
 
 ## 2026.10.09
 
+### 101: kiro-dot-files skipped when kiro-wayland-dotfiles is installed
+
+**What Changed.** Wayland desktops (KIROTUX) ship `kiro-wayland-dotfiles`, which conflicts with `kiro-dot-files`. 101 now keeps the Wayland package and skips `kiro-dot-files`, instead of letting pacman abort the whole batch on the conflict prompt.
+
+**Technical Details.** Same `pkg_installed` guard pattern as the `kiro-sddm-simplicity` and `kiro-xfce` skips. The check looks for the package, not for a Wayland session, so a box with ohmychadwm plus xfce-wayland still gets `kiro-dot-files`.
+
+**Files Modified.**
+- `101-install-kiro-packages.sh`
+
 ### VirtualBox skipped on Wayland-only systems; orphan noctalia hypr folder removed
 
 **What Changed.** A full run on riker (KIROTUX hyprland-dms, Wayland-only) installed VirtualBox and copied the VirtualBox template VM into `~/VirtualBox VMs`. On a Wayland-only system 940 no longer installs VirtualBox, and 930 no longer copies the template. QEMU/KVM is still installed. The unused `personal/settings/hyprland-noctalia/hypr/` folder is removed; no script referenced it.
