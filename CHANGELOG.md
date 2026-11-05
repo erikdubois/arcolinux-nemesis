@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026.11.05
+
+### New: scripts/create-qemu-desktop-vm.sh — one QEMU VM per desktop
+
+**What Changed.** A new script creates a libvirt VM for one of our X11 or Wayland desktops. It gives the VM 1/3 of the host CPU threads and 1/3 of the host RAM. Desktops behave differently in QEMU, so `pick_profile()` holds a case with a video profile per desktop. Change a desktop there when it misbehaves. Pass `--iso` to boot an ISO, `--profile` to override the profile, and `--dry-run` to only write and validate the XML.
+
+**Technical Details.**
+- Three video profiles. `gl` is virtio-gpu with virgl 3D and SPICE local GL, without blob. libvirt resolves it to `virtio-vga-gl`, the setup the KIROTUX release plans record as working for niri-dms, niri-noctalia, hyprland-dms, hyprland-noctalia and wayfire. All X11 desktops use it too. `nogl` is plain `virtio-vga` with SPICE GL off: hyprland-impasto froze on a black screen with blob + `virtio-vga-gl`. `gl-blob` is the `kiro-template` setup (blob + memfd shared memory). It is opt-in only, because the notes cannot tell whether blob or GL caused the impasto freeze.
+- Based on `personal/settings/qemu-template/kiro-template.xml`, plus a non-secure-boot UEFI firmware request, `host-passthrough` CPU with a `cores=N threads=1` topology (an odd vCPU count does not split into threads), ich9 sound on a SPICE audio backend, a guest agent channel and USB redirection.
+- No sudo needed: the disk is created with `virsh vol-create-as` in the `default` pool. The script refuses an existing VM name or disk and leaves `kiro-template` alone. Preflight points to `install-qemu.sh` when libvirt, qemu, edk2-ovmf or virglrenderer is missing.
+- Verified: `shellcheck`, `virt-xml-validate` for every profile, and a test define/undefine in `qemu:///session`. No VM was booted.
+
+**Files Modified.**
+- `scripts/create-qemu-desktop-vm.sh` (new)
+- `CHANGELOG.md`
+
 ## 2026.10.09
 
 ### 101: kiro-dot-files skipped when kiro-wayland-dotfiles is installed
