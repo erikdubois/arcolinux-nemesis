@@ -20,6 +20,8 @@ source "${COMMON_DIR}/common.sh"
 
 ##################################################################################################################################
 # Purpose
+# - We assume you already ran install-qemu.sh (packages, libvirtd, groups, default network + pool)
+# - This script sets up a VM for every single desktop out there with the correct settings for that desktop
 # - Create a new QEMU/KVM (libvirt) VM sized and configured for ONE desktop we ship (X11 or Wayland)
 # - Takes 1/3 of the host CPU threads and 1/3 of the host RAM
 # - Numbered menu; pick_desktop() holds one case branch per desktop with its video profile - edit it there
