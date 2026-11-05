@@ -9,7 +9,7 @@
 **Technical Details.**
 - Three video profiles. `gl` is virtio-gpu with virgl 3D and SPICE local GL, without blob. libvirt resolves it to `virtio-vga-gl`, the setup the KIROTUX release plans record as working for niri-dms, niri-noctalia, hyprland-dms, hyprland-noctalia and wayfire. All X11 desktops use it too. `nogl` is plain `virtio-vga` with SPICE GL off: hyprland-impasto froze on a black screen with blob + `virtio-vga-gl`. `gl-blob` is the `kiro-template` setup (blob + memfd shared memory). It is opt-in only, because the notes cannot tell whether blob or GL caused the impasto freeze.
 - Based on `personal/settings/qemu-template/kiro-template.xml`, plus a non-secure-boot UEFI firmware request, `host-passthrough` CPU with a `cores=N threads=1` topology (an odd vCPU count does not split into threads), ich9 sound on a SPICE audio backend, a guest agent channel and USB redirection.
-- No sudo needed: the disk is created with `virsh vol-create-as` in the `default` pool. The script refuses an existing VM name or disk and leaves `kiro-template` alone. Preflight points to `install-qemu.sh` when libvirt, qemu, edk2-ovmf or virglrenderer is missing.
+- No sudo needed: the disk is created with `virsh vol-create-as` in the `default` pool. The script refuses an existing VM name or disk and leaves `kiro-template` alone. It assumes `install-qemu.sh` has run, so it does not check for packages, libvirtd or the default pool.
 - Verified: `shellcheck`, `virt-xml-validate` for every profile, and a test define/undefine in `qemu:///session`. No VM was booted.
 
 **Files Modified.**

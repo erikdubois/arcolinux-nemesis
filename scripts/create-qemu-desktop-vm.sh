@@ -25,7 +25,6 @@ source "${COMMON_DIR}/common.sh"
 # - Numbered menu; pick_desktop() holds one case branch per desktop with its video profile - edit it there
 # - Based on personal/settings/qemu-template/kiro-template.xml (UEFI, q35, virtio disk/net, SPICE)
 # - Never overwrites an existing VM or disk; leaves kiro-template alone
-# - Run install-qemu.sh first (packages, libvirtd, groups, default network + pool)
 #
 # Usage
 #   create-qemu-desktop-vm.sh [desktop] [--iso PATH] [--name NAME] [--disk-size 60G] [--profile P] [--dry-run]
@@ -165,18 +164,6 @@ pick_desktop() {
 preflight() {
     log_subsection "Preflight"
 
-    local missing=()
-    command -v virsh >/dev/null || missing+=("libvirt")
-    command -v qemu-system-x86_64 >/dev/null || missing+=("qemu-desktop")
-    [[ -d /usr/share/edk2/x64 ]] || missing+=("edk2-ovmf")
-    if [[ "$PROFILE" != "nogl" ]]; then
-        pkg_installed virglrenderer || missing+=("virglrenderer")
-    fi
-    if [[ ${#missing[@]} -gt 0 ]]; then
-        log_error "Missing: ${missing[*]} - run scripts/install-qemu.sh first"
-        exit 1
-    fi
-
     [[ -e /dev/kvm ]] || { log_error "/dev/kvm not found - enable virtualization (VT-x/AMD-V) in the firmware"; exit 1; }
 
     if [[ "$PROFILE" != "nogl" && ! -e /dev/dri/renderD128 ]]; then
@@ -184,14 +171,6 @@ preflight() {
     fi
 
     if [[ "$DRY_RUN" == false ]]; then
-        virsh -c "$CONNECT" list >/dev/null 2>&1 || {
-            log_error "Cannot reach ${CONNECT} - is libvirtd running and are you in the libvirt group (log out/in)?"
-            exit 1
-        }
-        virsh -c "$CONNECT" pool-info "$POOL" >/dev/null 2>&1 || {
-            log_error "Storage pool '${POOL}' missing - run scripts/install-qemu.sh first"
-            exit 1
-        }
         if virsh -c "$CONNECT" dominfo "$VM_NAME" >/dev/null 2>&1; then
             log_error "VM '${VM_NAME}' already exists - pick another --name or delete it in virt-manager"
             exit 1
