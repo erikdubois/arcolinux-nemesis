@@ -4,7 +4,7 @@
 
 ### New: scripts/create-qemu-desktop-vm.sh — one QEMU VM per desktop
 
-**What Changed.** A new script creates a libvirt VM for one of our X11 or Wayland desktops. It gives the VM 1/3 of the host CPU threads and 1/3 of the host RAM. Desktops behave differently in QEMU, so `pick_profile()` holds a case with a video profile per desktop. Change a desktop there when it misbehaves. Pass `--iso` to boot an ISO, `--profile` to override the profile, and `--dry-run` to only write and validate the XML.
+**What Changed.** A new script creates a libvirt VM for one of our X11 or Wayland desktops. It gives the VM 1/3 of the host CPU threads and 1/3 of the host RAM. Desktops behave differently in QEMU, so a numbered menu feeds `pick_desktop()`, a case with one branch per desktop that sets its video profile. Change a desktop's branch there when it misbehaves. The desktop can also be given as a number or a name on the command line. Pass `--iso` to boot an ISO, `--profile` to override the profile, and `--dry-run` to only write and validate the XML.
 
 **Technical Details.**
 - Three video profiles. `gl` is virtio-gpu with virgl 3D and SPICE local GL, without blob. libvirt resolves it to `virtio-vga-gl`, the setup the KIROTUX release plans record as working for niri-dms, niri-noctalia, hyprland-dms, hyprland-noctalia and wayfire. All X11 desktops use it too. `nogl` is plain `virtio-vga` with SPICE GL off: hyprland-impasto froze on a black screen with blob + `virtio-vga-gl`. `gl-blob` is the `kiro-template` setup (blob + memfd shared memory). It is opt-in only, because the notes cannot tell whether blob or GL caused the impasto freeze.

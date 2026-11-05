@@ -22,7 +22,7 @@ source "${COMMON_DIR}/common.sh"
 # Purpose
 # - Create a new QEMU/KVM (libvirt) VM sized and configured for ONE desktop we ship (X11 or Wayland)
 # - Takes 1/3 of the host CPU threads and 1/3 of the host RAM
-# - Picks the video/display profile per desktop in pick_profile() - edit the case there to change a desktop
+# - Numbered menu; pick_desktop() holds one case branch per desktop with its video profile - edit it there
 # - Based on personal/settings/qemu-template/kiro-template.xml (UEFI, q35, virtio disk/net, SPICE)
 # - Never overwrites an existing VM or disk; leaves kiro-template alone
 # - Run install-qemu.sh first (packages, libvirtd, groups, default network + pool)
@@ -49,21 +49,33 @@ PROFILE=""
 PROFILE_OVERRIDE=""
 DRY_RUN=false
 NOTE=""
+CHOICE=""
 
-DESKTOPS=(
-    # X11
-    awesome bspwm budgie chadwm cinnamon i3 leftwm mate ohmychadwm qtile xfce
-    # X11 + Wayland desktop environments
-    plasma gnome
-    # Wayland (KIROTUX editions and edu)
-    niri niri-dms niri-noctalia
-    hyprland hyprland-dms hyprland-noctalia hyprland-noctura hyprland-impasto
-    wayfire sway river labwc dwl mango scroll
-)
+HYPR_NOTE="Hyprland in a VM: invisible cursor or black screen -> WLR_NO_HARDWARE_CURSORS=1 + WLR_RENDERER_ALLOW_SOFTWARE=1. QEMU picks display scale 1.5 - set 100%."
+WLR_NOTE="wlroots: invisible cursor -> WLR_NO_HARDWARE_CURSORS=1. Not yet verified in QEMU."
+X11_NOTE="X11: install spice-vdagent in the guest for auto-resize and clipboard."
+
+show_menu() {
+    cat <<'EOF'
+  X11                         X11 + Wayland        Wayland
+   1) awesome                 12) plasma           14) niri              22) wayfire
+   2) bspwm                   13) gnome            15) niri-dms          23) sway
+   3) budgie                                       16) niri-noctalia     24) river
+   4) chadwm                                       17) hyprland          25) labwc
+   5) cinnamon                                     18) hyprland-dms      26) dwl
+   6) i3                                           19) hyprland-noctalia 27) mango
+   7) leftwm                                       20) hyprland-noctura  28) scroll
+   8) mate                                         21) hyprland-impasto
+   9) ohmychadwm
+  10) qtile
+  11) xfce
+EOF
+}
 
 usage() {
     sed -n '/^# Usage/,/^#   No desktop/p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,3\}//'
-    echo "Desktops: ${DESKTOPS[*]}"
+    echo "Desktop: a number or a name from this list"
+    show_menu
 }
 
 parse_args() {
@@ -76,52 +88,60 @@ parse_args() {
             --dry-run)   DRY_RUN=true; shift ;;
             -h|--help)   usage; exit 0 ;;
             -*)          log_error "Unknown option: $1"; usage; exit 1 ;;
-            *)           DESKTOP="$1"; shift ;;
+            *)           CHOICE="$1"; shift ;;
         esac
     done
 }
 
-choose_desktop() {
-    [[ -n "$DESKTOP" ]] && return 0
-    log_subsection "Which desktop will this VM run?"
-    PS3="Number: "
-    select d in "${DESKTOPS[@]}"; do
-        [[ -n "$d" ]] && { DESKTOP="$d"; break; }
-    done
-}
-
 ##################################################################################################################################
-# Per-desktop profile - the place to change when a desktop misbehaves in QEMU
+# Per-desktop case - one branch per desktop. Change PROFILE here when a desktop misbehaves in QEMU.
+#   PROFILE: gl | gl-blob | nogl  (see Purpose at the top)
 ##################################################################################################################################
 
-pick_profile() {
-    case "$DESKTOP" in
-        awesome|bspwm|budgie|chadwm|cinnamon|i3|leftwm|mate|ohmychadwm|qtile|xfce)
-            PROFILE="gl"
-            NOTE="X11: install spice-vdagent in the guest for auto-resize and clipboard."
-            ;;
-        plasma|gnome)
-            PROFILE="gl"
-            NOTE="Pick the Wayland or X11 session at the login screen; both run on virgl."
-            ;;
-        niri|niri-dms|niri-noctalia)
-            PROFILE="gl"
-            NOTE="Check in the guest: ls /dev/dri -> renderD128 must be there."
-            ;;
-        hyprland|hyprland-dms|hyprland-noctalia|hyprland-noctura)
-            PROFILE="gl"
-            NOTE="Hyprland in a VM: if the cursor is invisible or the screen stays black, set WLR_NO_HARDWARE_CURSORS=1 and WLR_RENDERER_ALLOW_SOFTWARE=1. QEMU picks display scale 1.5 - set 100%."
-            ;;
-        hyprland-impasto)
-            PROFILE="nogl"
-            NOTE="impasto: blob + virtio-vga-gl froze the screen black (2026-11-03). Software rendering. Set the display scale to 100%."
-            ;;
-        wayfire|sway|river|labwc|dwl|mango|scroll)
-            PROFILE="gl"
-            NOTE="wlroots: if the cursor is invisible, set WLR_NO_HARDWARE_CURSORS=1. Not yet verified in QEMU."
-            ;;
+pick_desktop() {
+    if [[ -z "$CHOICE" ]]; then
+        log_subsection "Which desktop will this VM run?"
+        show_menu
+        read -rp "Number or name: " CHOICE
+    fi
+
+    case "$CHOICE" in
+        # ── X11 ──────────────────────────────────────────────────────────────
+        1|awesome)            DESKTOP="awesome";            PROFILE="gl";   NOTE="$X11_NOTE" ;;
+        2|bspwm)              DESKTOP="bspwm";              PROFILE="gl";   NOTE="$X11_NOTE" ;;
+        3|budgie)             DESKTOP="budgie";             PROFILE="gl";   NOTE="$X11_NOTE" ;;
+        4|chadwm)             DESKTOP="chadwm";             PROFILE="gl";   NOTE="$X11_NOTE" ;;
+        5|cinnamon)           DESKTOP="cinnamon";           PROFILE="gl";   NOTE="$X11_NOTE" ;;
+        6|i3)                 DESKTOP="i3";                 PROFILE="gl";   NOTE="$X11_NOTE" ;;
+        7|leftwm)             DESKTOP="leftwm";             PROFILE="gl";   NOTE="$X11_NOTE" ;;
+        8|mate)               DESKTOP="mate";               PROFILE="gl";   NOTE="$X11_NOTE" ;;
+        9|ohmychadwm)         DESKTOP="ohmychadwm";         PROFILE="gl";   NOTE="$X11_NOTE" ;;
+        10|qtile)             DESKTOP="qtile";              PROFILE="gl";   NOTE="$X11_NOTE" ;;
+        11|xfce)              DESKTOP="xfce";               PROFILE="gl";   NOTE="$X11_NOTE" ;;
+
+        # ── X11 + Wayland ────────────────────────────────────────────────────
+        12|plasma)            DESKTOP="plasma";             PROFILE="gl";   NOTE="Pick the Wayland or X11 session at the login screen; both run on virgl." ;;
+        13|gnome)             DESKTOP="gnome";              PROFILE="gl";   NOTE="Pick the Wayland or X11 session at the login screen; both run on virgl." ;;
+
+        # ── Wayland ──────────────────────────────────────────────────────────
+        14|niri)              DESKTOP="niri";               PROFILE="gl";   NOTE="Check in the guest: ls /dev/dri -> renderD128 must be there." ;;
+        15|niri-dms)          DESKTOP="niri-dms";           PROFILE="gl";   NOTE="Proven on virtio-vga-gl (2026-10-11)." ;;
+        16|niri-noctalia)     DESKTOP="niri-noctalia";      PROFILE="gl";   NOTE="Proven on virtio-vga-gl (2026-10-16)." ;;
+        17|hyprland)          DESKTOP="hyprland";           PROFILE="gl";   NOTE="$HYPR_NOTE" ;;
+        18|hyprland-dms)      DESKTOP="hyprland-dms";       PROFILE="gl";   NOTE="Proven on virtio-vga-gl (2026-10-08). $HYPR_NOTE" ;;
+        19|hyprland-noctalia) DESKTOP="hyprland-noctalia";  PROFILE="gl";   NOTE="Proven on virtio-vga-gl (2026-10-16). $HYPR_NOTE" ;;
+        20|hyprland-noctura)  DESKTOP="hyprland-noctura";   PROFILE="gl";   NOTE="$HYPR_NOTE" ;;
+        21|hyprland-impasto)  DESKTOP="hyprland-impasto";   PROFILE="nogl"; NOTE="blob + virtio-vga-gl froze the screen black (2026-11-03). Software rendering. Set the display scale to 100%." ;;
+        22|wayfire)           DESKTOP="wayfire";            PROFILE="gl";   NOTE="Proven on virtio-vga-gl (2026-10-22)." ;;
+        23|sway)              DESKTOP="sway";               PROFILE="gl";   NOTE="$WLR_NOTE" ;;
+        24|river)             DESKTOP="river";              PROFILE="gl";   NOTE="$WLR_NOTE" ;;
+        25|labwc)             DESKTOP="labwc";              PROFILE="gl";   NOTE="$WLR_NOTE" ;;
+        26|dwl)               DESKTOP="dwl";                PROFILE="gl";   NOTE="$WLR_NOTE" ;;
+        27|mango)             DESKTOP="mango";              PROFILE="gl";   NOTE="$WLR_NOTE" ;;
+        28|scroll)            DESKTOP="scroll";             PROFILE="gl";   NOTE="$WLR_NOTE" ;;
+
         *)
-            log_error "Unknown desktop: ${DESKTOP}"
+            log_error "Unknown desktop: ${CHOICE}"
             usage
             exit 1
             ;;
@@ -344,8 +364,7 @@ main() {
 
     log_section "Creating a QEMU/KVM desktop VM"
 
-    choose_desktop
-    pick_profile
+    pick_desktop
     VM_NAME="${VM_NAME:-kiro-${DESKTOP}}"
     preflight
     compute_resources
