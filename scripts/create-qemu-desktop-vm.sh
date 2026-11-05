@@ -344,6 +344,10 @@ main() {
     parse_args "$@"
 
     log_section "Creating a QEMU/KVM desktop VM"
+    echo "We assume you already ran install-qemu.sh (packages, libvirtd, groups, default network + pool)."
+    echo "This script sets up a VM for every single desktop out there with the correct settings for that desktop."
+    echo "The VM gets 1/3 of the host CPU threads and 1/3 of the host RAM."
+    echo
 
     pick_desktop
     VM_NAME="${VM_NAME:-kiro-${DESKTOP}}"
